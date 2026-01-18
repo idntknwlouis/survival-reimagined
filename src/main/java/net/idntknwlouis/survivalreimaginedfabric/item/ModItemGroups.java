@@ -22,10 +22,13 @@ public class ModItemGroups {
 
     public static final ItemGroup SURVIVAL_REIMAGINED_COMPAT_ITEM_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(SurvivalReimaginedFabric.MOD_ID, "survival_reimagined_compat_items"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ACACIAPLANK))
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ALPHAOAKPLANK))
                     .displayName(Text.translatable("SR Compat Items"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.ALPHAOAKPLANK);
+                        entries.add(ModItems.BAOBABPLANK);
+                        entries.add(ModItems.BLACKWOODPLANK);
+                        entries.add(ModItems.BRIMWOODPLANK);
 
                     }).build());
 

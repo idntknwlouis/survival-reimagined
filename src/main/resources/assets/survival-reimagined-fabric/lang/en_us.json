@@ -1,4 +1,24 @@
 {
   "item.survival-reimagined-fabric.acacia_plank": "Acacia Plank",
-  "item.survival-reimagined-fabric.alpha_oak_plank": "Alpha Oak Plank"
+
+
+  "item.survival-reimagined-fabric.alpha_oak_plank": "Alpha Oak Plank",
+  "item.survival-reimagined-fabric.baobab_plank": "Baobab Plank",
+  "item.survival-reimagined-fabric.blackwood_plank": "Blackwood Plank",
+  "item.survival-reimagined-fabric.brimwood_plank": "Brimwood Plank",
+  "item.survival-reimagined-fabric.cobalt_plank": "Cobalt Plank",
+  "item.survival-reimagined-fabric.cypress_plank": "Cypress Plank",
+  "item.survival-reimagined-fabric.dead_plank": "Dead Plank",
+  "item.survival-reimagined-fabric.eucalyptus_plank": "Eucalyptus Plank",
+  "item.survival-reimagined-fabric.joshua_plank": "Joshua Plank",
+  "item.survival-reimagined-fabric.kapok_plank": "Kapok Plank",
+  "item.survival-reimagined-fabric.larch_plank": "Larch Plank",
+  "item.survival-reimagined-fabric.magnolia_plank": "Magnolia Plank",
+  "item.survival-reimagined-fabric.maple_plank": "Maple Plank",
+  "item.survival-reimagined-fabric.mauve_plank": "Mauve Plank",
+  "item.survival-reimagined-fabric.palm_plank": "Palm Plank",
+  "item.survival-reimagined-fabric.pine_plank": "Pine Plank",
+  "item.survival-reimagined-fabric.redwood_plank": "Redwood Plank",
+  "item.survival-reimagined-fabric.socotra_plank": "Socotra Plank",
+  "item.survival-reimagined-fabric.willow_plank": "Willow Plank"
 }

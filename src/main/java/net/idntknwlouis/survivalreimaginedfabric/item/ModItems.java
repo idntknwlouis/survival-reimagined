@@ -10,8 +10,14 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+    // TODO: finish base mod items
     public static final Item ACACIAPLANK = registerItem("acacia_plank", new Item(new Item.Settings()));
+
+    // TODO: then finish compat items
     public static final Item ALPHAOAKPLANK = registerItem("alpha_oak_plank", new Item(new Item.Settings()));
+    public static final Item BAOBABPLANK = registerItem("baobab_plank", new Item(new Item.Settings()));
+    public static final Item BLACKWOODPLANK = registerItem("blackwood_plank", new Item(new Item.Settings()));
+    public static final Item BRIMWOODPLANK = registerItem("brimwood_plank", new Item(new Item.Settings()));
 
 
 
@@ -26,6 +32,9 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(ACACIAPLANK);
             entries.add(ALPHAOAKPLANK);
+            entries.add(BAOBABPLANK);
+            entries.add(BLACKWOODPLANK);
+            entries.add(BRIMWOODPLANK);
         });
     }
 }
