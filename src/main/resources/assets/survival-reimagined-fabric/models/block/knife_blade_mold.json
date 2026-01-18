@@ -1,0 +1,10 @@
+{
+  "parent": "survival-reimagined-fabric:custom/knife_mold",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/knife_mold",
+    "particle": "survival-reimagined-fabric:block/knife_mold",
+    "22": "survival-reimagined-fabric:block/dried_clay",
+    "11": "survival-reimagined-fabric:block/knife_mold"
+  },
+  "render_type": "cutout_mipped"
+}

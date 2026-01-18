@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/stone_rock",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/kimberlite",
+    "particle": "survival-reimagined-fabric:block/kimberlite",
+    "0": "survival-reimagined-fabric:block/kimberlite"
+  },
+  "render_type": "solid"
+}

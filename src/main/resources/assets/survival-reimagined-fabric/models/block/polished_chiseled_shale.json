@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/polished_chiseled_shale",
+    "up": "survival-reimagined-fabric:block/polished_chiseled_shale",
+    "north": "survival-reimagined-fabric:block/polished_chiseled_shale",
+    "east": "survival-reimagined-fabric:block/polished_chiseled_shale",
+    "south": "survival-reimagined-fabric:block/polished_chiseled_shale",
+    "west": "survival-reimagined-fabric:block/polished_chiseled_shale",
+    "particle": "survival-reimagined-fabric:block/polished_chiseled_shale"
+  },
+  "render_type": "solid"
+}

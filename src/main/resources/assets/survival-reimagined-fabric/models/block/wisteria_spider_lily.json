@@ -1,0 +1,10 @@
+{
+  "parent": "survival-reimagined-fabric:custom/wisteria_spider_lily",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/wisteria_flower",
+    "particle": "survival-reimagined-fabric:block/wisteria_flower",
+    "0": "survival-reimagined-fabric:block/wisteria_spider_lily_e",
+    "1": "survival-reimagined-fabric:block/wisteria_spider_lily"
+  },
+  "render_type": "cutout"
+}

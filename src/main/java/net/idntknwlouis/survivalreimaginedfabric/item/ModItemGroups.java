@@ -27,6 +27,17 @@ public class ModItemGroups {
                         entries.add(ModItems.CRIMSONPLANK);
                         entries.add(ModItems.WARPEDPLANK);
 
+                        entries.add(ModItems.LARGEOAKBARK);
+                        entries.add(ModItems.LARGEDARKOAKBARK);
+                        entries.add(ModItems.LARGESPRUCEBARK);
+                        entries.add(ModItems.LARGEBIRCHBARK);
+                        entries.add(ModItems.LARGEACACIABARK);
+                        entries.add(ModItems.LARGEJUNGLEBARK);
+                        entries.add(ModItems.LARGECHERRYBARK);
+                        entries.add(ModItems.LARGEMANGROVEBARK);
+                        entries.add(ModItems.LARGECRIMSONBARK);
+                        entries.add(ModItems.LARGEWARPEDBARK);
+
                     }).build());
 
     public static final ItemGroup SURVIVAL_REIMAGINED_COMPAT_ITEM_GROUP = Registry.register(Registries.ITEM_GROUP,

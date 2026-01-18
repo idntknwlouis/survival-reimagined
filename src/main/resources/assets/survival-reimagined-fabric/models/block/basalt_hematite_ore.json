@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/basalt_hematite_ore",
+    "up": "survival-reimagined-fabric:block/basalt_hematite_ore",
+    "north": "survival-reimagined-fabric:block/basalt_hematite_ore",
+    "east": "survival-reimagined-fabric:block/basalt_hematite_ore",
+    "south": "survival-reimagined-fabric:block/basalt_hematite_ore",
+    "west": "survival-reimagined-fabric:block/basalt_hematite_ore",
+    "particle": "survival-reimagined-fabric:block/basalt_hematite_ore"
+  },
+  "render_type": "solid"
+}

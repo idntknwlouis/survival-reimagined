@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/cow_leg",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/cow_skinned",
+    "particle": "minecraft:block/redstone_block",
+    "1": "survival-reimagined-fabric:block/cow_skinned"
+  },
+  "render_type": "solid"
+}

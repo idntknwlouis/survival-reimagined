@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/mold",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/rune_clay_mold",
+    "particle": "survival-reimagined-fabric:block/rune_clay_mold",
+    "0": "survival-reimagined-fabric:block/clay_block"
+  },
+  "render_type": "solid"
+}

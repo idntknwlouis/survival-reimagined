@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/cow_carcass",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/cow",
+    "particle": "survival-reimagined-fabric:block/cow_block",
+    "0": "survival-reimagined-fabric:block/cow"
+  },
+  "render_type": "solid"
+}

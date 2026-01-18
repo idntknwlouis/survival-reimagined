@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/stripped_wisteria_log_top",
+    "up": "survival-reimagined-fabric:block/stripped_wisteria_log_top",
+    "north": "survival-reimagined-fabric:block/stripped_wisteria_log",
+    "east": "survival-reimagined-fabric:block/stripped_wisteria_log",
+    "south": "survival-reimagined-fabric:block/stripped_wisteria_log",
+    "west": "survival-reimagined-fabric:block/stripped_wisteria_log",
+    "particle": "survival-reimagined-fabric:block/stripped_wisteria_log_top"
+  },
+  "render_type": "solid"
+}

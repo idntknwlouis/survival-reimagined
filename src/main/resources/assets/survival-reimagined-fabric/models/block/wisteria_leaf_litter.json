@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/wisteria_leaf_litter",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/wisteria_leaf_litter_full",
+    "particle": "survival-reimagined-fabric:block/wisteria_leaf_litter_full",
+    "missing": "survival-reimagined-fabric:block/wisteria_leaf_litter_1-4"
+  },
+  "render_type": "cutout"
+}

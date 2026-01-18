@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/wisteria_planks",
+    "up": "survival-reimagined-fabric:block/wisteria_planks",
+    "north": "survival-reimagined-fabric:block/wisteria_planks",
+    "east": "survival-reimagined-fabric:block/wisteria_planks",
+    "south": "survival-reimagined-fabric:block/wisteria_planks",
+    "west": "survival-reimagined-fabric:block/wisteria_planks",
+    "particle": "survival-reimagined-fabric:block/wisteria_planks"
+  },
+  "render_type": "solid"
+}

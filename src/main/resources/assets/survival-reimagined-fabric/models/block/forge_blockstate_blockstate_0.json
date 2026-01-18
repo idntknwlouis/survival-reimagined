@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/forge_bottom",
+    "up": "survival-reimagined-fabric:block/forge_top_open",
+    "north": "survival-reimagined-fabric:block/forge_side",
+    "east": "survival-reimagined-fabric:block/forge_side",
+    "south": "survival-reimagined-fabric:block/forge_side",
+    "west": "survival-reimagined-fabric:block/forge_side",
+    "particle": "survival-reimagined-fabric:block/forge_bottom"
+  },
+  "render_type": "solid"
+}

@@ -3,7 +3,6 @@ package net.idntknwlouis.survivalreimaginedfabric.item;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabric;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -22,6 +21,20 @@ public class ModItems {
     public static final Item MANGROVEPLANK = registerItem("mangrove_plank", new Item(new Item.Settings()));
     public static final Item CRIMSONPLANK = registerItem("crimson_plank", new Item(new Item.Settings()));
     public static final Item WARPEDPLANK = registerItem("warped_plank", new Item(new Item.Settings()));
+
+    // Barks
+    public static final Item LARGEOAKBARK = registerItem("large_oak_bark", new Item(new Item.Settings()));
+    public static final Item LARGEDARKOAKBARK = registerItem("large_dark_oak_bark", new Item(new Item.Settings()));
+    public static final Item LARGESPRUCEBARK = registerItem("large_spruce_bark", new Item(new Item.Settings()));
+    public static final Item LARGEBIRCHBARK = registerItem("large_birch_bark", new Item(new Item.Settings()));
+    public static final Item LARGEACACIABARK = registerItem("large_acacia_bark", new Item(new Item.Settings()));
+    public static final Item LARGEJUNGLEBARK = registerItem("large_jungle_bark", new Item(new Item.Settings()));
+    public static final Item LARGECHERRYBARK = registerItem("large_cherry_bark", new Item(new Item.Settings()));
+    public static final Item LARGEMANGROVEBARK = registerItem("large_mangrove_bark", new Item(new Item.Settings()));
+    public static final Item LARGECRIMSONBARK = registerItem("large_crimson_bark", new Item(new Item.Settings()));
+    public static final Item LARGEWARPEDBARK = registerItem("large_warped_bark", new Item(new Item.Settings()));
+
+
 
     // TODO: then finish compat items
     // Planks

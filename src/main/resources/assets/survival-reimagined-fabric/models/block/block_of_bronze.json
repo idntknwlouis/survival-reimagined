@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/block_of_bronze",
+    "up": "survival-reimagined-fabric:block/block_of_bronze",
+    "north": "survival-reimagined-fabric:block/block_of_bronze",
+    "east": "survival-reimagined-fabric:block/block_of_bronze",
+    "south": "survival-reimagined-fabric:block/block_of_bronze",
+    "west": "survival-reimagined-fabric:block/block_of_bronze",
+    "particle": "survival-reimagined-fabric:block/block_of_bronze"
+  },
+  "render_type": "solid"
+}

@@ -3,16 +3,16 @@
 	"id": "survival-reimagined-fabric",
 	"version": "${version}",
 	"name": "Survival Reimagined (Fabric)",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Minecraft Mod with the goal of making Minecraft harder with a more realistic approach at progression",
 	"authors": [
-		"Me!"
+		"ShotUGMG, idntknwlouis"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/idntknwlouis/survival-reimagined-fabric-1.21.x"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/survival-reimagined-fabric/icon.png",
+	"icon": "assets/survival-reimagined-fabric/textures/heart.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -20,6 +20,9 @@
 		],
 		"fabric-datagen": [
 			"net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabricDataGenerator"
+		],
+		"client": [
+			"net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabricClient"
 		]
 	},
 	"mixins": [

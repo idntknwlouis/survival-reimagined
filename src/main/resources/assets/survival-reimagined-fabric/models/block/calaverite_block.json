@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/calaverite_block",
+    "up": "survival-reimagined-fabric:block/calaverite_block",
+    "north": "survival-reimagined-fabric:block/calaverite_block",
+    "east": "survival-reimagined-fabric:block/calaverite_block",
+    "south": "survival-reimagined-fabric:block/calaverite_block",
+    "west": "survival-reimagined-fabric:block/calaverite_block",
+    "particle": "survival-reimagined-fabric:block/calaverite_block"
+  },
+  "render_type": "solid"
+}

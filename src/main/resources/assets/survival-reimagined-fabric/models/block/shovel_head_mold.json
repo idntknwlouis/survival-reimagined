@@ -1,0 +1,10 @@
+{
+  "parent": "survival-reimagined-fabric:custom/shovel_mold",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/shovel_head_mold",
+    "particle": "survival-reimagined-fabric:block/shovel_head_mold",
+    "22": "survival-reimagined-fabric:block/dried_clay",
+    "16": "survival-reimagined-fabric:block/shovel_head_mold"
+  },
+  "render_type": "solid"
+}

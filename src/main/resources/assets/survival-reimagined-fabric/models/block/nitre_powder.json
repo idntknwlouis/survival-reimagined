@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/nitre",
+    "up": "survival-reimagined-fabric:block/nitre",
+    "north": "survival-reimagined-fabric:block/nitre",
+    "east": "survival-reimagined-fabric:block/nitre",
+    "south": "survival-reimagined-fabric:block/nitre",
+    "west": "survival-reimagined-fabric:block/nitre",
+    "particle": "survival-reimagined-fabric:block/nitre"
+  },
+  "render_type": "solid"
+}

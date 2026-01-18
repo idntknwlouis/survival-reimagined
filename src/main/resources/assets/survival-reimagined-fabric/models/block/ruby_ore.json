@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/ruby_ore",
+    "up": "survival-reimagined-fabric:block/ruby_ore",
+    "north": "survival-reimagined-fabric:block/ruby_ore",
+    "east": "survival-reimagined-fabric:block/ruby_ore",
+    "south": "survival-reimagined-fabric:block/ruby_ore",
+    "west": "survival-reimagined-fabric:block/ruby_ore",
+    "particle": "survival-reimagined-fabric:block/ruby_ore"
+  },
+  "render_type": "solid"
+}

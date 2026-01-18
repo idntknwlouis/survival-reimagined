@@ -1,0 +1,10 @@
+{
+  "parent": "survival-reimagined-fabric:custom/clay_hoe_mold",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/clay_hoe_blade_mold",
+    "particle": "survival-reimagined-fabric:block/clay_hoe_blade_mold",
+    "23": "survival-reimagined-fabric:block/clay_block",
+    "4": "survival-reimagined-fabric:block/clay_hoe_blade_mold"
+  },
+  "render_type": "solid"
+}

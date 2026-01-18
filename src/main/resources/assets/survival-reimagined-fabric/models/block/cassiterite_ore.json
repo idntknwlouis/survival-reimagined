@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/cassiterite_ore",
+    "up": "survival-reimagined-fabric:block/cassiterite_ore",
+    "north": "survival-reimagined-fabric:block/cassiterite_ore",
+    "east": "survival-reimagined-fabric:block/cassiterite_ore",
+    "south": "survival-reimagined-fabric:block/cassiterite_ore",
+    "west": "survival-reimagined-fabric:block/cassiterite_ore",
+    "particle": "survival-reimagined-fabric:block/cassiterite_ore"
+  },
+  "render_type": "solid"
+}

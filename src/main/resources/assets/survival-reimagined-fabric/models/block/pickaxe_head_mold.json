@@ -1,0 +1,10 @@
+{
+  "parent": "survival-reimagined-fabric:custom/pickaxe_mold",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/pickaxe_head_mold",
+    "particle": "survival-reimagined-fabric:block/pickaxe_head_mold",
+    "22": "survival-reimagined-fabric:block/dried_clay",
+    "14": "survival-reimagined-fabric:block/pickaxe_head_mold"
+  },
+  "render_type": "solid"
+}

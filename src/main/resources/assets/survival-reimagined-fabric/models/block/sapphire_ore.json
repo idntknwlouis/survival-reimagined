@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/sapphire_ore",
+    "up": "survival-reimagined-fabric:block/sapphire_ore",
+    "north": "survival-reimagined-fabric:block/sapphire_ore",
+    "east": "survival-reimagined-fabric:block/sapphire_ore",
+    "south": "survival-reimagined-fabric:block/sapphire_ore",
+    "west": "survival-reimagined-fabric:block/sapphire_ore",
+    "particle": "survival-reimagined-fabric:block/sapphire_ore"
+  },
+  "render_type": "solid"
+}

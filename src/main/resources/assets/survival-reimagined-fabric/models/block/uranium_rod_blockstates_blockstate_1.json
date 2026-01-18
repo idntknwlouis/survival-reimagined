@@ -1,0 +1,11 @@
+{
+  "parent": "survival-reimagined-fabric:custom/uranium_rod_2",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/uranium_rod",
+    "particle": "survival-reimagined-fabric:block/uranium_rod",
+    "0": "survival-reimagined-fabric:block/uranium_rod",
+    "1": "survival-reimagined-fabric:block/uranium_rod_e",
+    "2": "survival-reimagined-fabric:block/uranium_rod_lucent"
+  },
+  "render_type": "translucent"
+}

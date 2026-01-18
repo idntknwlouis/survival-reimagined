@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/raw_uraninite",
+    "up": "survival-reimagined-fabric:block/raw_uraninite",
+    "north": "survival-reimagined-fabric:block/raw_uraninite",
+    "east": "survival-reimagined-fabric:block/raw_uraninite",
+    "south": "survival-reimagined-fabric:block/raw_uraninite",
+    "west": "survival-reimagined-fabric:block/raw_uraninite",
+    "particle": "survival-reimagined-fabric:block/raw_uraninite"
+  },
+  "render_type": "solid"
+}

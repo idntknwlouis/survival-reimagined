@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/argentite_ore",
+    "up": "survival-reimagined-fabric:block/argentite_ore",
+    "north": "survival-reimagined-fabric:block/argentite_ore",
+    "east": "survival-reimagined-fabric:block/argentite_ore",
+    "south": "survival-reimagined-fabric:block/argentite_ore",
+    "west": "survival-reimagined-fabric:block/argentite_ore",
+    "particle": "survival-reimagined-fabric:block/argentite_ore"
+  },
+  "render_type": "solid"
+}

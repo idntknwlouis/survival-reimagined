@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/plucked_chicken",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/plucked_chicken",
+    "particle": "survival-reimagined-fabric:block/chicken_block",
+    "0": "survival-reimagined-fabric:block/plucked_chicken"
+  },
+  "render_type": "cutout"
+}

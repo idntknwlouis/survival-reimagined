@@ -1,0 +1,9 @@
+{
+  "parent": "block/door_top_right_open",
+  "textures": {
+    "particle": "survival-reimagined-fabric:block/wisteria_door_bottom",
+    "bottom": "survival-reimagined-fabric:block/wisteria_door_bottom",
+    "top": "survival-reimagined-fabric:block/wisteria_door_top"
+  },
+  "render_type": "solid"
+}

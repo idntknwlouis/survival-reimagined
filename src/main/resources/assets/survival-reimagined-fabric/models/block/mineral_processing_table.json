@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/mpt_bottom",
+    "up": "survival-reimagined-fabric:block/mpt_top_no_reactor_rod",
+    "north": "survival-reimagined-fabric:block/mpt_front",
+    "east": "survival-reimagined-fabric:block/mpt_side_unpowered",
+    "south": "survival-reimagined-fabric:block/mpt_side_unpowered",
+    "west": "survival-reimagined-fabric:block/mpt_side_unpowered",
+    "particle": "survival-reimagined-fabric:block/mpt_bottom"
+  },
+  "render_type": "solid"
+}

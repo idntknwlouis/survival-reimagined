@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/kimberlite",
+    "up": "survival-reimagined-fabric:block/kimberlite",
+    "north": "survival-reimagined-fabric:block/kimberlite",
+    "east": "survival-reimagined-fabric:block/kimberlite",
+    "south": "survival-reimagined-fabric:block/kimberlite",
+    "west": "survival-reimagined-fabric:block/kimberlite",
+    "particle": "survival-reimagined-fabric:block/kimberlite"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/apple_ripe",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/ripe_apple",
+    "particle": "survival-reimagined-fabric:block/apple_mature",
+    "0": "survival-reimagined-fabric:block/ripe_apple"
+  },
+  "render_type": "solid"
+}

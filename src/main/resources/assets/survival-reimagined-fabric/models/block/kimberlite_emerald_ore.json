@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/kimberlite_emerald_ore",
+    "up": "survival-reimagined-fabric:block/kimberlite_emerald_ore",
+    "north": "survival-reimagined-fabric:block/kimberlite_emerald_ore",
+    "east": "survival-reimagined-fabric:block/kimberlite_emerald_ore",
+    "south": "survival-reimagined-fabric:block/kimberlite_emerald_ore",
+    "west": "survival-reimagined-fabric:block/kimberlite_emerald_ore",
+    "particle": "survival-reimagined-fabric:block/kimberlite_emerald_ore"
+  },
+  "render_type": "solid"
+}

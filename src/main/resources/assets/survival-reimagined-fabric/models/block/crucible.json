@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/dried_crucible",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/dried_clay",
+    "particle": "survival-reimagined-fabric:block/dried_clay",
+    "0": "survival-reimagined-fabric:block/dried_clay"
+  },
+  "render_type": "solid"
+}

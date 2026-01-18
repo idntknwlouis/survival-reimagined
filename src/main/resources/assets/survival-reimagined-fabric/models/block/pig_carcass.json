@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/pig_carcass",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/pig",
+    "particle": "survival-reimagined-fabric:block/pig_texture",
+    "0": "survival-reimagined-fabric:block/pig"
+  },
+  "render_type": "solid"
+}

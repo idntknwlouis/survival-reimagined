@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/magnetite_ore",
+    "up": "survival-reimagined-fabric:block/magnetite_ore",
+    "north": "survival-reimagined-fabric:block/magnetite_ore",
+    "east": "survival-reimagined-fabric:block/magnetite_ore",
+    "south": "survival-reimagined-fabric:block/magnetite_ore",
+    "west": "survival-reimagined-fabric:block/magnetite_ore",
+    "particle": "survival-reimagined-fabric:block/magnetite_ore"
+  },
+  "render_type": "solid"
+}

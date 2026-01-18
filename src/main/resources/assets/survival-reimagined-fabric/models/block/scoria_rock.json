@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/stone_rock",
+  "textures": {
+    "all": "create:block/palettes/stone_types/scoria",
+    "particle": "create:block/palettes/stone_types/scoria",
+    "0": "create:block/palettes/stone_types/scoria"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/chicken_carcass",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/chicken",
+    "particle": "survival-reimagined-fabric:block/feather",
+    "0": "survival-reimagined-fabric:block/chicken"
+  },
+  "render_type": "cutout"
+}

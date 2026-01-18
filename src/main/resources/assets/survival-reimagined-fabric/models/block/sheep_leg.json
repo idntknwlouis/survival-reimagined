@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/sheep_leg",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/skinned_sheep",
+    "particle": "minecraft:block/redstone_block",
+    "2": "survival-reimagined-fabric:block/skinned_sheep"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/radiated_leaves",
+    "particle": "survival-reimagined-fabric:block/radiated_leaves"
+  }
+}

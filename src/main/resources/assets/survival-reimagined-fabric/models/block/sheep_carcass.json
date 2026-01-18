@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/dead_sheep",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/dead_sheep",
+    "particle": "minecraft:block/white_wool",
+    "0": "survival-reimagined-fabric:block/dead_sheep"
+  },
+  "render_type": "solid"
+}

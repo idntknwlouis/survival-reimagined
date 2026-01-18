@@ -1,0 +1,9 @@
+{
+  "parent": "survival-reimagined-fabric:custom/flint_block",
+  "textures": {
+    "all": "survival-reimagined-fabric:block/flint",
+    "particle": "survival-reimagined-fabric:block/flint",
+    "1": "survival-reimagined-fabric:block/flint"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival-reimagined-fabric:block/block_of_raw_tin",
+    "up": "survival-reimagined-fabric:block/block_of_raw_tin",
+    "north": "survival-reimagined-fabric:block/block_of_raw_tin",
+    "east": "survival-reimagined-fabric:block/block_of_raw_tin",
+    "south": "survival-reimagined-fabric:block/block_of_raw_tin",
+    "west": "survival-reimagined-fabric:block/block_of_raw_tin",
+    "particle": "survival-reimagined-fabric:block/block_of_raw_tin"
+  },
+  "render_type": "solid"
+}
