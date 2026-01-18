@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/thin_radiated_vines_end"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/black_sandstone_rock"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/radiated_orchid"
+  },
+  "render_type": "translucent"
+}

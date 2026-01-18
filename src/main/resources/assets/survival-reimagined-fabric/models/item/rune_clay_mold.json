@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/charm_clay_mold"
+  },
+  "render_type": "translucent"
+}

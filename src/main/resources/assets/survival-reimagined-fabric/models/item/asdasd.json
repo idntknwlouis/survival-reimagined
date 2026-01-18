@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/birch_plank"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "survival_reimagined:asdasd_asd": 1
+      },
+      "model": "survival-reimagined-fabric:item/asdasd_0"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/wisteria_vines_lower"
+  },
+  "render_type": "translucent"
+}

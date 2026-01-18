@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "survival-reimagined-fabric:item/steel_sword"
+  }
+}
