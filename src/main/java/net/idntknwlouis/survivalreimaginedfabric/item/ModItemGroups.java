@@ -17,6 +17,11 @@ public class ModItemGroups {
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ACACIAPLANK))
                     .displayName(Text.translatable("Survival Reimagined"))
                     .entries((displayContext, entries) -> {
+
+                        // Blocks
+                        entries.add(ModBlocks.TINORE);
+
+                        // Planks
                         entries.add(ModItems.OAKPLANK);
                         entries.add(ModItems.DARKOAKPLANK);
                         entries.add(ModItems.SPRUCEPLANK);
@@ -28,6 +33,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CRIMSONPLANK);
                         entries.add(ModItems.WARPEDPLANK);
 
+                        // Barks
                         entries.add(ModItems.LARGEOAKBARK);
                         entries.add(ModItems.LARGEDARKOAKBARK);
                         entries.add(ModItems.LARGESPRUCEBARK);
@@ -38,8 +44,6 @@ public class ModItemGroups {
                         entries.add(ModItems.LARGEMANGROVEBARK);
                         entries.add(ModItems.LARGECRIMSONBARK);
                         entries.add(ModItems.LARGEWARPEDBARK);
-
-                        entries.add(ModBlocks.TINORE);
 
                     }).build());
 

@@ -1,4 +1,7 @@
 {
+
+  "block.survival-reimagined-fabric.tin_ore": "Tin Ore",
+
   "item.survival-reimagined-fabric.oak_plank": "Oak Plank",
   "item.survival-reimagined-fabric.dark_oak_plank": "Dark Oak Plank",
   "item.survival-reimagined-fabric.spruce_plank": "Spruce Plank",
@@ -20,8 +23,6 @@
   "item.survival-reimagined-fabric.large_mangrove_bark": "Large Mangrove Plank",
   "item.survival-reimagined-fabric.large_crimson_bark": "Large Crimson Plank",
   "item.survival-reimagined-fabric.large_warped_bark": "Large Warped Plank",
-
-  "block.survival-reimagined-fabric.tin_ore": "Tin Ore",
 
 
 
