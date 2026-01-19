@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/stripped_wisteria_log",
+  "parent": "survival-reimagined-fabric:block/stripped_wisteria_log",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:raw_silver_block",
+    "minecraft:silver_block",
+    "survival-reimagined-fabric:argentite_block"
+  ]
+}

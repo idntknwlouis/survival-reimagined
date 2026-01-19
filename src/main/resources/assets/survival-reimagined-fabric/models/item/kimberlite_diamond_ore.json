@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/kimberlite_diamond_ore",
+  "parent": "survival-reimagined-fabric:block/kimberlite_diamond_ore",
   "display": {
     "thirdperson": {
       "rotation": [

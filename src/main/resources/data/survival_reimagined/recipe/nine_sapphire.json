@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:sapphire_block"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:sapphire",
+    "count": 9
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "tag": "c:tools/hammer"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:raw_uraninite"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:uranium_dust",
+    "count": 2
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "survival-reimagined-fabric:block/shale",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "survival-reimagined-fabric:block/shale"
+    },
+    "axis=z": {
+      "model": "survival-reimagined-fabric:block/shale",
+      "x": 90
+    }
+  }
+}

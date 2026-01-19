@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:clay_ball"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:wooden_hammer"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:clay_hammer_head_mold",
+    "count": 1
+  }
+}

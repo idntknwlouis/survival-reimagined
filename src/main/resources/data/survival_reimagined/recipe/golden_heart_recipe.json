@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:gold_ingot"
+    },
+    "b": {
+      "item": "minecraft:gold_block"
+    },
+    "c": {
+      "item": "survival-reimagined-fabric:ruby_heart"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:gold_heart",
+    "count": 1
+  }
+}

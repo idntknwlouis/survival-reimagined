@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "tag": "c:tools/saw"
+    },
+    "b": {
+      "tag": "minecraft:jungle_logs"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:jungle_plank",
+    "count": 8
+  }
+}

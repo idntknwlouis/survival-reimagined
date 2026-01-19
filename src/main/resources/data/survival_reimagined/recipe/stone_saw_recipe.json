@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abb",
+    "acc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:stick"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:hemp_fiber"
+    },
+    "c": {
+      "item": "survival-reimagined-fabric:stone_rock"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:stone_saw",
+    "count": 1
+  }
+}

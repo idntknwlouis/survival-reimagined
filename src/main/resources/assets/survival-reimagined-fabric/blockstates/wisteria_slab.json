@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "survival-reimagined-fabric:block/wisteria_slab"
+    },
+    "type=top": {
+      "model": "survival-reimagined-fabric:block/wisteria_slab_top"
+    },
+    "type=double": {
+      "model": "survival-reimagined-fabric:block/wisteria_slab_full"
+    }
+  }
+}

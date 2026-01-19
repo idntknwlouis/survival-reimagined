@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:raw_cassiterite_block"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:cassiterite",
+    "count": 9
+  }
+}

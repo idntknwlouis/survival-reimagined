@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:block_of_ruby"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:ruby",
+    "count": 9
+  }
+}

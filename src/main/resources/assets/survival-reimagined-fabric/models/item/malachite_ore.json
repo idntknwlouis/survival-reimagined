@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/malachite_ore",
+  "parent": "survival-reimagined-fabric:block/malachite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

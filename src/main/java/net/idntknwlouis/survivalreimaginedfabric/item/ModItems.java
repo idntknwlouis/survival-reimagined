@@ -3,6 +3,8 @@ package net.idntknwlouis.survivalreimaginedfabric.item;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabric;
 import net.minecraft.item.Item;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -36,6 +38,7 @@ public class ModItems {
 
 
 
+
     // TODO: then finish compat items
     // Planks
     public static final Item ALPHAOAKPLANK = registerItem("alpha_oak_plank", new Item(new Item.Settings()));
@@ -59,7 +62,28 @@ public class ModItems {
         SurvivalReimaginedFabric.LOGGER.info("Registering Mod Items " + SurvivalReimaginedFabric.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+
+            entries.add(OAKPLANK);
+            entries.add(DARKOAKPLANK);
+            entries.add(SPRUCEPLANK);
             entries.add(ACACIAPLANK);
+            entries.add(JUNGLEPLANK);
+            entries.add(CHERRYPLANK);
+            entries.add(MANGROVEPLANK);
+            entries.add(CRIMSONPLANK);
+            entries.add(WARPEDPLANK);
+
+            entries.add(LARGEOAKBARK);
+            entries.add(LARGEDARKOAKBARK);
+            entries.add(LARGESPRUCEBARK);
+            entries.add(LARGEBIRCHBARK);
+            entries.add(LARGEJUNGLEBARK);
+            entries.add(LARGECHERRYBARK);
+            entries.add(LARGEMANGROVEBARK);
+            entries.add(LARGECRIMSONBARK);
+            entries.add(LARGEWARPEDBARK);
+
+
             entries.add(ALPHAOAKPLANK);
             entries.add(BAOBABPLANK);
             entries.add(BLACKWOODPLANK);

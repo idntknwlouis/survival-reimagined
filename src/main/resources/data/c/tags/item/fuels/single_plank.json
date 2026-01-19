@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:mangrove_plank",
+    "survival-reimagined-fabric:radiated_plank",
+    "survival-reimagined-fabric:jungle_plank",
+    "survival-reimagined-fabric:birch_plank",
+    "survival-reimagined-fabric:spruce_plank",
+    "survival-reimagined-fabric:oak_plank",
+    "survival-reimagined-fabric:cherry_plank",
+    "survival-reimagined-fabric:dark_oak_plank",
+    "survival-reimagined-fabric:acacia_plank"
+  ]
+}

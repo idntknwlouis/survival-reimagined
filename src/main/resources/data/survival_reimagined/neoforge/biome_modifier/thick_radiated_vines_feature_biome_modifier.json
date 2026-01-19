@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "survival-reimagined-fabric:radiated_forest",
+  "features": "survival-reimagined-fabric:thick_radiated_vines_feature",
+  "step": "underground_decoration"
+}

@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/deepslate_rock_block",
+  "parent": "survival-reimagined-fabric:block/deepslate_rock_block",
   "display": {
     "thirdperson": {
       "rotation": [

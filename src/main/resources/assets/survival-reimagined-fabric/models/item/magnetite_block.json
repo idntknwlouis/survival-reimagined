@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/magnetite_block",
+  "parent": "survival-reimagined-fabric:block/magnetite_block",
   "display": {
     "thirdperson": {
       "rotation": [

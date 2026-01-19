@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "survival-reimagined-fabric:blocks/hoe_head_mold",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival-reimagined-fabric:hoe_head_mold"
+        }
+      ]
+    }
+  ]
+}

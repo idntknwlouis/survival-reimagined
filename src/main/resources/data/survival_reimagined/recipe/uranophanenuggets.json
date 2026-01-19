@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:uranophane"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:uranophane_nugget",
+    "count": 9
+  }
+}

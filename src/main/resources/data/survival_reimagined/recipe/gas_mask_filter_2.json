@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:hemp_mesh"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:used_filter"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:gas_mask_filter",
+    "count": 1
+  }
+}

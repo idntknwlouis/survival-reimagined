@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/plated_diamond_block",
+  "parent": "survival-reimagined-fabric:block/plated_diamond_block",
   "display": {
     "thirdperson": {
       "rotation": [

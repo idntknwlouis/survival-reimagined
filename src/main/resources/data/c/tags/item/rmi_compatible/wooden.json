@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wooden_axe",
+    "minecraft:wooden_hoe",
+    "survival-reimagined-fabric:wooden_leggings",
+    "survival-reimagined-fabric:wooden_saw",
+    "survival-reimagined-fabric:wooden_helmet",
+    "survival-reimagined-fabric:wooden_boots",
+    "survival-reimagined-fabric:wooden_chestplate",
+    "minecraft:wooden_shovel",
+    "survival-reimagined-fabric:wooden_hammer",
+    "minecraft:wooden_sword",
+    "minecraft:wooden_pickaxe",
+    "survival-reimagined-fabric:wooden_knife"
+  ]
+}

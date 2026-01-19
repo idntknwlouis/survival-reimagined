@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/calcite_rock_block",
+  "parent": "survival-reimagined-fabric:block/calcite_rock_block",
   "display": {
     "thirdperson": {
       "rotation": [

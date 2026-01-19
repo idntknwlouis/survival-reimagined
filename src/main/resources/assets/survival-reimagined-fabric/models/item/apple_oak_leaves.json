@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/apple_oak_leaves",
+  "parent": "survival-reimagined-fabric:block/apple_oak_leaves",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/radiated_stairs",
+  "parent": "survival-reimagined-fabric:block/radiated_stairs",
   "display": {
     "thirdperson": {
       "rotation": [

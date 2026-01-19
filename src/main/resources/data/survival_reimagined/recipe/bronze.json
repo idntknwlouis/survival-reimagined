@@ -1,0 +1,18 @@
+{
+  "type": "survival-reimagined-fabric:forging",
+  "ingredients": [
+    {
+      "tag": "c:alloy/copper_items"
+    },
+    {
+      "tag": "c:alloy/tin_items"
+    },
+    {
+      "tag": "c:fuels"
+    }
+  ],
+  "output": {
+    "id": "survival-reimagined-fabric:rough_bronze",
+    "count": 1
+  }
+}

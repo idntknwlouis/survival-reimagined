@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:copper_nugget"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:copper_chisel",
+    "count": 1
+  }
+}

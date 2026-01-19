@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/cow_head",
+  "parent": "survival-reimagined-fabric:block/cow_head",
   "display": {
     "thirdperson": {
       "rotation": [

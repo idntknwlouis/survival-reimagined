@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:diamond_hammer",
+    "survival-reimagined-fabric:netherite_hammer",
+    "survival-reimagined-fabric:bronze_hammer",
+    "survival-reimagined-fabric:steel_hammer",
+    "survival-reimagined-fabric:netherite_saw",
+    "survival-reimagined-fabric:netherite_knife",
+    "survival-reimagined-fabric:diamond_saw",
+    "survival-reimagined-fabric:bronze_sword",
+    "survival-reimagined-fabric:bronze_knife",
+    "survival-reimagined-fabric:diamond_knife",
+    "survival-reimagined-fabric:steel_sword",
+    "survival-reimagined-fabric:steel_saw",
+    "survival-reimagined-fabric:steel_knife"
+  ]
+}

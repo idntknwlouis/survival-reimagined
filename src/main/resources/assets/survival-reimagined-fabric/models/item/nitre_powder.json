@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/nitre_powder",
+  "parent": "survival-reimagined-fabric:block/nitre_powder",
   "display": {
     "thirdperson": {
       "rotation": [

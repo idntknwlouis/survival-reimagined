@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:cooked_liver"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:salt"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:cured_liver",
+    "count": 1
+  }
+}

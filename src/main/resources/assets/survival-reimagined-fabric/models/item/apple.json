@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/apple",
+  "parent": "survival-reimagined-fabric:block/apple",
   "display": {
     "thirdperson": {
       "rotation": [

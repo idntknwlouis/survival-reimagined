@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:blood_moon_disc_fragment"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:blood_moons_music_disc",
+    "count": 1
+  }
+}

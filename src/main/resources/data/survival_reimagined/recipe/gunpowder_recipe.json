@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "survival-reimagined-fabric:charcoal_powder"
+    },
+    {
+      "item": "survival-reimagined-fabric:saltpeter"
+    },
+    {
+      "item": "survival-reimagined-fabric:sulfur_powder"
+    },
+    {
+      "item": "survival-reimagined-fabric:mortar_pestal"
+    }
+  ],
+  "result": {
+    "id": "minecraft:gunpowder",
+    "count": 3
+  }
+}

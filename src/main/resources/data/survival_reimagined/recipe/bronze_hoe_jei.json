@@ -1,0 +1,22 @@
+{
+  "type": "survival-reimagined-fabric:forging",
+  "forge_input_1": {
+    "item": "survival-reimagined-fabric:hoe_head_mold",
+    "count": 1
+  },
+  "forge_input_2": {
+    "item": "survival-reimagined-fabric:bronze_ingot",
+    "count": 2
+  },
+  "forge_input_3": {
+    "tag": "c:fuels",
+    "count": 1
+  },
+  "forge_output": {
+    "id": "survival-reimagined-fabric:bronze_hoe_blade",
+    "count": 1
+  },
+  "category": [
+    "misc"
+  ]
+}

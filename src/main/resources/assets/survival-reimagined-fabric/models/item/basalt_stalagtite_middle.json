@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/basalt_stalagtite_middle",
+  "parent": "survival-reimagined-fabric:block/basalt_stalagtite_middle",
   "display": {
     "thirdperson": {
       "rotation": [

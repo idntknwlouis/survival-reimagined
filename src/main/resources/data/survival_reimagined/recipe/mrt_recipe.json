@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:copper_nugget"
+    },
+    "b": {
+      "tag": "c:planks/single"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:metal_refining_table",
+    "count": 1
+  }
+}

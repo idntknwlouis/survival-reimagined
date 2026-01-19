@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "survival-reimagined-fabric:blocks/radiant_door",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival-reimagined-fabric:radiant_door",
+          "conditions": [
+            {
+              "block": "survival-reimagined-fabric:radiant_door",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

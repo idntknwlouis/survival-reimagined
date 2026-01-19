@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:radiated_slab",
+    "survival-reimagined-fabric:radiant_planks",
+    "survival-reimagined-fabric:radiated_fence_gate",
+    "survival-reimagined-fabric:radiated_fence",
+    "survival-reimagined-fabric:radiant_log",
+    "survival-reimagined-fabric:wisteria_log",
+    "survival-reimagined-fabric:stripped_radiant_log",
+    "survival-reimagined-fabric:radiated_stairs",
+    "survival-reimagined-fabric:metal_refining_table",
+    "survival-reimagined-fabric:stripped_wisteria_log"
+  ]
+}

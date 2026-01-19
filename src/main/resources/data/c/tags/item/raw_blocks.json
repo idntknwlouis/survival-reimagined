@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:raw_azurite_block",
+    "survival-reimagined-fabric:calaverite_block",
+    "survival-reimagined-fabric:raw_cassiterite_block",
+    "survival-reimagined-fabric:raw_silver_block",
+    "survival-reimagined-fabric:block_of_raw_manganese",
+    "survival-reimagined-fabric:block_of_raw_redstone",
+    "minecraft:raw_gold_block",
+    "minecraft:raw_copper_block",
+    "survival-reimagined-fabric:magnetite_block",
+    "survival-reimagined-fabric:hematite_block",
+    "minecraft:raw_iron_block",
+    "survival-reimagined-fabric:block_of_raw_titanium",
+    "survival-reimagined-fabric:block_of_raw_uraninite",
+    "survival-reimagined-fabric:raw_malachite_block",
+    "survival-reimagined-fabric:manganite_block",
+    "survival-reimagined-fabric:block_of_raw_tin",
+    "survival-reimagined-fabric:argentite_block"
+  ]
+}

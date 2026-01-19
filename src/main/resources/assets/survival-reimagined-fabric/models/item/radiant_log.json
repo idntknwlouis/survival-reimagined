@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/radiant_log",
+  "parent": "survival-reimagined-fabric:block/radiant_log",
   "display": {
     "thirdperson": {
       "rotation": [

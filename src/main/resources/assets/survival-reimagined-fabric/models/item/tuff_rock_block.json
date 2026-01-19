@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/tuff_rock_block",
+  "parent": "survival-reimagined-fabric:block/tuff_rock_block",
   "display": {
     "thirdperson": {
       "rotation": [

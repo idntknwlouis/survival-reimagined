@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:small_stick"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:bronze_nugget"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:small_bronze_handle",
+    "count": 1
+  }
+}

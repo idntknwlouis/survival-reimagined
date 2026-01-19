@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/netherite_scrap_block",
+  "parent": "survival-reimagined-fabric:block/netherite_scrap_block",
   "display": {
     "thirdperson": {
       "rotation": [

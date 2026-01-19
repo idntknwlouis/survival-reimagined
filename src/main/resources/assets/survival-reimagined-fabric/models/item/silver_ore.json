@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/silver_ore",
+  "parent": "survival-reimagined-fabric:block/silver_ore",
   "display": {
     "thirdperson": {
       "rotation": [

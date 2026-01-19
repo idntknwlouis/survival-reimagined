@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/embedded_obsidian",
+  "parent": "survival-reimagined-fabric:block/embedded_obsidian",
   "display": {
     "thirdperson": {
       "rotation": [

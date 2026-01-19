@@ -1,0 +1,18 @@
+{
+  "type": "survival-reimagined-fabric:forging",
+  "ingredients": [
+    {
+      "tag": "c:alloy/steel_items"
+    },
+    {
+      "tag": "c:alloy/diamond_items"
+    },
+    {
+      "tag": "c:fuels"
+    }
+  ],
+  "output": {
+    "id": "survival-reimagined-fabric:rough_plated_diamond",
+    "count": 1
+  }
+}

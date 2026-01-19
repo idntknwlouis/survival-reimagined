@@ -1,0 +1,8 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": {
+    "type": "neoforge:any"
+  },
+  "features": "survival-reimagined-fabric:basalt_stalagtite",
+  "step": "underground_decoration"
+}

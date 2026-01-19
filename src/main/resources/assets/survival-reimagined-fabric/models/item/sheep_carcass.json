@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/sheep_carcass",
+  "parent": "survival-reimagined-fabric:block/sheep_carcass",
   "display": {
     "thirdperson": {
       "rotation": [

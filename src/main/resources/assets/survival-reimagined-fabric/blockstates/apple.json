@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "survival-reimagined-fabric:block/apple"
+    },
+    "blockstate=1": {
+      "model": "survival-reimagined-fabric:block/apple_blockstates_blockstate_0"
+    }
+  }
+}

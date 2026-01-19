@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/advanced_alloy_forge",
+  "parent": "survival-reimagined-fabric:block/advanced_alloy_forge",
   "display": {
     "thirdperson": {
       "rotation": [

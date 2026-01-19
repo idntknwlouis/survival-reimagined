@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/wisteria_trapdoor",
+  "parent": "survival-reimagined-fabric:block/wisteria_trapdoor",
   "display": {
     "thirdperson": {
       "rotation": [

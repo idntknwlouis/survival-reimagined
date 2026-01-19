@@ -1,0 +1,22 @@
+{
+  "type": "survival-reimagined-fabric:metal_refining",
+  "metal_input_1": {
+    "item": "survival-reimagined-fabric:bronze_handle",
+    "count": 1
+  },
+  "metal_input_2": {
+    "item": "survival-reimagined-fabric:steel_axe_head",
+    "count": 1
+  },
+  "metal_input_3": {
+    "tag": "c:tools/hammer",
+    "count": 1
+  },
+  "metal_output": {
+    "id": "survival-reimagined-fabric:steel_axe",
+    "count": 1
+  },
+  "category": [
+    "misc"
+  ]
+}

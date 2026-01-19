@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:stone_saw",
+    "survival-reimagined-fabric:stone_knife",
+    "minecraft:stone_axe",
+    "minecraft:stone_hoe",
+    "minecraft:stone_shovel",
+    "minecraft:chainmail_leggings",
+    "minecraft:stone_sword",
+    "minecraft:stone_pickaxe",
+    "minecraft:chainmail_chestplate",
+    "minecraft:chainmail_helmet",
+    "minecraft:chainmail_boots",
+    "survival-reimagined-fabric:stone_hammer"
+  ]
+}

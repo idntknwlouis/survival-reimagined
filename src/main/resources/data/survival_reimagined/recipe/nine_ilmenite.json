@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:ilmenite_block"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:ilmenite",
+    "count": 9
+  }
+}

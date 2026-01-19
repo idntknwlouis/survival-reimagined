@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/basalt_amber_ore",
+  "parent": "survival-reimagined-fabric:block/basalt_amber_ore",
   "display": {
     "thirdperson": {
       "rotation": [

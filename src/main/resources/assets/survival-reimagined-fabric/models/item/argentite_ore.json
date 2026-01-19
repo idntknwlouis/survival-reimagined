@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/argentite_ore",
+  "parent": "survival-reimagined-fabric:block/argentite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

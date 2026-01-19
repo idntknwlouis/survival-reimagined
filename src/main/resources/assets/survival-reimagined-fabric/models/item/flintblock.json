@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/flintblock",
+  "parent": "survival-reimagined-fabric:block/flintblock",
   "display": {
     "thirdperson": {
       "rotation": [

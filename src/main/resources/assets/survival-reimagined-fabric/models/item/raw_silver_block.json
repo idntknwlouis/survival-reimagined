@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/raw_silver_block",
+  "parent": "survival-reimagined-fabric:block/raw_silver_block",
   "display": {
     "thirdperson": {
       "rotation": [

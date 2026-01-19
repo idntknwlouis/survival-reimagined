@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/titanium_ore",
+  "parent": "survival-reimagined-fabric:block/titanium_ore",
   "display": {
     "thirdperson": {
       "rotation": [

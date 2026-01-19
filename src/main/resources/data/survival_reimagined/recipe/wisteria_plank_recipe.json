@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:wisteria_plank"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:wisteria_planks",
+    "count": 1
+  }
+}

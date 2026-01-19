@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/radiant_planks",
+  "parent": "survival-reimagined-fabric:block/radiant_planks",
   "display": {
     "thirdperson": {
       "rotation": [

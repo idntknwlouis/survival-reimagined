@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:pyrolusite_block",
+    "survival-reimagined-fabric:block_of_manganese",
+    "survival-reimagined-fabric:block_of_raw_manganese",
+    "survival-reimagined-fabric:manganite_block"
+  ]
+}

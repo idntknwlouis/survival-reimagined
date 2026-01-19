@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "def",
+    "eee"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:amber"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:calcite_rock"
+    },
+    "c": {
+      "item": "survival-reimagined-fabric:ruby"
+    },
+    "d": {
+      "item": "survival-reimagined-fabric:sapphire"
+    },
+    "e": {
+      "item": "minecraft:obsidian"
+    },
+    "f": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:rune_magic_infuser",
+    "count": 1
+  }
+}

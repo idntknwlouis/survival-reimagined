@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/basalt_rock_block",
+  "parent": "survival-reimagined-fabric:block/basalt_rock_block",
   "display": {
     "thirdperson": {
       "rotation": [

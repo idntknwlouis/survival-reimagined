@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:sapphire",
+    "minecraft:emerald",
+    "survival-reimagined-fabric:amber",
+    "minecraft:diamond",
+    "survival-reimagined-fabric:ruby"
+  ]
+}

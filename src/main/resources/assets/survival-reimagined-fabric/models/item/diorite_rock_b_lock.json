@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/diorite_rock_b_lock",
+  "parent": "survival-reimagined-fabric:block/diorite_rock_b_lock",
   "display": {
     "thirdperson": {
       "rotation": [

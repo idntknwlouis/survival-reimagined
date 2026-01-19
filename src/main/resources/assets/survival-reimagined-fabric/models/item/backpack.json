@@ -1,7 +1,7 @@
 {
-  "parent": "survival_reimagined:custom/backpack",
+  "parent": "survival-reimagined-fabric:custom/backpack",
   "textures": {
-    "0": "survival_reimagined:block/backpackmodel",
+    "0": "survival-reimagined-fabric:block/backpackmodel",
     "particle": "survival-reimagined-fabric:item/backpackmodel"
   }
 }

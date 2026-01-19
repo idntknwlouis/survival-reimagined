@@ -1,0 +1,18 @@
+{
+  "type": "survival-reimagined-fabric:metal_refining",
+  "ingredients": [
+    {
+      "item": "survival-reimagined-fabric:empty_gold_rune"
+    },
+    {
+      "item": "survival-reimagined-fabric:sapphire"
+    },
+    {
+      "tag": "c:tools/hammer"
+    }
+  ],
+  "output": {
+    "id": "survival-reimagined-fabric:sapphire_gold_rune",
+    "count": 1
+  }
+}

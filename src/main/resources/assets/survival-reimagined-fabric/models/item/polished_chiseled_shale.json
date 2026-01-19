@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/polished_chiseled_shale",
+  "parent": "survival-reimagined-fabric:block/polished_chiseled_shale",
   "display": {
     "thirdperson": {
       "rotation": [

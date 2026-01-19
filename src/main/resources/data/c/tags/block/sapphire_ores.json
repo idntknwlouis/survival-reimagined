@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:basalt_sapphire_ore",
+    "survival-reimagined-fabric:deepslate_sapphire_ore",
+    "survival-reimagined-fabric:sapphire_ore",
+    "survival-reimagined-fabric:kimberlite_sapphire_ore"
+  ]
+}

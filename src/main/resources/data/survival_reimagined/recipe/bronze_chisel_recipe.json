@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:bronze_nugget"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:bronze_chisel",
+    "count": 1
+  }
+}

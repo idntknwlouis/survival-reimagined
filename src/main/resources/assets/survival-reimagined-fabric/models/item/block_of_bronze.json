@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/block_of_bronze",
+  "parent": "survival-reimagined-fabric:block/block_of_bronze",
   "display": {
     "thirdperson": {
       "rotation": [

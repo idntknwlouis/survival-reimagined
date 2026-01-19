@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/manganite_ore",
+  "parent": "survival-reimagined-fabric:block/manganite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

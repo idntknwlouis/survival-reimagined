@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:cooked_rabbit"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:salt"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:cured_rabbit",
+    "count": 1
+  }
+}

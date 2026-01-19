@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "experience": 1,
+  "cookingtime": 100,
+  "ingredient": {
+    "item": "survival-reimagined-fabric:redstone_chunk"
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:redstone_nugget"
+  }
+}

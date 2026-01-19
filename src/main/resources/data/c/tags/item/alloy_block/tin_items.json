@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:raw_cassiterite_block",
+    "survival-reimagined-fabric:block_of_tin",
+    "survival-reimagined-fabric:block_of_raw_tin"
+  ]
+}

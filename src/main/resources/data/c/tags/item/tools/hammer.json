@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:diamond_hammer",
+    "survival-reimagined-fabric:netherite_hammer",
+    "survival-reimagined-fabric:bronze_hammer",
+    "survival-reimagined-fabric:wooden_hammer",
+    "survival-reimagined-fabric:steel_hammer",
+    "survival-reimagined-fabric:stone_hammer"
+  ]
+}

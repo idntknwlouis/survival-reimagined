@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:raw_redstone"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:redstone_chunk",
+    "count": 9
+  }
+}

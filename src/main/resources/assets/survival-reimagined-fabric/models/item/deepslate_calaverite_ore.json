@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/deepslate_calaverite_ore",
+  "parent": "survival-reimagined-fabric:block/deepslate_calaverite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

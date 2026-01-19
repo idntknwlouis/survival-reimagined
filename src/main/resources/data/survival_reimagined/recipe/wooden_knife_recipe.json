@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "c"
+  ],
+  "key": {
+    "a": {
+      "tag": "c:planks/single"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:hemp_fiber"
+    },
+    "c": {
+      "item": "survival-reimagined-fabric:small_stick"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:wooden_knife",
+    "count": 1
+  }
+}

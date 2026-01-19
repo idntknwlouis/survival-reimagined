@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/sulfur_block",
+  "parent": "survival-reimagined-fabric:block/sulfur_block",
   "display": {
     "thirdperson": {
       "rotation": [

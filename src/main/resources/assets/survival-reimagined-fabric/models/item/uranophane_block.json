@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/uranophane_block",
+  "parent": "survival-reimagined-fabric:block/uranophane_block",
   "display": {
     "thirdperson": {
       "rotation": [

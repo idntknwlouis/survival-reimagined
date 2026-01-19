@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/sand_salt_deposit",
+  "parent": "survival-reimagined-fabric:block/sand_salt_deposit",
   "display": {
     "thirdperson": {
       "rotation": [

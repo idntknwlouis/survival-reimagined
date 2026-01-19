@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/shale_uraninite_ore",
+  "parent": "survival-reimagined-fabric:block/shale_uraninite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/block_of_raw_redstone",
+  "parent": "survival-reimagined-fabric:block/block_of_raw_redstone",
   "display": {
     "thirdperson": {
       "rotation": [

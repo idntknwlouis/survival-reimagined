@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    " c "
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:stone_rock"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:hemp_fiber"
+    },
+    "c": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:stone_hammer",
+    "count": 1
+  }
+}

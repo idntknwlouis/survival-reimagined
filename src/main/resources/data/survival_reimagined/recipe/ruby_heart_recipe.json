@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "aaa",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:ruby_heart_shard"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:ruby_heart",
+    "count": 1
+  }
+}

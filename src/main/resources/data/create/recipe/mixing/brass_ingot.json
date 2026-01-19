@@ -1,0 +1,17 @@
+{
+  "type": "create:mixing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "tag": "c:alloy/copper_items"
+    },
+    {
+      "tag": "c:alloy/zinc_items"
+    }
+  ],
+  "results": [
+    {
+      "id": "survival-reimagined-fabric:rough_brass"
+    }
+  ]
+}

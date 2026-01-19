@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "survival-reimagined-fabric:blocks/poloshed_shale_brick_wall",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival-reimagined-fabric:poloshed_shale_brick_wall"
+        }
+      ]
+    }
+  ]
+}

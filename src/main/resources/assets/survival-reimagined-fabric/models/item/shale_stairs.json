@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/shale_stairs",
+  "parent": "survival-reimagined-fabric:block/shale_stairs",
   "display": {
     "thirdperson": {
       "rotation": [

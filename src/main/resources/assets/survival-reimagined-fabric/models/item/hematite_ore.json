@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/hematite_ore",
+  "parent": "survival-reimagined-fabric:block/hematite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

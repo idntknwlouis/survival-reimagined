@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/clay_crucible",
+  "parent": "survival-reimagined-fabric:block/clay_crucible",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:basalt_amber_ore",
+    "survival-reimagined-fabric:kimberlite_amber_ore",
+    "survival-reimagined-fabric:amber_ore",
+    "survival-reimagined-fabric:deepslate_amber_ore"
+  ]
+}

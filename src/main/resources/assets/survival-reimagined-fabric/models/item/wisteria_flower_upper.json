@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/wisteria_flower_upper",
+  "parent": "survival-reimagined-fabric:block/wisteria_flower_upper",
   "display": {
     "thirdperson": {
       "rotation": [

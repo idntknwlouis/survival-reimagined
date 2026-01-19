@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:plated_diamond_block"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:diamond_plated_ingot",
+    "count": 9
+  }
+}

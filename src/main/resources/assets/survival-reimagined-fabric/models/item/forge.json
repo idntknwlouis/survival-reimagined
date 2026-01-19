@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/forge",
+  "parent": "survival-reimagined-fabric:block/forge",
   "display": {
     "thirdperson": {
       "rotation": [

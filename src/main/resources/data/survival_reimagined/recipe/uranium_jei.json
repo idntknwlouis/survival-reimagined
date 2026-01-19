@@ -1,0 +1,22 @@
+{
+  "type": "survival-reimagined-fabric:forging",
+  "forge_input_1": {
+    "item": "survival-reimagined-fabric:ingot_mold",
+    "count": 1
+  },
+  "forge_input_2": {
+    "item": "survival-reimagined-fabric:rough_uranium",
+    "count": 1
+  },
+  "forge_input_3": {
+    "tag": "c:fuels",
+    "count": 1
+  },
+  "forge_output": {
+    "id": "survival-reimagined-fabric:uranium_ingot",
+    "count": 1
+  },
+  "category": [
+    "misc"
+  ]
+}

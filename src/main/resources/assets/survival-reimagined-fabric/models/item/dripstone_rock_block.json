@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/dripstone_rock_block",
+  "parent": "survival-reimagined-fabric:block/dripstone_rock_block",
   "display": {
     "thirdperson": {
       "rotation": [

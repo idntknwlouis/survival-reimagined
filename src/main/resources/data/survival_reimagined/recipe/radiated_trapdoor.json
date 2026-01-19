@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:radiant_planks"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:radiant_trapdoor",
+    "count": 2
+  }
+}

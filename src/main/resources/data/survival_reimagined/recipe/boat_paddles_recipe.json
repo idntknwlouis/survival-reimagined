@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "a a",
+    "b b"
+  ],
+  "key": {
+    "a": {
+      "tag": "c:planks/single"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:boat_paddles",
+    "count": 1
+  }
+}

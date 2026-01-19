@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/deepslate_stalagmite_top",
+  "parent": "survival-reimagined-fabric:block/deepslate_stalagmite_top",
   "display": {
     "thirdperson": {
       "rotation": [

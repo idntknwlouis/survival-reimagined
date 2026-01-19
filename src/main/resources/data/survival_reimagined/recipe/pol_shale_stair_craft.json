@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  a",
+    " aa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:polished_shale"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:polished_shale_stairs",
+    "count": 4
+  }
+}

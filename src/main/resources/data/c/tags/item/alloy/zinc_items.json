@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:compat/zinc_compat_items",
+      "required": false
+    },
+    "survival-reimagined-fabric:rough_zinc"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:wood_ingot"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:wooden_rune",
+    "count": 1
+  }
+}

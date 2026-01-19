@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "survival-reimagined-fabric:block_of_raw_tin"
+    }
+  ],
+  "result": {
+    "id": "survival-reimagined-fabric:raw_tin",
+    "count": 9
+  }
+}

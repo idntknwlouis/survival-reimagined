@@ -1,0 +1,17 @@
+{
+    "type": "create:mixing",
+    "heat_requirement": "heated",
+    "ingredients": [
+      {
+        "tag": "c:alloy/iron_items"
+      },
+      {
+        "tag": "c:alloy/manganese_items"
+      }
+    ],
+    "results": [
+      {
+        "id": "survival-reimagined-fabric:rough_steel"
+      }
+    ]
+  }

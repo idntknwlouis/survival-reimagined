@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/kimberlite_stalagtite_tip",
+  "parent": "survival-reimagined-fabric:block/kimberlite_stalagtite_tip",
   "display": {
     "thirdperson": {
       "rotation": [

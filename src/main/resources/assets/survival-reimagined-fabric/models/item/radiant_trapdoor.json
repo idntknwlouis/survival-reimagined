@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/radiant_trapdoor",
+  "parent": "survival-reimagined-fabric:block/radiant_trapdoor",
   "display": {
     "thirdperson": {
       "rotation": [

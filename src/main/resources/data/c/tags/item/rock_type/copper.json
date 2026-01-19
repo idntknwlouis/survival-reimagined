@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:azurite",
+    "survival-reimagined-fabric:malachite",
+    "survival-reimagined-fabric:azurite_nugget",
+    "survival-reimagined-fabric:malachite_nugget"
+  ]
+}

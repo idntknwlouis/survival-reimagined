@@ -1,0 +1,8 @@
+{
+  "entries": [
+    "survival-reimagined-fabric:aaf_scripture_integrate",
+    "survival-reimagined-fabric:aaf_scriputre_loot",
+    "survival-reimagined-fabric:aaf_weapons_smith"
+  ],
+  "replace": false
+}

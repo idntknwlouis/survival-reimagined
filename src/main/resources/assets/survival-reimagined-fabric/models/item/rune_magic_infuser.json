@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/rune_magic_infuser",
+  "parent": "survival-reimagined-fabric:block/rune_magic_infuser",
   "display": {
     "thirdperson": {
       "rotation": [

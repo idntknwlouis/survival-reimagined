@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/metal_refining_table",
+  "parent": "survival-reimagined-fabric:block/metal_refining_table",
   "display": {
     "thirdperson": {
       "rotation": [

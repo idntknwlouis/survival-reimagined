@@ -2,6 +2,7 @@ package net.idntknwlouis.survivalreimaginedfabric.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabric;
+import net.idntknwlouis.survivalreimaginedfabric.block.ModBlocks;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -37,6 +38,8 @@ public class ModItemGroups {
                         entries.add(ModItems.LARGEMANGROVEBARK);
                         entries.add(ModItems.LARGECRIMSONBARK);
                         entries.add(ModItems.LARGEWARPEDBARK);
+
+                        entries.add(ModBlocks.TINORE);
 
                     }).build());
 

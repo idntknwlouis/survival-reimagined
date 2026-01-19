@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/chicken_carcass",
+  "parent": "survival-reimagined-fabric:block/chicken_carcass",
   "display": {
     "thirdperson": {
       "rotation": [

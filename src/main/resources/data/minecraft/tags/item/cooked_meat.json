@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:cooked_brain",
+    "minecraft:cooked_porkchop",
+    "survival-reimagined-fabric:cooked_heart",
+    "minecraft:cooked_chicken",
+    "minecraft:cooked_rabbit",
+    "minecraft:cooked_mutton",
+    "survival-reimagined-fabric:cooked_intestines",
+    "minecraft:cooked_salmon",
+    "minecraft:cooked_cod",
+    "minecraft:cooked_beef",
+    "survival-reimagined-fabric:cooked_lungs",
+    "survival-reimagined-fabric:cooked_stomach",
+    "survival-reimagined-fabric:cooked_liver"
+  ]
+}

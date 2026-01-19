@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:steel_pickaxe",
+    "survival-reimagined-fabric:steel_sword",
+    "survival-reimagined-fabric:steel_saw",
+    "survival-reimagined-fabric:steel_shovel",
+    "survival-reimagined-fabric:steel_armor_chestplate",
+    "survival-reimagined-fabric:steel_armor_leggings",
+    "survival-reimagined-fabric:steel_armor_boots",
+    "survival-reimagined-fabric:steel_knife",
+    "survival-reimagined-fabric:steel_axe",
+    "survival-reimagined-fabric:steel_hoe",
+    "survival-reimagined-fabric:steel_hammer",
+    "survival-reimagined-fabric:steel_armor_helmet"
+  ]
+}

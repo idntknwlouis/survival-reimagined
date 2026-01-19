@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:azurite",
+    "survival-reimagined-fabric:rough_copper",
+    "minecraft:raw_copper",
+    "minecraft:copper_ingot",
+    "survival-reimagined-fabric:malachite"
+  ]
+}

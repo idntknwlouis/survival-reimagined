@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/stone_stalagtite_base",
+  "parent": "survival-reimagined-fabric:block/stone_stalagtite_base",
   "display": {
     "thirdperson": {
       "rotation": [

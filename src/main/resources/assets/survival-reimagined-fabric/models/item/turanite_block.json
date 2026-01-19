@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/turanite_block",
+  "parent": "survival-reimagined-fabric:block/turanite_block",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:rough_redstone"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:redstone_nugget",
+    "count": 9
+  }
+}

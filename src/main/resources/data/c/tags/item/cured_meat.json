@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:cured_chicken",
+    "survival-reimagined-fabric:cured_heart",
+    "survival-reimagined-fabric:cured_mutton",
+    "survival-reimagined-fabric:cured_brain",
+    "survival-reimagined-fabric:cured_rabbit",
+    "survival-reimagined-fabric:cured_stomach",
+    "survival-reimagined-fabric:cured_porkchop",
+    "survival-reimagined-fabric:cured_intestines",
+    "survival-reimagined-fabric:cured_steak",
+    "survival-reimagined-fabric:cured_liver",
+    "survival-reimagined-fabric:cured_lungs"
+  ]
+}

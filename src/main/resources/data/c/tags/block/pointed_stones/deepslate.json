@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:deepslate_stalagmite_middle",
+    "survival-reimagined-fabric:deepslate_stalagmite_top",
+    "survival-reimagined-fabric:deepslate_stalagtite_middle",
+    "survival-reimagined-fabric:deepslate_stalagmite_base",
+    "survival-reimagined-fabric:deepslate_stalagtite_base",
+    "survival-reimagined-fabric:deepslate_stalagtite_tip"
+  ]
+}

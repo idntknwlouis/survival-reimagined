@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:manganese_ore",
+    "survival-reimagined-fabric:manganite_ore",
+    "survival-reimagined-fabric:pyrolusite_ore",
+    "survival-reimagined-fabric:deepslate_manganese_ore",
+    "survival-reimagined-fabric:deepslate_manganite_ore",
+    "survival-reimagined-fabric:basalt_manganite_ore",
+    "survival-reimagined-fabric:deepslate_pyrolusite_ore"
+  ]
+}

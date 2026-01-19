@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/flowing_wisteria_leaves",
+  "parent": "survival-reimagined-fabric:block/flowing_wisteria_leaves",
   "display": {
     "thirdperson": {
       "rotation": [

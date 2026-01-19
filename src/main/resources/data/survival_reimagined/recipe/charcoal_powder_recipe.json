@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:charcoal"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:mortar_pestal"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:charcoal_powder",
+    "count": 2
+  }
+}

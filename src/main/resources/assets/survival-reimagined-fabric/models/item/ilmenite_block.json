@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/ilmenite_block",
+  "parent": "survival-reimagined-fabric:block/ilmenite_block",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:gas_mask_helmet",
+    "survival-reimagined-fabric:wooden_helmet",
+    "survival-reimagined-fabric:bronze_armor_helmet",
+    "survival-reimagined-fabric:steel_armor_helmet"
+  ]
+}

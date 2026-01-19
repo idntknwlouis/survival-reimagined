@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:basalt_ruby_ore",
+    "survival-reimagined-fabric:deepslate_ruby_ore",
+    "survival-reimagined-fabric:basalt_amber_ore",
+    "minecraft:emerald_ore",
+    "survival-reimagined-fabric:kimberlite_ruby_ore",
+    "survival-reimagined-fabric:ruby_ore",
+    "survival-reimagined-fabric:basalt_emerald_ore",
+    "survival-reimagined-fabric:kimberlite_diamond_ore",
+    "minecraft:lapis_ore",
+    "minecraft:deepslate_diamond_ore",
+    "survival-reimagined-fabric:kimberlite_emerald_ore",
+    "survival-reimagined-fabric:basalt_lapis_ore",
+    "minecraft:diamond_ore",
+    "survival-reimagined-fabric:kimberlite_amber_ore",
+    "survival-reimagined-fabric:kimberlite_lapis_ore",
+    "minecraft:deepslate_lapis_ore",
+    "survival-reimagined-fabric:amber_ore",
+    "survival-reimagined-fabric:basalt_diamond_ore",
+    "minecraft:deepslate_emerald_ore",
+    "survival-reimagined-fabric:deepslate_amber_ore"
+  ]
+}

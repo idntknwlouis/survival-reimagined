@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:bronze_armor_chestplate",
+    "survival-reimagined-fabric:steel_armor_chestplate",
+    "minecraft:diamond_chestplate"
+  ]
+}

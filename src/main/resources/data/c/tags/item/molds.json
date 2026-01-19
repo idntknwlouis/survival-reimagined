@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:knife_blade_mold",
+    "survival-reimagined-fabric:boots_mold",
+    "survival-reimagined-fabric:shovel_head_mold",
+    "survival-reimagined-fabric:sword_blade_mold",
+    "survival-reimagined-fabric:chestplate_mold",
+    "survival-reimagined-fabric:pickaxe_head_mold",
+    "survival-reimagined-fabric:axe_head_mold",
+    "survival-reimagined-fabric:legging_mold",
+    "survival-reimagined-fabric:hoe_head_mold",
+    "survival-reimagined-fabric:helmet_mold",
+    "survival-reimagined-fabric:saw_blade_mold",
+    "survival-reimagined-fabric:hammer_head_mold",
+    "survival-reimagined-fabric:ingot_mold",
+    "survival-reimagined-fabric:rune_mold"
+  ]
+}

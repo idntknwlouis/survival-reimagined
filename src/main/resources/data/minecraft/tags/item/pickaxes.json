@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:bronze_saw",
+    "survival-reimagined-fabric:diamond_hammer",
+    "survival-reimagined-fabric:stone_knife",
+    "survival-reimagined-fabric:netherite_hammer",
+    "survival-reimagined-fabric:steel_pickaxe",
+    "survival-reimagined-fabric:wooden_saw",
+    "survival-reimagined-fabric:bronze_hammer",
+    "survival-reimagined-fabric:steel_hammer",
+    "survival-reimagined-fabric:netherite_saw",
+    "survival-reimagined-fabric:wooden_knife",
+    "survival-reimagined-fabric:copper_chisel",
+    "survival-reimagined-fabric:netherite_knife",
+    "survival-reimagined-fabric:steel_saw",
+    "survival-reimagined-fabric:wooden_hammer",
+    "survival-reimagined-fabric:bronze_chisel",
+    "survival-reimagined-fabric:steel_chisel",
+    "survival-reimagined-fabric:bronze_pickaxe",
+    "survival-reimagined-fabric:flint_tool",
+    "survival-reimagined-fabric:diamond_chisel",
+    "survival-reimagined-fabric:stone_hammer",
+    "survival-reimagined-fabric:stone_saw",
+    "survival-reimagined-fabric:diamond_saw",
+    "survival-reimagined-fabric:bronze_knife",
+    "survival-reimagined-fabric:diamond_knife",
+    "survival-reimagined-fabric:steel_knife"
+  ]
+}

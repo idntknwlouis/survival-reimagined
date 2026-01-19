@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aca",
+    "ada"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:steel_ingot"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:raw_uraninite"
+    },
+    "c": {
+      "item": "survival-reimagined-fabric:redstone_ingot"
+    },
+    "d": {
+      "item": "minecraft:polished_diorite"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:mineral_processing_table",
+    "count": 1
+  }
+}

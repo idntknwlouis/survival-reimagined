@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/sapphire_ore",
+  "parent": "survival-reimagined-fabric:block/sapphire_ore",
   "display": {
     "thirdperson": {
       "rotation": [

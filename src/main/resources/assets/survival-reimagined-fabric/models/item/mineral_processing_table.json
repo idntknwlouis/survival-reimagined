@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/mineral_processing_table",
+  "parent": "survival-reimagined-fabric:block/mineral_processing_table",
   "display": {
     "thirdperson": {
       "rotation": [

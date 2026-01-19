@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:hematite_chunk"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:hematite_nugget",
+    "count": 9
+  }
+}

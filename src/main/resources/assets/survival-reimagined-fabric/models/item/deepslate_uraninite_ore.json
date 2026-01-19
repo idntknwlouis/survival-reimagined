@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/deepslate_uraninite_ore",
+  "parent": "survival-reimagined-fabric:block/deepslate_uraninite_ore",
   "display": {
     "thirdperson": {
       "rotation": [

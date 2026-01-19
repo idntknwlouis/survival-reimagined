@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "survival-reimagined-fabric:netherite_knife",
+    "survival-reimagined-fabric:stone_knife",
+    "survival-reimagined-fabric:bronze_knife",
+    "survival-reimagined-fabric:diamond_knife",
+    "survival-reimagined-fabric:steel_knife",
+    "survival-reimagined-fabric:wooden_knife"
+  ]
+}

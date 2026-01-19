@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "survival-reimagined-fabric:stone_hammer"
+    },
+    "title": {
+      "translate": "advancements.quick_metal.title"
+    },
+    "description": {
+      "translate": "advancements.quick_metal.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "quick_metal_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "survival-reimagined-fabric:alloy_refining"
+}

@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/thin_radiated_vine_base",
+  "parent": "survival-reimagined-fabric:block/thin_radiated_vine_base",
   "display": {
     "thirdperson": {
       "rotation": [

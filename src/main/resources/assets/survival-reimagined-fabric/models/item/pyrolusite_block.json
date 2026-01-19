@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/pyrolusite_block",
+  "parent": "survival-reimagined-fabric:block/pyrolusite_block",
   "display": {
     "thirdperson": {
       "rotation": [

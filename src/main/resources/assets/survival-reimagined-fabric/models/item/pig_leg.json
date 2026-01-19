@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/pig_leg",
+  "parent": "survival-reimagined-fabric:block/pig_leg",
   "display": {
     "thirdperson": {
       "rotation": [

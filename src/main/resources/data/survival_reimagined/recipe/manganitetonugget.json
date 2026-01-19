@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:manganite"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:manganite_nugget",
+    "count": 9
+  }
+}

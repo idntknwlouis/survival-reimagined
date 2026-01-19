@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:radiant_planks"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:radiated_slab",
+    "count": 6
+  }
+}

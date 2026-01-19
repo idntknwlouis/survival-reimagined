@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:block/crucible",
+  "parent": "survival-reimagined-fabric:block/crucible",
   "display": {
     "thirdperson": {
       "rotation": [

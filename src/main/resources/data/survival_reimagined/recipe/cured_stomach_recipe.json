@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "survival-reimagined-fabric:cooked_stomach"
+    },
+    "b": {
+      "item": "survival-reimagined-fabric:salt"
+    }
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:cured_stomach",
+    "count": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "survival-reimagined-fabric:shale"
+  },
+  "result": {
+    "id": "survival-reimagined-fabric:polished_shale_brick_slab",
+    "count": 2
+  }
+}
