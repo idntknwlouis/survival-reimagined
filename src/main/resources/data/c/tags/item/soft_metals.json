@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:gold_ingot",
-    "survival-reimagined-fabric:tin_ingot",
-    "minecraft:copper_ingot"
-  ]
-}
