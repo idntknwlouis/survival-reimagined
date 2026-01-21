@@ -9,10 +9,11 @@
 	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/survival-reimagined",
-		"sources": "https://github.com/idntknwlouis/survival-reimagined-fabric-1.21.x"
+		"sources": "https://github.com/idntknwlouis/survival-reimagined-fabric-1.21.x",
+		"issues": "https://github.com/idntknwlouis/survival-reimagined-fabric-1.21.x/issues"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/survival-reimagined-fabric/textures/heart.png",
+	"icon": "assets/survival-reimagined-fabric/textures/heart-fabric.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

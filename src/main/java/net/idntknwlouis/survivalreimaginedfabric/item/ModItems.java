@@ -11,7 +11,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    // TODO: finish base mod items
+    // TODO: Make at least functional block
     // Planks
     public static final Item OAKPLANK = registerItem("oak_plank", new Item(new Item.Settings()));
     public static final Item DARKOAKPLANK = registerItem("dark_oak_plank", new Item(new Item.Settings()));
@@ -35,6 +35,8 @@ public class ModItems {
     public static final Item LARGEMANGROVEBARK = registerItem("large_mangrove_bark", new Item(new Item.Settings()));
     public static final Item LARGECRIMSONBARK = registerItem("large_crimson_bark", new Item(new Item.Settings()));
     public static final Item LARGEWARPEDBARK = registerItem("large_warped_bark", new Item(new Item.Settings()));
+
+    // Blocks
 
 
 

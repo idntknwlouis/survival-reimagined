@@ -1,8 +1,0 @@
-{
-  "comparator_output": 15,
-  "description": {
-    "translate": "item.survival-reimagined-fabric.blood_moons_music_disc.desc"
-  },
-  "length_in_seconds": 244,
-  "sound_event": "survival-reimagined-fabric:bloodmoon_song"
-}

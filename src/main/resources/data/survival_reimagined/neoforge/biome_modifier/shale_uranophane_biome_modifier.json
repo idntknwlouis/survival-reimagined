@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "survival-reimagined-fabric:radiated_forest",
-  "features": "survival-reimagined-fabric:shale_uranophane",
-  "step": "underground_ores"
-}

@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "survival-reimagined-fabric:magnetite_block",
-    "survival-reimagined-fabric:hematite_block",
-    "minecraft:raw_iron_block",
-    "minecraft:iron_block"
-  ]
-}

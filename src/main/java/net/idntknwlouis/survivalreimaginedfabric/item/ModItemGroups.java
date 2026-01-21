@@ -17,8 +17,10 @@ public class ModItemGroups {
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ACACIAPLANK))
                     .displayName(Text.translatable("Survival Reimagined"))
                     .entries((displayContext, entries) -> {
-
                         // Blocks
+
+
+                        // Ores
                         entries.add(ModBlocks.TINORE);
 
                         // Planks
@@ -52,6 +54,8 @@ public class ModItemGroups {
             FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ALPHAOAKPLANK))
                     .displayName(Text.translatable("SR Compat Items"))
                     .entries((displayContext, entries) -> {
+
+                        // Planks
                         entries.add(ModItems.ALPHAOAKPLANK);
                         entries.add(ModItems.BAOBABPLANK);
                         entries.add(ModItems.BLACKWOODPLANK);

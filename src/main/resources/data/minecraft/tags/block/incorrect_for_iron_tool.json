@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    {
-      "id": "#minecraft:needs_steel_tool",
-      "required": false
-    }
-  ]
-}

@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "survival-reimagined-fabric:kimberlite_emerald_ore",
-    "minecraft:emerald_ore",
-    "survival-reimagined-fabric:basalt_emerald_ore",
-    "minecraft:deepslate_emerald_ore"
-  ]
-}

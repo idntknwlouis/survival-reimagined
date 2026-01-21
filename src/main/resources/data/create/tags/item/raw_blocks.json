@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:raw_copper_block",
-    "create:raw_zinc_block"
-  ]
-}
