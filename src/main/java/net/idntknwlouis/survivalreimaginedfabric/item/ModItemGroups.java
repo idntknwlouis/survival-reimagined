@@ -19,9 +19,8 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
                         // Blocks
 
-
                         // Ores
-                        entries.add(ModBlocks.TINORE);
+                        entries.add(ModBlocks.TIN_ORE);
 
                         // Planks
                         entries.add(ModItems.OAKPLANK);
