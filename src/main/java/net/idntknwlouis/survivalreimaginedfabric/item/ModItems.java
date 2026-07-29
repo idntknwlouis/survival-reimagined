@@ -11,7 +11,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
-    // TODO: Make at least functional block
+    // TODO: Make at least a functional block
     // Planks
     public static final Item OAKPLANK = registerItem("oak_plank", new Item(new Item.Settings()));
     public static final Item DARKOAKPLANK = registerItem("dark_oak_plank", new Item(new Item.Settings()));
@@ -41,7 +41,7 @@ public class ModItems {
 
 
 
-    // TODO: then finish compat items
+    // TODO: finish compat items
     // Planks
     public static final Item ALPHAOAKPLANK = registerItem("alpha_oak_plank", new Item(new Item.Settings()));
     public static final Item BAOBABPLANK = registerItem("baobab_plank", new Item(new Item.Settings()));
