@@ -2,7 +2,9 @@
   "required": true,
   "package": "net.mcreator.survivalreimagined.mixin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "WoodTypeInvoker"
+  ],
   "client": [],
   "injectors": {
     "defaultRequire": 1
