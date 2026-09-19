@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBiomeModifications;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModFeatures;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
@@ -47,6 +48,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModRecipeTypes.register();
 		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
+		SurvivalReimaginedModBiomeModifications.register();
 
 		ServerTickEvents.END_SERVER_TICK.register(SurvivalReimaginedMod::onServerTick);
 		LOGGER.info("Initializing Survival Reimagined Fabric port");
