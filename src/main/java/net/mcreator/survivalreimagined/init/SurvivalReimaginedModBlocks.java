@@ -40,6 +40,11 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_MANGANESE = register("block_of_manganese", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_STEEL = register("block_of_steel", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 7f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_BRONZE = register("block_of_bronze", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(4f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_RAW_TITANIUM = register("block_of_raw_titanium", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_TITANIUM = register("block_of_titanium", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_RAW_URANINITE = register("block_of_raw_uraninite", () -> new Block(BlockBehaviour.Properties.of().strength(3f, 6f)));
+	public static final RegistryEntry<Block> BLOCK_OF_URANIUM = register("block_of_uranium", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> TURANITE_BLOCK = register("turanite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.NETHERITE_BLOCK).strength(6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> INGOT_MOLD = register("ingot_mold", IngotMoldBlock::new);
 	public static final RegistryEntry<Block> SWORD_BLADE_MOLD = register("sword_blade_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> PICKAXE_HEAD_MOLD = register("pickaxe_head_mold", ToolMoldBlock::new);

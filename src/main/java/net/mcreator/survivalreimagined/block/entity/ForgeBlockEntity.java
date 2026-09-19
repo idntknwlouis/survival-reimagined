@@ -253,6 +253,12 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE.get().asItem()) {
 				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE.get().asItem(), 2, 1, 1, 100);
 			}
+			if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TITANIUM.get().asItem()) {
+				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM.get().asItem(), 2, 1, 1, 100);
+			}
+			if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_URANINITE.get().asItem()) {
+				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_URANIUM.get().asItem(), 2, 1, 1, 100);
+			}
 		}
 
 		if (isCopperAlloyItem(first) && isTinAlloyItem(second) || isTinAlloyItem(first) && isCopperAlloyItem(second)) {
@@ -270,6 +276,10 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		// Upstream Netherite alloying is directional: gold in slot 0, netherite material in slot 1.
 		if (isGoldAlloyItem(first) && first.getCount() >= 4 && isNetheriteAlloyItem(second) && second.getCount() >= 4) {
 			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_NETHERITE.get(), 1, 4, 4, 100);
+		}
+
+		if (isTitaniumAlloyItem(first) && isUraniumAlloyItem(second) || isUraniumAlloyItem(first) && isTitaniumAlloyItem(second)) {
+			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_TURANITE.get(), 1, 1, 1, 10);
 		}
 
 		ForgeRecipe plate = findPlateRecipe(first, second);
@@ -373,6 +383,18 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 		// Metal is consumed, fired mold is preserved. Original cost is 0.25 fuel/tick.
 		return new ForgeRecipe(output, 1, count, 0, 25);
+	}
+
+	private static boolean isTitaniumAlloyItem(ItemStack stack) {
+		return stack.is(SurvivalReimaginedModItems.RAW_TITANIUM.get())
+				|| stack.is(SurvivalReimaginedModItems.ROUGH_TITANIUM.get())
+				|| stack.is(SurvivalReimaginedModItems.TITANIUM_INGOT.get());
+	}
+
+	private static boolean isUraniumAlloyItem(ItemStack stack) {
+		return stack.is(SurvivalReimaginedModItems.RAW_URANINITE.get())
+				|| stack.is(SurvivalReimaginedModItems.ROUGH_URANIUM.get())
+				|| stack.is(SurvivalReimaginedModItems.URANIUM_INGOT.get());
 	}
 
 	private static boolean isGoldAlloyItem(ItemStack stack) {

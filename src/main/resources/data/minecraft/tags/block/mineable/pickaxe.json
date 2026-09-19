@@ -15,6 +15,11 @@
     "survival_reimagined:bronze_plate",
     "survival_reimagined:steel_plate",
     "survival_reimagined:diamond_plate",
-    "survival_reimagined:netherite_plate"
+    "survival_reimagined:netherite_plate",
+    "survival_reimagined:block_of_raw_titanium",
+    "survival_reimagined:block_of_titanium",
+    "survival_reimagined:block_of_raw_uraninite",
+    "survival_reimagined:block_of_uranium",
+    "survival_reimagined:turanite_block"
   ]
 }

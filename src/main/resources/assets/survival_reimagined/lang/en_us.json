@@ -128,5 +128,18 @@
   "item.survival_reimagined.diamond_plated_ingot": "Diamond Plated Ingot",
   "block.survival_reimagined.diamond_plate": "Diamond Plate",
   "block.survival_reimagined.netherite_plate": "Netherite Plate",
-  "item.survival_reimagined.rough_netherite": "Rough Netherite"
+  "item.survival_reimagined.rough_netherite": "Rough Netherite",
+  "item.survival_reimagined.raw_titanium": "Raw Titanium",
+  "item.survival_reimagined.rough_titanium": "Rough Titanium",
+  "item.survival_reimagined.titanium_ingot": "Titanium Ingot",
+  "block.survival_reimagined.block_of_raw_titanium": "Block Of Raw Titanium",
+  "block.survival_reimagined.block_of_titanium": "Block Of Titanium",
+  "item.survival_reimagined.raw_uraninite": "Raw Uraninite",
+  "item.survival_reimagined.rough_uranium": "Rough Uranium",
+  "item.survival_reimagined.uranium_ingot": "Uranium Ingot",
+  "block.survival_reimagined.block_of_raw_uraninite": "Raw Uraninite Block",
+  "block.survival_reimagined.block_of_uranium": "Block Of Uranium",
+  "item.survival_reimagined.rough_turanite": "Rough Turanite",
+  "item.survival_reimagined.turanite_ingot": "Turanite Ingot",
+  "block.survival_reimagined.turanite_block": "Turanite Block"
 }
