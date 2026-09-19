@@ -1,0 +1,4 @@
+{
+  "parent": "item/generated",
+  "textures": {"layer0": "survival_reimagined:item/depleted_reactor_rod"}
+}
