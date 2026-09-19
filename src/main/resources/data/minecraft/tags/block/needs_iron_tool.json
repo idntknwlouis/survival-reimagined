@@ -4,6 +4,16 @@
     "survival_reimagined:block_of_raw_manganese",
     "survival_reimagined:block_of_manganese",
     "survival_reimagined:block_of_steel",
-    "survival_reimagined:steel_plate"
+    "survival_reimagined:steel_plate",
+    "survival_reimagined:silver_ore",
+    "survival_reimagined:deepslate_silver_ore",
+    "survival_reimagined:argentite_ore",
+    "survival_reimagined:deepslate_argentite_ore",
+    "survival_reimagined:sapphire_ore",
+    "survival_reimagined:deepslate_sapphire_ore",
+    "survival_reimagined:ruby_ore",
+    "survival_reimagined:deepslate_ruby_ore",
+    "survival_reimagined:amber_ore",
+    "survival_reimagined:deepslate_amber_ore"
   ]
 }
