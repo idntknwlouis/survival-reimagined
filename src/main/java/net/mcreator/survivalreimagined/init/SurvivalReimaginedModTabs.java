@@ -23,6 +23,12 @@ public final class SurvivalReimaginedModTabs {
 				.title(Component.translatable("item_group.survival_reimagined.survival_reborn"))
 				.icon(() -> new ItemStack(SurvivalReimaginedModItems.TIN_INGOT.get()))
 				.displayItems((parameters, output) -> {
+					output.accept(SurvivalReimaginedModItems.FLINTBLOCK.get());
+					output.accept(SurvivalReimaginedModItems.STONE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.STONE_ROCK_BLOC.get());
+					output.accept(SurvivalReimaginedModItems.COPPER_CHUNK.get());
+					output.accept(SurvivalReimaginedModItems.COPPER_ROCK_BLOCK.get());
+
 					output.accept(SurvivalReimaginedModItems.TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_TIN.get());
