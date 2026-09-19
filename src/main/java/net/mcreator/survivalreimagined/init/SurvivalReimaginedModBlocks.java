@@ -54,6 +54,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> HAMMER_HEAD_MOLD = register("hammer_head_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> SAW_BLADE_MOLD = register("saw_blade_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> KNIFE_BLADE_MOLD = register("knife_blade_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> RUNE_MOLD = register("rune_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> RUNE_CLAY_MOLD = register("rune_clay_mold", () -> new ClayMoldBlock(() -> RUNE_MOLD.get()));
 	public static final RegistryEntry<Block> WOODEN_PLATE = register("wooden_plate", () -> new PlateBlock(SoundType.WOOD, 1.0F));
 	public static final RegistryEntry<Block> METAL_PLATE_MOLD = register("metal_plate_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> BRONZE_PLATE = register("bronze_plate", () -> new PlateBlock(SoundType.METAL, 2.5F));

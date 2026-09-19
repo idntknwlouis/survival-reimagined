@@ -141,5 +141,22 @@
   "block.survival_reimagined.block_of_uranium": "Block Of Uranium",
   "item.survival_reimagined.rough_turanite": "Rough Turanite",
   "item.survival_reimagined.turanite_ingot": "Turanite Ingot",
-  "block.survival_reimagined.turanite_block": "Turanite Block"
+  "block.survival_reimagined.turanite_block": "Turanite Block",
+  "item.survival_reimagined.quick_lime": "Quick Lime",
+  "item.survival_reimagined.dark_cinder_powder": "Dark Cinder Powder",
+  "item.survival_reimagined.dark_cinder_coal": "Dark Cinder Coal",
+  "item.survival_reimagined.silver_ingot": "Silver Ingot",
+  "item.survival_reimagined.wooden_rune": "Wooden Rune",
+  "block.survival_reimagined.rune_mold": "Rune Mold",
+  "block.survival_reimagined.rune_clay_mold": "Rune Clay Mold",
+  "item.survival_reimagined.empty_gold_rune": "Empty Gold Rune",
+  "item.survival_reimagined.empty_silver_rune": "Empty Silver Rune",
+  "item.survival_reimagined.diamond_sword_blade": "Diamond Sword Blade",
+  "item.survival_reimagined.diamond_pickaxe_head": "Diamond Pickaxe Head",
+  "item.survival_reimagined.diamond_axe_head": "Diamond Axe Head",
+  "item.survival_reimagined.diamond_shovel_head": "Diamond Shovel Head",
+  "item.survival_reimagined.diamond_hoe_blade": "Diamond Hoe Blade",
+  "item.survival_reimagined.diamond_hammer_head": "Diamond Hammer Head",
+  "item.survival_reimagined.diamond_saw_blade": "Diamond Saw Blade",
+  "item.survival_reimagined.diamond_knife_blade": "Diamond Knife Blade"
 }

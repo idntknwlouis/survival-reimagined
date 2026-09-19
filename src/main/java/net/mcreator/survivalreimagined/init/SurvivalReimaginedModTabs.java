@@ -139,6 +139,23 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.DIAMOND_PLATED_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.DIAMOND_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.NETHERITE_PLATE.get());
+					output.accept(SurvivalReimaginedModItems.QUICK_LIME.get());
+					output.accept(SurvivalReimaginedModItems.DARK_CINDER_POWDER.get());
+					output.accept(SurvivalReimaginedModItems.DARK_CINDER_COAL.get());
+					output.accept(SurvivalReimaginedModItems.SILVER_INGOT.get());
+					output.accept(SurvivalReimaginedModItems.WOODEN_RUNE.get());
+					output.accept(SurvivalReimaginedModItems.RUNE_CLAY_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.RUNE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.EMPTY_GOLD_RUNE.get());
+					output.accept(SurvivalReimaginedModItems.EMPTY_SILVER_RUNE.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_SWORD_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_PICKAXE_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_AXE_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_SHOVEL_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_HOE_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_HAMMER_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_SAW_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_KNIFE_BLADE.get());
 
 					output.accept(SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get());
 					output.accept(SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get());

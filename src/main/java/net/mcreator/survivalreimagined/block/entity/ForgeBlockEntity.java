@@ -182,6 +182,11 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	}
 
 	private boolean processRecipe() {
+		Boolean meltResult = this.processMeltRecipe();
+		if (meltResult != null) {
+			return meltResult;
+		}
+
 		ForgeRecipe recipe = findRecipe(this.getItem(0), this.getItem(1));
 		if (recipe == null || !this.canOutput(recipe.output(), recipe.outputCount())) {
 			if (this.burnTime != 0) {
@@ -221,6 +226,94 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 
 		return true;
+	}
+
+	private Boolean processMeltRecipe() {
+		ItemStack first = this.getItem(0);
+		ItemStack second = this.getItem(1);
+		Item output = null;
+		int minOutput = 1;
+		int maxOutput = 3;
+
+		if (isIronMeltItem(first) && isIronMeltItem(second)) {
+			output = SurvivalReimaginedModItems.ROUGH_IRON.get();
+		} else if (isGoldMeltItem(first) && isGoldMeltItem(second)) {
+			output = SurvivalReimaginedModItems.ROUGH_GOLD.get();
+		} else if (isSteelMeltItem(first) && isSteelMeltItem(second)) {
+			output = SurvivalReimaginedModItems.ROUGH_STEEL.get();
+		} else if (isBronzeMeltItem(first) && isBronzeMeltItem(second)) {
+			output = SurvivalReimaginedModItems.ROUGH_BRONZE.get();
+		} else if (isDiamondMeltItem(first) && isDiamondMeltItem(second)) {
+			output = SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get();
+			maxOutput = 2;
+		} else {
+			return null;
+		}
+
+		if (!this.canOutput(output, maxOutput)) {
+			if (this.burnTime != 0) {
+				this.burnTime = 0;
+				return true;
+			}
+			return false;
+		}
+		if (this.fuelMeterHundredths < 100) {
+			if (this.burnTime > 0) {
+				this.burnTime = Math.max(0, this.burnTime - 1);
+				return true;
+			}
+			return false;
+		}
+
+		this.fuelMeterHundredths -= 100;
+		this.burnTime += 1;
+		if (this.burnTime >= MAX_BURN_TIME) {
+			first.shrink(1);
+			second.shrink(1);
+			int produced = minOutput + this.level.random.nextInt(maxOutput - minOutput + 1);
+			ItemStack out = this.getItem(3);
+			if (out.isEmpty()) this.setItem(3, new ItemStack(output, produced));
+			else out.grow(produced);
+			this.burnTime = 0;
+		}
+		return true;
+	}
+
+	private static boolean isIronMeltItem(ItemStack s) {
+		return s.is(Items.IRON_DOOR) || s.is(Items.IRON_TRAPDOOR) || s.is(Items.IRON_BARS) || s.is(Items.IRON_SWORD)
+				|| s.is(Items.IRON_SHOVEL) || s.is(Items.IRON_PICKAXE) || s.is(Items.IRON_AXE) || s.is(Items.IRON_HOE)
+				|| s.is(Items.IRON_HELMET) || s.is(Items.IRON_CHESTPLATE) || s.is(Items.IRON_LEGGINGS) || s.is(Items.IRON_BOOTS)
+				|| s.is(Items.IRON_HORSE_ARMOR);
+	}
+
+	private static boolean isGoldMeltItem(ItemStack s) {
+		return s.is(Items.GOLDEN_SWORD) || s.is(Items.GOLDEN_SHOVEL) || s.is(Items.GOLDEN_PICKAXE) || s.is(Items.GOLDEN_AXE)
+				|| s.is(Items.GOLDEN_HOE) || s.is(Items.GOLDEN_HELMET) || s.is(Items.GOLDEN_CHESTPLATE) || s.is(Items.GOLDEN_LEGGINGS)
+				|| s.is(Items.GOLDEN_BOOTS) || s.is(Items.GOLDEN_HORSE_ARMOR);
+	}
+
+	private static boolean isBronzeMeltItem(ItemStack s) {
+		return s.is(SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get()) || s.is(SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.BRONZE_AXE_HEAD.get()) || s.is(SurvivalReimaginedModItems.BRONZE_SHOVEL_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.BRONZE_HOE_BLADE.get()) || s.is(SurvivalReimaginedModItems.BRONZE_HAMMER_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.BRONZE_SAW_BLADE.get()) || s.is(SurvivalReimaginedModItems.BRONZE_KNIFE_BLADE.get());
+	}
+
+	private static boolean isSteelMeltItem(ItemStack s) {
+		return s.is(SurvivalReimaginedModItems.STEEL_SWORD_BLADE.get()) || s.is(SurvivalReimaginedModItems.STEEL_PICKAXE_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.STEEL_AXE_HEAD.get()) || s.is(SurvivalReimaginedModItems.STEEL_SHOVEL_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.STEEL_HOE_BLADE.get()) || s.is(SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.STEEL_SAW_BLADE.get()) || s.is(SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get());
+	}
+
+	private static boolean isDiamondMeltItem(ItemStack s) {
+		return s.is(SurvivalReimaginedModItems.DIAMOND_SWORD_BLADE.get()) || s.is(SurvivalReimaginedModItems.DIAMOND_PICKAXE_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.DIAMOND_AXE_HEAD.get()) || s.is(SurvivalReimaginedModItems.DIAMOND_SHOVEL_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.DIAMOND_HOE_BLADE.get()) || s.is(SurvivalReimaginedModItems.DIAMOND_HAMMER_HEAD.get())
+				|| s.is(SurvivalReimaginedModItems.DIAMOND_SAW_BLADE.get()) || s.is(SurvivalReimaginedModItems.DIAMOND_KNIFE_BLADE.get())
+				|| s.is(Items.DIAMOND_SWORD) || s.is(Items.DIAMOND_SHOVEL) || s.is(Items.DIAMOND_PICKAXE) || s.is(Items.DIAMOND_AXE)
+				|| s.is(Items.DIAMOND_HOE) || s.is(Items.DIAMOND_HELMET) || s.is(Items.DIAMOND_CHESTPLATE) || s.is(Items.DIAMOND_LEGGINGS)
+				|| s.is(Items.DIAMOND_BOOTS) || s.is(Items.DIAMOND_HORSE_ARMOR);
 	}
 
 	private boolean canOutput(Item item, int count) {
@@ -282,6 +375,18 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_TURANITE.get(), 1, 1, 1, 10);
 		}
 
+		if (isLimeItem(first) && isLimeItem(second)) {
+			return new ForgeRecipe(SurvivalReimaginedModItems.QUICK_LIME.get(), 2, 1, 1, 100);
+		}
+
+		if (first.is(SurvivalReimaginedModItems.DARK_CINDER_POWDER.get()) && second.is(SurvivalReimaginedModItems.ANTHRACITE.get())
+				|| second.is(SurvivalReimaginedModItems.DARK_CINDER_POWDER.get()) && first.is(SurvivalReimaginedModItems.ANTHRACITE.get())) {
+			return new ForgeRecipe(SurvivalReimaginedModItems.DARK_CINDER_COAL.get(), 2, 1, 1, 100);
+		}
+
+		ForgeRecipe rune = findRuneRecipe(first, second);
+		if (rune != null) return rune;
+
 		ForgeRecipe plate = findPlateRecipe(first, second);
 		if (plate != null) {
 			return plate;
@@ -306,6 +411,24 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 
 		return null;
+	}
+
+	private static ForgeRecipe findRuneRecipe(ItemStack first, ItemStack second) {
+		ForgeRecipe r = runeFor(first, second);
+		if (r != null) return r;
+		r = runeFor(second, first);
+		return r == null ? null : new ForgeRecipe(r.output(), r.outputCount(), 0, r.consumeFirst(), r.fuelCostHundredthsPerStep());
+	}
+
+	private static ForgeRecipe runeFor(ItemStack metal, ItemStack mold) {
+		if (!mold.is(SurvivalReimaginedModBlocks.RUNE_MOLD.get().asItem()) || metal.getCount() < 4) return null;
+		if (metal.is(Items.GOLD_INGOT)) return new ForgeRecipe(SurvivalReimaginedModItems.EMPTY_GOLD_RUNE.get(), 1, 5, 0, 50);
+		if (metal.is(SurvivalReimaginedModItems.SILVER_INGOT.get())) return new ForgeRecipe(SurvivalReimaginedModItems.EMPTY_SILVER_RUNE.get(), 1, 5, 0, 50);
+		return null;
+	}
+
+	private static boolean isLimeItem(ItemStack stack) {
+		return stack.is(Items.BONE) || stack.is(SurvivalReimaginedModItems.CALCITE_ROCK.get()) || stack.is(SurvivalReimaginedModItems.DIORITE_ROCK.get());
 	}
 
 	private static ForgeRecipe findPlateRecipe(ItemStack first, ItemStack second) {
@@ -344,35 +467,36 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	private static ForgeRecipe toolPartFor(ItemStack metal, ItemStack mold) {
 		boolean bronze = metal.is(SurvivalReimaginedModItems.BRONZE_INGOT.get());
 		boolean steel = metal.is(SurvivalReimaginedModItems.STEEL_INGOT.get());
-		if (!bronze && !steel) {
+		boolean diamond = metal.is(SurvivalReimaginedModItems.DIAMOND_PLATED_INGOT.get());
+		if (!bronze && !steel && !diamond) {
 			return null;
 		}
 
 		Item output;
 		int count;
 		if (mold.is(SurvivalReimaginedModBlocks.SWORD_BLADE_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get() : SurvivalReimaginedModItems.STEEL_SWORD_BLADE.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_SWORD_BLADE.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get() : SurvivalReimaginedModItems.STEEL_SWORD_BLADE.get());
 			count = 2;
 		} else if (mold.is(SurvivalReimaginedModBlocks.PICKAXE_HEAD_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get() : SurvivalReimaginedModItems.STEEL_PICKAXE_HEAD.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_PICKAXE_HEAD.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get() : SurvivalReimaginedModItems.STEEL_PICKAXE_HEAD.get());
 			count = 3;
 		} else if (mold.is(SurvivalReimaginedModBlocks.AXE_HEAD_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_AXE_HEAD.get() : SurvivalReimaginedModItems.STEEL_AXE_HEAD.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_AXE_HEAD.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_AXE_HEAD.get() : SurvivalReimaginedModItems.STEEL_AXE_HEAD.get());
 			count = 3;
 		} else if (mold.is(SurvivalReimaginedModBlocks.SHOVEL_HEAD_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_SHOVEL_HEAD.get() : SurvivalReimaginedModItems.STEEL_SHOVEL_HEAD.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_SHOVEL_HEAD.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_SHOVEL_HEAD.get() : SurvivalReimaginedModItems.STEEL_SHOVEL_HEAD.get());
 			count = 1;
 		} else if (mold.is(SurvivalReimaginedModBlocks.HOE_HEAD_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_HOE_BLADE.get() : SurvivalReimaginedModItems.STEEL_HOE_BLADE.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_HOE_BLADE.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_HOE_BLADE.get() : SurvivalReimaginedModItems.STEEL_HOE_BLADE.get());
 			count = 2;
 		} else if (mold.is(SurvivalReimaginedModBlocks.HAMMER_HEAD_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_HAMMER_HEAD.get() : SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_HAMMER_HEAD.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_HAMMER_HEAD.get() : SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get());
 			count = 2;
 		} else if (mold.is(SurvivalReimaginedModBlocks.SAW_BLADE_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_SAW_BLADE.get() : SurvivalReimaginedModItems.STEEL_SAW_BLADE.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_SAW_BLADE.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_SAW_BLADE.get() : SurvivalReimaginedModItems.STEEL_SAW_BLADE.get());
 			count = 2;
 		} else if (mold.is(SurvivalReimaginedModBlocks.KNIFE_BLADE_MOLD.get().asItem())) {
-			output = bronze ? SurvivalReimaginedModItems.BRONZE_KNIFE_BLADE.get() : SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get();
+			output = diamond ? SurvivalReimaginedModItems.DIAMOND_KNIFE_BLADE.get() : (bronze ? SurvivalReimaginedModItems.BRONZE_KNIFE_BLADE.get() : SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get());
 			count = 1;
 		} else {
 			return null;
@@ -474,6 +598,9 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 		if (stack.is(SurvivalReimaginedModItems.ANTHRACITE.get())) {
 			return 20;
+		}
+		if (stack.is(SurvivalReimaginedModItems.DARK_CINDER_COAL.get())) {
+			return 40;
 		}
 		if (stack.is(SurvivalReimaginedModItems.SMALL_LIGINITE.get())) {
 			return 1;
