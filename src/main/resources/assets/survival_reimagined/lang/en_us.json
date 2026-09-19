@@ -160,5 +160,18 @@
   "item.survival_reimagined.diamond_saw_blade": "Diamond Saw Blade",
   "item.survival_reimagined.diamond_knife_blade": "Diamond Knife Blade",
   "block.survival_reimagined.metal_refining_table": "Metal Refining Table",
-  "gui.survival_reimagined.metal_refining_table_gui.label_metal_refining_table": "Metal Refining Table"
+  "gui.survival_reimagined.metal_refining_table_gui.label_metal_refining_table": "Metal Refining Table",
+  "item.survival_reimagined.bronze_nugget": "Bronze Nugget",
+  "item.survival_reimagined.copper_handle": "Copper Handle",
+  "item.survival_reimagined.small_copper_handle": "Small Copper Handle",
+  "item.survival_reimagined.bronze_handle": "Bronze Handle",
+  "item.survival_reimagined.small_bronze_handle": "Small Bronze Handle",
+  "item.survival_reimagined.bronze_sword": "Bronze Sword",
+  "item.survival_reimagined.bronze_pickaxe": "Bronze Pickaxe",
+  "item.survival_reimagined.bronze_axe": "Bronze Axe",
+  "item.survival_reimagined.bronze_shovel": "Bronze Shovel",
+  "item.survival_reimagined.bronze_hoe": "Bronze Hoe",
+  "item.survival_reimagined.bronze_hammer": "Bronze Hammer",
+  "item.survival_reimagined.bronze_saw": "Bronze Saw",
+  "item.survival_reimagined.bronze_knife": "Bronze Knife"
 }
