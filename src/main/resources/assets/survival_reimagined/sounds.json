@@ -1,0 +1,18 @@
+{
+  "radiation/damage": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:radiation_hit1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:radiation_hit2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:radiation_hit3",
+        "stream": false
+      }
+    ]
+  }
+}
