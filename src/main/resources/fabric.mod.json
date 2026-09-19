@@ -1,34 +1,43 @@
 {
-	"schemaVersion": 1,
-	"id": "survival-reimagined-fabric",
-	"version": "${version}",
-	"name": "Survival Reimagined (Fabric)",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/survival-reimagined-fabric/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabric"
-		],
-		"fabric-datagen": [
-			"net.idntknwlouis.survivalreimaginedfabric.SurvivalReimaginedFabricDataGenerator"
-		]
-	},
-	"mixins": [
-		"survival-reimagined-fabric.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.18.4",
-		"minecraft": "~1.21.1",
-		"java": ">=21",
-		"fabric-api": "*"
-	}
+  "schemaVersion": 1,
+  "id": "survival_reimagined",
+  "version": "${version}",
+  "name": "Survival Reimagined",
+  "description": "Harder and a more realistic survival experience",
+  "authors": [
+    "ShotUGMG"
+  ],
+  "contributors": [
+    "WispWoods",
+    "Louis",
+    "Krowdn",
+    "Venyena"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/survival-reimagined",
+    "sources": "https://github.com/idntknwlouis/survival-reimagined"
+  },
+  "license": "All Rights Reserved",
+  "icon": "assets/survival-reimagined-fabric/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.mcreator.survivalreimagined.SurvivalReimaginedMod"
+    ],
+    "client": [
+      "net.mcreator.survivalreimagined.SurvivalReimaginedModClient"
+    ],
+    "fabric-datagen": [
+      "net.mcreator.survivalreimagined.SurvivalReimaginedModDataGenerator"
+    ]
+  },
+  "mixins": [
+    "survival_reimagined.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
 }
