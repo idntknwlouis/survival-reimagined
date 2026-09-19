@@ -29,6 +29,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_TIN_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_TIN_ORE);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TIN);
 	public static final RegistryEntry<Item> BLOCK_OF_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_TIN);
+	public static final RegistryEntry<Item> FORGE = block(SurvivalReimaginedModBlocks.FORGE);
 
 	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
 	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);

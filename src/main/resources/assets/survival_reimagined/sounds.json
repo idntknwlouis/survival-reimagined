@@ -14,5 +14,23 @@
         "stream": false
       }
     ]
+  },
+  "forge_open": {
+    "subtitle": "subtitles.forge_open",
+    "sounds": [
+      {
+        "name": "survival_reimagined:open_forge",
+        "stream": false
+      }
+    ]
+  },
+  "close_forge": {
+    "subtitle": "subtitles.close_forge",
+    "sounds": [
+      {
+        "name": "survival_reimagined:close_forge",
+        "stream": false
+      }
+    ]
   }
 }

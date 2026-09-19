@@ -11,6 +11,7 @@ import net.mcreator.survivalreimagined.block.BlockOfTinBlock;
 import net.mcreator.survivalreimagined.block.CopperRockBlockBlock;
 import net.mcreator.survivalreimagined.block.DeepslateTinOreBlock;
 import net.mcreator.survivalreimagined.block.FlintblockBlock;
+import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.block.StoneRockBlocBlock;
 import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
 import net.mcreator.survivalreimagined.block.TinOreBlock;
@@ -26,6 +27,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", DeepslateTinOreBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TIN = register("block_of_raw_tin", BlockOfRawTinBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
+	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
 
 	public static final RegistryEntry<Block> COPPER_ROCK_BLOCK = register("copper_rock_block", CopperRockBlockBlock::new);
 	public static final RegistryEntry<Block> ANDESITE_ROCK_BLOCK = register("andesite_rock_block", AndesiteRockBlockBlock::new);

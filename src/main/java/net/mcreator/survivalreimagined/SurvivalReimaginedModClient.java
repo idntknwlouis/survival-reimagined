@@ -8,5 +8,6 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		SurvivalReimaginedModParticles.register();
+		SurvivalReimaginedModScreens.register();
 	}
 }

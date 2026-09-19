@@ -49,5 +49,9 @@
   "death.attack.binding_sculk_damage": "%1$s's soul was subdued by the sculk",
   "death.attack.bleeding_dmg.player": "%1$s bled to death whilst trying to escape %2$s",
   "death.attack.bleeding_dmg": "%1$s bled to death",
-  "death.attack.bleeding_dmg.item": "%1$s was killed by %2$s using %3$s"
+  "death.attack.bleeding_dmg.item": "%1$s was killed by %2$s using %3$s",
+  "block.survival_reimagined.forge": "Forge",
+  "gui.survival_reimagined.forge_gui.label_forge": "Forge",
+  "subtitles.forge_open": "Forge Opened",
+  "subtitles.close_forge": "Forge Closed"
 }
