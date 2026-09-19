@@ -40,6 +40,15 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_STEEL = register("block_of_steel", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 7f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_BRONZE = register("block_of_bronze", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(4f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> INGOT_MOLD = register("ingot_mold", IngotMoldBlock::new);
+	public static final RegistryEntry<Block> SWORD_BLADE_MOLD = register("sword_blade_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> PICKAXE_HEAD_MOLD = register("pickaxe_head_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> AXE_HEAD_MOLD = register("axe_head_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> SHOVEL_HEAD_MOLD = register("shovel_head_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> HOE_HEAD_MOLD = register("hoe_head_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> HAMMER_HEAD_MOLD = register("hammer_head_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> SAW_BLADE_MOLD = register("saw_blade_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> KNIFE_BLADE_MOLD = register("knife_blade_mold", ToolMoldBlock::new);
+
 	public static final RegistryEntry<Block> INGOT_CLAY_MOLD = register("ingot_clay_mold", () -> new ClayMoldBlock(() -> INGOT_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_SWORD_BLADE_MOLD = register("clay_sword_blade_mold", () -> new ClayMoldBlock(() -> SWORD_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_PICKAXE_HEAD_MOLD = register("clay_pickaxe_head_mold", () -> new ClayMoldBlock(() -> PICKAXE_HEAD_MOLD.get()));
@@ -49,14 +58,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> CLAY_HAMMER_HEAD_MOLD = register("clay_hammer_head_mold", () -> new ClayMoldBlock(() -> HAMMER_HEAD_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_SAW_BLADE_MOLD = register("clay_saw_blade_mold", () -> new ClayMoldBlock(() -> SAW_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_KNIFE_MOLD = register("clay_knife_mold", () -> new ClayMoldBlock(() -> KNIFE_BLADE_MOLD.get()));
-	public static final RegistryEntry<Block> SWORD_BLADE_MOLD = register("sword_blade_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> PICKAXE_HEAD_MOLD = register("pickaxe_head_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> AXE_HEAD_MOLD = register("axe_head_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> SHOVEL_HEAD_MOLD = register("shovel_head_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> HOE_HEAD_MOLD = register("hoe_head_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> HAMMER_HEAD_MOLD = register("hammer_head_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> SAW_BLADE_MOLD = register("saw_blade_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> KNIFE_BLADE_MOLD = register("knife_blade_mold", ToolMoldBlock::new);
 
 	public static final RegistryEntry<Block> COPPER_ROCK_BLOCK = register("copper_rock_block", CopperRockBlockBlock::new);
 	public static final RegistryEntry<Block> ANDESITE_ROCK_BLOCK = register("andesite_rock_block", AndesiteRockBlockBlock::new);
