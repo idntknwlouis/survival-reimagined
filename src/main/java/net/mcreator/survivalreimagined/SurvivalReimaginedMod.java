@@ -7,6 +7,7 @@ import net.minecraft.server.MinecraftServer;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModTabs;
@@ -38,6 +39,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModParticleTypes.register();
 		SurvivalReimaginedModBlocks.register();
 		SurvivalReimaginedModItems.register();
+		SurvivalReimaginedModMobEffects.register();
 		SurvivalReimaginedModTabs.register();
 
 		ServerTickEvents.END_SERVER_TICK.register(SurvivalReimaginedMod::onServerTick);
