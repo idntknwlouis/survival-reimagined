@@ -1,6 +1,6 @@
 # Survival Reimagined — Fabric Port
 
-Fabric port of **Survival Reimagined**, based on the original NeoForge/MCreator project by ShotUGMG.
+Fabric port of **Survival Reimagined**, based on the original NeoForge project by ShotUGMG.
 
 This table tracks broad feature parity against the original mod.
 
@@ -57,14 +57,7 @@ This table tracks broad feature parity against the original mod.
 | Advancements | 🔎 | 🔎 | — | 🔎 |
 | Compat Content | ❌ | ❌ | ❌ | ❌ |
 
-## Notes
-
-- **Titanium** has functioning ore blocks and processing, but the current original 1.4 source does not define a Titanium worldgen feature, so none has been invented for the Fabric port.
-- **Sapphire / Ruby / Amber** currently generate and drop their rough forms. Turning rough gems into finished gems belongs to the **Mineral Processing Table**, which is not ported yet.
-- **Compat content** stays last; native Survival Reimagined content is the priority.
-- Technical placed rock/flint block forms are hidden from the creative tab where appropriate, matching the original behavior.
-
-## Current priority
+## Current Roadmap
 
 1. Mineral Processing Table
 2. Rough gem polishing
@@ -72,4 +65,4 @@ This table tracks broad feature parity against the original mod.
 4. Remaining native resource chains
 5. Remaining machines
 6. Broad gameplay parity audit
-7. Compat content last
+7. Compat content
