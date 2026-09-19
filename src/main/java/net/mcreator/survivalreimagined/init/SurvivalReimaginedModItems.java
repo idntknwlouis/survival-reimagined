@@ -90,9 +90,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_PLATED_DIAMOND = simple("rough_plated_diamond");
 	public static final RegistryEntry<Item> ROUGH_NETHERITE = simple("rough_netherite");
 	public static final RegistryEntry<Item> RAW_TITANIUM = simple("raw_titanium");
+	public static final RegistryEntry<Item> RAW_TITANIUM_NUGGET = simple("raw_titanium_nugget");
 	public static final RegistryEntry<Item> ROUGH_TITANIUM = simple("rough_titanium");
 	public static final RegistryEntry<Item> TITANIUM_INGOT = simple("titanium_ingot");
 	public static final RegistryEntry<Item> RAW_URANINITE = simple("raw_uraninite");
+	public static final RegistryEntry<Item> RAW_URANINITE_NUGGET = simple("raw_uraninite_nugget");
 	public static final RegistryEntry<Item> ROUGH_URANIUM = simple("rough_uranium");
 	public static final RegistryEntry<Item> URANIUM_INGOT = simple("uranium_ingot");
 	public static final RegistryEntry<Item> ROUGH_TURANITE = simple("rough_turanite");
@@ -171,6 +173,10 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BLOCK_OF_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE);
 	public static final RegistryEntry<Item> BLOCK_OF_STEEL = block(SurvivalReimaginedModBlocks.BLOCK_OF_STEEL);
 	public static final RegistryEntry<Item> BLOCK_OF_BRONZE = block(SurvivalReimaginedModBlocks.BLOCK_OF_BRONZE);
+	public static final RegistryEntry<Item> TITANIUM_ORE = block(SurvivalReimaginedModBlocks.TITANIUM_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_TITANIUM_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_TITANIUM_ORE);
+	public static final RegistryEntry<Item> URANINITE_ORE = block(SurvivalReimaginedModBlocks.URANINITE_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_URANINITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_URANINITE_ORE);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_TITANIUM = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TITANIUM);
 	public static final RegistryEntry<Item> BLOCK_OF_TITANIUM = block(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_URANINITE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_URANINITE);

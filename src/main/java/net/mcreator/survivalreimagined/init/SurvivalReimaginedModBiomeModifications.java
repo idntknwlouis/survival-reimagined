@@ -17,6 +17,17 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addEverywhere("flint_gen");
 		addEverywhere("stone_gen");
 		addEverywhere("copper_gen");
+		addUndergroundEverywhere("uraninite_feature");
+	}
+
+	private static void addUndergroundEverywhere(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				context -> true,
+				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
 	}
 
 	private static void addEverywhere(String path) {

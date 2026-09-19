@@ -203,5 +203,11 @@
   "item.survival_reimagined.silver_ruby_rune": "Silver Ruby Rune",
   "item.survival_reimagined.gold_ruby_rune": "Gold Ruby Rune",
   "item.survival_reimagined.silver_lapis_rune": "Silver Lapis Rune",
-  "item.survival_reimagined.gold_lapis_rune": "Gold Lapis Rune"
+  "item.survival_reimagined.gold_lapis_rune": "Gold Lapis Rune",
+  "block.survival_reimagined.titanium_ore": "Titanium Ore",
+  "block.survival_reimagined.deepslate_titanium_ore": "Deepslate Titanium Ore",
+  "block.survival_reimagined.uraninite_ore": "Uraninite Ore",
+  "block.survival_reimagined.deepslate_uraninite_ore": "Deepslate Uraninite Ore",
+  "item.survival_reimagined.raw_titanium_nugget": "Raw Titanium Nugget",
+  "item.survival_reimagined.raw_uraninite_nugget": "Raw Uraninite Nugget"
 }

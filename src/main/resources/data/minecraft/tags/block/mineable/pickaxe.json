@@ -20,6 +20,10 @@
     "survival_reimagined:block_of_titanium",
     "survival_reimagined:block_of_raw_uraninite",
     "survival_reimagined:block_of_uranium",
-    "survival_reimagined:turanite_block"
+    "survival_reimagined:turanite_block",
+    "survival_reimagined:titanium_ore",
+    "survival_reimagined:deepslate_titanium_ore",
+    "survival_reimagined:uraninite_ore",
+    "survival_reimagined:deepslate_uraninite_ore"
   ]
 }

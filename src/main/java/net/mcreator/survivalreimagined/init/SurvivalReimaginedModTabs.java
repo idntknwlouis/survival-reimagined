@@ -125,12 +125,18 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.STEEL_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_NETHERITE.get());
+					output.accept(SurvivalReimaginedModItems.TITANIUM_ORE.get());
+					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TITANIUM_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_TITANIUM.get());
+					output.accept(SurvivalReimaginedModItems.RAW_TITANIUM_NUGGET.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_TITANIUM.get());
 					output.accept(SurvivalReimaginedModItems.TITANIUM_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_TITANIUM.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get());
+					output.accept(SurvivalReimaginedModItems.URANINITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.DEEPSLATE_URANINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_URANINITE.get());
+					output.accept(SurvivalReimaginedModItems.RAW_URANINITE_NUGGET.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_URANIUM.get());
 					output.accept(SurvivalReimaginedModItems.URANIUM_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_URANINITE.get());
