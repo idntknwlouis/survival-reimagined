@@ -21,7 +21,7 @@ public final class SurvivalReimaginedModTabs {
 		var id = SurvivalReimaginedMod.asResource("survival_reborn");
 		CreativeModeTab tab = FabricItemGroup.builder()
 				.title(Component.translatable("item_group.survival_reimagined.survival_reborn"))
-				.icon(() -> new ItemStack(SurvivalReimaginedModItems.TIN_INGOT.get()))
+				.icon(() -> new ItemStack(SurvivalReimaginedModItems.HEART.get()))
 				.displayItems((parameters, output) -> {
 					output.accept(SurvivalReimaginedModItems.STONE_ROCK.get());
 					output.accept(SurvivalReimaginedModItems.FLINT_TOOL.get());
