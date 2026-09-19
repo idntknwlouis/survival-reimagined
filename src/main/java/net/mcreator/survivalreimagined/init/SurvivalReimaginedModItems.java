@@ -12,6 +12,7 @@ import net.mcreator.survivalreimagined.item.CopperChunkItem;
 import net.mcreator.survivalreimagined.item.RawTinItem;
 import net.mcreator.survivalreimagined.item.RoughTinItem;
 import net.mcreator.survivalreimagined.item.StoneRockItem;
+import net.mcreator.survivalreimagined.item.SurfaceRockItem;
 import net.mcreator.survivalreimagined.item.TinChunkItem;
 import net.mcreator.survivalreimagined.item.TinIngotItem;
 import net.mcreator.survivalreimagined.item.TinNuggetItem;
@@ -40,6 +41,29 @@ public final class SurvivalReimaginedModItems {
 
 	public static final RegistryEntry<Item> ANDESITE_ROCK = register("andesite_rock", AndesiteRockItem::new);
 	public static final RegistryEntry<Item> ANDESITE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.ANDESITE_ROCK_BLOCK);
+
+	public static final RegistryEntry<Item> GRANITE_ROCK = register("granite_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.GRANITE_ROCK_BLOCK::get, "block.stone.break"));
+	public static final RegistryEntry<Item> GRANITE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.GRANITE_ROCK_BLOCK);
+	public static final RegistryEntry<Item> DIORITE_ROCK = register("diorite_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.DIORITE_ROCK_B_LOCK::get, "block.stone.break"));
+	public static final RegistryEntry<Item> DIORITE_ROCK_B_LOCK = block(SurvivalReimaginedModBlocks.DIORITE_ROCK_B_LOCK);
+	public static final RegistryEntry<Item> DRIPSTONE_ROCK = register("dripstone_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.DRIPSTONE_ROCK_BLOCK::get, "block.dripstone_block.place"));
+	public static final RegistryEntry<Item> DRIPSTONE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.DRIPSTONE_ROCK_BLOCK);
+	public static final RegistryEntry<Item> CALCITE_ROCK = register("calcite_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.CALCITE_ROCK_BLOCK::get, "block.calcite.place"));
+	public static final RegistryEntry<Item> CALCITE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.CALCITE_ROCK_BLOCK);
+	public static final RegistryEntry<Item> TUFF_ROCK = register("tuff_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.TUFF_ROCK_BLOCK::get, "block.polished_tuff.place"));
+	public static final RegistryEntry<Item> TUFF_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.TUFF_ROCK_BLOCK);
+	public static final RegistryEntry<Item> MOSSY_STONE_ROCK = register("mossy_stone_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.MOSSY_STONE_ROCK_BLOCK::get, "block.stone.break"));
+	public static final RegistryEntry<Item> MOSSY_STONE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.MOSSY_STONE_ROCK_BLOCK);
+	public static final RegistryEntry<Item> NETHERRACK_ROCK = register("netherrack_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.NETHERRACK_ROCK_BLOCK::get, "block.netherrack.place"));
+	public static final RegistryEntry<Item> NETHERRACK_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.NETHERRACK_ROCK_BLOCK);
+	public static final RegistryEntry<Item> END_STONE_ROCK = register("end_stone_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.END_STONE_ROCK_BLOCK::get, "block.stone.break"));
+	public static final RegistryEntry<Item> END_STONE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.END_STONE_ROCK_BLOCK);
+	public static final RegistryEntry<Item> BLACKSTONE_ROCK = register("blackstone_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.BLACKSTONE_ROCK_BLOCK::get, "block.stone.break"));
+	public static final RegistryEntry<Item> BLACKSTONE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.BLACKSTONE_ROCK_BLOCK);
+	public static final RegistryEntry<Item> BASALT_ROCK = register("basalt_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.BASALT_ROCK_BLOCK::get, "block.basalt.place"));
+	public static final RegistryEntry<Item> BASALT_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.BASALT_ROCK_BLOCK);
+	public static final RegistryEntry<Item> DEEPSLATE_ROCK = register("deepslate_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK::get, "block.deepslate.place"));
+	public static final RegistryEntry<Item> DEEPSLATE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK);
 
 	private SurvivalReimaginedModItems() {
 	}
