@@ -11,11 +11,16 @@ import net.minecraft.world.inventory.MenuType;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 import net.mcreator.survivalreimagined.world.inventory.ForgeGUIMenu;
+import net.mcreator.survivalreimagined.world.inventory.MetalRefiningTableGUIMenu;
 
 public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<ForgeGUIMenu>> FORGE_GUI = register(
 			"forge_gui",
 			new ExtendedScreenHandlerType<>(ForgeGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<MetalRefiningTableGUIMenu>> METAL_REFINING_TABLE_GUI = register(
+			"metal_refining_table_gui",
+			new ExtendedScreenHandlerType<>(MetalRefiningTableGUIMenu::new, BlockPos.STREAM_CODEC)
 	);
 
 	private SurvivalReimaginedModMenus() {

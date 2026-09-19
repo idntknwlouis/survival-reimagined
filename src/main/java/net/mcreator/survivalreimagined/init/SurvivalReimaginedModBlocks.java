@@ -15,6 +15,7 @@ import net.mcreator.survivalreimagined.block.DeepslateTinOreBlock;
 import net.mcreator.survivalreimagined.block.FlintblockBlock;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.block.IngotMoldBlock;
+import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
 import net.mcreator.survivalreimagined.block.ToolMoldBlock;
 import net.mcreator.survivalreimagined.block.ClayMoldBlock;
 import net.mcreator.survivalreimagined.block.PlateBlock;
@@ -34,6 +35,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TIN = register("block_of_raw_tin", BlockOfRawTinBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
 	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
+	public static final RegistryEntry<Block> METAL_REFINING_TABLE = register("metal_refining_table", MetalRefiningTableBlock::new);
 	public static final RegistryEntry<Block> ANTHRACITE_BLOCK = register("anthracite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> LIGINITE_BLOCK = register("liginite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_MANGANESE = register("block_of_raw_manganese", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));

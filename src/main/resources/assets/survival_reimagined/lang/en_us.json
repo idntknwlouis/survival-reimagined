@@ -158,5 +158,7 @@
   "item.survival_reimagined.diamond_hoe_blade": "Diamond Hoe Blade",
   "item.survival_reimagined.diamond_hammer_head": "Diamond Hammer Head",
   "item.survival_reimagined.diamond_saw_blade": "Diamond Saw Blade",
-  "item.survival_reimagined.diamond_knife_blade": "Diamond Knife Blade"
+  "item.survival_reimagined.diamond_knife_blade": "Diamond Knife Blade",
+  "block.survival_reimagined.metal_refining_table": "Metal Refining Table",
+  "gui.survival_reimagined.metal_refining_table_gui.label_metal_refining_table": "Metal Refining Table"
 }
