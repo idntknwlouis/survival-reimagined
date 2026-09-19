@@ -49,6 +49,9 @@ public final class SurvivalReimaginedModTabs {
 
 					output.accept(SurvivalReimaginedModItems.FORGE.get());
 					output.accept(SurvivalReimaginedModItems.METAL_REFINING_TABLE.get());
+					output.accept(SurvivalReimaginedModItems.MINERAL_PROCESSING_TABLE.get());
+					output.accept(SurvivalReimaginedModItems.REACTOR_ROD.get());
+					output.accept(SurvivalReimaginedModItems.DEPLETED_REACTOR_ROD.get());
 					output.accept(SurvivalReimaginedModItems.TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_TIN.get());
