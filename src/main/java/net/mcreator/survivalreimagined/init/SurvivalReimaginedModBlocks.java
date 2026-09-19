@@ -5,6 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.block.AndesiteRockBlockBlock;
 import net.mcreator.survivalreimagined.block.BlockOfRawTinBlock;
 import net.mcreator.survivalreimagined.block.BlockOfTinBlock;
 import net.mcreator.survivalreimagined.block.CopperRockBlockBlock;
@@ -26,6 +27,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
 
 	public static final RegistryEntry<Block> COPPER_ROCK_BLOCK = register("copper_rock_block", CopperRockBlockBlock::new);
+	public static final RegistryEntry<Block> ANDESITE_ROCK_BLOCK = register("andesite_rock_block", AndesiteRockBlockBlock::new);
 
 	private SurvivalReimaginedModBlocks() {
 	}
