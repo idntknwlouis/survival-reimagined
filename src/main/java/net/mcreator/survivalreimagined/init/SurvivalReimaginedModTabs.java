@@ -28,6 +28,8 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.STONE_ROCK_BLOC.get());
 					output.accept(SurvivalReimaginedModItems.COPPER_CHUNK.get());
 					output.accept(SurvivalReimaginedModItems.COPPER_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.ANDESITE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.ANDESITE_ROCK_BLOCK.get());
 
 					output.accept(SurvivalReimaginedModItems.TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TIN_ORE.get());
