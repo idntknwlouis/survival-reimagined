@@ -6,10 +6,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBiomeModifications;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModFeatures;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMenus;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModRecipeTypes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
