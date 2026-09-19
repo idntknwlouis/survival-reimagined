@@ -1,0 +1,57 @@
+package net.mcreator.survivalreimagined.block;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+import net.mcreator.survivalreimagined.procedures.CopperRockBlockNeighborBlockChangesProcedure;
+
+public class CopperRockBlockBlock extends Block {
+	private static final VoxelShape SHAPE = Shapes.or(
+			box(7, 0, 6, 11, 2, 10),
+			box(7, 2, 7, 10, 3, 10),
+			box(7, 0, 10, 10, 2, 11),
+			box(6, 0, 7, 7, 2, 11));
+
+	public CopperRockBlockBlock() {
+		super(BlockBehaviour.Properties.of()
+				.instabreak()
+				.noOcclusion()
+				.isRedstoneConductor((state, getter, pos) -> false)
+				.dynamicShape()
+				.offsetType(Block.OffsetType.XZ));
+	}
+
+	@Override
+	protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		Vec3 offset = state.getOffset(world, pos);
+		return SHAPE.move(offset.x, offset.y, offset.z);
+	}
+
+	@Override
+	protected VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return Shapes.empty();
+	}
+
+	@Override
+	protected ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+		return new ItemStack(SurvivalReimaginedModItems.COPPER_CHUNK.get());
+	}
+
+	@Override
+	protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock,
+			BlockPos fromPos, boolean moving) {
+		super.neighborChanged(state, world, pos, neighborBlock, fromPos, moving);
+		CopperRockBlockNeighborBlockChangesProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+}
