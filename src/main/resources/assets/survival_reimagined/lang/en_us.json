@@ -104,5 +104,19 @@
   "item.survival_reimagined.steel_hoe_blade": "Steel Hoe Blade",
   "item.survival_reimagined.steel_hammer_head": "Steel Hammer Head",
   "item.survival_reimagined.steel_saw_blade": "Steel Saw Blade",
-  "item.survival_reimagined.steel_knife_blade": "Steel Knife Blade"
+  "item.survival_reimagined.steel_knife_blade": "Steel Knife Blade",
+  "item.survival_reimagined.small_stick": "Small Stick",
+  "item.survival_reimagined.wood_ingot": "Wood Ingot",
+  "item.survival_reimagined.wooden_hammer": "Wooden Hammer",
+  "item.survival_reimagined.wooden_saw": "Wooden Saw",
+  "item.survival_reimagined.wooden_knife": "Wooden Survival Knife",
+  "block.survival_reimagined.ingot_clay_mold": "Ingot Clay Mold",
+  "block.survival_reimagined.clay_sword_blade_mold": "Clay Sword Blade Mold",
+  "block.survival_reimagined.clay_pickaxe_head_mold": "Clay Pickaxe Head Mold",
+  "block.survival_reimagined.clay_axe_head_mold": "Clay Axe Head Mold",
+  "block.survival_reimagined.clay_shovel_head_mold": "Clay Shovel Head Mold",
+  "block.survival_reimagined.clay_hoe_blade_mold": "Clay Hoe Blade Mold",
+  "block.survival_reimagined.clay_hammer_head_mold": "Clay Hammer Head Mold",
+  "block.survival_reimagined.clay_saw_blade_mold": "Clay Saw Blade Mold",
+  "block.survival_reimagined.clay_knife_mold": "Clay Knife Mold"
 }

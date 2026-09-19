@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "survival_reimagined:block/clay_hoe_blade_mold"
+      }
+    }
+  ]
+}

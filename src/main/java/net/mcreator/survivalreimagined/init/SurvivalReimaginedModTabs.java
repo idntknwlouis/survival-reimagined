@@ -93,6 +93,20 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_BRONZE.get());
 
+					output.accept(SurvivalReimaginedModItems.SMALL_STICK.get());
+					output.accept(SurvivalReimaginedModItems.WOOD_INGOT.get());
+					output.accept(SurvivalReimaginedModItems.WOODEN_HAMMER.get());
+					output.accept(SurvivalReimaginedModItems.WOODEN_SAW.get());
+					output.accept(SurvivalReimaginedModItems.WOODEN_KNIFE.get());
+					output.accept(SurvivalReimaginedModItems.INGOT_CLAY_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_SWORD_BLADE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_PICKAXE_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_AXE_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_SHOVEL_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_HOE_BLADE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_HAMMER_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_SAW_BLADE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_KNIFE_MOLD.get());
 					output.accept(SurvivalReimaginedModItems.INGOT_MOLD.get());
 					output.accept(SurvivalReimaginedModItems.SWORD_BLADE_MOLD.get());
 					output.accept(SurvivalReimaginedModItems.PICKAXE_HEAD_MOLD.get());

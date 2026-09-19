@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aab",
+    "ccb"
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:hemp_fiber"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    },
+    "c": {
+      "tag": "c:planks/single"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:wooden_saw",
+    "count": 1
+  }
+}
