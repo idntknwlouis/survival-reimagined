@@ -5,6 +5,9 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,6 +31,9 @@ public class SurvivalReimaginedMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		SurvivalReimaginedModSounds.register();
+		SurvivalReimaginedModParticleTypes.register();
+
 		ServerTickEvents.END_SERVER_TICK.register(SurvivalReimaginedMod::onServerTick);
 		LOGGER.info("Initializing Survival Reimagined Fabric port");
 	}
