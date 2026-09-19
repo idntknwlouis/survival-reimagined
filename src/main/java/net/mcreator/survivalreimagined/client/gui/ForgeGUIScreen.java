@@ -6,8 +6,10 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 
+import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.world.inventory.ForgeGUIMenu;
 
 public class ForgeGUIScreen extends AbstractContainerScreen<ForgeGUIMenu> {
@@ -31,6 +33,18 @@ public class ForgeGUIScreen extends AbstractContainerScreen<ForgeGUIMenu> {
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+
+		int fuelHeight = Mth.clamp(this.menu.getFuelMeter() * 29 / ForgeBlockEntity.MAX_FUEL, 0, 29);
+		if (fuelHeight > 0) {
+			int bottom = this.topPos + 79;
+			graphics.fill(this.leftPos + 12, bottom - fuelHeight, this.leftPos + 20, bottom, 0xFFFF6A00);
+		}
+
+		int progressWidth = Mth.clamp(this.menu.getBurnTime() * 16 / ForgeBlockEntity.MAX_BURN_TIME, 0, 16);
+		if (progressWidth > 0) {
+			graphics.fill(this.leftPos + 112, this.topPos + 35, this.leftPos + 112 + progressWidth, this.topPos + 51, 0xFFFFA000);
+		}
+
 		RenderSystem.disableBlend();
 	}
 

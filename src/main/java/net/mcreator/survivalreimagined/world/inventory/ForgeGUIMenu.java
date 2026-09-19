@@ -1,15 +1,13 @@
 package net.mcreator.survivalreimagined.world.inventory;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
@@ -17,24 +15,26 @@ import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMenus;
 
 public class ForgeGUIMenu extends AbstractContainerMenu {
-	private static final TagKey<Item> FUELS = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:fuels"));
 	private static final int FORGE_SLOT_COUNT = 4;
 	private static final int PLAYER_INVENTORY_END = FORGE_SLOT_COUNT + 27;
 	private final Container container;
+	private final ContainerData data;
 	private final BlockPos blockPos;
 
 	public ForgeGUIMenu(int id, Inventory inventory, BlockPos pos) {
-		this(id, inventory, new SimpleContainer(ForgeBlockEntity.CONTAINER_SIZE), pos);
+		this(id, inventory, new SimpleContainer(ForgeBlockEntity.CONTAINER_SIZE), new SimpleContainerData(2), pos);
 	}
 
 	public ForgeGUIMenu(int id, Inventory inventory, ForgeBlockEntity forge) {
-		this(id, inventory, forge, forge.getBlockPos());
+		this(id, inventory, forge, forge.getDataAccess(), forge.getBlockPos());
 	}
 
-	private ForgeGUIMenu(int id, Inventory inventory, Container container, BlockPos pos) {
+	private ForgeGUIMenu(int id, Inventory inventory, Container container, ContainerData data, BlockPos pos) {
 		super(SurvivalReimaginedModMenus.FORGE_GUI.get(), id);
 		checkContainerSize(container, ForgeBlockEntity.CONTAINER_SIZE);
+		checkContainerDataCount(data, 2);
 		this.container = container;
+		this.data = data;
 		this.blockPos = pos;
 		this.container.startOpen(inventory.player);
 
@@ -43,7 +43,7 @@ public class ForgeGUIMenu extends AbstractContainerMenu {
 		this.addSlot(new Slot(container, 2, 26, 62) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(FUELS);
+				return ForgeBlockEntity.getFuelValue(stack) > 0;
 			}
 		});
 		this.addSlot(new Slot(container, 3, 134, 36) {
@@ -61,10 +61,20 @@ public class ForgeGUIMenu extends AbstractContainerMenu {
 		for (int column = 0; column < 9; ++column) {
 			this.addSlot(new Slot(inventory, column, 8 + column * 18, 142));
 		}
+
+		this.addDataSlots(data);
 	}
 
 	public BlockPos getBlockPos() {
 		return this.blockPos;
+	}
+
+	public int getFuelMeter() {
+		return this.data.get(0);
+	}
+
+	public int getBurnTime() {
+		return this.data.get(1);
 	}
 
 	@Override

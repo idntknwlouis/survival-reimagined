@@ -1,7 +1,9 @@
 package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.MenuProvider;
@@ -39,6 +41,23 @@ public class ForgeBlock extends Block implements EntityBlock {
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		BlockState state = super.getStateForPlacement(context);
 		return state == null ? null : state.setValue(BLOCKSTATE, 0);
+	}
+
+	@Override
+	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(state, level, pos, oldState, moving);
+		if (!level.isClientSide()) {
+			level.scheduleTick(pos, this, 5);
+		}
+	}
+
+	@Override
+	protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		super.tick(state, level, pos, random);
+		if (level.getBlockEntity(pos) instanceof ForgeBlockEntity forge) {
+			ForgeBlockEntity.serverTick(level, pos, state, forge);
+		}
+		level.scheduleTick(pos, this, 5);
 	}
 
 	@Override
