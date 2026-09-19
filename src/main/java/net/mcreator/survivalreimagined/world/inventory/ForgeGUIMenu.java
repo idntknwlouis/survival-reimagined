@@ -1,8 +1,10 @@
 package net.mcreator.survivalreimagined.world.inventory;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,6 +17,7 @@ import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMenus;
 
 public class ForgeGUIMenu extends AbstractContainerMenu {
+	private static final TagKey<Item> FUELS = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:fuels"));
 	private static final int FORGE_SLOT_COUNT = 4;
 	private static final int PLAYER_INVENTORY_END = FORGE_SLOT_COUNT + 27;
 	private final Container container;
@@ -40,7 +43,7 @@ public class ForgeGUIMenu extends AbstractContainerMenu {
 		this.addSlot(new Slot(container, 2, 26, 62) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(ItemTags.create(ResourceLocation.parse("c:fuels")));
+				return stack.is(FUELS);
 			}
 		});
 		this.addSlot(new Slot(container, 3, 134, 36) {
