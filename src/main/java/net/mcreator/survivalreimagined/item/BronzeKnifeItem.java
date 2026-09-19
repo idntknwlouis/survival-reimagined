@@ -1,7 +1,6 @@
 package net.mcreator.survivalreimagined.item;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +21,7 @@ public class BronzeKnifeItem extends Item {
 				.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()));
 	}
 	@Override public float getDestroySpeed(ItemStack stack, BlockState state) {
-		return Stream.of(BlockTags.create(ResourceLocation.parse("c:carcasses")), BlockTags.create(ResourceLocation.parse("c:smaller_carcasses")), BlockTags.create(ResourceLocation.parse("c:carcass/equine"))).anyMatch(state::is) ? 6f : 1;
+		return Stream.of(BlockTags.create("c:carcasses"), BlockTags.create("c:smaller_carcasses"), BlockTags.create("c:carcass/equine")).anyMatch(state::is) ? 6f : 1;
 	}
 	@Override public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
 		stack.hurtAndBreak(1, entity, LivingEntity.getSlotForHand(entity.getUsedItemHand())); return true;
