@@ -234,5 +234,9 @@
   "block.survival_reimagined.argentite_block": "Argentite Block",
   "block.survival_reimagined.sapphire_block": "Sapphire Block",
   "block.survival_reimagined.block_of_ruby": "Block Of Ruby",
-  "block.survival_reimagined.block_of_amber": "Block Of Amber"
+  "block.survival_reimagined.block_of_amber": "Block Of Amber",
+  "block.survival_reimagined.mineral_processing_table": "Mineral Processing Table",
+  "item.survival_reimagined.reactor_rod": "Reactor Rod",
+  "item.survival_reimagined.depleted_reactor_rod": "Depleted Reactor Rod",
+  "gui.survival_reimagined.mptgui.label_mineral_processing_table": "Mineral Processing Table"
 }

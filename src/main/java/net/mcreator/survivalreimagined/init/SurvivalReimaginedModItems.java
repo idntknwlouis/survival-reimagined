@@ -112,6 +112,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_SAPPHIRE = simple("rough_sapphire");
 	public static final RegistryEntry<Item> ROUGH_RUBY = simple("rough_ruby");
 	public static final RegistryEntry<Item> ROUGH_AMBER = simple("rough_amber");
+	public static final RegistryEntry<Item> REACTOR_ROD = simpleUnstackable("reactor_rod");
+	public static final RegistryEntry<Item> DEPLETED_REACTOR_ROD = simpleUnstackable("depleted_reactor_rod");
 	public static final RegistryEntry<Item> WOODEN_RUNE = simple("wooden_rune");
 	public static final RegistryEntry<Item> EMPTY_GOLD_RUNE = simple("empty_gold_rune");
 	public static final RegistryEntry<Item> EMPTY_SILVER_RUNE = simple("empty_silver_rune");
@@ -177,6 +179,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BLOCK_OF_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_TIN);
 	public static final RegistryEntry<Item> FORGE = block(SurvivalReimaginedModBlocks.FORGE);
 	public static final RegistryEntry<Item> METAL_REFINING_TABLE = block(SurvivalReimaginedModBlocks.METAL_REFINING_TABLE);
+	public static final RegistryEntry<Item> MINERAL_PROCESSING_TABLE = block(SurvivalReimaginedModBlocks.MINERAL_PROCESSING_TABLE);
 	public static final RegistryEntry<Item> ANTHRACITE_BLOCK = block(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK);
 	public static final RegistryEntry<Item> LIGINITE_BLOCK = block(SurvivalReimaginedModBlocks.LIGINITE_BLOCK);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);

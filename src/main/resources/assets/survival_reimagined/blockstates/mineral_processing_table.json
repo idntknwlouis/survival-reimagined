@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,powered=false": {"model": "survival_reimagined:block/mineral_processing_table"},
+    "facing=east,powered=false": {"model": "survival_reimagined:block/mineral_processing_table", "y": 90},
+    "facing=south,powered=false": {"model": "survival_reimagined:block/mineral_processing_table", "y": 180},
+    "facing=west,powered=false": {"model": "survival_reimagined:block/mineral_processing_table", "y": 270},
+    "facing=north,powered=true": {"model": "survival_reimagined:block/mineral_processing_table_powered"},
+    "facing=east,powered=true": {"model": "survival_reimagined:block/mineral_processing_table_powered", "y": 90},
+    "facing=south,powered=true": {"model": "survival_reimagined:block/mineral_processing_table_powered", "y": 180},
+    "facing=west,powered=true": {"model": "survival_reimagined:block/mineral_processing_table_powered", "y": 270}
+  }
+}
