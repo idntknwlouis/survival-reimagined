@@ -33,23 +33,23 @@ public class CopperRockBlockBlock extends Block {
 	}
 
 	@Override
-	protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		Vec3 offset = state.getOffset(world, pos);
 		return SHAPE.move(offset.x, offset.y, offset.z);
 	}
 
 	@Override
-	protected VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
 	}
 
 	@Override
-	protected ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 		return new ItemStack(SurvivalReimaginedModItems.COPPER_CHUNK.get());
 	}
 
 	@Override
-	protected void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock,
+	public void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock,
 			BlockPos fromPos, boolean moving) {
 		super.neighborChanged(state, world, pos, neighborBlock, fromPos, moving);
 		CopperRockBlockNeighborBlockChangesProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
