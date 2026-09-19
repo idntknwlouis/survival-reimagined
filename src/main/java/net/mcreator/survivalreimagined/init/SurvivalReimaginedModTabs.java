@@ -74,6 +74,52 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.TIN_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_TIN.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_TIN.get());
+
+					output.accept(SurvivalReimaginedModItems.ANTHRACITE.get());
+					output.accept(SurvivalReimaginedModItems.SMALL_ANTHRACITE.get());
+					output.accept(SurvivalReimaginedModItems.ANTHRACITE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.LIGINITE.get());
+					output.accept(SurvivalReimaginedModItems.SMALL_LIGINITE.get());
+					output.accept(SurvivalReimaginedModItems.LIGINITE_BLOCK.get());
+
+					output.accept(SurvivalReimaginedModItems.RAW_MANGANESE.get());
+					output.accept(SurvivalReimaginedModItems.ROUGH_MANGANESE.get());
+					output.accept(SurvivalReimaginedModItems.MANGANESE_INGOT.get());
+					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_MANGANESE.get());
+					output.accept(SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get());
+
+					output.accept(SurvivalReimaginedModItems.ROUGH_STEEL.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_INGOT.get());
+					output.accept(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get());
+					output.accept(SurvivalReimaginedModItems.BLOCK_OF_BRONZE.get());
+
+					output.accept(SurvivalReimaginedModItems.INGOT_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.SWORD_BLADE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.PICKAXE_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.AXE_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.SHOVEL_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.HOE_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.HAMMER_HEAD_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.SAW_BLADE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.KNIFE_BLADE_MOLD.get());
+
+					output.accept(SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_AXE_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_SHOVEL_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_HOE_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_HAMMER_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_SAW_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_KNIFE_BLADE.get());
+
+					output.accept(SurvivalReimaginedModItems.STEEL_SWORD_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_PICKAXE_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_AXE_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_SHOVEL_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_HOE_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_SAW_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get());
 				})
 				.build();
 		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, id, tab);
