@@ -223,7 +223,7 @@ The Forge and Metal Refining Table are now largely functional. The current porti
 
 ### Not fully ported resource families
 
-- ⬜ Silver ore/resource chain
+- ✅ Silver ore/resource chain (native Silver + Argentite, refining, storage, Forge ingot molding)
 - ⬜ Redstone metal chain
 - ⬜ Remaining original advanced alloy/material families
 - ⬜ Create/compat metal families
@@ -255,9 +255,9 @@ The Forge and Metal Refining Table are now largely functional. The current porti
 - ⬜ Uranophane variants
 - ⬜ Ilmenite variants
 - ⬜ Silver / Argentite ore family
-- ⬜ Sapphire ore family
-- ⬜ Ruby ore family
-- ⬜ Amber ore family
+- 🟡 Sapphire ore family (stone/deepslate worldgen + Rough Sapphire; polishing awaits Mineral Processing Table)
+- 🟡 Ruby ore family (stone/deepslate worldgen + Rough Ruby; polishing awaits Mineral Processing Table)
+- 🟡 Amber ore family (stone/deepslate worldgen + Rough Amber; polishing awaits Mineral Processing Table)
 - ⬜ Kimberlite ore/geology family
 - ⬜ Remaining coal/mineral ore variants
 - ⬜ Full Shale / Basalt geology and biome integration
@@ -405,7 +405,7 @@ Port native Survival Reimagined content first.
 
 ## Suggested port order
 
-1. **Silver + Sapphire/Amber/Ruby resource progression**
+1. **Mineral Processing Table + rough gem polishing**
 2. **Shale/Basalt/Kimberlite geology required by native ores**
 3. **Remaining native metal/mineral chains**
 4. **Mineral Processing Table**
