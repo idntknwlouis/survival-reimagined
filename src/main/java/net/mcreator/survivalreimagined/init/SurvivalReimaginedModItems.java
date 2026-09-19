@@ -7,8 +7,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.item.CopperChunkItem;
 import net.mcreator.survivalreimagined.item.RawTinItem;
 import net.mcreator.survivalreimagined.item.RoughTinItem;
+import net.mcreator.survivalreimagined.item.StoneRockItem;
 import net.mcreator.survivalreimagined.item.TinChunkItem;
 import net.mcreator.survivalreimagined.item.TinIngotItem;
 import net.mcreator.survivalreimagined.item.TinNuggetItem;
@@ -17,6 +19,10 @@ import net.mcreator.survivalreimagined.util.RegistryEntry;
 import java.util.function.Supplier;
 
 public final class SurvivalReimaginedModItems {
+	public static final RegistryEntry<Item> FLINTBLOCK = block(SurvivalReimaginedModBlocks.FLINTBLOCK);
+	public static final RegistryEntry<Item> STONE_ROCK = register("stone_rock", StoneRockItem::new);
+	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
+
 	public static final RegistryEntry<Item> TIN_ORE = block(SurvivalReimaginedModBlocks.TIN_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_TIN_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_TIN_ORE);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TIN);
@@ -27,6 +33,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> TIN_NUGGET = register("tin_nugget", TinNuggetItem::new);
 	public static final RegistryEntry<Item> TIN_CHUNK = register("tin_chunk", TinChunkItem::new);
 	public static final RegistryEntry<Item> ROUGH_TIN = register("rough_tin", RoughTinItem::new);
+
+	public static final RegistryEntry<Item> COPPER_CHUNK = register("copper_chunk", CopperChunkItem::new);
+	public static final RegistryEntry<Item> COPPER_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.COPPER_ROCK_BLOCK);
 
 	private SurvivalReimaginedModItems() {
 	}
