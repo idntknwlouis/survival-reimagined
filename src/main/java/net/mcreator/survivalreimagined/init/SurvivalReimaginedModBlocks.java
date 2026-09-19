@@ -29,6 +29,7 @@ import java.util.function.Supplier;
 public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> FLINTBLOCK = register("flintblock", FlintblockBlock::new);
 	public static final RegistryEntry<Block> STONE_ROCK_BLOC = register("stone_rock_bloc", StoneRockBlocBlock::new);
+	public static final RegistryEntry<Block> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.OBSIDIAN_ROCK.get()));
 
 	public static final RegistryEntry<Block> TIN_ORE = register("tin_ore", TinOreBlock::new);
 	public static final RegistryEntry<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", DeepslateTinOreBlock::new);

@@ -8,6 +8,9 @@ import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
+import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
+import net.mcreator.survivalreimagined.item.DiamondSawItem;
+import net.mcreator.survivalreimagined.item.DiamondHammerItem;
 import net.mcreator.survivalreimagined.item.SteelKnifeItem;
 import net.mcreator.survivalreimagined.item.SteelSawItem;
 import net.mcreator.survivalreimagined.item.SteelHammerItem;
@@ -45,6 +48,9 @@ import java.util.function.Supplier;
 public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FLINTBLOCK = block(SurvivalReimaginedModBlocks.FLINTBLOCK);
 	public static final RegistryEntry<Item> STONE_ROCK = register("stone_rock", StoneRockItem::new);
+	public static final RegistryEntry<Item> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.OBSIDIAN_ROCK::get, "block.stone.place"));
+	public static final RegistryEntry<Item> OBSIDIAN_HANDLE = simple("obsidian_handle");
+	public static final RegistryEntry<Item> SMALL_OBSIDIAN_HANDLE = simple("small_obsidian_handle");
 	public static final RegistryEntry<Item> FLINT_TOOL = register("flint_tool", FlintToolItem::new);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
@@ -132,6 +138,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DIAMOND_HAMMER_HEAD = simpleUnstackable("diamond_hammer_head");
 	public static final RegistryEntry<Item> DIAMOND_SAW_BLADE = simpleUnstackable("diamond_saw_blade");
 	public static final RegistryEntry<Item> DIAMOND_KNIFE_BLADE = simpleUnstackable("diamond_knife_blade");
+	public static final RegistryEntry<Item> DIAMOND_HAMMER = register("diamond_hammer", DiamondHammerItem::new);
+	public static final RegistryEntry<Item> DIAMOND_SAW = register("diamond_saw", DiamondSawItem::new);
+	public static final RegistryEntry<Item> DIAMOND_KNIFE = register("diamond_knife", DiamondKnifeItem::new);
 	public static final RegistryEntry<Item> STONE_HAMMER = register("stone_hammer", StoneHammerItem::new);
 	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
 

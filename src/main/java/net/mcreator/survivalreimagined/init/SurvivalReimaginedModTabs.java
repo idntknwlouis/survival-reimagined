@@ -43,6 +43,9 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BLACKSTONE_ROCK.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_ROCK.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.OBSIDIAN_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.OBSIDIAN_HANDLE.get());
+					output.accept(SurvivalReimaginedModItems.SMALL_OBSIDIAN_HANDLE.get());
 
 					output.accept(SurvivalReimaginedModItems.FORGE.get());
 					output.accept(SurvivalReimaginedModItems.METAL_REFINING_TABLE.get());
@@ -155,6 +158,9 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.DIAMOND_HAMMER_HEAD.get());
 					output.accept(SurvivalReimaginedModItems.DIAMOND_SAW_BLADE.get());
 					output.accept(SurvivalReimaginedModItems.DIAMOND_KNIFE_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_HAMMER.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_SAW.get());
+					output.accept(SurvivalReimaginedModItems.DIAMOND_KNIFE.get());
 
 					output.accept(SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get());
 					output.accept(SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get());

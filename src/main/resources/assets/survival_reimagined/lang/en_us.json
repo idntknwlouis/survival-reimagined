@@ -181,5 +181,12 @@
   "item.survival_reimagined.steel_hoe": "Steel Hoe",
   "item.survival_reimagined.steel_hammer": "Steel Hammer",
   "item.survival_reimagined.steel_saw": "Steel Saw",
-  "item.survival_reimagined.steel_knife": "Steel Knife"
+  "item.survival_reimagined.steel_knife": "Steel Knife",
+  "block.survival_reimagined.obsidian_rock": "Obsidian Rock",
+  "item.survival_reimagined.obsidian_rock": "Obsidian Rock",
+  "item.survival_reimagined.obsidian_handle": "Obsidian Handle",
+  "item.survival_reimagined.small_obsidian_handle": "Small Obsidian Handle",
+  "item.survival_reimagined.diamond_hammer": "Diamond Hammer",
+  "item.survival_reimagined.diamond_saw": "Diamond Saw",
+  "item.survival_reimagined.diamond_knife": "Diamond Knife"
 }

@@ -161,6 +161,19 @@ public class MetalRefiningTableBlockEntity extends RandomizableContainerBlockEnt
 		if (first.is(SurvivalReimaginedModItems.SMALL_BRONZE_HANDLE.get()) && second.is(SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get())) {
 			return SurvivalReimaginedModItems.STEEL_KNIFE.get();
 		}
+
+		if (first.is(SurvivalReimaginedModItems.OBSIDIAN_HANDLE.get())) {
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_SWORD_BLADE.get())) return Items.DIAMOND_SWORD;
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_PICKAXE_HEAD.get())) return Items.DIAMOND_PICKAXE;
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_AXE_HEAD.get())) return Items.DIAMOND_AXE;
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_SHOVEL_HEAD.get())) return Items.DIAMOND_SHOVEL;
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_HOE_BLADE.get())) return Items.DIAMOND_HOE;
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_HAMMER_HEAD.get())) return SurvivalReimaginedModItems.DIAMOND_HAMMER.get();
+			if (second.is(SurvivalReimaginedModItems.DIAMOND_SAW_BLADE.get())) return SurvivalReimaginedModItems.DIAMOND_SAW.get();
+		}
+		if (first.is(SurvivalReimaginedModItems.SMALL_OBSIDIAN_HANDLE.get()) && second.is(SurvivalReimaginedModItems.DIAMOND_KNIFE_BLADE.get())) {
+			return SurvivalReimaginedModItems.DIAMOND_KNIFE.get();
+		}
 		return null;
 	}
 
