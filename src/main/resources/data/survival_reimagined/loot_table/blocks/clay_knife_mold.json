@@ -1,4 +1,20 @@
 {
   "type": "minecraft:block",
-  "pools": []
+  "random_sequence": "survival_reimagined:blocks/clay_knife_mold",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:clay_knife_mold"
+        }
+      ]
+    }
+  ]
 }
