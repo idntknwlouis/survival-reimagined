@@ -174,6 +174,23 @@ public class MetalRefiningTableBlockEntity extends RandomizableContainerBlockEnt
 		if (first.is(SurvivalReimaginedModItems.SMALL_OBSIDIAN_HANDLE.get()) && second.is(SurvivalReimaginedModItems.DIAMOND_KNIFE_BLADE.get())) {
 			return SurvivalReimaginedModItems.DIAMOND_KNIFE.get();
 		}
+
+		if (first.is(SurvivalReimaginedModItems.EMPTY_SILVER_RUNE.get())) {
+			if (second.is(SurvivalReimaginedModItems.SAPPHIRE.get())) return SurvivalReimaginedModItems.SAPPHIRE_SILVER_RUNE.get();
+			if (second.is(SurvivalReimaginedModItems.AMBER.get())) return SurvivalReimaginedModItems.SILVER_AMBER_RUNE.get();
+			if (second.is(Items.DIAMOND)) return SurvivalReimaginedModItems.SILVER_DIAMOND_RUNE.get();
+			if (second.is(Items.EMERALD)) return SurvivalReimaginedModItems.SILVER_EMERALD_RUNE.get();
+			if (second.is(SurvivalReimaginedModItems.RUBY.get())) return SurvivalReimaginedModItems.SILVER_RUBY_RUNE.get();
+			if (second.is(Items.LAPIS_LAZULI)) return SurvivalReimaginedModItems.SILVER_LAPIS_RUNE.get();
+		}
+		if (first.is(SurvivalReimaginedModItems.EMPTY_GOLD_RUNE.get())) {
+			if (second.is(SurvivalReimaginedModItems.SAPPHIRE.get())) return SurvivalReimaginedModItems.SAPPHIRE_GOLD_RUNE.get();
+			if (second.is(SurvivalReimaginedModItems.AMBER.get())) return SurvivalReimaginedModItems.GOLD_AMBER_RUNE.get();
+			if (second.is(Items.DIAMOND)) return SurvivalReimaginedModItems.GOLD_DIAMOND_RUNE.get();
+			if (second.is(Items.EMERALD)) return SurvivalReimaginedModItems.GOLD_EMERALD_RUNE.get();
+			if (second.is(SurvivalReimaginedModItems.RUBY.get())) return SurvivalReimaginedModItems.GOLD_RUBY_RUNE.get();
+			if (second.is(Items.LAPIS_LAZULI)) return SurvivalReimaginedModItems.GOLD_LAPIS_RUNE.get();
+		}
 		return null;
 	}
 

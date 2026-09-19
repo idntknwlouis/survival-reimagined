@@ -188,5 +188,20 @@
   "item.survival_reimagined.small_obsidian_handle": "Small Obsidian Handle",
   "item.survival_reimagined.diamond_hammer": "Diamond Hammer",
   "item.survival_reimagined.diamond_saw": "Diamond Saw",
-  "item.survival_reimagined.diamond_knife": "Diamond Knife"
+  "item.survival_reimagined.diamond_knife": "Diamond Knife",
+  "item.survival_reimagined.sapphire": "Sapphire",
+  "item.survival_reimagined.amber": "Amber",
+  "item.survival_reimagined.ruby": "Ruby",
+  "item.survival_reimagined.sapphire_silver_rune": "Sapphire Silver Rune",
+  "item.survival_reimagined.sapphire_gold_rune": "Sapphire Gold Rune",
+  "item.survival_reimagined.silver_amber_rune": "Silver Amber Rune",
+  "item.survival_reimagined.gold_amber_rune": "Gold Amber Rune",
+  "item.survival_reimagined.silver_diamond_rune": "Silver Diamond Rune",
+  "item.survival_reimagined.gold_diamond_rune": "Gold Diamond Rune",
+  "item.survival_reimagined.silver_emerald_rune": "Silver Emerald Rune",
+  "item.survival_reimagined.gold_emerald_rune": "Gold Emerald Rune",
+  "item.survival_reimagined.silver_ruby_rune": "Silver Ruby Rune",
+  "item.survival_reimagined.gold_ruby_rune": "Gold Ruby Rune",
+  "item.survival_reimagined.silver_lapis_rune": "Silver Lapis Rune",
+  "item.survival_reimagined.gold_lapis_rune": "Gold Lapis Rune"
 }

@@ -104,6 +104,21 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> WOODEN_RUNE = simple("wooden_rune");
 	public static final RegistryEntry<Item> EMPTY_GOLD_RUNE = simple("empty_gold_rune");
 	public static final RegistryEntry<Item> EMPTY_SILVER_RUNE = simple("empty_silver_rune");
+	public static final RegistryEntry<Item> SAPPHIRE = simple("sapphire");
+	public static final RegistryEntry<Item> AMBER = simple("amber");
+	public static final RegistryEntry<Item> RUBY = simple("ruby");
+	public static final RegistryEntry<Item> SAPPHIRE_SILVER_RUNE = rare("sapphire_silver_rune");
+	public static final RegistryEntry<Item> SAPPHIRE_GOLD_RUNE = rare("sapphire_gold_rune");
+	public static final RegistryEntry<Item> SILVER_AMBER_RUNE = rare("silver_amber_rune");
+	public static final RegistryEntry<Item> GOLD_AMBER_RUNE = rare("gold_amber_rune");
+	public static final RegistryEntry<Item> SILVER_DIAMOND_RUNE = rare("silver_diamond_rune");
+	public static final RegistryEntry<Item> GOLD_DIAMOND_RUNE = rare("gold_diamond_rune");
+	public static final RegistryEntry<Item> SILVER_EMERALD_RUNE = rare("silver_emerald_rune");
+	public static final RegistryEntry<Item> GOLD_EMERALD_RUNE = rare("gold_emerald_rune");
+	public static final RegistryEntry<Item> SILVER_RUBY_RUNE = rare("silver_ruby_rune");
+	public static final RegistryEntry<Item> GOLD_RUBY_RUNE = rare("gold_ruby_rune");
+	public static final RegistryEntry<Item> SILVER_LAPIS_RUNE = rare("silver_lapis_rune");
+	public static final RegistryEntry<Item> GOLD_LAPIS_RUNE = rare("gold_lapis_rune");
 	public static final RegistryEntry<Item> DIAMOND_PLATED_INGOT = simple("diamond_plated_ingot");
 	public static final RegistryEntry<Item> STEEL_INGOT = simple("steel_ingot");
 	public static final RegistryEntry<Item> BRONZE_SWORD_BLADE = simpleUnstackable("bronze_sword_blade");
@@ -233,6 +248,10 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simpleUnstackable(String path) {
 		return register(path, () -> new Item(new Item.Properties().stacksTo(1)));
+	}
+
+	private static RegistryEntry<Item> rare(String path) {
+		return register(path, () -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
 	}
 
 	private static RegistryEntry<Item> register(String path, Supplier<? extends Item> factory) {
