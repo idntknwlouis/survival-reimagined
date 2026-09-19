@@ -12,6 +12,7 @@ base {
 
 repositories {
 	mavenCentral()
+	maven { url = 'https://maven.blamejared.com' }
 }
 
 fabricApi {
@@ -28,6 +29,11 @@ dependencies {
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	// JEI is optional for players, but available in dev so custom machine recipes can be tested.
+	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"
+	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
+	modLocalRuntime "mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}"
 
 	// The NeoForge version uses MixinExtras 0.5.3 in several mixins.
 	include(modImplementation("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}"))
