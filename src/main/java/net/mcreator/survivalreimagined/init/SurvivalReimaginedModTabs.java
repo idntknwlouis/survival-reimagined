@@ -30,6 +30,28 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.COPPER_ROCK_BLOCK.get());
 					output.accept(SurvivalReimaginedModItems.ANDESITE_ROCK.get());
 					output.accept(SurvivalReimaginedModItems.ANDESITE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.GRANITE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.GRANITE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.DIORITE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.DIORITE_ROCK_B_LOCK.get());
+					output.accept(SurvivalReimaginedModItems.DRIPSTONE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.DRIPSTONE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.CALCITE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.CALCITE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.TUFF_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.TUFF_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.MOSSY_STONE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.MOSSY_STONE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.NETHERRACK_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.NETHERRACK_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.END_STONE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.END_STONE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.BLACKSTONE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.BLACKSTONE_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_ROCK_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.DEEPSLATE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.DEEPSLATE_ROCK_BLOCK.get());
 
 					output.accept(SurvivalReimaginedModItems.TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TIN_ORE.get());
