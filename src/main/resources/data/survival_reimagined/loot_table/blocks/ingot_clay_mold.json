@@ -1,14 +1,4 @@
 {
   "type": "minecraft:block",
-  "pools": [
-    {
-      "rolls": 1,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "survival_reimagined:ingot_clay_mold"
-        }
-      ]
-    }
-  ]
+  "pools": []
 }
