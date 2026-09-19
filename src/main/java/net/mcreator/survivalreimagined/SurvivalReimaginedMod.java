@@ -9,6 +9,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModTabs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModParticleTypes.register();
 		SurvivalReimaginedModBlocks.register();
 		SurvivalReimaginedModItems.register();
+		SurvivalReimaginedModTabs.register();
 
 		ServerTickEvents.END_SERVER_TICK.register(SurvivalReimaginedMod::onServerTick);
 		LOGGER.info("Initializing Survival Reimagined Fabric port");
