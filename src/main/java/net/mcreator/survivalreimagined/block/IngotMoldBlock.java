@@ -11,7 +11,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class IngotMoldBlock extends Block {
-	private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 2, 16);
+	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 2, 16);
 
 	public IngotMoldBlock() {
 		super(BlockBehaviour.Properties.of()
