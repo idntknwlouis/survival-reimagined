@@ -38,18 +38,18 @@ public class FlintblockBlock extends Block {
 	}
 
 	@Override
-	protected VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		Vec3 offset = state.getOffset(world, pos);
 		return SHAPE.move(offset.x, offset.y, offset.z);
 	}
 
 	@Override
-	protected VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+	public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
 	}
 
 	@Override
-	protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 		if (level instanceof LevelAccessor world) {
 			return FlintblockBlockValidPlacementConditionProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		}
@@ -57,7 +57,7 @@ public class FlintblockBlock extends Block {
 	}
 
 	@Override
-	protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
+	public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
 			LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
 		return state.canSurvive(world, pos)
 				? super.updateShape(state, direction, neighborState, world, pos, neighborPos)
@@ -65,7 +65,7 @@ public class FlintblockBlock extends Block {
 	}
 
 	@Override
-	protected ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+	public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
 		return new ItemStack(Items.FLINT);
 	}
 
