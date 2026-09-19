@@ -1,9 +1,8 @@
-# Survival Reimagined — Fabric Port
+# Survival Reimagined : Fabricated
 
-Fabric port of **Survival Reimagined**, based on the original NeoForge project by ShotUGMG.
+Fabric port of [**Survival Reimagined**](https://modrinth.com/mod/survival-reimagined), based on the original NeoForge project by ShotUGMG.
 
 This table tracks broad feature parity against the original mod.
-
 > ✅ = implemented / working  
 > 🟡 = partial / still needs parity work  
 > ❌ = not ported yet  
