@@ -9,6 +9,8 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -16,6 +18,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -182,10 +185,17 @@ public class MineralProcessingTableBlockEntity extends RandomizableContainerBloc
 		return output.isEmpty() || output.is(result) && output.getCount() < output.getMaxStackSize();
 	}
 
+	public static boolean isProcessingInput(ItemStack input) {
+		return getProcessingResult(input) != null;
+	}
+
 	private static Item getProcessingResult(ItemStack input) {
-		if (input.is(SurvivalReimaginedModItems.ROUGH_SAPPHIRE.get())) return SurvivalReimaginedModItems.SAPPHIRE.get();
-		if (input.is(SurvivalReimaginedModItems.ROUGH_RUBY.get())) return SurvivalReimaginedModItems.RUBY.get();
-		if (input.is(SurvivalReimaginedModItems.ROUGH_AMBER.get())) return SurvivalReimaginedModItems.AMBER.get();
+		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/diamond")))) return Items.DIAMOND;
+		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/emerald")))) return Items.EMERALD;
+		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/lapis")))) return Items.LAPIS_LAZULI;
+		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/sapphire")))) return SurvivalReimaginedModItems.SAPPHIRE.get();
+		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/ruby")))) return SurvivalReimaginedModItems.RUBY.get();
+		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/amber")))) return SurvivalReimaginedModItems.AMBER.get();
 		return null;
 	}
 
