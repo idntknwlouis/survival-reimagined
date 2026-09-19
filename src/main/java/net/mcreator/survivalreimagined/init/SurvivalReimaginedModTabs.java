@@ -173,6 +173,14 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get());
 					output.accept(SurvivalReimaginedModItems.STEEL_SAW_BLADE.get());
 					output.accept(SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_SWORD.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_PICKAXE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_AXE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_SHOVEL.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_HOE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_HAMMER.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_SAW.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_KNIFE.get());
 				})
 				.build();
 		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, id, tab);

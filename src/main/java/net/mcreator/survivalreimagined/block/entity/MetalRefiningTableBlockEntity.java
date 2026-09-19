@@ -148,6 +148,19 @@ public class MetalRefiningTableBlockEntity extends RandomizableContainerBlockEnt
 		if (first.is(SurvivalReimaginedModItems.SMALL_COPPER_HANDLE.get()) && second.is(SurvivalReimaginedModItems.BRONZE_KNIFE_BLADE.get())) {
 			return SurvivalReimaginedModItems.BRONZE_KNIFE.get();
 		}
+
+		if (first.is(SurvivalReimaginedModItems.BRONZE_HANDLE.get())) {
+			if (second.is(SurvivalReimaginedModItems.STEEL_SWORD_BLADE.get())) return SurvivalReimaginedModItems.STEEL_SWORD.get();
+			if (second.is(SurvivalReimaginedModItems.STEEL_PICKAXE_HEAD.get())) return SurvivalReimaginedModItems.STEEL_PICKAXE.get();
+			if (second.is(SurvivalReimaginedModItems.STEEL_AXE_HEAD.get())) return SurvivalReimaginedModItems.STEEL_AXE.get();
+			if (second.is(SurvivalReimaginedModItems.STEEL_SHOVEL_HEAD.get())) return SurvivalReimaginedModItems.STEEL_SHOVEL.get();
+			if (second.is(SurvivalReimaginedModItems.STEEL_HOE_BLADE.get())) return SurvivalReimaginedModItems.STEEL_HOE.get();
+			if (second.is(SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get())) return SurvivalReimaginedModItems.STEEL_HAMMER.get();
+			if (second.is(SurvivalReimaginedModItems.STEEL_SAW_BLADE.get())) return SurvivalReimaginedModItems.STEEL_SAW.get();
+		}
+		if (first.is(SurvivalReimaginedModItems.SMALL_BRONZE_HANDLE.get()) && second.is(SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get())) {
+			return SurvivalReimaginedModItems.STEEL_KNIFE.get();
+		}
 		return null;
 	}
 
