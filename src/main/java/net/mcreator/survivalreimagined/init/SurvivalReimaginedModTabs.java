@@ -25,6 +25,12 @@ public final class SurvivalReimaginedModTabs {
 				.displayItems((parameters, output) -> {
 					output.accept(SurvivalReimaginedModItems.FLINTBLOCK.get());
 					output.accept(SurvivalReimaginedModItems.STONE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.FLINT_TOOL.get());
+					output.accept(SurvivalReimaginedModItems.HEMP_FIBER.get());
+					output.accept(SurvivalReimaginedModItems.SMALL_COAL_CHUNK.get());
+					output.accept(SurvivalReimaginedModItems.COPPER_NUGGET.get());
+					output.accept(SurvivalReimaginedModItems.COPPER_CHISEL.get());
+					output.accept(SurvivalReimaginedModItems.STONE_HAMMER.get());
 					output.accept(SurvivalReimaginedModItems.STONE_ROCK_BLOC.get());
 					output.accept(SurvivalReimaginedModItems.COPPER_CHUNK.get());
 					output.accept(SurvivalReimaginedModItems.COPPER_ROCK_BLOCK.get());
@@ -60,6 +66,11 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.TIN_CHUNK.get());
 					output.accept(SurvivalReimaginedModItems.TIN_NUGGET.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_TIN.get());
+					output.accept(SurvivalReimaginedModItems.ROUGH_COPPER.get());
+					output.accept(SurvivalReimaginedModItems.ROUGH_IRON.get());
+					output.accept(SurvivalReimaginedModItems.ROUGH_GOLD.get());
+					output.accept(SurvivalReimaginedModItems.ROUGH_BRONZE.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.TIN_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_TIN.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_TIN.get());

@@ -53,5 +53,16 @@
   "block.survival_reimagined.forge": "Forge",
   "gui.survival_reimagined.forge_gui.label_forge": "Forge",
   "subtitles.forge_open": "Forge Opened",
-  "subtitles.close_forge": "Forge Closed"
+  "subtitles.close_forge": "Forge Closed",
+  "item.survival_reimagined.flint_tool": "Flint Tool",
+  "item.survival_reimagined.hemp_fiber": "Hemp Fiber",
+  "item.survival_reimagined.copper_nugget": "Copper Nugget",
+  "item.survival_reimagined.copper_chisel": "Copper Chisel",
+  "item.survival_reimagined.small_coal_chunk": "Small Coal Chunk",
+  "item.survival_reimagined.bronze_ingot": "Bronze Ingot",
+  "item.survival_reimagined.rough_bronze": "Rough Bronze",
+  "item.survival_reimagined.rough_iron": "Rough Iron",
+  "item.survival_reimagined.rough_gold": "Rough Gold",
+  "item.survival_reimagined.rough_copper": "Rough Copper",
+  "item.survival_reimagined.stone_hammer": "Stone Hammer"
 }

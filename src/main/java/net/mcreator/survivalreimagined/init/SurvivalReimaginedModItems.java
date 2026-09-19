@@ -9,6 +9,9 @@ import net.minecraft.world.level.block.Block;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
 import net.mcreator.survivalreimagined.item.CopperChunkItem;
+import net.mcreator.survivalreimagined.item.CopperChiselItem;
+import net.mcreator.survivalreimagined.item.FlintToolItem;
+import net.mcreator.survivalreimagined.item.StoneHammerItem;
 import net.mcreator.survivalreimagined.item.RawTinItem;
 import net.mcreator.survivalreimagined.item.RoughTinItem;
 import net.mcreator.survivalreimagined.item.StoneRockItem;
@@ -23,6 +26,17 @@ import java.util.function.Supplier;
 public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FLINTBLOCK = block(SurvivalReimaginedModBlocks.FLINTBLOCK);
 	public static final RegistryEntry<Item> STONE_ROCK = register("stone_rock", StoneRockItem::new);
+	public static final RegistryEntry<Item> FLINT_TOOL = register("flint_tool", FlintToolItem::new);
+	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
+	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
+	public static final RegistryEntry<Item> COPPER_CHISEL = register("copper_chisel", CopperChiselItem::new);
+	public static final RegistryEntry<Item> SMALL_COAL_CHUNK = simple("small_coal_chunk");
+	public static final RegistryEntry<Item> BRONZE_INGOT = simple("bronze_ingot");
+	public static final RegistryEntry<Item> ROUGH_BRONZE = simple("rough_bronze");
+	public static final RegistryEntry<Item> ROUGH_IRON = simple("rough_iron");
+	public static final RegistryEntry<Item> ROUGH_GOLD = simple("rough_gold");
+	public static final RegistryEntry<Item> ROUGH_COPPER = simple("rough_copper");
+	public static final RegistryEntry<Item> STONE_HAMMER = register("stone_hammer", StoneHammerItem::new);
 	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
 
 	public static final RegistryEntry<Item> TIN_ORE = block(SurvivalReimaginedModBlocks.TIN_ORE);
@@ -67,6 +81,10 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK);
 
 	private SurvivalReimaginedModItems() {
+	}
+
+	private static RegistryEntry<Item> simple(String path) {
+		return register(path, () -> new Item(new Item.Properties()));
 	}
 
 	private static RegistryEntry<Item> register(String path, Supplier<? extends Item> factory) {
