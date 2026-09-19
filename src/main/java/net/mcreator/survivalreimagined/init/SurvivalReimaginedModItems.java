@@ -115,6 +115,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> WOODEN_RUNE = simple("wooden_rune");
 	public static final RegistryEntry<Item> EMPTY_GOLD_RUNE = simple("empty_gold_rune");
 	public static final RegistryEntry<Item> EMPTY_SILVER_RUNE = simple("empty_silver_rune");
+	public static final RegistryEntry<Item> HEART = simple("heart");
 	public static final RegistryEntry<Item> SAPPHIRE = simple("sapphire");
 	public static final RegistryEntry<Item> AMBER = simple("amber");
 	public static final RegistryEntry<Item> RUBY = simple("ruby");
