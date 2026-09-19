@@ -1,0 +1,7 @@
+{
+  "parent": "survival_reimagined:custom/surface_rock",
+  "textures": {
+    "texture": "minecraft:block/calcite",
+    "particle": "minecraft:block/calcite"
+  }
+}
