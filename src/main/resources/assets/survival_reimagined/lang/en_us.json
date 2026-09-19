@@ -8,5 +8,17 @@
   "item.survival_reimagined.tin_nugget": "Tin Nugget",
   "item.survival_reimagined.tin_chunk": "Tin Chunk",
   "item.survival_reimagined.rough_tin": "Rough Tin",
-  "item_group.survival_reimagined.survival_reborn": "Survival Reimagined"
+  "item_group.survival_reimagined.survival_reborn": "Survival Reimagined",
+  "effect.survival_reimagined.binding_sculk": "Binding Sculk",
+  "effect.survival_reimagined.bleeding": "Bleeding",
+  "effect.survival_reimagined.radiation": "Radiation",
+  "death.attack.radiation_damage.player": "%1$s died by Radiation Sickness whilst trying to escape %2$s",
+  "death.attack.radiation_damage.item": "%1$s was killed by %2$s using %3$s",
+  "death.attack.radiation_damage": "%1$s died by Radiation Sickness",
+  "death.attack.binding_sculk_damage.item": "%1$s was killed by %2$s using %3$s",
+  "death.attack.binding_sculk_damage.player": "%1$s's soul was subdued by the sculk whilst trying to escape %2$s",
+  "death.attack.binding_sculk_damage": "%1$s's soul was subdued by the sculk",
+  "death.attack.bleeding_dmg.player": "%1$s bled to death whilst trying to escape %2$s",
+  "death.attack.bleeding_dmg": "%1$s bled to death",
+  "death.attack.bleeding_dmg.item": "%1$s was killed by %2$s using %3$s"
 }
