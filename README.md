@@ -13,7 +13,7 @@ This table tracks broad feature parity against the original mod.
 |---|:---:|:---:|:---:|:---:|
 | Forge | ✅ | ✅ | — | ✅ |
 | Metal Refining Table | ✅ | ✅ | — | ✅ |
-| Mineral Processing Table | ❌ | ❌ | — | ❌ |
+| Mineral Processing Table | 🟡 | 🟡 | — | ✅ |
 | Advanced Alloy Forge | ❌ | ❌ | — | ❌ |
 | Rune Magic Infuser | ❌ | ❌ | — | ❌ |
 | Clay / Tool Molds | ✅ | ✅ | — | 🟡 |
@@ -40,7 +40,7 @@ This table tracks broad feature parity against the original mod.
 | Shale Geology | ❌ | ❌ | ❌ | ❌ |
 | Basalt Geology Extensions | ❌ | ❌ | ❌ | ❌ |
 | Kimberlite Geology | ❌ | ❌ | ❌ | ❌ |
-| Gem Polishing | ❌ | ❌ | — | ❌ |
+| Gem Polishing | 🟡 | ✅ | — | ✅ |
 | Rune Socketing | ✅ | ✅ | — | ✅ |
 | Rune Effects / Tooltips | 🟡 | 🟡 | — | ✅ |
 | Fuels / Forge Materials | ✅ | ✅ | 🟡 | ✅ |
@@ -59,8 +59,8 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Mineral Processing Table
-2. Rough gem polishing
+1. Runtime-test Mineral Processing Table
+2. Port Reactor Rod / MPT crafting dependencies
 3. Shale / Basalt / Kimberlite geology
 4. Remaining native resource chains
 5. Remaining machines
