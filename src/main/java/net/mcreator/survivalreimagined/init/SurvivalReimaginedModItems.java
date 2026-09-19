@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.item.AndesiteRockItem;
 import net.mcreator.survivalreimagined.item.CopperChunkItem;
 import net.mcreator.survivalreimagined.item.RawTinItem;
 import net.mcreator.survivalreimagined.item.RoughTinItem;
@@ -36,6 +37,9 @@ public final class SurvivalReimaginedModItems {
 
 	public static final RegistryEntry<Item> COPPER_CHUNK = register("copper_chunk", CopperChunkItem::new);
 	public static final RegistryEntry<Item> COPPER_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.COPPER_ROCK_BLOCK);
+
+	public static final RegistryEntry<Item> ANDESITE_ROCK = register("andesite_rock", AndesiteRockItem::new);
+	public static final RegistryEntry<Item> ANDESITE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.ANDESITE_ROCK_BLOCK);
 
 	private SurvivalReimaginedModItems() {
 	}
