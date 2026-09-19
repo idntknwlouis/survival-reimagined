@@ -42,9 +42,7 @@ public class MPTGUIMenu extends AbstractContainerMenu {
 		this.addSlot(new Slot(container, 0, 62, 35) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
-				return stack.is(SurvivalReimaginedModItems.ROUGH_SAPPHIRE.get())
-						|| stack.is(SurvivalReimaginedModItems.ROUGH_RUBY.get())
-						|| stack.is(SurvivalReimaginedModItems.ROUGH_AMBER.get());
+				return MineralProcessingTableBlockEntity.isProcessingInput(stack);
 			}
 		});
 		this.addSlot(new Slot(container, 2, 98, 35) {
