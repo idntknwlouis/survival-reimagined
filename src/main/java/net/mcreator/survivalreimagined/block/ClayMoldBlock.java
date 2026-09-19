@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -12,7 +13,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -66,9 +69,14 @@ public class ClayMoldBlock extends Block {
 	}
 
 	@Override
+	public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+		return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+	}
+
+	@Override
 	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(state, level, pos, oldState, moving);
-		if (!level.isClientSide()) level.scheduleTick(pos, this, 100);
+		if (!level.isClientSide()) level.scheduleTick(pos, this, 40);
 	}
 
 	@Override
@@ -87,7 +95,7 @@ public class ClayMoldBlock extends Block {
 				return;
 			}
 		}
-		level.scheduleTick(pos, this, 100);
+		level.scheduleTick(pos, this, 40);
 	}
 
 	@Override
@@ -103,12 +111,12 @@ public class ClayMoldBlock extends Block {
 	}
 
 	@Override
-	public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-		if (!level.isClientSide()) {
+	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+		if (!level.isClientSide() && level.getBlockState(pos).is(this)) {
 			int count = 2 + level.random.nextInt(2);
 			level.destroyBlock(pos, false);
 			popResource(level, pos, new ItemStack(Items.CLAY_BALL, count));
 		}
-		super.stepOn(level, pos, state, entity);
+		super.entityInside(state, level, pos, entity);
 	}
 }
