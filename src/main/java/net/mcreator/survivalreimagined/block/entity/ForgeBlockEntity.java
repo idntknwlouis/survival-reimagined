@@ -583,6 +583,21 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		if (stack.is(SurvivalReimaginedModItems.ROUGH_COPPER.get())) {
 			return Items.COPPER_INGOT;
 		}
+		if (stack.is(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get())) {
+			return SurvivalReimaginedModItems.DIAMOND_PLATED_INGOT.get();
+		}
+		if (stack.is(SurvivalReimaginedModItems.ROUGH_NETHERITE.get())) {
+			return Items.NETHERITE_INGOT;
+		}
+		if (stack.is(SurvivalReimaginedModItems.ROUGH_TITANIUM.get())) {
+			return SurvivalReimaginedModItems.TITANIUM_INGOT.get();
+		}
+		if (stack.is(SurvivalReimaginedModItems.ROUGH_URANIUM.get())) {
+			return SurvivalReimaginedModItems.URANIUM_INGOT.get();
+		}
+		if (stack.is(SurvivalReimaginedModItems.ROUGH_TURANITE.get())) {
+			return SurvivalReimaginedModItems.TURANITE_INGOT.get();
+		}
 		return null;
 	}
 
