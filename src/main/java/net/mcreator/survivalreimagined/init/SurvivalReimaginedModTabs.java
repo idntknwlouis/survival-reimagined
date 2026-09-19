@@ -122,6 +122,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BRONZE_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.STEEL_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get());
+					output.accept(SurvivalReimaginedModItems.ROUGH_NETHERITE.get());
 					output.accept(SurvivalReimaginedModItems.DIAMOND_PLATED_INGOT.get());
 					output.accept(SurvivalReimaginedModItems.DIAMOND_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.NETHERITE_PLATE.get());

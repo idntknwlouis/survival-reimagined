@@ -53,6 +53,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
 	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
 	public static final RegistryEntry<Item> ROUGH_PLATED_DIAMOND = simple("rough_plated_diamond");
+	public static final RegistryEntry<Item> ROUGH_NETHERITE = simple("rough_netherite");
 	public static final RegistryEntry<Item> DIAMOND_PLATED_INGOT = simple("diamond_plated_ingot");
 	public static final RegistryEntry<Item> STEEL_INGOT = simple("steel_ingot");
 	public static final RegistryEntry<Item> BRONZE_SWORD_BLADE = simpleUnstackable("bronze_sword_blade");

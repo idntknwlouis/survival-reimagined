@@ -267,6 +267,11 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get(), 1, 1, 1, 10);
 		}
 
+		// Upstream Netherite alloying is directional: gold in slot 0, netherite material in slot 1.
+		if (isGoldAlloyItem(first) && first.getCount() >= 4 && isNetheriteAlloyItem(second) && second.getCount() >= 4) {
+			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_NETHERITE.get(), 1, 4, 4, 100);
+		}
+
 		ForgeRecipe plate = findPlateRecipe(first, second);
 		if (plate != null) {
 			return plate;
@@ -368,6 +373,14 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 		// Metal is consumed, fired mold is preserved. Original cost is 0.25 fuel/tick.
 		return new ForgeRecipe(output, 1, count, 0, 25);
+	}
+
+	private static boolean isGoldAlloyItem(ItemStack stack) {
+		return stack.is(Items.RAW_GOLD) || stack.is(Items.GOLD_INGOT) || stack.is(SurvivalReimaginedModItems.ROUGH_GOLD.get());
+	}
+
+	private static boolean isNetheriteAlloyItem(ItemStack stack) {
+		return stack.is(Items.NETHERITE_SCRAP) || stack.is(Blocks.ANCIENT_DEBRIS.asItem());
 	}
 
 	private static boolean isDiamondAlloyItem(ItemStack stack) {
