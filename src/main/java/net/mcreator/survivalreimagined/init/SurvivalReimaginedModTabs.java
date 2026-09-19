@@ -12,12 +12,12 @@ import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 public final class SurvivalReimaginedModTabs {
-	public static final RegistryEntry<CreativeModeTab> SURVIVAL_REBORN = register();
+	public static final RegistryEntry<CreativeModeTab> SURVIVAL_REBORN = registerTab();
 
 	private SurvivalReimaginedModTabs() {
 	}
 
-	private static RegistryEntry<CreativeModeTab> register() {
+	private static RegistryEntry<CreativeModeTab> registerTab() {
 		var id = SurvivalReimaginedMod.asResource("survival_reborn");
 		CreativeModeTab tab = FabricItemGroup.builder()
 				.title(Component.translatable("item_group.survival_reimagined.survival_reborn"))
