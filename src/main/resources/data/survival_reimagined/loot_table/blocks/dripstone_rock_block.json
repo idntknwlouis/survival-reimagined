@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "survival_reimagined:blocks/dripstone_rock_block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {"condition": "minecraft:survives_explosion"}
+      ],
+      "entries": [
+        {"type": "minecraft:item", "name": "survival_reimagined:dripstone_rock"}
+      ]
+    }
+  ]
+}
