@@ -1,8 +1,9 @@
 package net.mcreator.survivalreimagined.init;
 
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
@@ -22,7 +23,7 @@ public final class SurvivalReimaginedModParticleTypes {
 
 	private static RegistryEntry<SimpleParticleType> register(String path, boolean overrideLimiter) {
 		var id = SurvivalReimaginedMod.asResource(path);
-		SimpleParticleType particle = new SimpleParticleType(overrideLimiter);
+		SimpleParticleType particle = FabricParticleTypes.simple(overrideLimiter);
 		Registry.register(BuiltInRegistries.PARTICLE_TYPE, id, particle);
 		return new RegistryEntry<>(id, particle);
 	}
