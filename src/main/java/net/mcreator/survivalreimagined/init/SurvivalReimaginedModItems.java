@@ -53,22 +53,22 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
 	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
 	public static final RegistryEntry<Item> STEEL_INGOT = simple("steel_ingot");
-	public static final RegistryEntry<Item> BRONZE_SWORD_BLADE = simple("bronze_sword_blade");
-	public static final RegistryEntry<Item> BRONZE_PICKAXE_HEAD = simple("bronze_pickaxe_head");
-	public static final RegistryEntry<Item> BRONZE_AXE_HEAD = simple("bronze_axe_head");
-	public static final RegistryEntry<Item> BRONZE_SHOVEL_HEAD = simple("bronze_shovel_head");
-	public static final RegistryEntry<Item> BRONZE_HOE_BLADE = simple("bronze_hoe_blade");
-	public static final RegistryEntry<Item> BRONZE_HAMMER_HEAD = simple("bronze_hammer_head");
-	public static final RegistryEntry<Item> BRONZE_SAW_BLADE = simple("bronze_saw_blade");
-	public static final RegistryEntry<Item> BRONZE_KNIFE_BLADE = simple("bronze_knife_blade");
-	public static final RegistryEntry<Item> STEEL_SWORD_BLADE = simple("steel_sword_blade");
-	public static final RegistryEntry<Item> STEEL_PICKAXE_HEAD = simple("steel_pickaxe_head");
-	public static final RegistryEntry<Item> STEEL_AXE_HEAD = simple("steel_axe_head");
-	public static final RegistryEntry<Item> STEEL_SHOVEL_HEAD = simple("steel_shovel_head");
-	public static final RegistryEntry<Item> STEEL_HOE_BLADE = simple("steel_hoe_blade");
-	public static final RegistryEntry<Item> STEEL_HAMMER_HEAD = simple("steel_hammer_head");
-	public static final RegistryEntry<Item> STEEL_SAW_BLADE = simple("steel_saw_blade");
-	public static final RegistryEntry<Item> STEEL_KNIFE_BLADE = simple("steel_knife_blade");
+	public static final RegistryEntry<Item> BRONZE_SWORD_BLADE = simpleUnstackable("bronze_sword_blade");
+	public static final RegistryEntry<Item> BRONZE_PICKAXE_HEAD = simpleUnstackable("bronze_pickaxe_head");
+	public static final RegistryEntry<Item> BRONZE_AXE_HEAD = simpleUnstackable("bronze_axe_head");
+	public static final RegistryEntry<Item> BRONZE_SHOVEL_HEAD = simpleUnstackable("bronze_shovel_head");
+	public static final RegistryEntry<Item> BRONZE_HOE_BLADE = simpleUnstackable("bronze_hoe_blade");
+	public static final RegistryEntry<Item> BRONZE_HAMMER_HEAD = simpleUnstackable("bronze_hammer_head");
+	public static final RegistryEntry<Item> BRONZE_SAW_BLADE = simpleUnstackable("bronze_saw_blade");
+	public static final RegistryEntry<Item> BRONZE_KNIFE_BLADE = simpleUnstackable("bronze_knife_blade");
+	public static final RegistryEntry<Item> STEEL_SWORD_BLADE = simpleUnstackable("steel_sword_blade");
+	public static final RegistryEntry<Item> STEEL_PICKAXE_HEAD = simpleUnstackable("steel_pickaxe_head");
+	public static final RegistryEntry<Item> STEEL_AXE_HEAD = simpleUnstackable("steel_axe_head");
+	public static final RegistryEntry<Item> STEEL_SHOVEL_HEAD = simpleUnstackable("steel_shovel_head");
+	public static final RegistryEntry<Item> STEEL_HOE_BLADE = simpleUnstackable("steel_hoe_blade");
+	public static final RegistryEntry<Item> STEEL_HAMMER_HEAD = simpleUnstackable("steel_hammer_head");
+	public static final RegistryEntry<Item> STEEL_SAW_BLADE = simpleUnstackable("steel_saw_blade");
+	public static final RegistryEntry<Item> STEEL_KNIFE_BLADE = simpleUnstackable("steel_knife_blade");
 	public static final RegistryEntry<Item> STONE_HAMMER = register("stone_hammer", StoneHammerItem::new);
 	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
 
@@ -101,6 +101,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HAMMER_HEAD_MOLD = block(SurvivalReimaginedModBlocks.HAMMER_HEAD_MOLD);
 	public static final RegistryEntry<Item> SAW_BLADE_MOLD = block(SurvivalReimaginedModBlocks.SAW_BLADE_MOLD);
 	public static final RegistryEntry<Item> KNIFE_BLADE_MOLD = block(SurvivalReimaginedModBlocks.KNIFE_BLADE_MOLD);
+	public static final RegistryEntry<Item> WOODEN_PLATE = block(SurvivalReimaginedModBlocks.WOODEN_PLATE);
+	public static final RegistryEntry<Item> METAL_PLATE_MOLD = block(SurvivalReimaginedModBlocks.METAL_PLATE_MOLD);
+	public static final RegistryEntry<Item> CLAY_METAL_PLATE_MOLD = block(SurvivalReimaginedModBlocks.CLAY_METAL_PLATE_MOLD);
+	public static final RegistryEntry<Item> BRONZE_PLATE = block(SurvivalReimaginedModBlocks.BRONZE_PLATE);
+	public static final RegistryEntry<Item> STEEL_PLATE = block(SurvivalReimaginedModBlocks.STEEL_PLATE);
 
 	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
 	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);
@@ -142,6 +147,10 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
+	}
+
+	private static RegistryEntry<Item> simpleUnstackable(String path) {
+		return register(path, () -> new Item(new Item.Properties().stacksTo(1)));
 	}
 
 	private static RegistryEntry<Item> register(String path, Supplier<? extends Item> factory) {

@@ -118,5 +118,10 @@
   "block.survival_reimagined.clay_hoe_blade_mold": "Clay Hoe Blade Mold",
   "block.survival_reimagined.clay_hammer_head_mold": "Clay Hammer Head Mold",
   "block.survival_reimagined.clay_saw_blade_mold": "Clay Saw Blade Mold",
-  "block.survival_reimagined.clay_knife_mold": "Clay Knife Mold"
+  "block.survival_reimagined.clay_knife_mold": "Clay Knife Mold",
+  "block.survival_reimagined.wooden_plate": "Wooden Plate",
+  "block.survival_reimagined.metal_plate_mold": "Metal Plate Mold",
+  "block.survival_reimagined.clay_metal_plate_mold": "Clay Metal Plate Mold",
+  "block.survival_reimagined.bronze_plate": "Bronze Plate",
+  "block.survival_reimagined.steel_plate": "Steel Plate"
 }

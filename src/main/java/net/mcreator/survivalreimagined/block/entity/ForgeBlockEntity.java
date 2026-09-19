@@ -263,6 +263,11 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 1, 1, 1, 10);
 		}
 
+		ForgeRecipe plate = findPlateRecipe(first, second);
+		if (plate != null) {
+			return plate;
+		}
+
 		ForgeRecipe toolPart = findToolPartRecipe(first, second);
 		if (toolPart != null) {
 			return toolPart;
@@ -281,6 +286,24 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			}
 		}
 
+		return null;
+	}
+
+	private static ForgeRecipe findPlateRecipe(ItemStack first, ItemStack second) {
+		ForgeRecipe recipe = plateFor(first, second);
+		if (recipe != null) return recipe;
+		recipe = plateFor(second, first);
+		return recipe == null ? null : new ForgeRecipe(recipe.output(), recipe.outputCount(), 0, recipe.consumeFirst(), recipe.fuelCostHundredthsPerStep());
+	}
+
+	private static ForgeRecipe plateFor(ItemStack metal, ItemStack mold) {
+		if (!mold.is(SurvivalReimaginedModBlocks.METAL_PLATE_MOLD.get().asItem()) || metal.getCount() < 4) return null;
+		if (metal.is(SurvivalReimaginedModItems.BRONZE_INGOT.get())) {
+			return new ForgeRecipe(SurvivalReimaginedModBlocks.BRONZE_PLATE.get().asItem(), 1, 4, 0, 10);
+		}
+		if (metal.is(SurvivalReimaginedModItems.STEEL_INGOT.get())) {
+			return new ForgeRecipe(SurvivalReimaginedModBlocks.STEEL_PLATE.get().asItem(), 1, 4, 0, 10);
+		}
 		return null;
 	}
 

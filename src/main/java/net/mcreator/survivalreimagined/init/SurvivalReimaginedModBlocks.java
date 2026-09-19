@@ -17,6 +17,7 @@ import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.block.IngotMoldBlock;
 import net.mcreator.survivalreimagined.block.ToolMoldBlock;
 import net.mcreator.survivalreimagined.block.ClayMoldBlock;
+import net.mcreator.survivalreimagined.block.PlateBlock;
 import net.mcreator.survivalreimagined.block.StoneRockBlocBlock;
 import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
 import net.mcreator.survivalreimagined.block.TinOreBlock;
@@ -48,6 +49,11 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> HAMMER_HEAD_MOLD = register("hammer_head_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> SAW_BLADE_MOLD = register("saw_blade_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> KNIFE_BLADE_MOLD = register("knife_blade_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> WOODEN_PLATE = register("wooden_plate", () -> new PlateBlock(SoundType.WOOD, 1.0F));
+	public static final RegistryEntry<Block> METAL_PLATE_MOLD = register("metal_plate_mold", ToolMoldBlock::new);
+	public static final RegistryEntry<Block> BRONZE_PLATE = register("bronze_plate", () -> new PlateBlock(SoundType.METAL, 2.5F));
+	public static final RegistryEntry<Block> STEEL_PLATE = register("steel_plate", () -> new PlateBlock(SoundType.METAL, 3.5F));
+	public static final RegistryEntry<Block> CLAY_METAL_PLATE_MOLD = register("clay_metal_plate_mold", () -> new ClayMoldBlock(() -> METAL_PLATE_MOLD.get(), true));
 
 	public static final RegistryEntry<Block> INGOT_CLAY_MOLD = register("ingot_clay_mold", () -> new ClayMoldBlock(() -> INGOT_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_SWORD_BLADE_MOLD = register("clay_sword_blade_mold", () -> new ClayMoldBlock(() -> SWORD_BLADE_MOLD.get()));

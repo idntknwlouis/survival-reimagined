@@ -31,10 +31,16 @@ public class ClayMoldBlock extends Block {
 	public static final BooleanProperty CAN_BURN = BooleanProperty.create("can_burn");
 	private static final VoxelShape SHAPE = box(0, 0, 0, 16, 2, 16);
 	private final Supplier<? extends Block> driedBlock;
+	private final boolean lavaBoost;
 
 	public ClayMoldBlock(Supplier<? extends Block> driedBlock) {
+		this(driedBlock, false);
+	}
+
+	public ClayMoldBlock(Supplier<? extends Block> driedBlock, boolean lavaBoost) {
 		super(BlockBehaviour.Properties.of().sound(SoundType.MUD).instabreak().noOcclusion().isRedstoneConductor((state, level, pos) -> false));
 		this.driedBlock = driedBlock;
+		this.lavaBoost = lavaBoost;
 		this.registerDefaultState(this.stateDefinition.any().setValue(CAN_BURN, false));
 	}
 
@@ -88,7 +94,7 @@ public class ClayMoldBlock extends Block {
 		}
 		if (drying) {
 			boolean dryNow = random.nextFloat() < 0.025F;
-			if (!dryNow && level.getBlockState(pos.below(2)).isAir()) dryNow = random.nextFloat() < 0.05F;
+			if (!dryNow && (this.lavaBoost ? level.getBlockState(pos.below(2)).is(net.minecraft.world.level.block.Blocks.LAVA) : level.getBlockState(pos.below(2)).isAir())) dryNow = random.nextFloat() < 0.05F;
 			if (dryNow) {
 				level.setBlock(pos, this.driedBlock.get().defaultBlockState(), 3);
 				level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 1.0F);

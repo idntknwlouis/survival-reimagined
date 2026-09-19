@@ -116,6 +116,11 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.HAMMER_HEAD_MOLD.get());
 					output.accept(SurvivalReimaginedModItems.SAW_BLADE_MOLD.get());
 					output.accept(SurvivalReimaginedModItems.KNIFE_BLADE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.WOODEN_PLATE.get());
+					output.accept(SurvivalReimaginedModItems.CLAY_METAL_PLATE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.METAL_PLATE_MOLD.get());
+					output.accept(SurvivalReimaginedModItems.BRONZE_PLATE.get());
+					output.accept(SurvivalReimaginedModItems.STEEL_PLATE.get());
 
 					output.accept(SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get());
 					output.accept(SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get());
