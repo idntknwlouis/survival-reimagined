@@ -38,11 +38,11 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	public static final int CONTAINER_SIZE = 9;
 	public static final int MAX_FUEL = 600;
 	public static final int MAX_BURN_TIME = 60;
-	private static final int MAX_FUEL_TENTHS = MAX_FUEL * 10;
+	private static final int MAX_FUEL_HUNDREDTHS = MAX_FUEL * 100;
 	private static final int[] SLOTS = IntStream.range(0, CONTAINER_SIZE).toArray();
 
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
-	private int fuelMeterTenths;
+	private int fuelMeterHundredths;
 	private int burnTime;
 	private int openCount;
 
@@ -59,7 +59,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		@Override
 		public void set(int index, int value) {
 			switch (index) {
-				case 0 -> ForgeBlockEntity.this.fuelMeterTenths = value * 10;
+				case 0 -> ForgeBlockEntity.this.fuelMeterHundredths = value * 100;
 				case 1 -> ForgeBlockEntity.this.burnTime = value;
 			}
 		}
@@ -81,7 +81,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		if (!this.tryLoadLootTable(tag)) {
 			ContainerHelper.loadAllItems(tag, this.stacks, registries);
 		}
-		this.fuelMeterTenths = tag.contains("FuelMeterTenths") ? tag.getInt("FuelMeterTenths") : tag.getInt("FuelMeter") * 10;
+		this.fuelMeterHundredths = tag.contains("FuelMeterHundredths") ? tag.getInt("FuelMeterHundredths") : (tag.contains("FuelMeterTenths") ? tag.getInt("FuelMeterTenths") * 10 : tag.getInt("FuelMeter") * 100);
 		this.burnTime = tag.getInt("BurnTime");
 	}
 
@@ -92,7 +92,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			ContainerHelper.saveAllItems(tag, this.stacks, registries);
 		}
 		tag.putInt("FuelMeter", this.getFuelMeter());
-		tag.putInt("FuelMeterTenths", this.fuelMeterTenths);
+		tag.putInt("FuelMeterHundredths", this.fuelMeterHundredths);
 		tag.putInt("BurnTime", this.burnTime);
 	}
 
@@ -131,7 +131,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	}
 
 	public int getFuelMeter() {
-		return Math.max(0, Math.min(MAX_FUEL, this.fuelMeterTenths / 10));
+		return Math.max(0, Math.min(MAX_FUEL, this.fuelMeterHundredths / 100));
 	}
 
 	public int getBurnTime() {
@@ -153,7 +153,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 
 	private boolean consumeFuel() {
 		ItemStack fuel = this.getItem(2);
-		if (fuel.isEmpty() || this.fuelMeterTenths >= MAX_FUEL_TENTHS) {
+		if (fuel.isEmpty() || this.fuelMeterHundredths >= MAX_FUEL_HUNDREDTHS) {
 			return false;
 		}
 
@@ -163,17 +163,17 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 
 		if (fuel.is(Items.LAVA_BUCKET)) {
-			this.fuelMeterTenths = MAX_FUEL_TENTHS;
+			this.fuelMeterHundredths = MAX_FUEL_HUNDREDTHS;
 			this.setItem(2, new ItemStack(Items.BUCKET));
 			return true;
 		}
 
-		int fuelTenths = fuelValue * 10;
-		if (this.fuelMeterTenths + fuelTenths > MAX_FUEL_TENTHS) {
+		int fuelHundredths = fuelValue * 100;
+		if (this.fuelMeterHundredths + fuelHundredths > MAX_FUEL_HUNDREDTHS) {
 			return false;
 		}
 
-		this.fuelMeterTenths += fuelTenths;
+		this.fuelMeterHundredths += fuelHundredths;
 		fuel.shrink(1);
 		if (fuel.isEmpty()) {
 			this.setItem(2, ItemStack.EMPTY);
@@ -191,7 +191,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return false;
 		}
 
-		if (this.fuelMeterTenths < recipe.fuelCostTenthsPerStep()) {
+		if (this.fuelMeterHundredths < recipe.fuelCostHundredthsPerStep()) {
 			if (this.burnTime > 0) {
 				this.burnTime = Math.max(0, this.burnTime - 1);
 				return true;
@@ -199,7 +199,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return false;
 		}
 
-		this.fuelMeterTenths -= recipe.fuelCostTenthsPerStep();
+		this.fuelMeterHundredths -= recipe.fuelCostHundredthsPerStep();
 		this.burnTime += 2;
 
 		if (this.burnTime >= MAX_BURN_TIME) {
@@ -239,44 +239,102 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		if (first.is(second.getItem())) {
 			Item input = first.getItem();
 			if (input == Blocks.RAW_IRON_BLOCK.asItem()) {
-				return new ForgeRecipe(Blocks.IRON_BLOCK.asItem(), 2, 1, 1, 10);
+				return new ForgeRecipe(Blocks.IRON_BLOCK.asItem(), 2, 1, 1, 100);
 			}
 			if (input == Blocks.RAW_GOLD_BLOCK.asItem()) {
-				return new ForgeRecipe(Blocks.GOLD_BLOCK.asItem(), 2, 1, 1, 10);
+				return new ForgeRecipe(Blocks.GOLD_BLOCK.asItem(), 2, 1, 1, 100);
 			}
 			if (input == Blocks.RAW_COPPER_BLOCK.asItem()) {
-				return new ForgeRecipe(Blocks.COPPER_BLOCK.asItem(), 2, 1, 1, 10);
+				return new ForgeRecipe(Blocks.COPPER_BLOCK.asItem(), 2, 1, 1, 100);
 			}
 			if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TIN.get().asItem()) {
-				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_TIN.get().asItem(), 2, 1, 1, 10);
+				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_TIN.get().asItem(), 2, 1, 1, 100);
 			}
 			if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE.get().asItem()) {
-				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE.get().asItem(), 2, 1, 1, 10);
+				return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE.get().asItem(), 2, 1, 1, 100);
 			}
 		}
 
 		if (isCopperAlloyItem(first) && isTinAlloyItem(second) || isTinAlloyItem(first) && isCopperAlloyItem(second)) {
-			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_BRONZE.get(), 1, 1, 1, 1);
+			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_BRONZE.get(), 1, 1, 1, 10);
 		}
 
 		if (isIronAlloyItem(first) && isManganeseAlloyItem(second) || isManganeseAlloyItem(first) && isIronAlloyItem(second)) {
-			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 1, 1, 1, 1);
+			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 1, 1, 1, 10);
+		}
+
+		ForgeRecipe toolPart = findToolPartRecipe(first, second);
+		if (toolPart != null) {
+			return toolPart;
 		}
 
 		if (first.is(SurvivalReimaginedModBlocks.INGOT_MOLD.get().asItem())) {
 			Item result = getIngotResult(second);
 			if (result != null) {
-				return new ForgeRecipe(result, 1, 0, 1, 1);
+				return new ForgeRecipe(result, 1, 0, 1, 10);
 			}
 		}
 		if (second.is(SurvivalReimaginedModBlocks.INGOT_MOLD.get().asItem())) {
 			Item result = getIngotResult(first);
 			if (result != null) {
-				return new ForgeRecipe(result, 1, 1, 0, 1);
+				return new ForgeRecipe(result, 1, 1, 0, 10);
 			}
 		}
 
 		return null;
+	}
+
+	private static ForgeRecipe findToolPartRecipe(ItemStack first, ItemStack second) {
+		ForgeRecipe recipe = toolPartFor(first, second);
+		if (recipe != null) {
+			return recipe;
+		}
+		recipe = toolPartFor(second, first);
+		return recipe == null ? null : new ForgeRecipe(recipe.output(), recipe.outputCount(), 0, recipe.consumeFirst(), recipe.fuelCostHundredthsPerStep());
+	}
+
+	private static ForgeRecipe toolPartFor(ItemStack metal, ItemStack mold) {
+		boolean bronze = metal.is(SurvivalReimaginedModItems.BRONZE_INGOT.get());
+		boolean steel = metal.is(SurvivalReimaginedModItems.STEEL_INGOT.get());
+		if (!bronze && !steel) {
+			return null;
+		}
+
+		Item output;
+		int count;
+		if (mold.is(SurvivalReimaginedModBlocks.SWORD_BLADE_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_SWORD_BLADE.get() : SurvivalReimaginedModItems.STEEL_SWORD_BLADE.get();
+			count = 2;
+		} else if (mold.is(SurvivalReimaginedModBlocks.PICKAXE_HEAD_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_PICKAXE_HEAD.get() : SurvivalReimaginedModItems.STEEL_PICKAXE_HEAD.get();
+			count = 3;
+		} else if (mold.is(SurvivalReimaginedModBlocks.AXE_HEAD_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_AXE_HEAD.get() : SurvivalReimaginedModItems.STEEL_AXE_HEAD.get();
+			count = 3;
+		} else if (mold.is(SurvivalReimaginedModBlocks.SHOVEL_HEAD_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_SHOVEL_HEAD.get() : SurvivalReimaginedModItems.STEEL_SHOVEL_HEAD.get();
+			count = 1;
+		} else if (mold.is(SurvivalReimaginedModBlocks.HOE_HEAD_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_HOE_BLADE.get() : SurvivalReimaginedModItems.STEEL_HOE_BLADE.get();
+			count = 2;
+		} else if (mold.is(SurvivalReimaginedModBlocks.HAMMER_HEAD_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_HAMMER_HEAD.get() : SurvivalReimaginedModItems.STEEL_HAMMER_HEAD.get();
+			count = 2;
+		} else if (mold.is(SurvivalReimaginedModBlocks.SAW_BLADE_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_SAW_BLADE.get() : SurvivalReimaginedModItems.STEEL_SAW_BLADE.get();
+			count = 2;
+		} else if (mold.is(SurvivalReimaginedModBlocks.KNIFE_BLADE_MOLD.get().asItem())) {
+			output = bronze ? SurvivalReimaginedModItems.BRONZE_KNIFE_BLADE.get() : SurvivalReimaginedModItems.STEEL_KNIFE_BLADE.get();
+			count = 1;
+		} else {
+			return null;
+		}
+
+		if (metal.getCount() < count) {
+			return null;
+		}
+		// Metal is consumed, fired mold is preserved. Original cost is 0.25 fuel/tick.
+		return new ForgeRecipe(output, 1, count, 0, 25);
 	}
 
 	private static boolean isCopperAlloyItem(ItemStack stack) {
@@ -426,6 +484,6 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 				SoundSource.BLOCKS, 2.0F, 1.0F);
 	}
 
-	private record ForgeRecipe(Item output, int outputCount, int consumeFirst, int consumeSecond, int fuelCostTenthsPerStep) {
+	private record ForgeRecipe(Item output, int outputCount, int consumeFirst, int consumeSecond, int fuelCostHundredthsPerStep) {
 	}
 }

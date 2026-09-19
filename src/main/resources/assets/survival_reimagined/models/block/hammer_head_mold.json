@@ -1,0 +1,7 @@
+{
+  "parent": "survival_reimagined:custom/mold",
+  "textures": {
+    "0": "survival_reimagined:block/dried_clay",
+    "particle": "survival_reimagined:block/hammer_head_mold"
+  }
+}
