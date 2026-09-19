@@ -123,5 +123,9 @@
   "block.survival_reimagined.metal_plate_mold": "Metal Plate Mold",
   "block.survival_reimagined.clay_metal_plate_mold": "Clay Metal Plate Mold",
   "block.survival_reimagined.bronze_plate": "Bronze Plate",
-  "block.survival_reimagined.steel_plate": "Steel Plate"
+  "block.survival_reimagined.steel_plate": "Steel Plate",
+  "item.survival_reimagined.rough_plated_diamond": "Rough Plated Diamond",
+  "item.survival_reimagined.diamond_plated_ingot": "Diamond Plated Ingot",
+  "block.survival_reimagined.diamond_plate": "Diamond Plate",
+  "block.survival_reimagined.netherite_plate": "Netherite Plate"
 }

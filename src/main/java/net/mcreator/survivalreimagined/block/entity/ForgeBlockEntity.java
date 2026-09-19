@@ -263,6 +263,10 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 1, 1, 1, 10);
 		}
 
+		if (isDiamondAlloyItem(first) && isSteelAlloyItem(second) || isSteelAlloyItem(first) && isDiamondAlloyItem(second)) {
+			return new ForgeRecipe(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get(), 1, 1, 1, 10);
+		}
+
 		ForgeRecipe plate = findPlateRecipe(first, second);
 		if (plate != null) {
 			return plate;
@@ -303,6 +307,12 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 		if (metal.is(SurvivalReimaginedModItems.STEEL_INGOT.get())) {
 			return new ForgeRecipe(SurvivalReimaginedModBlocks.STEEL_PLATE.get().asItem(), 1, 4, 0, 10);
+		}
+		if (metal.is(SurvivalReimaginedModItems.DIAMOND_PLATED_INGOT.get())) {
+			return new ForgeRecipe(SurvivalReimaginedModBlocks.DIAMOND_PLATE.get().asItem(), 1, 4, 0, 10);
+		}
+		if (metal.is(Items.NETHERITE_INGOT)) {
+			return new ForgeRecipe(SurvivalReimaginedModBlocks.NETHERITE_PLATE.get().asItem(), 1, 4, 0, 10);
 		}
 		return null;
 	}
@@ -358,6 +368,14 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 		// Metal is consumed, fired mold is preserved. Original cost is 0.25 fuel/tick.
 		return new ForgeRecipe(output, 1, count, 0, 25);
+	}
+
+	private static boolean isDiamondAlloyItem(ItemStack stack) {
+		return stack.is(Items.DIAMOND);
+	}
+
+	private static boolean isSteelAlloyItem(ItemStack stack) {
+		return stack.is(SurvivalReimaginedModItems.ROUGH_STEEL.get()) || stack.is(SurvivalReimaginedModItems.STEEL_INGOT.get());
 	}
 
 	private static boolean isCopperAlloyItem(ItemStack stack) {

@@ -52,6 +52,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> MANGANESE_INGOT = simple("manganese_ingot");
 	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
 	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
+	public static final RegistryEntry<Item> ROUGH_PLATED_DIAMOND = simple("rough_plated_diamond");
+	public static final RegistryEntry<Item> DIAMOND_PLATED_INGOT = simple("diamond_plated_ingot");
 	public static final RegistryEntry<Item> STEEL_INGOT = simple("steel_ingot");
 	public static final RegistryEntry<Item> BRONZE_SWORD_BLADE = simpleUnstackable("bronze_sword_blade");
 	public static final RegistryEntry<Item> BRONZE_PICKAXE_HEAD = simpleUnstackable("bronze_pickaxe_head");
@@ -106,6 +108,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> CLAY_METAL_PLATE_MOLD = block(SurvivalReimaginedModBlocks.CLAY_METAL_PLATE_MOLD);
 	public static final RegistryEntry<Item> BRONZE_PLATE = block(SurvivalReimaginedModBlocks.BRONZE_PLATE);
 	public static final RegistryEntry<Item> STEEL_PLATE = block(SurvivalReimaginedModBlocks.STEEL_PLATE);
+	public static final RegistryEntry<Item> DIAMOND_PLATE = block(SurvivalReimaginedModBlocks.DIAMOND_PLATE);
+	public static final RegistryEntry<Item> NETHERITE_PLATE = block(SurvivalReimaginedModBlocks.NETHERITE_PLATE);
 
 	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
 	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);

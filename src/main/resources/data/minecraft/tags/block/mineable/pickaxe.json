@@ -13,6 +13,8 @@
     "survival_reimagined:block_of_steel",
     "survival_reimagined:block_of_bronze",
     "survival_reimagined:bronze_plate",
-    "survival_reimagined:steel_plate"
+    "survival_reimagined:steel_plate",
+    "survival_reimagined:diamond_plate",
+    "survival_reimagined:netherite_plate"
   ]
 }

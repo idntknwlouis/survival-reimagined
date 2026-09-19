@@ -53,6 +53,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> METAL_PLATE_MOLD = register("metal_plate_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> BRONZE_PLATE = register("bronze_plate", () -> new PlateBlock(SoundType.METAL, 2.5F));
 	public static final RegistryEntry<Block> STEEL_PLATE = register("steel_plate", () -> new PlateBlock(SoundType.METAL, 3.5F));
+	public static final RegistryEntry<Block> DIAMOND_PLATE = register("diamond_plate", () -> new PlateBlock(SoundType.METAL, 4.0F));
+	public static final RegistryEntry<Block> NETHERITE_PLATE = register("netherite_plate", () -> new PlateBlock(SoundType.NETHERITE_BLOCK, 5.0F));
 	public static final RegistryEntry<Block> CLAY_METAL_PLATE_MOLD = register("clay_metal_plate_mold", () -> new ClayMoldBlock(() -> METAL_PLATE_MOLD.get(), true));
 
 	public static final RegistryEntry<Block> INGOT_CLAY_MOLD = register("ingot_clay_mold", () -> new ClayMoldBlock(() -> INGOT_MOLD.get()));

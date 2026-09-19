@@ -1,0 +1,7 @@
+{
+  "parent": "survival_reimagined:custom/metal_plate",
+  "textures": {
+    "all": "survival_reimagined:block/netherite_plate",
+    "particle": "survival_reimagined:block/netherite_plate"
+  }
+}
