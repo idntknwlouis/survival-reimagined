@@ -64,5 +64,20 @@
   "item.survival_reimagined.rough_iron": "Rough Iron",
   "item.survival_reimagined.rough_gold": "Rough Gold",
   "item.survival_reimagined.rough_copper": "Rough Copper",
-  "item.survival_reimagined.stone_hammer": "Stone Hammer"
+  "item.survival_reimagined.stone_hammer": "Stone Hammer",
+  "item.survival_reimagined.anthracite": "Anthracite",
+  "item.survival_reimagined.small_anthracite": "Small Anthracite",
+  "block.survival_reimagined.anthracite_block": "Anthracite Block",
+  "item.survival_reimagined.liginite": "Liginite",
+  "item.survival_reimagined.small_liginite": "Small Liginite",
+  "block.survival_reimagined.liginite_block": "Liginite Block",
+  "item.survival_reimagined.rough_manganese": "Rough Manganese",
+  "item.survival_reimagined.manganese_ingot": "Manganese Ingot",
+  "item.survival_reimagined.raw_manganese": "Raw Manganese",
+  "block.survival_reimagined.block_of_raw_manganese": "Raw Manganese Block",
+  "block.survival_reimagined.block_of_manganese": "Block Of Manganese",
+  "item.survival_reimagined.rough_steel": "Rough Steel",
+  "item.survival_reimagined.steel_ingot": "Steel Ingot",
+  "block.survival_reimagined.block_of_steel": "Block Of Steel",
+  "block.survival_reimagined.block_of_bronze": "Block Of Bronze"
 }

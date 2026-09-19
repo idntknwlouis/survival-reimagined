@@ -28,6 +28,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
 import net.mcreator.survivalreimagined.world.inventory.ForgeGUIMenu;
 
@@ -241,6 +242,9 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TIN.get().asItem()) {
 			return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_TIN.get().asItem(), 2);
 		}
+		if (input == SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE.get().asItem()) {
+			return new ForgeRecipe(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE.get().asItem(), 2);
+		}
 		return null;
 	}
 
@@ -250,6 +254,24 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		}
 		if (stack.is(Blocks.COAL_BLOCK.asItem())) {
 			return 60;
+		}
+		if (stack.is(SurvivalReimaginedModItems.LIGINITE.get())) {
+			return 5;
+		}
+		if (stack.is(SurvivalReimaginedModItems.ANTHRACITE.get())) {
+			return 20;
+		}
+		if (stack.is(SurvivalReimaginedModItems.SMALL_LIGINITE.get())) {
+			return 1;
+		}
+		if (stack.is(SurvivalReimaginedModItems.SMALL_ANTHRACITE.get())) {
+			return 4;
+		}
+		if (stack.is(SurvivalReimaginedModBlocks.LIGINITE_BLOCK.get().asItem())) {
+			return 30;
+		}
+		if (stack.is(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK.get().asItem())) {
+			return 120;
 		}
 		if (stack.is(Items.COAL) || stack.is(Items.CHARCOAL)) {
 			return 10;

@@ -36,6 +36,15 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_IRON = simple("rough_iron");
 	public static final RegistryEntry<Item> ROUGH_GOLD = simple("rough_gold");
 	public static final RegistryEntry<Item> ROUGH_COPPER = simple("rough_copper");
+	public static final RegistryEntry<Item> ANTHRACITE = simple("anthracite");
+	public static final RegistryEntry<Item> SMALL_ANTHRACITE = simple("small_anthracite");
+	public static final RegistryEntry<Item> LIGINITE = simple("liginite");
+	public static final RegistryEntry<Item> SMALL_LIGINITE = simple("small_liginite");
+	public static final RegistryEntry<Item> ROUGH_MANGANESE = simple("rough_manganese");
+	public static final RegistryEntry<Item> MANGANESE_INGOT = simple("manganese_ingot");
+	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
+	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
+	public static final RegistryEntry<Item> STEEL_INGOT = simple("steel_ingot");
 	public static final RegistryEntry<Item> STONE_HAMMER = register("stone_hammer", StoneHammerItem::new);
 	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
 
@@ -44,6 +53,12 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TIN);
 	public static final RegistryEntry<Item> BLOCK_OF_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_TIN);
 	public static final RegistryEntry<Item> FORGE = block(SurvivalReimaginedModBlocks.FORGE);
+	public static final RegistryEntry<Item> ANTHRACITE_BLOCK = block(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK);
+	public static final RegistryEntry<Item> LIGINITE_BLOCK = block(SurvivalReimaginedModBlocks.LIGINITE_BLOCK);
+	public static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);
+	public static final RegistryEntry<Item> BLOCK_OF_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE);
+	public static final RegistryEntry<Item> BLOCK_OF_STEEL = block(SurvivalReimaginedModBlocks.BLOCK_OF_STEEL);
+	public static final RegistryEntry<Item> BLOCK_OF_BRONZE = block(SurvivalReimaginedModBlocks.BLOCK_OF_BRONZE);
 
 	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
 	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);
