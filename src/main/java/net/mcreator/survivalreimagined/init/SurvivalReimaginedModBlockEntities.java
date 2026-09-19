@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 public final class SurvivalReimaginedModBlockEntities {
@@ -18,6 +19,10 @@ public final class SurvivalReimaginedModBlockEntities {
 	public static final RegistryEntry<BlockEntityType<MetalRefiningTableBlockEntity>> METAL_REFINING_TABLE = register(
 			"metal_refining_table",
 			BlockEntityType.Builder.of(MetalRefiningTableBlockEntity::new, SurvivalReimaginedModBlocks.METAL_REFINING_TABLE.get()).build(null)
+	);
+	public static final RegistryEntry<BlockEntityType<MineralProcessingTableBlockEntity>> MINERAL_PROCESSING_TABLE = register(
+			"mineral_processing_table",
+			BlockEntityType.Builder.of(MineralProcessingTableBlockEntity::new, SurvivalReimaginedModBlocks.MINERAL_PROCESSING_TABLE.get()).build(null)
 	);
 
 	private SurvivalReimaginedModBlockEntities() {
