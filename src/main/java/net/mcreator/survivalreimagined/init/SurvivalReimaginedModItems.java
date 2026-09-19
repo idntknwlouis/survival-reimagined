@@ -109,6 +109,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SILVER_NUGGET = simple("silver_nugget");
 	public static final RegistryEntry<Item> ARGENTITE = simple("argentite");
 	public static final RegistryEntry<Item> ARGENTITE_NUGGET = simple("argentite_nugget");
+	public static final RegistryEntry<Item> ROUGH_DIAMOND = simple("rough_diamond");
+	public static final RegistryEntry<Item> ROUGH_EMERALD = simple("rough_emerald");
 	public static final RegistryEntry<Item> ROUGH_SAPPHIRE = simple("rough_sapphire");
 	public static final RegistryEntry<Item> ROUGH_RUBY = simple("rough_ruby");
 	public static final RegistryEntry<Item> ROUGH_AMBER = simple("rough_amber");
