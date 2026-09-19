@@ -1,4 +1,4 @@
-# Survival Reimagined : Fabricated
+# Survival Reimagined: Fabricated
 
 Fabric port of [**Survival Reimagined**](https://modrinth.com/mod/survival-reimagined), based on the original NeoForge project by ShotUGMG.
 
