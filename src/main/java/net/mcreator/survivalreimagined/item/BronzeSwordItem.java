@@ -45,6 +45,6 @@ public class BronzeSwordItem extends SwordItem {
 	};
 
 	public BronzeSwordItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(SwordItem.createAttributes(TOOL_TIER, 5f, -2.4f)));
+		super(TOOL_TIER, new Item.Properties().attributes(SwordItem.createAttributes(TOOL_TIER, 5, -2.4f)));
 	}
 }
