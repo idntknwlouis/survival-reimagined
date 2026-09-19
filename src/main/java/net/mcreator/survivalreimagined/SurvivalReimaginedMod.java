@@ -6,11 +6,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModFeatures;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModRecipeTypes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModTabs;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +43,9 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModBlocks.register();
 		SurvivalReimaginedModItems.register();
 		SurvivalReimaginedModMobEffects.register();
+		SurvivalReimaginedModFeatures.register();
+		SurvivalReimaginedModRecipeTypes.register();
+		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
 
 		ServerTickEvents.END_SERVER_TICK.register(SurvivalReimaginedMod::onServerTick);
