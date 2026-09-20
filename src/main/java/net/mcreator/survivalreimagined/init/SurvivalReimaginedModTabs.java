@@ -291,6 +291,8 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.GOLD_EMERALD_RUNE.get());
 					output.accept(SurvivalReimaginedModItems.SILVER_RUBY_RUNE.get());
 					output.accept(SurvivalReimaginedModItems.GOLD_RUBY_RUNE.get());
+					output.accept(SurvivalReimaginedModItems.RUBY_HEART_SHARD.get());
+					output.accept(SurvivalReimaginedModItems.RUBY_HEART.get());
 					output.accept(SurvivalReimaginedModItems.SILVER_LAPIS_RUNE.get());
 					output.accept(SurvivalReimaginedModItems.GOLD_LAPIS_RUNE.get());
 					output.accept(SurvivalReimaginedModItems.DIAMOND_SWORD_BLADE.get());
