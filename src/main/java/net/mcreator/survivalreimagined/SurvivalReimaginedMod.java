@@ -25,6 +25,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModRecipeTypes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModTabs;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
+import net.mcreator.survivalreimagined.util.RuneEffects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,6 +62,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
+		RuneEffects.register();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			ItemStack stack = player.getItemInHand(hand);
