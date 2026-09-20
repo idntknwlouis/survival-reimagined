@@ -57,7 +57,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 			int x = i % 2 == 0 ? 197 : 215;
 			int y = i < 6 ? 19 : 37;
 			this.addSlot(new Slot(container, local, x, y) {
-				@Override public boolean mayPlace(ItemStack stack) { return AdvancedAlloyForgeBlockEntity.isUpgrade(stack); }
+				@Override public boolean mayPlace(ItemStack stack) { return AdvancedAlloyForgeBlockEntity.canPlaceUpgrade(container, local, stack); }
 				@Override public int getMaxStackSize() { return 1; }
 			});
 		}
