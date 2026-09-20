@@ -25,12 +25,12 @@ public class ShaleRockBlock extends Block {
 	}
 
 	@Override
-	protected boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
+	public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {
 		return true;
 	}
 
 	@Override
-	protected int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
+	public int getLightBlock(BlockState state, BlockGetter world, BlockPos pos) {
 		return 0;
 	}
 
