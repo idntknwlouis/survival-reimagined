@@ -79,6 +79,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DEEPSLATE_RUBY_ORE = register("deepslate_ruby_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> AMBER_ORE = register("amber_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_AMBER_ORE = register("deepslate_amber_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_SAPPHIRE_ORE = register("basalt_sapphire_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_RUBY_ORE = register("basalt_ruby_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_AMBER_ORE = register("basalt_amber_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> RAW_SILVER_BLOCK = register("raw_silver_block", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SILVER_BLOCK = register("silver_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> ARGENTITE_BLOCK = register("argentite_block", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
