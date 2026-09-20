@@ -152,8 +152,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_AMBER = simple("rough_amber");
 	public static final RegistryEntry<Item> REACTOR_ROD = simpleUnstackable("reactor_rod");
 	public static final RegistryEntry<Item> DEPLETED_REACTOR_ROD = simpleUnstackable("depleted_reactor_rod");
-		public static final RegistryEntry<Item> AAF_SCRIPTURE = register("aaf_scripture", () -> new ScriptureItem("Advanced Alloy Forge"));
-	public static final RegistryEntry<Item> RMI_SCRIPTURE = register("rmi_scripture", () -> new ScriptureItem("Rune Magic Infuser"));
+		public static final RegistryEntry<Item> AAF_SCRIPTURE = register("aaf_scripture", () -> new ScriptureItem(ScriptureItem.Kind.AAF, "Advanced Alloy Forge"));
+	public static final RegistryEntry<Item> RMI_SCRIPTURE = register("rmi_scripture", () -> new ScriptureItem(ScriptureItem.Kind.RMI, "Rune Magic Infuser"));
 public static final RegistryEntry<Item> ADVANCED_REACTOR_ROD = simpleUnstackable("advanced_reactor_rod");
 	public static final RegistryEntry<Item> DRAINED_ADVANCED_REACTOR_ROD = simpleUnstackable("drained_advanced_reactor_rod");
 	public static final RegistryEntry<Item> FUEL_UPGRADE = simpleUnstackable("fuel_upgrade");
