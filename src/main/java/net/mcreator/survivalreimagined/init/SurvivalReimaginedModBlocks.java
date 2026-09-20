@@ -62,6 +62,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> MINERAL_PROCESSING_TABLE = register("mineral_processing_table", MineralProcessingTableBlock::new);
 	public static final RegistryEntry<Block> ANTHRACITE_BLOCK = register("anthracite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> LIGINITE_BLOCK = register("liginite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DARK_CINDER = register("dark_cinder", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.3f)));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_MANGANESE = register("block_of_raw_manganese", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_MANGANESE = register("block_of_manganese", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_STEEL = register("block_of_steel", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 7f).requiresCorrectToolForDrops()));
