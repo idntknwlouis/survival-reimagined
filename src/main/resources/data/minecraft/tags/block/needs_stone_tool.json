@@ -5,6 +5,8 @@
     "survival_reimagined:block_of_raw_tin",
     "survival_reimagined:block_of_bronze",
     "survival_reimagined:bronze_plate",
-    "survival_reimagined:basalt_lapis_ore"
+    "survival_reimagined:basalt_lapis_ore",
+    "survival_reimagined:basalt_anthracite_ore",
+    "survival_reimagined:basalt_liginite_ore"
   ]
 }
