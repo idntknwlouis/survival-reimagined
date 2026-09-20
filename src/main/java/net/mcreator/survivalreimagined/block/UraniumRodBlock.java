@@ -1,6 +1,9 @@
 package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +16,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
 
 public class UraniumRodBlock extends Block {
 	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 3);
@@ -55,6 +59,34 @@ public class UraniumRodBlock extends Block {
 			case 3 -> SHAPE_MIDDLE;
 			default -> SHAPE_STANDALONE;
 		};
+	}
+
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		super.animateTick(state, level, pos, random);
+
+		double x = pos.getX() + 0.25 + random.nextDouble() * 0.5;
+		double y = pos.getY() + random.nextDouble();
+		double z = pos.getZ() + 0.25 + random.nextDouble() * 0.5;
+		level.addParticle(SurvivalReimaginedModParticleTypes.RADIATION_PARTICLE.get(), x, y, z, 0.0, 0.0, 0.0);
+
+		x = pos.getX() + 0.25 + random.nextDouble() * 0.5;
+		y = pos.getY() + random.nextDouble();
+		z = pos.getZ() + 0.25 + random.nextDouble() * 0.5;
+		level.addParticle(SurvivalReimaginedModParticleTypes.RADIATION_PARTICLE_2.get(), x, y, z, 0.0, 0.0, 0.0);
+
+		if (random.nextFloat() < 0.1F) {
+			level.playLocalSound(
+					pos.getX() + 0.5,
+					pos.getY() + 0.5,
+					pos.getZ() + 0.5,
+					SoundEvents.BEACON_AMBIENT,
+					SoundSource.BLOCKS,
+					1.0F,
+					1.0F,
+					false
+			);
+		}
 	}
 
 	@Override
