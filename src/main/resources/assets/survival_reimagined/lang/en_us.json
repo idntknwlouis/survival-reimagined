@@ -336,5 +336,6 @@
   "item.survival_reimagined.yield_upgrade_mkii": "Yield Upgrade MKII",
   "item.survival_reimagined.yield_upgrade_mkiii": "Yield Upgrade MKIII",
   "item.survival_reimagined.block_packaging_upgrade": "Block Packaging Upgrade",
-  "item.survival_reimagined.hemp_mesh": "Hemp Mesh"
+  "item.survival_reimagined.hemp_mesh": "Hemp Mesh",
+  "block.survival_reimagined.uranium_rod": "Uranium Rod"
 }
