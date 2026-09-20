@@ -22,10 +22,10 @@ This table tracks broad feature parity against the original mod.
 | Steel Tools | ✅ | ✅ | ✅ | — |
 | Diamond Tool Assembly | ✅ | ✅ | ✅ | — |
 | Silver / Argentite | ✅ | ✅ | ✅ | ✅ |
-| Sapphire | 🟡 | 🟡 | ✅ | ✅ |
-| Ruby | 🟡 | 🟡 | ✅ | ✅ |
-| Amber | 🟡 | 🟡 | ✅ | ✅ |
-| Titanium | 🟡 | ✅ | ✅ | ❌ |
+| Sapphire | ✅ | ✅ | ✅ | ✅ |
+| Ruby | ✅ | ✅ | ✅ | ✅ |
+| Amber | ✅ | ✅ | ✅ | ✅ |
+| Titanium | 🟡 | ✅ | ✅ | ✅ |
 | Uraninite / Uranium | ✅ | ✅ | ✅ | ✅ |
 | Turanite | ✅ | ✅ | ✅ | — |
 | Tin | ✅ | ✅ | ✅ | ✅ |
@@ -40,7 +40,7 @@ This table tracks broad feature parity against the original mod.
 | Basalt Geology Extensions | ✅ | ✅ | ✅ | ✅ |
 | Native Mineral Ores | 🟡 | 🟡 | ✅ | ✅ |
 | Kimberlite Geology | ✅ | ✅ | ✅ | ✅ |
-| Gem Polishing | 🟡 | ✅ | ✅ | — |
+| Gem Polishing | ✅ | ✅ | ✅ | — |
 | Rune Socketing | ✅ | ✅ | ✅ | — |
 | Rune Effects / Tooltips | 🟡 | 🟡 | ✅ | — |
 | Fuels / Forge Materials | ✅ | ✅ | ✅ | 🟡 |
@@ -75,3 +75,4 @@ This table tracks broad feature parity against the original mod.
 
 - Kimberlite geology and ore variants are implemented; missing English names were restored.
 - Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes. Shale Uranophane generation is also wired. Runtime verification is still pending.
+- Filled rune tooltips restored for all Gold/Silver Sapphire, Amber, Diamond, Emerald, Ruby, and Lapis runes.
