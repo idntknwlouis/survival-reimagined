@@ -54,6 +54,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> POLISHED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_SHALE);
 	public static final RegistryEntry<Item> POLISHED_SHALE_BRICKS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICKS);
 	public static final RegistryEntry<Item> POLISHED_CHISELED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_CHISELED_SHALE);
+	public static final RegistryEntry<Item> SHALE_TITANIUM_ORE = block(SurvivalReimaginedModBlocks.SHALE_TITANIUM_ORE);
+	public static final RegistryEntry<Item> SHALE_URANINITE_ORE = block(SurvivalReimaginedModBlocks.SHALE_URANINITE_ORE);
 	public static final RegistryEntry<Item> SHALE_STAIRS = block(SurvivalReimaginedModBlocks.SHALE_STAIRS);
 	public static final RegistryEntry<Item> SHALE_SLAB = block(SurvivalReimaginedModBlocks.SHALE_SLAB);
 	public static final RegistryEntry<Item> SHALE_WALL = block(SurvivalReimaginedModBlocks.SHALE_WALL);
