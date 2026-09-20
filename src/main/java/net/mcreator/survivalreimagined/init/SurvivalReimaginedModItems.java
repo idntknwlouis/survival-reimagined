@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
 import net.mcreator.survivalreimagined.item.RuneItem;
+import net.mcreator.survivalreimagined.item.ScriptureItem;
 import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
 import net.mcreator.survivalreimagined.item.DiamondSawItem;
 import net.mcreator.survivalreimagined.item.DiamondHammerItem;
@@ -151,7 +152,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_AMBER = simple("rough_amber");
 	public static final RegistryEntry<Item> REACTOR_ROD = simpleUnstackable("reactor_rod");
 	public static final RegistryEntry<Item> DEPLETED_REACTOR_ROD = simpleUnstackable("depleted_reactor_rod");
-	public static final RegistryEntry<Item> ADVANCED_REACTOR_ROD = simpleUnstackable("advanced_reactor_rod");
+		public static final RegistryEntry<Item> AAF_SCRIPTURE = register("aaf_scripture", () -> new ScriptureItem("Advanced Alloy Forge"));
+	public static final RegistryEntry<Item> RMI_SCRIPTURE = register("rmi_scripture", () -> new ScriptureItem("Rune Magic Infuser"));
+public static final RegistryEntry<Item> ADVANCED_REACTOR_ROD = simpleUnstackable("advanced_reactor_rod");
 	public static final RegistryEntry<Item> DRAINED_ADVANCED_REACTOR_ROD = simpleUnstackable("drained_advanced_reactor_rod");
 	public static final RegistryEntry<Item> FUEL_UPGRADE = simpleUnstackable("fuel_upgrade");
 	public static final RegistryEntry<Item> FUEL_UPGRADE_MKII = simpleUnstackable("fuel_upgrade_mkii");
