@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "survival_reimagined:block/basalt_uraninite_ore"
+  }
+}
