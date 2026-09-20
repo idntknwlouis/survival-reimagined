@@ -20,6 +20,7 @@ import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.block.IngotMoldBlock;
 import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
 import net.mcreator.survivalreimagined.block.MineralProcessingTableBlock;
+import net.mcreator.survivalreimagined.block.RuneMagicInfuserBlock;
 import net.mcreator.survivalreimagined.block.ToolMoldBlock;
 import net.mcreator.survivalreimagined.block.ClayMoldBlock;
 import net.mcreator.survivalreimagined.block.PlateBlock;
@@ -60,6 +61,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
 	public static final RegistryEntry<Block> METAL_REFINING_TABLE = register("metal_refining_table", MetalRefiningTableBlock::new);
 	public static final RegistryEntry<Block> MINERAL_PROCESSING_TABLE = register("mineral_processing_table", MineralProcessingTableBlock::new);
+	public static final RegistryEntry<Block> RUNE_MAGIC_INFUSER = register("rune_magic_infuser", RuneMagicInfuserBlock::new);
 	public static final RegistryEntry<Block> ANTHRACITE_BLOCK = register("anthracite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> LIGINITE_BLOCK = register("liginite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DARK_CINDER = register("dark_cinder", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.3f)));
