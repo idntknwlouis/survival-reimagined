@@ -251,6 +251,13 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_ANTHRACITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_ANTHRACITE_ORE);
 	public static final RegistryEntry<Item> LIGINITE_ORE = block(SurvivalReimaginedModBlocks.LIGINITE_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_LIGINITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_LIGINITE_ORE);
+	public static final RegistryEntry<Item> HEMATITE_BLOCK = block(SurvivalReimaginedModBlocks.HEMATITE_BLOCK);
+	public static final RegistryEntry<Item> MAGNETITE_BLOCK = block(SurvivalReimaginedModBlocks.MAGNETITE_BLOCK);
+	public static final RegistryEntry<Item> CALAVERITE_BLOCK = block(SurvivalReimaginedModBlocks.CALAVERITE_BLOCK);
+	public static final RegistryEntry<Item> PYROLUSITE_BLOCK = block(SurvivalReimaginedModBlocks.PYROLUSITE_BLOCK);
+	public static final RegistryEntry<Item> URANOPHANE_BLOCK = block(SurvivalReimaginedModBlocks.URANOPHANE_BLOCK);
+	public static final RegistryEntry<Item> ILMENITE_BLOCK = block(SurvivalReimaginedModBlocks.ILMENITE_BLOCK);
+	public static final RegistryEntry<Item> SHALE_URANOPHANE_ORE = block(SurvivalReimaginedModBlocks.SHALE_URANOPHANE_ORE);
 	public static final RegistryEntry<Item> BASALT_HEMATITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_HEMATITE_ORE);
 	public static final RegistryEntry<Item> BASALT_MAGNETITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_MAGNETITE_ORE);
 	public static final RegistryEntry<Item> BASALT_CALAVERITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_CALAVERITE_ORE);
