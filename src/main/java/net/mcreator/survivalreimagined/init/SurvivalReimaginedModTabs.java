@@ -144,6 +144,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.ROUGH_NETHERITE.get());
 					output.accept(SurvivalReimaginedModItems.TITANIUM_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TITANIUM_ORE.get());
+					output.accept(SurvivalReimaginedModItems.SHALE_TITANIUM_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_TITANIUM.get());
 					output.accept(SurvivalReimaginedModItems.RAW_TITANIUM_NUGGET.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_TITANIUM.get());
@@ -152,6 +153,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get());
 					output.accept(SurvivalReimaginedModItems.URANINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_URANINITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.SHALE_URANINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_URANINITE.get());
 					output.accept(SurvivalReimaginedModItems.URANIUM_DUST.get());
 					output.accept(SurvivalReimaginedModItems.REDSTONE_CHARGED_URANIUM_DUST.get());
