@@ -45,6 +45,10 @@
     "survival_reimagined:uranophane_ore",
     "survival_reimagined:deepslate_uranophane_ore",
     "survival_reimagined:ilmenite_ore",
-    "survival_reimagined:deepslate_ilmenite_ore"
+    "survival_reimagined:deepslate_ilmenite_ore",
+    "survival_reimagined:calaverite_block",
+    "survival_reimagined:uranophane_block",
+    "survival_reimagined:ilmenite_block",
+    "survival_reimagined:shale_uranophane_ore"
   ]
 }
