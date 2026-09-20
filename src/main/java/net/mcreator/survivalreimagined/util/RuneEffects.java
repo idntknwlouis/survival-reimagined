@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -13,13 +14,16 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.level.ServerLevel;
@@ -40,6 +44,7 @@ public final class RuneEffects {
 	private static final Map<UUID, Integer> LAPIS_ARMOR_TICKS = new HashMap<>();
 	private static final Map<UUID, Integer> SAPPHIRE_ARMOR_TICKS = new HashMap<>();
 	private static final Map<UUID, Integer> RUBY_ARMOR_TICKS = new HashMap<>();
+	private static final Map<UUID, Double> SAPPHIRE_TOOL_BASE = new HashMap<>();
 
 	private RuneEffects() {
 	}
@@ -48,6 +53,7 @@ public final class RuneEffects {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (var player : server.getPlayerList().getPlayers()) {
 				tickArmor(player);
+				tickTool(player);
 			}
 		});
 
@@ -117,6 +123,24 @@ public final class RuneEffects {
 		PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> {
 			ItemStack tool = player.getMainHandItem();
 			if (!tool.is(INFUSABLE_TOOL) || !(level instanceof ServerLevel serverLevel)) return;
+
+			if (has(tool, "AmberInfused") && !player.isCreative()) {
+				if (tool.is(net.minecraft.tags.ItemTags.AXES) && state.is(BlockTags.LOGS)) {
+					int count = 2 + player.getRandom().nextInt(3);
+					serverLevel.addFreshEntity(new ItemEntity(serverLevel,
+							pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+							new ItemStack(Items.CHARCOAL, count)));
+				} else if (tool.is(net.minecraft.tags.ItemTags.SHOVELS) && state.is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "sands")))) {
+					int count = 2 + player.getRandom().nextInt(3);
+					serverLevel.addFreshEntity(new ItemEntity(serverLevel,
+							pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+							new ItemStack(SurvivalReimaginedModItems.GLASS_SHARD.get(), count)));
+				}
+			}
+
+			if (has(tool, "DiamondInfused")) {
+				advanceUnbreaking(serverLevel, player, tool);
+			}
 
 			if (has(tool, "RubyInfused")) {
 				int repair = has(tool, "GoldInfused") ? 8 : has(tool, "SilverInfused") ? 4 : 0;
@@ -286,6 +310,58 @@ public final class RuneEffects {
 			}
 		} else {
 			LAPIS_ARMOR_TICKS.remove(id);
+		}
+	}
+
+	private static void tickTool(Player player) {
+		ItemStack tool = player.getMainHandItem();
+		UUID id = player.getUUID();
+		if (!tool.is(INFUSABLE_TOOL) || !has(tool, "SapphireInfused")) {
+			Double original = SAPPHIRE_TOOL_BASE.remove(id);
+			if (original != null && player.getAttribute(Attributes.BLOCK_BREAK_SPEED) != null) {
+				player.getAttribute(Attributes.BLOCK_BREAK_SPEED).setBaseValue(original);
+			}
+			return;
+		}
+
+		var attribute = player.getAttribute(Attributes.BLOCK_BREAK_SPEED);
+		if (attribute == null) return;
+
+		if (player.isUnderWater()) {
+			if (!SAPPHIRE_TOOL_BASE.containsKey(id)) {
+				SAPPHIRE_TOOL_BASE.put(id, attribute.getBaseValue());
+			}
+			double base = SAPPHIRE_TOOL_BASE.get(id);
+			attribute.setBaseValue(base * 1.6D);
+		} else {
+			Double original = SAPPHIRE_TOOL_BASE.remove(id);
+			if (original != null) attribute.setBaseValue(original);
+		}
+	}
+
+	private static void advanceUnbreaking(ServerLevel level, Player player, ItemStack tool) {
+		boolean gold = has(tool, "GoldInfused");
+		boolean silver = has(tool, "SilverInfused");
+		if (!gold && !silver) return;
+
+		var enchantment = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.UNBREAKING);
+		int current = tool.getEnchantmentLevel(enchantment);
+		if (current >= 4) return;
+
+		String key = gold ? "GoldNumber" : "SilverNumber";
+		int step = gold ? 30 : 50;
+		int target = step * (current + 1);
+		CompoundTag data = tool.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+		int progress = data.getInt(key) + 1;
+
+		final int stored = progress >= target ? 0 : progress;
+		CustomData.update(DataComponents.CUSTOM_DATA, tool, tag -> tag.putInt(key, stored));
+
+		player.displayClientMessage(Component.literal("Unbreaking " + (current + 1) + " Progress - " + progress + " / " + target), true);
+
+		if (progress >= target) {
+			tool.enchant(enchantment, current + 1);
+			level.playSound(null, player.blockPosition(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1.0F, 1.3F);
 		}
 	}
 
