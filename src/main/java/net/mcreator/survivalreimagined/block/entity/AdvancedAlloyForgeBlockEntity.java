@@ -8,6 +8,9 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
@@ -21,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -102,6 +106,16 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		tag.putInt("SmeltTime", this.progress);
 		tag.putInt("FuelCapacity", this.fuelCapacity);
 		tag.putInt("FuelTimer", this.fuelTimer);
+	}
+
+	@Override
+	public Packet<ClientGamePacketListener> getUpdatePacket() {
+		return ClientboundBlockEntityDataPacket.create(this);
+	}
+
+	@Override
+	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+		return this.saveWithoutMetadata(registries);
 	}
 
 	@Override public int getContainerSize() { return CONTAINER_SIZE; }
@@ -202,6 +216,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 			return;
 		}
 		boolean changed = false;
+		boolean wasFueled = forge.fuelCapacity > 0;
 
 		int maxFuel = forge.getMaxFuelCapacity();
 		if (forge.fuelCapacity > maxFuel) {
@@ -250,7 +265,12 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 			changed = true;
 		}
 
-		if (changed) forge.setChanged();
+		if (changed) {
+			forge.setChanged();
+			if (wasFueled != (forge.fuelCapacity > 0)) {
+				level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);
+			}
+		}
 	}
 
 	private static AlloyRecipe getRecipe(ItemStack a, ItemStack b, boolean packaged) {
