@@ -38,7 +38,7 @@ This table tracks broad feature parity against the original mod.
 | Flint Placement | ✅ | ✅ | ✅ | ✅ |
 | Shale Geology | ❌ | ❌ | ❌ | ❌ |
 | Basalt Geology Extensions | ✅ | ✅ | ✅ | ✅ |
-| Kimberlite Geology | ❌ | ❌ | ❌ | ❌ |
+| Kimberlite Geology | 🟡 | 🟡 | ✅ | ✅ |
 | Gem Polishing | 🟡 | ✅ | ✅ | — |
 | Rune Socketing | ✅ | ✅ | ✅ | — |
 | Rune Effects / Tooltips | 🟡 | 🟡 | ✅ | — |
@@ -65,3 +65,7 @@ This table tracks broad feature parity against the original mod.
 5. Broad core gameplay parity audit
 6. Release-ready cleanup and testing
 7. Compat content
+
+## World Generation Notes
+
+- Overworld depth parity is enabled for testing: `min_y = -256`, `height = 512` (Y -256 through Y 255), matching the original project.

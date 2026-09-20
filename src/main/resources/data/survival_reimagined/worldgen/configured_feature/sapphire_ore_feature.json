@@ -30,6 +30,15 @@
         "state": {
           "Name": "survival_reimagined:deepslate_sapphire_ore"
         }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:kimberlite_ore_replaceables"
+        },
+        "state": {
+          "Name": "survival_reimagined:kimberlite_sapphire_ore"
+        }
       }
     ]
   }

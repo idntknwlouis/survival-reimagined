@@ -72,6 +72,13 @@
     "survival_reimagined:basalt_uranophane_ore",
     "survival_reimagined:basalt_ilmenite_ore",
     "survival_reimagined:basalt_anthracite_ore",
-    "survival_reimagined:basalt_liginite_ore"
+    "survival_reimagined:basalt_liginite_ore",
+    "survival_reimagined:kimberlite",
+    "survival_reimagined:kimberlite_sapphire_ore",
+    "survival_reimagined:kimberlite_diamond_ore",
+    "survival_reimagined:kimberlite_emerald_ore",
+    "survival_reimagined:kimberlite_ruby_ore",
+    "survival_reimagined:kimberlite_lapis_ore",
+    "survival_reimagined:kimberlite_amber_ore"
   ]
 }
