@@ -38,7 +38,20 @@ public class RMIScreen extends AbstractContainerScreen<RMIMenu> {
 						this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 0);
 					}
 				}
-		);
+		) {
+			@Override
+			public void renderWidget(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+				ResourceLocation texture;
+				if (!this.active) {
+					texture = BUTTON_DISABLED;
+				} else if (this.isHoveredOrFocused()) {
+					texture = BUTTON_HOVERED;
+				} else {
+					texture = BUTTON;
+				}
+				graphics.blit(texture, this.getX(), this.getY(), 0, 0, this.width, this.height, this.width, this.height);
+			}
+		};
 		this.addRenderableWidget(this.infuseButton);
 	}
 
@@ -56,9 +69,6 @@ public class RMIScreen extends AbstractContainerScreen<RMIMenu> {
 		graphics.blit(RUNE_OUTLINE, this.leftPos + 80, this.topPos + 41, 0, 0, 16, 16, 16, 16);
 		graphics.blit(LAPIS_OUTLINE, this.leftPos + 116, this.topPos + 61, 0, 0, 16, 16, 16, 16);
 
-		if (this.minecraft != null && this.minecraft.player != null && !this.menu.canInfuse(this.minecraft.player)) {
-			graphics.blit(BUTTON_DISABLED, this.leftPos + 72, this.topPos + 61, 0, 0, 32, 16, 32, 16);
-		}
 	}
 
 	@Override
