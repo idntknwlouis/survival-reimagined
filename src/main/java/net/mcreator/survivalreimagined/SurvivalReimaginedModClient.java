@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticles;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
+import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
 
 public class SurvivalReimaginedModClient implements ClientModInitializer {
 	@Override
@@ -16,6 +17,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		SurvivalReimaginedModParticles.register();
 		SurvivalReimaginedModScreens.register();
 		BlockRenderLayerMap.INSTANCE.putBlock(net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks.URANIUM_ROD.get(), RenderType.translucent());
-		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> RuneInfusionTooltip.append(stack, lines));
+		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
+			RuneInfusionTooltip.append(stack, lines);
+			AAFUpgradeTooltip.append(stack, lines);
+		});
 	}
 }
