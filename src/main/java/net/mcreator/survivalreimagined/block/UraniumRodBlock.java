@@ -90,6 +90,14 @@ public class UraniumRodBlock extends Block {
 	}
 
 	@Override
+	public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, net.minecraft.world.entity.player.Player player) {
+		if (!level.isClientSide()) {
+			level.playSound(null, pos, SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 0.8F, 1.0F);
+		}
+		return super.playerWillDestroy(level, pos, state, player);
+	}
+
+	@Override
 	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(state, level, pos, neighborBlock, fromPos, moving);
 		updateConnections(level, pos);
