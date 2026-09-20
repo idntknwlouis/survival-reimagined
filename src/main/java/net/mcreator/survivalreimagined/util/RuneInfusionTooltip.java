@@ -61,7 +61,7 @@ public final class RuneInfusionTooltip {
 			} else if (armor) {
 				lines.add(effect(gold ? "40% chance for Resistance II when hit" : "20% chance for Resistance I when hit"));
 			} else if (tool) {
-				lines.add(effect("Mining progresses Unbreaking I-IV"));
+				lines.add(effect("Pickaxe ore mining progresses Unbreaking I-IV"));
 			}
 		} else if (tag.getBoolean("EmeraldInfused")) {
 			lines.add(Component.literal("Crystal: Emerald").withStyle(ChatFormatting.DARK_GREEN));
