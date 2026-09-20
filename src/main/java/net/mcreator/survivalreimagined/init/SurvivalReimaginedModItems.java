@@ -136,6 +136,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> QUICK_LIME = simple("quick_lime");
 	public static final RegistryEntry<Item> DARK_CINDER_POWDER = simple("dark_cinder_powder");
 	public static final RegistryEntry<Item> DARK_CINDER_COAL = simple("dark_cinder_coal");
+	public static final RegistryEntry<Item> DARK_CINDER = block(SurvivalReimaginedModBlocks.DARK_CINDER);
 	public static final RegistryEntry<Item> SILVER_INGOT = simple("silver_ingot");
 	public static final RegistryEntry<Item> RAW_SILVER = simple("raw_silver");
 	public static final RegistryEntry<Item> RAW_SILVER_NUGGET = simple("raw_silver_nugget");
