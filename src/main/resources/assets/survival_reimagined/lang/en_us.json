@@ -259,5 +259,8 @@
   "block.survival_reimagined.polished_shale_brick_slab": "Polished Shale Brick Slab",
   "block.survival_reimagined.poloshed_shale_brick_wall": "Polished Shale Brick Wall",
   "block.survival_reimagined.shale_titanium_ore": "Shale Titanium Ore",
-  "block.survival_reimagined.shale_uraninite_ore": "Shale Uraninite Ore"
+  "block.survival_reimagined.shale_uraninite_ore": "Shale Uraninite Ore",
+  "block.survival_reimagined.basalt_sapphire_ore": "Basalt Sapphire Ore",
+  "block.survival_reimagined.basalt_ruby_ore": "Basalt Ruby Ore",
+  "block.survival_reimagined.basalt_amber_ore": "Basalt Amber Ore"
 }
