@@ -56,6 +56,9 @@
     "survival_reimagined:polished_chiseled_shale",
     "survival_reimagined:shale_titanium_ore",
     "survival_reimagined:shale_uraninite_ore",
-    "survival_reimagined:mineral_processing_table"
+    "survival_reimagined:mineral_processing_table",
+    "survival_reimagined:basalt_sapphire_ore",
+    "survival_reimagined:basalt_ruby_ore",
+    "survival_reimagined:basalt_amber_ore"
   ]
 }
