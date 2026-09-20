@@ -28,6 +28,14 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("basalt_ilmenite_feature");
 		addUndergroundEverywhere("basalt_anthracite_feature");
 		addUndergroundEverywhere("basalt_liginite_feature");
+		addUndergroundEverywhere("hematite");
+		addUndergroundEverywhere("magnetite");
+		addUndergroundEverywhere("calaverite_feature");
+		addUndergroundEverywhere("pyrolusite_feature");
+		addUndergroundEverywhere("uranophane_feature");
+		addUndergroundEverywhere("ilmenite_ore_feature");
+		addUndergroundEverywhere("anthracite_ore_feature");
+		addUndergroundEverywhere("liginite_ore_feature");
 		addUndergroundEverywhere("uraninite_feature");
 		addUndergroundEverywhere("titanium_ore_feature");
 		addUndergroundEverywhere("amber_ore_feature");
