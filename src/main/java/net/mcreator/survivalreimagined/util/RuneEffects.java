@@ -6,6 +6,8 @@ import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,11 +26,20 @@ import net.minecraft.server.level.ServerLevel;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public final class RuneEffects {
 	private static final TagKey<Item> INFUSABLE_TOOL = itemTag("c", "rmi_infusable/tool");
 	private static final TagKey<Item> INFUSABLE_WEAPON = itemTag("c", "rmi_infusable/weapon");
 	private static final TagKey<Item> INFUSABLE_ARMOR = itemTag("c", "rmi_infusable/armor");
 	private static final TagKey<Block> COMMON_ORES = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "ores"));
+
+	private static final Map<UUID, Integer> EMERALD_ARMOR_TICKS = new HashMap<>();
+	private static final Map<UUID, Integer> LAPIS_ARMOR_TICKS = new HashMap<>();
+	private static final Map<UUID, Integer> SAPPHIRE_ARMOR_TICKS = new HashMap<>();
+	private static final Map<UUID, Integer> RUBY_ARMOR_TICKS = new HashMap<>();
 
 	private RuneEffects() {
 	}
@@ -60,12 +71,35 @@ public final class RuneEffects {
 					attacker.heal(2.0F);
 				}
 			}
+
+			if (has(weapon, "EmeraldInfused") && entity.level() instanceof ServerLevel level) {
+				float chance = has(weapon, "GoldInfused") ? 0.25F : has(weapon, "SilverInfused") ? 0.15F : 0.0F;
+				if (chance > 0.0F && attacker.getRandom().nextFloat() < chance) {
+					ItemEntity drop = new ItemEntity(level, entity.getX(), entity.getY(), entity.getZ(),
+							new ItemStack(SurvivalReimaginedModItems.ROUGH_EMERALD.get()));
+					drop.setPickUpDelay(10);
+					level.addFreshEntity(drop);
+				}
+			}
+
+			if (has(weapon, "LapisInfused") && entity.level() instanceof ServerLevel level) {
+				float chance = has(weapon, "GoldInfused") ? 0.20F : has(weapon, "SilverInfused") ? 0.10F : 0.0F;
+				if (chance > 0.0F && attacker.getRandom().nextFloat() < chance) {
+					int orbCount = 1 + attacker.getRandom().nextInt(3);
+					for (int i = 0; i < orbCount; i++) {
+						int value = has(weapon, "GoldInfused")
+								? 3 + attacker.getRandom().nextInt(5)
+								: 1 + attacker.getRandom().nextInt(3);
+						level.addFreshEntity(new ExperienceOrb(level, entity.getX(), entity.getY(), entity.getZ(), value));
+					}
+				}
+			}
 		});
 
 		ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
 			if (!(source.getEntity() instanceof LivingEntity attacker)) return;
 			ItemStack weapon = attacker.getMainHandItem();
-			if (!weapon.is(INFUSABLE_WEAPON) || !has(weapon, "LapisInfused")) return;
+			if (!weapon.is(INFUSABLE_WEAPON) || !has(weapon, "LapisInfused") || true) return;
 			if (!(entity.level() instanceof ServerLevel level)) return;
 
 			float chance = has(weapon, "GoldInfused") ? 0.20F : has(weapon, "SilverInfused") ? 0.10F : 0.0F;
@@ -117,20 +151,20 @@ public final class RuneEffects {
 	}
 
 	private static void tickArmor(Player player) {
-		boolean sapphire = false;
-		boolean sapphireGold = false;
-		boolean sapphireSilver = false;
-		boolean diamond = false;
-		boolean diamondGold = false;
-		boolean diamondSilver = false;
-		boolean allAmber = true;
-		boolean amberGold = false;
-		boolean amberSilver = false;
+		boolean sapphire = false, sapphireGold = false, sapphireSilver = false, allSapphire = true;
+		boolean diamond = false, diamondGold = false, diamondSilver = false;
+		boolean allAmber = true, amberGold = false, amberSilver = false;
+		boolean emerald = false, emeraldGold = false, emeraldSilver = false;
+		boolean ruby = false, rubyAllGold = true, rubyAllSilver = true;
+		boolean lapis = false, lapisGold = false, lapisSilver = false;
 
 		for (EquipmentSlot slot : new EquipmentSlot[]{EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD}) {
 			ItemStack stack = player.getItemBySlot(slot);
 			if (!stack.is(INFUSABLE_ARMOR)) {
 				allAmber = false;
+				allSapphire = false;
+				rubyAllGold = false;
+				rubyAllSilver = false;
 				continue;
 			}
 
@@ -138,24 +172,64 @@ public final class RuneEffects {
 				sapphire = true;
 				sapphireGold |= has(stack, "GoldInfused");
 				sapphireSilver |= has(stack, "SilverInfused");
+			} else {
+				allSapphire = false;
 			}
+
 			if (has(stack, "DiamondInfused")) {
 				diamond = true;
 				diamondGold |= has(stack, "GoldInfused");
 				diamondSilver |= has(stack, "SilverInfused");
 			}
+
 			if (has(stack, "AmberInfused")) {
 				amberGold |= has(stack, "GoldInfused");
 				amberSilver |= has(stack, "SilverInfused");
 			} else {
 				allAmber = false;
 			}
+
+			if (has(stack, "EmeraldInfused")) {
+				emerald = true;
+				emeraldGold |= has(stack, "GoldInfused");
+				emeraldSilver |= has(stack, "SilverInfused");
+			}
+
+			if (has(stack, "RubyInfused")) {
+				ruby = true;
+				rubyAllGold &= has(stack, "GoldInfused");
+				rubyAllSilver &= has(stack, "SilverInfused");
+			} else {
+				rubyAllGold = false;
+				rubyAllSilver = false;
+			}
+
+			if (has(stack, "LapisInfused")) {
+				lapis = true;
+				lapisGold |= has(stack, "GoldInfused");
+				lapisSilver |= has(stack, "SilverInfused");
+			}
 		}
 
-		if (sapphire) {
-			int duration = sapphireGold ? 80 : sapphireSilver ? 60 : 0;
-			if (duration > 0) player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, duration, 0, true, false));
+		UUID id = player.getUUID();
+
+		if (sapphire && player.isUnderWater()) {
+			int timer = SAPPHIRE_ARMOR_TICKS.merge(id, 1, Integer::sum);
+			int threshold = sapphireGold ? 60 : 80;
+			float chance = sapphireGold ? 0.25F : sapphireSilver ? 0.15F : 0.0F;
+			if (allSapphire && timer >= 20) {
+				player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 60, 0, true, false));
+				SAPPHIRE_ARMOR_TICKS.put(id, 0);
+			} else if (chance > 0.0F && timer >= threshold) {
+				if (player.getRandom().nextFloat() < chance) {
+					player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, sapphireGold ? 80 : 60, 0, true, false));
+				}
+				SAPPHIRE_ARMOR_TICKS.put(id, 0);
+			}
+		} else {
+			SAPPHIRE_ARMOR_TICKS.remove(id);
 		}
+
 		if (diamond) {
 			if (diamondGold) {
 				player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, 1, true, false));
@@ -163,8 +237,55 @@ public final class RuneEffects {
 				player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 0, true, false));
 			}
 		}
+
 		if (allAmber && (amberGold || amberSilver)) {
 			player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 80, 0, true, false));
+		}
+
+		if (emerald && !player.hasEffect(MobEffects.HERO_OF_THE_VILLAGE)) {
+			int timer = EMERALD_ARMOR_TICKS.merge(id, 1, Integer::sum);
+			if (timer >= 40) {
+				float chance = emeraldGold ? 0.20F : emeraldSilver ? 0.10F : 0.0F;
+				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
+					player.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, emeraldGold ? 6000 : 3000, 0));
+					player.level().playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1.0F, 1.0F);
+				}
+				EMERALD_ARMOR_TICKS.put(id, 0);
+			}
+		} else {
+			EMERALD_ARMOR_TICKS.remove(id);
+		}
+
+		if (ruby && player.getHealth() <= 4.0F && (rubyAllGold || rubyAllSilver)) {
+			int timer = RUBY_ARMOR_TICKS.merge(id, 1, Integer::sum);
+			if (timer >= 20) {
+				float chance = rubyAllGold ? 0.50F : 0.25F;
+				if (player.getRandom().nextFloat() < chance) {
+					player.heal(rubyAllGold ? 4.0F : 2.0F);
+					player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, rubyAllGold ? 40 : 20, 2));
+					player.level().playSound(null, player.blockPosition(), SoundEvents.WITCH_DRINK, SoundSource.PLAYERS, 0.6F, 1.0F);
+				}
+				RUBY_ARMOR_TICKS.put(id, 0);
+			}
+		} else {
+			RUBY_ARMOR_TICKS.remove(id);
+		}
+
+		if (lapis) {
+			int timer = LAPIS_ARMOR_TICKS.merge(id, 1, Integer::sum);
+			if (timer >= 100) {
+				float chance = lapisGold ? 0.10F : lapisSilver ? 0.05F : 0.0F;
+				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
+					int xp = lapisGold
+							? Math.round(player.getXpNeededForNextLevel() / 4.0F) + 4 + player.getRandom().nextInt(5)
+							: Math.round(player.getXpNeededForNextLevel() / 6.0F) + 2 + player.getRandom().nextInt(3);
+					player.giveExperiencePoints(xp);
+					player.level().playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 0.8F + player.getRandom().nextFloat() * 0.4F);
+				}
+				LAPIS_ARMOR_TICKS.put(id, 0);
+			}
+		} else {
+			LAPIS_ARMOR_TICKS.remove(id);
 		}
 	}
 
