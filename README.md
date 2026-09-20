@@ -13,7 +13,7 @@ This table tracks broad feature parity against the original mod.
 | Forge | ✅ | ✅ | ✅ | — |
 | Metal Refining Table | ✅ | ✅ | ✅ | — |
 | Mineral Processing Table | ✅ | ✅ | ✅ | — |
-| Advanced Alloy Forge | ❌ | ❌ | ❌ | — |
+| Advanced Alloy Forge | 🟡 | 🟡 | ✅ | — |
 | Rune Magic Infuser | 🟡 | 🟡 | ✅ | — |
 | Clay / Tool Molds | ✅ | ✅ | ✅ | — |
 | Plate Molds / Plates | ✅ | ✅ | ✅ | — |
