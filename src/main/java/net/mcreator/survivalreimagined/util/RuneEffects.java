@@ -8,6 +8,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
@@ -20,11 +21,14 @@ import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.Block;
@@ -42,6 +46,7 @@ public final class RuneEffects {
 	private static final TagKey<Item> INFUSABLE_WEAPON = itemTag("c", "rmi_infusable/weapon");
 	private static final TagKey<Item> INFUSABLE_ARMOR = itemTag("c", "rmi_infusable/armor");
 	private static final TagKey<Block> COMMON_ORES = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "ores"));
+	private static final ResourceKey<Enchantment> OCEANS_WRATH = ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath("survival_reimagined", "oceans_wrath"));
 
 	private static final Map<UUID, Integer> EMERALD_ARMOR_TICKS = new HashMap<>();
 	private static final Map<UUID, Integer> LAPIS_ARMOR_TICKS = new HashMap<>();
@@ -65,6 +70,9 @@ public final class RuneEffects {
 			if (entity instanceof Player defender) {
 				procDiamondArmor(defender);
 			}
+			if (source.getEntity() instanceof Player attacker && entity.level() instanceof ServerLevel level) {
+				procOceansWrathDamage(level, attacker, entity, damageTaken);
+			}
 			if (!(source.getEntity() instanceof LivingEntity attacker)) return;
 			ItemStack weapon = attacker.getMainHandItem();
 			if (!weapon.is(INFUSABLE_WEAPON)) return;
@@ -83,6 +91,11 @@ public final class RuneEffects {
 			if (!(source.getEntity() instanceof Player player)) return;
 			ItemStack weapon = player.getMainHandItem();
 			if (!weapon.is(INFUSABLE_WEAPON) || !(entity.level() instanceof ServerLevel level)) return;
+
+			if (has(weapon, "SapphireInfused")
+					&& entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "aquatic")))) {
+				advanceOceansWrath(level, player, weapon);
+			}
 
 			if (has(weapon, "DiamondInfused")
 					&& entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "undead")))) {
@@ -376,6 +389,61 @@ public final class RuneEffects {
 			Double original = SAPPHIRE_TOOL_BASE.remove(id);
 			if (original != null) attribute.setBaseValue(original);
 		}
+	}
+
+	private static void procOceansWrathDamage(ServerLevel level, Player attacker, LivingEntity target, float originalDamage) {
+		if (!target.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "aquatic")))) return;
+		ItemStack weapon = attacker.getMainHandItem();
+		if (!weapon.is(INFUSABLE_WEAPON)) return;
+
+		var enchantment = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(OCEANS_WRATH);
+		int enchantLevel = EnchantmentHelper.getItemEnchantmentLevel(enchantment, weapon);
+		if (enchantLevel <= 0) return;
+
+		float chance = Math.min(1.0F, enchantLevel * 0.20F);
+		if (attacker.getRandom().nextFloat() >= chance) return;
+
+		float bonus = 5.0F + enchantLevel * 5.0F;
+		level.playSound(null, target.blockPosition(), SoundEvents.TRIDENT_RETURN, SoundSource.PLAYERS, 1.0F, 1.0F);
+		DamageSource extraSource = new DamageSource(level.registryAccess().lookupOrThrow(Registries.DAMAGE_TYPE).getOrThrow(DamageTypes.PLAYER_ATTACK));
+		target.hurt(extraSource, originalDamage + bonus);
+	}
+
+	private static void advanceOceansWrath(ServerLevel level, Player player, ItemStack weapon) {
+		boolean gold = has(weapon, "GoldInfused");
+		boolean silver = has(weapon, "SilverInfused");
+		if (!gold && !silver) return;
+
+		int step = gold ? 30 : 50;
+		int maxKills = step * 5;
+		CompoundTag data = weapon.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+		int kills = Math.min(maxKills, data.getInt("EntityKillCount") + 1);
+		CustomData.update(DataComponents.CUSTOM_DATA, weapon, tag -> tag.putInt("EntityKillCount", kills));
+
+		int levelNumber = Math.min(5, ((kills - 1) / step) + 1);
+		int target = levelNumber * step;
+		if (kills < maxKills) {
+			player.displayClientMessage(Component.literal("Oceans Wrath " + roman(levelNumber) + " Progress - " + kills + "/" + target), true);
+		} else {
+			player.displayClientMessage(Component.literal(gold ? "Oceans Wrath Full" : "Oceans Wrath Maxed"), true);
+		}
+
+		if (kills % step == 0) {
+			var enchantment = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(OCEANS_WRATH);
+			int newLevel = Math.min(5, kills / step);
+			weapon.enchant(enchantment, newLevel);
+			level.playSound(null, player.blockPosition(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1.0F, 1.3F);
+		}
+	}
+
+	private static String roman(int value) {
+		return switch (value) {
+			case 1 -> "I";
+			case 2 -> "II";
+			case 3 -> "III";
+			case 4 -> "IV";
+			default -> "V";
+		};
 	}
 
 	private static void advanceWeaponUnbreaking(ServerLevel level, Player player, ItemStack weapon) {
