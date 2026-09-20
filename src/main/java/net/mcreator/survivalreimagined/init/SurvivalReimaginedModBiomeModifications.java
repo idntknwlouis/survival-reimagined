@@ -17,6 +17,9 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addEverywhere("flint_gen");
 		addEverywhere("stone_gen");
 		addEverywhere("copper_gen");
+		addUndergroundEverywhere("diamond_ore_feature");
+		addUndergroundEverywhere("emerald_ore_feature");
+		addUndergroundEverywhere("lazurite_ore");
 		addUndergroundEverywhere("uraninite_feature");
 		addUndergroundEverywhere("titanium_ore_feature");
 		addUndergroundEverywhere("amber_ore_feature");
