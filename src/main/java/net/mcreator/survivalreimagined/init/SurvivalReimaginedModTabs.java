@@ -183,6 +183,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.DIAMOND_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.NETHERITE_PLATE.get());
 					output.accept(SurvivalReimaginedModItems.QUICK_LIME.get());
+					output.accept(SurvivalReimaginedModItems.DARK_CINDER.get());
 					output.accept(SurvivalReimaginedModItems.DARK_CINDER_POWDER.get());
 					output.accept(SurvivalReimaginedModItems.DARK_CINDER_COAL.get());
 					output.accept(SurvivalReimaginedModItems.SILVER_INGOT.get());
