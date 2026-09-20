@@ -7,6 +7,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -110,7 +112,16 @@ public class RMIMenu extends AbstractContainerMenu {
 		player.level().playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.8f, 1f);
 		player.level().playSound(null, blockPos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.3f, 1f);
 		container.setChanged();
+		if (player instanceof ServerPlayer serverPlayer) awardAdvancement(serverPlayer, "gem_runes");
 		return true;
+	}
+
+	private static void awardAdvancement(ServerPlayer player, String id) {
+		AdvancementHolder advancement = player.server.getAdvancements().get(ResourceLocation.fromNamespaceAndPath("survival_reimagined", id));
+		if (advancement == null) return;
+		var progress = player.getAdvancements().getOrStartProgress(advancement);
+		if (progress.isDone()) return;
+		for (String criterion : progress.getRemainingCriteria()) player.getAdvancements().award(advancement, criterion);
 	}
 
 	private static boolean isAlreadyInfused(ItemStack stack) {
