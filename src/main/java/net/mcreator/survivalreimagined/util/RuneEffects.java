@@ -34,8 +34,11 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+
+import net.minecraft.advancements.AdvancementHolder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +66,7 @@ public final class RuneEffects {
 			for (var player : server.getPlayerList().getPlayers()) {
 				tickArmor(player);
 				tickTool(player);
+				checkRuneAdvancement(player);
 			}
 		});
 
@@ -362,6 +366,21 @@ public final class RuneEffects {
 		} else {
 			LAPIS_ARMOR_TICKS.remove(id);
 		}
+	}
+
+	private static void checkRuneAdvancement(ServerPlayer player) {
+		boolean hasEmptyRune = player.getInventory().contains(stack -> !stack.isEmpty()
+				&& (stack.is(SurvivalReimaginedModItems.EMPTY_GOLD_RUNE.get()) || stack.is(SurvivalReimaginedModItems.EMPTY_SILVER_RUNE.get())));
+		if (!hasEmptyRune) return;
+		awardAdvancement(player, "runes_adv");
+	}
+
+	private static void awardAdvancement(ServerPlayer player, String id) {
+		AdvancementHolder advancement = player.server.getAdvancements().get(ResourceLocation.fromNamespaceAndPath("survival_reimagined", id));
+		if (advancement == null) return;
+		var progress = player.getAdvancements().getOrStartProgress(advancement);
+		if (progress.isDone()) return;
+		for (String criterion : progress.getRemainingCriteria()) player.getAdvancements().award(advancement, criterion);
 	}
 
 	private static void tickTool(Player player) {
