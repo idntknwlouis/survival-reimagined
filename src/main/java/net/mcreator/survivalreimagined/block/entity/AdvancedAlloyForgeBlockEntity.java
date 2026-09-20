@@ -11,6 +11,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -130,6 +131,28 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE_MKII.get())
 				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE_MKIII.get())
 				|| stack.is(SurvivalReimaginedModItems.BLOCK_PACKAGING_UPGRADE.get());
+	}
+
+	public static boolean canPlaceUpgrade(Container container, int targetSlot, ItemStack stack) {
+		if (!isUpgrade(stack)) return false;
+		int family = upgradeFamily(stack);
+		for (int i = 4; i <= 7; i++) {
+			if (i == targetSlot) continue;
+			ItemStack installed = container.getItem(i);
+			if (!installed.isEmpty() && upgradeFamily(installed) == family) return false;
+		}
+		return true;
+	}
+
+	private static int upgradeFamily(ItemStack stack) {
+		if (stack.is(SurvivalReimaginedModItems.FUEL_UPGRADE.get())
+				|| stack.is(SurvivalReimaginedModItems.FUEL_UPGRADE_MKII.get())) return 1;
+		if (stack.is(SurvivalReimaginedModItems.EFFICIENCY_UPGRADE.get())) return 2;
+		if (stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE.get())
+				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE_MKII.get())
+				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE_MKIII.get())) return 3;
+		if (stack.is(SurvivalReimaginedModItems.BLOCK_PACKAGING_UPGRADE.get())) return 4;
+		return 0;
 	}
 
 	public static boolean isAlloyInput(ItemStack stack) {
@@ -265,7 +288,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		if (index == 0) return false;
 		if (index == 1 || index == 2) return isAlloyInput(stack);
 		if (index == 3) return isReactorRod(stack) && this.getItem(3).isEmpty();
-		if (index >= 4 && index <= 7) return isUpgrade(stack);
+		if (index >= 4 && index <= 7) return canPlaceUpgrade(this, index, stack);
 		return false;
 	}
 
