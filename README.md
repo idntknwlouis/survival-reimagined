@@ -74,4 +74,4 @@ This table tracks broad feature parity against the original mod.
 ## Recent Core Port Progress
 
 - Kimberlite geology and ore variants are implemented; missing English names were restored.
-- Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, and worldgen. Runtime verification is still pending.
+- Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes. Shale Uranophane generation is also wired. Runtime verification is still pending.
