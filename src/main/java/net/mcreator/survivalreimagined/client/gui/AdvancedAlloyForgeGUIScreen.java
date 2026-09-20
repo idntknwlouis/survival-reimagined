@@ -18,6 +18,7 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 	private static final ResourceLocation UPGRADE = tex("upgrade_texture.png");
 	private static final ResourceLocation EMPTY_FUEL = tex("aaf_empty.png");
 	private static final ResourceLocation CAPACITY_MARKER = tex("capacity_marker.png");
+	private static final ResourceLocation AAF_X = tex("aaf_x.png");
 	private static final ResourceLocation[] FUEL = new ResourceLocation[12];
 	private static final ResourceLocation[] ARROWS = new ResourceLocation[15];
 
@@ -52,6 +53,10 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		int maxFuel = this.menu.getMaxFuelCapacity();
 		int markerY = maxFuel >= 9000 ? 3 : maxFuel >= 6000 ? 19 : 35;
 		graphics.blit(CAPACITY_MARKER, this.leftPos + 23, this.topPos + markerY, 0, 0, 7, 5, 7, 5);
+
+		if (this.menu.isRecipeInvalid()) {
+			graphics.blit(AAF_X, this.leftPos + 114, this.topPos + 43, 0, 0, 8, 8, 8, 8);
+		}
 
 		int progress = Math.max(0, Math.min(AdvancedAlloyForgeBlockEntity.MAX_PROGRESS, this.menu.getProgress()));
 		if (progress > 0) {
