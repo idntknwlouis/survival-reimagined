@@ -158,7 +158,9 @@ public final class RuneEffects {
 				}
 			}
 
-			if (has(tool, "DiamondInfused")) {
+			if (has(tool, "DiamondInfused")
+					&& tool.is(net.minecraft.tags.ItemTags.PICKAXES)
+					&& state.is(COMMON_ORES)) {
 				advanceUnbreaking(serverLevel, player, tool);
 			}
 
