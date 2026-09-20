@@ -13,7 +13,7 @@ This table tracks broad feature parity against the original mod.
 | Forge | ✅ | ✅ | ✅ | — |
 | Metal Refining Table | ✅ | ✅ | ✅ | — |
 | Mineral Processing Table | ✅ | ✅ | ✅ | — |
-| Advanced Alloy Forge | 🟡 | ✅ | ✅ | ✅ |
+| Advanced Alloy Forge | ✅ | ✅ | ✅ | ✅ |
 | Rune Magic Infuser | 🟡 | 🟡 | ✅ | — |
 | Clay / Tool Molds | ✅ | ✅ | ✅ | — |
 | Plate Molds / Plates | ✅ | ✅ | ✅ | — |
@@ -72,6 +72,8 @@ This table tracks broad feature parity against the original mod.
 
 
 ## Recent Core Port Progress
+
+- Advanced Alloy Forge runtime-tested successfully, including multiblock setup, Uranium Rod supports/effects, fuel/progress UI, reactor rods, and upgrade behavior.
 
 - Titanium nugget/processing parity restored, including smelting/blasting, forge output, and common titanium tags.
 - Dark Cinder block, loot, Nether worldgen, and Dark Cinder Coal forge recipe restored; Fuels / Forge Materials is now complete.
