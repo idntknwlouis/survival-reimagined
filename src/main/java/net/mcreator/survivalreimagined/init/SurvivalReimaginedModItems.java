@@ -218,6 +218,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_RUBY_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_RUBY_ORE);
 	public static final RegistryEntry<Item> AMBER_ORE = block(SurvivalReimaginedModBlocks.AMBER_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_AMBER_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_AMBER_ORE);
+	public static final RegistryEntry<Item> BASALT_SAPPHIRE_ORE = block(SurvivalReimaginedModBlocks.BASALT_SAPPHIRE_ORE);
+	public static final RegistryEntry<Item> BASALT_RUBY_ORE = block(SurvivalReimaginedModBlocks.BASALT_RUBY_ORE);
+	public static final RegistryEntry<Item> BASALT_AMBER_ORE = block(SurvivalReimaginedModBlocks.BASALT_AMBER_ORE);
 	public static final RegistryEntry<Item> RAW_SILVER_BLOCK = block(SurvivalReimaginedModBlocks.RAW_SILVER_BLOCK);
 	public static final RegistryEntry<Item> SILVER_BLOCK = block(SurvivalReimaginedModBlocks.SILVER_BLOCK);
 	public static final RegistryEntry<Item> ARGENTITE_BLOCK = block(SurvivalReimaginedModBlocks.ARGENTITE_BLOCK);
