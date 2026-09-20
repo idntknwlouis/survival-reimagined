@@ -116,6 +116,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SMALL_LIGINITE = simple("small_liginite");
 	public static final RegistryEntry<Item> ROUGH_MANGANESE = simple("rough_manganese");
 	public static final RegistryEntry<Item> MANGANESE_INGOT = simple("manganese_ingot");
+	public static final RegistryEntry<Item> MANGANESE_NUGGET = simple("manganese_nugget");
 	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
 	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
 	public static final RegistryEntry<Item> ROUGH_PLATED_DIAMOND = simple("rough_plated_diamond");
@@ -132,6 +133,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RAW_URANINITE_NUGGET = simple("raw_uraninite_nugget");
 	public static final RegistryEntry<Item> ROUGH_URANIUM = simple("rough_uranium");
 	public static final RegistryEntry<Item> URANIUM_INGOT = simple("uranium_ingot");
+	public static final RegistryEntry<Item> URANIUM_NUGGET = simple("uranium_nugget");
 	public static final RegistryEntry<Item> ROUGH_TURANITE = simple("rough_turanite");
 	public static final RegistryEntry<Item> TURANITE_INGOT = simple("turanite_ingot");
 	public static final RegistryEntry<Item> QUICK_LIME = simple("quick_lime");
