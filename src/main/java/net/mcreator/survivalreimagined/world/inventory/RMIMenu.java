@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.tags.TagKey;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -76,7 +77,18 @@ public class RMIMenu extends AbstractContainerMenu {
 		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
 	}
 
-	public static boolean isInfusable(ItemStack stack) { return stack.getItem() instanceof ArmorItem || stack.is(RMI_INFUSABLE) || stack.is(RMI_INFUSABLE_TOOL) || stack.is(RMI_INFUSABLE_WEAPON) || stack.is(RMI_INFUSABLE_ARMOR); }
+	public static boolean isInfusable(ItemStack stack) {
+		return stack.getItem() instanceof ArmorItem
+				|| stack.is(RMI_INFUSABLE)
+				|| stack.is(RMI_INFUSABLE_TOOL)
+				|| stack.is(RMI_INFUSABLE_WEAPON)
+				|| stack.is(RMI_INFUSABLE_ARMOR)
+				|| stack.is(ItemTags.PICKAXES)
+				|| stack.is(ItemTags.AXES)
+				|| stack.is(ItemTags.SHOVELS)
+				|| stack.is(ItemTags.HOES)
+				|| stack.is(ItemTags.SWORDS);
+	}
 	public static boolean isRune(ItemStack stack) { return stack.is(RMI_RUNES); }
 	public BlockPos getBlockPos() { return blockPos; }
 
