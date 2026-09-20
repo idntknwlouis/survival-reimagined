@@ -320,5 +320,6 @@
   "block.survival_reimagined.uranophane_block": "Uranophane Block",
   "block.survival_reimagined.ilmenite_block": "Ilmenite Block",
   "block.survival_reimagined.shale_uranophane_ore": "Shale Uranophane Ore",
-  "item.survival_reimagined.titanium_nugget": "Titanium Nugget"
+  "item.survival_reimagined.titanium_nugget": "Titanium Nugget",
+  "block.survival_reimagined.dark_cinder": "Dark Cinder"
 }
