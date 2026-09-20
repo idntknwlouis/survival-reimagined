@@ -188,14 +188,17 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.ARGENTITE_BLOCK.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_SAPPHIRE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_SAPPHIRE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_SAPPHIRE.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE_BLOCK.get());
 					output.accept(SurvivalReimaginedModItems.RUBY_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_RUBY_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_RUBY_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_RUBY.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RUBY.get());
 					output.accept(SurvivalReimaginedModItems.AMBER_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_AMBER_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_AMBER_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_AMBER.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_AMBER.get());
 					output.accept(SurvivalReimaginedModItems.WOODEN_RUNE.get());
