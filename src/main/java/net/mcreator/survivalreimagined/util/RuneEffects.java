@@ -85,7 +85,7 @@ public final class RuneEffects {
 			}
 			if (!(source.getEntity() instanceof LivingEntity attacker)) return;
 			ItemStack weapon = attacker.getMainHandItem();
-			if (!weapon.is(INFUSABLE_WEAPON)) return;
+			if (!isRuneWeapon(weapon)) return;
 
 			if (has(weapon, "AmberInfused")) {
 				if (has(weapon, "GoldInfused")) {
@@ -100,7 +100,7 @@ public final class RuneEffects {
 		ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
 			if (!(source.getEntity() instanceof Player player)) return;
 			ItemStack weapon = player.getMainHandItem();
-			if (!weapon.is(INFUSABLE_WEAPON) || !(entity.level() instanceof ServerLevel level)) return;
+			if (!isRuneWeapon(weapon) || !(entity.level() instanceof ServerLevel level)) return;
 
 			if (has(weapon, "SapphireInfused")
 					&& entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "aquatic")))) {
