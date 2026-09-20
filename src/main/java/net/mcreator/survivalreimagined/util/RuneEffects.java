@@ -421,7 +421,7 @@ public final class RuneEffects {
 	private static void procOceansWrathDamage(ServerLevel level, Player attacker, LivingEntity target, float originalDamage) {
 		if (!target.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "aquatic")))) return;
 		ItemStack weapon = attacker.getMainHandItem();
-		if (!weapon.is(INFUSABLE_WEAPON)) return;
+		if (!isRuneWeapon(weapon)) return;
 
 		var enchantment = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(OCEANS_WRATH);
 		int enchantLevel = EnchantmentHelper.getItemEnchantmentLevel(enchantment, weapon);
