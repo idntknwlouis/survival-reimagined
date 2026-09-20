@@ -3,7 +3,11 @@
   "package": "net.mcreator.survivalreimagined.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "WoodTypeInvoker"
+    "WoodTypeInvoker",
+    "CaveDarknessMixin",
+    "DimensionTypesMixin",
+    "HideExperimentalWarningMixin",
+    "NoiseBasedChunkGeneratorMixin"
   ],
   "client": [],
   "injectors": {
