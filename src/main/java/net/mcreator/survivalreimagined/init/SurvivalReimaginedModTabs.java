@@ -46,6 +46,9 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.OBSIDIAN_ROCK.get());
 					output.accept(SurvivalReimaginedModItems.SHALE.get());
 					output.accept(SurvivalReimaginedModItems.SHALE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.POLISHED_SHALE.get());
+					output.accept(SurvivalReimaginedModItems.POLISHED_SHALE_BRICKS.get());
+					output.accept(SurvivalReimaginedModItems.POLISHED_CHISELED_SHALE.get());
 					output.accept(SurvivalReimaginedModItems.OBSIDIAN_HANDLE.get());
 					output.accept(SurvivalReimaginedModItems.SMALL_OBSIDIAN_HANDLE.get());
 
