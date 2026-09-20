@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
@@ -70,6 +71,40 @@ public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 			AdvancedAlloyForgeBlockEntity.serverTick(level, pos, state, forge);
 		}
 		level.scheduleTick(pos, this, 2);
+	}
+
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		super.animateTick(state, level, pos, random);
+		if (!(level.getBlockEntity(pos) instanceof AdvancedAlloyForgeBlockEntity forge) || forge.getFuelCapacity() <= 0) return;
+		if (random.nextFloat() >= 0.8F) return;
+
+		Direction facing = state.getValue(FACING);
+		for (int i = 0; i < 10; i++) {
+			double x = pos.getX();
+			double y = pos.getY();
+			double z = pos.getZ();
+			switch (facing) {
+				case NORTH -> {
+					x += random.nextDouble();
+					z += 1.0 + random.nextDouble();
+				}
+				case SOUTH -> {
+					x += random.nextDouble();
+					z -= random.nextDouble();
+				}
+				case WEST -> {
+					x += 1.0 + random.nextDouble();
+					z += random.nextDouble();
+				}
+				case EAST -> {
+					x -= random.nextDouble();
+					z += random.nextDouble();
+				}
+				default -> { }
+			}
+			level.addParticle(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0, 0.2, 0.0);
+		}
 	}
 
 	@Override
