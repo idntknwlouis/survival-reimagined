@@ -100,6 +100,13 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DEEPSLATE_ANTHRACITE_ORE = register("deepslate_anthracite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> LIGINITE_ORE = register("liginite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_LIGINITE_ORE = register("deepslate_liginite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> HEMATITE_BLOCK = register("hematite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> MAGNETITE_BLOCK = register("magnetite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> CALAVERITE_BLOCK = register("calaverite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> PYROLUSITE_BLOCK = register("pyrolusite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> URANOPHANE_BLOCK = register("uranophane_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> ILMENITE_BLOCK = register("ilmenite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SHALE_URANOPHANE_ORE = register("shale_uranophane_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_HEMATITE_ORE = register("basalt_hematite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_MAGNETITE_ORE = register("basalt_magnetite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_CALAVERITE_ORE = register("basalt_calaverite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
