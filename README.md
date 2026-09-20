@@ -25,7 +25,7 @@ This table tracks broad feature parity against the original mod.
 | Sapphire | ✅ | ✅ | ✅ | ✅ |
 | Ruby | ✅ | ✅ | ✅ | ✅ |
 | Amber | ✅ | ✅ | ✅ | ✅ |
-| Titanium | 🟡 | ✅ | ✅ | ✅ |
+| Titanium | ✅ | ✅ | ✅ | ✅ |
 | Uraninite / Uranium | ✅ | ✅ | ✅ | ✅ |
 | Turanite | ✅ | ✅ | ✅ | — |
 | Tin | ✅ | ✅ | ✅ | ✅ |
@@ -43,7 +43,7 @@ This table tracks broad feature parity against the original mod.
 | Gem Polishing | ✅ | ✅ | ✅ | — |
 | Rune Socketing | ✅ | ✅ | ✅ | — |
 | Rune Effects / Tooltips | 🟡 | 🟡 | ✅ | — |
-| Fuels / Forge Materials | ✅ | ✅ | ✅ | 🟡 |
+| Fuels / Forge Materials | ✅ | ✅ | ✅ | ✅ |
 | Crops / Plants | 🟡 | 🟡 | 🟡 | 🟡 |
 | Food / Cooking | 🔎 | 🔎 | 🔎 | — |
 | Armor | 🔎 | 🔎 | 🔎 | — |
@@ -72,6 +72,9 @@ This table tracks broad feature parity against the original mod.
 
 
 ## Recent Core Port Progress
+
+- Titanium nugget/processing parity restored, including smelting/blasting, forge output, and common titanium tags.
+- Dark Cinder block, loot, Nether worldgen, and Dark Cinder Coal forge recipe restored; Fuels / Forge Materials is now complete.
 
 - Kimberlite geology and ore variants are implemented; missing English names were restored.
 - Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes; runtime-tested successfully. Shale Uranophane generation is also wired.
