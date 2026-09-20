@@ -47,6 +47,7 @@ public final class RuneEffects {
 	private static final Map<UUID, Integer> LAPIS_ARMOR_TICKS = new HashMap<>();
 	private static final Map<UUID, Integer> SAPPHIRE_ARMOR_TICKS = new HashMap<>();
 	private static final Map<UUID, Integer> RUBY_ARMOR_TICKS = new HashMap<>();
+	private static final Map<UUID, Integer> AMBER_ARMOR_TICKS = new HashMap<>();
 	private static final Map<UUID, Double> SAPPHIRE_TOOL_BASE = new HashMap<>();
 
 	private RuneEffects() {
@@ -61,6 +62,9 @@ public final class RuneEffects {
 		});
 
 		ServerLivingEntityEvents.AFTER_DAMAGE.register((entity, source, baseDamageTaken, damageTaken, blocked) -> {
+			if (entity instanceof Player defender) {
+				procDiamondArmor(defender);
+			}
 			if (!(source.getEntity() instanceof LivingEntity attacker)) return;
 			ItemStack weapon = attacker.getMainHandItem();
 			if (!weapon.is(INFUSABLE_WEAPON)) return;
@@ -140,8 +144,20 @@ public final class RuneEffects {
 			}
 
 			if (has(tool, "RubyInfused")) {
+				float chance = has(tool, "GoldInfused") ? 0.08F : has(tool, "SilverInfused") ? 0.05F : 0.0F;
 				int repair = has(tool, "GoldInfused") ? 8 : has(tool, "SilverInfused") ? 4 : 0;
-				if (repair > 0 && tool.isDamageableItem()) tool.setDamageValue(Math.max(0, tool.getDamageValue() - repair));
+				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
+					if (repair > 0 && tool.isDamageableItem()) {
+						tool.setDamageValue(Math.max(0, tool.getDamageValue() - repair));
+					}
+					if (state.is(COMMON_ORES)) {
+						ItemEntity shard = new ItemEntity(serverLevel,
+								pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+								new ItemStack(SurvivalReimaginedModItems.RUBY_HEART_SHARD.get()));
+						shard.setPickUpDelay(10);
+						serverLevel.addFreshEntity(shard);
+					}
+				}
 			}
 
 			if (has(tool, "LapisInfused") && tool.is(net.minecraft.tags.ItemTags.PICKAXES)) {
@@ -169,6 +185,26 @@ public final class RuneEffects {
 				}
 			}
 		});
+	}
+
+	private static void procDiamondArmor(Player player) {
+		boolean diamond = false;
+		boolean gold = false;
+		boolean silver = false;
+		for (EquipmentSlot slot : new EquipmentSlot[]{EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD}) {
+			ItemStack stack = player.getItemBySlot(slot);
+			if (!(stack.getItem() instanceof ArmorItem) && !stack.is(INFUSABLE_ARMOR)) continue;
+			if (!has(stack, "DiamondInfused")) continue;
+			diamond = true;
+			gold |= has(stack, "GoldInfused");
+			silver |= has(stack, "SilverInfused");
+		}
+		if (!diamond) return;
+		float chance = gold ? 0.40F : silver ? 0.20F : 0.0F;
+		if (chance <= 0.0F || player.getRandom().nextFloat() >= chance || player.hasEffect(MobEffects.DAMAGE_RESISTANCE)) return;
+		player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, gold ? 80 : 60, gold ? 1 : 0));
+		player.level().playSound(null, player.blockPosition(), SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 1.0F, 1.0F);
+		player.level().playSound(null, player.blockPosition(), SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.4F, 0.6F);
 	}
 
 	private static void tickArmor(Player player) {
@@ -234,6 +270,20 @@ public final class RuneEffects {
 
 		UUID id = player.getUUID();
 
+		if (allAmber && player.isOnFire() && (amberGold || amberSilver)) {
+			int amberTimer = AMBER_ARMOR_TICKS.merge(id, 1, Integer::sum);
+			if (amberTimer >= 40) {
+				float chance = amberGold ? 0.50F : 0.30F;
+				if (player.getRandom().nextFloat() < chance) {
+					player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 80, 0));
+					player.level().playSound(null, player.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 0.8F, 1.0F);
+				}
+				AMBER_ARMOR_TICKS.put(id, 0);
+			}
+		} else {
+			AMBER_ARMOR_TICKS.remove(id);
+		}
+
 		if (sapphire && player.isUnderWater()) {
 			int timer = SAPPHIRE_ARMOR_TICKS.merge(id, 1, Integer::sum);
 			int threshold = sapphireGold ? 60 : 80;
@@ -251,17 +301,6 @@ public final class RuneEffects {
 			SAPPHIRE_ARMOR_TICKS.remove(id);
 		}
 
-		if (diamond) {
-			if (diamondGold) {
-				player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 80, 1, true, false));
-			} else if (diamondSilver) {
-				player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60, 0, true, false));
-			}
-		}
-
-		if (allAmber && (amberGold || amberSilver)) {
-			player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 80, 0, true, false));
-		}
 
 		if (emerald && !player.hasEffect(MobEffects.HERO_OF_THE_VILLAGE)) {
 			int timer = EMERALD_ARMOR_TICKS.merge(id, 1, Integer::sum);
