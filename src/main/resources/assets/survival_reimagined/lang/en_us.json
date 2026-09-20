@@ -287,5 +287,14 @@
   "item.survival_reimagined.uranophane": "Uranophane",
   "item.survival_reimagined.uranophane_nugget": "Uranophane Nugget",
   "item.survival_reimagined.ilmenite": "Ilmenite",
-  "item.survival_reimagined.ilmenite_nugget": "Ilmenite Nugget"
+  "item.survival_reimagined.ilmenite_nugget": "Ilmenite Nugget",
+  "block.survival_reimagined.kimberlite": "Kimberlite",
+  "block.survival_reimagined.kimberlite_rock": "Kimberlite Rock",
+  "block.survival_reimagined.kimberlite_sapphire_ore": "Kimberlite Sapphire Ore",
+  "block.survival_reimagined.kimberlite_diamond_ore": "Kimberlite Diamond Ore",
+  "block.survival_reimagined.kimberlite_emerald_ore": "Kimberlite Emerald Ore",
+  "block.survival_reimagined.kimberlite_ruby_ore": "Kimberlite Ruby Ore",
+  "block.survival_reimagined.kimberlite_lapis_ore": "Kimberlite Lazurite Ore",
+  "block.survival_reimagined.kimberlite_amber_ore": "Kimberlite Amber Ore",
+  "item.survival_reimagined.heart": "Heart"
 }
