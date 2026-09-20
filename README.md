@@ -12,7 +12,7 @@ This table tracks broad feature parity against the original mod.
 |---|:---:|:---:|:---:|:---:|
 | Forge | ✅ | ✅ | — | ✅ |
 | Metal Refining Table | ✅ | ✅ | — | ✅ |
-| Mineral Processing Table | 🟡 | 🟡 | — | ✅ |
+| Mineral Processing Table | ✅ | ✅ | — | ✅ |
 | Advanced Alloy Forge | ❌ | ❌ | — | ❌ |
 | Rune Magic Infuser | ❌ | ❌ | — | ❌ |
 | Clay / Tool Molds | ✅ | ✅ | — | 🟡 |
@@ -58,10 +58,8 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Runtime-test Mineral Processing Table
-2. Port Reactor Rod / MPT crafting dependencies
-3. Shale / Basalt / Kimberlite geology
-4. Remaining native resource chains
-5. Remaining machines
-6. Broad gameplay parity audit
-7. Compat content
+1. Shale / Basalt / Kimberlite geology
+2. Remaining native resource chains
+3. Remaining machines
+4. Broad gameplay parity audit
+5. Compat content
