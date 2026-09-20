@@ -50,7 +50,7 @@ This table tracks broad feature parity against the original mod.
 | Mobs / Entities | 🔎 | 🔎 | 🔎 | 🔎 |
 | Carcass / Butchering | 🔎 | 🔎 | 🔎 | — |
 | Structures | 🔎 | 🔎 | 🔎 | 🔎 |
-| Biomes | 🔎 | 🔎 | 🔎 | 🔎 |
+| Biomes | —  | —  | —  | 🟡 |
 | Radiation Systems | ❌ | ❌ | ❌ | ❌ |
 | Decorative / Utility Blocks | 🔎 | 🔎 | 🔎 | — |
 | Sounds / Particles | 🟡 | — | 🟡 | — |
