@@ -36,6 +36,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("argentite_feature");
 		addUndergroundEverywhere("native_silver");
 		addLocalEverywhere("basalt_layer");
+		addLocalEverywhere("kimberlite_feature");
 	}
 
 	private static void addUndergroundEverywhere(String path) {
