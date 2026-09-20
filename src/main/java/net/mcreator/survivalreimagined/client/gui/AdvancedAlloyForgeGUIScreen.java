@@ -59,10 +59,8 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		}
 
 		int progress = Math.max(0, Math.min(AdvancedAlloyForgeBlockEntity.MAX_PROGRESS, this.menu.getProgress()));
-		if (progress > 0) {
-			int frame = Math.min(14, Math.max(0, (progress - 1) / 20));
-			graphics.blit(ARROWS[frame], this.leftPos + 111, this.topPos + 39, 0, 0, 16, 16, 16, 16);
-		}
+		int frame = Math.min(14, progress / 20);
+		graphics.blit(ARROWS[frame], this.leftPos + 111, this.topPos + 39, 0, 0, 16, 16, 16, 16);
 
 		graphics.blit(ROD, this.leftPos + 8, this.topPos + 57, 0, 0, 16, 16, 16, 16);
 		graphics.blit(UPGRADE, this.leftPos + 197, this.topPos + 19, 0, 0, 16, 16, 16, 16);
