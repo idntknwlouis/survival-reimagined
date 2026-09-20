@@ -79,6 +79,11 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DEEPSLATE_RUBY_ORE = register("deepslate_ruby_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> AMBER_ORE = register("amber_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_AMBER_ORE = register("deepslate_amber_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_DIAMOND_ORE = register("basalt_diamond_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_EMERALD_ORE = register("basalt_emerald_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_LAPIS_ORE = register("basalt_lapis_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_ARGENTITE_ORE = register("basalt_argentite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BASALT_URANINITE_ORE = register("basalt_uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_SAPPHIRE_ORE = register("basalt_sapphire_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_RUBY_ORE = register("basalt_ruby_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_AMBER_ORE = register("basalt_amber_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
