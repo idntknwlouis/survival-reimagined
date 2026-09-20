@@ -296,5 +296,21 @@
   "block.survival_reimagined.kimberlite_ruby_ore": "Kimberlite Ruby Ore",
   "block.survival_reimagined.kimberlite_lapis_ore": "Kimberlite Lazurite Ore",
   "block.survival_reimagined.kimberlite_amber_ore": "Kimberlite Amber Ore",
-  "item.survival_reimagined.heart": "Heart"
+  "item.survival_reimagined.heart": "Heart",
+  "block.survival_reimagined.hematite_ore": "Hematite Ore",
+  "block.survival_reimagined.deepslate_hematite_ore": "Deepslate Hematite Ore",
+  "block.survival_reimagined.magnetite_ore": "Magnetite Ore",
+  "block.survival_reimagined.deepslate_magnetite_ore": "Deepslate Magnetite Ore",
+  "block.survival_reimagined.calaverite_ore": "Calaverite Ore",
+  "block.survival_reimagined.deepslate_calaverite_ore": "Deepslate Calaverite Ore",
+  "block.survival_reimagined.pyrolusite_ore": "Pyrolusite Ore",
+  "block.survival_reimagined.deepslate_pyrolusite_ore": "Deepslate Pyrolusite Ore",
+  "block.survival_reimagined.uranophane_ore": "Uranophane Ore",
+  "block.survival_reimagined.deepslate_uranophane_ore": "Deepslate Uranophane Ore",
+  "block.survival_reimagined.ilmenite_ore": "Ilmenite Ore",
+  "block.survival_reimagined.deepslate_ilmenite_ore": "Deepslate Ilmenite Ore",
+  "block.survival_reimagined.anthracite_ore": "Anthracite Ore",
+  "block.survival_reimagined.deepslate_anthracite_ore": "Deepslate Anthracite Ore",
+  "block.survival_reimagined.liginite_ore": "Liginite Ore",
+  "block.survival_reimagined.deepslate_liginite_ore": "Deepslate Liginite Ore"
 }
