@@ -7,6 +7,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvents;
@@ -598,6 +599,18 @@ public final class RuneEffects {
 		return 0.0F;
 	}
 
+
+
+	private static boolean isOreBlock(BlockState state) {
+		if (state.is(COMMON_ORES)) return true;
+		ResourceLocation id = BuiltInRegistries.BLOCK.getKey(state.getBlock());
+		if (id == null) return false;
+		String path = id.getPath();
+		return path.endsWith("_ore")
+				|| path.startsWith("deepslate_") && path.endsWith("_ore")
+				|| path.startsWith("nether_") && path.endsWith("_ore")
+				|| path.equals("ancient_debris");
+	}
 
 	private static boolean isRuneTool(ItemStack stack) {
 		return stack.is(INFUSABLE_TOOL)
