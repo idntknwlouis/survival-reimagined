@@ -106,12 +106,23 @@ public final class RuneEffects {
 		});
 
 
+		ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
+			if (!(source.getEntity() instanceof Player player)) return;
+			ItemStack weapon = player.getMainHandItem();
+			if (!weapon.is(INFUSABLE_WEAPON) || !has(weapon, "DiamondInfused")) return;
+			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "undead")))) return;
+			if (!(entity.level() instanceof ServerLevel level)) return;
+			advanceWeaponUnbreaking(level, player, weapon);
+		});
+
 		PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> {
 			ItemStack tool = player.getMainHandItem();
 			if (!tool.is(INFUSABLE_TOOL) || !(level instanceof ServerLevel serverLevel)) return;
 
 			if (has(tool, "AmberInfused") && !player.isCreative()) {
-				if (tool.is(net.minecraft.tags.ItemTags.AXES) && state.is(BlockTags.LOGS)) {
+				if (tool.is(net.minecraft.tags.ItemTags.PICKAXES)) {
+					spawnAmberOreDrops(serverLevel, player, pos, state, tool);
+				} else if (tool.is(net.minecraft.tags.ItemTags.AXES) && state.is(BlockTags.LOGS)) {
 					int count = 2 + player.getRandom().nextInt(3);
 					serverLevel.addFreshEntity(new ItemEntity(serverLevel,
 							pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
@@ -325,6 +336,87 @@ public final class RuneEffects {
 		}
 	}
 
+	private static void advanceWeaponUnbreaking(ServerLevel level, Player player, ItemStack weapon) {
+		boolean gold = has(weapon, "GoldInfused");
+		boolean silver = has(weapon, "SilverInfused");
+		if (!gold && !silver) return;
+
+		var enchantment = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.UNBREAKING);
+		int current = EnchantmentHelper.getItemEnchantmentLevel(enchantment, weapon);
+		if (current >= 4) return;
+
+		String key = gold ? "GoldNumber" : "SilverNumber";
+		int step = gold ? 15 : 25;
+		int target = step * (current + 1);
+		CompoundTag data = weapon.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+		int progress = data.getInt(key) + 1;
+		final int stored = progress >= target ? 0 : progress;
+		CustomData.update(DataComponents.CUSTOM_DATA, weapon, tag -> tag.putInt(key, stored));
+
+		player.displayClientMessage(Component.literal("Unbreaking " + (current + 1) + " Progress - " + progress + " / " + target), true);
+		if (progress >= target) {
+			weapon.enchant(enchantment, current + 1);
+			level.playSound(null, player.blockPosition(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1.0F, 1.3F);
+		}
+	}
+
+	private static void spawnAmberOreDrops(ServerLevel level, Player player, net.minecraft.core.BlockPos pos, BlockState state, ItemStack tool) {
+		boolean gold = has(tool, "GoldInfused");
+		boolean silver = has(tool, "SilverInfused");
+		float proc = gold ? 0.60F : silver ? 0.40F : 0.0F;
+		if (proc <= 0.0F || player.getRandom().nextFloat() >= proc) return;
+
+		ItemStack rough = ItemStack.EMPTY;
+		ItemStack nugget = ItemStack.EMPTY;
+
+		if (state.is(blockTag("c", "copper_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_COPPER.get());
+			nugget = new ItemStack(SurvivalReimaginedModItems.COPPER_NUGGET.get());
+		} else if (state.is(blockTag("c", "tin_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_TIN.get());
+			nugget = new ItemStack(SurvivalReimaginedModItems.TIN_NUGGET.get());
+		} else if (state.is(blockTag("c", "gold_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_GOLD.get());
+			nugget = new ItemStack(Items.GOLD_NUGGET);
+		} else if (state.is(blockTag("c", "iron_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_IRON.get());
+			nugget = new ItemStack(Items.IRON_NUGGET);
+		} else if (state.is(blockTag("c", "manganese_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_MANGANESE.get());
+			nugget = new ItemStack(SurvivalReimaginedModItems.MANGANESE_NUGGET.get());
+		} else if (state.is(blockTag("c", "titanium_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_TITANIUM.get());
+			nugget = new ItemStack(SurvivalReimaginedModItems.TITANIUM_NUGGET.get());
+		} else if (state.is(blockTag("c", "uraninite_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_URANIUM.get());
+			nugget = new ItemStack(SurvivalReimaginedModItems.URANIUM_NUGGET.get());
+		} else if (state.is(blockTag("c", "silver_ores"))) {
+			rough = new ItemStack(SurvivalReimaginedModItems.ROUGH_SILVER.get());
+			nugget = new ItemStack(SurvivalReimaginedModItems.SILVER_NUGGET.get());
+		} else {
+			return;
+		}
+
+		var fortune = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE);
+		int fortuneLevel = EnchantmentHelper.getItemEnchantmentLevel(fortune, tool);
+		int nuggetMin = fortuneLevel > 0 ? 2 : 1;
+		int nuggetExtra = gold ? Math.max(2, fortuneLevel + 3) : Math.max(2, fortuneLevel + 2);
+		int nuggetCount = nuggetMin + player.getRandom().nextInt(nuggetExtra);
+
+		if (player.getRandom().nextFloat() < 0.50F) {
+			int roughCount = 1 + (fortuneLevel > 0 ? player.getRandom().nextInt(fortuneLevel + 1) : 0);
+			rough.setCount(roughCount);
+			ItemEntity roughDrop = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, rough);
+			roughDrop.setPickUpDelay(10);
+			level.addFreshEntity(roughDrop);
+		}
+
+		nugget.setCount(nuggetCount);
+		ItemEntity nuggetDrop = new ItemEntity(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, nugget);
+		nuggetDrop.setPickUpDelay(10);
+		level.addFreshEntity(nuggetDrop);
+	}
+
 	private static void advanceUnbreaking(ServerLevel level, Player player, ItemStack tool) {
 		boolean gold = has(tool, "GoldInfused");
 		boolean silver = has(tool, "SilverInfused");
@@ -373,6 +465,10 @@ public final class RuneEffects {
 
 	public static boolean has(ItemStack stack, String key) {
 		return stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getBoolean(key);
+	}
+
+	private static TagKey<Block> blockTag(String namespace, String path) {
+		return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(namespace, path));
 	}
 
 	private static TagKey<Item> itemTag(String namespace, String path) {
