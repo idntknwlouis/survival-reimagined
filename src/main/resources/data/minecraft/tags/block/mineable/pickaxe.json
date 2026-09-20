@@ -41,6 +41,18 @@
     "survival_reimagined:sapphire_block",
     "survival_reimagined:block_of_ruby",
     "survival_reimagined:block_of_amber",
-    "survival_reimagined:shale"
+    "survival_reimagined:shale",
+    "survival_reimagined:shale_stairs",
+    "survival_reimagined:shale_slab",
+    "survival_reimagined:shale_wall",
+    "survival_reimagined:polished_shale",
+    "survival_reimagined:polished_shale_stairs",
+    "survival_reimagined:polished_shale_slab",
+    "survival_reimagined:polished_shale_wall",
+    "survival_reimagined:polished_shale_bricks",
+    "survival_reimagined:polished_shale_brick_stairs",
+    "survival_reimagined:polished_shale_brick_slab",
+    "survival_reimagined:poloshed_shale_brick_wall",
+    "survival_reimagined:polished_chiseled_shale"
   ]
 }
