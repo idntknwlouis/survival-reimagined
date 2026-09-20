@@ -15,7 +15,7 @@ This table tracks broad feature parity against the original mod.
 | Mineral Processing Table | ✅ | ✅ | ✅ | — |
 | Advanced Alloy Forge | ❌ | ❌ | ❌ | — |
 | Rune Magic Infuser | ❌ | ❌ | ❌ | — |
-| Clay / Tool Molds | ✅ | ✅ | 🟡 | — |
+| Clay / Tool Molds | ✅ | ✅ | ✅ | — |
 | Plate Molds / Plates | ✅ | ✅ | ✅ | — |
 | Rune Molds | ✅ | ✅ | ✅ | — |
 | Bronze Tools | ✅ | ✅ | ✅ | — |
@@ -38,7 +38,7 @@ This table tracks broad feature parity against the original mod.
 | Flint Placement | ✅ | ✅ | ✅ | ✅ |
 | Shale Geology | ❌ | ❌ | ❌ | ❌ |
 | Basalt Geology Extensions | ✅ | ✅ | ✅ | ✅ |
-| Native Mineral Ores | 🟡 | 🟡 | ✅ | ✅ |
+| Native Mineral Ores | ✅ | ✅ | ✅ | ✅ |
 | Kimberlite Geology | ✅ | ✅ | ✅ | ✅ |
 | Gem Polishing | ✅ | ✅ | ✅ | — |
 | Rune Socketing | ✅ | ✅ | ✅ | — |
@@ -74,5 +74,6 @@ This table tracks broad feature parity against the original mod.
 ## Recent Core Port Progress
 
 - Kimberlite geology and ore variants are implemented; missing English names were restored.
-- Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes. Shale Uranophane generation is also wired. Runtime verification is still pending.
+- Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes; runtime-tested successfully. Shale Uranophane generation is also wired.
 - Filled rune tooltips restored for all Gold/Silver Sapphire, Amber, Diamond, Emerald, Ruby, and Lapis runes.
+- Dedicated mold geometry restored for Hoe, Knife, Plate, Clay Plate, and Clay Ingot molds.
