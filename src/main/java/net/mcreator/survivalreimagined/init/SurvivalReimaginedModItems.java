@@ -54,6 +54,15 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> POLISHED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_SHALE);
 	public static final RegistryEntry<Item> POLISHED_SHALE_BRICKS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICKS);
 	public static final RegistryEntry<Item> POLISHED_CHISELED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_CHISELED_SHALE);
+	public static final RegistryEntry<Item> SHALE_STAIRS = block(SurvivalReimaginedModBlocks.SHALE_STAIRS);
+	public static final RegistryEntry<Item> SHALE_SLAB = block(SurvivalReimaginedModBlocks.SHALE_SLAB);
+	public static final RegistryEntry<Item> SHALE_WALL = block(SurvivalReimaginedModBlocks.SHALE_WALL);
+	public static final RegistryEntry<Item> POLISHED_SHALE_STAIRS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_STAIRS);
+	public static final RegistryEntry<Item> POLISHED_SHALE_SLAB = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_SLAB);
+	public static final RegistryEntry<Item> POLISHED_SHALE_WALL = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_WALL);
+	public static final RegistryEntry<Item> POLISHED_SHALE_BRICK_STAIRS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICK_STAIRS);
+	public static final RegistryEntry<Item> POLISHED_SHALE_BRICK_SLAB = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICK_SLAB);
+	public static final RegistryEntry<Item> POLOSHED_SHALE_BRICK_WALL = block(SurvivalReimaginedModBlocks.POLOSHED_SHALE_BRICK_WALL);
 	public static final RegistryEntry<Item> OBSIDIAN_HANDLE = simple("obsidian_handle");
 	public static final RegistryEntry<Item> SMALL_OBSIDIAN_HANDLE = simple("small_obsidian_handle");
 	public static final RegistryEntry<Item> FLINT_TOOL = register("flint_tool", FlintToolItem::new);
