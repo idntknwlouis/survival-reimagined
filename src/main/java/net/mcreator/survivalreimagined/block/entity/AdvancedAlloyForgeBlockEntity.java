@@ -112,6 +112,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 	@Override public BlockPos getScreenOpeningData(ServerPlayer player) { return this.worldPosition; }
 
 	public ContainerData getDataAccess() { return this.dataAccess; }
+	public int getFuelCapacity() { return this.fuelCapacity; }
 
 	public static boolean isReactorRod(ItemStack stack) {
 		return stack.is(SurvivalReimaginedModItems.REACTOR_ROD.get())
