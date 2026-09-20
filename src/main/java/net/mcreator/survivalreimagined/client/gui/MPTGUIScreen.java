@@ -33,7 +33,9 @@ public class MPTGUIScreen extends AbstractContainerScreen<MPTGUIMenu> {
 	@Override
 	public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
 		super.render(graphics, mouseX, mouseY, partialTick);
-		if (mouseX > this.leftPos + 76 && mouseX < this.leftPos + 100 && mouseY > this.topPos + 58 && mouseY < this.topPos + 82) {
+		if (this.menu.getRodCapacity() > 0
+				&& mouseX > this.leftPos + 76 && mouseX < this.leftPos + 100
+				&& mouseY > this.topPos + 31 && mouseY < this.topPos + 55) {
 			graphics.renderComponentTooltip(this.font, List.of(Component.literal("Reactor Rod Capacity: " + this.menu.getRodCapacity())), mouseX, mouseY);
 		} else if (mouseX > this.leftPos + 4 && mouseX < this.leftPos + 28 && mouseY > this.topPos + 59 && mouseY < this.topPos + 83) {
 			graphics.renderComponentTooltip(this.font, List.of(Component.literal(this.menu.isPowered() ? "§4Redstone Powered" : "§4Redstone Unpowered")), mouseX, mouseY);
@@ -49,11 +51,9 @@ public class MPTGUIScreen extends AbstractContainerScreen<MPTGUIMenu> {
 		RenderSystem.defaultBlendFunc();
 		graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
-		int progress = this.menu.getProgress();
-		if (progress > 0) {
-			int frame = Math.min(PROGRESS.length - 1, Math.max(0, progress * PROGRESS.length / MineralProcessingTableBlockEntity.MAX_PROGRESS));
-			graphics.blit(PROGRESS[frame], this.leftPos + 80, this.topPos + 35, 0, 0, 16, 16, 16, 16);
-		}
+		int progress = Math.max(0, Math.min(MineralProcessingTableBlockEntity.MAX_PROGRESS, this.menu.getProgress()));
+		int frame = Math.min(PROGRESS.length - 1, progress / 20);
+		graphics.blit(PROGRESS[frame], this.leftPos + 80, this.topPos + 35, 0, 0, 16, 16, 16, 16);
 		graphics.blit(ROD_OUTLINE, this.leftPos + 80, this.topPos + 62, 0, 0, 16, 16, 16, 16);
 		graphics.blit(REDSTONE, this.leftPos + 8, this.topPos + 63, 0, 0, 16, 16, 16, 16);
 		RenderSystem.disableBlend();
