@@ -193,7 +193,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		}
 
 		AlloyRecipe recipe = getRecipe(forge.getItem(1), forge.getItem(2), forge.packagingEnabled());
-		if (recipe == null || !forge.canOutput(recipe.result(), recipe.count())) {
+		if (recipe == null || !forge.canOutput(recipe.result(), recipe.outputCount(forge.yieldMultiplier()))) {
 			if (forge.progress != 0) {
 				forge.progress = 0;
 				changed = true;
