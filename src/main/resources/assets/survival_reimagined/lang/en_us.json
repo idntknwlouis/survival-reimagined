@@ -323,5 +323,8 @@
   "item.survival_reimagined.titanium_nugget": "Titanium Nugget",
   "block.survival_reimagined.dark_cinder": "Dark Cinder",
   "block.survival_reimagined.rune_magic_infuser": "Rune Magic Infuser",
-  "gui.survival_reimagined.rmi.label_rune_magic_infuser": "Rune Magic Infuser"
+  "gui.survival_reimagined.rmi.label_rune_magic_infuser": "Rune Magic Infuser",
+  "block.survival_reimagined.advanced_alloy_forge": "Advanced Alloy Forge",
+  "gui.survival_reimagined.advanced_alloy_forge_gui.label_advanced_alloy_forge": "Advanced Alloy Forge",
+  "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades"
 }
