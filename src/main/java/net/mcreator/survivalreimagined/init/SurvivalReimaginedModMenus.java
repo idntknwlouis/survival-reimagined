@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.MenuType;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 import net.mcreator.survivalreimagined.world.inventory.ForgeGUIMenu;
+import net.mcreator.survivalreimagined.world.inventory.AdvancedAlloyForgeGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MetalRefiningTableGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MPTGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.RMIMenu;
@@ -31,6 +32,10 @@ public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<RMIMenu>> RMI = register(
 			"rmi",
 			new ExtendedScreenHandlerType<>(RMIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<AdvancedAlloyForgeGUIMenu>> ADVANCED_ALLOY_FORGE_GUI = register(
+			"advanced_alloy_forge_gui",
+			new ExtendedScreenHandlerType<>(AdvancedAlloyForgeGUIMenu::new, BlockPos.STREAM_CODEC)
 	);
 
 	private SurvivalReimaginedModMenus() {
