@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:hematite_chunk"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "survival_reimagined:blocks/basalt_hematite_ore"
+}
