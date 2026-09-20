@@ -174,6 +174,7 @@ public static final RegistryEntry<Item> ADVANCED_REACTOR_ROD = simpleUnstackable
 	public static final RegistryEntry<Item> SAPPHIRE = simple("sapphire");
 	public static final RegistryEntry<Item> AMBER = simple("amber");
 	public static final RegistryEntry<Item> RUBY = simple("ruby");
+	public static final RegistryEntry<Item> RUBY_HEART_SHARD = simple("ruby_heart_shard");
 	public static final RegistryEntry<Item> SAPPHIRE_SILVER_RUNE = rune("sapphire_silver_rune", "Silver", ChatFormatting.WHITE, "Sapphire", ChatFormatting.BLUE);
 	public static final RegistryEntry<Item> SAPPHIRE_GOLD_RUNE = rune("sapphire_gold_rune", "Gold", ChatFormatting.GOLD, "Sapphire", ChatFormatting.BLUE);
 	public static final RegistryEntry<Item> SILVER_AMBER_RUNE = rune("silver_amber_rune", "Silver", ChatFormatting.WHITE, "Amber", ChatFormatting.GOLD);
