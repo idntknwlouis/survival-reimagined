@@ -3,6 +3,7 @@
   "values": [
     "survival_reimagined:rough_diamond",
     "minecraft:deepslate_diamond_ore",
-    "minecraft:diamond_ore"
+    "minecraft:diamond_ore",
+    "survival_reimagined:basalt_diamond_ore"
   ]
 }
