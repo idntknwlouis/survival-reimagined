@@ -37,7 +37,7 @@ This table tracks broad feature parity against the original mod.
 | Rocks / Surface Rocks | ✅ | ✅ | ✅ | ✅ |
 | Flint Placement | ✅ | ✅ | ✅ | ✅ |
 | Shale Geology | ❌ | ❌ | ❌ | ❌ |
-| Basalt Geology Extensions | 🟡 | 🟡 | 🟡 | ✅ |
+| Basalt Geology Extensions | ✅ | ✅ | ✅ | ✅ |
 | Kimberlite Geology | ❌ | ❌ | ❌ | ❌ |
 | Gem Polishing | 🟡 | ✅ | ✅ | — |
 | Rune Socketing | ✅ | ✅ | ✅ | — |
@@ -58,8 +58,10 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Shale / Basalt / Kimberlite geology
-2. Remaining native resource chains
-3. Remaining machines
-4. Broad gameplay parity audit
-5. Compat content
+1. Finish Shale geology
+2. Port Kimberlite geology
+3. Finish remaining native resource chains
+4. Finish remaining machines
+5. Broad core gameplay parity audit
+6. Release-ready cleanup and testing
+7. Compat content
