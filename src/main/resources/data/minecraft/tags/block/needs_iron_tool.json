@@ -33,6 +33,18 @@
     "survival_reimagined:kimberlite_diamond_ore",
     "survival_reimagined:kimberlite_emerald_ore",
     "survival_reimagined:kimberlite_ruby_ore",
-    "survival_reimagined:kimberlite_amber_ore"
+    "survival_reimagined:kimberlite_amber_ore",
+    "survival_reimagined:hematite_ore",
+    "survival_reimagined:deepslate_hematite_ore",
+    "survival_reimagined:magnetite_ore",
+    "survival_reimagined:deepslate_magnetite_ore",
+    "survival_reimagined:calaverite_ore",
+    "survival_reimagined:deepslate_calaverite_ore",
+    "survival_reimagined:pyrolusite_ore",
+    "survival_reimagined:deepslate_pyrolusite_ore",
+    "survival_reimagined:uranophane_ore",
+    "survival_reimagined:deepslate_uranophane_ore",
+    "survival_reimagined:ilmenite_ore",
+    "survival_reimagined:deepslate_ilmenite_ore"
   ]
 }
