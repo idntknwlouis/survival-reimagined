@@ -21,6 +21,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
@@ -169,7 +170,7 @@ public final class RuneEffects {
 
 		for (EquipmentSlot slot : new EquipmentSlot[]{EquipmentSlot.FEET, EquipmentSlot.LEGS, EquipmentSlot.CHEST, EquipmentSlot.HEAD}) {
 			ItemStack stack = player.getItemBySlot(slot);
-			if (!stack.is(INFUSABLE_ARMOR)) {
+			if (!(stack.getItem() instanceof ArmorItem) && !stack.is(INFUSABLE_ARMOR)) {
 				allAmber = false;
 				allSapphire = false;
 				rubyAllGold = false;
