@@ -218,6 +218,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> METAL_REFINING_TABLE = block(SurvivalReimaginedModBlocks.METAL_REFINING_TABLE);
 	public static final RegistryEntry<Item> MINERAL_PROCESSING_TABLE = block(SurvivalReimaginedModBlocks.MINERAL_PROCESSING_TABLE);
 	public static final RegistryEntry<Item> RUNE_MAGIC_INFUSER = block(SurvivalReimaginedModBlocks.RUNE_MAGIC_INFUSER);
+	public static final RegistryEntry<Item> ADVANCED_ALLOY_FORGE = block(SurvivalReimaginedModBlocks.ADVANCED_ALLOY_FORGE);
 	public static final RegistryEntry<Item> ANTHRACITE_BLOCK = block(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK);
 	public static final RegistryEntry<Item> LIGINITE_BLOCK = block(SurvivalReimaginedModBlocks.LIGINITE_BLOCK);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);
