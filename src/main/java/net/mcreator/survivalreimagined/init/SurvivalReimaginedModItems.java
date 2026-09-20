@@ -243,6 +243,14 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BASALT_ILMENITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_ILMENITE_ORE);
 	public static final RegistryEntry<Item> BASALT_ANTHRACITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_ANTHRACITE_ORE);
 	public static final RegistryEntry<Item> BASALT_LIGINITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_LIGINITE_ORE);
+	public static final RegistryEntry<Item> KIMBERLITE = block(SurvivalReimaginedModBlocks.KIMBERLITE);
+	public static final RegistryEntry<Item> KIMBERLITE_ROCK = block(SurvivalReimaginedModBlocks.KIMBERLITE_ROCK);
+	public static final RegistryEntry<Item> KIMBERLITE_SAPPHIRE_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_SAPPHIRE_ORE);
+	public static final RegistryEntry<Item> KIMBERLITE_DIAMOND_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_DIAMOND_ORE);
+	public static final RegistryEntry<Item> KIMBERLITE_EMERALD_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_EMERALD_ORE);
+	public static final RegistryEntry<Item> KIMBERLITE_RUBY_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_RUBY_ORE);
+	public static final RegistryEntry<Item> KIMBERLITE_LAPIS_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_LAPIS_ORE);
+	public static final RegistryEntry<Item> KIMBERLITE_AMBER_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_AMBER_ORE);
 	public static final RegistryEntry<Item> BASALT_SAPPHIRE_ORE = block(SurvivalReimaginedModBlocks.BASALT_SAPPHIRE_ORE);
 	public static final RegistryEntry<Item> BASALT_RUBY_ORE = block(SurvivalReimaginedModBlocks.BASALT_RUBY_ORE);
 	public static final RegistryEntry<Item> BASALT_AMBER_ORE = block(SurvivalReimaginedModBlocks.BASALT_AMBER_ORE);
