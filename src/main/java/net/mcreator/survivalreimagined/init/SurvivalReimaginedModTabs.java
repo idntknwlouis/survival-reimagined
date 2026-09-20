@@ -94,6 +94,18 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_TIN.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_TIN.get());
 
+					output.accept(SurvivalReimaginedModItems.HEMATITE_CHUNK.get());
+					output.accept(SurvivalReimaginedModItems.HEMATITE_NUGGET.get());
+					output.accept(SurvivalReimaginedModItems.MAGNETITE_CHUNK.get());
+					output.accept(SurvivalReimaginedModItems.MAGNETITE_NUGGET.get());
+					output.accept(SurvivalReimaginedModItems.CALAVERITE.get());
+					output.accept(SurvivalReimaginedModItems.CALAVERITE_NUGGET.get());
+					output.accept(SurvivalReimaginedModItems.PYROLUSITE.get());
+					output.accept(SurvivalReimaginedModItems.PYROLUSITE_NUGGET.get());
+					output.accept(SurvivalReimaginedModItems.URANOPHANE.get());
+					output.accept(SurvivalReimaginedModItems.URANOPHANE_NUGGET.get());
+					output.accept(SurvivalReimaginedModItems.ILMENITE.get());
+					output.accept(SurvivalReimaginedModItems.ILMENITE_NUGGET.get());
 					output.accept(SurvivalReimaginedModItems.ANTHRACITE.get());
 					output.accept(SurvivalReimaginedModItems.SMALL_ANTHRACITE.get());
 					output.accept(SurvivalReimaginedModItems.ANTHRACITE_BLOCK.get());
@@ -193,6 +205,14 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BASALT_DIAMOND_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_EMERALD_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_LAPIS_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_HEMATITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_MAGNETITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_CALAVERITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_PYROLUSITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_URANOPHANE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_ILMENITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_ANTHRACITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_LIGINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_SAPPHIRE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_SAPPHIRE.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE_BLOCK.get());
