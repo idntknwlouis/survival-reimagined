@@ -221,6 +221,13 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_ANTHRACITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.LIGINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_LIGINITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.HEMATITE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.MAGNETITE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.CALAVERITE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.PYROLUSITE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.URANOPHANE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.ILMENITE_BLOCK.get());
+					output.accept(SurvivalReimaginedModItems.SHALE_URANOPHANE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_HEMATITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_MAGNETITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_CALAVERITE_ORE.get());
