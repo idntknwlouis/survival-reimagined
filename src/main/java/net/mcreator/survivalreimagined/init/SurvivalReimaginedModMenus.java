@@ -13,6 +13,7 @@ import net.mcreator.survivalreimagined.util.RegistryEntry;
 import net.mcreator.survivalreimagined.world.inventory.ForgeGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MetalRefiningTableGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MPTGUIMenu;
+import net.mcreator.survivalreimagined.world.inventory.RMIMenu;
 
 public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<ForgeGUIMenu>> FORGE_GUI = register(
@@ -26,6 +27,10 @@ public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<MPTGUIMenu>> MPTGUI = register(
 			"mptgui",
 			new ExtendedScreenHandlerType<>(MPTGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<RMIMenu>> RMI = register(
+			"rmi",
+			new ExtendedScreenHandlerType<>(RMIMenu::new, BlockPos.STREAM_CODEC)
 	);
 
 	private SurvivalReimaginedModMenus() {
