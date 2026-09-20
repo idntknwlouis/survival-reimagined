@@ -123,6 +123,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RAW_TITANIUM_NUGGET = simple("raw_titanium_nugget");
 	public static final RegistryEntry<Item> ROUGH_TITANIUM = simple("rough_titanium");
 	public static final RegistryEntry<Item> TITANIUM_INGOT = simple("titanium_ingot");
+	public static final RegistryEntry<Item> TITANIUM_NUGGET = simple("titanium_nugget");
 	public static final RegistryEntry<Item> RAW_URANINITE = simple("raw_uraninite");
 	public static final RegistryEntry<Item> URANIUM_DUST = simple("uranium_dust");
 	public static final RegistryEntry<Item> REDSTONE_CHARGED_URANIUM_DUST = simple("redstone_charged_uranium_dust");
