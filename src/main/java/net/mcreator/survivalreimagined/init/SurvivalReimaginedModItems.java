@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.init;
 
 import net.minecraft.core.Registry;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -8,6 +9,7 @@ import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
+import net.mcreator.survivalreimagined.item.RuneItem;
 import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
 import net.mcreator.survivalreimagined.item.DiamondSawItem;
 import net.mcreator.survivalreimagined.item.DiamondHammerItem;
@@ -154,18 +156,18 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SAPPHIRE = simple("sapphire");
 	public static final RegistryEntry<Item> AMBER = simple("amber");
 	public static final RegistryEntry<Item> RUBY = simple("ruby");
-	public static final RegistryEntry<Item> SAPPHIRE_SILVER_RUNE = rare("sapphire_silver_rune");
-	public static final RegistryEntry<Item> SAPPHIRE_GOLD_RUNE = rare("sapphire_gold_rune");
-	public static final RegistryEntry<Item> SILVER_AMBER_RUNE = rare("silver_amber_rune");
-	public static final RegistryEntry<Item> GOLD_AMBER_RUNE = rare("gold_amber_rune");
-	public static final RegistryEntry<Item> SILVER_DIAMOND_RUNE = rare("silver_diamond_rune");
-	public static final RegistryEntry<Item> GOLD_DIAMOND_RUNE = rare("gold_diamond_rune");
-	public static final RegistryEntry<Item> SILVER_EMERALD_RUNE = rare("silver_emerald_rune");
-	public static final RegistryEntry<Item> GOLD_EMERALD_RUNE = rare("gold_emerald_rune");
-	public static final RegistryEntry<Item> SILVER_RUBY_RUNE = rare("silver_ruby_rune");
-	public static final RegistryEntry<Item> GOLD_RUBY_RUNE = rare("gold_ruby_rune");
-	public static final RegistryEntry<Item> SILVER_LAPIS_RUNE = rare("silver_lapis_rune");
-	public static final RegistryEntry<Item> GOLD_LAPIS_RUNE = rare("gold_lapis_rune");
+	public static final RegistryEntry<Item> SAPPHIRE_SILVER_RUNE = rune("sapphire_silver_rune", "Silver", ChatFormatting.WHITE, "Sapphire", ChatFormatting.BLUE);
+	public static final RegistryEntry<Item> SAPPHIRE_GOLD_RUNE = rune("sapphire_gold_rune", "Gold", ChatFormatting.GOLD, "Sapphire", ChatFormatting.BLUE);
+	public static final RegistryEntry<Item> SILVER_AMBER_RUNE = rune("silver_amber_rune", "Silver", ChatFormatting.WHITE, "Amber", ChatFormatting.GOLD);
+	public static final RegistryEntry<Item> GOLD_AMBER_RUNE = rune("gold_amber_rune", "Gold", ChatFormatting.GOLD, "Amber", ChatFormatting.GOLD);
+	public static final RegistryEntry<Item> SILVER_DIAMOND_RUNE = rune("silver_diamond_rune", "Silver", ChatFormatting.WHITE, "Diamond", ChatFormatting.AQUA);
+	public static final RegistryEntry<Item> GOLD_DIAMOND_RUNE = rune("gold_diamond_rune", "Gold", ChatFormatting.GOLD, "Diamond", ChatFormatting.AQUA);
+	public static final RegistryEntry<Item> SILVER_EMERALD_RUNE = rune("silver_emerald_rune", "Silver", ChatFormatting.WHITE, "Emerald", ChatFormatting.DARK_GREEN);
+	public static final RegistryEntry<Item> GOLD_EMERALD_RUNE = rune("gold_emerald_rune", "Gold", ChatFormatting.GOLD, "Emerald", ChatFormatting.DARK_GREEN);
+	public static final RegistryEntry<Item> SILVER_RUBY_RUNE = rune("silver_ruby_rune", "Silver", ChatFormatting.WHITE, "Ruby", ChatFormatting.DARK_RED);
+	public static final RegistryEntry<Item> GOLD_RUBY_RUNE = rune("gold_ruby_rune", "Gold", ChatFormatting.GOLD, "Ruby", ChatFormatting.DARK_RED);
+	public static final RegistryEntry<Item> SILVER_LAPIS_RUNE = rune("silver_lapis_rune", "Silver", ChatFormatting.WHITE, "Lapis", ChatFormatting.DARK_BLUE);
+	public static final RegistryEntry<Item> GOLD_LAPIS_RUNE = rune("gold_lapis_rune", "Gold", ChatFormatting.GOLD, "Lapis", ChatFormatting.DARK_BLUE);
 	public static final RegistryEntry<Item> DIAMOND_PLATED_INGOT = simple("diamond_plated_ingot");
 	public static final RegistryEntry<Item> STEEL_INGOT = simple("steel_ingot");
 	public static final RegistryEntry<Item> BRONZE_SWORD_BLADE = simpleUnstackable("bronze_sword_blade");
@@ -363,6 +365,10 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simpleUnstackable(String path) {
 		return register(path, () -> new Item(new Item.Properties().stacksTo(1)));
+	}
+
+	private static RegistryEntry<Item> rune(String path, String runeType, ChatFormatting runeTypeColor, String crystal, ChatFormatting crystalColor) {
+		return register(path, () -> new RuneItem(runeType, runeTypeColor, crystal, crystalColor));
 	}
 
 	private static RegistryEntry<Item> rare(String path) {
