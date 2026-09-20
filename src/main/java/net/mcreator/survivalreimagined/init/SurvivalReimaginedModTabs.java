@@ -152,6 +152,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_RAW_TITANIUM.get());
 					output.accept(SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get());
 					output.accept(SurvivalReimaginedModItems.URANINITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_URANINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_URANINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.SHALE_URANINITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_URANINITE.get());
@@ -176,6 +177,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.SILVER_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_SILVER_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ARGENTITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_ARGENTITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_ARGENTITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.RAW_SILVER.get());
 					output.accept(SurvivalReimaginedModItems.RAW_SILVER_NUGGET.get());
@@ -188,6 +190,9 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.ARGENTITE_BLOCK.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_SAPPHIRE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_DIAMOND_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_EMERALD_ORE.get());
+					output.accept(SurvivalReimaginedModItems.BASALT_LAPIS_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_SAPPHIRE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_SAPPHIRE.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE_BLOCK.get());
