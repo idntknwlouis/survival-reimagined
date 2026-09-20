@@ -213,6 +213,14 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.BASALT_ILMENITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_ANTHRACITE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_LIGINITE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_ROCK.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_SAPPHIRE_ORE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_DIAMOND_ORE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_EMERALD_ORE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_RUBY_ORE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_LAPIS_ORE.get());
+					output.accept(SurvivalReimaginedModItems.KIMBERLITE_AMBER_ORE.get());
 					output.accept(SurvivalReimaginedModItems.BASALT_SAPPHIRE_ORE.get());
 					output.accept(SurvivalReimaginedModItems.ROUGH_SAPPHIRE.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE_BLOCK.get());
