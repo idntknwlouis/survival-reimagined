@@ -1,1 +1,6 @@
-{"parent":"block/cube_all","textures":{"all":"survival_reimagined:block/deepslate_hematite_ore"}}
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "survival_reimagined:block/deepslate_hematite_ore"
+  }
+}
