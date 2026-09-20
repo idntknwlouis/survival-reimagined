@@ -243,5 +243,7 @@
   "item.survival_reimagined.depleted_reactor_rod": "Depleted Reactor Rod",
   "gui.survival_reimagined.mptgui.label_mineral_processing_table": "Mineral Processing Table",
   "item.survival_reimagined.rough_diamond": "Rough Diamond",
-  "item.survival_reimagined.rough_emerald": "Rough Emerald"
+  "item.survival_reimagined.rough_emerald": "Rough Emerald",
+  "block.survival_reimagined.shale": "Shale",
+  "block.survival_reimagined.shale_rock": "Shale Rock"
 }
