@@ -32,7 +32,7 @@ public class ShaleBlock extends Block {
 	}
 
 	@Override
-	protected BlockState rotate(BlockState state, Rotation rotation) {
+	public BlockState rotate(BlockState state, Rotation rotation) {
 		return RotatedPillarBlock.rotatePillar(state, rotation);
 	}
 }
