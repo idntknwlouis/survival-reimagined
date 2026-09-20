@@ -21,6 +21,8 @@ import net.mcreator.survivalreimagined.block.ToolMoldBlock;
 import net.mcreator.survivalreimagined.block.ClayMoldBlock;
 import net.mcreator.survivalreimagined.block.PlateBlock;
 import net.mcreator.survivalreimagined.block.StoneRockBlocBlock;
+import net.mcreator.survivalreimagined.block.ShaleBlock;
+import net.mcreator.survivalreimagined.block.ShaleRockBlock;
 import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
 import net.mcreator.survivalreimagined.block.TinOreBlock;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
@@ -31,6 +33,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> FLINTBLOCK = register("flintblock", FlintblockBlock::new);
 	public static final RegistryEntry<Block> STONE_ROCK_BLOC = register("stone_rock_bloc", StoneRockBlocBlock::new);
 	public static final RegistryEntry<Block> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.OBSIDIAN_ROCK.get()));
+	public static final RegistryEntry<Block> SHALE = register("shale", ShaleBlock::new);
+	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
 
 	public static final RegistryEntry<Block> TIN_ORE = register("tin_ore", TinOreBlock::new);
 	public static final RegistryEntry<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", DeepslateTinOreBlock::new);
