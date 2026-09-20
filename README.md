@@ -38,6 +38,7 @@ This table tracks broad feature parity against the original mod.
 | Flint Placement | ✅ | ✅ | ✅ | ✅ |
 | Shale Geology | ❌ | ❌ | ❌ | ❌ |
 | Basalt Geology Extensions | ✅ | ✅ | ✅ | ✅ |
+| Native Mineral Ores | 🟡 | 🟡 | ✅ | ✅ |
 | Kimberlite Geology | ✅ | ✅ | ✅ | ✅ |
 | Gem Polishing | 🟡 | ✅ | ✅ | — |
 | Rune Socketing | ✅ | ✅ | ✅ | — |
@@ -68,3 +69,9 @@ This table tracks broad feature parity against the original mod.
 ## World Generation Notes
 
 - Overworld depth parity is enabled for testing: `min_y = -256`, `height = 512` (Y -256 through Y 255), matching the original project.
+
+
+## Recent Core Port Progress
+
+- Kimberlite geology and ore variants are implemented; missing English names were restored.
+- Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, and worldgen. Runtime verification is still pending.
