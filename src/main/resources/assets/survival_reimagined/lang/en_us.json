@@ -344,5 +344,6 @@
   "item.survival_reimagined.manganese_nugget": "Manganese Nugget",
   "item.survival_reimagined.uranium_nugget": "Uranium Nugget",
   "item.survival_reimagined.ruby_heart_shard": "Ruby Heart Shard",
-  "item.survival_reimagined.ruby_heart": "Ruby Heart"
+  "item.survival_reimagined.ruby_heart": "Ruby Heart",
+  "enchantment.survival_reimagined.oceans_wrath": "Oceans Wrath"
 }
