@@ -340,5 +340,7 @@
   "block.survival_reimagined.uranium_rod": "Uranium Rod",
   "item.survival_reimagined.aaf_scripture": "Ancient Book Scripture",
   "item.survival_reimagined.rmi_scripture": "Ancient Book Scripture",
-  "item.survival_reimagined.glass_shard": "Glass Shard"
+  "item.survival_reimagined.glass_shard": "Glass Shard",
+  "item.survival_reimagined.manganese_nugget": "Manganese Nugget",
+  "item.survival_reimagined.uranium_nugget": "Uranium Nugget"
 }
