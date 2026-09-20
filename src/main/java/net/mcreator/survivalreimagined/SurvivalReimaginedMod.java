@@ -3,6 +3,7 @@ package net.mcreator.survivalreimagined;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.mcreator.survivalreimagined.init.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -12,19 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.MinecraftServer;
-
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBiomeModifications;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModFeatures;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMenus;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModRecipeTypes;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModTabs;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
