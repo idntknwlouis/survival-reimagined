@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
@@ -169,6 +170,13 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 
 	public static void serverTick(Level level, BlockPos pos, BlockState state, AdvancedAlloyForgeBlockEntity forge) {
 		if (level.isClientSide()) return;
+		if (!AdvancedAlloyForgeBlock.isSetupComplete(level, pos)) {
+			if (forge.progress != 0) {
+				forge.progress = 0;
+				forge.setChanged();
+			}
+			return;
+		}
 		boolean changed = false;
 
 		int maxFuel = forge.getMaxFuelCapacity();
