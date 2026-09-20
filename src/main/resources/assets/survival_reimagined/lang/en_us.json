@@ -345,5 +345,11 @@
   "item.survival_reimagined.uranium_nugget": "Uranium Nugget",
   "item.survival_reimagined.ruby_heart_shard": "Ruby Heart Shard",
   "item.survival_reimagined.ruby_heart": "Ruby Heart",
-  "enchantment.survival_reimagined.oceans_wrath": "Oceans Wrath"
+  "enchantment.survival_reimagined.oceans_wrath": "Oceans Wrath",
+  "advancements.rmiadv.title": "Rune Magic Infuser",
+  "advancements.rmiadv.descr": "Acquire a Rune Magic Infuser",
+  "advancements.runes_adv.title": "Runes",
+  "advancements.runes_adv.descr": "Acquire an Empty Rune",
+  "advancements.gem_runes.title": "Infused Rune",
+  "advancements.gem_runes.descr": "Acquire an Infused Rune"
 }
