@@ -37,7 +37,7 @@ This table tracks broad feature parity against the original mod.
 | Rocks / Surface Rocks | ✅ | ✅ | ✅ | ✅ |
 | Flint Placement | ✅ | ✅ | ✅ | ✅ |
 | Shale Geology | ❌ | ❌ | ❌ | ❌ |
-| Basalt Geology Extensions | ❌ | ❌ | ❌ | ❌ |
+| Basalt Geology Extensions | 🟡 | 🟡 | 🟡 | ✅ |
 | Kimberlite Geology | ❌ | ❌ | ❌ | ❌ |
 | Gem Polishing | 🟡 | ✅ | — | ✅ |
 | Rune Socketing | ✅ | ✅ | — | ✅ |
