@@ -262,5 +262,10 @@
   "block.survival_reimagined.shale_uraninite_ore": "Shale Uraninite Ore",
   "block.survival_reimagined.basalt_sapphire_ore": "Basalt Sapphire Ore",
   "block.survival_reimagined.basalt_ruby_ore": "Basalt Ruby Ore",
-  "block.survival_reimagined.basalt_amber_ore": "Basalt Amber Ore"
+  "block.survival_reimagined.basalt_amber_ore": "Basalt Amber Ore",
+  "block.survival_reimagined.basalt_diamond_ore": "Basalt Diamond Ore",
+  "block.survival_reimagined.basalt_emerald_ore": "Basalt Emerald Ore",
+  "block.survival_reimagined.basalt_lapis_ore": "Basalt Lapis Ore",
+  "block.survival_reimagined.basalt_argentite_ore": "Basalt Argentite Ore",
+  "block.survival_reimagined.basalt_uraninite_ore": "Basalt Uraninite Ore"
 }
