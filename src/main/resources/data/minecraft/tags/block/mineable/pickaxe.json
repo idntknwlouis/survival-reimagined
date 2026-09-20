@@ -96,6 +96,12 @@
     "survival_reimagined:deepslate_anthracite_ore",
     "survival_reimagined:liginite_ore",
     "survival_reimagined:deepslate_liginite_ore",
-    "survival_reimagined:hematite_block"
+    "survival_reimagined:hematite_block",
+    "survival_reimagined:magnetite_block",
+    "survival_reimagined:calaverite_block",
+    "survival_reimagined:pyrolusite_block",
+    "survival_reimagined:uranophane_block",
+    "survival_reimagined:ilmenite_block",
+    "survival_reimagined:shale_uranophane_ore"
   ]
 }
