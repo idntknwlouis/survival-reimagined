@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.RuneMagicInfuserBlockEntity;
@@ -28,6 +29,10 @@ public final class SurvivalReimaginedModBlockEntities {
 	public static final RegistryEntry<BlockEntityType<RuneMagicInfuserBlockEntity>> RUNE_MAGIC_INFUSER = register(
 			"rune_magic_infuser",
 			BlockEntityType.Builder.of(RuneMagicInfuserBlockEntity::new, SurvivalReimaginedModBlocks.RUNE_MAGIC_INFUSER.get()).build(null)
+	);
+	public static final RegistryEntry<BlockEntityType<AdvancedAlloyForgeBlockEntity>> ADVANCED_ALLOY_FORGE = register(
+			"advanced_alloy_forge",
+			BlockEntityType.Builder.of(AdvancedAlloyForgeBlockEntity::new, SurvivalReimaginedModBlocks.ADVANCED_ALLOY_FORGE.get()).build(null)
 	);
 
 	private SurvivalReimaginedModBlockEntities() {
