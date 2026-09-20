@@ -24,6 +24,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("sapphire_ore_feature");
 		addUndergroundEverywhere("argentite_feature");
 		addUndergroundEverywhere("native_silver");
+		addLocalEverywhere("basalt_layer");
 	}
 
 	private static void addUndergroundEverywhere(String path) {
@@ -33,6 +34,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		BiomeModifications.addFeature(
 				context -> true,
 				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
+	}
+
+	private static void addLocalEverywhere(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				context -> true,
+				GenerationStep.Decoration.LOCAL_MODIFICATIONS,
 				featureKey);
 	}
 
