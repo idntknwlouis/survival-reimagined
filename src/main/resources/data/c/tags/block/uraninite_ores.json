@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "survival_reimagined:uraninite_ore",
-    "survival_reimagined:deepslate_uraninite_ore"
+    "survival_reimagined:deepslate_uraninite_ore",
+    "survival_reimagined:shale_uraninite_ore"
   ]
 }
