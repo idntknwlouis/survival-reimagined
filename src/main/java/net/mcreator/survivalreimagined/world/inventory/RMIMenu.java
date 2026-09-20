@@ -28,6 +28,9 @@ public class RMIMenu extends AbstractContainerMenu {
 	private static final int PLAYER_INV_END = MACHINE_SLOTS + 27;
 
 	private static final TagKey<Item> RMI_INFUSABLE = tag("rmi_infusable");
+	private static final TagKey<Item> RMI_INFUSABLE_TOOL = tag("rmi_infusable/tool");
+	private static final TagKey<Item> RMI_INFUSABLE_WEAPON = tag("rmi_infusable/weapon");
+	private static final TagKey<Item> RMI_INFUSABLE_ARMOR = tag("rmi_infusable/armor");
 	private static final TagKey<Item> RMI_RUNES = tag("rmi_runes");
 
 	private final Container container;
@@ -70,7 +73,7 @@ public class RMIMenu extends AbstractContainerMenu {
 		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
 	}
 
-	public static boolean isInfusable(ItemStack stack) { return stack.is(RMI_INFUSABLE); }
+	public static boolean isInfusable(ItemStack stack) { return stack.is(RMI_INFUSABLE) || stack.is(RMI_INFUSABLE_TOOL) || stack.is(RMI_INFUSABLE_WEAPON) || stack.is(RMI_INFUSABLE_ARMOR); }
 	public static boolean isRune(ItemStack stack) { return stack.is(RMI_RUNES); }
 	public BlockPos getBlockPos() { return blockPos; }
 
