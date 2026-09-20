@@ -371,6 +371,7 @@ public final class RuneEffects {
 			}
 			double base = SAPPHIRE_TOOL_BASE.get(id);
 			attribute.setBaseValue(base * 1.6D);
+			player.displayClientMessage(Component.literal("Underwater Mining Speed Increased by 60%"), true);
 		} else {
 			Double original = SAPPHIRE_TOOL_BASE.remove(id);
 			if (original != null) attribute.setBaseValue(original);
