@@ -102,23 +102,6 @@ public final class RuneEffects {
 			}
 		});
 
-		ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
-			if (!(source.getEntity() instanceof LivingEntity attacker)) return;
-			ItemStack weapon = attacker.getMainHandItem();
-			if (!weapon.is(INFUSABLE_WEAPON) || !has(weapon, "LapisInfused") || true) return;
-			if (!(entity.level() instanceof ServerLevel level)) return;
-
-			float chance = has(weapon, "GoldInfused") ? 0.20F : has(weapon, "SilverInfused") ? 0.10F : 0.0F;
-			if (chance <= 0.0F || attacker.getRandom().nextFloat() >= chance) return;
-
-			int orbs = 1 + attacker.getRandom().nextInt(3);
-			for (int i = 0; i < orbs; i++) {
-				int value = has(weapon, "GoldInfused")
-						? 3 + attacker.getRandom().nextInt(5)
-						: 1 + attacker.getRandom().nextInt(3);
-				level.addFreshEntity(new ExperienceOrb(level, entity.getX(), entity.getY(), entity.getZ(), value));
-			}
-		});
 
 		PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> {
 			ItemStack tool = player.getMainHandItem();
