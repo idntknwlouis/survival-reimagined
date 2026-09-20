@@ -18,6 +18,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addEverywhere("stone_gen");
 		addEverywhere("copper_gen");
 		addUndergroundEverywhere("uraninite_feature");
+		addUndergroundEverywhere("titanium_ore_feature");
 		addUndergroundEverywhere("amber_ore_feature");
 		addUndergroundEverywhere("ruby_ore_feature");
 		addUndergroundEverywhere("sapphire_ore_feature");
