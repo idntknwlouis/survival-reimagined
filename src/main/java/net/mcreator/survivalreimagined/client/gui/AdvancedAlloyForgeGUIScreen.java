@@ -16,12 +16,7 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 	private static final ResourceLocation UPGRADES = tex("alloy_forge_upgrades.png");
 	private static final ResourceLocation ROD = tex("rod_texture.png");
 	private static final ResourceLocation UPGRADE = tex("upgrade_texture.png");
-	private static final ResourceLocation[] ARROWS = new ResourceLocation[15];
-
-	static {
-		ARROWS[0] = tex("arrow.png");
-		for (int i = 1; i < ARROWS.length; i++) ARROWS[i] = tex("arrow" + (i + 1) + ".png");
-	}
+	private static final ResourceLocation ARROW = tex("arrow.png");
 
 	public AdvancedAlloyForgeGUIScreen(AdvancedAlloyForgeGUIMenu menu, Inventory inventory, Component title) {
 		super(menu, inventory, title);
@@ -39,8 +34,8 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		graphics.blit(UPGRADES, this.leftPos + 178, this.topPos, 0, 0, 72, 75, 72, 75);
 
 		int progress = Math.max(0, Math.min(AdvancedAlloyForgeBlockEntity.MAX_PROGRESS, this.menu.getProgress()));
-		int frame = Math.min(ARROWS.length - 1, progress / 20);
-		graphics.blit(ARROWS[frame], this.leftPos + 111, this.topPos + 39, 0, 0, 16, 16, 16, 16);
+		int arrowWidth = Math.max(1, Math.min(16, 1 + progress * 15 / AdvancedAlloyForgeBlockEntity.MAX_PROGRESS));
+		graphics.blit(ARROW, this.leftPos + 111, this.topPos + 39, 0, 0, arrowWidth, 16, 16, 16);
 
 		graphics.blit(ROD, this.leftPos + 8, this.topPos + 57, 0, 0, 16, 16, 16, 16);
 		graphics.blit(UPGRADE, this.leftPos + 197, this.topPos + 19, 0, 0, 16, 16, 16, 16);
