@@ -31,6 +31,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -610,6 +611,15 @@ public final class RuneEffects {
 				|| path.startsWith("deepslate_") && path.endsWith("_ore")
 				|| path.startsWith("nether_") && path.endsWith("_ore")
 				|| path.equals("ancient_debris");
+	}
+
+
+	private static boolean isRuneWeapon(ItemStack stack) {
+		return stack.is(INFUSABLE_WEAPON)
+				|| stack.getItem() instanceof SwordItem
+				|| stack.is(net.minecraft.tags.ItemTags.SWORDS)
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SWORD.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SWORD.get());
 	}
 
 	private static boolean isRuneTool(ItemStack stack) {
