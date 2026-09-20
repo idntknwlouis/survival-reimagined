@@ -27,6 +27,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -140,7 +144,7 @@ public final class RuneEffects {
 
 		PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> {
 			ItemStack tool = player.getMainHandItem();
-			if (!tool.is(INFUSABLE_TOOL) || !(level instanceof ServerLevel serverLevel)) return;
+			if (!(level instanceof ServerLevel serverLevel) || !isRuneTool(tool)) return;
 
 			if (has(tool, "AmberInfused") && !player.isCreative()) {
 				if (tool.is(net.minecraft.tags.ItemTags.PICKAXES)) {
@@ -592,6 +596,44 @@ public final class RuneEffects {
 			return gold ? 0.15F : 0.075F;
 		}
 		return 0.0F;
+	}
+
+
+	private static boolean isRuneTool(ItemStack stack) {
+		return stack.is(INFUSABLE_TOOL)
+				|| stack.getItem() instanceof PickaxeItem
+				|| stack.getItem() instanceof AxeItem
+				|| stack.getItem() instanceof ShovelItem
+				|| stack.getItem() instanceof HoeItem
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.STONE_HAMMER.get());
+	}
+
+	private static boolean isPickaxe(ItemStack stack) {
+		return stack.getItem() instanceof PickaxeItem || stack.is(net.minecraft.tags.ItemTags.PICKAXES);
+	}
+
+	private static boolean isAxe(ItemStack stack) {
+		return stack.getItem() instanceof AxeItem || stack.is(net.minecraft.tags.ItemTags.AXES);
+	}
+
+	private static boolean isShovel(ItemStack stack) {
+		return stack.getItem() instanceof ShovelItem || stack.is(net.minecraft.tags.ItemTags.SHOVELS);
+	}
+
+	private static boolean isHoe(ItemStack stack) {
+		return stack.getItem() instanceof HoeItem || stack.is(net.minecraft.tags.ItemTags.HOES);
 	}
 
 	public static boolean has(ItemStack stack, String key) {
