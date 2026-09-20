@@ -274,6 +274,7 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.EMPTY_GOLD_RUNE.get());
 					output.accept(SurvivalReimaginedModItems.RUNE_MAGIC_INFUSER.get());
 					output.accept(SurvivalReimaginedModItems.ADVANCED_ALLOY_FORGE.get());
+					output.accept(SurvivalReimaginedModItems.URANIUM_ROD.get());
 					output.accept(SurvivalReimaginedModItems.EMPTY_SILVER_RUNE.get());
 					output.accept(SurvivalReimaginedModItems.SAPPHIRE.get());
 					output.accept(SurvivalReimaginedModItems.AMBER.get());
