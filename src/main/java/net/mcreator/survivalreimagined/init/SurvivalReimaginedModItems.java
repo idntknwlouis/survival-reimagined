@@ -10,6 +10,11 @@ import net.minecraft.world.level.block.Block;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
 import net.mcreator.survivalreimagined.item.RuneItem;
+<<<<<<< HEAD
+=======
+import net.mcreator.survivalreimagined.item.RubyHeartItem;
+import net.mcreator.survivalreimagined.item.ScriptureItem;
+>>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
 import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
 import net.mcreator.survivalreimagined.item.DiamondSawItem;
 import net.mcreator.survivalreimagined.item.DiamondHammerItem;
@@ -115,6 +120,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SMALL_LIGINITE = simple("small_liginite");
 	public static final RegistryEntry<Item> ROUGH_MANGANESE = simple("rough_manganese");
 	public static final RegistryEntry<Item> MANGANESE_INGOT = simple("manganese_ingot");
+	public static final RegistryEntry<Item> MANGANESE_NUGGET = simple("manganese_nugget");
 	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
 	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
 	public static final RegistryEntry<Item> ROUGH_PLATED_DIAMOND = simple("rough_plated_diamond");
@@ -131,6 +137,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RAW_URANINITE_NUGGET = simple("raw_uraninite_nugget");
 	public static final RegistryEntry<Item> ROUGH_URANIUM = simple("rough_uranium");
 	public static final RegistryEntry<Item> URANIUM_INGOT = simple("uranium_ingot");
+	public static final RegistryEntry<Item> URANIUM_NUGGET = simple("uranium_nugget");
 	public static final RegistryEntry<Item> ROUGH_TURANITE = simple("rough_turanite");
 	public static final RegistryEntry<Item> TURANITE_INGOT = simple("turanite_ingot");
 	public static final RegistryEntry<Item> QUICK_LIME = simple("quick_lime");
@@ -158,6 +165,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SAPPHIRE = simple("sapphire");
 	public static final RegistryEntry<Item> AMBER = simple("amber");
 	public static final RegistryEntry<Item> RUBY = simple("ruby");
+	public static final RegistryEntry<Item> RUBY_HEART_SHARD = simple("ruby_heart_shard");
+	public static final RegistryEntry<Item> RUBY_HEART = register("ruby_heart", RubyHeartItem::new);
 	public static final RegistryEntry<Item> SAPPHIRE_SILVER_RUNE = rune("sapphire_silver_rune", "Silver", ChatFormatting.WHITE, "Sapphire", ChatFormatting.BLUE);
 	public static final RegistryEntry<Item> SAPPHIRE_GOLD_RUNE = rune("sapphire_gold_rune", "Gold", ChatFormatting.GOLD, "Sapphire", ChatFormatting.BLUE);
 	public static final RegistryEntry<Item> SILVER_AMBER_RUNE = rune("silver_amber_rune", "Silver", ChatFormatting.WHITE, "Amber", ChatFormatting.GOLD);

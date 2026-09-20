@@ -421,7 +421,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	}
 
 	private static ForgeRecipe runeFor(ItemStack metal, ItemStack mold) {
-		if (!mold.is(SurvivalReimaginedModBlocks.RUNE_MOLD.get().asItem()) || metal.getCount() < 4) return null;
+		if (!mold.is(SurvivalReimaginedModBlocks.RUNE_MOLD.get().asItem()) || metal.getCount() < 5) return null;
 		if (metal.is(Items.GOLD_INGOT)) return new ForgeRecipe(SurvivalReimaginedModItems.EMPTY_GOLD_RUNE.get(), 1, 5, 0, 50);
 		if (metal.is(SurvivalReimaginedModItems.SILVER_INGOT.get())) return new ForgeRecipe(SurvivalReimaginedModItems.EMPTY_SILVER_RUNE.get(), 1, 5, 0, 50);
 		return null;

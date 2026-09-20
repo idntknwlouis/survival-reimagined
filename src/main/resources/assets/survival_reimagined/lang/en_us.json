@@ -326,5 +326,34 @@
   "gui.survival_reimagined.rmi.label_rune_magic_infuser": "Rune Magic Infuser",
   "block.survival_reimagined.advanced_alloy_forge": "Advanced Alloy Forge",
   "gui.survival_reimagined.advanced_alloy_forge_gui.label_advanced_alloy_forge": "Advanced Alloy Forge",
+<<<<<<< HEAD
   "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades"
+=======
+  "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades",
+  "item.survival_reimagined.advanced_reactor_rod": "Advanced Reactor Rod",
+  "item.survival_reimagined.drained_advanced_reactor_rod": "Drained Advanced Reactor Rod",
+  "item.survival_reimagined.fuel_upgrade": "Fuel Capacity Upgrade MKI",
+  "item.survival_reimagined.fuel_upgrade_mkii": "Fuel Capacity Upgrade MKII",
+  "item.survival_reimagined.efficiency_upgrade": "Efficiency Upgrade",
+  "item.survival_reimagined.yield_upgrade": "Yield Upgrade MKI",
+  "item.survival_reimagined.yield_upgrade_mkii": "Yield Upgrade MKII",
+  "item.survival_reimagined.yield_upgrade_mkiii": "Yield Upgrade MKIII",
+  "item.survival_reimagined.block_packaging_upgrade": "Block Packaging Upgrade",
+  "item.survival_reimagined.hemp_mesh": "Hemp Mesh",
+  "block.survival_reimagined.uranium_rod": "Uranium Rod",
+  "item.survival_reimagined.aaf_scripture": "Ancient Book Scripture",
+  "item.survival_reimagined.rmi_scripture": "Ancient Book Scripture",
+  "item.survival_reimagined.glass_shard": "Glass Shard",
+  "item.survival_reimagined.manganese_nugget": "Manganese Nugget",
+  "item.survival_reimagined.uranium_nugget": "Uranium Nugget",
+  "item.survival_reimagined.ruby_heart_shard": "Ruby Heart Shard",
+  "item.survival_reimagined.ruby_heart": "Ruby Heart",
+  "enchantment.survival_reimagined.oceans_wrath": "Oceans Wrath",
+  "advancements.rmiadv.title": "Rune Magic Infuser",
+  "advancements.rmiadv.descr": "Acquire a Rune Magic Infuser",
+  "advancements.runes_adv.title": "Runes",
+  "advancements.runes_adv.descr": "Acquire an Empty Rune",
+  "advancements.gem_runes.title": "Infused Rune",
+  "advancements.gem_runes.descr": "Acquire an Infused Rune"
+>>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
 }

@@ -15,32 +15,36 @@ public final class RuneInfusionTooltip {
 
 	public static void append(ItemStack stack, List<Component> lines) {
 		CompoundTag tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-
 		boolean gold = tag.getBoolean("GoldInfused");
 		boolean silver = tag.getBoolean("SilverInfused");
 		if (!gold && !silver) return;
 
-		lines.add(Component.empty());
-		lines.add(Component.literal("Rune Infusion").withStyle(ChatFormatting.DARK_PURPLE));
+		Component runeType = Component.literal(" Rune Type: ").withStyle(ChatFormatting.GRAY)
+				.append(Component.literal(gold ? "Gold" : "Silver")
+						.withStyle(gold ? ChatFormatting.GOLD : ChatFormatting.WHITE));
 
-		if (gold) {
-			lines.add(Component.literal("Gold Rune").withStyle(ChatFormatting.GOLD));
-		} else {
-			lines.add(Component.literal("Silver Rune").withStyle(ChatFormatting.GRAY));
-		}
+		Component crystal = crystalLine(tag);
+		if (crystal == null) return;
 
-		if (tag.getBoolean("SapphireInfused")) {
-			lines.add(Component.literal("Sapphire").withStyle(ChatFormatting.BLUE));
-		} else if (tag.getBoolean("AmberInfused")) {
-			lines.add(Component.literal("Amber").withStyle(ChatFormatting.GOLD));
-		} else if (tag.getBoolean("DiamondInfused")) {
-			lines.add(Component.literal("Diamond").withStyle(ChatFormatting.AQUA));
-		} else if (tag.getBoolean("EmeraldInfused")) {
-			lines.add(Component.literal("Emerald").withStyle(ChatFormatting.DARK_GREEN));
-		} else if (tag.getBoolean("RubyInfused")) {
-			lines.add(Component.literal("Ruby").withStyle(ChatFormatting.DARK_RED));
-		} else if (tag.getBoolean("LapisInfused")) {
-			lines.add(Component.literal("Lapis").withStyle(ChatFormatting.DARK_BLUE));
-		}
+		int insert = Math.min(1, lines.size());
+		lines.add(insert++, runeType);
+		lines.add(insert++, crystal);
+		lines.add(insert, Component.empty());
+	}
+
+	private static Component crystalLine(CompoundTag tag) {
+		if (tag.getBoolean("SapphireInfused")) return crystal("Sapphire", ChatFormatting.BLUE);
+		if (tag.getBoolean("AmberInfused")) return crystal("Amber", ChatFormatting.GOLD);
+		if (tag.getBoolean("DiamondInfused")) return crystal("Diamond", ChatFormatting.AQUA);
+		if (tag.getBoolean("EmeraldInfused")) return crystal("Emerald", ChatFormatting.DARK_GREEN);
+		if (tag.getBoolean("RubyInfused")) return crystal("Ruby", ChatFormatting.DARK_RED);
+		if (tag.getBoolean("LapisInfused")) return crystal("Lapis", ChatFormatting.DARK_BLUE);
+		if (tag.getBoolean("SpinelInfused")) return crystal("Spinel", ChatFormatting.LIGHT_PURPLE);
+		return null;
+	}
+
+	private static Component crystal(String name, ChatFormatting color) {
+		return Component.literal(" Crystal: ").withStyle(ChatFormatting.GRAY)
+				.append(Component.literal(name).withStyle(color));
 	}
 }

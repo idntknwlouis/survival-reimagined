@@ -7,7 +7,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.tags.TagKey;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
@@ -28,6 +32,9 @@ public class RMIMenu extends AbstractContainerMenu {
 	private static final int PLAYER_INV_END = MACHINE_SLOTS + 27;
 
 	private static final TagKey<Item> RMI_INFUSABLE = tag("rmi_infusable");
+	private static final TagKey<Item> RMI_INFUSABLE_TOOL = tag("rmi_infusable/tool");
+	private static final TagKey<Item> RMI_INFUSABLE_WEAPON = tag("rmi_infusable/weapon");
+	private static final TagKey<Item> RMI_INFUSABLE_ARMOR = tag("rmi_infusable/armor");
 	private static final TagKey<Item> RMI_RUNES = tag("rmi_runes");
 
 	private final Container container;
@@ -70,7 +77,46 @@ public class RMIMenu extends AbstractContainerMenu {
 		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
 	}
 
-	public static boolean isInfusable(ItemStack stack) { return stack.is(RMI_INFUSABLE); }
+	public static boolean isInfusable(ItemStack stack) {
+		return stack.getItem() instanceof ArmorItem
+				|| stack.is(RMI_INFUSABLE)
+				|| stack.is(RMI_INFUSABLE_TOOL)
+				|| stack.is(RMI_INFUSABLE_WEAPON)
+				|| stack.is(RMI_INFUSABLE_ARMOR)
+				|| stack.is(ItemTags.PICKAXES)
+				|| stack.is(ItemTags.AXES)
+				|| stack.is(ItemTags.SHOVELS)
+				|| stack.is(ItemTags.HOES)
+				|| stack.is(ItemTags.SWORDS)
+				|| isSurvivalReimaginedTool(stack);
+	}
+
+	private static boolean isSurvivalReimaginedTool(ItemStack stack) {
+		return stack.is(SurvivalReimaginedModItems.BRONZE_SWORD.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_PICKAXE.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_AXE.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SHOVEL.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_HOE.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SWORD.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_PICKAXE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_AXE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SHOVEL.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_HOE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.STONE_HAMMER.get());
+	}
+
 	public static boolean isRune(ItemStack stack) { return stack.is(RMI_RUNES); }
 	public BlockPos getBlockPos() { return blockPos; }
 
@@ -106,7 +152,16 @@ public class RMIMenu extends AbstractContainerMenu {
 		player.level().playSound(null, blockPos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.8f, 1f);
 		player.level().playSound(null, blockPos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.3f, 1f);
 		container.setChanged();
+		if (player instanceof ServerPlayer serverPlayer) awardAdvancement(serverPlayer, "gem_runes");
 		return true;
+	}
+
+	private static void awardAdvancement(ServerPlayer player, String id) {
+		AdvancementHolder advancement = player.server.getAdvancements().get(ResourceLocation.fromNamespaceAndPath("survival_reimagined", id));
+		if (advancement == null) return;
+		var progress = player.getAdvancements().getOrStartProgress(advancement);
+		if (progress.isDone()) return;
+		for (String criterion : progress.getRemainingCriteria()) player.getAdvancements().award(advancement, criterion);
 	}
 
 	private static boolean isAlreadyInfused(ItemStack stack) {
