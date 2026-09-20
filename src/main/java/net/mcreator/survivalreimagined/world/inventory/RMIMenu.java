@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
@@ -73,7 +74,7 @@ public class RMIMenu extends AbstractContainerMenu {
 		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", path));
 	}
 
-	public static boolean isInfusable(ItemStack stack) { return stack.is(RMI_INFUSABLE) || stack.is(RMI_INFUSABLE_TOOL) || stack.is(RMI_INFUSABLE_WEAPON) || stack.is(RMI_INFUSABLE_ARMOR); }
+	public static boolean isInfusable(ItemStack stack) { return stack.getItem() instanceof ArmorItem || stack.is(RMI_INFUSABLE) || stack.is(RMI_INFUSABLE_TOOL) || stack.is(RMI_INFUSABLE_WEAPON) || stack.is(RMI_INFUSABLE_ARMOR); }
 	public static boolean isRune(ItemStack stack) { return stack.is(RMI_RUNES); }
 	public BlockPos getBlockPos() { return blockPos; }
 
