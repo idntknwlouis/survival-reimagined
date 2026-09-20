@@ -17,6 +17,10 @@
     "survival_reimagined:deepslate_amber_ore",
     "survival_reimagined:basalt_sapphire_ore",
     "survival_reimagined:basalt_ruby_ore",
-    "survival_reimagined:basalt_amber_ore"
+    "survival_reimagined:basalt_amber_ore",
+    "survival_reimagined:basalt_diamond_ore",
+    "survival_reimagined:basalt_emerald_ore",
+    "survival_reimagined:basalt_argentite_ore",
+    "survival_reimagined:basalt_uraninite_ore"
   ]
 }
