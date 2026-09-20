@@ -321,5 +321,7 @@
   "block.survival_reimagined.ilmenite_block": "Ilmenite Block",
   "block.survival_reimagined.shale_uranophane_ore": "Shale Uranophane Ore",
   "item.survival_reimagined.titanium_nugget": "Titanium Nugget",
-  "block.survival_reimagined.dark_cinder": "Dark Cinder"
+  "block.survival_reimagined.dark_cinder": "Dark Cinder",
+  "block.survival_reimagined.rune_magic_infuser": "Rune Magic Infuser",
+  "gui.survival_reimagined.rmi.label_rune_magic_infuser": "Rune Magic Infuser"
 }
