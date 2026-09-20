@@ -245,5 +245,8 @@
   "item.survival_reimagined.rough_diamond": "Rough Diamond",
   "item.survival_reimagined.rough_emerald": "Rough Emerald",
   "block.survival_reimagined.shale": "Shale",
-  "block.survival_reimagined.shale_rock": "Shale Rock"
+  "block.survival_reimagined.shale_rock": "Shale Rock",
+  "block.survival_reimagined.polished_shale": "Polished Shale",
+  "block.survival_reimagined.polished_shale_bricks": "Polished Shale Bricks",
+  "block.survival_reimagined.polished_chiseled_shale": "Polished Chiseled Shale"
 }
