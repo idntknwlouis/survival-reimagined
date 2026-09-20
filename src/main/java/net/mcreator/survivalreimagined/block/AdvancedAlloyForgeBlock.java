@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 
 public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -73,11 +74,56 @@ public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-		if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer
-				&& level.getBlockEntity(pos) instanceof AdvancedAlloyForgeBlockEntity forge) {
-			serverPlayer.openMenu(forge);
+		if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer) {
+			if (isSetupComplete(level, pos)) {
+				if (level.getBlockEntity(pos) instanceof AdvancedAlloyForgeBlockEntity forge) serverPlayer.openMenu(forge);
+			} else {
+				player.displayClientMessage(net.minecraft.network.chat.Component.literal("Incomplete Block Setup"), true);
+			}
 		}
 		return InteractionResult.SUCCESS;
+	}
+
+	public static boolean isSetupComplete(Level level, BlockPos forgePos) {
+		for (Direction depth : new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST}) {
+			if (matchesSetup(level, forgePos, depth)) return true;
+		}
+		return false;
+	}
+
+	private static boolean matchesSetup(Level level, BlockPos origin, Direction depth) {
+		Direction side = depth.getClockWise();
+
+		for (int d = 0; d <= 2; d++) {
+			for (int s = -1; s <= 1; s++) {
+				if (!level.getBlockState(origin.relative(depth, d).relative(side, s).below())
+						.is(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM.get())) return false;
+			}
+		}
+
+		for (int d = 0; d <= 2; d++) {
+			for (int s = -1; s <= 1; s++) {
+				BlockPos p = origin.relative(depth, d).relative(side, s).above();
+				if (d == 1 && s == 0) {
+					if (!level.getBlockState(p).isAir()) return false;
+				} else if (!level.getBlockState(p).is(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM.get())) return false;
+			}
+		}
+
+		for (int d : new int[]{0, 2}) {
+			for (int s : new int[]{-1, 1}) {
+				if (!level.getBlockState(origin.relative(depth, d).relative(side, s))
+						.is(SurvivalReimaginedModBlocks.URANIUM_ROD.get())) return false;
+			}
+		}
+
+		for (int s : new int[]{-1, 1}) {
+			if (!level.getBlockState(origin.relative(depth, 1).relative(side, s))
+					.is(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM.get())) return false;
+		}
+
+		if (!level.getBlockState(origin.relative(depth, 2)).is(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM.get())) return false;
+		return level.getBlockState(origin.relative(depth, 1)).isAir();
 	}
 
 	@Override
