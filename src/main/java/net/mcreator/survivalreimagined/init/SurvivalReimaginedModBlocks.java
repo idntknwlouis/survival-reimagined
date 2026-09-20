@@ -4,6 +4,9 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
@@ -38,6 +41,15 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> POLISHED_SHALE = register("polished_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> POLISHED_SHALE_BRICKS = register("polished_shale_bricks", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f)));
 	public static final RegistryEntry<Block> POLISHED_CHISELED_SHALE = register("polished_chiseled_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SHALE_STAIRS = register("shale_stairs", () -> new StairBlock(SHALE.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SHALE_SLAB = register("shale_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SHALE_WALL = register("shale_wall", () -> new WallBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> POLISHED_SHALE_STAIRS = register("polished_shale_stairs", () -> new StairBlock(POLISHED_SHALE.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> POLISHED_SHALE_SLAB = register("polished_shale_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> POLISHED_SHALE_WALL = register("polished_shale_wall", () -> new WallBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> POLISHED_SHALE_BRICK_STAIRS = register("polished_shale_brick_stairs", () -> new StairBlock(POLISHED_SHALE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> POLISHED_SHALE_BRICK_SLAB = register("polished_shale_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> POLOSHED_SHALE_BRICK_WALL = register("poloshed_shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 
 	public static final RegistryEntry<Block> TIN_ORE = register("tin_ore", TinOreBlock::new);
 	public static final RegistryEntry<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", DeepslateTinOreBlock::new);
