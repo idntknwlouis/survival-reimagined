@@ -87,8 +87,36 @@ public class RMIMenu extends AbstractContainerMenu {
 				|| stack.is(ItemTags.AXES)
 				|| stack.is(ItemTags.SHOVELS)
 				|| stack.is(ItemTags.HOES)
-				|| stack.is(ItemTags.SWORDS);
+				|| stack.is(ItemTags.SWORDS)
+				|| isSurvivalReimaginedTool(stack);
 	}
+
+	private static boolean isSurvivalReimaginedTool(ItemStack stack) {
+		return stack.is(SurvivalReimaginedModItems.BRONZE_SWORD.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_PICKAXE.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_AXE.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SHOVEL.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_HOE.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SWORD.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_PICKAXE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_AXE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SHOVEL.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_HOE.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.STEEL_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_HAMMER.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_SAW.get())
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_KNIFE.get())
+				|| stack.is(SurvivalReimaginedModItems.STONE_HAMMER.get());
+	}
+
 	public static boolean isRune(ItemStack stack) { return stack.is(RMI_RUNES); }
 	public BlockPos getBlockPos() { return blockPos; }
 
