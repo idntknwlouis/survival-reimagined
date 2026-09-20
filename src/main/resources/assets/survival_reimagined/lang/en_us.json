@@ -313,5 +313,11 @@
   "block.survival_reimagined.deepslate_anthracite_ore": "Deepslate Anthracite Ore",
   "block.survival_reimagined.liginite_ore": "Liginite Ore",
   "block.survival_reimagined.deepslate_liginite_ore": "Deepslate Liginite Ore",
-  "block.survival_reimagined.hematite_block": "Hematite Block"
+  "block.survival_reimagined.hematite_block": "Hematite Block",
+  "block.survival_reimagined.magnetite_block": "Magnetite Block",
+  "block.survival_reimagined.calaverite_block": "Calaverite Block",
+  "block.survival_reimagined.pyrolusite_block": "Pyrolusite Block",
+  "block.survival_reimagined.uranophane_block": "Uranophane Block",
+  "block.survival_reimagined.ilmenite_block": "Ilmenite Block",
+  "block.survival_reimagined.shale_uranophane_ore": "Shale Uranophane Ore"
 }
