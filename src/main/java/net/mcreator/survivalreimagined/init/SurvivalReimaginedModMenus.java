@@ -12,6 +12,8 @@ import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 import net.mcreator.survivalreimagined.world.inventory.ForgeGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.AdvancedAlloyForgeGUIMenu;
+import net.mcreator.survivalreimagined.world.inventory.AAFScriptureGUIMenu;
+import net.mcreator.survivalreimagined.world.inventory.RMIScriptureGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MetalRefiningTableGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MPTGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.RMIMenu;
@@ -36,6 +38,14 @@ public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<AdvancedAlloyForgeGUIMenu>> ADVANCED_ALLOY_FORGE_GUI = register(
 			"advanced_alloy_forge_gui",
 			new ExtendedScreenHandlerType<>(AdvancedAlloyForgeGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<AAFScriptureGUIMenu>> AAF_SCRIPTURE_GUI = register(
+			"aaf_scripture_gui",
+			new ExtendedScreenHandlerType<>(AAFScriptureGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<RMIScriptureGUIMenu>> RMI_SCRIPTURE_GUI = register(
+			"rmi_scripture_gui",
+			new ExtendedScreenHandlerType<>(RMIScriptureGUIMenu::new, BlockPos.STREAM_CODEC)
 	);
 
 	private SurvivalReimaginedModMenus() {
