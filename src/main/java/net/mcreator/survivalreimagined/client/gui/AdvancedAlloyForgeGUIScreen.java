@@ -16,7 +16,15 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 	private static final ResourceLocation UPGRADES = tex("alloy_forge_upgrades.png");
 	private static final ResourceLocation ROD = tex("rod_texture.png");
 	private static final ResourceLocation UPGRADE = tex("upgrade_texture.png");
-	private static final ResourceLocation ARROW = tex("arrow.png");
+	private static final ResourceLocation EMPTY_FUEL = tex("aaf_empty.png");
+	private static final ResourceLocation CAPACITY_MARKER = tex("capacity_marker.png");
+	private static final ResourceLocation[] FUEL = new ResourceLocation[12];
+	private static final ResourceLocation[] ARROWS = new ResourceLocation[15];
+
+	static {
+		for (int i = 0; i < FUEL.length; i++) FUEL[i] = tex("aaf_" + (i + 1) + ".png");
+		for (int i = 0; i < ARROWS.length; i++) ARROWS[i] = tex(i == 0 ? "arrow.png" : "arrow" + (i + 1) + ".png");
+	}
 
 	public AdvancedAlloyForgeGUIScreen(AdvancedAlloyForgeGUIMenu menu, Inventory inventory, Component title) {
 		super(menu, inventory, title);
@@ -33,9 +41,23 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, 176, 166, 176, 166);
 		graphics.blit(UPGRADES, this.leftPos + 178, this.topPos, 0, 0, 72, 75, 72, 75);
 
+		int fuel = Math.max(0, this.menu.getFuelCapacity());
+		if (fuel <= 0) {
+			graphics.blit(EMPTY_FUEL, this.leftPos + 8, this.topPos + 5, 0, 0, 14, 49, 14, 49);
+		} else {
+			int fuelFrame = Math.min(11, Math.max(0, (fuel - 1) / 750));
+			graphics.blit(FUEL[fuelFrame], this.leftPos + 8, this.topPos + 5, 0, 0, 14, 49, 84, 49);
+		}
+
+		int maxFuel = this.menu.getMaxFuelCapacity();
+		int markerY = maxFuel >= 9000 ? 3 : maxFuel >= 6000 ? 19 : 35;
+		graphics.blit(CAPACITY_MARKER, this.leftPos + 23, this.topPos + markerY, 0, 0, 7, 5, 7, 5);
+
 		int progress = Math.max(0, Math.min(AdvancedAlloyForgeBlockEntity.MAX_PROGRESS, this.menu.getProgress()));
-		int arrowWidth = Math.max(1, Math.min(16, 1 + progress * 15 / AdvancedAlloyForgeBlockEntity.MAX_PROGRESS));
-		graphics.blit(ARROW, this.leftPos + 111, this.topPos + 39, 0, 0, arrowWidth, 16, 16, 16);
+		if (progress > 0) {
+			int frame = Math.min(14, Math.max(0, (progress - 1) / 20));
+			graphics.blit(ARROWS[frame], this.leftPos + 111, this.topPos + 39, 0, 0, 16, 16, 16, 16);
+		}
 
 		graphics.blit(ROD, this.leftPos + 8, this.topPos + 57, 0, 0, 16, 16, 16, 16);
 		graphics.blit(UPGRADE, this.leftPos + 197, this.topPos + 19, 0, 0, 16, 16, 16, 16);
