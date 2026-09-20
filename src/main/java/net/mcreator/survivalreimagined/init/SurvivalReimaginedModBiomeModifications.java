@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.init;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -47,6 +48,17 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("native_silver");
 		addLocalEverywhere("basalt_layer");
 		addLocalEverywhere("kimberlite_feature");
+		addNether("dark_cinder_blobs");
+	}
+
+	private static void addNether(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInTheNether(),
+				GenerationStep.Decoration.UNDERGROUND_DECORATION,
+				featureKey);
 	}
 
 	private static void addUndergroundEverywhere(String path) {
