@@ -6,10 +6,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
@@ -18,7 +19,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
@@ -36,6 +36,13 @@ public class MineralProcessingTableBlockEntity extends RandomizableContainerBloc
 	public static final int MAX_PROGRESS = 300;
 	public static final int MAX_ROD_CAPACITY_TENTHS = 24000;
 	private static final int[] SLOTS = IntStream.range(0, CONTAINER_SIZE).toArray();
+
+	private static final TagKey<Item> PROCESSING_DIAMOND = processingTag("diamond");
+	private static final TagKey<Item> PROCESSING_EMERALD = processingTag("emerald");
+	private static final TagKey<Item> PROCESSING_LAPIS = processingTag("lapis");
+	private static final TagKey<Item> PROCESSING_SAPPHIRE = processingTag("sapphire");
+	private static final TagKey<Item> PROCESSING_RUBY = processingTag("ruby");
+	private static final TagKey<Item> PROCESSING_AMBER = processingTag("amber");
 
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
 	private int progress;
@@ -190,13 +197,17 @@ public class MineralProcessingTableBlockEntity extends RandomizableContainerBloc
 		return getProcessingResult(input) != null;
 	}
 
+	private static TagKey<Item> processingTag(String path) {
+		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "processing/" + path));
+	}
+
 	private static Item getProcessingResult(ItemStack input) {
-		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/diamond")))) return Items.DIAMOND;
-		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/emerald")))) return Items.EMERALD;
-		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/lapis")))) return Items.LAPIS_LAZULI;
-		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/sapphire")))) return SurvivalReimaginedModItems.SAPPHIRE.get();
-		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/ruby")))) return SurvivalReimaginedModItems.RUBY.get();
-		if (input.is(ItemTags.create(ResourceLocation.parse("c:processing/amber")))) return SurvivalReimaginedModItems.AMBER.get();
+		if (input.is(PROCESSING_DIAMOND)) return Items.DIAMOND;
+		if (input.is(PROCESSING_EMERALD)) return Items.EMERALD;
+		if (input.is(PROCESSING_LAPIS)) return Items.LAPIS_LAZULI;
+		if (input.is(PROCESSING_SAPPHIRE)) return SurvivalReimaginedModItems.SAPPHIRE.get();
+		if (input.is(PROCESSING_RUBY)) return SurvivalReimaginedModItems.RUBY.get();
+		if (input.is(PROCESSING_AMBER)) return SurvivalReimaginedModItems.AMBER.get();
 		return null;
 	}
 
