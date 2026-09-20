@@ -22,7 +22,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 	private final BlockPos blockPos;
 
 	public AdvancedAlloyForgeGUIMenu(int id, Inventory inventory, BlockPos pos) {
-		this(id, inventory, new SimpleContainer(AdvancedAlloyForgeBlockEntity.CONTAINER_SIZE), new SimpleContainerData(3), pos);
+		this(id, inventory, new SimpleContainer(AdvancedAlloyForgeBlockEntity.CONTAINER_SIZE), new SimpleContainerData(4), pos);
 	}
 
 	public AdvancedAlloyForgeGUIMenu(int id, Inventory inventory, AdvancedAlloyForgeBlockEntity forge) {
@@ -32,7 +32,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 	private AdvancedAlloyForgeGUIMenu(int id, Inventory inventory, Container container, ContainerData data, BlockPos pos) {
 		super(SurvivalReimaginedModMenus.ADVANCED_ALLOY_FORGE_GUI.get(), id);
 		checkContainerSize(container, AdvancedAlloyForgeBlockEntity.CONTAINER_SIZE);
-		checkContainerDataCount(data, 3);
+		checkContainerDataCount(data, 4);
 		this.container = container;
 		this.data = data;
 		this.blockPos = pos;
@@ -75,6 +75,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 	public int getProgress() { return data.get(0); }
 	public int getFuelCapacity() { return data.get(1); }
 	public int getMaxFuelCapacity() { return data.get(2); }
+	public boolean isRecipeInvalid() { return data.get(3) != 0; }
 
 	@Override public boolean stillValid(Player player) { return container.stillValid(player); }
 
