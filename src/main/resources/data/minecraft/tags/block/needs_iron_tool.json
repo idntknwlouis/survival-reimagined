@@ -14,6 +14,9 @@
     "survival_reimagined:ruby_ore",
     "survival_reimagined:deepslate_ruby_ore",
     "survival_reimagined:amber_ore",
-    "survival_reimagined:deepslate_amber_ore"
+    "survival_reimagined:deepslate_amber_ore",
+    "survival_reimagined:basalt_sapphire_ore",
+    "survival_reimagined:basalt_ruby_ore",
+    "survival_reimagined:basalt_amber_ore"
   ]
 }
