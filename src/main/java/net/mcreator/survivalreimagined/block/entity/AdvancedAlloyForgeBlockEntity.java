@@ -66,6 +66,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 				case 0 -> progress;
 				case 1 -> fuelCapacity;
 				case 2 -> getMaxFuelCapacity();
+				case 3 -> isRecipeInvalid() ? 1 : 0;
 				default -> 0;
 			};
 		}
@@ -81,7 +82,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 
 		@Override
 		public int getCount() {
-			return 3;
+			return 4;
 		}
 	};
 
@@ -191,6 +192,12 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		if (hasUpgrade(SurvivalReimaginedModItems.YIELD_UPGRADE_MKII.get())) return 3;
 		if (hasUpgrade(SurvivalReimaginedModItems.YIELD_UPGRADE.get())) return 2;
 		return 1;
+	}
+
+	private boolean isRecipeInvalid() {
+		ItemStack first = getItem(1);
+		ItemStack second = getItem(2);
+		return !first.isEmpty() && !second.isEmpty() && getRecipe(first, second, packagingEnabled()) == null;
 	}
 
 	private boolean packagingEnabled() {
