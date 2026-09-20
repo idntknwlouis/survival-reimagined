@@ -76,47 +76,49 @@ public final class RuneEffects {
 					if (attacker.getRandom().nextFloat() < 0.40F) entity.igniteForSeconds(3);
 				}
 			}
-
-			if (has(weapon, "RubyInfused")) {
-				if (has(weapon, "GoldInfused")) {
-					attacker.heal(4.0F);
-				} else if (has(weapon, "SilverInfused")) {
-					attacker.heal(2.0F);
-				}
-			}
-
-			if (has(weapon, "EmeraldInfused") && entity.level() instanceof ServerLevel level) {
-				float chance = has(weapon, "GoldInfused") ? 0.25F : has(weapon, "SilverInfused") ? 0.15F : 0.0F;
-				if (chance > 0.0F && attacker.getRandom().nextFloat() < chance) {
-					ItemEntity drop = new ItemEntity(level, entity.getX(), entity.getY(), entity.getZ(),
-							new ItemStack(SurvivalReimaginedModItems.ROUGH_EMERALD.get()));
-					drop.setPickUpDelay(10);
-					level.addFreshEntity(drop);
-				}
-			}
-
-			if (has(weapon, "LapisInfused") && entity.level() instanceof ServerLevel level) {
-				float chance = has(weapon, "GoldInfused") ? 0.20F : has(weapon, "SilverInfused") ? 0.10F : 0.0F;
-				if (chance > 0.0F && attacker.getRandom().nextFloat() < chance) {
-					int orbCount = 1 + attacker.getRandom().nextInt(3);
-					for (int i = 0; i < orbCount; i++) {
-						int value = has(weapon, "GoldInfused")
-								? 3 + attacker.getRandom().nextInt(5)
-								: 1 + attacker.getRandom().nextInt(3);
-						level.addFreshEntity(new ExperienceOrb(level, entity.getX(), entity.getY(), entity.getZ(), value));
-					}
-				}
-			}
 		});
 
 
 		ServerLivingEntityEvents.AFTER_DEATH.register((entity, source) -> {
 			if (!(source.getEntity() instanceof Player player)) return;
 			ItemStack weapon = player.getMainHandItem();
-			if (!weapon.is(INFUSABLE_WEAPON) || !has(weapon, "DiamondInfused")) return;
-			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "undead")))) return;
-			if (!(entity.level() instanceof ServerLevel level)) return;
-			advanceWeaponUnbreaking(level, player, weapon);
+			if (!weapon.is(INFUSABLE_WEAPON) || !(entity.level() instanceof ServerLevel level)) return;
+
+			if (has(weapon, "DiamondInfused")
+					&& entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "undead")))) {
+				advanceWeaponUnbreaking(level, player, weapon);
+			}
+
+			if (has(weapon, "RubyInfused")) {
+				float chance = has(weapon, "GoldInfused") ? 0.10F : has(weapon, "SilverInfused") ? 0.075F : 0.0F;
+				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
+					player.heal(has(weapon, "GoldInfused") ? 4.0F : 2.0F);
+				}
+			}
+
+			if (has(weapon, "LapisInfused")) {
+				float chance = has(weapon, "GoldInfused") ? 0.20F : has(weapon, "SilverInfused") ? 0.10F : 0.0F;
+				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
+					int count = 1 + player.getRandom().nextInt(3);
+					for (int i = 0; i < count; i++) {
+						int value = has(weapon, "GoldInfused")
+								? 3 + player.getRandom().nextInt(5)
+								: 1 + player.getRandom().nextInt(3);
+						level.addFreshEntity(new ExperienceOrb(level, entity.getX() + 0.5, entity.getY(), entity.getZ() + 0.5, value));
+					}
+				}
+			}
+
+			if (has(weapon, "EmeraldInfused")
+					&& entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("minecraft", "illager")))) {
+				float chance = has(weapon, "GoldInfused") ? 0.25F : has(weapon, "SilverInfused") ? 0.15F : 0.0F;
+				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
+					ItemEntity drop = new ItemEntity(level, entity.getX() + 0.5, entity.getY(), entity.getZ() + 0.5,
+							new ItemStack(SurvivalReimaginedModItems.ROUGH_EMERALD.get()));
+					drop.setPickUpDelay(10);
+					level.addFreshEntity(drop);
+				}
+			}
 		});
 
 		PlayerBlockBreakEvents.AFTER.register((level, player, pos, state, blockEntity) -> {
