@@ -65,6 +65,16 @@ public final class SurvivalReimaginedModTabs {
 					output.accept(SurvivalReimaginedModItems.METAL_REFINING_TABLE.get());
 					output.accept(SurvivalReimaginedModItems.MINERAL_PROCESSING_TABLE.get());
 					output.accept(SurvivalReimaginedModItems.REACTOR_ROD.get());
+					output.accept(SurvivalReimaginedModItems.ADVANCED_REACTOR_ROD.get());
+					output.accept(SurvivalReimaginedModItems.DRAINED_ADVANCED_REACTOR_ROD.get());
+					output.accept(SurvivalReimaginedModItems.FUEL_UPGRADE.get());
+					output.accept(SurvivalReimaginedModItems.FUEL_UPGRADE_MKII.get());
+					output.accept(SurvivalReimaginedModItems.EFFICIENCY_UPGRADE.get());
+					output.accept(SurvivalReimaginedModItems.YIELD_UPGRADE.get());
+					output.accept(SurvivalReimaginedModItems.YIELD_UPGRADE_MKII.get());
+					output.accept(SurvivalReimaginedModItems.YIELD_UPGRADE_MKIII.get());
+					output.accept(SurvivalReimaginedModItems.BLOCK_PACKAGING_UPGRADE.get());
+					output.accept(SurvivalReimaginedModItems.HEMP_MESH.get());
 					output.accept(SurvivalReimaginedModItems.DEPLETED_REACTOR_ROD.get());
 					output.accept(SurvivalReimaginedModItems.TIN_ORE.get());
 					output.accept(SurvivalReimaginedModItems.DEEPSLATE_TIN_ORE.get());

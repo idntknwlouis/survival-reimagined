@@ -57,7 +57,8 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 			int x = i % 2 == 0 ? 197 : 215;
 			int y = i < 6 ? 19 : 37;
 			this.addSlot(new Slot(container, local, x, y) {
-				@Override public boolean mayPlace(ItemStack stack) { return false; }
+				@Override public boolean mayPlace(ItemStack stack) { return AdvancedAlloyForgeBlockEntity.isUpgrade(stack); }
+				@Override public int getMaxStackSize() { return 1; }
 			});
 		}
 
@@ -89,6 +90,8 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), true)) return ItemStack.EMPTY;
 		} else if (AdvancedAlloyForgeBlockEntity.isReactorRod(stack)) {
 			if (!moveItemStackTo(stack, 3, 4, false)) return ItemStack.EMPTY;
+		} else if (AdvancedAlloyForgeBlockEntity.isUpgrade(stack)) {
+			if (!moveItemStackTo(stack, 4, 8, false)) return ItemStack.EMPTY;
 		} else if (AdvancedAlloyForgeBlockEntity.isAlloyInput(stack)) {
 			if (!moveItemStackTo(stack, 1, 3, false)) return ItemStack.EMPTY;
 		} else if (index < PLAYER_INV_END) {

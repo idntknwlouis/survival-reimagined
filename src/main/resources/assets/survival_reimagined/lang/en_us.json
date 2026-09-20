@@ -326,5 +326,15 @@
   "gui.survival_reimagined.rmi.label_rune_magic_infuser": "Rune Magic Infuser",
   "block.survival_reimagined.advanced_alloy_forge": "Advanced Alloy Forge",
   "gui.survival_reimagined.advanced_alloy_forge_gui.label_advanced_alloy_forge": "Advanced Alloy Forge",
-  "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades"
+  "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades",
+  "item.survival_reimagined.advanced_reactor_rod": "Advanced Reactor Rod",
+  "item.survival_reimagined.drained_advanced_reactor_rod": "Drained Advanced Reactor Rod",
+  "item.survival_reimagined.fuel_upgrade": "Fuel Capacity Upgrade MKI",
+  "item.survival_reimagined.fuel_upgrade_mkii": "Fuel Capacity Upgrade MKII",
+  "item.survival_reimagined.efficiency_upgrade": "Efficiency Upgrade",
+  "item.survival_reimagined.yield_upgrade": "Yield Upgrade MKI",
+  "item.survival_reimagined.yield_upgrade_mkii": "Yield Upgrade MKII",
+  "item.survival_reimagined.yield_upgrade_mkiii": "Yield Upgrade MKIII",
+  "item.survival_reimagined.block_packaging_upgrade": "Block Packaging Upgrade",
+  "item.survival_reimagined.hemp_mesh": "Hemp Mesh"
 }
