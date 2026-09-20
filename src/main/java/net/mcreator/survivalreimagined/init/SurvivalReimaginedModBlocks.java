@@ -30,6 +30,7 @@ import net.mcreator.survivalreimagined.block.ShaleBlock;
 import net.mcreator.survivalreimagined.block.ShaleRockBlock;
 import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
 import net.mcreator.survivalreimagined.block.TinOreBlock;
+import net.mcreator.survivalreimagined.block.UraniumRodBlock;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
@@ -64,6 +65,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> MINERAL_PROCESSING_TABLE = register("mineral_processing_table", MineralProcessingTableBlock::new);
 	public static final RegistryEntry<Block> RUNE_MAGIC_INFUSER = register("rune_magic_infuser", RuneMagicInfuserBlock::new);
 	public static final RegistryEntry<Block> ADVANCED_ALLOY_FORGE = register("advanced_alloy_forge", AdvancedAlloyForgeBlock::new);
+	public static final RegistryEntry<Block> URANIUM_ROD = register("uranium_rod", UraniumRodBlock::new);
 	public static final RegistryEntry<Block> ANTHRACITE_BLOCK = register("anthracite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> LIGINITE_BLOCK = register("liginite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DARK_CINDER = register("dark_cinder", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.3f)));
