@@ -256,7 +256,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> LIGINITE_BLOCK = block(SurvivalReimaginedModBlocks.LIGINITE_BLOCK);
 	public static final RegistryEntry<Item> MANGANESE_ORE = block(SurvivalReimaginedModBlocks.MANGANESE_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_MANGANESE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_MANGANESE_ORE);
-	public static final RegistryEntry<Item> BASALT_MANGANITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_MANGANITE_ORE);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);
 	public static final RegistryEntry<Item> MANGANITE_ORE = block(SurvivalReimaginedModBlocks.MANGANITE_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_MANGANITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_MANGANITE_ORE);
