@@ -17,6 +17,7 @@ import net.minecraft.server.MinecraftServer;
 
 
 import net.mcreator.survivalreimagined.util.RuneEffects;
+import net.mcreator.survivalreimagined.util.CropEffects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +56,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
 		RuneEffects.register();
+		CropEffects.register();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			ItemStack stack = player.getItemInHand(hand);
