@@ -23,6 +23,7 @@ import net.mcreator.survivalreimagined.block.GeologySpikeBlock;
 import net.mcreator.survivalreimagined.block.IngotMoldBlock;
 import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
 import net.mcreator.survivalreimagined.block.MineralProcessingTableBlock;
+import net.mcreator.survivalreimagined.block.MillstoneBlock;
 import net.mcreator.survivalreimagined.block.RuneMagicInfuserBlock;
 import net.mcreator.survivalreimagined.block.ToolMoldBlock;
 import net.mcreator.survivalreimagined.block.ClayMoldBlock;
@@ -106,6 +107,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
 	public static final RegistryEntry<Block> METAL_REFINING_TABLE = register("metal_refining_table", MetalRefiningTableBlock::new);
 	public static final RegistryEntry<Block> MINERAL_PROCESSING_TABLE = register("mineral_processing_table", MineralProcessingTableBlock::new);
+	public static final RegistryEntry<Block> MILLSTONE = register("millstone", MillstoneBlock::new);
 	public static final RegistryEntry<Block> RUNE_MAGIC_INFUSER = register("rune_magic_infuser", RuneMagicInfuserBlock::new);
 	public static final RegistryEntry<Block> ADVANCED_ALLOY_FORGE = register("advanced_alloy_forge", AdvancedAlloyForgeBlock::new);
 	public static final RegistryEntry<Block> ANTHRACITE_BLOCK = register("anthracite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
