@@ -72,6 +72,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Manganese parity audit completed: Manganese, Manganite, and Pyrolusite blocks/items, ore loot, smelting/blasting and compression recipes, common tags, AAF alloy inputs, and worldgen are aligned with the original. Fabric keeps the corrected `c:manganese_ores` spelling and now includes it in `c:ores`; duplicate Fabric-only Basalt Manganite worldgen was removed. Runtime verification pending.
 - Tin parity audit completed: Tin/Cassiterite blocks, items, processing recipes, loot, mining tiers, and Cassiterite worldgen match the original; restored Cassiterite to `c:tin_ores` and the common ore tag so infused ore-mining bonuses apply correctly.
 - Broad core gameplay parity audit completed. The remaining major gaps are now classified: Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation are not yet ported; Food / Cooking is missing its gameplay/recipe systems but retains some crop/food assets; Advancements and Decorative / Utility Blocks are partial. Fabric currently has only the Radiant Forest of the original custom biomes, with Tropical Coast and Wisteria Forest still missing.
 - Shale geology parity is runtime-verified: Radiated Shale surface layering, Shale underground replacement, mining/loot integration, and Radiant Forest Uraninite/Uranophane vein generation all work as intended.
