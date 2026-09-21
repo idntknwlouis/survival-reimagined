@@ -134,6 +134,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_URANIUM = simple("rough_uranium");
 	public static final RegistryEntry<Item> URANIUM_INGOT = simple("uranium_ingot");
 	public static final RegistryEntry<Item> URANIUM_NUGGET = simple("uranium_nugget");
+	public static final RegistryEntry<Item> URANIUM_ROD = block(SurvivalReimaginedModBlocks.URANIUM_ROD);
 	public static final RegistryEntry<Item> ROUGH_TURANITE = simple("rough_turanite");
 	public static final RegistryEntry<Item> TURANITE_INGOT = simple("turanite_ingot");
 	public static final RegistryEntry<Item> QUICK_LIME = simple("quick_lime");
