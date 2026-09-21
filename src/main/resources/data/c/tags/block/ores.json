@@ -68,6 +68,7 @@
     "survival_reimagined:basalt_amber_ore",
     "survival_reimagined:deepslate_uraninite_ore",
     "survival_reimagined:cassiterite_ore",
-    "survival_reimagined:deepslate_cassiterite_ore"
+    "survival_reimagined:deepslate_cassiterite_ore",
+    "#c:manganese_ores"
   ]
 }
