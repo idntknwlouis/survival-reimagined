@@ -395,5 +395,7 @@
   "block.survival_reimagined.millstone": "Millstone",
   "item.survival_reimagined.wheat_flour": "Wheat Flour",
   "item.survival_reimagined.rye_flour": "Rye Flour",
-  "item.survival_reimagined.spelt_flour": "Spelt Flour"
+  "item.survival_reimagined.spelt_flour": "Spelt Flour",
+  "item.survival_reimagined.rye_bread": "Rye Bread",
+  "item.survival_reimagined.spelt_bread": "Spelt Bread"
 }
