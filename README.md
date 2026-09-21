@@ -36,7 +36,7 @@ This table tracks broad feature parity against the original mod.
 | Netherite Progression |    ✅     | ✅ | ✅ | — |
 | Rocks / Surface Rocks |    ✅     | ✅ | ✅ | ✅ |
 | Flint Placement |    ✅     | ✅ | ✅ | ✅ |
-| Shale Geology |    ❌     | ❌ | ❌ | ❌ |
+| Shale Geology |    🟡     | ✅ | ✅ | 🟡 |
 | Basalt Geology Extensions |    ✅     | ✅ | ✅ | ✅ |
 | Native Mineral Ores |    ✅     | ✅ | ✅ | ✅ |
 | Kimberlite Geology |    ✅     | ✅ | ✅ | ✅ |
@@ -73,6 +73,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Shale geology parity pass added Radiated Shale, original Radiant Forest surface layering, Shale ore replacement behavior, mining/loot integration, and restored Radiated Shale assets; runtime verification pending.
 - Rune Magic Infuser parity restored: original textured Fuse button, target/rune/lapis validation, Gold/Silver XP + lapis costs, infusion sounds, direct rune recognition, and common `c:runes` compatibility.
 - Rune effects restored and hardened for Fabric tool/weapon detection, including Diamond Unbreaking progression, Ocean's Wrath, Sapphire underwater mining, Amber/Ruby/Lapis/Emerald effects, action-bar feedback, and gray rune effect tooltips.
 - Advanced Alloy Forge parity restored: setup requirement, smoke/sounds, staged progress arrow, fuel gauge/capacity markers, reactor rods, Advanced Reactor Rod, upgrade slots, Fuel/Yield/Efficiency upgrades, and Block Packaging recipes.
