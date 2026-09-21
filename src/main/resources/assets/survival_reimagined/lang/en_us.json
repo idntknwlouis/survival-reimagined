@@ -376,5 +376,20 @@
   "block.survival_reimagined.deepslate_manganese_ore": "Deepslate Manganese Ore",
   "item.survival_reimagined.manganese_chunk": "Manganese Chunk",
   "block.survival_reimagined.basalt_pointed_stone": "Basalt Pointed Stone",
-  "block.survival_reimagined.kimberlite_pointed_stone": "Kimberlite Pointed Stone"
+  "block.survival_reimagined.kimberlite_pointed_stone": "Kimberlite Pointed Stone",
+  "block.survival_reimagined.strawberry_plant": "Strawberry Bush",
+  "item.survival_reimagined.strawberry": "Strawberry",
+  "block.survival_reimagined.wild_wheat": "Wild Wheat",
+  "block.survival_reimagined.wild_potatoes": "Wild Potatoes",
+  "block.survival_reimagined.wheat_crop": "Wheat Seeds",
+  "item.survival_reimagined.wheat_seeds": "Wheat Seeds",
+  "block.survival_reimagined.corn_stalk_bottom": "Corn Stalk",
+  "block.survival_reimagined.corn_stalk_middle": "Corn Stalk",
+  "block.survival_reimagined.corn_stalk_top": "Corn Stalk",
+  "item.survival_reimagined.corn_seeds": "Corn Seeds",
+  "item.survival_reimagined.corn": "Corn",
+  "block.survival_reimagined.potatoes": "Potatoes",
+  "item.survival_reimagined.potato": "Potato",
+  "block.survival_reimagined.raspberry_plant": "Raspberry Bush",
+  "item.survival_reimagined.raspberry": "Raspberry"
 }
