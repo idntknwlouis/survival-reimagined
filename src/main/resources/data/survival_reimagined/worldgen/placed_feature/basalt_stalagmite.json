@@ -33,11 +33,7 @@
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:matching_blocks",
-              "blocks": [
-                "survival_reimagined:basalt_stalagmite_top",
-                "survival_reimagined:basalt_stalagmite_middle",
-                "survival_reimagined:basalt_stalagmite_base"
-              ]
+              "blocks": "survival_reimagined:basalt_pointed_stone"
             }
           },
           {
