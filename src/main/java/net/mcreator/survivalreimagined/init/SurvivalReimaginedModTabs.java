@@ -30,30 +30,11 @@ public final class SurvivalReimaginedModTabs {
 							return;
 						}
 						output.accept(item);
-						Item pairedBlock = pairedRockBlock(item);
-						if (pairedBlock != null) output.accept(pairedBlock);
 					});
 				})
 				.build();
 		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, id, tab);
 		return new RegistryEntry<>(id, tab);
-	}
-
-	private static Item pairedRockBlock(Item item) {
-		if (item == SurvivalReimaginedModItems.STONE_ROCK.get()) return SurvivalReimaginedModItems.STONE_ROCK_BLOC.get();
-		if (item == SurvivalReimaginedModItems.ANDESITE_ROCK.get()) return SurvivalReimaginedModItems.ANDESITE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.GRANITE_ROCK.get()) return SurvivalReimaginedModItems.GRANITE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.DIORITE_ROCK.get()) return SurvivalReimaginedModItems.DIORITE_ROCK_B_LOCK.get();
-		if (item == SurvivalReimaginedModItems.DRIPSTONE_ROCK.get()) return SurvivalReimaginedModItems.DRIPSTONE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.CALCITE_ROCK.get()) return SurvivalReimaginedModItems.CALCITE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.TUFF_ROCK.get()) return SurvivalReimaginedModItems.TUFF_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.MOSSY_STONE_ROCK.get()) return SurvivalReimaginedModItems.MOSSY_STONE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.NETHERRACK_ROCK.get()) return SurvivalReimaginedModItems.NETHERRACK_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.END_STONE_ROCK.get()) return SurvivalReimaginedModItems.END_STONE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.BLACKSTONE_ROCK.get()) return SurvivalReimaginedModItems.BLACKSTONE_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.BASALT_ROCK.get()) return SurvivalReimaginedModItems.BASALT_ROCK_BLOCK.get();
-		if (item == SurvivalReimaginedModItems.DEEPSLATE_ROCK.get()) return SurvivalReimaginedModItems.DEEPSLATE_ROCK_BLOCK.get();
-		return null;
 	}
 
 	private static boolean isPairedRockBlock(Item item) {
