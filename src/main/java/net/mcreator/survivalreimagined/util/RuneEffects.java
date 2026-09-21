@@ -394,7 +394,7 @@ public final class RuneEffects {
 	private static void tickTool(Player player) {
 		ItemStack tool = player.getMainHandItem();
 		UUID id = player.getUUID();
-		if (!tool.is(INFUSABLE_TOOL) || !has(tool, "SapphireInfused")) {
+		if (!isRuneTool(tool) || !has(tool, "SapphireInfused")) {
 			Double original = SAPPHIRE_TOOL_BASE.remove(id);
 			if (original != null && player.getAttribute(Attributes.BLOCK_BREAK_SPEED) != null) {
 				player.getAttribute(Attributes.BLOCK_BREAK_SPEED).setBaseValue(original);
@@ -408,6 +408,7 @@ public final class RuneEffects {
 		if (player.isUnderWater()) {
 			if (!SAPPHIRE_TOOL_BASE.containsKey(id)) {
 				SAPPHIRE_TOOL_BASE.put(id, attribute.getBaseValue());
+				player.level().playSound(null, player.blockPosition(), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 0.8F, 1.3F);
 			}
 			double base = SAPPHIRE_TOOL_BASE.get(id);
 			attribute.setBaseValue(base * 1.6D);
