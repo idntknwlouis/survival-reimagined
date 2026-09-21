@@ -117,6 +117,12 @@
     "survival_reimagined:kimberlite_stalagmite_top",
     "survival_reimagined:kimberlite_stalagtite_base",
     "survival_reimagined:kimberlite_stalagtite_middle",
-    "survival_reimagined:kimberlite_stalagtite_tip"
+    "survival_reimagined:kimberlite_stalagtite_tip",
+    "survival_reimagined:cassiterite_ore",
+    "survival_reimagined:deepslate_cassiterite_ore",
+    "survival_reimagined:raw_cassiterite_block",
+    "survival_reimagined:manganite_ore",
+    "survival_reimagined:deepslate_manganite_ore",
+    "survival_reimagined:manganite_block"
   ]
 }
