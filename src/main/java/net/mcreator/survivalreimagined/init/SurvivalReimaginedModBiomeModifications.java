@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -17,9 +18,6 @@ public final class SurvivalReimaginedModBiomeModifications {
 	public static void register() {
 		addEverywhere("flint_gen");
 		addEverywhere("stone_gen");
-		addEverywhere("wild_carrots");
-		addEverywhere("natural_rye");
-		addEverywhere("natural_spelt");
 		addEverywhere("copper_gen");
 		addUndergroundEverywhere("diamond_ore_feature");
 		addUndergroundEverywhere("emerald_ore_feature");
@@ -53,9 +51,23 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addLocalEverywhere("basalt_layer");
 		addLocalEverywhere("kimberlite_feature");
 		addNether("dark_cinder_blobs");
-		addOverworldVegetation("natural_rye");
-		addOverworldVegetation("natural_spelt");
-		addOverworldVegetation("wild_carrots");
+		addVegetationToBiomes("natural_rye",
+				Biomes.OLD_GROWTH_PINE_TAIGA,
+				Biomes.OLD_GROWTH_SPRUCE_TAIGA,
+				Biomes.TAIGA,
+				Biomes.SAVANNA,
+				Biomes.SAVANNA_PLATEAU,
+				Biomes.WINDSWEPT_SAVANNA);
+		addVegetationToBiomes("natural_spelt",
+				Biomes.TAIGA,
+				Biomes.BIRCH_FOREST,
+				Biomes.OLD_GROWTH_BIRCH_FOREST);
+		addVegetationToBiomes("wild_carrots",
+				Biomes.PLAINS,
+				Biomes.SUNFLOWER_PLAINS,
+				Biomes.OLD_GROWTH_PINE_TAIGA,
+				Biomes.OLD_GROWTH_SPRUCE_TAIGA,
+				Biomes.TAIGA);
 	}
 
 	private static void addRadiantForestUnderground(String path) {
@@ -68,12 +80,13 @@ public final class SurvivalReimaginedModBiomeModifications {
 				featureKey);
 	}
 
-	private static void addOverworldVegetation(String path) {
+	@SafeVarargs
+	private static void addVegetationToBiomes(String path, ResourceKey<net.minecraft.world.level.biome.Biome>... biomes) {
 		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
 				Registries.PLACED_FEATURE,
 				SurvivalReimaginedMod.asResource(path));
 		BiomeModifications.addFeature(
-				BiomeSelectors.foundInOverworld(),
+				BiomeSelectors.includeByKey(biomes),
 				GenerationStep.Decoration.VEGETAL_DECORATION,
 				featureKey);
 	}
