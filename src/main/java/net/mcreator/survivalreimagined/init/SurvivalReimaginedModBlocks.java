@@ -46,6 +46,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> STONE_ROCK_BLOC = register("stone_rock_bloc", StoneRockBlocBlock::new);
 	public static final RegistryEntry<Block> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.OBSIDIAN_ROCK.get()));
 	public static final RegistryEntry<Block> SHALE = register("shale", ShaleBlock::new);
+	public static final RegistryEntry<Block> RADIATED_SHALE = register("radiated_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
 	private static final IntegerProperty RYE_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty SPELT_AGE = IntegerProperty.create("age", 0, 6);
