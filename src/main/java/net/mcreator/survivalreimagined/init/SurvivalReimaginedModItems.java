@@ -78,6 +78,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RYE_SEEDS = cropSeed("rye_seeds", SurvivalReimaginedModBlocks.RYE_SEEDS);
 	public static final RegistryEntry<Item> SPELT = simple("spelt");
 	public static final RegistryEntry<Item> SPELT_SEEDS = cropSeed("spelt_seeds", SurvivalReimaginedModBlocks.SPELT_SEEDS);
+	public static final RegistryEntry<Item> WHEAT_FLOUR = simple("wheat_flour");
+	public static final RegistryEntry<Item> RYE_FLOUR = simple("rye_flour");
+	public static final RegistryEntry<Item> SPELT_FLOUR = simple("spelt_flour");
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
@@ -254,6 +257,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FORGE = block(SurvivalReimaginedModBlocks.FORGE);
 	public static final RegistryEntry<Item> METAL_REFINING_TABLE = block(SurvivalReimaginedModBlocks.METAL_REFINING_TABLE);
 	public static final RegistryEntry<Item> MINERAL_PROCESSING_TABLE = block(SurvivalReimaginedModBlocks.MINERAL_PROCESSING_TABLE);
+	public static final RegistryEntry<Item> MILLSTONE = block(SurvivalReimaginedModBlocks.MILLSTONE);
 	public static final RegistryEntry<Item> RUNE_MAGIC_INFUSER = block(SurvivalReimaginedModBlocks.RUNE_MAGIC_INFUSER);
 	public static final RegistryEntry<Item> ADVANCED_ALLOY_FORGE = block(SurvivalReimaginedModBlocks.ADVANCED_ALLOY_FORGE);
 	public static final RegistryEntry<Item> ANTHRACITE_BLOCK = block(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK);
