@@ -24,11 +24,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.world.inventory.AdvancedAlloyForgeGUIMenu;
 
@@ -137,7 +139,12 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 	public static boolean isAlloyInput(ItemStack stack) {
 		return stack.is(COPPER) || stack.is(TIN) || stack.is(IRON) || stack.is(MANGANESE)
 				|| stack.is(URANIUM) || stack.is(TITANIUM) || stack.is(DIAMOND)
-				|| stack.is(STEEL) || stack.is(NETHERITE) || stack.is(GOLD);
+				|| stack.is(STEEL) || stack.is(NETHERITE) || stack.is(GOLD)
+				|| stack.is(Items.COPPER_BLOCK) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_TIN.get())
+				|| stack.is(Items.IRON_BLOCK) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get())
+				|| stack.is(SurvivalReimaginedModItems.BLOCK_OF_URANIUM.get()) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get())
+				|| stack.is(Items.DIAMOND_BLOCK) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get())
+				|| stack.is(Items.NETHERITE_BLOCK) || stack.is(Items.GOLD_BLOCK);
 	}
 
 	private static TagKey<Item> alloyTag(String path) {
@@ -197,9 +204,9 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 			}
 		}
 
-		AlloyRecipe recipe = getRecipe(forge.getItem(1), forge.getItem(2));
+		AlloyRecipe recipe = forge.getRecipe(forge.getItem(1), forge.getItem(2));
 		int yield = forge.yieldMultiplier();
-		int outputCount = recipe == null ? 0 : recipe.count() * yield;
+		int outputCount = recipe == null ? 0 : recipe.count() * (recipe.applyYield() ? yield : 1);
 		if (recipe == null || !forge.canOutput(recipe.result(), outputCount)) {
 			if (forge.progress != 0) {
 				forge.progress = 0;
@@ -254,16 +261,32 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		}
 	}
 
-	private static AlloyRecipe getRecipe(ItemStack a, ItemStack b) {
-		if (matches(a, b, COPPER, TIN)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_BRONZE.get(), 2);
-		if (matches(a, b, IRON, MANGANESE)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 2);
-		if (matches(a, b, URANIUM, TITANIUM)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_TURANITE.get(), 2);
-		if (matches(a, b, DIAMOND, STEEL)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get(), 2);
-		if (matches(a, b, NETHERITE, GOLD)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_NETHERITE.get(), 2);
+	private AlloyRecipe getRecipe(ItemStack a, ItemStack b) {
+		if (hasBlockPackagingUpgrade()) {
+			if (matchesItems(a, b, Items.COPPER_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_TIN.get()))
+				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_BRONZE.get(), 2, false);
+			if (matchesItems(a, b, Items.IRON_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get()))
+				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get(), 2, false);
+			if (matchesItems(a, b, SurvivalReimaginedModItems.BLOCK_OF_URANIUM.get(), SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get()))
+				return new AlloyRecipe(SurvivalReimaginedModItems.TURANITE_BLOCK.get(), 2, false);
+			if (matchesItems(a, b, Items.DIAMOND_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_STEEL.get()))
+				return new AlloyRecipe(SurvivalReimaginedModItems.PLATED_DIAMOND_BLOCK.get(), 2, false);
+			if (matchesItems(a, b, Items.NETHERITE_BLOCK, Items.GOLD_BLOCK))
+				return new AlloyRecipe(Items.NETHERITE_BLOCK, 1, false);
+		}
+		if (matches(a, b, COPPER, TIN)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_BRONZE.get(), 2, true);
+		if (matches(a, b, IRON, MANGANESE)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 2, true);
+		if (matches(a, b, URANIUM, TITANIUM)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_TURANITE.get(), 2, true);
+		if (matches(a, b, DIAMOND, STEEL)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_PLATED_DIAMOND.get(), 2, true);
+		if (matches(a, b, NETHERITE, GOLD)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_NETHERITE.get(), 2, true);
 		return null;
 	}
 
 	private static boolean matches(ItemStack a, ItemStack b, TagKey<Item> first, TagKey<Item> second) {
+		return a.is(first) && b.is(second) || a.is(second) && b.is(first);
+	}
+
+	private static boolean matchesItems(ItemStack a, ItemStack b, Item first, Item second) {
 		return a.is(first) && b.is(second) || a.is(second) && b.is(first);
 	}
 
@@ -272,7 +295,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		return output.isEmpty() || output.is(result) && output.getCount() + count <= output.getMaxStackSize();
 	}
 
-	private record AlloyRecipe(Item result, int count) {}
+	private record AlloyRecipe(Item result, int count, boolean applyYield) {}
 
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
