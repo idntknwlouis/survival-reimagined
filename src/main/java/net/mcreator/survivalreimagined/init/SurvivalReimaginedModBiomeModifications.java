@@ -55,7 +55,11 @@ public final class SurvivalReimaginedModBiomeModifications {
 				Biomes.ERODED_BADLANDS,
 				Biomes.WOODED_BADLANDS);
 		addLocalEverywhere("basalt_layer");
+		addUndergroundDecorationEverywhere("basalt_stalagmite");
+		addUndergroundDecorationEverywhere("basalt_stalagtite");
 		addLocalEverywhere("kimberlite_feature");
+		addUndergroundDecorationEverywhere("kimberlite_stalagmite");
+		addUndergroundDecorationEverywhere("kimberlite_stalagtite");
 		addNether("dark_cinder_blobs");
 		addVegetationToBiomes("natural_rye",
 				Biomes.OLD_GROWTH_PINE_TAIGA,
@@ -125,6 +129,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		BiomeModifications.addFeature(
 				BiomeSelectors.includeByKey(biomes),
 				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
+	}
+
+	private static void addUndergroundDecorationEverywhere(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				context -> true,
+				GenerationStep.Decoration.UNDERGROUND_DECORATION,
 				featureKey);
 	}
 
