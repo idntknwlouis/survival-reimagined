@@ -11,6 +11,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -78,16 +81,28 @@ public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
-		if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer
-				&& level.getBlockEntity(pos) instanceof AdvancedAlloyForgeBlockEntity forge) {
-			if (hasValidSetup(level, pos)) {
-				serverPlayer.openMenu(forge);
-				awardAdvancement(serverPlayer, "build_aaf");
-			} else {
-				serverPlayer.displayClientMessage(Component.literal("Incomplete Block Setup"), true);
-			}
-		}
+		handleUse(level, pos, player);
 		return InteractionResult.SUCCESS;
+	}
+
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+			Player player, InteractionHand hand, BlockHitResult hit) {
+		handleUse(level, pos, player);
+		return ItemInteractionResult.SUCCESS;
+	}
+
+	private static void handleUse(Level level, BlockPos pos, Player player) {
+		if (level.isClientSide() || !(player instanceof ServerPlayer serverPlayer)
+				|| !(level.getBlockEntity(pos) instanceof AdvancedAlloyForgeBlockEntity forge)) {
+			return;
+		}
+		if (hasValidSetup(level, pos)) {
+			serverPlayer.openMenu(forge);
+			awardAdvancement(serverPlayer, "build_aaf");
+		} else {
+			serverPlayer.displayClientMessage(Component.literal("Incomplete Block Setup"), true);
+		}
 	}
 
 	public static boolean hasValidSetup(Level level, BlockPos forgePos) {
