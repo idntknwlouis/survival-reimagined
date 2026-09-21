@@ -11,7 +11,8 @@
     "WispWoods",
     "louis",
     "Krowdn",
-    "Venyena"
+    "Venyena",
+    "Finkle"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/survival-reimagined",
@@ -29,6 +30,9 @@
     ],
     "fabric-datagen": [
       "net.mcreator.survivalreimagined.SurvivalReimaginedModDataGenerator"
+    ],
+    "terrablender": [
+      "net.mcreator.survivalreimagined.SurvivalReimaginedModTerraBlenderAPI"
     ]
   },
   "mixins": [
@@ -38,6 +42,7 @@
     "fabricloader": ">=0.18.4",
     "minecraft": "1.21.1",
     "java": ">=21",
-    "fabric-api": "*"
+    "fabric-api": "*",
+    "terrablender": ">=4.1.0"
   }
 }

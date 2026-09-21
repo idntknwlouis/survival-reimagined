@@ -1,13 +1,26 @@
 {
-  "has_precipitation": false,
+  "has_precipitation": true,
   "temperature": 0.5,
   "downfall": 0.5,
   "effects": {
+    "ambient_sound": "survival_reimagined:ambient/radiated_forest",
     "mood_sound": {
       "sound": "ambient.cave",
       "tick_delay": 6000,
       "offset": 8,
       "block_search_extent": 2
+    },
+    "music": {
+      "sound": "survival_reimagined:music/radiant_abyss",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "survival_reimagined:radiated"
+      },
+      "probability": 0.002
     },
     "foliage_color": -14404306,
     "grass_color": -14404306,

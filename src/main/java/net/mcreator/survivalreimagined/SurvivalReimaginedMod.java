@@ -3,6 +3,8 @@ package net.mcreator.survivalreimagined;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.mcreator.survivalreimagined.init.*;
+import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModOverworldRegion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -13,25 +15,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.MinecraftServer;
 
-<<<<<<< HEAD
-=======
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBiomeModifications;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModFeatures;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMenus;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticleTypes;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModRecipeTypes;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModTabs;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
+
 import net.mcreator.survivalreimagined.util.RuneEffects;
 
->>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import terrablender.api.Regions;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -65,6 +54,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
+		RuneEffects.register();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			ItemStack stack = player.getItemInHand(hand);

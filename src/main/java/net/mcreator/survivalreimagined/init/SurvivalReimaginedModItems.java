@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.mcreator.survivalreimagined.item.*;
 import net.minecraft.core.Registry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -8,46 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
-import net.mcreator.survivalreimagined.item.AndesiteRockItem;
-import net.mcreator.survivalreimagined.item.RuneItem;
-<<<<<<< HEAD
-=======
-import net.mcreator.survivalreimagined.item.RubyHeartItem;
-import net.mcreator.survivalreimagined.item.ScriptureItem;
->>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
-import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
-import net.mcreator.survivalreimagined.item.DiamondSawItem;
-import net.mcreator.survivalreimagined.item.DiamondHammerItem;
-import net.mcreator.survivalreimagined.item.SteelKnifeItem;
-import net.mcreator.survivalreimagined.item.SteelSawItem;
-import net.mcreator.survivalreimagined.item.SteelHammerItem;
-import net.mcreator.survivalreimagined.item.SteelHoeItem;
-import net.mcreator.survivalreimagined.item.SteelShovelItem;
-import net.mcreator.survivalreimagined.item.SteelAxeItem;
-import net.mcreator.survivalreimagined.item.SteelPickaxeItem;
-import net.mcreator.survivalreimagined.item.SteelSwordItem;
-import net.mcreator.survivalreimagined.item.BronzeKnifeItem;
-import net.mcreator.survivalreimagined.item.BronzeSawItem;
-import net.mcreator.survivalreimagined.item.BronzeHammerItem;
-import net.mcreator.survivalreimagined.item.BronzeHoeItem;
-import net.mcreator.survivalreimagined.item.BronzeShovelItem;
-import net.mcreator.survivalreimagined.item.BronzeAxeItem;
-import net.mcreator.survivalreimagined.item.BronzePickaxeItem;
-import net.mcreator.survivalreimagined.item.BronzeSwordItem;
-import net.mcreator.survivalreimagined.item.CopperChunkItem;
-import net.mcreator.survivalreimagined.item.CopperChiselItem;
-import net.mcreator.survivalreimagined.item.FlintToolItem;
-import net.mcreator.survivalreimagined.item.StoneHammerItem;
-import net.mcreator.survivalreimagined.item.WoodenHammerItem;
-import net.mcreator.survivalreimagined.item.WoodenSawItem;
-import net.mcreator.survivalreimagined.item.WoodenKnifeItem;
-import net.mcreator.survivalreimagined.item.RawTinItem;
-import net.mcreator.survivalreimagined.item.RoughTinItem;
-import net.mcreator.survivalreimagined.item.StoneRockItem;
-import net.mcreator.survivalreimagined.item.SurfaceRockItem;
-import net.mcreator.survivalreimagined.item.TinChunkItem;
-import net.mcreator.survivalreimagined.item.TinIngotItem;
-import net.mcreator.survivalreimagined.item.TinNuggetItem;
+
+//import net.mcreator.survivalreimagined.item.ScriptureItem;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
@@ -333,6 +296,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> STEEL_PLATE = block(SurvivalReimaginedModBlocks.STEEL_PLATE);
 	public static final RegistryEntry<Item> DIAMOND_PLATE = block(SurvivalReimaginedModBlocks.DIAMOND_PLATE);
 	public static final RegistryEntry<Item> NETHERITE_PLATE = block(SurvivalReimaginedModBlocks.NETHERITE_PLATE);
+
+	public static final RegistryEntry<Item> GLASS_SHARD = register("glass_shard", GlassShardItem::new);
 
 	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
 	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);

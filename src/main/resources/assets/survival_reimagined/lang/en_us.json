@@ -326,9 +326,6 @@
   "gui.survival_reimagined.rmi.label_rune_magic_infuser": "Rune Magic Infuser",
   "block.survival_reimagined.advanced_alloy_forge": "Advanced Alloy Forge",
   "gui.survival_reimagined.advanced_alloy_forge_gui.label_advanced_alloy_forge": "Advanced Alloy Forge",
-<<<<<<< HEAD
-  "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades"
-=======
   "gui.survival_reimagined.advanced_alloy_forge_gui.label_upgrades": "Upgrades",
   "item.survival_reimagined.advanced_reactor_rod": "Advanced Reactor Rod",
   "item.survival_reimagined.drained_advanced_reactor_rod": "Drained Advanced Reactor Rod",
@@ -355,5 +352,4 @@
   "advancements.runes_adv.descr": "Acquire an Empty Rune",
   "advancements.gem_runes.title": "Infused Rune",
   "advancements.gem_runes.descr": "Acquire an Infused Rune"
->>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
 }

@@ -13,6 +13,7 @@ base {
 repositories {
 	mavenCentral()
 	maven { url = 'https://maven.blamejared.com' }
+	maven { url = 'https://www.cursemaven.com'}
 }
 
 
@@ -47,6 +48,11 @@ dependencies {
 
 	// The NeoForge version uses MixinExtras 0.5.3 in several mixins.
 	include(modImplementation("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}"))
+
+	// TerraBlender is required for Fabric Version to allow Mod-Specific Biome Generation
+	modImplementation "curse.maven:terrablender-fabric-565956:6054948"
+	implementation "com.electronwill.night-config:core:3.8.1"
+	implementation "com.electronwill.night-config:toml:3.8.1"
 }
 
 processResources {
