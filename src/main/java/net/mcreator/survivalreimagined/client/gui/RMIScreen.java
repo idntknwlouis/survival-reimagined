@@ -14,9 +14,9 @@ public class RMIScreen extends AbstractContainerScreen<RMIMenu> {
 	private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/screens/rmi.png");
 	private static final ResourceLocation RUNE_OUTLINE = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/screens/rune_putline.png");
 	private static final ResourceLocation LAPIS_OUTLINE = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/screens/lapis_outline.png");
-	private static final ResourceLocation RMI_BUTTON = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/screens/rmi_button.png");
-	private static final ResourceLocation RMI_HOVERED = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/screens/rmi_hovered.png");
-	private static final ResourceLocation RMI_UNPRESSABLE = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/screens/rmi_unpressable.png");
+	private static final ResourceLocation RMI_BUTTON = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "rmi_button");
+	private static final ResourceLocation RMI_HOVERED = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "rmi_hovered");
+	private static final ResourceLocation RMI_UNPRESSABLE = ResourceLocation.fromNamespaceAndPath("survival_reimagined", "rmi_unpressable");
 
 	private ImageButton infuseButton;
 
@@ -56,7 +56,7 @@ public class RMIScreen extends AbstractContainerScreen<RMIMenu> {
 		graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		graphics.blit(RUNE_OUTLINE, this.leftPos + 80, this.topPos + 41, 0, 0, 16, 16, 16, 16);
 		graphics.blit(LAPIS_OUTLINE, this.leftPos + 116, this.topPos + 61, 0, 0, 16, 16, 16, 16);
-		graphics.blit(RMI_UNPRESSABLE, this.leftPos + 72, this.topPos + 61, 0, 0, 32, 16, 32, 16);
+		graphics.blitSprite(RMI_UNPRESSABLE, this.leftPos + 72, this.topPos + 61, 32, 16);
 	}
 
 	@Override
