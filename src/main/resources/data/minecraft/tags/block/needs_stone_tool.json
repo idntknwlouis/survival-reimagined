@@ -8,6 +8,9 @@
     "survival_reimagined:basalt_lapis_ore",
     "survival_reimagined:basalt_anthracite_ore",
     "survival_reimagined:basalt_liginite_ore",
-    "survival_reimagined:kimberlite_lapis_ore"
+    "survival_reimagined:kimberlite_lapis_ore",
+    "survival_reimagined:cassiterite_ore",
+    "survival_reimagined:deepslate_cassiterite_ore",
+    "survival_reimagined:raw_cassiterite_block"
   ]
 }
