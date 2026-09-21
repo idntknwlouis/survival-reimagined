@@ -1,8 +1,10 @@
 package net.mcreator.survivalreimagined.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,6 +14,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import java.util.function.Supplier;
 
 public class CornUpperBlock extends BushBlock {
+	private static final MapCodec<CornUpperBlock> CODEC = MapCodec.unit(() -> new CornUpperBlock(() -> Blocks.AIR, 15));
+
 	private final Supplier<? extends Block> lower;
 	private final int maxAge;
 
@@ -20,6 +24,11 @@ public class CornUpperBlock extends BushBlock {
 		this.lower = lower;
 		this.maxAge = maxAge;
 		this.registerDefaultState(this.stateDefinition.any().setValue(SimpleAgeCropBlock.AGE, 0));
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	@Override
