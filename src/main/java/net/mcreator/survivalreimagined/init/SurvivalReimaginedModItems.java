@@ -128,7 +128,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_MANGANESE = simple("rough_manganese");
 	public static final RegistryEntry<Item> MANGANESE_INGOT = simple("manganese_ingot");
 	public static final RegistryEntry<Item> MANGANESE_NUGGET = simple("manganese_nugget");
-	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");
+	public static final RegistryEntry<Item> RAW_MANGANESE = simple("raw_manganese");\n\tpublic static final RegistryEntry<Item> MANGANESE_CHUNK = simple("manganese_chunk");
 	public static final RegistryEntry<Item> ROUGH_STEEL = simple("rough_steel");
 	public static final RegistryEntry<Item> ROUGH_PLATED_DIAMOND = simple("rough_plated_diamond");
 	public static final RegistryEntry<Item> ROUGH_NETHERITE = simple("rough_netherite");
@@ -253,7 +253,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ADVANCED_ALLOY_FORGE = block(SurvivalReimaginedModBlocks.ADVANCED_ALLOY_FORGE);
 	public static final RegistryEntry<Item> ANTHRACITE_BLOCK = block(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK);
 	public static final RegistryEntry<Item> LIGINITE_BLOCK = block(SurvivalReimaginedModBlocks.LIGINITE_BLOCK);
-	public static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);
+	public static final RegistryEntry<Item> MANGANESE_ORE = block(SurvivalReimaginedModBlocks.MANGANESE_ORE);\n\tpublic static final RegistryEntry<Item> DEEPSLATE_MANGANESE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_MANGANESE_ORE);\n\tpublic static final RegistryEntry<Item> BASALT_MANGANITE_ORE = block(SurvivalReimaginedModBlocks.BASALT_MANGANITE_ORE);\n\tpublic static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);
 	public static final RegistryEntry<Item> MANGANITE_ORE = block(SurvivalReimaginedModBlocks.MANGANITE_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_MANGANITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_MANGANITE_ORE);
 	public static final RegistryEntry<Item> MANGANITE_BLOCK = block(SurvivalReimaginedModBlocks.MANGANITE_BLOCK);

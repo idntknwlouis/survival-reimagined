@@ -123,6 +123,9 @@
     "survival_reimagined:raw_cassiterite_block",
     "survival_reimagined:manganite_ore",
     "survival_reimagined:deepslate_manganite_ore",
-    "survival_reimagined:manganite_block"
+    "survival_reimagined:manganite_block",
+    "survival_reimagined:manganese_ore",
+    "survival_reimagined:deepslate_manganese_ore",
+    "survival_reimagined:basalt_manganite_ore"
   ]
 }
