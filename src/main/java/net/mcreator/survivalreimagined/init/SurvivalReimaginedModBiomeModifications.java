@@ -17,6 +17,13 @@ public final class SurvivalReimaginedModBiomeModifications {
 	public static void register() {
 		addEverywhere("flint_gen");
 		addEverywhere("stone_gen");
+		addEverywhere("natural_wheat");
+		addEverywhere("wild_carrots");
+		addEverywhere("wild_potato");
+		addEverywhere("natural_rye");
+		addEverywhere("natural_spelt");
+		addEverywhere("wild_strawberries");
+		addEverywhere("wild_raspberry");
 		addEverywhere("copper_gen");
 		addUndergroundEverywhere("diamond_ore_feature");
 		addUndergroundEverywhere("emerald_ore_feature");
