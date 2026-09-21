@@ -53,6 +53,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(RYE_AGE, 6));
 	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(SPELT_AGE, 6));
 	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(HEMP_AGE, 3));
+	private static final IntegerProperty CORN_AGE = IntegerProperty.create("age", 0, 11);
+	public static final RegistryEntry<Block> CORN_STALK_BOTTOM = register("corn_stalk_bottom", () -> new SimpleAgeCropBlock(CORN_AGE, 11));
 	private static final IntegerProperty WILD_RYE_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty WILD_SPELT_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty WILD_CARROT_AGE = IntegerProperty.create("age", 0, 3);
