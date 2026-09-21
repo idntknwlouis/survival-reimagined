@@ -18,27 +18,26 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock {
-	private final IntegerProperty ageProperty;
+	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
 	private final int maxAge;
 
-	public SimpleAgeCropBlock(IntegerProperty ageProperty, int maxAge) {
+	public SimpleAgeCropBlock(int maxAge) {
 		super(BlockBehaviour.Properties.of()
 				.sound(SoundType.CROP)
 				.instabreak()
 				.noCollission()
 				.randomTicks());
-		this.ageProperty = ageProperty;
 		this.maxAge = maxAge;
-		this.registerDefaultState(this.stateDefinition.any().setValue(ageProperty, 0));
+		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
-		builder.add(this.ageProperty);
+		builder.add(AGE);
 	}
 
 	public int getAge(BlockState state) {
-		return state.getValue(this.ageProperty);
+		return state.getValue(AGE);
 	}
 
 	public boolean isMaxAge(BlockState state) {
