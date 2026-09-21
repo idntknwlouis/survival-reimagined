@@ -74,6 +74,8 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Native Mineral Ores parity pass restored the missing Desert/Badlands `extra_calaverite_feature` hook and completed the original common ore/metal-rock tags for Hematite/Magnetite, Calaverite, Ilmenite, and Uranophane families. Existing ore heights/counts and processing outputs match the original; runtime verification of the final tag/worldgen pass is pending.
+
 - Basalt Geology Extensions are runtime-verified and complete: the original Basalt layer depth (`Y -128..-64`) is restored, Hematite, Magnetite, Calaverite, Uranophane, Ilmenite, Anthracite, and Liginite Basalt variants use their original shared ore features without duplicate Fabric-only passes, and vanilla-style Basalt pointed-stone stalagmite/stalactite worldgen works in-game.
 - Manganese parity is runtime-verified: Manganese, Manganite, and Pyrolusite blocks/items, ore loot, smelting/blasting and compression recipes, common tags, AAF alloy inputs, and worldgen are aligned with the original. Fabric keeps the corrected `c:manganese_ores` spelling and includes it in `c:ores`; duplicate Fabric-only Basalt Manganite worldgen was removed.
 - Tin parity is complete: Tin/Cassiterite blocks, items, processing recipes, loot, mining tiers, common tags, AAF inputs, and Cassiterite worldgen match the original; Cassiterite is restored to `c:tin_ores` and the common ore tag so infused ore-mining bonuses apply correctly.
