@@ -36,6 +36,7 @@ public class RMIMenu extends AbstractContainerMenu {
 	private static final TagKey<Item> RMI_INFUSABLE_WEAPON = tag("rmi_infusable/weapon");
 	private static final TagKey<Item> RMI_INFUSABLE_ARMOR = tag("rmi_infusable/armor");
 	private static final TagKey<Item> RMI_RUNES = tag("rmi_runes");
+	private static final TagKey<Item> RUNES = tag("runes");
 
 	private final Container container;
 	private final BlockPos blockPos;
@@ -119,6 +120,7 @@ public class RMIMenu extends AbstractContainerMenu {
 
 	public static boolean isRune(ItemStack stack) {
 		return stack.is(RMI_RUNES)
+				|| stack.is(RUNES)
 				|| stack.is(SurvivalReimaginedModItems.SAPPHIRE_GOLD_RUNE.get())
 				|| stack.is(SurvivalReimaginedModItems.SAPPHIRE_SILVER_RUNE.get())
 				|| stack.is(SurvivalReimaginedModItems.GOLD_AMBER_RUNE.get())
