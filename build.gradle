@@ -67,6 +67,12 @@ tasks.withType(JavaCompile).configureEach {
 	it.options.release = 21
 }
 
+// IntelliJ's generated Fabric dev run can invoke compileJava without refreshing resources.
+// Keep build/resources/main in sync so lang files, models and GUI textures are never stale.
+tasks.named("compileJava") {
+	finalizedBy tasks.named("processResources")
+}
+
 java {
 	withSourcesJar()
 	sourceCompatibility = JavaVersion.VERSION_21
