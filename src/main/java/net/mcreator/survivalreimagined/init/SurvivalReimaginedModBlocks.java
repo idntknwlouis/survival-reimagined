@@ -85,7 +85,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", DeepslateTinOreBlock::new);
 	public static final RegistryEntry<Block> MANGANESE_ORE = register("manganese_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_MANGANESE_ORE = register("deepslate_manganese_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> BASALT_MANGANITE_ORE = register("basalt_manganite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(1.25f, 4.2f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TIN = register("block_of_raw_tin", BlockOfRawTinBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
 	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
