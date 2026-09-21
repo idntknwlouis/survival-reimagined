@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
@@ -389,6 +390,15 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
+	}
+
+	private static RegistryEntry<Item> seed(String path, RegistryEntry<? extends Block> crop) {
+		return register(path, () -> new ItemNameBlockItem(crop.get(), new Item.Properties()));
+	}
+
+	private static RegistryEntry<Item> plantFood(String path, RegistryEntry<? extends Block> crop, int nutrition, float saturation) {
+		return register(path, () -> new ItemNameBlockItem(crop.get(), new Item.Properties()
+				.food(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build())));
 	}
 
 	private static RegistryEntry<Item> cropSeed(String path, RegistryEntry<? extends Block> crop) {
