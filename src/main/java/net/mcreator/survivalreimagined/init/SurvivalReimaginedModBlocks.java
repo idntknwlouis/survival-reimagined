@@ -79,6 +79,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> POLOSHED_SHALE_BRICK_WALL = register("poloshed_shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 
 	public static final RegistryEntry<Block> TIN_ORE = register("tin_ore", TinOreBlock::new);
+	public static final RegistryEntry<Block> CASSITERITE_ORE = register("cassiterite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_CASSITERITE_ORE = register("deepslate_cassiterite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> RAW_CASSITERITE_BLOCK = register("raw_cassiterite_block", () -> new Block(BlockBehaviour.Properties.of().strength(6f, 5f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_TIN_ORE = register("deepslate_tin_ore", DeepslateTinOreBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TIN = register("block_of_raw_tin", BlockOfRawTinBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
@@ -91,6 +94,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> LIGINITE_BLOCK = register("liginite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DARK_CINDER = register("dark_cinder", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.3f)));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_MANGANESE = register("block_of_raw_manganese", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> MANGANITE_ORE = register("manganite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_MANGANITE_ORE = register("deepslate_manganite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> MANGANITE_BLOCK = register("manganite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_MANGANESE = register("block_of_manganese", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_STEEL = register("block_of_steel", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 7f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_BRONZE = register("block_of_bronze", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(4f).requiresCorrectToolForDrops()));
