@@ -106,18 +106,6 @@
     "survival_reimagined:shale_uranophane_ore",
     "survival_reimagined:rune_magic_infuser",
     "survival_reimagined:advanced_alloy_forge",
-    "survival_reimagined:basalt_stalagmite_base",
-    "survival_reimagined:basalt_stalagmite_middle",
-    "survival_reimagined:basalt_stalagmite_top",
-    "survival_reimagined:basalt_stalagtite_base",
-    "survival_reimagined:basalt_stalagtite_middle",
-    "survival_reimagined:basalt_stalagtite_tip",
-    "survival_reimagined:kimberlite_stalagmite_base",
-    "survival_reimagined:kimberlite_stalagmite_middle",
-    "survival_reimagined:kimberlite_stalagmite_top",
-    "survival_reimagined:kimberlite_stalagtite_base",
-    "survival_reimagined:kimberlite_stalagtite_middle",
-    "survival_reimagined:kimberlite_stalagtite_tip",
     "survival_reimagined:cassiterite_ore",
     "survival_reimagined:deepslate_cassiterite_ore",
     "survival_reimagined:raw_cassiterite_block",
@@ -126,6 +114,8 @@
     "survival_reimagined:manganite_block",
     "survival_reimagined:manganese_ore",
     "survival_reimagined:deepslate_manganese_ore",
-    "survival_reimagined:basalt_manganite_ore"
+    "survival_reimagined:basalt_manganite_ore",
+    "survival_reimagined:basalt_pointed_stone",
+    "survival_reimagined:kimberlite_pointed_stone"
   ]
 }
