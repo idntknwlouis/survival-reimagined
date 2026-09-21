@@ -373,5 +373,15 @@
   "block.survival_reimagined.kimberlite_stalagmite_top": "Kimberlite Stalagmite Tip",
   "block.survival_reimagined.kimberlite_stalagtite_base": "Kimberlite Stalactite Base",
   "block.survival_reimagined.kimberlite_stalagtite_middle": "Kimberlite Stalactite Middle",
-  "block.survival_reimagined.kimberlite_stalagtite_tip": "Kimberlite Stalactite Tip"
+  "block.survival_reimagined.kimberlite_stalagtite_tip": "Kimberlite Stalactite Tip",
+  "block.survival_reimagined.cassiterite_ore": "Cassiterite Ore",
+  "block.survival_reimagined.deepslate_cassiterite_ore": "Deepslate Cassiterite Ore",
+  "block.survival_reimagined.raw_cassiterite_block": "Raw Cassiterite Block",
+  "item.survival_reimagined.cassiterite": "Cassiterite",
+  "item.survival_reimagined.cassiterite_nugget": "Cassiterite Nugget",
+  "block.survival_reimagined.manganite_ore": "Manganite Ore",
+  "block.survival_reimagined.deepslate_manganite_ore": "Deepslate Manganite Ore",
+  "block.survival_reimagined.manganite_block": "Manganite Block",
+  "item.survival_reimagined.manganite": "Manganite",
+  "item.survival_reimagined.manganite_nugget": "Manganite Nugget"
 }
