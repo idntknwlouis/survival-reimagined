@@ -351,5 +351,14 @@
   "advancements.runes_adv.title": "Runes",
   "advancements.runes_adv.descr": "Acquire an Empty Rune",
   "advancements.gem_runes.title": "Infused Rune",
-  "advancements.gem_runes.descr": "Acquire an Infused Rune"
+  "advancements.gem_runes.descr": "Acquire an Infused Rune",
+  "item.survival_reimagined.rye": "Rye",
+  "item.survival_reimagined.rye_seeds": "Rye Seeds",
+  "item.survival_reimagined.spelt": "Spelt",
+  "item.survival_reimagined.spelt_seeds": "Spelt Seeds",
+  "item.survival_reimagined.hemp_leaf": "Hemp Leaf",
+  "item.survival_reimagined.hemp_seeds": "Hemp Seeds",
+  "block.survival_reimagined.rye_seeds": "Rye Crop",
+  "block.survival_reimagined.spelt_seeds": "Spelt Crop",
+  "block.survival_reimagined.hemp": "Hemp"
 }
