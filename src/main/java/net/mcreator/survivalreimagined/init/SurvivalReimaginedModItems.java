@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
@@ -71,6 +72,12 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> OBSIDIAN_HANDLE = simple("obsidian_handle");
 	public static final RegistryEntry<Item> SMALL_OBSIDIAN_HANDLE = simple("small_obsidian_handle");
 	public static final RegistryEntry<Item> FLINT_TOOL = register("flint_tool", FlintToolItem::new);
+	public static final RegistryEntry<Item> RYE = simple("rye");
+	public static final RegistryEntry<Item> RYE_SEEDS = cropSeed("rye_seeds", SurvivalReimaginedModBlocks.RYE_SEEDS);
+	public static final RegistryEntry<Item> SPELT = simple("spelt");
+	public static final RegistryEntry<Item> SPELT_SEEDS = cropSeed("spelt_seeds", SurvivalReimaginedModBlocks.SPELT_SEEDS);
+	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
+	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
 	public static final RegistryEntry<Item> COPPER_CHISEL = register("copper_chisel", CopperChiselItem::new);
@@ -382,6 +389,10 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
+	}
+
+	private static RegistryEntry<Item> cropSeed(String path, RegistryEntry<? extends Block> crop) {
+		return register(path, () -> new ItemNameBlockItem(crop.get(), new Item.Properties()));
 	}
 
 	private static RegistryEntry<Item> simpleUnstackable(String path) {
