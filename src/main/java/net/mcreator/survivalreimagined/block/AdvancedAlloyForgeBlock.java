@@ -1,6 +1,10 @@
 package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -25,6 +29,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 
 public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -75,9 +80,74 @@ public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
 		if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer
 				&& level.getBlockEntity(pos) instanceof AdvancedAlloyForgeBlockEntity forge) {
-			serverPlayer.openMenu(forge);
+			if (hasValidSetup(level, pos)) {
+				serverPlayer.openMenu(forge);
+				awardAdvancement(serverPlayer, "build_aaf");
+			} else {
+				serverPlayer.displayClientMessage(Component.literal("Incomplete Block Setup"), true);
+			}
 		}
 		return InteractionResult.SUCCESS;
+	}
+
+	public static boolean hasValidSetup(Level level, BlockPos forgePos) {
+		for (Direction forward : Direction.Plane.HORIZONTAL) {
+			if (matchesSetup(level, forgePos, forward)) return true;
+		}
+		return false;
+	}
+
+	private static boolean matchesSetup(Level level, BlockPos origin, Direction forward) {
+		Direction right = forward.getClockWise();
+
+		// 3x3 titanium floor.
+		for (int depth = 0; depth <= 2; depth++) {
+			for (int side = -1; side <= 1; side++) {
+				if (!isTitanium(level, offset(origin, forward, right, depth, side, -1))) return false;
+			}
+		}
+
+		// Titanium ceiling: full rows at front/back, open center over the chamber.
+		for (int side = -1; side <= 1; side++) {
+			if (!isTitanium(level, offset(origin, forward, right, 0, side, 1))) return false;
+			if (!isTitanium(level, offset(origin, forward, right, 2, side, 1))) return false;
+		}
+		if (!isTitanium(level, offset(origin, forward, right, 1, -1, 1))
+				|| !isTitanium(level, offset(origin, forward, right, 1, 1, 1))) return false;
+		if (!level.getBlockState(offset(origin, forward, right, 1, 0, 1)).isAir()) return false;
+
+		// Middle layer: uranium rods on the four corners, titanium side walls, open chamber.
+		if (!isUraniumRod(level, offset(origin, forward, right, 0, -1, 0))
+				|| !isUraniumRod(level, offset(origin, forward, right, 0, 1, 0))
+				|| !isUraniumRod(level, offset(origin, forward, right, 2, -1, 0))
+				|| !isUraniumRod(level, offset(origin, forward, right, 2, 1, 0))) return false;
+		if (!isTitanium(level, offset(origin, forward, right, 1, -1, 0))
+				|| !isTitanium(level, offset(origin, forward, right, 1, 1, 0))
+				|| !isTitanium(level, offset(origin, forward, right, 2, 0, 0))) return false;
+		return level.getBlockState(offset(origin, forward, right, 1, 0, 0)).isAir();
+	}
+
+	private static BlockPos offset(BlockPos origin, Direction forward, Direction right, int depth, int side, int y) {
+		return origin.relative(forward, depth).relative(right, side).offset(0, y, 0);
+	}
+
+	private static boolean isTitanium(Level level, BlockPos pos) {
+		return level.getBlockState(pos).is(SurvivalReimaginedModBlocks.BLOCK_OF_TITANIUM.get());
+	}
+
+	private static boolean isUraniumRod(Level level, BlockPos pos) {
+		return level.getBlockState(pos).is(SurvivalReimaginedModBlocks.URANIUM_ROD.get());
+	}
+
+	private static void awardAdvancement(ServerPlayer player, String id) {
+		AdvancementHolder advancement = player.server.getAdvancements()
+				.get(ResourceLocation.fromNamespaceAndPath("survival_reimagined", id));
+		if (advancement == null) return;
+		var progress = player.getAdvancements().getOrStartProgress(advancement);
+		if (progress.isDone()) return;
+		for (String criterion : progress.getRemainingCriteria()) {
+			player.getAdvancements().award(advancement, criterion);
+		}
 	}
 
 	@Override
