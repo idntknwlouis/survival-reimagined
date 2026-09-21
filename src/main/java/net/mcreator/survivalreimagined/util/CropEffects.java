@@ -43,6 +43,31 @@ public final class CropEffects {
 			return;
 		}
 
+		if (block == SurvivalReimaginedModBlocks.WHEAT_CROP.get() || block == SurvivalReimaginedModBlocks.WILD_WHEAT.get()) {
+			if (age >= 7) {
+				drop(level, pos, Items.WHEAT, 1);
+				drop(level, pos, SurvivalReimaginedModItems.WHEAT_SEEDS.get(), 1 + level.random.nextInt(3));
+			} else {
+				drop(level, pos, SurvivalReimaginedModItems.WHEAT_SEEDS.get(), 1);
+			}
+			return;
+		}
+
+		if (block == SurvivalReimaginedModBlocks.POTATOES.get() || block == SurvivalReimaginedModBlocks.WILD_POTATOES.get()) {
+			drop(level, pos, SurvivalReimaginedModItems.POTATO.get(), age >= 3 ? 2 + level.random.nextInt(3) : 1);
+			return;
+		}
+
+		if (block == SurvivalReimaginedModBlocks.STRAWBERRY_PLANT.get()) {
+			drop(level, pos, SurvivalReimaginedModItems.STRAWBERRY.get(), age >= 5 ? 2 + level.random.nextInt(3) : 1);
+			return;
+		}
+
+		if (block == SurvivalReimaginedModBlocks.RASPBERRY_PLANT.get()) {
+			drop(level, pos, SurvivalReimaginedModItems.RASPBERRY.get(), age >= 5 ? 2 + level.random.nextInt(3) : 1);
+			return;
+		}
+
 		if (block == SurvivalReimaginedModBlocks.RYE_SEEDS.get() || block == SurvivalReimaginedModBlocks.WILD_RYE.get()) {
 			if (age >= 6) {
 				drop(level, pos, SurvivalReimaginedModItems.RYE.get(), 1);
