@@ -50,12 +50,10 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		graphics.blit(UPGRADES, this.leftPos + 178, this.topPos, 0, 0, 72, 75, 72, 75);
 
 		int progress = Math.max(0, Math.min(AdvancedAlloyForgeBlockEntity.MAX_PROGRESS, this.menu.getProgress()));
-		if (progress > 0) {
-			int arrowWidth = Math.max(1, Math.min(16,
-					(int) Math.ceil(progress * 16.0D / AdvancedAlloyForgeBlockEntity.MAX_PROGRESS)));
-			graphics.blit(ARROW_FULL, this.leftPos + 111, this.topPos + 39,
-					0, 0, arrowWidth, 16, 16, 16);
-		}
+		int arrowWidth = Math.max(1, Math.min(16,
+				(int) Math.ceil(Math.max(1, progress) * 16.0D / AdvancedAlloyForgeBlockEntity.MAX_PROGRESS)));
+		graphics.blit(ARROW_FULL, this.leftPos + 111, this.topPos + 39,
+				0, 0, arrowWidth, 16, 16, 16);
 
 		int fuel = Math.max(0, this.menu.getFuelCapacity());
 		ResourceLocation fuelGauge = switch (Math.max(0, Math.min(12, (int) Math.ceil(fuel / 750.0D)))) {
