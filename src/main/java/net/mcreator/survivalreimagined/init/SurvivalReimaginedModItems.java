@@ -238,6 +238,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
 
 	public static final RegistryEntry<Item> TIN_ORE = block(SurvivalReimaginedModBlocks.TIN_ORE);
+	public static final RegistryEntry<Item> CASSITERITE_ORE = block(SurvivalReimaginedModBlocks.CASSITERITE_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_CASSITERITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_CASSITERITE_ORE);
+	public static final RegistryEntry<Item> RAW_CASSITERITE_BLOCK = block(SurvivalReimaginedModBlocks.RAW_CASSITERITE_BLOCK);
+	public static final RegistryEntry<Item> CASSITERITE = simple("cassiterite");
+	public static final RegistryEntry<Item> CASSITERITE_NUGGET = simple("cassiterite_nugget");
 	public static final RegistryEntry<Item> DEEPSLATE_TIN_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_TIN_ORE);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_TIN);
 	public static final RegistryEntry<Item> BLOCK_OF_TIN = block(SurvivalReimaginedModBlocks.BLOCK_OF_TIN);
@@ -249,6 +254,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ANTHRACITE_BLOCK = block(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK);
 	public static final RegistryEntry<Item> LIGINITE_BLOCK = block(SurvivalReimaginedModBlocks.LIGINITE_BLOCK);
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_MANGANESE);
+	public static final RegistryEntry<Item> MANGANITE_ORE = block(SurvivalReimaginedModBlocks.MANGANITE_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_MANGANITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_MANGANITE_ORE);
+	public static final RegistryEntry<Item> MANGANITE_BLOCK = block(SurvivalReimaginedModBlocks.MANGANITE_BLOCK);
+	public static final RegistryEntry<Item> MANGANITE = simple("manganite");
+	public static final RegistryEntry<Item> MANGANITE_NUGGET = simple("manganite_nugget");
 	public static final RegistryEntry<Item> BLOCK_OF_MANGANESE = block(SurvivalReimaginedModBlocks.BLOCK_OF_MANGANESE);
 	public static final RegistryEntry<Item> BLOCK_OF_STEEL = block(SurvivalReimaginedModBlocks.BLOCK_OF_STEEL);
 	public static final RegistryEntry<Item> BLOCK_OF_BRONZE = block(SurvivalReimaginedModBlocks.BLOCK_OF_BRONZE);
