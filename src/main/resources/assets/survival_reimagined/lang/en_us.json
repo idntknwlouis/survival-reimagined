@@ -361,5 +361,17 @@
   "block.survival_reimagined.rye_seeds": "Rye Crop",
   "block.survival_reimagined.spelt_seeds": "Spelt Crop",
   "block.survival_reimagined.hemp": "Hemp",
-  "block.survival_reimagined.radiated_shale": "Radiated Shale"
+  "block.survival_reimagined.radiated_shale": "Radiated Shale",
+  "block.survival_reimagined.basalt_stalagmite_base": "Basalt Stalagmite Base",
+  "block.survival_reimagined.basalt_stalagmite_middle": "Basalt Stalagmite Middle",
+  "block.survival_reimagined.basalt_stalagmite_top": "Basalt Stalagmite Tip",
+  "block.survival_reimagined.basalt_stalagtite_base": "Basalt Stalactite Base",
+  "block.survival_reimagined.basalt_stalagtite_middle": "Basalt Stalactite Middle",
+  "block.survival_reimagined.basalt_stalagtite_tip": "Basalt Stalactite Tip",
+  "block.survival_reimagined.kimberlite_stalagmite_base": "Kimberlite Stalagmite Base",
+  "block.survival_reimagined.kimberlite_stalagmite_middle": "Kimberlite Stalagmite Middle",
+  "block.survival_reimagined.kimberlite_stalagmite_top": "Kimberlite Stalagmite Tip",
+  "block.survival_reimagined.kimberlite_stalagtite_base": "Kimberlite Stalactite Base",
+  "block.survival_reimagined.kimberlite_stalagtite_middle": "Kimberlite Stalactite Middle",
+  "block.survival_reimagined.kimberlite_stalagtite_tip": "Kimberlite Stalactite Tip"
 }
