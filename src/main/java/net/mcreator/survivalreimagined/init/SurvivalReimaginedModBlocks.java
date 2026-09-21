@@ -53,6 +53,12 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(RYE_AGE, 6));
 	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(SPELT_AGE, 6));
 	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(HEMP_AGE, 3));
+	private static final IntegerProperty WILD_RYE_AGE = IntegerProperty.create("age", 0, 6);
+	private static final IntegerProperty WILD_SPELT_AGE = IntegerProperty.create("age", 0, 6);
+	private static final IntegerProperty WILD_CARROT_AGE = IntegerProperty.create("age", 0, 3);
+	public static final RegistryEntry<Block> WILD_RYE = register("wild_rye", () -> new SimpleAgeCropBlock(WILD_RYE_AGE, 6, false));
+	public static final RegistryEntry<Block> WILD_SPELT = register("wild_spelt", () -> new SimpleAgeCropBlock(WILD_SPELT_AGE, 6, false));
+	public static final RegistryEntry<Block> WILD_CARROT = register("wild_carrot", () -> new SimpleAgeCropBlock(WILD_CARROT_AGE, 3, false));
 	public static final RegistryEntry<Block> POLISHED_SHALE = register("polished_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> POLISHED_SHALE_BRICKS = register("polished_shale_bricks", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f)));
 	public static final RegistryEntry<Block> POLISHED_CHISELED_SHALE = register("polished_chiseled_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
