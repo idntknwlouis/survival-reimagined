@@ -37,7 +37,7 @@ This table tracks broad feature parity against the original mod.
 | Rocks / Surface Rocks |    ✅     | ✅ | ✅ | ✅ |
 | Flint Placement |    ✅     | ✅ | ✅ | ✅ |
 | Shale Geology |    ✅     | ✅ | ✅ | ✅ |
-| Basalt Geology Extensions |    🟡     | ✅ | 🟡 | 🟡 |
+| Basalt Geology Extensions |    ✅     | ✅ | ✅ | ✅ |
 | Native Mineral Ores |    🟡     | 🟡 | 🟡 | 🟡 |
 | Kimberlite Geology |    🟡     | ✅ | 🟡 | 🟡 |
 | Gem Polishing |    ✅     | ✅ | ✅ | — |
@@ -59,14 +59,13 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Finish Basalt Geology Extensions
-2. Finish Native Mineral Ores parity
-3. Finish Kimberlite Geology parity
-4. Finish remaining crops, food, armor, mobs, structures, and radiation systems
-5. Advancement parity and cleanup
-6. Decorative / utility block parity
-7. Release-ready testing and balancing
-8. Compat content
+1. Finish Native Mineral Ores parity
+2. Finish Kimberlite Geology parity
+3. Finish remaining crops, food, armor, mobs, structures, and radiation systems
+4. Advancement parity and cleanup
+5. Decorative / utility block parity
+6. Release-ready testing and balancing
+7. Compat content
 
 ## World Generation Notes
 
@@ -75,7 +74,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
-- Basalt Geology Extensions parity pass restored the original Basalt layer depth (`Y -128..-64`) and moved Hematite, Magnetite, Calaverite, Uranophane, Ilmenite, Anthracite, and Liginite Basalt variants back into their original shared ore features, removing duplicate Fabric-only generation passes. Vanilla-style Basalt pointed-stone stalagmite/stalactite worldgen remains wired; runtime verification pending.
+- Basalt Geology Extensions are runtime-verified and complete: the original Basalt layer depth (`Y -128..-64`) is restored, Hematite, Magnetite, Calaverite, Uranophane, Ilmenite, Anthracite, and Liginite Basalt variants use their original shared ore features without duplicate Fabric-only passes, and vanilla-style Basalt pointed-stone stalagmite/stalactite worldgen works in-game.
 - Manganese parity is runtime-verified: Manganese, Manganite, and Pyrolusite blocks/items, ore loot, smelting/blasting and compression recipes, common tags, AAF alloy inputs, and worldgen are aligned with the original. Fabric keeps the corrected `c:manganese_ores` spelling and includes it in `c:ores`; duplicate Fabric-only Basalt Manganite worldgen was removed.
 - Tin parity is complete: Tin/Cassiterite blocks, items, processing recipes, loot, mining tiers, common tags, AAF inputs, and Cassiterite worldgen match the original; Cassiterite is restored to `c:tin_ores` and the common ore tag so infused ore-mining bonuses apply correctly.
 - Broad core gameplay parity audit completed. The remaining major gaps are now classified: Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation are not yet ported; Food / Cooking is missing its gameplay/recipe systems but retains some crop/food assets; Advancements and Decorative / Utility Blocks are partial. Fabric currently has only the Radiant Forest of the original custom biomes, with Tropical Coast and Wisteria Forest still missing.
