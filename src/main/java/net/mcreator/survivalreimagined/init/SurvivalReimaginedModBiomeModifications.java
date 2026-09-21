@@ -35,6 +35,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("pyrolusite_feature");
 		addUndergroundEverywhere("uranophane_feature");
 		addUndergroundEverywhere("shale_uranophane");
+		addRadiantForestUnderground("shale_uraninite");
 		addUndergroundEverywhere("shale_uraninite");
 		addUndergroundEverywhere("liginite_ore_feature_surface");
 		addUndergroundEverywhere("ilmenite_ore_feature");
@@ -50,6 +51,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addLocalEverywhere("basalt_layer");
 		addLocalEverywhere("kimberlite_feature");
 		addNether("dark_cinder_blobs");
+	}
+
+	private static void addRadiantForestUnderground(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
+				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
 	}
 
 	private static void addNether(String path) {
