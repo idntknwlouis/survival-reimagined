@@ -38,23 +38,8 @@ public final class CropEffects {
 			return;
 		}
 
-		if (block == SurvivalReimaginedModBlocks.WHEAT_CROP.get() || block == SurvivalReimaginedModBlocks.WILD_WHEAT.get()) {
-			if (age >= 7) {
-				drop(level, pos, Items.WHEAT, 1);
-				drop(level, pos, SurvivalReimaginedModItems.WHEAT_SEEDS.get(), 1 + level.random.nextInt(3));
-			} else {
-				drop(level, pos, SurvivalReimaginedModItems.WHEAT_SEEDS.get(), 1);
-			}
-			return;
-		}
-
-		if (block == SurvivalReimaginedModBlocks.CARROTS.get() || block == SurvivalReimaginedModBlocks.WILD_CARROT.get()) {
-			drop(level, pos, SurvivalReimaginedModItems.CARROT.get(), age >= 3 ? 2 + level.random.nextInt(3) : 1);
-			return;
-		}
-
-		if (block == SurvivalReimaginedModBlocks.POTATOES.get() || block == SurvivalReimaginedModBlocks.WILD_POTATOES.get()) {
-			drop(level, pos, SurvivalReimaginedModItems.POTATO.get(), age >= 3 ? 2 + level.random.nextInt(3) : 1);
+		if (block == SurvivalReimaginedModBlocks.WILD_CARROT.get()) {
+			drop(level, pos, Items.CARROT, age >= 3 ? 2 + level.random.nextInt(3) : 1);
 			return;
 		}
 
@@ -85,22 +70,6 @@ public final class CropEffects {
 			} else {
 				drop(level, pos, SurvivalReimaginedModItems.CORN_SEEDS.get(), 1);
 			}
-			return;
-		}
-
-		if (block == SurvivalReimaginedModBlocks.CORN_STALK_MIDDLE.get() && age >= 7
-				|| block == SurvivalReimaginedModBlocks.CORN_STALK_TOP.get() && age >= 4) {
-			drop(level, pos, SurvivalReimaginedModItems.CORN.get(), 1);
-			return;
-		}
-
-		if (block == SurvivalReimaginedModBlocks.STRAWBERRY_PLANT.get()) {
-			if (age >= 5) drop(level, pos, SurvivalReimaginedModItems.STRAWBERRY.get(), 2 + level.random.nextInt(3));
-			return;
-		}
-
-		if (block == SurvivalReimaginedModBlocks.RASPBERRY_PLANT.get()) {
-			if (age >= 5) drop(level, pos, SurvivalReimaginedModItems.RASPBERRY.get(), 2 + level.random.nextInt(3));
 		}
 	}
 
