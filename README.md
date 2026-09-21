@@ -38,8 +38,8 @@ This table tracks broad feature parity against the original mod.
 | Flint Placement |    ✅     | ✅ | ✅ | ✅ |
 | Shale Geology |    ✅     | ✅ | ✅ | ✅ |
 | Basalt Geology Extensions |    ✅     | ✅ | ✅ | ✅ |
-| Native Mineral Ores |    🟡     | 🟡 | 🟡 | 🟡 |
-| Kimberlite Geology |    🟡     | ✅ | 🟡 | 🟡 |
+| Native Mineral Ores |    ✅     | ✅ | ✅ | ✅ |
+| Kimberlite Geology |    ✅     | ✅ | ✅ | 🟡 |
 | Gem Polishing |    ✅     | ✅ | ✅ | — |
 | Rune Socketing |    ✅     | ✅ | ✅ | — |
 | Rune Effects / Tooltips |    ✅     | ✅ | ✅ | — |
@@ -59,13 +59,12 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Finish Native Mineral Ores parity
-2. Finish Kimberlite Geology parity
-3. Finish remaining crops, food, armor, mobs, structures, and radiation systems
-4. Advancement parity and cleanup
-5. Decorative / utility block parity
-6. Release-ready testing and balancing
-7. Compat content
+1. Runtime-verify Kimberlite Geology parity
+2. Finish remaining crops, food, armor, mobs, structures, and radiation systems
+3. Advancement parity and cleanup
+4. Decorative / utility block parity
+5. Release-ready testing and balancing
+6. Compat content
 
 ## World Generation Notes
 
@@ -74,6 +73,8 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Native Mineral Ores are runtime-verified and complete: Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite Stone/Deepslate families, resource blocks, loot, recipes, mining/common tags, and worldgen work as intended.
+- Kimberlite Geology parity audit is complete: Kimberlite generation matches the original (`count 8`, radius `12`, `Y -256..-128`), Sapphire/Diamond/Emerald/Ruby/Lapis/Amber replacement targets and loot match, and Kimberlite stalagmites/stalactites use the vanilla-style single `kimberlite_pointed_stone` block. Runtime verification pending.
 - Native Mineral Ores parity pass restored the missing Desert/Badlands `extra_calaverite_feature` hook and completed the original common ore/metal-rock tags for Hematite/Magnetite, Calaverite, Ilmenite, and Uranophane families. Existing ore heights/counts and processing outputs match the original; runtime verification of the final tag/worldgen pass is pending.
 
 - Basalt Geology Extensions are runtime-verified and complete: the original Basalt layer depth (`Y -128..-64`) is restored, Hematite, Magnetite, Calaverite, Uranophane, Ilmenite, Anthracite, and Liginite Basalt variants use their original shared ore features without duplicate Fabric-only passes, and vanilla-style Basalt pointed-stone stalagmite/stalactite worldgen works in-game.
