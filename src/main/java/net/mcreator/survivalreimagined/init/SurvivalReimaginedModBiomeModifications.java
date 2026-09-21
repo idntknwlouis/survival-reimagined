@@ -35,6 +35,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("pyrolusite_feature");
 		addUndergroundEverywhere("uranophane_feature");
 		addUndergroundEverywhere("shale_uranophane");
+		addUndergroundEverywhere("shale_uraninite");
 		addUndergroundEverywhere("liginite_ore_feature_surface");
 		addUndergroundEverywhere("ilmenite_ore_feature");
 		addUndergroundEverywhere("anthracite_ore_feature");
