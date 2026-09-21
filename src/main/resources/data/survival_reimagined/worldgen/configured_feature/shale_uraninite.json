@@ -25,6 +25,15 @@
       {
         "target": {
           "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:basalt_ore_replaceables"
+        },
+        "state": {
+          "Name": "survival_reimagined:basalt_uraninite_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
           "tag": "minecraft:deepslate_ore_replaceables"
         },
         "state": {
