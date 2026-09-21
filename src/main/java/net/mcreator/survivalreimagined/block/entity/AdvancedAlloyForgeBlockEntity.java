@@ -2,6 +2,10 @@ package net.mcreator.survivalreimagined.block.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -23,6 +27,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
+import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.world.inventory.AdvancedAlloyForgeGUIMenu;
@@ -166,7 +171,34 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 			changed = true;
 		}
 
+		if (forge.fuelCapacity > 0 && level instanceof ServerLevel serverLevel && level.getGameTime() % 10L == 0L) {
+			emitRunningEffects(serverLevel, pos, state);
+		}
+
 		if (changed) forge.setChanged();
+	}
+
+	private static void emitRunningEffects(ServerLevel level, BlockPos pos, BlockState state) {
+		Direction facing = state.hasProperty(AdvancedAlloyForgeBlock.FACING)
+				? state.getValue(AdvancedAlloyForgeBlock.FACING) : Direction.NORTH;
+
+		double x = pos.getX() + 0.5D;
+		double y = pos.getY() + 0.15D;
+		double z = pos.getZ() + 0.5D;
+		double sideSpread = 0.35D;
+
+		switch (facing) {
+			case NORTH -> z += 0.9D;
+			case SOUTH -> z -= 0.9D;
+			case WEST -> x += 0.9D;
+			case EAST -> x -= 0.9D;
+			default -> { }
+		}
+
+		level.sendParticles(ParticleTypes.LARGE_SMOKE, x, y, z, 6, sideSpread, 0.05D, sideSpread, 0.02D);
+		if (level.getRandom().nextFloat() < 0.35F) {
+			level.playSound(null, pos, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+		}
 	}
 
 	private static AlloyRecipe getRecipe(ItemStack a, ItemStack b) {
