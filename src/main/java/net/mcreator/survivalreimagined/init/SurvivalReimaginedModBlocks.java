@@ -30,6 +30,7 @@ import net.mcreator.survivalreimagined.block.ShaleBlock;
 import net.mcreator.survivalreimagined.block.ShaleRockBlock;
 import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
 import net.mcreator.survivalreimagined.block.TinOreBlock;
+import net.mcreator.survivalreimagined.block.UraniumRodBlock;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
@@ -74,6 +75,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> TITANIUM_ORE = register("titanium_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_TITANIUM_ORE = register("deepslate_titanium_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> URANINITE_ORE = register("uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> URANIUM_ROD = register("uranium_rod", UraniumRodBlock::new);
 	public static final RegistryEntry<Block> SILVER_ORE = register("silver_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_SILVER_ORE = register("deepslate_silver_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> ARGENTITE_ORE = register("argentite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
