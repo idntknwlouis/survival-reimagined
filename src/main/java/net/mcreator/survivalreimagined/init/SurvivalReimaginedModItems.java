@@ -155,6 +155,15 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ROUGH_AMBER = simple("rough_amber");
 	public static final RegistryEntry<Item> REACTOR_ROD = simpleUnstackable("reactor_rod");
 	public static final RegistryEntry<Item> DEPLETED_REACTOR_ROD = simpleUnstackable("depleted_reactor_rod");
+	public static final RegistryEntry<Item> ADVANCED_REACTOR_ROD = simpleUnstackable("advanced_reactor_rod");
+	public static final RegistryEntry<Item> DRAINED_ADVANCED_REACTOR_ROD = simpleUnstackable("drained_advanced_reactor_rod");
+	public static final RegistryEntry<Item> FUEL_UPGRADE = simpleUnstackable("fuel_upgrade");
+	public static final RegistryEntry<Item> FUEL_UPGRADE_MKII = simpleUnstackable("fuel_upgrade_mkii");
+	public static final RegistryEntry<Item> YIELD_UPGRADE = simpleUnstackable("yield_upgrade");
+	public static final RegistryEntry<Item> YIELD_UPGRADE_MKII = simpleUnstackable("yield_upgrade_mkii");
+	public static final RegistryEntry<Item> YIELD_UPGRADE_MKIII = simpleUnstackable("yield_upgrade_mkiii");
+	public static final RegistryEntry<Item> EFFICIENCY_UPGRADE = simpleUnstackable("efficiency_upgrade");
+	public static final RegistryEntry<Item> BLOCK_PACKAGING_UPGRADE = simpleUnstackable("block_packaging_upgrade");
 	public static final RegistryEntry<Item> WOODEN_RUNE = simple("wooden_rune");
 	public static final RegistryEntry<Item> EMPTY_GOLD_RUNE = simple("empty_gold_rune");
 	public static final RegistryEntry<Item> EMPTY_SILVER_RUNE = simple("empty_silver_rune");
