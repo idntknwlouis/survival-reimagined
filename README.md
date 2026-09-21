@@ -45,23 +45,23 @@ This table tracks broad feature parity against the original mod.
 | Rune Effects / Tooltips |    ✅     | ✅ | ✅ | — |
 | Fuels / Forge Materials |    ✅     | ✅ | ✅ | ✅ |
 | Crops / Plants |    🟡    | 🟡 | 🟡 | 🟡 |
-| Food / Cooking |    🔎    | 🔎 | 🔎 | — |
-| Armor |    🔎    | 🔎 | 🔎 | — |
-| Mobs / Entities |    🔎    | 🔎 | 🔎 | 🔎 |
-| Carcass / Butchering |    🔎    | 🔎 | 🔎 | — |
-| Structures |    🔎    | 🔎 | 🔎 | 🔎 |
+| Food / Cooking |    ❌    | ❌ | 🟡 | — |
+| Armor |    ❌    | ❌ | ❌ | — |
+| Mobs / Entities |    ❌    | ❌ | ❌ | ❌ |
+| Carcass / Butchering |    ❌    | ❌ | ❌ | — |
+| Structures |    ❌    | ❌ | ❌ | ❌ |
 | Biomes |    —     | —  | —  | 🟡 |
 | Radiation Systems |    ❌     | ❌ | ❌ | ❌ |
-| Decorative / Utility Blocks |    🔎    | 🔎 | 🔎 | — |
+| Decorative / Utility Blocks |    🟡    | 🟡 | 🟡 | — |
 | Sounds / Particles |    🟡    | — | 🟡 | — |
-| Advancements |    🔎    | 🔎 | 🔎 | — |
+| Advancements |    🟡    | 🟡 | 🟡 | — |
 | Compat Content |    ❌     | ❌ | ❌ | ❌ |
 
 ## Current Roadmap
 
-1. Broad core gameplay parity audit
-2. Finish remaining crops, food, armor, mobs, structures, and radiation systems
-3. Advancement parity and cleanup
+1. Finish remaining crops, food, armor, mobs, structures, and radiation systems
+2. Advancement parity and cleanup
+3. Decorative / utility block parity
 4. Release-ready testing and balancing
 5. Compat content
 
@@ -72,6 +72,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Broad core gameplay parity audit completed. The remaining major gaps are now classified: Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation are not yet ported; Food / Cooking is missing its gameplay/recipe systems but retains some crop/food assets; Advancements and Decorative / Utility Blocks are partial. Fabric currently has only the Radiant Forest of the original custom biomes, with Tropical Coast and Wisteria Forest still missing.
 - Shale geology parity is runtime-verified: Radiated Shale surface layering, Shale underground replacement, mining/loot integration, and Radiant Forest Uraninite/Uranophane vein generation all work as intended.
 - Rune Magic Infuser parity restored: original textured Fuse button, target/rune/lapis validation, Gold/Silver XP + lapis costs, infusion sounds, direct rune recognition, and common `c:runes` compatibility.
 - Rune effects restored and hardened for Fabric tool/weapon detection, including Diamond Unbreaking progression, Ocean's Wrath, Sapphire underwater mining, Amber/Ruby/Lapis/Emerald effects, action-bar feedback, and gray rune effect tooltips.
