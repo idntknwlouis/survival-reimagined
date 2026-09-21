@@ -313,6 +313,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BLOCK_OF_RAW_URANINITE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_URANINITE);
 	public static final RegistryEntry<Item> BLOCK_OF_URANIUM = block(SurvivalReimaginedModBlocks.BLOCK_OF_URANIUM);
 	public static final RegistryEntry<Item> TURANITE_BLOCK = block(SurvivalReimaginedModBlocks.TURANITE_BLOCK);
+	public static final RegistryEntry<Item> PLATED_DIAMOND_BLOCK = block(SurvivalReimaginedModBlocks.PLATED_DIAMOND_BLOCK);
 	public static final RegistryEntry<Item> INGOT_MOLD = block(SurvivalReimaginedModBlocks.INGOT_MOLD);
 	public static final RegistryEntry<Item> INGOT_CLAY_MOLD = block(SurvivalReimaginedModBlocks.INGOT_CLAY_MOLD);
 	public static final RegistryEntry<Item> CLAY_SWORD_BLADE_MOLD = block(SurvivalReimaginedModBlocks.CLAY_SWORD_BLADE_MOLD);
