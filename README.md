@@ -57,7 +57,6 @@ This table tracks broad feature parity against the original mod.
 | Sounds / Particles |    🟡    | — | 🟡 | — |
 | Advancements |    🔎    | 🔎 | 🔎 | — |
 | Compat Content |    ❌     | ❌ | ❌ | ❌ |
->>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
 
 ## Current Roadmap
 
