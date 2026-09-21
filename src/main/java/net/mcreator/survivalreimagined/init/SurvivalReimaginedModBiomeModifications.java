@@ -22,13 +22,6 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("diamond_ore_feature");
 		addUndergroundEverywhere("emerald_ore_feature");
 		addUndergroundEverywhere("lazurite_ore");
-		addUndergroundEverywhere("basalt_hematite_feature");
-		addUndergroundEverywhere("basalt_magnetite_feature");
-		addUndergroundEverywhere("basalt_calaverite_feature");
-		addUndergroundEverywhere("basalt_uranophane_feature");
-		addUndergroundEverywhere("basalt_ilmenite_feature");
-		addUndergroundEverywhere("basalt_anthracite_feature");
-		addUndergroundEverywhere("basalt_liginite_feature");
 		addUndergroundEverywhere("hematite");
 		addUndergroundEverywhere("magnetite");
 		addUndergroundEverywhere("calaverite_feature");
