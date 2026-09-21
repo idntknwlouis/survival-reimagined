@@ -52,11 +52,27 @@ public final class SurvivalReimaginedModBlocks {
 	private static final IntegerProperty RYE_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty SPELT_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty HEMP_AGE = IntegerProperty.create("age", 0, 3);
+	private static final IntegerProperty WHEAT_AGE = IntegerProperty.create("age", 0, 7);
+	private static final IntegerProperty POTATO_AGE = IntegerProperty.create("age", 0, 3);
+	private static final IntegerProperty WILD_WHEAT_AGE = IntegerProperty.create("age", 0, 7);
+	private static final IntegerProperty WILD_POTATO_AGE = IntegerProperty.create("age", 0, 3);
 	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(RYE_AGE, 6));
 	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(SPELT_AGE, 6));
 	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(HEMP_AGE, 3));
-	private static final IntegerProperty CORN_AGE = IntegerProperty.create("age", 0, 11);
-	public static final RegistryEntry<Block> CORN_STALK_BOTTOM = register("corn_stalk_bottom", () -> new SimpleAgeCropBlock(CORN_AGE, 11));
+	public static final RegistryEntry<Block> WHEAT_CROP = register("wheat_crop", () -> new SimpleAgeCropBlock(WHEAT_AGE, 7));
+	public static final RegistryEntry<Block> POTATOES = register("potatoes", () -> new SimpleAgeCropBlock(POTATO_AGE, 3));
+	public static final RegistryEntry<Block> WILD_WHEAT = register("wild_wheat", () -> new SimpleAgeCropBlock(WILD_WHEAT_AGE, 7, false));
+	public static final RegistryEntry<Block> WILD_POTATOES = register("wild_potatoes", () -> new SimpleAgeCropBlock(WILD_POTATO_AGE, 3, false));
+	public static final RegistryEntry<Block> STRAWBERRY_PLANT = register("strawberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.STRAWBERRY.get()));
+	public static final RegistryEntry<Block> RASPBERRY_PLANT = register("raspberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.RASPBERRY.get()));
+	public static final RegistryEntry<Block> CORN_STALK_MIDDLE = register("corn_stalk_middle",
+			() -> new CornUpperBlock(() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_bottom")), 7));
+	public static final RegistryEntry<Block> CORN_STALK_TOP = register("corn_stalk_top",
+			() -> new CornUpperBlock(() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_middle")), 4));
+	public static final RegistryEntry<Block> CORN_STALK_BOTTOM = register("corn_stalk_bottom",
+			() -> new CornCropBlock(
+					() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_middle")),
+					() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_top"))));
 	private static final IntegerProperty WILD_RYE_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty WILD_SPELT_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty WILD_CARROT_AGE = IntegerProperty.create("age", 0, 3);
