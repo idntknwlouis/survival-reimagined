@@ -51,6 +51,9 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addLocalEverywhere("basalt_layer");
 		addLocalEverywhere("kimberlite_feature");
 		addNether("dark_cinder_blobs");
+		addOverworldVegetation("natural_rye");
+		addOverworldVegetation("natural_spelt");
+		addOverworldVegetation("wild_carrots");
 	}
 
 	private static void addRadiantForestUnderground(String path) {
@@ -60,6 +63,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		BiomeModifications.addFeature(
 				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
 				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
+	}
+
+	private static void addOverworldVegetation(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.foundInOverworld(),
+				GenerationStep.Decoration.VEGETAL_DECORATION,
 				featureKey);
 	}
 
