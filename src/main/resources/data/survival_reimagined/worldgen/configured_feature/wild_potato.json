@@ -11,7 +11,7 @@
             "entries": [
               {
                 "data": {
-                  "Name": "survival_reimagined:wild_carrot",
+                  "Name": "survival_reimagined:wild_potatoes",
                   "Properties": {
                     "age": "0"
                   }
@@ -20,7 +20,7 @@
               },
               {
                 "data": {
-                  "Name": "survival_reimagined:wild_carrot",
+                  "Name": "survival_reimagined:wild_potatoes",
                   "Properties": {
                     "age": "1"
                   }
@@ -29,7 +29,7 @@
               },
               {
                 "data": {
-                  "Name": "survival_reimagined:wild_carrot",
+                  "Name": "survival_reimagined:wild_potatoes",
                   "Properties": {
                     "age": "2"
                   }
@@ -38,7 +38,7 @@
               },
               {
                 "data": {
-                  "Name": "survival_reimagined:wild_carrot",
+                  "Name": "survival_reimagined:wild_potatoes",
                   "Properties": {
                     "age": "3"
                   }

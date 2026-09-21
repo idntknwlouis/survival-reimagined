@@ -1,9 +1,9 @@
 {
-  "feature": "survival_reimagined:natural_spelt",
+  "feature": "survival_reimagined:wild_raspberry",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 200
+      "chance": 240
     },
     {
       "type": "minecraft:in_square"
