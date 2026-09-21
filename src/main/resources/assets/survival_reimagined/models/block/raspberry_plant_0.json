@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "survival_reimagined:block/rasphberry_plant",
+    "particle": "survival_reimagined:block/rasphberry_plant"
+  },
+  "render_type": "cutout"
+}
