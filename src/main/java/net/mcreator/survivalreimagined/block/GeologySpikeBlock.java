@@ -2,8 +2,9 @@ package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -11,36 +12,56 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.function.Supplier;
-
 public class GeologySpikeBlock extends Block {
-	public enum Segment {
-		BASE, MIDDLE, TIP
+	public enum Thickness implements StringRepresentable {
+		BASE("base"),
+		MIDDLE("middle"),
+		TIP("tip");
+
+		private final String name;
+
+		Thickness(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String getSerializedName() {
+			return this.name;
+		}
 	}
 
-	private final boolean growsUp;
-	private final Segment segment;
-	private final Supplier<? extends Block> base;
-	private final Supplier<? extends Block> middle;
-	private final Supplier<? extends Block> tip;
+	public static final DirectionProperty VERTICAL_DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
+	public static final EnumProperty<Thickness> THICKNESS = EnumProperty.create("thickness", Thickness.class);
 
-	public GeologySpikeBlock(SoundType sound, float strength, float resistance, boolean growsUp, Segment segment,
-			Supplier<? extends Block> base, Supplier<? extends Block> middle, Supplier<? extends Block> tip) {
+	public GeologySpikeBlock(SoundType sound, float strength, float resistance) {
 		super(BlockBehaviour.Properties.of()
 				.sound(sound)
 				.strength(strength, resistance)
 				.requiresCorrectToolForDrops()
 				.noOcclusion()
 				.isRedstoneConductor((state, level, pos) -> false));
-		this.growsUp = growsUp;
-		this.segment = segment;
-		this.base = base;
-		this.middle = middle;
-		this.tip = tip;
+		registerDefaultState(stateDefinition.any()
+				.setValue(VERTICAL_DIRECTION, Direction.UP)
+				.setValue(THICKNESS, Thickness.TIP));
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(VERTICAL_DIRECTION, THICKNESS);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		Direction direction = context.getClickedFace() == Direction.DOWN ? Direction.DOWN : Direction.UP;
+		return updateThickness(defaultBlockState().setValue(VERTICAL_DIRECTION, direction), context.getLevel(), context.getClickedPos());
 	}
 
 	@Override
@@ -60,7 +81,7 @@ public class GeologySpikeBlock extends Block {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return switch (segment) {
+		return switch (state.getValue(THICKNESS)) {
 			case BASE -> box(1, 0, 1, 15, 16, 15);
 			case MIDDLE -> box(3, 0, 3, 13, 16, 13);
 			case TIP -> box(5, 0, 5, 11, 16, 11);
@@ -69,37 +90,38 @@ public class GeologySpikeBlock extends Block {
 
 	@Override
 	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-		BlockPos supportPos = growsUp ? pos.below() : pos.above();
-		return !level.isEmptyBlock(supportPos);
+		Direction direction = state.getValue(VERTICAL_DIRECTION);
+		BlockPos supportPos = pos.relative(direction.getOpposite());
+		BlockState support = level.getBlockState(supportPos);
+		return !support.isAir() && (support.isSolidRender(level, supportPos) || isMatchingSpike(support, direction));
 	}
 
 	@Override
 	public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
 			LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-		return !state.canSurvive(level, pos)
-				? Blocks.AIR.defaultBlockState()
-				: super.updateShape(state, direction, neighborState, level, pos, neighborPos);
+		if (!state.canSurvive(level, pos)) {
+			return Blocks.AIR.defaultBlockState();
+		}
+		return updateThickness(state, level, pos);
 	}
 
-	@Override
-	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
-		super.neighborChanged(state, level, pos, neighborBlock, fromPos, moving);
-		if (level.isClientSide()) return;
+	private BlockState updateThickness(BlockState state, LevelReader level, BlockPos pos) {
+		Direction direction = state.getValue(VERTICAL_DIRECTION);
+		boolean sameTowardTip = isMatchingSpike(level.getBlockState(pos.relative(direction)), direction);
+		boolean sameTowardBase = isMatchingSpike(level.getBlockState(pos.relative(direction.getOpposite())), direction);
 
-		BlockPos tipSide = growsUp ? pos.above() : pos.below();
-		Block next = level.getBlockState(tipSide).getBlock();
-		Block desired = null;
-
-		if (next == tip.get()) {
-			desired = middle.get();
-		} else if (next == middle.get()) {
-			desired = base.get();
-		} else if (level.isEmptyBlock(tipSide)) {
-			desired = tip.get();
+		Thickness thickness;
+		if (!sameTowardTip) {
+			thickness = Thickness.TIP;
+		} else if (!sameTowardBase) {
+			thickness = Thickness.BASE;
+		} else {
+			thickness = Thickness.MIDDLE;
 		}
+		return state.setValue(THICKNESS, thickness);
+	}
 
-		if (desired != null && desired != state.getBlock()) {
-			level.setBlock(pos, desired.defaultBlockState(), 3);
-		}
+	private boolean isMatchingSpike(BlockState state, Direction direction) {
+		return state.is(this) && state.getValue(VERTICAL_DIRECTION) == direction;
 	}
 }
