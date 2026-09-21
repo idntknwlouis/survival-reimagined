@@ -47,7 +47,13 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("ruby_ore_feature");
 		addUndergroundEverywhere("sapphire_ore_feature");
 		addUndergroundEverywhere("argentite_feature");
+		addUndergroundEverywhere("native_copper");
+		addUndergroundEverywhere("native_gold");
 		addUndergroundEverywhere("native_silver");
+		addUndergroundToBiomes("extra_native_gold",
+				Biomes.BADLANDS,
+				Biomes.ERODED_BADLANDS,
+				Biomes.WOODED_BADLANDS);
 		addLocalEverywhere("basalt_layer");
 		addLocalEverywhere("kimberlite_feature");
 		addNether("dark_cinder_blobs");
@@ -107,6 +113,17 @@ public final class SurvivalReimaginedModBiomeModifications {
 				SurvivalReimaginedMod.asResource(path));
 		BiomeModifications.addFeature(
 				context -> true,
+				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
+	}
+
+	@SafeVarargs
+	private static void addUndergroundToBiomes(String path, ResourceKey<net.minecraft.world.level.biome.Biome>... biomes) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(biomes),
 				GenerationStep.Decoration.UNDERGROUND_ORES,
 				featureKey);
 	}
