@@ -25,6 +25,11 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("hematite");
 		addUndergroundEverywhere("magnetite");
 		addUndergroundEverywhere("calaverite_feature");
+		addUndergroundToBiomes("extra_calaverite_feature",
+				Biomes.DESERT,
+				Biomes.BADLANDS,
+				Biomes.ERODED_BADLANDS,
+				Biomes.WOODED_BADLANDS);
 		addUndergroundEverywhere("pyrolusite_feature");
 		addUndergroundEverywhere("cassiterite_feature");
 		addUndergroundEverywhere("manganite_feature");
