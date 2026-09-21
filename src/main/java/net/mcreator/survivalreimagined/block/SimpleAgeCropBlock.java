@@ -20,6 +20,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
 	private final int maxAge;
+	private final boolean farmlandOnly;
 
 	public SimpleAgeCropBlock(int maxAge) {
 		super(BlockBehaviour.Properties.of()
@@ -46,7 +47,9 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock {
 
 	@Override
 	protected boolean mayPlaceOn(BlockState floor, BlockGetter level, BlockPos pos) {
-		return floor.is(Blocks.FARMLAND);
+		return this.farmlandOnly
+				? floor.is(Blocks.FARMLAND)
+				: floor.is(Blocks.GRASS_BLOCK) || floor.is(Blocks.DIRT) || floor.is(Blocks.COARSE_DIRT) || floor.is(Blocks.PODZOL);
 	}
 
 	@Override
