@@ -7,21 +7,31 @@ import net.minecraft.world.level.levelgen.SurfaceRules;
 
 public class SurvivalReimaginedModSurfaceRules {
     public static SurfaceRules.RuleSource makeRules() {
-        BlockState shaleSurfaceBlock = SurvivalReimaginedModBlocks.SHALE.get().defaultBlockState();
+        BlockState radiatedSurface = SurvivalReimaginedModBlocks.RADIATED_SHALE.get().defaultBlockState();
+        BlockState shale = SurvivalReimaginedModBlocks.SHALE.get().defaultBlockState();
 
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
                         SurfaceRules.isBiome(SurvivalReimaginedModBiomes.RADIANT_FOREST),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.ON_FLOOR,
-                                SurfaceRules.state(shaleSurfaceBlock)
-                        )
-                ),
-                SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(SurvivalReimaginedModBiomes.RADIANT_FOREST),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.DEEP_UNDER_FLOOR,
-                                SurfaceRules.state(shaleSurfaceBlock)
+                        SurfaceRules.sequence(
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.ON_FLOOR,
+                                        SurfaceRules.sequence(
+                                                SurfaceRules.ifTrue(
+                                                        SurfaceRules.waterBlockCheck(-1, 0),
+                                                        SurfaceRules.state(radiatedSurface)
+                                                ),
+                                                SurfaceRules.state(shale)
+                                        )
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.UNDER_FLOOR,
+                                        SurfaceRules.state(shale)
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.DEEP_UNDER_FLOOR,
+                                        SurfaceRules.state(shale)
+                                )
                         )
                 )
         );
