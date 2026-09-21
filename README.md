@@ -28,8 +28,8 @@ This table tracks broad feature parity against the original mod.
 | Titanium |    ✅     | ✅ | ✅ | ✅ |
 | Uraninite / Uranium |    ✅     | ✅ | ✅ | ✅ |
 | Turanite |    ✅     | ✅ | ✅ | — |
-| Tin |    ✅     | ✅ | ✅ | ✅ |
-| Manganese |    ✅     | ✅ | ✅ | ✅ |
+| Tin |    🟡     | 🟡 | 🟡 | 🟡 |
+| Manganese |    🟡     | 🟡 | 🟡 | 🟡 |
 | Bronze |    ✅     | ✅ | ✅ | — |
 | Steel |    ✅     | ✅ | ✅ | — |
 | Diamond Plating |    ✅     | ✅ | ✅ | — |
@@ -37,9 +37,9 @@ This table tracks broad feature parity against the original mod.
 | Rocks / Surface Rocks |    ✅     | ✅ | ✅ | ✅ |
 | Flint Placement |    ✅     | ✅ | ✅ | ✅ |
 | Shale Geology |    ✅     | ✅ | ✅ | ✅ |
-| Basalt Geology Extensions |    ✅     | ✅ | ✅ | ✅ |
-| Native Mineral Ores |    ✅     | ✅ | ✅ | ✅ |
-| Kimberlite Geology |    ✅     | ✅ | ✅ | ✅ |
+| Basalt Geology Extensions |    🟡     | ✅ | 🟡 | 🟡 |
+| Native Mineral Ores |    🟡     | 🟡 | 🟡 | 🟡 |
+| Kimberlite Geology |    🟡     | ✅ | 🟡 | 🟡 |
 | Gem Polishing |    ✅     | ✅ | ✅ | — |
 | Rune Socketing |    ✅     | ✅ | ✅ | — |
 | Rune Effects / Tooltips |    ✅     | ✅ | ✅ | — |
@@ -82,4 +82,6 @@ This table tracks broad feature parity against the original mod.
 - Dark Cinder block, loot, Nether worldgen, and Dark Cinder Coal forge recipe restored; Fuels / Forge Materials is now complete.
 - Kimberlite geology and ore variants are implemented; missing English names were restored.
 - Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes; runtime-tested successfully. Shale Uranophane generation is also wired.
+- Core parity audit found additional active original geology still missing from Fabric: Cassiterite, Manganite, Azurite, Malachite, Nitre, Sulfur, Salt deposits, plus Basalt/Kimberlite stalagmite and stalactite formations. Spinel assets exist in the original but are not actively registered for worldgen, so Spinel is treated as dormant content for now.
+- Native Copper and Native Gold worldgen parity restored, including the original extra Badlands Gold pass. Crop worldgen selectors were also corrected to the original biome lists, removing duplicate/unrestricted Rye, Spelt, and Wild Carrot generation.
 - Dedicated mold geometry restored for Hoe, Knife, Plate, Clay Plate, and Clay Ingot molds.
