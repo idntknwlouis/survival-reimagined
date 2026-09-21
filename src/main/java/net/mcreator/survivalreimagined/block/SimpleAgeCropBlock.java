@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -19,17 +20,37 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 15);
+	private static final MapCodec<SimpleAgeCropBlock> CODEC = MapCodec.unit(() -> new SimpleAgeCropBlock(15));
+
 	private final int maxAge;
 	private final boolean farmlandOnly;
 
 	public SimpleAgeCropBlock(int maxAge) {
+		this(maxAge, true);
+	}
+
+	public SimpleAgeCropBlock(int maxAge, boolean farmlandOnly) {
 		super(BlockBehaviour.Properties.of()
 				.sound(SoundType.CROP)
 				.instabreak()
 				.noCollission()
 				.randomTicks());
 		this.maxAge = maxAge;
+		this.farmlandOnly = farmlandOnly;
 		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+	}
+
+	public SimpleAgeCropBlock(IntegerProperty ignoredAgeProperty, int maxAge) {
+		this(maxAge, true);
+	}
+
+	public SimpleAgeCropBlock(IntegerProperty ignoredAgeProperty, int maxAge, boolean farmlandOnly) {
+		this(maxAge, farmlandOnly);
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	@Override
@@ -60,7 +81,7 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock {
 	@Override
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (level.getRawBrightness(pos, 0) >= 9 && !isMaxAge(state) && random.nextInt(5) == 0) {
-			level.setBlock(pos, state.setValue(this.ageProperty, getAge(state) + 1), 2);
+			level.setBlock(pos, state.setValue(AGE, getAge(state) + 1), 2);
 		}
 	}
 
@@ -83,6 +104,6 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock {
 	@Override
 	public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
 		int age = Math.min(this.maxAge, getAge(state) + 1 + random.nextInt(2));
-		level.setBlock(pos, state.setValue(this.ageProperty, age), 2);
+		level.setBlock(pos, state.setValue(AGE, age), 2);
 	}
 }
