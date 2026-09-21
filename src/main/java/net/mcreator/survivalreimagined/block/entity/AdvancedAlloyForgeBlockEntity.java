@@ -265,6 +265,8 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		if (hasBlockPackagingUpgrade()) {
 			if (matchesItems(a, b, Items.COPPER_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_TIN.get()))
 				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_BRONZE.get(), 2, false);
+			if (matchesItems(a, b, SurvivalReimaginedModItems.BLOCK_OF_RAW_MANGANESE.get(), SurvivalReimaginedModItems.BLOCK_OF_RAW_MANGANESE.get()))
+				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get(), 2, false);
 			if (matchesItems(a, b, Items.IRON_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get()))
 				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get(), 2, false);
 			if (matchesItems(a, b, SurvivalReimaginedModItems.BLOCK_OF_URANIUM.get(), SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get()))
