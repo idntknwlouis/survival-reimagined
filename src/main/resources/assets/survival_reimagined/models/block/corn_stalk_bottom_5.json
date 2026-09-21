@@ -1,7 +1,7 @@
 {
-  "parent": "block/cross",
+  "parent": "block/crop",
   "textures": {
-    "cross": "survival_reimagined:block/corn_bottom_stage_6",
+    "crop": "survival_reimagined:block/corn_bottom_stage_6",
     "particle": "survival_reimagined:block/corn_bottom_stage_6"
   },
   "render_type": "cutout"
