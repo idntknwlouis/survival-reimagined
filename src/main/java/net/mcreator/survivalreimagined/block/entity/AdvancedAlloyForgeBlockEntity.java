@@ -62,7 +62,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 			return switch (index) {
 				case 0 -> progress;
 				case 1 -> fuelCapacity;
-				case 2 -> BASE_FUEL_CAPACITY;
+				case 2 -> forgeMaxFuelCapacity();
 				default -> 0;
 			};
 		}
@@ -115,11 +115,23 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 	public ContainerData getDataAccess() { return this.dataAccess; }
 
 	public static boolean isReactorRod(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.REACTOR_ROD.get());
+		return stack.is(SurvivalReimaginedModItems.REACTOR_ROD.get())
+				|| stack.is(SurvivalReimaginedModItems.ADVANCED_REACTOR_ROD.get());
 	}
 
 	public static boolean isDepletedRod(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.DEPLETED_REACTOR_ROD.get());
+		return stack.is(SurvivalReimaginedModItems.DEPLETED_REACTOR_ROD.get())
+				|| stack.is(SurvivalReimaginedModItems.DRAINED_ADVANCED_REACTOR_ROD.get());
+	}
+
+	public static boolean isUpgrade(ItemStack stack) {
+		return stack.is(SurvivalReimaginedModItems.FUEL_UPGRADE.get())
+				|| stack.is(SurvivalReimaginedModItems.FUEL_UPGRADE_MKII.get())
+				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE.get())
+				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE_MKII.get())
+				|| stack.is(SurvivalReimaginedModItems.YIELD_UPGRADE_MKIII.get())
+				|| stack.is(SurvivalReimaginedModItems.EFFICIENCY_UPGRADE.get())
+				|| stack.is(SurvivalReimaginedModItems.BLOCK_PACKAGING_UPGRADE.get());
 	}
 
 	public static boolean isAlloyInput(ItemStack stack) {
@@ -132,38 +144,79 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "alloy/" + path));
 	}
 
+	private boolean hasUpgrade(Item item) {
+		for (int i = 4; i < 8; i++) {
+			if (this.getItem(i).is(item)) return true;
+		}
+		return false;
+	}
+
+	private int forgeMaxFuelCapacity() {
+		if (hasUpgrade(SurvivalReimaginedModItems.FUEL_UPGRADE_MKII.get())) return 9000;
+		if (hasUpgrade(SurvivalReimaginedModItems.FUEL_UPGRADE.get())) return 6000;
+		return BASE_FUEL_CAPACITY;
+	}
+
+	private int yieldMultiplier() {
+		if (hasUpgrade(SurvivalReimaginedModItems.YIELD_UPGRADE_MKIII.get())) return 4;
+		if (hasUpgrade(SurvivalReimaginedModItems.YIELD_UPGRADE_MKII.get())) return 3;
+		if (hasUpgrade(SurvivalReimaginedModItems.YIELD_UPGRADE.get())) return 2;
+		return 1;
+	}
+
+	private int efficiencyMultiplier() {
+		return hasUpgrade(SurvivalReimaginedModItems.EFFICIENCY_UPGRADE.get()) ? 2 : 1;
+	}
+
+	private boolean hasBlockPackagingUpgrade() {
+		return hasUpgrade(SurvivalReimaginedModItems.BLOCK_PACKAGING_UPGRADE.get());
+	}
+
 	public static void serverTick(Level level, BlockPos pos, BlockState state, AdvancedAlloyForgeBlockEntity forge) {
 		if (level.isClientSide()) return;
 		boolean changed = false;
 
+		int maxFuel = forge.forgeMaxFuelCapacity();
+		if (forge.fuelCapacity > maxFuel) {
+			forge.fuelCapacity = maxFuel;
+			changed = true;
+		}
+
 		ItemStack rod = forge.getItem(3);
-		if (isReactorRod(rod) && forge.fuelCapacity < BASE_FUEL_CAPACITY) {
-			forge.fuelCapacity = Math.min(BASE_FUEL_CAPACITY, forge.fuelCapacity + 10);
+		if (isReactorRod(rod) && forge.fuelCapacity < maxFuel) {
+			forge.fuelCapacity = Math.min(maxFuel, forge.fuelCapacity + 10);
 			forge.fuelTimer += 10;
 			changed = true;
-			if (forge.fuelTimer >= 1500) {
-				forge.setItem(3, new ItemStack(SurvivalReimaginedModItems.DEPLETED_REACTOR_ROD.get()));
+			boolean advanced = rod.is(SurvivalReimaginedModItems.ADVANCED_REACTOR_ROD.get());
+			int life = advanced ? 3000 : 1500;
+			if (forge.fuelTimer >= life) {
+				forge.setItem(3, new ItemStack(advanced
+						? SurvivalReimaginedModItems.DRAINED_ADVANCED_REACTOR_ROD.get()
+						: SurvivalReimaginedModItems.DEPLETED_REACTOR_ROD.get()));
 				forge.fuelTimer = 0;
 			}
 		}
 
 		AlloyRecipe recipe = getRecipe(forge.getItem(1), forge.getItem(2));
-		if (recipe == null || !forge.canOutput(recipe.result(), recipe.count())) {
+		int yield = forge.yieldMultiplier();
+		int outputCount = recipe == null ? 0 : recipe.count() * yield;
+		if (recipe == null || !forge.canOutput(recipe.result(), outputCount)) {
 			if (forge.progress != 0) {
 				forge.progress = 0;
 				changed = true;
 			}
 		} else if (forge.fuelCapacity > 0) {
-			forge.progress += 2;
-			forge.fuelCapacity = Math.max(0, forge.fuelCapacity - 4);
+			int efficiency = forge.efficiencyMultiplier();
+			forge.progress += 2 * efficiency;
+			forge.fuelCapacity = Math.max(0, forge.fuelCapacity - Math.max(1, 4 / efficiency));
 			changed = true;
 
 			if (forge.progress >= MAX_PROGRESS) {
 				forge.getItem(1).shrink(1);
 				forge.getItem(2).shrink(1);
 				ItemStack output = forge.getItem(0);
-				if (output.isEmpty()) forge.setItem(0, new ItemStack(recipe.result(), recipe.count()));
-				else output.grow(recipe.count());
+				if (output.isEmpty()) forge.setItem(0, new ItemStack(recipe.result(), outputCount));
+				else output.grow(outputCount);
 				forge.progress = 0;
 			}
 		} else if (forge.progress > 0) {
@@ -226,6 +279,7 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 		if (index == 0) return false;
 		if (index == 1 || index == 2) return isAlloyInput(stack);
 		if (index == 3) return isReactorRod(stack) && this.getItem(3).isEmpty();
+		if (index >= 4 && index <= 7) return isUpgrade(stack);
 		return false;
 	}
 
