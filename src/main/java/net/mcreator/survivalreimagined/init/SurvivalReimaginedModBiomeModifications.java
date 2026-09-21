@@ -34,6 +34,8 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("magnetite");
 		addUndergroundEverywhere("calaverite_feature");
 		addUndergroundEverywhere("pyrolusite_feature");
+		addUndergroundEverywhere("cassiterite_feature");
+		addUndergroundEverywhere("manganite_feature");
 		addUndergroundEverywhere("uranophane_feature");
 		addRadiantForestUnderground("shale_uranophane");
 		addRadiantForestUnderground("shale_uraninite");
