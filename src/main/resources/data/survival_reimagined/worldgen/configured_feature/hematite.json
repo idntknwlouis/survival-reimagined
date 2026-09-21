@@ -21,6 +21,15 @@
         "state": {
           "Name": "survival_reimagined:deepslate_hematite_ore"
         }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:basalt_ore_replaceables"
+        },
+        "state": {
+          "Name": "survival_reimagined:basalt_hematite_ore"
+        }
       }
     ]
   }
