@@ -117,7 +117,21 @@ public class RMIMenu extends AbstractContainerMenu {
 				|| stack.is(SurvivalReimaginedModItems.STONE_HAMMER.get());
 	}
 
-	public static boolean isRune(ItemStack stack) { return stack.is(RMI_RUNES); }
+	public static boolean isRune(ItemStack stack) {
+		return stack.is(RMI_RUNES)
+				|| stack.is(SurvivalReimaginedModItems.SAPPHIRE_GOLD_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.SAPPHIRE_SILVER_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.GOLD_AMBER_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.SILVER_AMBER_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.GOLD_DIAMOND_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.SILVER_DIAMOND_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.GOLD_EMERALD_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.SILVER_EMERALD_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.GOLD_RUBY_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.SILVER_RUBY_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.GOLD_LAPIS_RUNE.get())
+				|| stack.is(SurvivalReimaginedModItems.SILVER_LAPIS_RUNE.get());
+	}
 	public BlockPos getBlockPos() { return blockPos; }
 
 	public boolean canInfuse(Player player) {
