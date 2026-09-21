@@ -11,7 +11,6 @@ import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
 import net.mcreator.survivalreimagined.item.RuneItem;
 import net.mcreator.survivalreimagined.item.RubyHeartItem;
-import net.mcreator.survivalreimagined.item.ScriptureItem;
 import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
 import net.mcreator.survivalreimagined.item.DiamondSawItem;
 import net.mcreator.survivalreimagined.item.DiamondHammerItem;
