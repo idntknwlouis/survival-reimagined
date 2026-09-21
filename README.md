@@ -44,7 +44,7 @@ This table tracks broad feature parity against the original mod.
 | Rune Socketing |    ✅     | ✅ | ✅ | — |
 | Rune Effects / Tooltips |    ✅     | ✅ | ✅ | — |
 | Fuels / Forge Materials |    ✅     | ✅ | ✅ | ✅ |
-| Crops / Plants |    🟡    | 🟡 | 🟡 | 🟡 |
+| Crops / Plants |    ✅    | ✅ | ✅ | 🟡 |
 | Food / Cooking |    ❌    | ❌ | 🟡 | — |
 | Armor |    ❌    | ❌ | ❌ | — |
 | Mobs / Entities |    ❌    | ❌ | ❌ | ❌ |
@@ -59,11 +59,12 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Finish remaining crops, food, armor, mobs, structures, and radiation systems
-2. Advancement parity and cleanup
-3. Decorative / utility block parity
-4. Release-ready testing and balancing
-5. Compat content
+1. Finish Food / Cooking parity
+2. Finish Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation Systems
+3. Advancement parity and cleanup
+4. Decorative / utility block parity
+5. Release-ready testing and balancing
+6. Compat content
 
 ## World Generation Notes
 
@@ -72,6 +73,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Crops / Plants gameplay parity is runtime-verified: Rye, Spelt, Hemp, Wild Carrot, Wheat/Wild Wheat, Potatoes/Wild Potatoes, Strawberry, Raspberry, and full three-part Corn placement/growth/harvest now work, with restored crop block/item names and textures. Natural generation for the previously disabled Wild Wheat, Wild Potato, Strawberry, and Raspberry families remains pending, so the World Gen column stays partial.
 - Native Mineral Ores are runtime-verified and complete: Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite Stone/Deepslate families, resource blocks, loot, recipes, mining/common tags, and worldgen work as intended.
 - Kimberlite Geology is runtime-verified and complete: Kimberlite generation matches the original (`count 8`, radius `12`, `Y -256..-128`), Sapphire/Diamond/Emerald/Ruby/Lapis/Amber replacement targets and loot match, and Kimberlite stalagmites/stalactites use the vanilla-style single `kimberlite_pointed_stone` block.
 - Native Mineral Ores parity pass restored the missing Desert/Badlands `extra_calaverite_feature` hook and completed the original common ore/metal-rock tags for Hematite/Magnetite, Calaverite, Ilmenite, and Uranophane families. Existing ore heights/counts and processing outputs match the original; runtime verification of the final tag/worldgen pass is pending.
