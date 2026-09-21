@@ -144,9 +144,9 @@ public class MillstoneBlockEntity extends RandomizableContainerBlockEntity imple
     }
 
     private static Item getMillingResult(ItemStack input) {
-        if (input.is(Items.WHEAT)) return SurvivalReimaginedModItems.WHEAT_FLOUR.get();
-        if (input.is(SurvivalReimaginedModItems.RYE.get())) return SurvivalReimaginedModItems.RYE_FLOUR.get();
-        if (input.is(SurvivalReimaginedModItems.SPELT.get())) return SurvivalReimaginedModItems.SPELT_FLOUR.get();
+        if (input.is(Items.WHEAT)) return Items.BREAD;
+        if (input.is(SurvivalReimaginedModItems.RYE.get())) return SurvivalReimaginedModItems.RYE_BREAD.get();
+        if (input.is(SurvivalReimaginedModItems.SPELT.get())) return SurvivalReimaginedModItems.SPELT_BREAD.get();
         return null;
     }
 
