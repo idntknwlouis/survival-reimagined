@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "survival_reimagined:rye_seeds" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "survival_reimagined:wild_rye",
+          "properties": { "age": "6" }
+        }
+      ],
+      "entries": [
+        { "type": "minecraft:item", "name": "survival_reimagined:rye" }
+      ]
+    }
+  ]
+}
