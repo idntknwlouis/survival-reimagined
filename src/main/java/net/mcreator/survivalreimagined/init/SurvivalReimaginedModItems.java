@@ -79,6 +79,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SPELT_SEEDS = cropSeed("spelt_seeds", SurvivalReimaginedModBlocks.SPELT_SEEDS);
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
+	public static final RegistryEntry<Item> CORN = simple("corn");
+	public static final RegistryEntry<Item> CORN_SEEDS = cropSeed("corn_seeds", SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
 	public static final RegistryEntry<Item> COPPER_CHISEL = register("copper_chisel", CopperChiselItem::new);
