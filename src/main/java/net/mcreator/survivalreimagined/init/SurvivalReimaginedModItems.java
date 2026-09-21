@@ -10,11 +10,8 @@ import net.minecraft.world.level.block.Block;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.AndesiteRockItem;
 import net.mcreator.survivalreimagined.item.RuneItem;
-<<<<<<< HEAD
-=======
 import net.mcreator.survivalreimagined.item.RubyHeartItem;
 import net.mcreator.survivalreimagined.item.ScriptureItem;
->>>>>>> 0e9609fd8a2f3948deba6ac8a4f8e37c61726637
 import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
 import net.mcreator.survivalreimagined.item.DiamondSawItem;
 import net.mcreator.survivalreimagined.item.DiamondHammerItem;
