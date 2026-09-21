@@ -149,14 +149,14 @@ public final class RuneEffects {
 			if (!(level instanceof ServerLevel serverLevel) || !isRuneTool(tool)) return;
 
 			if (has(tool, "AmberInfused") && !player.isCreative()) {
-				if (tool.is(net.minecraft.tags.ItemTags.PICKAXES)) {
+				if (isPickaxe(tool)) {
 					spawnAmberOreDrops(serverLevel, player, pos, state, tool);
-				} else if (tool.is(net.minecraft.tags.ItemTags.AXES) && state.is(BlockTags.LOGS)) {
+				} else if (isAxe(tool) && state.is(BlockTags.LOGS)) {
 					int count = 2 + player.getRandom().nextInt(3);
 					serverLevel.addFreshEntity(new ItemEntity(serverLevel,
 							pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 							new ItemStack(Items.CHARCOAL, count)));
-				} else if (tool.is(net.minecraft.tags.ItemTags.SHOVELS) && state.is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "sands")))) {
+				} else if (isShovel(tool) && (state.is(BlockTags.SAND) || state.is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "sands"))))) {
 					int count = 2 + player.getRandom().nextInt(3);
 					serverLevel.addFreshEntity(new ItemEntity(serverLevel,
 							pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
@@ -165,8 +165,8 @@ public final class RuneEffects {
 			}
 
 			if (has(tool, "DiamondInfused")
-					&& tool.is(net.minecraft.tags.ItemTags.PICKAXES)
-					&& state.is(COMMON_ORES)) {
+					&& isPickaxe(tool)
+					&& isOreBlock(state)) {
 				advanceUnbreaking(serverLevel, player, tool);
 			}
 
@@ -177,7 +177,7 @@ public final class RuneEffects {
 					if (repair > 0 && tool.isDamageableItem()) {
 						tool.setDamageValue(Math.max(0, tool.getDamageValue() - repair));
 					}
-					if (state.is(COMMON_ORES)) {
+					if (isOreBlock(state)) {
 						ItemEntity shard = new ItemEntity(serverLevel,
 								pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
 								new ItemStack(SurvivalReimaginedModItems.RUBY_HEART_SHARD.get()));
@@ -187,8 +187,8 @@ public final class RuneEffects {
 				}
 			}
 
-			if (has(tool, "LapisInfused") && tool.is(net.minecraft.tags.ItemTags.PICKAXES)) {
-				boolean ore = state.is(COMMON_ORES);
+			if (has(tool, "LapisInfused") && isPickaxe(tool)) {
+				boolean ore = isOreBlock(state);
 				float chance = ore ? 1.0F : has(tool, "GoldInfused") ? 0.20F : has(tool, "SilverInfused") ? 0.10F : 0.0F;
 				if (chance > 0.0F && player.getRandom().nextFloat() < chance) {
 					int valueMin = has(tool, "GoldInfused") ? 3 : 1;
@@ -586,16 +586,16 @@ public final class RuneEffects {
 		boolean silver = has(tool, "SilverInfused");
 		if (!gold && !silver) return 0.0F;
 
-		if (tool.is(net.minecraft.tags.ItemTags.PICKAXES) && state.is(COMMON_ORES)) {
+		if (isPickaxe(tool) && isOreBlock(state)) {
 			return gold ? 0.20F : 0.10F;
 		}
-		if (tool.is(net.minecraft.tags.ItemTags.AXES) && state.is(BlockTags.LOGS)) {
+		if (isAxe(tool) && state.is(BlockTags.LOGS)) {
 			return gold ? 0.15F : 0.075F;
 		}
-		if (tool.is(net.minecraft.tags.ItemTags.SHOVELS) && state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+		if (isShovel(tool) && state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
 			return gold ? 0.15F : 0.075F;
 		}
-		if (tool.is(net.minecraft.tags.ItemTags.HOES) && state.is(BlockTags.MINEABLE_WITH_HOE)) {
+		if (isHoe(tool) && state.is(BlockTags.MINEABLE_WITH_HOE)) {
 			return gold ? 0.15F : 0.075F;
 		}
 		return 0.0F;
