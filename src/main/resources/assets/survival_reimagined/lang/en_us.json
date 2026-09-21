@@ -362,18 +362,6 @@
   "block.survival_reimagined.spelt_seeds": "Spelt Crop",
   "block.survival_reimagined.hemp": "Hemp",
   "block.survival_reimagined.radiated_shale": "Radiated Shale",
-  "block.survival_reimagined.basalt_stalagmite_base": "Basalt Stalagmite Base",
-  "block.survival_reimagined.basalt_stalagmite_middle": "Basalt Stalagmite Middle",
-  "block.survival_reimagined.basalt_stalagmite_top": "Basalt Stalagmite Tip",
-  "block.survival_reimagined.basalt_stalagtite_base": "Basalt Stalactite Base",
-  "block.survival_reimagined.basalt_stalagtite_middle": "Basalt Stalactite Middle",
-  "block.survival_reimagined.basalt_stalagtite_tip": "Basalt Stalactite Tip",
-  "block.survival_reimagined.kimberlite_stalagmite_base": "Kimberlite Stalagmite Base",
-  "block.survival_reimagined.kimberlite_stalagmite_middle": "Kimberlite Stalagmite Middle",
-  "block.survival_reimagined.kimberlite_stalagmite_top": "Kimberlite Stalagmite Tip",
-  "block.survival_reimagined.kimberlite_stalagtite_base": "Kimberlite Stalactite Base",
-  "block.survival_reimagined.kimberlite_stalagtite_middle": "Kimberlite Stalactite Middle",
-  "block.survival_reimagined.kimberlite_stalagtite_tip": "Kimberlite Stalactite Tip",
   "block.survival_reimagined.cassiterite_ore": "Cassiterite Ore",
   "block.survival_reimagined.deepslate_cassiterite_ore": "Deepslate Cassiterite Ore",
   "block.survival_reimagined.raw_cassiterite_block": "Raw Cassiterite Block",
@@ -387,5 +375,7 @@
   "block.survival_reimagined.manganese_ore": "Manganese Ore",
   "block.survival_reimagined.deepslate_manganese_ore": "Deepslate Manganese Ore",
   "block.survival_reimagined.basalt_manganite_ore": "Basalt Manganite Ore",
-  "item.survival_reimagined.manganese_chunk": "Manganese Chunk"
+  "item.survival_reimagined.manganese_chunk": "Manganese Chunk",
+  "block.survival_reimagined.basalt_pointed_stone": "Basalt Pointed Stone",
+  "block.survival_reimagined.kimberlite_pointed_stone": "Kimberlite Pointed Stone"
 }
