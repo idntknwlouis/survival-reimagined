@@ -80,6 +80,10 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SPELT_SEEDS = cropSeed("spelt_seeds", SurvivalReimaginedModBlocks.SPELT_SEEDS);
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
+	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
+	public static final RegistryEntry<Item> POTATO = plantFood("potato", SurvivalReimaginedModBlocks.POTATOES, 1, 0.6f);
+	public static final RegistryEntry<Item> STRAWBERRY = plantFood("strawberry", SurvivalReimaginedModBlocks.STRAWBERRY_PLANT, 4, 0.3f);
+	public static final RegistryEntry<Item> RASPBERRY = plantFood("raspberry", SurvivalReimaginedModBlocks.RASPBERRY_PLANT, 2, 0.2f);
 	public static final RegistryEntry<Item> CORN = simple("corn");
 	public static final RegistryEntry<Item> CORN_SEEDS = cropSeed("corn_seeds", SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
