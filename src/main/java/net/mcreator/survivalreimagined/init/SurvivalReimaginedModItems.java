@@ -81,6 +81,10 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> WHEAT_FLOUR = simple("wheat_flour");
 	public static final RegistryEntry<Item> RYE_FLOUR = simple("rye_flour");
 	public static final RegistryEntry<Item> SPELT_FLOUR = simple("spelt_flour");
+	public static final RegistryEntry<Item> RYE_BREAD = register("rye_bread", () -> new Item(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.5f).build())));
+	public static final RegistryEntry<Item> SPELT_BREAD = register("spelt_bread", () -> new Item(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.5f).build())));
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
