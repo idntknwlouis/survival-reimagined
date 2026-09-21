@@ -79,8 +79,9 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		graphics.blit(UPGRADE, this.leftPos + 197, this.topPos + 37, 0, 0, 16, 16, 16, 16);
 		graphics.blit(UPGRADE, this.leftPos + 215, this.topPos + 37, 0, 0, 16, 16, 16, 16);
 
-		// Current Fabric port uses the base 3000-capacity tier, matching FuelUpgrade 0.
-		graphics.blit(CAPACITY_MARKER, this.leftPos + 23, this.topPos + 35, 0, 0, 7, 5, 7, 5);
+		int maxFuel = this.menu.getMaxFuelCapacity();
+		int markerY = maxFuel >= 9000 ? 3 : maxFuel >= 6000 ? 19 : 35;
+		graphics.blit(CAPACITY_MARKER, this.leftPos + 23, this.topPos + markerY, 0, 0, 7, 5, 7, 5);
 
 		if (this.menu.getProgress() < 0) {
 			graphics.blit(AAF_X, this.leftPos + 114, this.topPos + 43, 0, 0, 8, 8, 8, 8);
