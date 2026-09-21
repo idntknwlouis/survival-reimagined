@@ -10,6 +10,7 @@ import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.RuneMagicInfuserBlockEntity;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
@@ -25,6 +26,10 @@ public final class SurvivalReimaginedModBlockEntities {
 	public static final RegistryEntry<BlockEntityType<MineralProcessingTableBlockEntity>> MINERAL_PROCESSING_TABLE = register(
 			"mineral_processing_table",
 			BlockEntityType.Builder.of(MineralProcessingTableBlockEntity::new, SurvivalReimaginedModBlocks.MINERAL_PROCESSING_TABLE.get()).build(null)
+	);
+	public static final RegistryEntry<BlockEntityType<MillstoneBlockEntity>> MILLSTONE = register(
+			"millstone",
+			BlockEntityType.Builder.of(MillstoneBlockEntity::new, SurvivalReimaginedModBlocks.MILLSTONE.get()).build(null)
 	);
 	public static final RegistryEntry<BlockEntityType<RuneMagicInfuserBlockEntity>> RUNE_MAGIC_INFUSER = register(
 			"rune_magic_infuser",
