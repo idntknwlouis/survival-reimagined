@@ -21,8 +21,11 @@ repositories {
 loom {
 	runs {
 		client {
-			programArg "--username"
-			programArg "Dev"
+			client()
+			configName = "Minecraft Client"
+			ideConfigGenerated = true
+			runDir = "run"
+			programArgs "--username", "Dev"
 		}
 	}
 }
