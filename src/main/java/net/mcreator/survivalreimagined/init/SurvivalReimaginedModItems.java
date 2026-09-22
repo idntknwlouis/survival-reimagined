@@ -80,6 +80,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> OBSIDIAN_HANDLE = simple("obsidian_handle");
 	public static final RegistryEntry<Item> SMALL_OBSIDIAN_HANDLE = simple("small_obsidian_handle");
 	public static final RegistryEntry<Item> FLINT_TOOL = register("flint_tool", FlintToolItem::new);
+	public static final RegistryEntry<Item> CRIMSON_THREAD = simple("crimson_thread");
 
 	public static final RegistryEntry<Item> WOODEN_HELMET = register("wooden_helmet",
 			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.WOODEN, ArmorItem.Type.HELMET, 7));
