@@ -25,7 +25,7 @@ public final class SurvivalReimaginedModEntities {
 	public static final RegistryEntry<EntityType<SowEntity>> SOW =
 			register("sow", EntityType.Builder.of(SowEntity::new, MobCategory.CREATURE).sized(0.6F, 1.0F));
 	public static final RegistryEntry<EntityType<PigletEntity>> PIGLET =
-			register("piglet", EntityType.Builder.of(PigletEntity::new, MobCategory.CREATURE).sized(0.5F, 0.5F));
+			register("piglet", EntityType.Builder.of(PigletEntity::new, MobCategory.CREATURE).sized(1.0F, 1.0F));
 	public static final RegistryEntry<EntityType<BlackBearEntity>> BLACK_BEAR =
 			register("black_bear", EntityType.Builder.of(BlackBearEntity::new, MobCategory.CREATURE).sized(1.8F, 1.8F));
 	public static final RegistryEntry<EntityType<BrownBearEntity>> BROWN_BEAR =
