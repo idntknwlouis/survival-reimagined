@@ -52,10 +52,12 @@ This table tracks broad feature parity against the original mod.
 | Structures |    ❌    | ❌ | ❌ | ❌ |
 | Biomes |    —     | —  | —  | 🟡 |
 | Radiation Systems |    ❌     | ❌ | ❌ | ❌ |
+| Blood Moon Event | ❌     | ❌ | ❌ | ❌ |
 | Decorative / Utility Blocks |    🟡    | 🟡 | 🟡 | — |
 | Sounds / Particles |    🟡    | — | 🟡 | — |
 | Advancements |    🟡    | 🟡 | 🟡 | — |
 | Compat Content |    ❌     | ❌ | ❌ | ❌ |
+
 
 ## Current Roadmap
 
