@@ -45,6 +45,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		SurvivalReimaginedModSounds.register();
+		SurvivalReimaginedModEntities.register();
 		SurvivalReimaginedModParticleTypes.register();
 		SurvivalReimaginedModBlocks.register();
 		SurvivalReimaginedModArmorMaterials.register();
