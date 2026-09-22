@@ -46,6 +46,7 @@ import net.mcreator.survivalreimagined.item.SurfaceRockItem;
 import net.mcreator.survivalreimagined.item.TinChunkItem;
 import net.mcreator.survivalreimagined.item.TinIngotItem;
 import net.mcreator.survivalreimagined.item.TinNuggetItem;
+import net.mcreator.survivalreimagined.item.SpoilingFoodItem;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
@@ -123,6 +124,12 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> COOKED_RABBIT = food("cooked_rabbit", 4, 6.8f);
 	public static final RegistryEntry<Item> BURNT_RABBIT = food("burnt_rabbit", 1, 0.1f);
 	public static final RegistryEntry<Item> ROTTEN_BIOMATTER = simple("rotten_biomatter");
+	public static final RegistryEntry<Item> SALT = simple("salt");
+	public static final RegistryEntry<Item> CURED_STEAK = stableFood("cured_steak", 10, 0.6f);
+	public static final RegistryEntry<Item> CURED_PORKCHOP = stableFood("cured_porkchop", 10, 0.6f);
+	public static final RegistryEntry<Item> CURED_CHICKEN = stableFood("cured_chicken", 8, 0.5f);
+	public static final RegistryEntry<Item> CURED_MUTTON = stableFood("cured_mutton", 8, 0.5f);
+	public static final RegistryEntry<Item> CURED_RABBIT = stableFood("cured_rabbit", 8, 0.5f);
 
 	public static final RegistryEntry<Item> RAW_COD = food("raw_cod", 2, 0.1f);
 	public static final RegistryEntry<Item> COOKED_COD = food("cooked_cod", 4, 0.3f);
@@ -496,6 +503,11 @@ public final class SurvivalReimaginedModItems {
 	}
 
 	private static RegistryEntry<Item> food(String path, int nutrition, float saturation) {
+		return register(path, () -> new SpoilingFoodItem(new Item.Properties()
+				.food(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build())));
+	}
+
+	private static RegistryEntry<Item> stableFood(String path, int nutrition, float saturation) {
 		return register(path, () -> new Item(new Item.Properties()
 				.food(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build())));
 	}
