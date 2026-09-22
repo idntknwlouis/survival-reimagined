@@ -18,6 +18,7 @@ public final class SurvivalReimaginedModArmorMaterials {
 	public static Holder<ArmorMaterial> WOODEN;
 	public static Holder<ArmorMaterial> BRONZE;
 	public static Holder<ArmorMaterial> STEEL;
+	public static Holder<ArmorMaterial> GAS_MASK;
 
 	private SurvivalReimaginedModArmorMaterials() {
 	}
@@ -68,6 +69,22 @@ public final class SurvivalReimaginedModArmorMaterials {
 				() -> Ingredient.of(new ItemStack(SurvivalReimaginedModItems.STEEL_INGOT.get())),
 				List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath("survival_reimagined", "steel"))),
 				1.0F,
+				0.0F
+		));
+
+		GAS_MASK = register("gas_mask", new ArmorMaterial(
+				Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+					map.put(ArmorItem.Type.BOOTS, 2);
+					map.put(ArmorItem.Type.LEGGINGS, 5);
+					map.put(ArmorItem.Type.CHESTPLATE, 6);
+					map.put(ArmorItem.Type.HELMET, 2);
+					map.put(ArmorItem.Type.BODY, 6);
+				}),
+				9,
+				SoundEvents.ARMOR_EQUIP_LEATHER,
+				() -> Ingredient.of(net.minecraft.world.item.Items.LEATHER),
+				List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath("survival_reimagined", "gasmask"))),
+				0.0F,
 				0.0F
 		));
 	}
