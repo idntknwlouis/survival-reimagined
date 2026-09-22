@@ -21,7 +21,7 @@ import java.util.List;
 
 public class GasMaskItem extends ArmorItem {
 	private static final ResourceLocation RADIATED_FOREST =
-			ResourceLocation.fromNamespaceAndPath("survival_reimagined", "radiated_forest");
+			ResourceLocation.fromNamespaceAndPath("survival_reimagined", "radiant_forest");
 
 	public GasMaskItem() {
 		super(SurvivalReimaginedModArmorMaterials.GAS_MASK, Type.HELMET,
