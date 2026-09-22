@@ -99,6 +99,8 @@ public final class SurvivalReimaginedModTabs {
 		if (path.equals("brown_bear_spawn_egg")) return "04_brown_bear";
 		if (path.equals("crimson_arachnid_spawn_egg")) return "05_crimson_arachnid";
 		if (path.equals("alpha_crimson_arachnid_spawn_egg")) return "06_alpha_crimson_arachnid";
+		if (path.equals("ghost_spawn_egg")) return "07_ghost";
+		if (path.equals("blood_moon_zombie_spawn_egg")) return "08_blood_moon_zombie";
 		return "90_" + path;
 	}
 
