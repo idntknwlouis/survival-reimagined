@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:chicken_carcass"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:entities/chicken"
+}
