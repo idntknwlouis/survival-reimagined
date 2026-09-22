@@ -464,5 +464,11 @@
   "block.survival_reimagined.deepslate_stalagmite_top": "Deepslate Stalagmite",
   "block.survival_reimagined.deepslate_stalagtite_base": "Deepslate Stalagtite",
   "block.survival_reimagined.deepslate_stalagtite_middle": "Deepslate Stalagtite",
-  "block.survival_reimagined.deepslate_stalagtite_tip": "Deepslate Stalagtite"
+  "block.survival_reimagined.deepslate_stalagtite_tip": "Deepslate Stalagtite",
+  "item.survival_reimagined.salt": "Salt",
+  "item.survival_reimagined.cured_steak": "Cured Steak",
+  "item.survival_reimagined.cured_porkchop": "Cured Porkchop",
+  "item.survival_reimagined.cured_chicken": "Cured Chicken",
+  "item.survival_reimagined.cured_mutton": "Cured Mutton",
+  "item.survival_reimagined.cured_rabbit": "Cured Rabbit"
 }
