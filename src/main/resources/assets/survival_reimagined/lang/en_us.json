@@ -494,5 +494,12 @@
   "entity.survival_reimagined.black_bear": "Black Bear",
   "entity.survival_reimagined.brown_bear": "Brown Bear",
   "entity.survival_reimagined.crimson_arachnid": "Crimson Arachnid",
-  "entity.survival_reimagined.alpha_crimson_arachnid": "Alpha Crimson Arachnid"
+  "entity.survival_reimagined.alpha_crimson_arachnid": "Alpha Crimson Arachnid",
+  "item.survival_reimagined.boar_spawn_egg": "Boar Spawn Egg",
+  "item.survival_reimagined.sow_spawn_egg": "Sow Spawn Egg",
+  "item.survival_reimagined.piglet_spawn_egg": "Piglet Spawn Egg",
+  "item.survival_reimagined.black_bear_spawn_egg": "Black Bear Spawn Egg",
+  "item.survival_reimagined.brown_bear_spawn_egg": "Brown Bear Spawn Egg",
+  "item.survival_reimagined.crimson_arachnid_spawn_egg": "Crimson Arachnid Spawn Egg",
+  "item.survival_reimagined.alpha_crimson_arachnid_spawn_egg": "Alpha Crimson Arachnid Spawn Egg"
 }
