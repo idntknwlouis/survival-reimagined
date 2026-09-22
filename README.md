@@ -45,7 +45,7 @@ This table tracks broad feature parity against the original mod.
 | Rune Effects / Tooltips |    ✅     | ✅ | ✅ | — |
 | Fuels / Forge Materials |    ✅     | ✅ | ✅ | ✅ |
 | Crops / Plants |    ✅    | ✅ | ✅ | 🟡 |
-| Food / Cooking |    🟡    | 🟡 | ✅ | — |
+| Food / Cooking |    ✅    | ✅ | ✅ | — |
 | Armor |    ❌    | ❌ | ❌ | — |
 | Mobs / Entities |    ❌    | ❌ | ❌ | ❌ |
 | Carcass / Butchering |    ❌    | ❌ | ❌ | — |
@@ -61,12 +61,11 @@ This table tracks broad feature parity against the original mod.
 
 ## Current Roadmap
 
-1. Finish Food / Cooking parity
-2. Finish Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation Systems
-3. Advancement parity and cleanup
-4. Decorative / utility block parity
-5. Release-ready testing and balancing
-6. Compat content
+1. Finish Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation Systems
+2. Advancement parity and cleanup
+3. Decorative / utility block parity
+4. Release-ready testing and balancing
+5. Compat content
 
 ## World Generation Notes
 
@@ -75,6 +74,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Food / Cooking parity is runtime-verified and complete: crop-derived foods, custom Campfire processing, raw → cooked → burnt → charcoal progression, spoilage states/tooltips, Rotten Biomatter conversion, wooden-container spoilage, cured-meat recipes, and the original vanilla bread/campfire recipe overrides are restored.
 - Food / Cooking parity is actively restored: the custom 5-slot Campfire GUI, directional block/highlight, smoke/crackle effects, fuel handling, staged raw → cooked → burnt → charcoal-powder cooking, Fire Starter support, Block of Charcoal propagation, cooking/spoilage tooltips, and Rotten Biomatter spoilage conversion are now implemented. Basic food/cooking works in-game; the latest spoilage lifecycle still needs runtime verification before this row can be marked complete.
 - Food / Cooking second-half work now includes the original-style custom Campfire framework: a 5-slot Campfire block entity/menu/screen, lit state/light level, starter/fuel tags, persistent fuel meter, raw → cooked → burnt → Charcoal Powder progression, and Campfire registry/data assets. Runtime verification is pending before Food / Cooking is marked complete.
 - Food / Cooking parity is partially restored. The crop-derived first half (wheat/rye/spelt flour-dough-bread, potatoes, and corn foods) is working, and the second half now restores raw/cooked/burnt meat families for beef, mutton, pork, chicken, rabbit, cod, salmon, and equine with original nutrition values, furnace/smoker/campfire cooking paths, overcooking-to-burnt campfire recipes, and common food tags. Original spoilage/decay visuals, cured-meat recipes, and custom campfire processing still remain for a later pass.
