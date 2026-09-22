@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.mcreator.survivalreimagined.block.CarcassPartBlock;
 import net.mcreator.survivalreimagined.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -9,6 +10,7 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
@@ -49,11 +51,11 @@ import java.util.function.Supplier;
 public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> FLINTBLOCK = register("flintblock", FlintblockBlock::new);
 	public static final RegistryEntry<Block> COW_CARCASS = register("cow_carcass", () -> new CarcassBlock(CarcassBlock.Species.COW));
-	public static final RegistryEntry<Block> COW_HEAD = register("cow_head", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
-	public static final RegistryEntry<Block> COW_LEG = register("cow_leg", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
+	public static final RegistryEntry<Block> COW_HEAD = register("cow_head", () -> new CarcassPartBlock(Block.box(4, 0, 5, 12, 8, 11)));
+	public static final RegistryEntry<Block> COW_LEG = register("cow_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 12, 10)));
 	public static final RegistryEntry<Block> PIG_CARCASS = register("pig_carcass", () -> new CarcassBlock(CarcassBlock.Species.PIG));
-	public static final RegistryEntry<Block> PIG_HEAD = register("pig_head", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
-	public static final RegistryEntry<Block> PIG_LEG = register("pig_leg", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
+	public static final RegistryEntry<Block> PIG_HEAD = register("pig_head", () -> new CarcassPartBlock(Shapes.or(Block.box(4, 0, 4, 12, 8, 12), Block.box(6, 1, 3, 10, 4, 4))));
+	public static final RegistryEntry<Block> PIG_LEG = register("pig_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 6, 10)));
 	public static final RegistryEntry<Block> SHEEP_CARCASS = register("sheep_carcass", () -> new CarcassBlock(CarcassBlock.Species.SHEEP));
 	public static final RegistryEntry<Block> SHEEP_HEAD = register("sheep_head", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
 	public static final RegistryEntry<Block> SHEEP_LEG = register("sheep_leg", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
