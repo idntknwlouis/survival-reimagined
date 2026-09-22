@@ -482,5 +482,10 @@
   "item.survival_reimagined.steel_armor_helmet": "Steel Helmet",
   "item.survival_reimagined.steel_armor_chestplate": "Steel Chestplate",
   "item.survival_reimagined.steel_armor_leggings": "Steel Leggings",
-  "item.survival_reimagined.steel_armor_boots": "Steel Boots"
+  "item.survival_reimagined.steel_armor_boots": "Steel Boots",
+  "item.survival_reimagined.gas_mask_helmet": "Gas Mask",
+  "item.survival_reimagined.gas_mask_filter": "Gas Mask Filter",
+  "item.survival_reimagined.used_filter": "Used Gas Mask Filter",
+  "subtitles.gasmask/filter": "Gas Mask's Filter Replaced",
+  "subtitles.gas_mask_breath": "Gas Mask Filters"
 }
