@@ -4,12 +4,17 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticles;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.client.model.ModelGasMask;
+import net.mcreator.survivalreimagined.client.renderer.BoarRenderer;
+import net.mcreator.survivalreimagined.client.renderer.SowRenderer;
+import net.mcreator.survivalreimagined.client.renderer.PigletRenderer;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -24,6 +29,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		SurvivalReimaginedModParticles.register();
 		SurvivalReimaginedModScreens.register();
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BOAR.get(), BoarRenderer::new);
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.SOW.get(), SowRenderer::new);
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.PIGLET.get(), PigletRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(ModelGasMask.LAYER_LOCATION, ModelGasMask::createBodyLayer);
 		ArmorRenderer.register((matrices, vertexConsumers, stack, entity, slot, light, contextModel) -> {
 			if (slot != EquipmentSlot.HEAD) return;
