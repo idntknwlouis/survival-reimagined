@@ -19,12 +19,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -35,9 +33,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
 
-public class CampfireBlock extends BaseEntityBlock {
+public class CampfireBlock extends Block implements EntityBlock {
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	private static final TagKey<Item> STARTERS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "campfire_starters"));
 	private static final VoxelShape SHAPE = Shapes.or(
@@ -60,11 +57,6 @@ public class CampfireBlock extends BaseEntityBlock {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
 		builder.add(LIT);
-	}
-
-	@Override
-	protected RenderShape getRenderShape(BlockState state) {
-		return RenderShape.MODEL;
 	}
 
 	@Override
@@ -93,10 +85,16 @@ public class CampfireBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-		if (level.isClientSide() || type != SurvivalReimaginedModBlockEntities.CAMPFIRE.get()) return null;
-		return (lvl, pos, st, be) -> CampfireBlockEntity.serverTick(lvl, pos, st, (CampfireBlockEntity) be);
+	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(state, level, pos, oldState, moving);
+		if (!level.isClientSide()) level.scheduleTick(pos, this, 1);
+	}
+
+	@Override
+	protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		super.tick(state, level, pos, random);
+		if (level.getBlockEntity(pos) instanceof CampfireBlockEntity campfire) CampfireBlockEntity.serverTick(level, pos, state, campfire);
+		level.scheduleTick(pos, this, 1);
 	}
 
 	@Override
@@ -112,7 +110,6 @@ public class CampfireBlock extends BaseEntityBlock {
 			if (!level.isClientSide()) {
 				level.setBlock(pos, state.setValue(LIT, true), 3);
 				level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
-				if (stack.isDamageableItem()) stack.hurtAndBreak(1, player, player.getEquipmentSlotForItem(stack));
 			}
 			return ItemInteractionResult.SUCCESS;
 		}
