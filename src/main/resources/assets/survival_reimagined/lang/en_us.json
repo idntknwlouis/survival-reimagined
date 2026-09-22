@@ -490,5 +490,7 @@
   "subtitles.gas_mask_breath": "Gas Mask Filters",
   "entity.survival_reimagined.boar": "Boar",
   "entity.survival_reimagined.sow": "Sow",
-  "entity.survival_reimagined.piglet": "Piglet"
+  "entity.survival_reimagined.piglet": "Piglet",
+  "entity.survival_reimagined.black_bear": "Black Bear",
+  "entity.survival_reimagined.brown_bear": "Brown Bear"
 }
