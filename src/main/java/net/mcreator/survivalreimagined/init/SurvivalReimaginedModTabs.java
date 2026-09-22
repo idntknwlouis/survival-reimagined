@@ -40,6 +40,7 @@ public final class SurvivalReimaginedModTabs {
 
 					items.sort(Comparator
 							.comparingInt(SurvivalReimaginedModTabs::creativeGroup)
+							.thenComparing(SurvivalReimaginedModTabs::creativeSortKey)
 							.thenComparing(item -> BuiltInRegistries.ITEM.getKey(item).getPath()));
 
 					items.forEach(output::accept);
@@ -52,49 +53,240 @@ public final class SurvivalReimaginedModTabs {
 	private static int creativeGroup(Item item) {
 		String path = BuiltInRegistries.ITEM.getKey(item).getPath();
 
-		// Vanilla-like ordering inside the single Survival Reimagined tab:
-		// Building Blocks, Natural Blocks, Functional Blocks, Tools & Utilities,
-		// Combat, Food & Drinks, then Ingredients / miscellaneous content.
+		// One-tab equivalent of vanilla's creative categories:
+		// Building Blocks -> Natural Blocks -> Functional Blocks -> Ingredients
+		// -> Tools & Utilities -> Combat -> Food & Drinks -> Misc.
 		if (item instanceof BlockItem) {
-			if (containsAny(path,
-					"ore", "rock", "shale", "basalt", "kimberlite", "stalag", "stalagt",
-					"deposit", "crop", "plant", "vines", "leaves", "sapling", "wild_",
-					"rye_seeds", "spelt_seeds", "wheat_seeds", "potatoes")) {
+			if (containsAny(path, "ore", "rock", "stalag", "stalagt", "deposit", "radiated_shale",
+					"kimberlite", "dark_cinder", "crop", "plant", "vines", "leaves", "sapling", "wild_")) {
 				return 1;
 			}
-			if (containsAny(path,
-					"forge", "table", "millstone", "infuser", "mold", "campfire",
+			if (containsAny(path, "forge", "table", "millstone", "infuser", "mold", "campfire",
 					"crucible", "uranium_rod")) {
 				return 2;
 			}
 			return 0;
 		}
 
-		if (containsAny(path,
-				"pickaxe", "axe", "shovel", "hoe", "knife", "hammer", "saw", "chisel",
-				"fire_starter", "flint_tool")) {
-			return 3;
-		}
+		if (isFood(path)) return 6;
+		if (isCombat(path)) return 5;
+		if (isTool(path)) return 4;
+		if (isIngredient(path)) return 3;
+		return 7;
+	}
 
-		if (containsAny(path, "sword", "helmet", "chestplate", "leggings", "boots")) {
-			return 4;
-		}
+	private static String creativeSortKey(Item item) {
+		String path = BuiltInRegistries.ITEM.getKey(item).getPath();
+		int group = creativeGroup(item);
 
-		if (containsAny(path,
-				"beef", "mutton", "porkchop", "chicken", "rabbit", "cod", "salmon", "equine",
-				"bread", "potato", "corn_on_the_cob", "strawberry", "raspberry",
-				"cured_", "cooked_", "burnt_", "raw_", "rotten_biomatter")) {
-			return 5;
-		}
+		return switch (group) {
+			case 0 -> buildingSortKey(path);
+			case 1 -> naturalSortKey(path);
+			case 2 -> functionalSortKey(path);
+			case 3 -> ingredientSortKey(path);
+			case 4, 5 -> equipmentSortKey(path);
+			case 6 -> foodSortKey(path);
+			default -> "99_" + path;
+		};
+	}
 
-		return 6;
+	private static String buildingSortKey(String path) {
+		if (path.contains("shale")) {
+			return "00_shale_" + stage(path,
+					"shale", "polished_shale", "polished_shale_bricks", "polished_chiseled_shale",
+					"shale_stairs", "shale_slab", "shale_wall",
+					"polished_shale_stairs", "polished_shale_slab", "polished_shale_wall",
+					"polished_shale_brick_stairs", "polished_shale_brick_slab", "poloshed_shale_brick_wall");
+		}
+		if (containsAny(path, "block_of_", "_block", "raw_")) {
+			return "10_storage_" + materialRank(path) + "_" + stage(path,
+					"raw", "rough", "block_of_raw", "block", "plated");
+		}
+		return "90_" + path;
+	}
+
+	private static String naturalSortKey(String path) {
+		if (path.contains("stalag") || path.contains("stalagt")) {
+			return "00_formations_" + geologyRank(path) + "_" + stage(path, "stalagmite_top", "stalagtite_tip");
+		}
+		if (path.contains("rock")) {
+			return "10_rocks_" + rockRank(path);
+		}
+		if (path.contains("ore")) {
+			return "20_ores_" + materialRank(path) + "_" + geologyRank(path) + "_" + path;
+		}
+		if (containsAny(path, "rye", "spelt", "wheat", "potato", "corn", "hemp", "strawberry", "raspberry", "vines")) {
+			return "30_plants_" + cropRank(path) + "_" + path;
+		}
+		if (path.contains("deposit")) return "40_deposits_" + path;
+		return "90_" + path;
+	}
+
+	private static String functionalSortKey(String path) {
+		if (path.equals("forge")) return "00_forge";
+		if (path.equals("metal_refining_table")) return "01_metal_refining_table";
+		if (path.equals("mineral_processing_table")) return "02_mineral_processing_table";
+		if (path.equals("advanced_alloy_forge")) return "03_advanced_alloy_forge";
+		if (path.equals("rune_magic_infuser")) return "04_rune_magic_infuser";
+		if (path.equals("millstone")) return "05_millstone";
+		if (path.equals("campfire")) return "06_campfire";
+		if (path.contains("mold")) return "20_molds_" + toolPartRank(path) + "_" + path;
+		if (path.contains("uranium_rod")) return "30_uranium_rod";
+		return "90_" + path;
+	}
+
+	private static String ingredientSortKey(String path) {
+		if (containsAny(path, "rune", "heart", "sapphire", "ruby", "amber", "emerald", "diamond")
+				&& !containsAny(path, "rough_", "_ore", "_block", "plated_diamond")) {
+			return "20_magic_" + magicRank(path) + "_" + path;
+		}
+		if (containsAny(path, "upgrade", "reactor_rod", "depleted_reactor", "drained_advanced")) {
+			return "30_aaf_" + stage(path, "reactor_rod", "advanced_reactor_rod", "depleted", "drained", "fuel", "yield", "efficiency", "packaging");
+		}
+		if (containsAny(path, "ingot", "nugget", "chunk", "rough_", "raw_", "dust", "powder", "cassiterite",
+				"manganite", "hematite", "magnetite", "calaverite", "pyrolusite", "uranophane", "ilmenite",
+				"anthracite", "liginite", "salt", "quick_lime", "handle", "blade", "_head", "hemp_fiber",
+				"small_stick", "wood_ingot")) {
+			return "00_materials_" + materialRank(path) + "_" + materialStage(path) + "_" + path;
+		}
+		return "90_" + path;
+	}
+
+	private static String equipmentSortKey(String path) {
+		return materialRank(path) + "_" + toolPartRank(path) + "_" + path;
+	}
+
+	private static String foodSortKey(String path) {
+		if (containsAny(path, "rye_bread", "spelt_bread", "potato", "corn_on_the_cob", "strawberry", "raspberry")) {
+			return "00_crops_" + cropRank(path) + "_" + foodStage(path);
+		}
+		if (containsAny(path, "beef", "steak")) return "10_beef_" + foodStage(path);
+		if (path.contains("porkchop")) return "11_pork_" + foodStage(path);
+		if (path.contains("mutton")) return "12_mutton_" + foodStage(path);
+		if (path.contains("chicken")) return "13_chicken_" + foodStage(path);
+		if (path.contains("rabbit")) return "14_rabbit_" + foodStage(path);
+		if (path.contains("cod")) return "15_cod_" + foodStage(path);
+		if (path.contains("salmon")) return "16_salmon_" + foodStage(path);
+		if (path.contains("equine")) return "17_equine_" + foodStage(path);
+		if (path.equals("rotten_biomatter")) return "90_rotten";
+		return "80_" + path;
+	}
+
+	private static boolean isFood(String path) {
+		return containsAny(path,
+				"beef", "steak", "mutton", "porkchop", "chicken", "rabbit", "cod", "salmon", "equine",
+				"bread", "potato", "corn_on_the_cob", "strawberry", "raspberry", "cured_", "rotten_biomatter");
+	}
+
+	private static boolean isTool(String path) {
+		return containsAny(path, "pickaxe", "_axe", "shovel", "_hoe", "knife", "hammer", "saw", "chisel",
+				"fire_starter", "flint_tool");
+	}
+
+	private static boolean isCombat(String path) {
+		return containsAny(path, "sword", "helmet", "chestplate", "leggings", "boots");
+	}
+
+	private static boolean isIngredient(String path) {
+		return containsAny(path,
+				"ingot", "nugget", "chunk", "rough_", "raw_", "dust", "powder", "handle", "blade", "_head",
+				"rune", "upgrade", "reactor_rod", "cassiterite", "manganite", "hematite", "magnetite",
+				"calaverite", "pyrolusite", "uranophane", "ilmenite", "anthracite", "liginite", "sapphire",
+				"ruby", "amber", "heart", "salt", "quick_lime", "hemp_fiber", "small_stick", "wood_ingot");
+	}
+
+	private static String materialRank(String path) {
+		if (path.contains("wood")) return "00_wood";
+		if (path.contains("stone") || path.contains("flint")) return "01_stone";
+		if (path.contains("copper")) return "02_copper";
+		if (path.contains("tin") || path.contains("cassiterite")) return "03_tin";
+		if (path.contains("bronze")) return "04_bronze";
+		if (path.contains("iron") || path.contains("hematite") || path.contains("magnetite")) return "05_iron";
+		if (path.contains("manganese") || path.contains("manganite") || path.contains("pyrolusite")) return "06_manganese";
+		if (path.contains("steel")) return "07_steel";
+		if (path.contains("silver") || path.contains("argentite")) return "08_silver";
+		if (path.contains("gold") || path.contains("calaverite")) return "09_gold";
+		if (path.contains("sapphire")) return "10_sapphire";
+		if (path.contains("ruby")) return "11_ruby";
+		if (path.contains("amber")) return "12_amber";
+		if (path.contains("diamond")) return "13_diamond";
+		if (path.contains("titanium") || path.contains("ilmenite")) return "14_titanium";
+		if (path.contains("uran")) return "15_uranium";
+		if (path.contains("turanite")) return "16_turanite";
+		if (path.contains("netherite")) return "17_netherite";
+		if (path.contains("anthracite")) return "18_anthracite";
+		if (path.contains("liginite")) return "19_liginite";
+		return "90_other";
+	}
+
+	private static String materialStage(String path) {
+		if (path.contains("ore")) return "00_ore";
+		if (path.contains("raw_")) return "01_raw";
+		if (path.contains("chunk")) return "02_chunk";
+		if (path.contains("rough_")) return "03_rough";
+		if (path.contains("ingot")) return "04_ingot";
+		if (path.contains("nugget")) return "05_nugget";
+		if (path.contains("dust") || path.contains("powder")) return "06_dust";
+		if (path.contains("handle")) return "07_handle";
+		if (path.contains("blade") || path.contains("_head")) return "08_part";
+		return "09_misc";
+	}
+
+	private static String toolPartRank(String path) {
+		if (path.contains("sword")) return "00_sword";
+		if (path.contains("pickaxe")) return "01_pickaxe";
+		if (path.contains("_axe")) return "02_axe";
+		if (path.contains("shovel")) return "03_shovel";
+		if (path.contains("_hoe")) return "04_hoe";
+		if (path.contains("knife")) return "05_knife";
+		if (path.contains("hammer")) return "06_hammer";
+		if (path.contains("saw")) return "07_saw";
+		if (path.contains("chisel")) return "08_chisel";
+		if (path.contains("helmet")) return "20_helmet";
+		if (path.contains("chestplate")) return "21_chestplate";
+		if (path.contains("leggings")) return "22_leggings";
+		if (path.contains("boots")) return "23_boots";
+		return "90_misc";
+	}
+
+	private static String geologyRank(String path) {
+		if (path.startsWith("stone_")) return "00_stone";
+		if (path.startsWith("deepslate_")) return "01_deepslate";
+		if (path.startsWith("shale_")) return "02_shale";
+		if (path.startsWith("basalt_")) return "03_basalt";
+		if (path.startsWith("kimberlite_") || path.equals("kimberlite")) return "04_kimberlite";
+		return "90_other";
+	}
+
+	private static String rockRank(String path) {
+		return stage(path, "stone", "andesite", "granite", "diorite", "dripstone", "calcite", "tuff",
+				"mossy", "deepslate", "basalt", "blackstone", "netherrack", "end_stone", "obsidian", "kimberlite");
+	}
+
+	private static String cropRank(String path) {
+		return stage(path, "wheat", "rye", "spelt", "potato", "corn", "hemp", "strawberry", "raspberry");
+	}
+
+	private static String foodStage(String path) {
+		return stage(path, "raw_", "beef", "cooked_", "burnt_", "charred_", "cured_");
+	}
+
+	private static String magicRank(String path) {
+		return stage(path, "wooden_rune", "empty_silver", "empty_gold", "silver_", "gold_", "sapphire", "ruby", "amber", "heart");
+	}
+
+	private static String stage(String path, String... values) {
+		for (int i = 0; i < values.length; i++) {
+			if (path.contains(values[i])) {
+				return String.format("%02d_%s", i, path);
+			}
+		}
+		return "99_" + path;
 	}
 
 	private static boolean containsAny(String path, String... values) {
 		for (String value : values) {
-			if (path.contains(value)) {
-				return true;
-			}
+			if (path.contains(value)) return true;
 		}
 		return false;
 	}
