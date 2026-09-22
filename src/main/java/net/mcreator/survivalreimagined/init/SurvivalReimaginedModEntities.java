@@ -29,9 +29,9 @@ public final class SurvivalReimaginedModEntities {
 	public static final RegistryEntry<EntityType<GhostEntity>> GHOST =
 			register("ghost", EntityType.Builder.of(GhostEntity::new, MobCategory.MONSTER).sized(0.6F, 1.8F));
 	public static final RegistryEntry<EntityType<CrimsonArachnidEntity>> CRIMSON_ARACHNID =
-			register("crimson_arachnid", EntityType.Builder.of(CrimsonArachnidEntity::new, MobCategory.MONSTER).sized(1.4F, 0.9F));
+			register("crimson_arachnid", EntityType.Builder.of(CrimsonArachnidEntity::new, MobCategory.MONSTER).sized(0.84F, 0.54F));
 	public static final RegistryEntry<EntityType<AlphaCrimsonArachnidEntity>> ALPHA_CRIMSON_ARACHNID =
-			register("alpha_crimson_arachnid", EntityType.Builder.of(AlphaCrimsonArachnidEntity::new, MobCategory.MONSTER).sized(1.4F, 0.9F));
+			register("alpha_crimson_arachnid", EntityType.Builder.of(AlphaCrimsonArachnidEntity::new, MobCategory.MONSTER).sized(1.68F, 1.08F));
 	public static final RegistryEntry<EntityType<BoarEntity>> BOAR =
 			register("boar", EntityType.Builder.of(BoarEntity::new, MobCategory.CREATURE).sized(1.0F, 1.0F));
 	public static final RegistryEntry<EntityType<SowEntity>> SOW =
