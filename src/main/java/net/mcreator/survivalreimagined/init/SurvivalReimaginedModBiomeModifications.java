@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
@@ -85,6 +86,20 @@ public final class SurvivalReimaginedModBiomeModifications {
 				Biomes.OLD_GROWTH_PINE_TAIGA,
 				Biomes.OLD_GROWTH_SPRUCE_TAIGA,
 				Biomes.TAIGA);
+
+		BiomeModifications.addSpawn(
+				BiomeSelectors.includeByKey(
+						Biomes.BIRCH_FOREST, Biomes.DARK_FOREST, Biomes.FOREST,
+						Biomes.OLD_GROWTH_BIRCH_FOREST, Biomes.OLD_GROWTH_PINE_TAIGA,
+						Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.SNOWY_TAIGA, Biomes.TAIGA,
+						Biomes.MEADOW, Biomes.JAGGED_PEAKS, Biomes.STONY_PEAKS),
+				MobCategory.CREATURE, SurvivalReimaginedModEntities.BLACK_BEAR.get(), 20, 1, 2);
+
+		BiomeModifications.addSpawn(
+				BiomeSelectors.includeByKey(
+						Biomes.TAIGA, Biomes.SNOWY_TAIGA,
+						Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA),
+				MobCategory.CREATURE, SurvivalReimaginedModEntities.BROWN_BEAR.get(), 20, 1, 2);
 	}
 
 	private static void addRadiantForestUndergroundDecoration(String path) {
