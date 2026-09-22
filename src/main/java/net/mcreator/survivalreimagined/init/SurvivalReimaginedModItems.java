@@ -6,6 +6,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Block;
 
@@ -106,6 +107,21 @@ public final class SurvivalReimaginedModItems {
 			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.LEGGINGS, 16));
 	public static final RegistryEntry<Item> STEEL_ARMOR_BOOTS = register("steel_armor_boots",
 			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.BOOTS, 16));
+
+	public static final RegistryEntry<Item> BOAR_SPAWN_EGG = register("boar_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.BOAR.get(), -13949662, -14410214, new Item.Properties()));
+	public static final RegistryEntry<Item> SOW_SPAWN_EGG = register("sow_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.SOW.get(), -13949662, -14410214, new Item.Properties()));
+	public static final RegistryEntry<Item> PIGLET_SPAWN_EGG = register("piglet_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.PIGLET.get(), -12111577, -13886446, new Item.Properties()));
+	public static final RegistryEntry<Item> BLACK_BEAR_SPAWN_EGG = register("black_bear_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.BLACK_BEAR.get(), -13882324, -15790321, new Item.Properties()));
+	public static final RegistryEntry<Item> BROWN_BEAR_SPAWN_EGG = register("brown_bear_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.BROWN_BEAR.get(), -11386310, -14411245, new Item.Properties()));
+	public static final RegistryEntry<Item> CRIMSON_ARACHNID_SPAWN_EGG = register("crimson_arachnid_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.CRIMSON_ARACHNID.get(), -14941694, -426884, new Item.Properties()));
+	public static final RegistryEntry<Item> ALPHA_CRIMSON_ARACHNID_SPAWN_EGG = register("alpha_crimson_arachnid_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.ALPHA_CRIMSON_ARACHNID.get(), -14941694, -426884, new Item.Properties()));
 
 	public static final RegistryEntry<Item> GAS_MASK_HELMET = register("gas_mask_helmet", GasMaskItem::new);
 	public static final RegistryEntry<Item> GAS_MASK_FILTER = register("gas_mask_filter", GasMaskFilterItem::new);
