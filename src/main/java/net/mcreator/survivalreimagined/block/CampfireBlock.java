@@ -41,12 +41,18 @@ public class CampfireBlock extends Block implements EntityBlock {
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static final TagKey<Item> STARTERS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "campfire_starters"));
-	private static final VoxelShape SHAPE = Shapes.or(
+	private static final VoxelShape SHAPE_NORTH_SOUTH = Shapes.or(
 			box(1, 0, 0, 5, 4, 16),
 			box(0, 3, 11, 16, 7, 15),
 			box(11, 0, 0, 15, 4, 16),
 			box(0, 3, 1, 16, 7, 5),
 			box(5, 0, 0, 11, 1, 16));
+	private static final VoxelShape SHAPE_EAST_WEST = Shapes.or(
+			box(0, 0, 11, 16, 4, 15),
+			box(11, 3, 0, 15, 7, 16),
+			box(0, 0, 1, 16, 4, 5),
+			box(1, 3, 0, 5, 7, 16),
+			box(0, 0, 5, 16, 1, 11));
 
 	public CampfireBlock() {
 		super(BlockBehaviour.Properties.of()
@@ -72,7 +78,7 @@ public class CampfireBlock extends Block implements EntityBlock {
 
 	@Override
 	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return SHAPE;
+		return state.getValue(FACING).getAxis() == Direction.Axis.X ? SHAPE_EAST_WEST : SHAPE_NORTH_SOUTH;
 	}
 
 	@Override
