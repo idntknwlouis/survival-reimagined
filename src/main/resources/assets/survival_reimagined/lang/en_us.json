@@ -429,5 +429,7 @@
   "item.survival_reimagined.burnt_salmon": "Burnt Salmon",
   "item.survival_reimagined.raw_equine": "Raw Equine",
   "item.survival_reimagined.cooked_equine": "Cooked Equine",
-  "item.survival_reimagined.burnt_equine": "Burnt Equine"
+  "item.survival_reimagined.burnt_equine": "Burnt Equine",
+  "block.survival_reimagined.thin_radiated_vines_tip": "Thin Radiated Vine",
+  "block.survival_reimagined.thin_radiated_vines": "Thin Radiated Vine"
 }
