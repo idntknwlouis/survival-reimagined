@@ -33,7 +33,8 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
 
 public class CarcassBlock extends Block implements EntityBlock {
 	public enum Species {
-		COW
+		COW,
+		PIG
 	}
 
 	public static final IntegerProperty CARCASS_STATE = IntegerProperty.create("carcass_state", 0, 4);
@@ -108,21 +109,21 @@ public class CarcassBlock extends Block implements EntityBlock {
 		carcass.resetProgress();
 		if (stage == 0) {
 			level.setBlock(pos, state.setValue(CARCASS_STATE, 1), 3);
-			Block.popResource(level, pos.above(), cowHide());
+			Block.popResource(level, pos.above(), hide());
 			level.playSound(null, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.BLOCKS, 1.0F, 1.0F);
 		} else if (stage == 1) {
 			level.setBlock(pos, state.setValue(CARCASS_STATE, 2), 3);
 			for (int i = 0; i < 4; i++) {
-				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModBlocks.COW_LEG.get()));
+				Block.popResource(level, pos, leg());
 			}
 			level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 		} else if (stage == 2) {
 			level.setBlock(pos, state.setValue(CARCASS_STATE, 3), 3);
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModBlocks.COW_HEAD.get()));
+			Block.popResource(level, pos, head());
 			level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 		} else if (stage == 3) {
 			level.setBlock(pos, state.setValue(CARCASS_STATE, 4), 3);
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.BEEF.get()));
+			Block.popResource(level, pos, meat());
 			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LUNGS.get()));
 			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.HEART_ITEM.get()));
 			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LIVER.get()));
@@ -134,9 +135,31 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return ItemInteractionResult.SUCCESS;
 	}
 
-	private ItemStack cowHide() {
+	private ItemStack hide() {
 		return switch (species) {
 			case COW -> new ItemStack(SurvivalReimaginedModItems.COW_HIDE.get());
+			case PIG -> new ItemStack(SurvivalReimaginedModItems.PIG_SKIN.get());
+		};
+	}
+
+	private ItemStack leg() {
+		return switch (species) {
+			case COW -> new ItemStack(SurvivalReimaginedModBlocks.COW_LEG.get());
+			case PIG -> new ItemStack(SurvivalReimaginedModBlocks.PIG_LEG.get());
+		};
+	}
+
+	private ItemStack head() {
+		return switch (species) {
+			case COW -> new ItemStack(SurvivalReimaginedModBlocks.COW_HEAD.get());
+			case PIG -> new ItemStack(SurvivalReimaginedModBlocks.PIG_HEAD.get());
+		};
+	}
+
+	private ItemStack meat() {
+		return switch (species) {
+			case COW -> new ItemStack(SurvivalReimaginedModItems.BEEF.get());
+			case PIG -> new ItemStack(SurvivalReimaginedModItems.RAW_PORKCHOP.get());
 		};
 	}
 
