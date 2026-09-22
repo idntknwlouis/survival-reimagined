@@ -67,7 +67,7 @@ public class SowEntity extends Animal {
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
-		return Animal.createAnimalAttributes()
+		return Mob.createMobAttributes()
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
 				.add(Attributes.MAX_HEALTH, 5.0D)
 				.add(Attributes.ARMOR, 0.0D)
