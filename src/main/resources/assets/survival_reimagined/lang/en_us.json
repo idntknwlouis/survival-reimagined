@@ -430,6 +430,9 @@
   "item.survival_reimagined.raw_equine": "Raw Equine",
   "item.survival_reimagined.cooked_equine": "Cooked Equine",
   "item.survival_reimagined.burnt_equine": "Burnt Equine",
-  "block.survival_reimagined.thin_radiated_vines_tip": "Thin Radiated Vine",
-  "block.survival_reimagined.thin_radiated_vines": "Thin Radiated Vine"
+  "block.survival_reimagined.campfire": "Campfire",
+  "item.survival_reimagined.charcoal_powder": "Charcoal Powder",
+  "item.survival_reimagined.fire_starter": "Fire Starter",
+  "block.survival_reimagined.block_of_charcoal": "Block Of Charcoal",
+  "item.survival_reimagined.rotten_biomatter": "Rotten Biomatter"
 }

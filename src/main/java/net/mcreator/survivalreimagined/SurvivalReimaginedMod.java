@@ -18,6 +18,7 @@ import net.minecraft.server.MinecraftServer;
 
 import net.mcreator.survivalreimagined.util.RuneEffects;
 import net.mcreator.survivalreimagined.util.CropEffects;
+import net.mcreator.survivalreimagined.util.FoodSpoilage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -102,6 +103,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 	}
 
 	private static void onServerTick(MinecraftServer server) {
+		FoodSpoilage.tick(server);
 		long currentTick = server.getTickCount();
 
 		ScheduledWork work;

@@ -10,6 +10,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
 import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
+import net.mcreator.survivalreimagined.util.FoodTooltip;
 
 public class SurvivalReimaginedModClient implements ClientModInitializer {
 	@Override
@@ -17,6 +18,7 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		SurvivalReimaginedModParticles.register();
 		SurvivalReimaginedModScreens.register();
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.URANIUM_ROD.get(), RenderType.translucent());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.CAMPFIRE.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RYE_SEEDS.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.SPELT_SEEDS.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.HEMP.get(), RenderType.cutout());
@@ -37,6 +39,7 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
+			FoodTooltip.append(stack, lines);
 		});
 	}
 }

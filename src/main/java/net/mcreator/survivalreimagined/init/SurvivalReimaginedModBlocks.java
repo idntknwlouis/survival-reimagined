@@ -1,6 +1,5 @@
 package net.mcreator.survivalreimagined.init;
 
-import net.mcreator.survivalreimagined.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
@@ -12,6 +11,36 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.block.AndesiteRockBlockBlock;
+import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
+import net.mcreator.survivalreimagined.block.BlockOfRawTinBlock;
+import net.mcreator.survivalreimagined.block.BlockOfTinBlock;
+import net.mcreator.survivalreimagined.block.CopperRockBlockBlock;
+import net.mcreator.survivalreimagined.block.DeepslateTinOreBlock;
+import net.mcreator.survivalreimagined.block.FlintblockBlock;
+import net.mcreator.survivalreimagined.block.ForgeBlock;
+import net.mcreator.survivalreimagined.block.GeologySpikeBlock;
+import net.mcreator.survivalreimagined.block.IngotMoldBlock;
+import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
+import net.mcreator.survivalreimagined.block.MineralProcessingTableBlock;
+import net.mcreator.survivalreimagined.block.MillstoneBlock;
+import net.mcreator.survivalreimagined.block.RuneMagicInfuserBlock;
+import net.mcreator.survivalreimagined.block.ToolMoldBlock;
+import net.mcreator.survivalreimagined.block.ClayMoldBlock;
+import net.mcreator.survivalreimagined.block.PlateBlock;
+import net.mcreator.survivalreimagined.block.StoneRockBlocBlock;
+import net.mcreator.survivalreimagined.block.ShaleBlock;
+import net.mcreator.survivalreimagined.block.ShaleRockBlock;
+import net.mcreator.survivalreimagined.block.WildPlantBlock;
+import net.mcreator.survivalreimagined.block.CornUpperBlock;
+import net.mcreator.survivalreimagined.block.CornCropBlock;
+import net.mcreator.survivalreimagined.block.CampfireBlock;
+import net.mcreator.survivalreimagined.block.BlockOfCharcoalBlock;
+import net.mcreator.survivalreimagined.block.BerryPlantBlock;
+import net.mcreator.survivalreimagined.block.SimpleAgeCropBlock;
+import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
+import net.mcreator.survivalreimagined.block.TinOreBlock;
+import net.mcreator.survivalreimagined.block.UraniumRodBlock;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
@@ -78,6 +107,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TIN = register("block_of_raw_tin", BlockOfRawTinBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
 	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
+	public static final RegistryEntry<Block> CAMPFIRE = register("campfire", CampfireBlock::new);
+	public static final RegistryEntry<Block> BLOCK_OF_CHARCOAL = register("block_of_charcoal", BlockOfCharcoalBlock::new);
 	public static final RegistryEntry<Block> METAL_REFINING_TABLE = register("metal_refining_table", MetalRefiningTableBlock::new);
 	public static final RegistryEntry<Block> MINERAL_PROCESSING_TABLE = register("mineral_processing_table", MineralProcessingTableBlock::new);
 	public static final RegistryEntry<Block> MILLSTONE = register("millstone", MillstoneBlock::new);
@@ -213,12 +244,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_ROCK_BLOCK = register("basalt_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.BASALT_ROCK.get()));
 	public static final RegistryEntry<Block> DEEPSLATE_ROCK_BLOCK = register("deepslate_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DEEPSLATE_ROCK.get()));
 
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = register("thin_radiated_vines_tip", () -> new VineHeadBlock(SurvivalReimaginedModBlocks::getRadiatedHead));
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = register("thin_radiated_vines", () -> new VineBodyBlock(SurvivalReimaginedModBlocks::getRadiatedBody));
-
-
-
-
 	private SurvivalReimaginedModBlocks() {
 	}
 
@@ -226,13 +251,6 @@ public final class SurvivalReimaginedModBlocks {
 		var id = SurvivalReimaginedMod.asResource(path);
 		Block block = Registry.register(BuiltInRegistries.BLOCK, id, factory.get());
 		return new RegistryEntry<>(id, block);
-	}
-
-	private static RegistryEntry<Block> getRadiatedHead() {
-		return THIN_RADIATED_VINES_BODY;
-	}
-	private static RegistryEntry<Block> getRadiatedBody() {
-		return THIN_RADIATED_VINES_HEAD;
 	}
 
 	public static void register() {

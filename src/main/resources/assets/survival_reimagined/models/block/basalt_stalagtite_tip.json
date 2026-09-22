@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:custom/stalagtite_top",
+  "parent": "survival_reimagined:custom/pointed_stone_down_tip",
   "textures": {
     "all": "minecraft:block/smooth_basalt",
     "particle": "minecraft:block/smooth_basalt"
