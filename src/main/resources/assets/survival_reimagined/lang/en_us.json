@@ -506,5 +506,14 @@
   "entity.survival_reimagined.blood_moon_zombie": "Blood Moon Zombie",
   "item.survival_reimagined.ghost_spawn_egg": "Ghost Spawn Egg",
   "item.survival_reimagined.blood_moon_zombie_spawn_egg": "Blood Moon Zombie Spawn Egg",
-  "item.survival_reimagined.crimson_thread": "Crimson Thread"
+  "item.survival_reimagined.crimson_thread": "Crimson Thread",
+  "block.survival_reimagined.cow_carcass": "Cow Carcass",
+  "block.survival_reimagined.cow_head": "Cow Head",
+  "block.survival_reimagined.cow_leg": "Cow Leg",
+  "item.survival_reimagined.cow_hide": "Cow Hide",
+  "item.survival_reimagined.lungs": "Lungs",
+  "item.survival_reimagined.heart_item": "Heart",
+  "item.survival_reimagined.liver": "Liver",
+  "item.survival_reimagined.stomach": "Stomach",
+  "item.survival_reimagined.intestines": "Intestines"
 }
