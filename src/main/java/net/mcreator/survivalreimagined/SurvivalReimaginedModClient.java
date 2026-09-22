@@ -16,6 +16,8 @@ import net.mcreator.survivalreimagined.client.renderer.SowRenderer;
 import net.mcreator.survivalreimagined.client.renderer.PigletRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BlackBearRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BrownBearRenderer;
+import net.mcreator.survivalreimagined.client.renderer.CrimsonArachnidRenderer;
+import net.mcreator.survivalreimagined.client.renderer.AlphaCrimsonArachnidRenderer;
 import net.mcreator.survivalreimagined.client.model.Modelbear;
 import net.mcreator.survivalreimagined.client.model.Modelboar;
 import net.mcreator.survivalreimagined.client.model.Modelsow;
@@ -40,6 +42,8 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.PIGLET.get(), PigletRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BLACK_BEAR.get(), BlackBearRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BROWN_BEAR.get(), BrownBearRenderer::new);
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.CRIMSON_ARACHNID.get(), CrimsonArachnidRenderer::new);
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.ALPHA_CRIMSON_ARACHNID.get(), AlphaCrimsonArachnidRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(Modelbear.LAYER_LOCATION, Modelbear::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(Modelboar.LAYER_LOCATION, Modelboar::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(Modelsow.LAYER_LOCATION, Modelsow::createBodyLayer);
