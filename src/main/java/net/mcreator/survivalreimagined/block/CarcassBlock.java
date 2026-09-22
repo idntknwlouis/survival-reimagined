@@ -11,6 +11,7 @@ import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -35,7 +36,9 @@ public class CarcassBlock extends Block implements EntityBlock {
 	public enum Species {
 		COW,
 		PIG,
-		SHEEP
+		SHEEP,
+		GOAT,
+		CHICKEN
 	}
 
 	public static final IntegerProperty CARCASS_STATE = IntegerProperty.create("carcass_state", 0, 4);
@@ -68,6 +71,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case COW -> cowShape(stage);
 			case PIG -> pigShape(stage);
 			case SHEEP -> sheepShape(stage);
+			case GOAT -> goatShape(stage);
+			case CHICKEN -> chickenShape(stage);
 		};
 	}
 
@@ -155,6 +160,56 @@ public class CarcassBlock extends Block implements EntityBlock {
 		);
 	}
 
+	private static VoxelShape goatShape(int stage) {
+		if (stage == 1) {
+			return Shapes.or(
+					box(2, 0, -1, 13, 9, 15),
+					box(13, 1, 10, 19, 4, 13),
+					box(13, 5, 10, 19, 8, 13),
+					box(9, 5, 0, 19, 8, 3),
+					box(-9, 5, -2, -2, 7, 0),
+					box(-9, 2, -2, -2, 4, 0),
+					box(9, 1, 0, 19, 4, 3),
+					box(-2, 2, -10, 5, 7, 0)
+			);
+		}
+		if (stage == 2) {
+			return Shapes.or(
+					box(2, 0, -1, 13, 9, 15),
+					box(-9, 5, -2, -2, 7, 0),
+					box(-9, 2, -2, -2, 4, 0),
+					box(-2, 2, -10, 5, 7, 0)
+			);
+		}
+		if (stage == 3 || stage == 4) {
+			return box(2, 0, -1, 13, 9, 15);
+		}
+		return Shapes.or(
+				box(2, 0, -1, 13, 9, 15),
+				box(1, -1, -2, 15, 10, 9),
+				box(13, 1, 10, 19, 4, 13),
+				box(13, 5, 10, 19, 8, 13),
+				box(9, 5, 0, 19, 8, 3),
+				box(-1, -1, -3, 1, 2, -2),
+				box(-1, 7, -3, 1, 10, -2),
+				box(-9, 5, -2, -2, 7, 0),
+				box(-9, 2, -2, -2, 4, 0),
+				box(9, 1, 0, 19, 4, 3),
+				box(-2, 2, -10, 5, 7, 0)
+		);
+	}
+
+	private static VoxelShape chickenShape(int stage) {
+		return Shapes.or(
+				box(4.17525, -0.16789, 5.34315, 10.17525, 5.83211, 13.34315),
+				box(5.83211, -1.16789, 6, 9.83211, -0.16789, 12),
+				box(5.83211, 5.83211, 6, 9.83211, 6.83211, 12),
+				box(1.83211, 0.83211, 3, 7.83211, 4.83211, 6),
+				box(5.83211, 1.83211, 2, 7.83211, 3.83211, 4),
+				box(3.83211, 0.83211, 1, 5.83211, 4.83211, 3)
+		);
+	}
+
 	@Override
 	protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
@@ -183,6 +238,30 @@ public class CarcassBlock extends Block implements EntityBlock {
 		}
 
 		int stage = state.getValue(CARCASS_STATE);
+
+		if (species == Species.CHICKEN) {
+			if (stage != 0 || !stack.isEmpty()) {
+				return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+			}
+
+			player.swing(hand, true);
+			if (level.isClientSide()) {
+				return ItemInteractionResult.SUCCESS;
+			}
+
+			level.playSound(null, pos, SoundEvents.WOOL_HIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+			if (carcass.incrementProgress() >= 10) {
+				carcass.resetProgress();
+				level.setBlock(pos, state.setValue(CARCASS_STATE, 1), 3);
+				int feathers = 3 + level.random.nextInt(7);
+				for (int i = 0; i < feathers; i++) {
+					Block.popResource(level, pos, new ItemStack(Items.FEATHER));
+				}
+				level.playSound(null, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+			}
+			return ItemInteractionResult.SUCCESS;
+		}
+
 		boolean knifeStage = stack.is(KNIVES) && (stage == 0 || stage == 3);
 		boolean sawStage = stack.is(SAWS) && (stage == 1 || stage == 2);
 		if (!knifeStage && !sawStage) {
@@ -235,6 +314,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case COW -> new ItemStack(SurvivalReimaginedModItems.COW_HIDE.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModItems.PIG_SKIN.get());
 			case SHEEP -> new ItemStack(SurvivalReimaginedModItems.SHEEP_HIDE.get());
+			case GOAT -> new ItemStack(SurvivalReimaginedModItems.GOAT_HIDE.get());
+			case CHICKEN -> new ItemStack(Items.FEATHER);
 		};
 	}
 
@@ -243,6 +324,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case COW -> new ItemStack(SurvivalReimaginedModBlocks.COW_LEG.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModBlocks.PIG_LEG.get());
 			case SHEEP -> new ItemStack(SurvivalReimaginedModBlocks.SHEEP_LEG.get());
+			case GOAT -> new ItemStack(SurvivalReimaginedModBlocks.GOAT_LEG.get());
+			case CHICKEN -> ItemStack.EMPTY;
 		};
 	}
 
@@ -251,6 +334,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case COW -> new ItemStack(SurvivalReimaginedModBlocks.COW_HEAD.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModBlocks.PIG_HEAD.get());
 			case SHEEP -> new ItemStack(SurvivalReimaginedModBlocks.SHEEP_HEAD.get());
+			case GOAT -> new ItemStack(SurvivalReimaginedModBlocks.GOAT_HEAD.get());
+			case CHICKEN -> ItemStack.EMPTY;
 		};
 	}
 
@@ -259,6 +344,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case COW -> new ItemStack(SurvivalReimaginedModItems.BEEF.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModItems.RAW_PORKCHOP.get());
 			case SHEEP -> new ItemStack(SurvivalReimaginedModItems.RAW_MUTTON.get());
+			case GOAT -> new ItemStack(SurvivalReimaginedModItems.RAW_MUTTON.get());
+			case CHICKEN -> new ItemStack(SurvivalReimaginedModItems.RAW_CHICKEN.get());
 		};
 	}
 
