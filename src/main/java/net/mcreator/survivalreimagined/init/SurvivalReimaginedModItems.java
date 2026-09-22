@@ -47,6 +47,8 @@ import net.mcreator.survivalreimagined.item.TinChunkItem;
 import net.mcreator.survivalreimagined.item.TinIngotItem;
 import net.mcreator.survivalreimagined.item.TinNuggetItem;
 import net.mcreator.survivalreimagined.item.SpoilingFoodItem;
+import net.mcreator.survivalreimagined.item.SurvivalArmorItem;
+import net.minecraft.world.item.ArmorItem;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
@@ -75,6 +77,33 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> OBSIDIAN_HANDLE = simple("obsidian_handle");
 	public static final RegistryEntry<Item> SMALL_OBSIDIAN_HANDLE = simple("small_obsidian_handle");
 	public static final RegistryEntry<Item> FLINT_TOOL = register("flint_tool", FlintToolItem::new);
+
+	public static final RegistryEntry<Item> WOODEN_HELMET = register("wooden_helmet",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.WOODEN, ArmorItem.Type.HELMET, 7));
+	public static final RegistryEntry<Item> WOODEN_CHESTPLATE = register("wooden_chestplate",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.WOODEN, ArmorItem.Type.CHESTPLATE, 7));
+	public static final RegistryEntry<Item> WOODEN_LEGGINGS = register("wooden_leggings",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.WOODEN, ArmorItem.Type.LEGGINGS, 7));
+	public static final RegistryEntry<Item> WOODEN_BOOTS = register("wooden_boots",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.WOODEN, ArmorItem.Type.BOOTS, 7));
+
+	public static final RegistryEntry<Item> BRONZE_ARMOR_HELMET = register("bronze_armor_helmet",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.BRONZE, ArmorItem.Type.HELMET, 15));
+	public static final RegistryEntry<Item> BRONZE_ARMOR_CHESTPLATE = register("bronze_armor_chestplate",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.BRONZE, ArmorItem.Type.CHESTPLATE, 15));
+	public static final RegistryEntry<Item> BRONZE_ARMOR_LEGGINGS = register("bronze_armor_leggings",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.BRONZE, ArmorItem.Type.LEGGINGS, 15));
+	public static final RegistryEntry<Item> BRONZE_ARMOR_BOOTS = register("bronze_armor_boots",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.BRONZE, ArmorItem.Type.BOOTS, 15));
+
+	public static final RegistryEntry<Item> STEEL_ARMOR_HELMET = register("steel_armor_helmet",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.HELMET, 16));
+	public static final RegistryEntry<Item> STEEL_ARMOR_CHESTPLATE = register("steel_armor_chestplate",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.CHESTPLATE, 16));
+	public static final RegistryEntry<Item> STEEL_ARMOR_LEGGINGS = register("steel_armor_leggings",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.LEGGINGS, 16));
+	public static final RegistryEntry<Item> STEEL_ARMOR_BOOTS = register("steel_armor_boots",
+			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.BOOTS, 16));
 	public static final RegistryEntry<Item> RYE = simple("rye");
 	public static final RegistryEntry<Item> RYE_SEEDS = cropSeed("rye_seeds", SurvivalReimaginedModBlocks.RYE_SEEDS);
 	public static final RegistryEntry<Item> SPELT = simple("spelt");
