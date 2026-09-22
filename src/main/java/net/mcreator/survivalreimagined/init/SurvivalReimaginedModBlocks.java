@@ -34,6 +34,7 @@ import net.mcreator.survivalreimagined.block.ShaleRockBlock;
 import net.mcreator.survivalreimagined.block.WildPlantBlock;
 import net.mcreator.survivalreimagined.block.CornUpperBlock;
 import net.mcreator.survivalreimagined.block.CornCropBlock;
+import net.mcreator.survivalreimagined.block.CampfireBlock;
 import net.mcreator.survivalreimagined.block.BerryPlantBlock;
 import net.mcreator.survivalreimagined.block.SimpleAgeCropBlock;
 import net.mcreator.survivalreimagined.block.SurfaceRockBlock;
@@ -105,6 +106,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TIN = register("block_of_raw_tin", BlockOfRawTinBlock::new);
 	public static final RegistryEntry<Block> BLOCK_OF_TIN = register("block_of_tin", BlockOfTinBlock::new);
 	public static final RegistryEntry<Block> FORGE = register("forge", ForgeBlock::new);
+	public static final RegistryEntry<Block> CAMPFIRE = register("campfire", CampfireBlock::new);
 	public static final RegistryEntry<Block> METAL_REFINING_TABLE = register("metal_refining_table", MetalRefiningTableBlock::new);
 	public static final RegistryEntry<Block> MINERAL_PROCESSING_TABLE = register("mineral_processing_table", MineralProcessingTableBlock::new);
 	public static final RegistryEntry<Block> MILLSTONE = register("millstone", MillstoneBlock::new);
