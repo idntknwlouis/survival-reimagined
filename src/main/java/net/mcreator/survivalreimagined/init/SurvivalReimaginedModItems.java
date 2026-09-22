@@ -108,6 +108,10 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> STEEL_ARMOR_BOOTS = register("steel_armor_boots",
 			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.BOOTS, 16));
 
+	public static final RegistryEntry<Item> BLOOD_MOON_ZOMBIE_SPAWN_EGG = register("blood_moon_zombie_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.BLOOD_MOON_ZOMBIE.get(), -14150636, -12046045, new Item.Properties()));
+	public static final RegistryEntry<Item> GHOST_SPAWN_EGG = register("ghost_spawn_egg",
+			() -> new SpawnEggItem(SurvivalReimaginedModEntities.GHOST.get(), -12500671, -13421773, new Item.Properties()));
 	public static final RegistryEntry<Item> BOAR_SPAWN_EGG = register("boar_spawn_egg",
 			() -> new SpawnEggItem(SurvivalReimaginedModEntities.BOAR.get(), -13949662, -14410214, new Item.Properties()));
 	public static final RegistryEntry<Item> SOW_SPAWN_EGG = register("sow_spawn_egg",
