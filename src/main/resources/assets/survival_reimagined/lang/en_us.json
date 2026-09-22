@@ -515,5 +515,9 @@
   "item.survival_reimagined.heart_item": "Heart",
   "item.survival_reimagined.liver": "Liver",
   "item.survival_reimagined.stomach": "Stomach",
-  "item.survival_reimagined.intestines": "Intestines"
+  "item.survival_reimagined.intestines": "Intestines",
+  "block.survival_reimagined.pig_carcass": "Pig Carcass",
+  "block.survival_reimagined.pig_head": "Pig Head",
+  "block.survival_reimagined.pig_leg": "Pig Leg",
+  "item.survival_reimagined.pig_skin": "Pig Skin"
 }
