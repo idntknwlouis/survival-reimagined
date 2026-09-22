@@ -137,6 +137,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> CORN_SEEDS = cropSeed("corn_seeds", SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> CAMPFIRE = block(SurvivalReimaginedModBlocks.CAMPFIRE);
+	public static final RegistryEntry<Item> FIRE_STARTER = register("fire_starter", () -> new Item(new Item.Properties().durability(16)));
+	public static final RegistryEntry<Item> BLOCK_OF_CHARCOAL = block(SurvivalReimaginedModBlocks.BLOCK_OF_CHARCOAL);
 	public static final RegistryEntry<Item> CHARCOAL_POWDER = simple("charcoal_powder");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
 	public static final RegistryEntry<Item> COPPER_CHISEL = register("copper_chisel", CopperChiselItem::new);
