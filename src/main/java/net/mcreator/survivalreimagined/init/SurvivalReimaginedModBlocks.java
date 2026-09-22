@@ -179,9 +179,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_STALAGMITE_BASE = register("basalt_stalagmite_base", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.BASE, "basalt_stalagmite", true));
 	public static final RegistryEntry<Block> BASALT_STALAGMITE_MIDDLE = register("basalt_stalagmite_middle", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.MIDDLE, "basalt_stalagmite", true));
 	public static final RegistryEntry<Block> BASALT_STALAGMITE_TOP = register("basalt_stalagmite_top", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.TIP, "basalt_stalagmite", true));
-	public static final RegistryEntry<Block> BASALT_STALAGTITE_BASE = register("basalt_stalagtite_base", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.BASE));
-	public static final RegistryEntry<Block> BASALT_STALAGTITE_MIDDLE = register("basalt_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.MIDDLE));
-	public static final RegistryEntry<Block> BASALT_STALAGTITE_TIP = register("basalt_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.TIP));
+	public static final RegistryEntry<Block> BASALT_STALAGTITE_BASE = register("basalt_stalagtite_base", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.BASE, "basalt_stalagtite", false));
+	public static final RegistryEntry<Block> BASALT_STALAGTITE_MIDDLE = register("basalt_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.MIDDLE, "basalt_stalagtite", false));
+	public static final RegistryEntry<Block> BASALT_STALAGTITE_TIP = register("basalt_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.TIP, "basalt_stalagtite", false));
 	public static final RegistryEntry<Block> BASALT_POINTED_STONE = register("basalt_pointed_stone", () -> new GeologySpikeBlock(SoundType.BASALT, 1.25f, 4.2f));
 
 	public static final RegistryEntry<Block> KIMBERLITE = register("kimberlite", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3f, 6f).requiresCorrectToolForDrops()));
