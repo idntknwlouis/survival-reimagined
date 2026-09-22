@@ -38,7 +38,15 @@ public final class SurvivalReimaginedModTabs {
 	}
 
 	private static boolean isInternalGeologySegment(Item item) {
-		return item == SurvivalReimaginedModItems.BASALT_STALAGMITE_BASE.get()
+		return item == SurvivalReimaginedModItems.STONE_STALAGMITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.STONE_STALAGMITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.STONE_STALAGTITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.STONE_STALAGTITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.DEEPSLATE_STALAGMITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.DEEPSLATE_STALAGMITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.DEEPSLATE_STALAGTITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.DEEPSLATE_STALAGTITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.BASALT_STALAGMITE_BASE.get()
 				|| item == SurvivalReimaginedModItems.BASALT_STALAGMITE_MIDDLE.get()
 				|| item == SurvivalReimaginedModItems.BASALT_STALAGTITE_BASE.get()
 				|| item == SurvivalReimaginedModItems.BASALT_STALAGTITE_MIDDLE.get()
