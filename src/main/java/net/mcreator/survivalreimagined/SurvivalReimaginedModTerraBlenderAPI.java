@@ -12,7 +12,7 @@ public class SurvivalReimaginedModTerraBlenderAPI implements TerraBlenderApi {
     public void onTerraBlenderInitialized() {
         Regions.register(new SurvivalReimaginedModOverworldRegion(
                 ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiant_forest"),
-                4
+                10
                 )
         );
         SurfaceRuleManager.addSurfaceRules(
