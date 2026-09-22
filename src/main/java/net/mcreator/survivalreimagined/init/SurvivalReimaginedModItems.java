@@ -58,6 +58,15 @@ import java.util.function.Supplier;
 
 public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FLINTBLOCK = block(SurvivalReimaginedModBlocks.FLINTBLOCK);
+	public static final RegistryEntry<Item> COW_CARCASS = block(SurvivalReimaginedModBlocks.COW_CARCASS);
+	public static final RegistryEntry<Item> COW_HEAD = block(SurvivalReimaginedModBlocks.COW_HEAD);
+	public static final RegistryEntry<Item> COW_LEG = block(SurvivalReimaginedModBlocks.COW_LEG);
+	public static final RegistryEntry<Item> COW_HIDE = simple("cow_hide");
+	public static final RegistryEntry<Item> LUNGS = simple("lungs");
+	public static final RegistryEntry<Item> HEART_ITEM = simple("heart_item");
+	public static final RegistryEntry<Item> LIVER = simple("liver");
+	public static final RegistryEntry<Item> STOMACH = simple("stomach");
+	public static final RegistryEntry<Item> INTESTINES = simple("intestines");
 	public static final RegistryEntry<Item> STONE_ROCK = register("stone_rock", StoneRockItem::new);
 	public static final RegistryEntry<Item> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.OBSIDIAN_ROCK::get, "block.stone.place"));
 	public static final RegistryEntry<Item> SHALE = block(SurvivalReimaginedModBlocks.SHALE);
