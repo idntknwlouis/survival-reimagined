@@ -20,7 +20,7 @@ import net.mcreator.survivalreimagined.util.RegistryEntry;
 public final class SurvivalReimaginedModBlockEntities {
 	public static final RegistryEntry<BlockEntityType<CarcassBlockEntity>> CARCASS = register(
 			"carcass",
-			BlockEntityType.Builder.of(CarcassBlockEntity::new, SurvivalReimaginedModBlocks.COW_CARCASS.get()).build(null)
+			BlockEntityType.Builder.of(CarcassBlockEntity::new, SurvivalReimaginedModBlocks.COW_CARCASS.get(), SurvivalReimaginedModBlocks.PIG_CARCASS.get()).build(null)
 	);
 	public static final RegistryEntry<BlockEntityType<ForgeBlockEntity>> FORGE = register(
 			"forge",
