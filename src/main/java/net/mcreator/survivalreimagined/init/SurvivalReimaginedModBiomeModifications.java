@@ -36,6 +36,8 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("uranophane_feature");
 		addRadiantForestUnderground("shale_uranophane");
 		addRadiantForestUnderground("shale_uraninite");
+		addRadiantForestUndergroundDecoration("thin_radiated_vines_feature");
+		addRadiantForestUndergroundDecoration("thick_radiated_vines_feature");
 		addUndergroundEverywhere("liginite_ore_feature_surface");
 		addUndergroundEverywhere("ilmenite_ore_feature");
 		addUndergroundEverywhere("anthracite_ore_feature");
@@ -77,6 +79,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 				Biomes.OLD_GROWTH_PINE_TAIGA,
 				Biomes.OLD_GROWTH_SPRUCE_TAIGA,
 				Biomes.TAIGA);
+	}
+
+	private static void addRadiantForestUndergroundDecoration(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
+				GenerationStep.Decoration.UNDERGROUND_DECORATION,
+				featureKey);
 	}
 
 	private static void addRadiantForestUnderground(String path) {
