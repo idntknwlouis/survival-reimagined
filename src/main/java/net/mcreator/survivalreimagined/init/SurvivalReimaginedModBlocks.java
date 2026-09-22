@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.mcreator.survivalreimagined.block.*;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
@@ -244,20 +245,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_ROCK_BLOCK = register("basalt_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.BASALT_ROCK.get()));
 	public static final RegistryEntry<Block> DEEPSLATE_ROCK_BLOCK = register("deepslate_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DEEPSLATE_ROCK.get()));
 
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = register("thin_radiated_vines_tip",
-			() -> new Block(BlockBehaviour.Properties.of()
-					.noCollission()
-					.noOcclusion()
-					.instabreak()
-					.sound(SoundType.VINE)
-					.isRedstoneConductor((state, level, pos) -> false)));
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = register("thin_radiated_vines",
-			() -> new Block(BlockBehaviour.Properties.of()
-					.noCollission()
-					.noOcclusion()
-					.instabreak()
-					.sound(SoundType.VINE)
-					.isRedstoneConductor((state, level, pos) -> false)));
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = register("thin_radiated_vines_tip", () -> new VineHeadBlock(SurvivalReimaginedModBlocks::getradiatedHead));
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = register("thin_radiated_vines", () -> new VineBodyBlock(SurvivalReimaginedModBlocks::getradiatedBody));
 
 	private SurvivalReimaginedModBlocks() {
 	}
@@ -266,6 +255,14 @@ public final class SurvivalReimaginedModBlocks {
 		var id = SurvivalReimaginedMod.asResource(path);
 		Block block = Registry.register(BuiltInRegistries.BLOCK, id, factory.get());
 		return new RegistryEntry<>(id, block);
+	}
+
+	private static RegistryEntry<Block> getradiatedHead() {
+		return THIN_RADIATED_VINES_HEAD;
+	}
+
+	private static RegistryEntry<Block> getradiatedBody() {
+		return THIN_RADIATED_VINES_BODY;
 	}
 
 	public static void register() {
