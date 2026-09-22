@@ -377,7 +377,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BASALT_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.BASALT_STALAGTITE_BASE);
 	public static final RegistryEntry<Item> BASALT_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.BASALT_STALAGTITE_MIDDLE);
 	public static final RegistryEntry<Item> BASALT_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.BASALT_STALAGTITE_TIP);
-	public static final RegistryEntry<Item> BASALT_POINTED_STONE = block(SurvivalReimaginedModBlocks.BASALT_POINTED_STONE);
 	public static final RegistryEntry<Item> KIMBERLITE = block(SurvivalReimaginedModBlocks.KIMBERLITE);
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGMITE_BASE = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGMITE_BASE);
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGMITE_MIDDLE = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGMITE_MIDDLE);
@@ -385,7 +384,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGTITE_BASE);
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGTITE_MIDDLE);
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGTITE_TIP);
-	public static final RegistryEntry<Item> KIMBERLITE_POINTED_STONE = block(SurvivalReimaginedModBlocks.KIMBERLITE_POINTED_STONE);
 	public static final RegistryEntry<Item> KIMBERLITE_ROCK = block(SurvivalReimaginedModBlocks.KIMBERLITE_ROCK);
 	public static final RegistryEntry<Item> KIMBERLITE_SAPPHIRE_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_SAPPHIRE_ORE);
 	public static final RegistryEntry<Item> KIMBERLITE_DIAMOND_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_DIAMOND_ORE);
@@ -474,7 +472,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_ROCK = register("deepslate_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK::get, "block.deepslate.place"));
 	public static final RegistryEntry<Item> DEEPSLATE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK);
 	public static final RegistryEntry<Item> THIN_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THIN_RADIATED_VINES);
-	public static final RegistryEntry<Item> THIN_RADIATED_VINES_HEAD = THIN_RADIATED_VINES;
 	public static final RegistryEntry<Item> THICK_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THICK_RADIATED_VINES);
 
 
