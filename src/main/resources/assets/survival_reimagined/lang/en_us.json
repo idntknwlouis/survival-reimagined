@@ -519,5 +519,10 @@
   "block.survival_reimagined.pig_carcass": "Pig Carcass",
   "block.survival_reimagined.pig_head": "Pig Head",
   "block.survival_reimagined.pig_leg": "Pig Leg",
-  "item.survival_reimagined.pig_skin": "Pig Skin"
+  "item.survival_reimagined.pig_skin": "Pig Skin",
+  "block.survival_reimagined.sheep_carcass": "Sheep Carcass",
+  "block.survival_reimagined.sheep_head": "Sheep Head",
+  "block.survival_reimagined.sheep_leg": "Sheep Leg",
+  "item.survival_reimagined.sheep_hide": "Sheep Hide",
+  "item.survival_reimagined.brain": "Brain"
 }
