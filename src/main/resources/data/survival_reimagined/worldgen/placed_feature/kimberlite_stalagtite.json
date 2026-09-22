@@ -33,7 +33,11 @@
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:matching_blocks",
-              "blocks": "survival_reimagined:kimberlite_pointed_stone"
+              "blocks": [
+                "survival_reimagined:kimberlite_stalagtite_tip",
+                "survival_reimagined:kimberlite_stalagtite_middle",
+                "survival_reimagined:kimberlite_stalagtite_base"
+              ]
             }
           },
           {
