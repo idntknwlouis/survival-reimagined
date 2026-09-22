@@ -433,5 +433,6 @@
   "block.survival_reimagined.campfire": "Campfire",
   "item.survival_reimagined.charcoal_powder": "Charcoal Powder",
   "item.survival_reimagined.fire_starter": "Fire Starter",
-  "block.survival_reimagined.block_of_charcoal": "Block Of Charcoal"
+  "block.survival_reimagined.block_of_charcoal": "Block Of Charcoal",
+  "item.survival_reimagined.rotten_biomatter": "Rotten Biomatter"
 }
