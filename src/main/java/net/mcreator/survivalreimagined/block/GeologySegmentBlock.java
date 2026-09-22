@@ -62,6 +62,32 @@ public class GeologySegmentBlock extends Block {
 	@Override
 	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(state, level, pos, neighborBlock, fromPos, moving);
+		resolveSegment(level, pos);
+		BlockPos supportSide = growsUp ? pos.below() : pos.above();
+		if (level.getBlockState(supportSide).getBlock() instanceof GeologySegmentBlock) {
+			resolveSegment(level, supportSide);
+		}
+	}
+
+	@Override
+	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
+		super.onPlace(state, level, pos, oldState, moving);
+		if (!level.isClientSide()) {
+			resolveSegment(level, pos);
+			BlockPos supportSide = growsUp ? pos.below() : pos.above();
+			if (level.getBlockState(supportSide).getBlock() instanceof GeologySegmentBlock) {
+				resolveSegment(level, supportSide);
+			}
+		}
+	}
+
+	private void resolveSegment(Level level, BlockPos pos) {
+		BlockState current = level.getBlockState(pos);
+		if (!(current.getBlock() instanceof GeologySegmentBlock currentSegment)
+				|| !currentSegment.family.equals(this.family)
+				|| currentSegment.growsUp != this.growsUp) {
+			return;
+		}
 
 		BlockPos towardTip = growsUp ? pos.above() : pos.below();
 		BlockState next = level.getBlockState(towardTip);
@@ -70,12 +96,17 @@ public class GeologySegmentBlock extends Block {
 		Block middle = block(family + "_middle");
 		Block tip = block(family + (growsUp ? "_top" : "_tip"));
 
+		BlockState replacement = current;
 		if (next.is(tip)) {
-			if (!state.is(middle)) level.setBlock(pos, middle.defaultBlockState(), 3);
+			replacement = middle.defaultBlockState();
 		} else if (next.is(middle)) {
-			if (!state.is(base)) level.setBlock(pos, base.defaultBlockState(), 3);
+			replacement = base.defaultBlockState();
 		} else if (next.isAir()) {
-			if (!state.is(tip)) level.setBlock(pos, tip.defaultBlockState(), 3);
+			replacement = tip.defaultBlockState();
+		}
+
+		if (replacement.getBlock() != current.getBlock()) {
+			level.setBlock(pos, replacement, 2);
 		}
 	}
 
