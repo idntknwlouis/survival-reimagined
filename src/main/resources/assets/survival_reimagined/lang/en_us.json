@@ -452,5 +452,17 @@
   "block.survival_reimagined.kimberlite_stalagtite_base": "Kimberlite Stalagtite",
   "block.survival_reimagined.kimberlite_stalagtite_middle": "Kimberlite Stalagtite",
   "block.survival_reimagined.kimberlite_stalagtite_tip": "Kimberlite Stalagtite",
-  "block.survival_reimagined.plated_diamond_block": "Plated Diamond Block"
+  "block.survival_reimagined.plated_diamond_block": "Plated Diamond Block",
+  "block.survival_reimagined.stone_stalagmite_base": "Stone Stalagmite",
+  "block.survival_reimagined.stone_stalagmite_middle": "Stone Stalagmite",
+  "block.survival_reimagined.stone_stalagmite_top": "Stone Stalagmite",
+  "block.survival_reimagined.stone_stalagtite_base": "Stone Stalagtite",
+  "block.survival_reimagined.stone_stalagtite_middle": "Stone Stalagtite",
+  "block.survival_reimagined.stone_stalagtite_tip": "Stone Stalagtite",
+  "block.survival_reimagined.deepslate_stalagmite_base": "Deepslate Stalagmite",
+  "block.survival_reimagined.deepslate_stalagmite_middle": "Deepslate Stalagmite",
+  "block.survival_reimagined.deepslate_stalagmite_top": "Deepslate Stalagmite",
+  "block.survival_reimagined.deepslate_stalagtite_base": "Deepslate Stalagtite",
+  "block.survival_reimagined.deepslate_stalagtite_middle": "Deepslate Stalagtite",
+  "block.survival_reimagined.deepslate_stalagtite_tip": "Deepslate Stalagtite"
 }
