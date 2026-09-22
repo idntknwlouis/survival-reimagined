@@ -6,6 +6,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -32,9 +34,27 @@ public class BoarEntity extends Animal {
 
 	@Override
 	protected void registerGoals() {
-		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2D, false));
+		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2D, false) {
+			@Override
+			protected boolean canPerformAttack(LivingEntity target) {
+				return this.isTimeToAttack()
+						&& this.mob.distanceToSqr(target) < (this.mob.getBbWidth() * this.mob.getBbWidth() + target.getBbWidth())
+						&& this.mob.getSensing().hasLineOfSight(target);
+			}
+		});
 		this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
-		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.0D, 1.2D));
+		this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, Player.class, 8.0F, 1.0D, 1.2D) {
+			@Override
+			public boolean canUse() {
+				Player player = BoarEntity.this.level().getNearestPlayer(BoarEntity.this, 8.0D);
+				if (player == null || player.isCreative() || player.isSpectator()) return false;
+				boolean canUse = super.canUse();
+				if (canUse && BoarEntity.this.tickCount % 20 == 0) {
+					BoarEntity.this.playSound(SurvivalReimaginedModSounds.SQUEAL_BOAR.get(), 1.0F, 1.0F);
+				}
+				return canUse;
+			}
+		});
 		this.goalSelector.addGoal(4, new RandomStrollGoal(this, 0.8D));
 		this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 6.0F));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
@@ -68,6 +88,11 @@ public class BoarEntity extends Animal {
 	@Override
 	public boolean isFood(ItemStack stack) {
 		return false;
+	}
+
+	@Override
+	public EntityDimensions getDefaultDimensions(Pose pose) {
+		return super.getDefaultDimensions(pose).scale(1.25F);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
