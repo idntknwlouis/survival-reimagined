@@ -51,7 +51,7 @@ public class BoarEntity extends Animal {
 				if (player == null || player.isCreative() || player.isSpectator()) return false;
 				boolean canUse = super.canUse();
 				if (canUse && BoarEntity.this.tickCount % 20 == 0) {
-					PigFamilyAlarm.alertNearby(this.mob);
+					PigFamilyAlarm.alertNearby(BoarEntity.this);
 				}
 				return canUse;
 			}
