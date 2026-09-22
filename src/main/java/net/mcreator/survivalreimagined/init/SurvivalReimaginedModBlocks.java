@@ -244,6 +244,14 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_ROCK_BLOCK = register("basalt_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.BASALT_ROCK.get()));
 	public static final RegistryEntry<Block> DEEPSLATE_ROCK_BLOCK = register("deepslate_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DEEPSLATE_ROCK.get()));
 
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = register("thin_radiated_vines_tip",
+			() -> new Block(BlockBehaviour.Properties.of()
+					.noCollission()
+					.noOcclusion()
+					.instabreak()
+					.sound(SoundType.VINE)
+					.isRedstoneConductor((state, level, pos) -> false)));
+
 	private SurvivalReimaginedModBlocks() {
 	}
 
