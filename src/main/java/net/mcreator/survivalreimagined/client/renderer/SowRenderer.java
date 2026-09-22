@@ -1,20 +1,19 @@
 package net.mcreator.survivalreimagined.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.PigModel;
-import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
+import net.mcreator.survivalreimagined.client.model.Modelsow;
 import net.mcreator.survivalreimagined.entity.SowEntity;
 
-public class SowRenderer extends MobRenderer<SowEntity, PigModel<SowEntity>> {
-	private static final ResourceLocation TEMP_TEXTURE =
-			ResourceLocation.fromNamespaceAndPath("minecraft", "textures/entity/pig/pig.png");
+public class SowRenderer extends MobRenderer<SowEntity, Modelsow<SowEntity>> {
+	private static final ResourceLocation TEXTURE =
+			ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/entities/boar.png");
 
 	public SowRenderer(EntityRendererProvider.Context context) {
-		super(context, new PigModel<>(context.bakeLayer(ModelLayers.PIG)), 0.5F);
+		super(context, new Modelsow<>(context.bakeLayer(Modelsow.LAYER_LOCATION)), 0.5F);
 	}
 
 	@Override
@@ -24,6 +23,6 @@ public class SowRenderer extends MobRenderer<SowEntity, PigModel<SowEntity>> {
 
 	@Override
 	public ResourceLocation getTextureLocation(SowEntity entity) {
-		return TEMP_TEXTURE;
+		return TEXTURE;
 	}
 }
