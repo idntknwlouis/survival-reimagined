@@ -39,7 +39,7 @@ public class PigletEntity extends PathfinderMob {
 				if (player == null || player.isCreative() || player.isSpectator()) return false;
 				boolean canUse = super.canUse();
 				if (canUse && PigletEntity.this.tickCount % 20 == 0) {
-					PigFamilyAlarm.alertNearby(this.mob);
+					PigFamilyAlarm.alertNearby(PigletEntity.this);
 				}
 				return canUse;
 			}
