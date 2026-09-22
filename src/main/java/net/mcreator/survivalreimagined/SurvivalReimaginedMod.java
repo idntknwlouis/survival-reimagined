@@ -18,6 +18,7 @@ import net.minecraft.server.MinecraftServer;
 
 import net.mcreator.survivalreimagined.util.RuneEffects;
 import net.mcreator.survivalreimagined.util.CropEffects;
+import net.mcreator.survivalreimagined.util.FoodSpoilage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +60,10 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		CropEffects.register();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
+			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {
+				FoodSpoilage.updateWoodenContainer(level, hit.getBlockPos());
+			}
+
 			ItemStack stack = player.getItemInHand(hand);
 			if (!stack.is(Items.FLINT)) {
 				return InteractionResult.PASS;
