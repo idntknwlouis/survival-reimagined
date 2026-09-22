@@ -45,7 +45,7 @@ This table tracks broad feature parity against the original mod.
 | Rune Effects / Tooltips |    ✅     | ✅ | ✅ | — |
 | Fuels / Forge Materials |    ✅     | ✅ | ✅ | ✅ |
 | Crops / Plants |    ✅    | ✅ | ✅ | 🟡 |
-| Food / Cooking |    ❌    | ❌ | 🟡 | — |
+| Food / Cooking |    🟡    | 🟡 | ✅ | — |
 | Armor |    ❌    | ❌ | ❌ | — |
 | Mobs / Entities |    ❌    | ❌ | ❌ | ❌ |
 | Carcass / Butchering |    ❌    | ❌ | ❌ | — |
@@ -73,6 +73,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Food / Cooking first-half parity pass restored the basic crop-derived food set: Wheat/Rye/Spelt flour and dough, Rye/Spelt bread, Corn on the Cob and cooked/burnt variants, plus Burnt/Charred Potato. Item nutrition, names, models, textures, and creative-tab visibility now match the original. Millstone/Campfire processing behavior and the broader meat/advanced cooking chains remain for the second half.
 - Crops / Plants gameplay parity is runtime-verified: Rye, Spelt, Hemp, Wild Carrot, Wheat/Wild Wheat, Potatoes/Wild Potatoes, Strawberry, Raspberry, and full three-part Corn placement/growth/harvest now work, with restored crop block/item names and textures. Natural generation for the previously disabled Wild Wheat, Wild Potato, Strawberry, and Raspberry families remains pending, so the World Gen column stays partial.
 - Native Mineral Ores are runtime-verified and complete: Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite Stone/Deepslate families, resource blocks, loot, recipes, mining/common tags, and worldgen work as intended.
 - Kimberlite Geology is runtime-verified and complete: Kimberlite generation matches the original (`count 8`, radius `12`, `Y -256..-128`), Sapphire/Diamond/Emerald/Ruby/Lapis/Amber replacement targets and loot match, and Kimberlite stalagmites/stalactites use the vanilla-style single `kimberlite_pointed_stone` block.
