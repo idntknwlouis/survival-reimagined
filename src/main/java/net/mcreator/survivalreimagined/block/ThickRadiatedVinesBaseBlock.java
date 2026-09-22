@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -22,6 +23,11 @@ public class ThickRadiatedVinesBaseBlock extends Block {
     public ThickRadiatedVinesBaseBlock() {
         super(BlockBehaviour.Properties.of().sound(SoundType.MOSS).strength(1f).noCollission()
                 .isRedstoneConductor((state, level, pos) -> false));
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+        return new ItemStack(SurvivalReimaginedModBlocks.THICK_RADIATED_VINES.get().asItem());
     }
 
     @Override
