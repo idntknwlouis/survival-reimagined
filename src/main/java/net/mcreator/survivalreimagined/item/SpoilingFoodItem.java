@@ -33,22 +33,34 @@ public class SpoilingFoodItem extends Item {
 		}
 
 		CustomData data = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-		int inventoryClock = data.copyTag().getInt("InventoryClock") + 1;
-		int spoilage = (int) data.copyTag().getDouble("SpoilageMax");
+		var tag = data.copyTag();
+		int spoilage = (int) tag.getDouble("SpoilageMax");
+		long currentTick = level.getGameTime();
+		long lastTick = tag.getLong("SpoilageLastTick");
 
-		if (inventoryClock >= 60) {
-			inventoryClock = 0;
-			spoilage++;
-
-			final int newSpoilage = spoilage;
-			CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> {
-				tag.putInt("InventoryClock", 0);
-				tag.putDouble("SpoilageMax", newSpoilage);
-			});
-		} else {
-			final int newClock = inventoryClock;
+		// One spoilage percent is 20 points. At the original rate of one point
+		// every 60 ticks, the stack only needs a data update once every 1200 ticks.
+		if (!tag.contains("SpoilageLastTick")) {
 			CustomData.update(DataComponents.CUSTOM_DATA, stack,
-					tag -> tag.putInt("InventoryClock", newClock));
+					nbt -> nbt.putLong("SpoilageLastTick", currentTick));
+		} else {
+			long elapsed = currentTick - lastTick;
+			if (elapsed < 0) {
+				CustomData.update(DataComponents.CUSTOM_DATA, stack,
+						nbt -> nbt.putLong("SpoilageLastTick", currentTick));
+			} else if (elapsed >= 1200) {
+				long percentSteps = elapsed / 1200;
+				spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) (percentSteps * 20));
+				long nextTick = lastTick + percentSteps * 1200;
+
+				final int newSpoilage = spoilage;
+				final long newLastTick = nextTick;
+				CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+					nbt.putDouble("SpoilageMax", newSpoilage);
+					nbt.putLong("SpoilageLastTick", newLastTick);
+					nbt.remove("InventoryClock");
+				});
+			}
 		}
 
 		if (spoilage >= ROT_THRESHOLD) {
@@ -75,7 +87,9 @@ public class SpoilingFoodItem extends Item {
 		}
 
 		int spoilagePercent = Math.max(0, Math.min(100, (int) Math.floor((spoilage / ROT_THRESHOLD) * 100.0D)));
-		tooltip.add(Component.literal("\u00A77 " + spoilagePercent + "% Spoiled"));
+		if (spoilagePercent > 1) {
+			tooltip.add(Component.literal("\u00A77 " + spoilagePercent + "% Spoiled"));
+		}
 	}
 
 	@Override
