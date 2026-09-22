@@ -34,7 +34,8 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
 public class CarcassBlock extends Block implements EntityBlock {
 	public enum Species {
 		COW,
-		PIG
+		PIG,
+		SHEEP
 	}
 
 	public static final IntegerProperty CARCASS_STATE = IntegerProperty.create("carcass_state", 0, 4);
@@ -66,6 +67,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return switch (species) {
 			case COW -> cowShape(stage);
 			case PIG -> pigShape(stage);
+			case SHEEP -> sheepShape(stage);
 		};
 	}
 
@@ -120,6 +122,36 @@ public class CarcassBlock extends Block implements EntityBlock {
 				box(-0.64286, 1.35714, -2, 7.35714, 9.35714, 6),
 				box(3.35714, 3.35714, -3, 6.35714, 7.35714, -2),
 				box(1.35714, 0.35714, 4, 9.35714, 10.35714, 20)
+		);
+	}
+
+	private static VoxelShape sheepShape(int stage) {
+		if (stage == 1) {
+			return Shapes.or(
+					box(5.66667, 5.66667, 0, 17.66667, 9.66667, 4),
+					box(5.66667, -0.33333, 0, 17.66667, 3.66667, 4),
+					box(5.66667, 5.66667, 12, 17.66667, 9.66667, 16),
+					box(5.66667, -0.33333, 12, 17.66667, 3.66667, 16),
+					box(-4.33333, 1.66667, -7, 1.66667, 7.66667, 1),
+					box(1.16667, 0.33334, -0.83333, 7.16667, 8.33334, 15.16667)
+			);
+		}
+		if (stage == 2) {
+			return Shapes.or(
+					box(-4.33333, 1.66667, -7, 1.66667, 7.66667, 1),
+					box(1.16667, 0.33334, -0.83333, 7.16667, 8.33334, 15.16667)
+			);
+		}
+		if (stage == 3 || stage == 4) {
+			return box(1.16667, 0.33334, -0.83333, 7.16667, 8.33334, 15.16667);
+		}
+		return Shapes.or(
+				box(5.66667, 5.66667, 0, 17.66667, 9.66667, 4),
+				box(5.66667, -0.33333, 0, 17.66667, 3.66667, 4),
+				box(5.66667, 5.66667, 12, 17.66667, 9.66667, 16),
+				box(5.66667, -0.33333, 12, 17.66667, 3.66667, 16),
+				box(-4.33333, 1.66667, -7, 1.66667, 7.66667, 1),
+				box(1.16667, 0.33334, -0.83333, 7.16667, 8.33334, 15.16667)
 		);
 	}
 
@@ -202,6 +234,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return switch (species) {
 			case COW -> new ItemStack(SurvivalReimaginedModItems.COW_HIDE.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModItems.PIG_SKIN.get());
+			case SHEEP -> new ItemStack(SurvivalReimaginedModItems.SHEEP_HIDE.get());
 		};
 	}
 
@@ -209,6 +242,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return switch (species) {
 			case COW -> new ItemStack(SurvivalReimaginedModBlocks.COW_LEG.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModBlocks.PIG_LEG.get());
+			case SHEEP -> new ItemStack(SurvivalReimaginedModBlocks.SHEEP_LEG.get());
 		};
 	}
 
@@ -216,6 +250,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return switch (species) {
 			case COW -> new ItemStack(SurvivalReimaginedModBlocks.COW_HEAD.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModBlocks.PIG_HEAD.get());
+			case SHEEP -> new ItemStack(SurvivalReimaginedModBlocks.SHEEP_HEAD.get());
 		};
 	}
 
@@ -223,6 +258,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return switch (species) {
 			case COW -> new ItemStack(SurvivalReimaginedModItems.BEEF.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModItems.RAW_PORKCHOP.get());
+			case SHEEP -> new ItemStack(SurvivalReimaginedModItems.RAW_MUTTON.get());
 		};
 	}
 
