@@ -25,7 +25,7 @@ public class UraniumRodBlock extends Block {
 
 	public UraniumRodBlock() {
 		super(BlockBehaviour.Properties.of()
-				.sound(SoundType.METAL)
+				.sound(net.mcreator.survivalreimagined.init.SurvivalReimaginedModSoundTypes.STEEL)
 				.strength(3.0F)
 				.lightLevel(state -> 10)
 				.requiresCorrectToolForDrops()
