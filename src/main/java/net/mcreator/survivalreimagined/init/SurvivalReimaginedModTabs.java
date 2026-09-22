@@ -163,7 +163,7 @@ public final class SurvivalReimaginedModTabs {
 		if (containsAny(path, "ingot", "nugget", "chunk", "rough_", "raw_", "dust", "powder", "cassiterite",
 				"manganite", "hematite", "magnetite", "calaverite", "pyrolusite", "uranophane", "ilmenite",
 				"anthracite", "liginite", "salt", "quick_lime", "handle", "blade", "_head", "hemp_fiber",
-				"small_stick", "wood_ingot")) {
+				"small_stick", "wood_ingot", "crimson_thread")) {
 			return "00_materials_" + materialFamilyRank(path) + "_" + materialRank(path) + "_" + path;
 		}
 		return "90_" + path;
@@ -209,7 +209,7 @@ public final class SurvivalReimaginedModTabs {
 				"ingot", "nugget", "chunk", "rough_", "raw_", "dust", "powder", "handle", "blade", "_head",
 				"rune", "upgrade", "reactor_rod", "cassiterite", "manganite", "hematite", "magnetite",
 				"calaverite", "pyrolusite", "uranophane", "ilmenite", "anthracite", "liginite", "sapphire",
-				"ruby", "amber", "heart", "salt", "quick_lime", "hemp_fiber", "small_stick", "wood_ingot");
+				"ruby", "amber", "heart", "salt", "quick_lime", "hemp_fiber", "small_stick", "wood_ingot", "crimson_thread");
 	}
 
 	private static String materialRank(String path) {
