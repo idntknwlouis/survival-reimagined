@@ -59,7 +59,7 @@ public class ThinRadiatedVinesBlock extends Block {
     }
 
     @Override
-    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (level.isEmptyBlock(pos.below()) && random.nextFloat() < 0.15f) {
             level.setBlock(pos.below(), SurvivalReimaginedModBlocks.THIN_RADIATED_VINES.get().defaultBlockState(), 3);
             level.updateNeighborsAt(pos, this);
