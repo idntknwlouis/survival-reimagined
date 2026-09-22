@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
+import net.mcreator.survivalreimagined.util.PigFamilyAlarm;
 
 public class PigletEntity extends PathfinderMob {
 	public PigletEntity(EntityType<? extends PigletEntity> type, Level level) {
@@ -38,7 +39,7 @@ public class PigletEntity extends PathfinderMob {
 				if (player == null || player.isCreative() || player.isSpectator()) return false;
 				boolean canUse = super.canUse();
 				if (canUse && PigletEntity.this.tickCount % 20 == 0) {
-					PigletEntity.this.playSound(SurvivalReimaginedModSounds.SQUEAL_PIGLET.get(), 1.0F, 1.0F);
+					PigFamilyAlarm.alertNearby(this.mob);
 				}
 				return canUse;
 			}
