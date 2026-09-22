@@ -23,6 +23,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -48,6 +49,7 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
 	private int fuelProgress;
 	private final int[] cookProgress = new int[4];
+	private int charcoalProgress;
 
 	private final ContainerData dataAccess = new ContainerData() {
 		@Override public int get(int index) { return index == 0 ? fuelProgress : 0; }
@@ -70,6 +72,7 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 		if (!this.tryLoadLootTable(tag)) ContainerHelper.loadAllItems(tag, this.stacks, registries);
 		this.fuelProgress = tag.getInt("CampfireFuel");
 		for (int i = 0; i < cookProgress.length; i++) this.cookProgress[i] = tag.getInt("CookSlot" + (i + 1));
+		this.charcoalProgress = tag.getInt("CharcoalProgress");
 	}
 
 	@Override
@@ -78,6 +81,7 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 		if (!this.trySaveLootTable(tag)) ContainerHelper.saveAllItems(tag, this.stacks, registries);
 		tag.putInt("CampfireFuel", this.fuelProgress);
 		for (int i = 0; i < cookProgress.length; i++) tag.putInt("CookSlot" + (i + 1), this.cookProgress[i]);
+		tag.putInt("CharcoalProgress", this.charcoalProgress);
 	}
 
 	@Override public int getContainerSize() { return CONTAINER_SIZE; }
@@ -115,16 +119,30 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 						int i = slot - 1;
 						campfire.cookProgress[i]++;
 						int required = 20 * Math.max(1, stack.getCount());
-						int percent = Math.max(1, Math.min(100, (int) Math.floor(campfire.cookProgress[i] * 100.0D / required)));
-						CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("PercentageNumber", percent));
 						if (campfire.cookProgress[i] >= required) {
-							Item result = nextStage(stack);
-							if (result != null) campfire.setItem(slot, new ItemStack(result, stack.getCount()));
 							campfire.cookProgress[i] = 0;
+							CustomData data = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
+							int stageProgress = (int) data.copyTag().getDouble("PercentageNumber") + 1;
+							if (stageProgress >= 30) {
+								Item result = nextStage(stack);
+								if (result != null) campfire.setItem(slot, new ItemStack(result, stack.getCount()));
+							} else {
+								CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("PercentageNumber", stageProgress));
+							}
 						}
 					} else {
 						campfire.cookProgress[slot - 1] = 0;
 					}
+				}
+
+				if (level.getBlockState(pos.below()).is(net.minecraft.tags.BlockTags.LOGS)) {
+					campfire.charcoalProgress++;
+					if (campfire.charcoalProgress >= 1000) {
+						level.setBlock(pos.below(), SurvivalReimaginedModBlocks.BLOCK_OF_CHARCOAL.get().defaultBlockState(), 3);
+						campfire.charcoalProgress = 0;
+					}
+				} else {
+					campfire.charcoalProgress = 0;
 				}
 				changed = true;
 			}
@@ -153,6 +171,7 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 				case "raw_salmon" -> SurvivalReimaginedModItems.COOKED_SALMON.get();
 				case "raw_equine" -> SurvivalReimaginedModItems.COOKED_EQUINE.get();
 				case "corn_on_the_cob" -> SurvivalReimaginedModItems.COOKED_CORN_ON_THE_COB.get();
+				case "potato" -> Items.BAKED_POTATO;
 				default -> null;
 			};
 		}
@@ -167,6 +186,7 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 				case "cooked_salmon" -> SurvivalReimaginedModItems.BURNT_SALMON.get();
 				case "cooked_equine" -> SurvivalReimaginedModItems.BURNT_EQUINE.get();
 				case "cooked_corn_on_the_cob" -> SurvivalReimaginedModItems.BURNT_CORN_ON_THE_COB.get();
+				case "baked_potato" -> SurvivalReimaginedModItems.BURNT_POTATO.get();
 				default -> null;
 			};
 		}
