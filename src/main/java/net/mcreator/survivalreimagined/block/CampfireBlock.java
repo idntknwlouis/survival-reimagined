@@ -157,9 +157,11 @@ public class CampfireBlock extends Block implements EntityBlock {
 	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
 			Player player, InteractionHand hand, BlockHitResult hit) {
 		if (stack.is(STARTERS) && level.getBlockEntity(pos) instanceof CampfireBlockEntity campfire && campfire.hasFuel()) {
+			player.swing(hand, true);
 			if (!level.isClientSide()) {
 				level.setBlock(pos, state.setValue(LIT, true), 3);
 				level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+				level.playSound(null, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
 			}
 			return ItemInteractionResult.SUCCESS;
 		}
