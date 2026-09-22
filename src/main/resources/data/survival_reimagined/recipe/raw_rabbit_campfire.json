@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "experience": 0.35,
+  "cookingtime": 600,
+  "ingredient": {
+    "item": "survival_reimagined:raw_rabbit"
+  },
+  "result": {
+    "id": "survival_reimagined:cooked_rabbit"
+  }
+}
