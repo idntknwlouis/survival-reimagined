@@ -1,5 +1,5 @@
 {
-  "parent": "survival_reimagined:custom/pointed_stone_down_tip",
+  "parent": "survival_reimagined:custom/stalagtite_top",
   "textures": {
     "all": "survival_reimagined:block/kimberlite",
     "particle": "survival_reimagined:block/kimberlite"
