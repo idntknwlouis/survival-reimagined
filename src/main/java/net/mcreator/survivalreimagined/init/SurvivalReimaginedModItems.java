@@ -66,6 +66,10 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> PIG_HEAD = block(SurvivalReimaginedModBlocks.PIG_HEAD);
 	public static final RegistryEntry<Item> PIG_LEG = block(SurvivalReimaginedModBlocks.PIG_LEG);
 	public static final RegistryEntry<Item> PIG_SKIN = simple("pig_skin");
+	public static final RegistryEntry<Item> SHEEP_CARCASS = block(SurvivalReimaginedModBlocks.SHEEP_CARCASS);
+	public static final RegistryEntry<Item> SHEEP_HEAD = block(SurvivalReimaginedModBlocks.SHEEP_HEAD);
+	public static final RegistryEntry<Item> SHEEP_LEG = block(SurvivalReimaginedModBlocks.SHEEP_LEG);
+	public static final RegistryEntry<Item> SHEEP_HIDE = simple("sheep_hide");
 	public static final RegistryEntry<Item> LUNGS = simple("lungs");
 	public static final RegistryEntry<Item> HEART_ITEM = simple("heart_item");
 	public static final RegistryEntry<Item> LIVER = simple("liver");
