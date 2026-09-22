@@ -56,6 +56,8 @@ public final class SurvivalReimaginedModBiomeModifications {
 				Biomes.ERODED_BADLANDS,
 				Biomes.WOODED_BADLANDS);
 		addLocalEverywhere("basalt_layer");
+		addFluidSprings("lava_srpings");
+		addUndergroundDecorationEverywhere("deltas");
 		addUndergroundDecorationEverywhere("basalt_stalagmite");
 		addUndergroundDecorationEverywhere("basalt_stalagtite");
 		addLocalEverywhere("kimberlite_feature");
@@ -88,6 +90,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		BiomeModifications.addFeature(
 				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
 				GenerationStep.Decoration.UNDERGROUND_DECORATION,
+				featureKey);
+	}
+	@SafeVarargs
+	private static void addFluidSprings(String path, ResourceKey<net.minecraft.world.level.biome.Biome>... biomes) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(biomes),
+				GenerationStep.Decoration.FLUID_SPRINGS,
 				featureKey);
 	}
 
