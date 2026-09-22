@@ -487,5 +487,8 @@
   "item.survival_reimagined.gas_mask_filter": "Gas Mask Filter",
   "item.survival_reimagined.used_filter": "Used Gas Mask Filter",
   "subtitles.gasmask/filter": "Gas Mask's Filter Replaced",
-  "subtitles.gas_mask_breath": "Gas Mask Filters"
+  "subtitles.gas_mask_breath": "Gas Mask Filters",
+  "entity.survival_reimagined.boar": "Boar",
+  "entity.survival_reimagined.sow": "Sow",
+  "entity.survival_reimagined.piglet": "Piglet"
 }
