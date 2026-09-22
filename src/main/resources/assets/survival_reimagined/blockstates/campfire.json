@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "lit=true": {"model": "minecraft:block/campfire"},
+    "lit=false": {"model": "minecraft:block/campfire_off"}
+  }
+}
