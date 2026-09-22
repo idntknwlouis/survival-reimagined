@@ -17,11 +17,7 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "survival_reimagined:basalt_pointed_stone",
-            "Properties": {
-              "vertical_direction": "down",
-              "thickness": "base"
-            }
+            "Name": "survival_reimagined:basalt_stalagtite_base"
           }
         }
       },
@@ -30,11 +26,7 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "survival_reimagined:basalt_pointed_stone",
-            "Properties": {
-              "vertical_direction": "down",
-              "thickness": "middle"
-            }
+            "Name": "survival_reimagined:basalt_stalagtite_middle"
           }
         }
       },
@@ -43,11 +35,7 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "survival_reimagined:basalt_pointed_stone",
-            "Properties": {
-              "vertical_direction": "down",
-              "thickness": "tip"
-            }
+            "Name": "survival_reimagined:basalt_stalagtite_tip"
           }
         }
       }
