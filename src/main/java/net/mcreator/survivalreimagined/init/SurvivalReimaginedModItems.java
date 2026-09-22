@@ -384,6 +384,19 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGTITE_BASE);
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGTITE_MIDDLE);
 	public static final RegistryEntry<Item> KIMBERLITE_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.KIMBERLITE_STALAGTITE_TIP);
+	public static final RegistryEntry<Item> STONE_STALAGMITE_BASE = block(SurvivalReimaginedModBlocks.STONE_STALAGMITE_BASE);
+	public static final RegistryEntry<Item> STONE_STALAGMITE_MIDDLE = block(SurvivalReimaginedModBlocks.STONE_STALAGMITE_MIDDLE);
+	public static final RegistryEntry<Item> STONE_STALAGMITE_TOP = block(SurvivalReimaginedModBlocks.STONE_STALAGMITE_TOP);
+	public static final RegistryEntry<Item> STONE_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.STONE_STALAGTITE_BASE);
+	public static final RegistryEntry<Item> STONE_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.STONE_STALAGTITE_MIDDLE);
+	public static final RegistryEntry<Item> STONE_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.STONE_STALAGTITE_TIP);
+
+	public static final RegistryEntry<Item> DEEPSLATE_STALAGMITE_BASE = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGMITE_BASE);
+	public static final RegistryEntry<Item> DEEPSLATE_STALAGMITE_MIDDLE = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGMITE_MIDDLE);
+	public static final RegistryEntry<Item> DEEPSLATE_STALAGMITE_TOP = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGMITE_TOP);
+	public static final RegistryEntry<Item> DEEPSLATE_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGTITE_BASE);
+	public static final RegistryEntry<Item> DEEPSLATE_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGTITE_MIDDLE);
+	public static final RegistryEntry<Item> DEEPSLATE_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGTITE_TIP);
 	public static final RegistryEntry<Item> KIMBERLITE_ROCK = block(SurvivalReimaginedModBlocks.KIMBERLITE_ROCK);
 	public static final RegistryEntry<Item> KIMBERLITE_SAPPHIRE_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_SAPPHIRE_ORE);
 	public static final RegistryEntry<Item> KIMBERLITE_DIAMOND_ORE = block(SurvivalReimaginedModBlocks.KIMBERLITE_DIAMOND_ORE);
