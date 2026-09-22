@@ -1,10 +1,21 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:planks",
-    "#minecraft:coals",
-    "survival_reimagined:small_coal_chunk",
-    "survival_reimagined:small_anthracite",
-    "survival_reimagined:small_liginite"
+    {
+      "id": "#c:fuels/bark_large",
+      "required": false
+    },
+    {
+      "id": "#c:fuels/single_plank",
+      "required": false
+    },
+    {
+      "id": "#c:fuels/chunks",
+      "required": false
+    },
+    {
+      "id": "#minecraft:coals",
+      "required": false
+    }
   ]
 }
