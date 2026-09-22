@@ -57,8 +57,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> PIG_HEAD = register("pig_head", () -> new CarcassPartBlock(Shapes.or(Block.box(4, 0, 4, 12, 8, 12), Block.box(6, 1, 3, 10, 4, 4))));
 	public static final RegistryEntry<Block> PIG_LEG = register("pig_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 6, 10)));
 	public static final RegistryEntry<Block> SHEEP_CARCASS = register("sheep_carcass", () -> new CarcassBlock(CarcassBlock.Species.SHEEP));
-	public static final RegistryEntry<Block> SHEEP_HEAD = register("sheep_head", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
-	public static final RegistryEntry<Block> SHEEP_LEG = register("sheep_leg", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0F).noOcclusion()));
+	public static final RegistryEntry<Block> SHEEP_HEAD = register("sheep_head", () -> new CarcassPartBlock(Block.box(5, 0, 4, 11, 6, 12)));
+	public static final RegistryEntry<Block> SHEEP_LEG = register("sheep_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 12, 10)));
 	public static final RegistryEntry<Block> STONE_ROCK_BLOC = register("stone_rock_bloc", StoneRockBlocBlock::new);
 	public static final RegistryEntry<Block> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.OBSIDIAN_ROCK.get()));
 	public static final RegistryEntry<Block> SHALE = register("shale", ShaleBlock::new);
