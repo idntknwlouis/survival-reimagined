@@ -123,8 +123,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DEEPSLATE_MANGANITE_ORE = register("deepslate_manganite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> MANGANITE_BLOCK = register("manganite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_MANGANESE = register("block_of_manganese", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> BLOCK_OF_STEEL = register("block_of_steel", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 7f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> BLOCK_OF_BRONZE = register("block_of_bronze", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(4f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_STEEL = register("block_of_steel", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(6f, 7f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_BRONZE = register("block_of_bronze", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(4f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> TITANIUM_ORE = register("titanium_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_TITANIUM_ORE = register("deepslate_titanium_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> URANINITE_ORE = register("uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
@@ -213,18 +213,18 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_RUBY_ORE = register("basalt_ruby_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_AMBER_ORE = register("basalt_amber_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.BASALT).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> RAW_SILVER_BLOCK = register("raw_silver_block", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> SILVER_BLOCK = register("silver_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SILVER_BLOCK = register("silver_block", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> ARGENTITE_BLOCK = register("argentite_block", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SAPPHIRE_BLOCK = register("sapphire_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RUBY = register("block_of_ruby", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f)));
 	public static final RegistryEntry<Block> BLOCK_OF_AMBER = register("block_of_amber", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f)));
 	public static final RegistryEntry<Block> DEEPSLATE_URANINITE_ORE = register("deepslate_uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TITANIUM = register("block_of_raw_titanium", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> BLOCK_OF_TITANIUM = register("block_of_titanium", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_TITANIUM = register("block_of_titanium", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(3f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_URANINITE = register("block_of_raw_uraninite", () -> new Block(BlockBehaviour.Properties.of().strength(3f, 6f)));
-	public static final RegistryEntry<Block> BLOCK_OF_URANIUM = register("block_of_uranium", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f, 6f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_URANIUM = register("block_of_uranium", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(3f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> TURANITE_BLOCK = register("turanite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.NETHERITE_BLOCK).strength(6f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> PLATED_DIAMOND_BLOCK = register("plated_diamond_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(6f, 8f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> PLATED_DIAMOND_BLOCK = register("plated_diamond_block", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(6f, 8f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> INGOT_MOLD = register("ingot_mold", IngotMoldBlock::new);
 	public static final RegistryEntry<Block> SWORD_BLADE_MOLD = register("sword_blade_mold", ToolMoldBlock::new);
 	public static final RegistryEntry<Block> PICKAXE_HEAD_MOLD = register("pickaxe_head_mold", ToolMoldBlock::new);
@@ -238,9 +238,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RUNE_CLAY_MOLD = register("rune_clay_mold", () -> new ClayMoldBlock(() -> RUNE_MOLD.get()));
 	public static final RegistryEntry<Block> WOODEN_PLATE = register("wooden_plate", () -> new PlateBlock(SoundType.WOOD, 1.0F));
 	public static final RegistryEntry<Block> METAL_PLATE_MOLD = register("metal_plate_mold", ToolMoldBlock::new);
-	public static final RegistryEntry<Block> BRONZE_PLATE = register("bronze_plate", () -> new PlateBlock(SoundType.METAL, 2.5F));
-	public static final RegistryEntry<Block> STEEL_PLATE = register("steel_plate", () -> new PlateBlock(SoundType.METAL, 3.5F));
-	public static final RegistryEntry<Block> DIAMOND_PLATE = register("diamond_plate", () -> new PlateBlock(SoundType.METAL, 4.0F));
+	public static final RegistryEntry<Block> BRONZE_PLATE = register("bronze_plate", () -> new PlateBlock(SurvivalReimaginedModSoundTypes.STEEL, 2.5F));
+	public static final RegistryEntry<Block> STEEL_PLATE = register("steel_plate", () -> new PlateBlock(SurvivalReimaginedModSoundTypes.STEEL, 3.5F));
+	public static final RegistryEntry<Block> DIAMOND_PLATE = register("diamond_plate", () -> new PlateBlock(SurvivalReimaginedModSoundTypes.STEEL, 4.0F));
 	public static final RegistryEntry<Block> NETHERITE_PLATE = register("netherite_plate", () -> new PlateBlock(SoundType.NETHERITE_BLOCK, 5.0F));
 	public static final RegistryEntry<Block> CLAY_METAL_PLATE_MOLD = register("clay_metal_plate_mold", () -> new ClayMoldBlock(() -> METAL_PLATE_MOLD.get(), true));
 
