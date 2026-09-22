@@ -103,6 +103,37 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> COOKED_CORN_ON_THE_COB = register("cooked_corn_on_the_cob", () -> new Item(new Item.Properties()
 			.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.5f).build())));
 	public static final RegistryEntry<Item> BURNT_CORN_ON_THE_COB = simple("burnt_corn_on_the_cob");
+	public static final RegistryEntry<Item> BEEF = food("beef", 3, 0.3f);
+	public static final RegistryEntry<Item> COOKED_BEEF = food("cooked_beef", 5, 12.8f);
+	public static final RegistryEntry<Item> BURNT_BEEF = food("burnt_beef", 2, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_MUTTON = food("raw_mutton", 2, 0.3f);
+	public static final RegistryEntry<Item> COOKED_MUTTON = food("cooked_mutton", 4, 6.8f);
+	public static final RegistryEntry<Item> BURNT_MUTTON = food("burnt_mutton", 1, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_PORKCHOP = food("raw_porkchop", 3, 0.3f);
+	public static final RegistryEntry<Item> COOKED_PORKCHOP = food("cooked_porkchop", 4, 12.8f);
+	public static final RegistryEntry<Item> BURNT_PORKCHOP = food("burnt_porkchop", 2, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_CHICKEN = food("raw_chicken", 2, 0.2f);
+	public static final RegistryEntry<Item> COOKED_CHICKEN = food("cooked_chicken", 5, 6.8f);
+	public static final RegistryEntry<Item> BURNT_CHICKEN = food("burnt_chicken", 1, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_RABBIT = food("raw_rabbit", 2, 0.1f);
+	public static final RegistryEntry<Item> COOKED_RABBIT = food("cooked_rabbit", 4, 6.8f);
+	public static final RegistryEntry<Item> BURNT_RABBIT = food("burnt_rabbit", 1, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_COD = food("raw_cod", 2, 0.1f);
+	public static final RegistryEntry<Item> COOKED_COD = food("cooked_cod", 4, 0.3f);
+	public static final RegistryEntry<Item> BURNT_COD = food("burnt_cod", 1, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_SALMON = food("raw_salmon", 2, 0.2f);
+	public static final RegistryEntry<Item> COOKED_SALMON = food("cooked_salmon", 4, 0.3f);
+	public static final RegistryEntry<Item> BURNT_SALMON = food("burnt_salmon", 1, 0.1f);
+
+	public static final RegistryEntry<Item> RAW_EQUINE = food("raw_equine", 5, 2.4f);
+	public static final RegistryEntry<Item> COOKED_EQUINE = food("cooked_equine", 10, 13.4f);
+	public static final RegistryEntry<Item> BURNT_EQUINE = food("burnt_equine", 7, 11.5f);
 	public static final RegistryEntry<Item> CORN_SEEDS = cropSeed("corn_seeds", SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
@@ -431,6 +462,11 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
+	}
+
+	private static RegistryEntry<Item> food(String path, int nutrition, float saturation) {
+		return register(path, () -> new Item(new Item.Properties()
+				.food(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build())));
 	}
 
 	private static RegistryEntry<Item> seed(String path, RegistryEntry<? extends Block> crop) {
