@@ -2,10 +2,17 @@ package net.mcreator.survivalreimagined;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticles;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+import net.mcreator.survivalreimagined.client.model.ModelGasMask;
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
@@ -17,6 +24,20 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		SurvivalReimaginedModParticles.register();
 		SurvivalReimaginedModScreens.register();
+		EntityModelLayerRegistry.registerModelLayer(ModelGasMask.LAYER_LOCATION, ModelGasMask::createBodyLayer);
+		ArmorRenderer.register((matrices, vertexConsumers, stack, entity, slot, light, contextModel) -> {
+			if (slot != EquipmentSlot.HEAD) return;
+			ModelGasMask model = new ModelGasMask(
+					Minecraft.getInstance().getEntityModels().bakeLayer(ModelGasMask.LAYER_LOCATION));
+			model.gasMask.copyFrom(contextModel.head);
+			ArmorRenderer.renderPart(
+					matrices,
+					vertexConsumers,
+					light,
+					stack,
+					model,
+					ResourceLocation.fromNamespaceAndPath("survival_reimagined", "textures/models/armor/gasmask_layer_1.png"));
+		}, SurvivalReimaginedModItems.GAS_MASK_HELMET.get());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.URANIUM_ROD.get(), RenderType.translucent());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.CAMPFIRE.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RYE_SEEDS.get(), RenderType.cutout());
