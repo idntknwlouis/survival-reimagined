@@ -397,5 +397,13 @@
   "item.survival_reimagined.rye_flour": "Rye Flour",
   "item.survival_reimagined.spelt_flour": "Spelt Flour",
   "item.survival_reimagined.rye_bread": "Rye Bread",
-  "item.survival_reimagined.spelt_bread": "Spelt Bread"
+  "item.survival_reimagined.spelt_bread": "Spelt Bread",
+  "item.survival_reimagined.wheat_dough": "Wheat Dough",
+  "item.survival_reimagined.spelt_dough": "Spelt Dough",
+  "item.survival_reimagined.rye_dough": "Rye Dough",
+  "item.survival_reimagined.corn_on_the_cob": "Corn On The Cob",
+  "item.survival_reimagined.cooked_corn_on_the_cob": "Cooked Corn On The Cob",
+  "item.survival_reimagined.burnt_corn_on_the_cob": "Burnt Corn On The Cob",
+  "item.survival_reimagined.burnt_potato": "Burnt Potato",
+  "item.survival_reimagined.charred_potato": "Charred Potato"
 }
