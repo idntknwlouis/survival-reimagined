@@ -51,6 +51,10 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("native_copper");
 		addUndergroundEverywhere("native_gold");
 		addUndergroundEverywhere("native_silver");
+		addUndergroundDecorationEverywhere("stone_stalagmite");
+		addUndergroundDecorationEverywhere("stone_stalagtite");
+		addUndergroundDecorationEverywhere("deepslate_stalagmite");
+		addUndergroundDecorationEverywhere("deepslate_stalagtite");
 		addUndergroundToBiomes("extra_native_gold",
 				Biomes.BADLANDS,
 				Biomes.ERODED_BADLANDS,
