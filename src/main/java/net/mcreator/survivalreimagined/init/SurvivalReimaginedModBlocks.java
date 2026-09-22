@@ -197,6 +197,14 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_MIDDLE = register("basalt_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.MIDDLE, "basalt_stalagtite", false));
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_TIP = register("basalt_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.TIP, "basalt_stalagtite", false));
 
+	public static final RegistryEntry<Block> SHALE_STALAGMITE_BASE = register("shale_stalagmite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "shale_stalagmite", true));
+	public static final RegistryEntry<Block> SHALE_STALAGMITE_MIDDLE = register("shale_stalagmite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "shale_stalagmite", true));
+	public static final RegistryEntry<Block> SHALE_STALAGMITE_TOP = register("shale_stalagmite_top", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.TIP, "shale_stalagmite", true));
+	public static final RegistryEntry<Block> SHALE_STALAGTITE_BASE = register("shale_stalagtite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "shale_stalagtite", false));
+	public static final RegistryEntry<Block> SHALE_STALAGTITE_MIDDLE = register("shale_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "shale_stalagtite", false));
+	public static final RegistryEntry<Block> SHALE_STALAGTITE_TIP = register("shale_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.TIP, "shale_stalagtite", false));
+
+
 	public static final RegistryEntry<Block> KIMBERLITE = register("kimberlite", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGMITE_BASE = register("kimberlite_stalagmite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "kimberlite_stalagmite", true));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGMITE_MIDDLE = register("kimberlite_stalagmite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "kimberlite_stalagmite", true));

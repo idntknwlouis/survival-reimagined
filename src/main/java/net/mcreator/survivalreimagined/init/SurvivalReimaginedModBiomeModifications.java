@@ -52,10 +52,12 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("native_copper");
 		addUndergroundEverywhere("native_gold");
 		addUndergroundEverywhere("native_silver");
-		addUndergroundDecorationEverywhere("stone_stalagmite");
-		addUndergroundDecorationEverywhere("stone_stalagtite");
-		addUndergroundDecorationEverywhere("deepslate_stalagmite");
-		addUndergroundDecorationEverywhere("deepslate_stalagtite");
+		addPointedStonesUndergroundEverywhere("stone_stalagmite");
+		addPointedStonesUndergroundEverywhere("stone_stalagtite");
+		addPointedStonesUndergroundEverywhere("deepslate_stalagmite");
+		addPointedStonesUndergroundEverywhere("deepslate_stalagtite");
+		addRadiantForestUndergroundDecoration("shale_stalagmite");
+		addRadiantForestUndergroundDecoration("shale_stalagtite");
 		addUndergroundToBiomes("extra_native_gold",
 				Biomes.BADLANDS,
 				Biomes.ERODED_BADLANDS,
@@ -63,11 +65,11 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addLocalEverywhere("basalt_layer");
 		addFluidSprings("lava_srpings");
 		addUndergroundDecorationEverywhere("deltas");
-		addUndergroundDecorationEverywhere("basalt_stalagmite");
-		addUndergroundDecorationEverywhere("basalt_stalagtite");
+		addPointedStonesUndergroundEverywhere("basalt_stalagmite");
+		addPointedStonesUndergroundEverywhere("basalt_stalagtite");
 		addLocalEverywhere("kimberlite_feature");
-		addUndergroundDecorationEverywhere("kimberlite_stalagmite");
-		addUndergroundDecorationEverywhere("kimberlite_stalagtite");
+		addPointedStonesUndergroundEverywhere("kimberlite_stalagmite");
+		addPointedStonesUndergroundEverywhere("kimberlite_stalagtite");
 		addNether("dark_cinder_blobs");
 		addVegetationToBiomes("natural_rye",
 				Biomes.OLD_GROWTH_PINE_TAIGA,
@@ -108,7 +110,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 				SurvivalReimaginedMod.asResource(path));
 		BiomeModifications.addFeature(
 				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
-				GenerationStep.Decoration.UNDERGROUND_DECORATION,
+				GenerationStep.Decoration.VEGETAL_DECORATION,
 				featureKey);
 	}
 	@SafeVarargs
@@ -160,6 +162,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		BiomeModifications.addFeature(
 				context -> true,
 				GenerationStep.Decoration.UNDERGROUND_ORES,
+				featureKey);
+	}
+
+	private static void addPointedStonesUndergroundEverywhere(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.excludeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
+				GenerationStep.Decoration.UNDERGROUND_DECORATION,
 				featureKey);
 	}
 

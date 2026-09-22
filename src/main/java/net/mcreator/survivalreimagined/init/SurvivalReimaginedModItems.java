@@ -477,6 +477,12 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> STONE_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.STONE_STALAGTITE_BASE);
 	public static final RegistryEntry<Item> STONE_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.STONE_STALAGTITE_MIDDLE);
 	public static final RegistryEntry<Item> STONE_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.STONE_STALAGTITE_TIP);
+	public static final RegistryEntry<Item> SHALE_STALAGMITE_BASE = block(SurvivalReimaginedModBlocks.SHALE_STALAGMITE_BASE);
+	public static final RegistryEntry<Item> SHALE_STALAGMITE_MIDDLE = block(SurvivalReimaginedModBlocks.SHALE_STALAGMITE_MIDDLE);
+	public static final RegistryEntry<Item> SHALE_STALAGMITE_TOP = block(SurvivalReimaginedModBlocks.SHALE_STALAGMITE_TOP);
+	public static final RegistryEntry<Item> SHALE_STALAGTITE_BASE = block(SurvivalReimaginedModBlocks.SHALE_STALAGTITE_BASE);
+	public static final RegistryEntry<Item> SHALE_STALAGTITE_MIDDLE = block(SurvivalReimaginedModBlocks.SHALE_STALAGTITE_MIDDLE);
+	public static final RegistryEntry<Item> SHALE_STALAGTITE_TIP = block(SurvivalReimaginedModBlocks.SHALE_STALAGTITE_TIP);
 
 	public static final RegistryEntry<Item> DEEPSLATE_STALAGMITE_BASE = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGMITE_BASE);
 	public static final RegistryEntry<Item> DEEPSLATE_STALAGMITE_MIDDLE = block(SurvivalReimaginedModBlocks.DEEPSLATE_STALAGMITE_MIDDLE);
