@@ -3,7 +3,7 @@
   "category": "misc",
   "pattern": ["aaa", "a a", "bbb"],
   "key": {
-    "a": { "item": "minecraft:leather" },
+    "a": { "tag": "c:animal/hide" },
     "b": { "item": "survival_reimagined:steel_ingot" }
   },
   "result": {
