@@ -59,6 +59,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> SHEEP_CARCASS = register("sheep_carcass", () -> new CarcassBlock(CarcassBlock.Species.SHEEP));
 	public static final RegistryEntry<Block> SHEEP_HEAD = register("sheep_head", () -> new CarcassPartBlock(Block.box(5, 0, 4, 11, 6, 12)));
 	public static final RegistryEntry<Block> SHEEP_LEG = register("sheep_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 12, 10)));
+	public static final RegistryEntry<Block> GOAT_CARCASS = register("goat_carcass", () -> new CarcassBlock(CarcassBlock.Species.GOAT));
+	public static final RegistryEntry<Block> GOAT_HEAD = register("goat_head", () -> new CarcassPartBlock(Block.box(5.5, 0, 3, 10.5, 7, 13)));
+	public static final RegistryEntry<Block> GOAT_LEG = register("goat_leg", () -> new CarcassPartBlock(Block.box(6.5, 0, 6.5, 9.5, 10, 9.5)));
+	public static final RegistryEntry<Block> CHICKEN_CARCASS = register("chicken_carcass", () -> new CarcassBlock(CarcassBlock.Species.CHICKEN));
 	public static final RegistryEntry<Block> STONE_ROCK_BLOC = register("stone_rock_bloc", StoneRockBlocBlock::new);
 	public static final RegistryEntry<Block> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.OBSIDIAN_ROCK.get()));
 	public static final RegistryEntry<Block> SHALE = register("shale", ShaleBlock::new);
