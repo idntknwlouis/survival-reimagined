@@ -16,7 +16,8 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/survival-reimagined",
-    "sources": "https://github.com/idntknwlouis/survival-reimagined"
+    "sources": "https://github.com/idntknwlouis/survival-reimagined",
+    "issues": "https://github.com/idntknwlouis/survival-reimagined/issues"
   },
   "license": "All Rights Reserved",
   "icon": "assets/survival-reimagined-fabric/icon.png",
