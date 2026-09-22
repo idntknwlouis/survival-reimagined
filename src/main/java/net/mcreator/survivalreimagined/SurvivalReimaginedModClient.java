@@ -17,6 +17,9 @@ import net.mcreator.survivalreimagined.client.renderer.PigletRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BlackBearRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BrownBearRenderer;
 import net.mcreator.survivalreimagined.client.model.Modelbear;
+import net.mcreator.survivalreimagined.client.model.Modelboar;
+import net.mcreator.survivalreimagined.client.model.Modelsow;
+import net.mcreator.survivalreimagined.client.model.Modelpiglet;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -38,6 +41,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BLACK_BEAR.get(), BlackBearRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BROWN_BEAR.get(), BrownBearRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(Modelbear.LAYER_LOCATION, Modelbear::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(Modelboar.LAYER_LOCATION, Modelboar::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(Modelsow.LAYER_LOCATION, Modelsow::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(Modelpiglet.LAYER_LOCATION, Modelpiglet::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(ModelGasMask.LAYER_LOCATION, ModelGasMask::createBodyLayer);
 		ArmorRenderer.register((matrices, vertexConsumers, stack, entity, slot, light, contextModel) -> {
 			if (slot != EquipmentSlot.HEAD) return;
