@@ -1,10 +1,14 @@
 package net.mcreator.survivalreimagined.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -60,34 +64,20 @@ public class GeologySegmentBlock extends Block {
 	}
 
 	@Override
-	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
-		super.neighborChanged(state, level, pos, neighborBlock, fromPos, moving);
-		resolveSegment(level, pos);
-		BlockPos supportSide = growsUp ? pos.below() : pos.above();
-		if (level.getBlockState(supportSide).getBlock() instanceof GeologySegmentBlock) {
-			resolveSegment(level, supportSide);
-		}
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+		BlockPos support = growsUp ? pos.below() : pos.above();
+		return !level.isEmptyBlock(support);
 	}
 
 	@Override
-	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
-		super.onPlace(state, level, pos, oldState, moving);
-		if (!level.isClientSide()) {
-			resolveSegment(level, pos);
-			BlockPos supportSide = growsUp ? pos.below() : pos.above();
-			if (level.getBlockState(supportSide).getBlock() instanceof GeologySegmentBlock) {
-				resolveSegment(level, supportSide);
-			}
-		}
+	public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
+			LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+		return canSurvive(state, level, pos) ? state : Blocks.AIR.defaultBlockState();
 	}
 
-	private void resolveSegment(Level level, BlockPos pos) {
-		BlockState current = level.getBlockState(pos);
-		if (!(current.getBlock() instanceof GeologySegmentBlock currentSegment)
-				|| !currentSegment.family.equals(this.family)
-				|| currentSegment.growsUp != this.growsUp) {
-			return;
-		}
+	@Override
+	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
+		super.neighborChanged(state, level, pos, neighborBlock, fromPos, moving);
 
 		BlockPos towardTip = growsUp ? pos.above() : pos.below();
 		BlockState next = level.getBlockState(towardTip);
@@ -96,17 +86,12 @@ public class GeologySegmentBlock extends Block {
 		Block middle = block(family + "_middle");
 		Block tip = block(family + (growsUp ? "_top" : "_tip"));
 
-		BlockState replacement = current;
 		if (next.is(tip)) {
-			replacement = middle.defaultBlockState();
+			if (!state.is(middle)) level.setBlock(pos, middle.defaultBlockState(), 3);
 		} else if (next.is(middle)) {
-			replacement = base.defaultBlockState();
+			if (!state.is(base)) level.setBlock(pos, base.defaultBlockState(), 3);
 		} else if (next.isAir()) {
-			replacement = tip.defaultBlockState();
-		}
-
-		if (replacement.getBlock() != current.getBlock()) {
-			level.setBlock(pos, replacement, 2);
+			if (!state.is(tip)) level.setBlock(pos, tip.defaultBlockState(), 3);
 		}
 	}
 
