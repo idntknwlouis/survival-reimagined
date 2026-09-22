@@ -179,6 +179,7 @@ public class CampfireBlock extends Block implements EntityBlock {
 		if (state.getBlock() != newState.getBlock()) {
 			if (level.getBlockEntity(pos) instanceof CampfireBlockEntity campfire) {
 				Containers.dropContents(level, pos, campfire);
+				level.updateNeighbourForOutputSignal(pos, this);
 			}
 			super.onRemove(state, level, pos, newState, moving);
 		}
