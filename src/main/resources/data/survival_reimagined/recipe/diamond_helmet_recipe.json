@@ -1,23 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "equipment",
-  "ingredients": [
-    {
+  "pattern": [
+    "aba",
+    "a a"
+  ],
+  "key": {
+    "a": {
       "item": "survival_reimagined:diamond_plate"
     },
-    {
-      "item": "survival_reimagined:diamond_plate"
-    },
-    {
-      "item": "survival_reimagined:diamond_plate"
-    },
-    {
-      "item": "survival_reimagined:diamond_plate"
-    },
-    {
+    "b": {
       "item": "minecraft:leather_helmet"
     }
-  ],
+  },
   "result": {
     "id": "minecraft:diamond_helmet",
     "count": 1
