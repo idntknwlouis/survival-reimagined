@@ -87,8 +87,19 @@ public final class SurvivalReimaginedModTabs {
 			case 3 -> ingredientSortKey(path);
 			case 4, 5 -> equipmentSortKey(path);
 			case 6 -> foodSortKey(path);
-			default -> "99_" + path;
+			default -> path.endsWith("_spawn_egg") ? "00_spawn_eggs_" + spawnEggRank(path) : "99_" + path;
 		};
+	}
+
+	private static String spawnEggRank(String path) {
+		if (path.equals("boar_spawn_egg")) return "00_boar";
+		if (path.equals("sow_spawn_egg")) return "01_sow";
+		if (path.equals("piglet_spawn_egg")) return "02_piglet";
+		if (path.equals("black_bear_spawn_egg")) return "03_black_bear";
+		if (path.equals("brown_bear_spawn_egg")) return "04_brown_bear";
+		if (path.equals("crimson_arachnid_spawn_egg")) return "05_crimson_arachnid";
+		if (path.equals("alpha_crimson_arachnid_spawn_egg")) return "06_alpha_crimson_arachnid";
+		return "90_" + path;
 	}
 
 	private static String buildingSortKey(String path) {
