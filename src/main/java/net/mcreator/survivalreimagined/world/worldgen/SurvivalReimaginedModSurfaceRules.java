@@ -30,6 +30,10 @@ public class SurvivalReimaginedModSurfaceRules {
                                                         )
                                                 ),
                                                 SurfaceRules.ifTrue(
+                                                        SurfaceRules.ON_CEILING,
+                                                        SurfaceRules.state(shale)
+                                                ),
+                                                SurfaceRules.ifTrue(
                                                         SurfaceRules.UNDER_FLOOR,
                                                         SurfaceRules.state(shale)
                                                 )
