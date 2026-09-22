@@ -70,6 +70,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SHEEP_HEAD = block(SurvivalReimaginedModBlocks.SHEEP_HEAD);
 	public static final RegistryEntry<Item> SHEEP_LEG = block(SurvivalReimaginedModBlocks.SHEEP_LEG);
 	public static final RegistryEntry<Item> SHEEP_HIDE = simple("sheep_hide");
+	public static final RegistryEntry<Item> GOAT_CARCASS = block(SurvivalReimaginedModBlocks.GOAT_CARCASS);
+	public static final RegistryEntry<Item> GOAT_HEAD = block(SurvivalReimaginedModBlocks.GOAT_HEAD);
+	public static final RegistryEntry<Item> GOAT_LEG = block(SurvivalReimaginedModBlocks.GOAT_LEG);
+	public static final RegistryEntry<Item> GOAT_HIDE = simple("goat_hide");
+	public static final RegistryEntry<Item> CHICKEN_CARCASS = block(SurvivalReimaginedModBlocks.CHICKEN_CARCASS);
 	public static final RegistryEntry<Item> BRAIN = register("brain", () -> new SpoilingFoodItem(new Item.Properties()));
 	public static final RegistryEntry<Item> LUNGS = simple("lungs");
 	public static final RegistryEntry<Item> HEART_ITEM = simple("heart_item");
