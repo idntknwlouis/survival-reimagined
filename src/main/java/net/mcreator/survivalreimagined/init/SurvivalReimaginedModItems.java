@@ -474,10 +474,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_ROCK = register("deepslate_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK::get, "block.deepslate.place"));
 	public static final RegistryEntry<Item> DEEPSLATE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK);
 	public static final RegistryEntry<Item> THIN_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THIN_RADIATED_VINES);
-	public static final RegistryEntry<Item> THIN_RADIATED_VINE_BASE = block(SurvivalReimaginedModBlocks.THIN_RADIATED_VINE_BASE);
 	public static final RegistryEntry<Item> THIN_RADIATED_VINES_HEAD = THIN_RADIATED_VINES;
 	public static final RegistryEntry<Item> THICK_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THICK_RADIATED_VINES);
-	public static final RegistryEntry<Item> THICK_RADIATED_VINES_BASE = block(SurvivalReimaginedModBlocks.THICK_RADIATED_VINES_BASE);
 
 
 	private SurvivalReimaginedModItems() {
