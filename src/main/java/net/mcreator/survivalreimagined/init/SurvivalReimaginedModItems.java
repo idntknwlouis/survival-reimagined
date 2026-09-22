@@ -47,6 +47,8 @@ import net.mcreator.survivalreimagined.item.TinChunkItem;
 import net.mcreator.survivalreimagined.item.TinIngotItem;
 import net.mcreator.survivalreimagined.item.TinNuggetItem;
 import net.mcreator.survivalreimagined.item.SpoilingFoodItem;
+import net.mcreator.survivalreimagined.item.GasMaskItem;
+import net.mcreator.survivalreimagined.item.GasMaskFilterItem;
 import net.mcreator.survivalreimagined.item.SurvivalArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
@@ -104,6 +106,11 @@ public final class SurvivalReimaginedModItems {
 			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.LEGGINGS, 16));
 	public static final RegistryEntry<Item> STEEL_ARMOR_BOOTS = register("steel_armor_boots",
 			() -> new SurvivalArmorItem(SurvivalReimaginedModArmorMaterials.STEEL, ArmorItem.Type.BOOTS, 16));
+
+	public static final RegistryEntry<Item> GAS_MASK_HELMET = register("gas_mask_helmet", GasMaskItem::new);
+	public static final RegistryEntry<Item> GAS_MASK_FILTER = register("gas_mask_filter", GasMaskFilterItem::new);
+	public static final RegistryEntry<Item> USED_FILTER = simple("used_filter");
+	public static final RegistryEntry<Item> HEMP_MESH = simple("hemp_mesh");
 	public static final RegistryEntry<Item> RYE = simple("rye");
 	public static final RegistryEntry<Item> RYE_SEEDS = cropSeed("rye_seeds", SurvivalReimaginedModBlocks.RYE_SEEDS);
 	public static final RegistryEntry<Item> SPELT = simple("spelt");
