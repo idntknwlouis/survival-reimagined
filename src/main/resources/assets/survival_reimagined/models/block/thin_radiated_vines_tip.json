@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "survival_reimagined:block/thin_radiated_vines_end",
-    "particle": "survival_reimagined:block/thin_radiated_vines_end"
-  },
-  "render_type": "cutout"
-}
