@@ -505,5 +505,6 @@
   "entity.survival_reimagined.ghost": "Ghost",
   "entity.survival_reimagined.blood_moon_zombie": "Blood Moon Zombie",
   "item.survival_reimagined.ghost_spawn_egg": "Ghost Spawn Egg",
-  "item.survival_reimagined.blood_moon_zombie_spawn_egg": "Blood Moon Zombie Spawn Egg"
+  "item.survival_reimagined.blood_moon_zombie_spawn_egg": "Blood Moon Zombie Spawn Egg",
+  "item.survival_reimagined.crimson_thread": "Crimson Thread"
 }
