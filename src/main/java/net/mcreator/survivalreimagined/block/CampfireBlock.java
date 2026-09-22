@@ -3,6 +3,7 @@ package net.mcreator.survivalreimagined.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,11 +16,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -99,6 +102,36 @@ public class CampfireBlock extends Block implements EntityBlock {
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 		return new CampfireBlockEntity(pos, state);
+	}
+
+	@Override
+	public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+		super.animateTick(state, level, pos, random);
+		if (!state.getValue(LIT)) return;
+
+		boolean signal = level.getBlockState(pos.below()).is(Blocks.HAY_BLOCK);
+		for (int i = 0; i < 3; i++) {
+			double y = pos.getY() + 0.5D + random.nextDouble() * 0.2D;
+			level.addParticle(signal ? ParticleTypes.CAMPFIRE_SIGNAL_SMOKE : ParticleTypes.CAMPFIRE_COSY_SMOKE,
+					pos.getX() + 0.5D, y, pos.getZ() + 0.5D, 0.0D, 0.075D, 0.0D);
+		}
+		if (random.nextFloat() < 0.3F) {
+			level.playLocalSound(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D,
+					SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+		}
+	}
+
+	@Override
+	protected boolean hasAnalogOutputSignal(BlockState state) {
+		return true;
+	}
+
+	@Override
+	protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+		BlockEntity blockEntity = level.getBlockEntity(pos);
+		return blockEntity instanceof CampfireBlockEntity campfire
+				? AbstractContainerMenu.getRedstoneSignalFromContainer(campfire)
+				: 0;
 	}
 
 	@Override
