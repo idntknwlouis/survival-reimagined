@@ -1,0 +1,139 @@
+package net.mcreator.survivalreimagined.block;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
+
+public class CampfireBlock extends BaseEntityBlock {
+	public static final BooleanProperty LIT = BooleanProperty.create("lit");
+	private static final TagKey<Item> STARTERS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "campfire_starters"));
+	private static final VoxelShape SHAPE = Shapes.or(
+			box(1, 0, 0, 5, 4, 16),
+			box(0, 3, 11, 16, 7, 15),
+			box(11, 0, 0, 15, 4, 16),
+			box(0, 3, 1, 16, 7, 5),
+			box(5, 0, 0, 11, 1, 16));
+
+	public CampfireBlock() {
+		super(BlockBehaviour.Properties.of()
+				.sound(SoundType.WOOD)
+				.strength(0.2f)
+				.lightLevel(state -> state.getValue(LIT) ? 15 : 0)
+				.noOcclusion()
+				.isRedstoneConductor((state, level, pos) -> false));
+		registerDefaultState(stateDefinition.any().setValue(LIT, false));
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
+		builder.add(LIT);
+	}
+
+	@Override
+	protected RenderShape getRenderShape(BlockState state) {
+		return RenderShape.MODEL;
+	}
+
+	@Override
+	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		return SHAPE;
+	}
+
+	@Override
+	protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		return Shapes.empty();
+	}
+
+	@Override
+	protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
+		return true;
+	}
+
+	@Override
+	protected int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
+		return 0;
+	}
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new CampfireBlockEntity(pos, state);
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+		if (level.isClientSide() || type != SurvivalReimaginedModBlockEntities.CAMPFIRE.get()) return null;
+		return (lvl, pos, st, be) -> CampfireBlockEntity.serverTick(lvl, pos, st, (CampfireBlockEntity) be);
+	}
+
+	@Override
+	protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+		open(level, pos, player);
+		return InteractionResult.SUCCESS;
+	}
+
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
+			Player player, InteractionHand hand, BlockHitResult hit) {
+		if (stack.is(STARTERS) && level.getBlockEntity(pos) instanceof CampfireBlockEntity campfire && campfire.hasFuel()) {
+			if (!level.isClientSide()) {
+				level.setBlock(pos, state.setValue(LIT, true), 3);
+				level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+				if (stack.isDamageableItem()) stack.hurtAndBreak(1, player, player.getEquipmentSlotForItem(stack));
+			}
+			return ItemInteractionResult.SUCCESS;
+		}
+		open(level, pos, player);
+		return ItemInteractionResult.SUCCESS;
+	}
+
+	private static void open(Level level, BlockPos pos, Player player) {
+		if (!level.isClientSide() && player instanceof ServerPlayer serverPlayer
+				&& level.getBlockEntity(pos) instanceof CampfireBlockEntity campfire) {
+			serverPlayer.openMenu(campfire);
+		}
+	}
+
+	@Override
+	protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean moving) {
+		if (state.getBlock() != newState.getBlock()) {
+			if (level.getBlockEntity(pos) instanceof CampfireBlockEntity campfire) {
+				Containers.dropContents(level, pos, campfire);
+			}
+			super.onRemove(state, level, pos, newState, moving);
+		}
+	}
+}
