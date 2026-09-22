@@ -58,7 +58,8 @@ public final class SurvivalReimaginedModTabs {
 		// -> Tools & Utilities -> Combat -> Food & Drinks -> Misc.
 		if (item instanceof BlockItem) {
 			if (containsAny(path, "ore", "rock", "stalag", "stalagt", "deposit", "radiated_shale",
-					"kimberlite", "dark_cinder", "crop", "plant", "vines", "leaves", "sapling", "wild_")) {
+					"kimberlite", "dark_cinder", "crop", "plant", "vines", "leaves", "sapling", "wild_",
+					"_seeds", "potato", "corn_stalk")) {
 				return 1;
 			}
 			if (containsAny(path, "forge", "table", "millstone", "infuser", "mold", "campfire",
@@ -91,6 +92,9 @@ public final class SurvivalReimaginedModTabs {
 	}
 
 	private static String buildingSortKey(String path) {
+		if (path.contains("_plate") || path.equals("wooden_plate")) {
+			return "00_plates_" + plateRank(path);
+		}
 		if (path.contains("shale")) {
 			return "00_shale_" + stage(path,
 					"shale", "polished_shale", "polished_shale_bricks", "polished_chiseled_shale",
@@ -130,7 +134,7 @@ public final class SurvivalReimaginedModTabs {
 		if (path.equals("rune_magic_infuser")) return "04_rune_magic_infuser";
 		if (path.equals("millstone")) return "05_millstone";
 		if (path.equals("campfire")) return "06_campfire";
-		if (path.contains("mold")) return "20_molds_" + toolPartRank(path) + "_" + path;
+		if (path.contains("mold")) return "20_molds_" + moldFamilyRank(path) + "_" + moldStage(path);
 		if (path.contains("uranium_rod")) return "30_uranium_rod";
 		return "90_" + path;
 	}
@@ -147,7 +151,7 @@ public final class SurvivalReimaginedModTabs {
 				"manganite", "hematite", "magnetite", "calaverite", "pyrolusite", "uranophane", "ilmenite",
 				"anthracite", "liginite", "salt", "quick_lime", "handle", "blade", "_head", "hemp_fiber",
 				"small_stick", "wood_ingot")) {
-			return "00_materials_" + materialRank(path) + "_" + materialStage(path) + "_" + path;
+			return "00_materials_" + materialFamilyRank(path) + "_" + materialRank(path) + "_" + path;
 		}
 		return "90_" + path;
 	}
@@ -219,17 +223,53 @@ public final class SurvivalReimaginedModTabs {
 		return "90_other";
 	}
 
-	private static String materialStage(String path) {
-		if (path.contains("ore")) return "00_ore";
-		if (path.contains("raw_")) return "01_raw";
-		if (path.contains("chunk")) return "02_chunk";
-		if (path.contains("rough_")) return "03_rough";
-		if (path.contains("ingot")) return "04_ingot";
-		if (path.contains("nugget")) return "05_nugget";
-		if (path.contains("dust") || path.contains("powder")) return "06_dust";
-		if (path.contains("handle")) return "07_handle";
-		if (path.contains("blade") || path.contains("_head")) return "08_part";
-		return "09_misc";
+	private static String materialFamilyRank(String path) {
+		if (path.contains("raw_")) return "00_raw";
+		if (path.contains("chunk")) return "01_chunks";
+		if (path.contains("rough_")) return "02_rough";
+		if (path.contains("ingot")) return "03_ingots";
+		if (path.contains("nugget")) return "04_nuggets";
+		if (path.contains("dust") || path.contains("powder")) return "05_dusts";
+		if (path.contains("handle")) return "06_handles";
+		if (path.contains("sword_blade")) return "07_sword_blades";
+		if (path.contains("pickaxe_head")) return "08_pickaxe_heads";
+		if (path.contains("axe_head")) return "09_axe_heads";
+		if (path.contains("shovel_head")) return "10_shovel_heads";
+		if (path.contains("hoe_blade")) return "11_hoe_blades";
+		if (path.contains("knife_blade")) return "12_knife_blades";
+		if (path.contains("hammer_head")) return "13_hammer_heads";
+		if (path.contains("saw_blade")) return "14_saw_blades";
+		if (path.contains("blade") || path.contains("_head")) return "15_tool_parts";
+		return "90_misc";
+	}
+
+	private static String plateRank(String path) {
+		if (path.contains("wooden")) return "00_wooden";
+		if (path.contains("bronze")) return "01_bronze";
+		if (path.contains("steel")) return "02_steel";
+		if (path.contains("diamond")) return "03_diamond";
+		if (path.contains("netherite")) return "04_netherite";
+		return "90_" + path;
+	}
+
+	private static String moldFamilyRank(String path) {
+		if (path.contains("ingot")) return "00_ingot";
+		if (path.contains("metal_plate")) return "01_plate";
+		if (path.contains("sword")) return "02_sword";
+		if (path.contains("pickaxe")) return "03_pickaxe";
+		if (path.contains("axe")) return "04_axe";
+		if (path.contains("shovel")) return "05_shovel";
+		if (path.contains("hoe")) return "06_hoe";
+		if (path.contains("knife")) return "07_knife";
+		if (path.contains("hammer")) return "08_hammer";
+		if (path.contains("saw")) return "09_saw";
+		if (path.contains("rune")) return "10_rune";
+		return "90_" + path;
+	}
+
+	private static String moldStage(String path) {
+		// Clay is the unfired form; the corresponding non-clay mold follows it.
+		return path.contains("clay") ? "00_clay" : "01_dried";
 	}
 
 	private static String toolPartRank(String path) {
