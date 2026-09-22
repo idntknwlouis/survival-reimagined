@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 
 public class GhostEntity extends PathfinderMob {
+	public final AnimationState animationState0 = new AnimationState();
 	public GhostEntity(EntityType<? extends GhostEntity> type, Level level) {
 		super(type, level);
 		xpReward = 0;
@@ -53,6 +55,9 @@ public class GhostEntity extends PathfinderMob {
 	@Override
 	public void tick() {
 		super.tick();
+		if (level().isClientSide()) {
+			this.animationState0.animateWhen(true, this.tickCount);
+		}
 		setNoGravity(true);
 		if (!level().isClientSide()) {
 			Player player = level().getNearestPlayer(this, 300.0D);
