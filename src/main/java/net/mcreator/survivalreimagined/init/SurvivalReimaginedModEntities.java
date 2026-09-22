@@ -15,11 +15,17 @@ import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.entity.BoarEntity;
 import net.mcreator.survivalreimagined.entity.BlackBearEntity;
 import net.mcreator.survivalreimagined.entity.BrownBearEntity;
+import net.mcreator.survivalreimagined.entity.CrimsonArachnidEntity;
+import net.mcreator.survivalreimagined.entity.AlphaCrimsonArachnidEntity;
 import net.mcreator.survivalreimagined.entity.PigletEntity;
 import net.mcreator.survivalreimagined.entity.SowEntity;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 public final class SurvivalReimaginedModEntities {
+	public static final RegistryEntry<EntityType<CrimsonArachnidEntity>> CRIMSON_ARACHNID =
+			register("crimson_arachnid", EntityType.Builder.of(CrimsonArachnidEntity::new, MobCategory.MONSTER).sized(1.4F, 0.9F));
+	public static final RegistryEntry<EntityType<AlphaCrimsonArachnidEntity>> ALPHA_CRIMSON_ARACHNID =
+			register("alpha_crimson_arachnid", EntityType.Builder.of(AlphaCrimsonArachnidEntity::new, MobCategory.MONSTER).sized(1.4F, 0.9F));
 	public static final RegistryEntry<EntityType<BoarEntity>> BOAR =
 			register("boar", EntityType.Builder.of(BoarEntity::new, MobCategory.CREATURE).sized(1.0F, 1.0F));
 	public static final RegistryEntry<EntityType<SowEntity>> SOW =
@@ -42,6 +48,8 @@ public final class SurvivalReimaginedModEntities {
 	}
 
 	public static void register() {
+		FabricDefaultAttributeRegistry.register(CRIMSON_ARACHNID.get(), CrimsonArachnidEntity.createAttributes());
+		FabricDefaultAttributeRegistry.register(ALPHA_CRIMSON_ARACHNID.get(), AlphaCrimsonArachnidEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(BOAR.get(), BoarEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(SOW.get(), SowEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(PIGLET.get(), PigletEntity.createAttributes());
