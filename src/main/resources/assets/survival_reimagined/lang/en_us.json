@@ -492,5 +492,7 @@
   "entity.survival_reimagined.sow": "Sow",
   "entity.survival_reimagined.piglet": "Piglet",
   "entity.survival_reimagined.black_bear": "Black Bear",
-  "entity.survival_reimagined.brown_bear": "Brown Bear"
+  "entity.survival_reimagined.brown_bear": "Brown Bear",
+  "entity.survival_reimagined.crimson_arachnid": "Crimson Arachnid",
+  "entity.survival_reimagined.alpha_crimson_arachnid": "Alpha Crimson Arachnid"
 }
