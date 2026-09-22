@@ -501,5 +501,9 @@
   "item.survival_reimagined.black_bear_spawn_egg": "Black Bear Spawn Egg",
   "item.survival_reimagined.brown_bear_spawn_egg": "Brown Bear Spawn Egg",
   "item.survival_reimagined.crimson_arachnid_spawn_egg": "Crimson Arachnid Spawn Egg",
-  "item.survival_reimagined.alpha_crimson_arachnid_spawn_egg": "Alpha Crimson Arachnid Spawn Egg"
+  "item.survival_reimagined.alpha_crimson_arachnid_spawn_egg": "Alpha Crimson Arachnid Spawn Egg",
+  "entity.survival_reimagined.ghost": "Ghost",
+  "entity.survival_reimagined.blood_moon_zombie": "Blood Moon Zombie",
+  "item.survival_reimagined.ghost_spawn_egg": "Ghost Spawn Egg",
+  "item.survival_reimagined.blood_moon_zombie_spawn_egg": "Blood Moon Zombie Spawn Egg"
 }
