@@ -20,7 +20,6 @@ import net.mcreator.survivalreimagined.block.CopperRockBlockBlock;
 import net.mcreator.survivalreimagined.block.DeepslateTinOreBlock;
 import net.mcreator.survivalreimagined.block.FlintblockBlock;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
-import net.mcreator.survivalreimagined.block.GeologySpikeBlock;
 import net.mcreator.survivalreimagined.block.GeologySegmentBlock;
 import net.mcreator.survivalreimagined.block.IngotMoldBlock;
 import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
@@ -182,7 +181,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_BASE = register("basalt_stalagtite_base", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.BASE, "basalt_stalagtite", false));
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_MIDDLE = register("basalt_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.MIDDLE, "basalt_stalagtite", false));
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_TIP = register("basalt_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.TIP, "basalt_stalagtite", false));
-	public static final RegistryEntry<Block> BASALT_POINTED_STONE = register("basalt_pointed_stone", () -> new GeologySpikeBlock(SoundType.BASALT, 1.25f, 4.2f));
 
 	public static final RegistryEntry<Block> KIMBERLITE = register("kimberlite", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGMITE_BASE = register("kimberlite_stalagmite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "kimberlite_stalagmite", true));
@@ -191,7 +189,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGTITE_BASE = register("kimberlite_stalagtite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "kimberlite_stalagtite", false));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGTITE_MIDDLE = register("kimberlite_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "kimberlite_stalagtite", false));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGTITE_TIP = register("kimberlite_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.TIP, "kimberlite_stalagtite", false));
-	public static final RegistryEntry<Block> KIMBERLITE_POINTED_STONE = register("kimberlite_pointed_stone", () -> new GeologySpikeBlock(SoundType.STONE, 1.25f, 4.2f));
 	public static final RegistryEntry<Block> KIMBERLITE_ROCK = register("kimberlite_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.KIMBERLITE_ROCK.get()));
 	public static final RegistryEntry<Block> KIMBERLITE_SAPPHIRE_ORE = register("kimberlite_sapphire_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> KIMBERLITE_DIAMOND_ORE = register("kimberlite_diamond_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3f).requiresCorrectToolForDrops()));
@@ -260,8 +257,6 @@ public final class SurvivalReimaginedModBlocks {
 
 	public static final RegistryEntry<Block> THIN_RADIATED_VINES = register("thin_radiated_vines", ThinRadiatedVinesBlock::new);
 	public static final RegistryEntry<Block> THIN_RADIATED_VINE_BASE = register("thin_radiated_vine_base", ThinRadiatedVineBaseBlock::new);
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = THIN_RADIATED_VINES;
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = THIN_RADIATED_VINE_BASE;
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES = register("thick_radiated_vines", ThickRadiatedVinesBlock::new);
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES_BASE = register("thick_radiated_vines_base", ThickRadiatedVinesBaseBlock::new);
 
