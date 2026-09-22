@@ -41,7 +41,7 @@ public class SowEntity extends Animal {
 				if (player == null || player.isCreative() || player.isSpectator()) return false;
 				boolean canUse = super.canUse();
 				if (canUse && SowEntity.this.tickCount % 20 == 0) {
-					PigFamilyAlarm.alertNearby(this.mob);
+					PigFamilyAlarm.alertNearby(SowEntity.this);
 				}
 				return canUse;
 			}
