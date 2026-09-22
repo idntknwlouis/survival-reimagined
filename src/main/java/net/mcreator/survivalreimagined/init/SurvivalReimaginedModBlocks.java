@@ -258,8 +258,12 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_ROCK_BLOCK = register("basalt_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.BASALT_ROCK.get()));
 	public static final RegistryEntry<Block> DEEPSLATE_ROCK_BLOCK = register("deepslate_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DEEPSLATE_ROCK.get()));
 
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = register("thin_radiated_vines_tip", () -> new VineHeadBlock(SurvivalReimaginedModBlocks::getradiatedHead));
-	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = register("thin_radiated_vines", () -> new VineBodyBlock(SurvivalReimaginedModBlocks::getradiatedBody));
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES = register("thin_radiated_vines", ThinRadiatedVinesBlock::new);
+	public static final RegistryEntry<Block> THIN_RADIATED_VINE_BASE = register("thin_radiated_vine_base", ThinRadiatedVineBaseBlock::new);
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES_HEAD = THIN_RADIATED_VINES;
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = THIN_RADIATED_VINE_BASE;
+	public static final RegistryEntry<Block> THICK_RADIATED_VINES = register("thick_radiated_vines", ThickRadiatedVinesBlock::new);
+	public static final RegistryEntry<Block> THICK_RADIATED_VINES_BASE = register("thick_radiated_vines_base", ThickRadiatedVinesBaseBlock::new);
 
 	private SurvivalReimaginedModBlocks() {
 	}
@@ -270,13 +274,6 @@ public final class SurvivalReimaginedModBlocks {
 		return new RegistryEntry<>(id, block);
 	}
 
-	private static RegistryEntry<Block> getradiatedHead() {
-		return THIN_RADIATED_VINES_HEAD;
-	}
-
-	private static RegistryEntry<Block> getradiatedBody() {
-		return THIN_RADIATED_VINES_BODY;
-	}
 
 	public static void register() {
 		// Forces class initialization.
