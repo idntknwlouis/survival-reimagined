@@ -251,6 +251,13 @@ public final class SurvivalReimaginedModBlocks {
 					.instabreak()
 					.sound(SoundType.VINE)
 					.isRedstoneConductor((state, level, pos) -> false)));
+	public static final RegistryEntry<Block> THIN_RADIATED_VINES_BODY = register("thin_radiated_vines",
+			() -> new Block(BlockBehaviour.Properties.of()
+					.noCollission()
+					.noOcclusion()
+					.instabreak()
+					.sound(SoundType.VINE)
+					.isRedstoneConductor((state, level, pos) -> false)));
 
 	private SurvivalReimaginedModBlocks() {
 	}
