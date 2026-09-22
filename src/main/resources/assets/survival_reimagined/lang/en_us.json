@@ -375,8 +375,6 @@
   "block.survival_reimagined.manganese_ore": "Manganese Ore",
   "block.survival_reimagined.deepslate_manganese_ore": "Deepslate Manganese Ore",
   "item.survival_reimagined.manganese_chunk": "Manganese Chunk",
-  "block.survival_reimagined.basalt_pointed_stone": "Basalt Pointed Stone",
-  "block.survival_reimagined.kimberlite_pointed_stone": "Kimberlite Pointed Stone",
   "block.survival_reimagined.strawberry_plant": "Strawberry Bush",
   "item.survival_reimagined.strawberry": "Strawberry",
   "block.survival_reimagined.wild_wheat": "Wild Wheat",
@@ -454,7 +452,5 @@
   "block.survival_reimagined.kimberlite_stalagtite_base": "Kimberlite Stalagtite",
   "block.survival_reimagined.kimberlite_stalagtite_middle": "Kimberlite Stalagtite",
   "block.survival_reimagined.kimberlite_stalagtite_tip": "Kimberlite Stalagtite",
-  "block.survival_reimagined.plated_diamond_block": "Plated Diamond Block",
-  "block.survival_reimagined.thin_radiated_vines_tip": "Thin Radiated Vines",
-  "item.survival_reimagined.thin_radiated_vines_tip": "Thin Radiated Vines"
+  "block.survival_reimagined.plated_diamond_block": "Plated Diamond Block"
 }
