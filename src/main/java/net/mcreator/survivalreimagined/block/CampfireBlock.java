@@ -27,6 +27,9 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -36,6 +39,7 @@ import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
 
 public class CampfireBlock extends Block implements EntityBlock {
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
+	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	private static final TagKey<Item> STARTERS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "campfire_starters"));
 	private static final VoxelShape SHAPE = Shapes.or(
 			box(1, 0, 0, 5, 4, 16),
@@ -51,12 +55,19 @@ public class CampfireBlock extends Block implements EntityBlock {
 				.lightLevel(state -> state.getValue(LIT) ? 15 : 0)
 				.noOcclusion()
 				.isRedstoneConductor((state, level, pos) -> false));
-		registerDefaultState(stateDefinition.any().setValue(LIT, false));
+		registerDefaultState(stateDefinition.any().setValue(LIT, false).setValue(FACING, Direction.NORTH));
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<net.minecraft.world.level.block.Block, BlockState> builder) {
-		builder.add(LIT);
+		builder.add(LIT, FACING);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		return this.defaultBlockState()
+				.setValue(LIT, false)
+				.setValue(FACING, context.getHorizontalDirection());
 	}
 
 	@Override
