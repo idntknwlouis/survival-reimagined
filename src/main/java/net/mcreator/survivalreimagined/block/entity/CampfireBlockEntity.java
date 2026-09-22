@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.block.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -20,6 +21,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -112,7 +114,10 @@ public class CampfireBlockEntity extends RandomizableContainerBlockEntity implem
 					if (isCookable(stack)) {
 						int i = slot - 1;
 						campfire.cookProgress[i]++;
-						if (campfire.cookProgress[i] >= 20 * Math.max(1, stack.getCount())) {
+						int required = 20 * Math.max(1, stack.getCount());
+						int percent = Math.max(1, Math.min(100, (int) Math.floor(campfire.cookProgress[i] * 100.0D / required)));
+						CustomData.update(DataComponents.CUSTOM_DATA, stack, tag -> tag.putDouble("PercentageNumber", percent));
+						if (campfire.cookProgress[i] >= required) {
 							Item result = nextStage(stack);
 							if (result != null) campfire.setItem(slot, new ItemStack(result, stack.getCount()));
 							campfire.cookProgress[i] = 0;
