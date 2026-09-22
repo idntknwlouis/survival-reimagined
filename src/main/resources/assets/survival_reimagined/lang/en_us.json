@@ -434,5 +434,9 @@
   "item.survival_reimagined.charcoal_powder": "Charcoal Powder",
   "item.survival_reimagined.fire_starter": "Fire Starter",
   "block.survival_reimagined.block_of_charcoal": "Block Of Charcoal",
-  "item.survival_reimagined.rotten_biomatter": "Rotten Biomatter"
+  "item.survival_reimagined.rotten_biomatter": "Rotten Biomatter",
+  "block.survival_reimagined.thin_radiated_vines": "Thin Radiated Vines",
+  "block.survival_reimagined.thin_radiated_vine_base": "Thin Radiated Vine Base",
+  "block.survival_reimagined.thick_radiated_vines": "Thick Radiated Vines",
+  "block.survival_reimagined.thick_radiated_vines_base": "Thick Radiated Vines Base"
 }
