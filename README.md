@@ -46,7 +46,7 @@ This table tracks broad feature parity against the original mod.
 | Fuels / Forge Materials |    ✅     | ✅ | ✅ | ✅ |
 | Crops / Plants |    ✅    | ✅ | ✅ | 🟡 |
 | Food / Cooking |    ✅    | ✅ | ✅ | — |
-| Armor |    ❌    | ❌ | ❌ | — |
+| Armor |    ✅    | ✅ | ✅ | — |
 | Mobs / Entities |    ❌    | ❌ | ❌ | ❌ |
 | Carcass / Butchering |    ❌    | ❌ | ❌ | — |
 | Structures |    ❌    | ❌ | ❌ | ❌ |
@@ -74,6 +74,7 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Armor parity is complete: Wooden, Bronze, and Steel armor sets match the original stats/durability/recipes/assets; Diamond Plate + Leather upgrade recipes are restored; RMI armor infusion and armor rune effects are implemented; Gas Mask rendering, filters, filter recharge, and Perpetual Filtering are restored. Radiation damage/protection integration remains tracked under the separate Radiation Systems row.
 - Food / Cooking parity is runtime-verified and complete: crop-derived foods, custom Campfire processing, raw → cooked → burnt → charcoal progression, spoilage states/tooltips, Rotten Biomatter conversion, wooden-container spoilage, cured-meat recipes, and the original vanilla bread/campfire recipe overrides are restored.
 - Food / Cooking parity is actively restored: the custom 5-slot Campfire GUI, directional block/highlight, smoke/crackle effects, fuel handling, staged raw → cooked → burnt → charcoal-powder cooking, Fire Starter support, Block of Charcoal propagation, cooking/spoilage tooltips, and Rotten Biomatter spoilage conversion are now implemented. Basic food/cooking works in-game; the latest spoilage lifecycle still needs runtime verification before this row can be marked complete.
 - Food / Cooking second-half work now includes the original-style custom Campfire framework: a 5-slot Campfire block entity/menu/screen, lit state/light level, starter/fuel tags, persistent fuel meter, raw → cooked → burnt → Charcoal Powder progression, and Campfire registry/data assets. Runtime verification is pending before Food / Cooking is marked complete.
