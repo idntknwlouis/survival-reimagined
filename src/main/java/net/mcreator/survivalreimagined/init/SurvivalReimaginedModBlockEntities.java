@@ -12,6 +12,7 @@ import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntit
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.BlockOfCharcoalBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.RuneMagicInfuserBlockEntity;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
@@ -35,6 +36,10 @@ public final class SurvivalReimaginedModBlockEntities {
 	public static final RegistryEntry<BlockEntityType<CampfireBlockEntity>> CAMPFIRE = register(
 			"campfire",
 			BlockEntityType.Builder.of(CampfireBlockEntity::new, SurvivalReimaginedModBlocks.CAMPFIRE.get()).build(null)
+	);
+	public static final RegistryEntry<BlockEntityType<BlockOfCharcoalBlockEntity>> BLOCK_OF_CHARCOAL = register(
+			"block_of_charcoal",
+			BlockEntityType.Builder.of(BlockOfCharcoalBlockEntity::new, SurvivalReimaginedModBlocks.BLOCK_OF_CHARCOAL.get()).build(null)
 	);
 	public static final RegistryEntry<BlockEntityType<RuneMagicInfuserBlockEntity>> RUNE_MAGIC_INFUSER = register(
 			"rune_magic_infuser",
