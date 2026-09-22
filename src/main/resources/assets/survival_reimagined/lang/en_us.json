@@ -470,5 +470,17 @@
   "item.survival_reimagined.cured_porkchop": "Cured Porkchop",
   "item.survival_reimagined.cured_chicken": "Cured Chicken",
   "item.survival_reimagined.cured_mutton": "Cured Mutton",
-  "item.survival_reimagined.cured_rabbit": "Cured Rabbit"
+  "item.survival_reimagined.cured_rabbit": "Cured Rabbit",
+  "item.survival_reimagined.wooden_helmet": "Wooden Helmet",
+  "item.survival_reimagined.wooden_chestplate": "Wooden Chestplate",
+  "item.survival_reimagined.wooden_leggings": "Wooden Leggings",
+  "item.survival_reimagined.wooden_boots": "Wooden Boots",
+  "item.survival_reimagined.bronze_armor_helmet": "Bronze Helmet",
+  "item.survival_reimagined.bronze_armor_chestplate": "Bronze Chestplate",
+  "item.survival_reimagined.bronze_armor_leggings": "Bronze Leggings",
+  "item.survival_reimagined.bronze_armor_boots": "Bronze Boots",
+  "item.survival_reimagined.steel_armor_helmet": "Steel Helmet",
+  "item.survival_reimagined.steel_armor_chestplate": "Steel Chestplate",
+  "item.survival_reimagined.steel_armor_leggings": "Steel Leggings",
+  "item.survival_reimagined.steel_armor_boots": "Steel Boots"
 }
