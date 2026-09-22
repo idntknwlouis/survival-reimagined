@@ -79,8 +79,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SPELT = simple("spelt");
 	public static final RegistryEntry<Item> SPELT_SEEDS = cropSeed("spelt_seeds", SurvivalReimaginedModBlocks.SPELT_SEEDS);
 	public static final RegistryEntry<Item> WHEAT_FLOUR = simple("wheat_flour");
+	public static final RegistryEntry<Item> WHEAT_DOUGH = simple("wheat_dough");
 	public static final RegistryEntry<Item> RYE_FLOUR = simple("rye_flour");
+	public static final RegistryEntry<Item> RYE_DOUGH = simple("rye_dough");
 	public static final RegistryEntry<Item> SPELT_FLOUR = simple("spelt_flour");
+	public static final RegistryEntry<Item> SPELT_DOUGH = simple("spelt_dough");
 	public static final RegistryEntry<Item> RYE_BREAD = register("rye_bread", () -> new Item(new Item.Properties()
 			.food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.5f).build())));
 	public static final RegistryEntry<Item> SPELT_BREAD = register("spelt_bread", () -> new Item(new Item.Properties()
@@ -89,9 +92,17 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
 	public static final RegistryEntry<Item> POTATO = plantFood("potato", SurvivalReimaginedModBlocks.POTATOES, 1, 0.6f);
+	public static final RegistryEntry<Item> BURNT_POTATO = register("burnt_potato", () -> new Item(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.3f).build())));
+	public static final RegistryEntry<Item> CHARRED_POTATO = register("charred_potato", () -> new Item(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0f).build())));
 	public static final RegistryEntry<Item> STRAWBERRY = plantFood("strawberry", SurvivalReimaginedModBlocks.STRAWBERRY_PLANT, 4, 0.3f);
 	public static final RegistryEntry<Item> RASPBERRY = plantFood("raspberry", SurvivalReimaginedModBlocks.RASPBERRY_PLANT, 2, 0.2f);
 	public static final RegistryEntry<Item> CORN = simple("corn");
+	public static final RegistryEntry<Item> CORN_ON_THE_COB = simple("corn_on_the_cob");
+	public static final RegistryEntry<Item> COOKED_CORN_ON_THE_COB = register("cooked_corn_on_the_cob", () -> new Item(new Item.Properties()
+			.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.5f).build())));
+	public static final RegistryEntry<Item> BURNT_CORN_ON_THE_COB = simple("burnt_corn_on_the_cob");
 	public static final RegistryEntry<Item> CORN_SEEDS = cropSeed("corn_seeds", SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
