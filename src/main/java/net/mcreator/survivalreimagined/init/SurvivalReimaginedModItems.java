@@ -122,6 +122,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RAW_RABBIT = food("raw_rabbit", 2, 0.1f);
 	public static final RegistryEntry<Item> COOKED_RABBIT = food("cooked_rabbit", 4, 6.8f);
 	public static final RegistryEntry<Item> BURNT_RABBIT = food("burnt_rabbit", 1, 0.1f);
+	public static final RegistryEntry<Item> ROTTEN_BIOMATTER = simple("rotten_biomatter");
 
 	public static final RegistryEntry<Item> RAW_COD = food("raw_cod", 2, 0.1f);
 	public static final RegistryEntry<Item> COOKED_COD = food("cooked_cod", 4, 0.3f);
