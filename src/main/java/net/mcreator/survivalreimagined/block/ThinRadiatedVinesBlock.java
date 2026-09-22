@@ -12,7 +12,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -24,13 +23,12 @@ public class ThinRadiatedVinesBlock extends Block {
 
     public ThinRadiatedVinesBlock() {
         super(BlockBehaviour.Properties.of().sound(SoundType.MOSS).strength(1f).noCollission().randomTicks()
-                .isRedstoneConductor((state, level, pos) -> false).offsetType(Block.OffsetType.XZ));
+                .isRedstoneConductor((state, level, pos) -> false));
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(level, pos);
-        return SHAPE.move(offset.x, offset.y, offset.z);
+        return SHAPE;
     }
 
     @Override
