@@ -47,8 +47,8 @@ This table tracks broad feature parity against the original mod.
 | Crops / Plants |    ✅    | ✅ | ✅ | 🟡 |
 | Food / Cooking |    ✅    | ✅ | ✅ | — |
 | Armor |    ✅    | ✅ | ✅ | — |
-| Mobs / Entities |    ❌    | ❌ | ❌ | ❌ |
-| Carcass / Butchering |    ❌    | ❌ | ❌ | — |
+| Mobs / Entities |    ✅    | 🟡 | ✅ | 🟡 |
+| Carcass / Butchering |    ✅    | ✅ | ✅ | — |
 | Structures |    ❌    | ❌ | ❌ | ❌ |
 | Biomes |    —     | —  | —  | 🟡 |
 | Radiation Systems |    ❌     | ❌ | ❌ | ❌ |
@@ -74,6 +74,8 @@ This table tracks broad feature parity against the original mod.
 
 ## Recent Core Port Progress
 
+- Mobs / Entities roster is now ported and runtime-tested: Boar, Sow, Piglet, Black Bear, Brown Bear, Crimson Arachnid, Alpha Crimson Arachnid, Ghost, and Blood Moon Zombie all have models/renderers, sounds, attributes, spawn eggs, and core AI/combat behavior. Pig-family alarm behavior and Crimson Arachnid collision sizes now match the original, and the Ghost idle animation is restored. Remaining logic/worldgen parity is dependency-bound: Piglet maturation requires the Small Trough/hunger system, while Blood Moon mob natural spawning requires the Blood Moon Event state.
+- Carcass / Butchering is runtime-verified and complete for the current livestock set, including staged processing, detached-part drops/highlights, Goat/Chicken parity, and final remnant break behavior.
 - Armor parity is complete: Wooden, Bronze, and Steel armor sets match the original stats/durability/recipes/assets; Diamond Plate + Leather upgrade recipes are restored; RMI armor infusion and armor rune effects are implemented; Gas Mask rendering, filters, filter recharge, and Perpetual Filtering are restored. Radiation damage/protection integration remains tracked under the separate Radiation Systems row.
 - Food / Cooking parity is runtime-verified and complete: crop-derived foods, custom Campfire processing, raw → cooked → burnt → charcoal progression, spoilage states/tooltips, Rotten Biomatter conversion, wooden-container spoilage, cured-meat recipes, and the original vanilla bread/campfire recipe overrides are restored.
 - Food / Cooking parity is actively restored: the custom 5-slot Campfire GUI, directional block/highlight, smoke/crackle effects, fuel handling, staged raw → cooked → burnt → charcoal-powder cooking, Fire Starter support, Block of Charcoal propagation, cooking/spoilage tooltips, and Rotten Biomatter spoilage conversion are now implemented. Basic food/cooking works in-game; the latest spoilage lifecycle still needs runtime verification before this row can be marked complete.
