@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModSounds;
+import net.mcreator.survivalreimagined.util.PigFamilyAlarm;
 
 public class SowEntity extends Animal {
 	public SowEntity(EntityType<? extends SowEntity> type, Level level) {
@@ -40,7 +41,7 @@ public class SowEntity extends Animal {
 				if (player == null || player.isCreative() || player.isSpectator()) return false;
 				boolean canUse = super.canUse();
 				if (canUse && SowEntity.this.tickCount % 20 == 0) {
-					SowEntity.this.playSound(SurvivalReimaginedModSounds.SQUEAL_BOAR.get(), 1.0F, 1.0F);
+					PigFamilyAlarm.alertNearby(this.mob);
 				}
 				return canUse;
 			}
