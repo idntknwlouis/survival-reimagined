@@ -26,7 +26,7 @@ public final class SurvivalReimaginedModTabs {
 				.displayItems((parameters, output) -> {
 					BuiltInRegistries.ITEM.forEach(item -> {
 						var key = BuiltInRegistries.ITEM.getKey(item);
-						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace()) || isPairedRockBlock(item)) {
+						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace()) || isPairedRockBlock(item) || isInternalGeologySegment(item)) {
 							return;
 						}
 						output.accept(item);
@@ -35,6 +35,17 @@ public final class SurvivalReimaginedModTabs {
 				.build();
 		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, id, tab);
 		return new RegistryEntry<>(id, tab);
+	}
+
+	private static boolean isInternalGeologySegment(Item item) {
+		return item == SurvivalReimaginedModItems.BASALT_STALAGMITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.BASALT_STALAGMITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.BASALT_STALAGTITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.BASALT_STALAGTITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.KIMBERLITE_STALAGMITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.KIMBERLITE_STALAGMITE_MIDDLE.get()
+				|| item == SurvivalReimaginedModItems.KIMBERLITE_STALAGTITE_BASE.get()
+				|| item == SurvivalReimaginedModItems.KIMBERLITE_STALAGTITE_MIDDLE.get();
 	}
 
 	private static boolean isPairedRockBlock(Item item) {
