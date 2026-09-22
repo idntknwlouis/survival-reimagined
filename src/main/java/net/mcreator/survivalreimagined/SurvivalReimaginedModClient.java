@@ -18,10 +18,13 @@ import net.mcreator.survivalreimagined.client.renderer.BlackBearRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BrownBearRenderer;
 import net.mcreator.survivalreimagined.client.renderer.CrimsonArachnidRenderer;
 import net.mcreator.survivalreimagined.client.renderer.AlphaCrimsonArachnidRenderer;
+import net.mcreator.survivalreimagined.client.renderer.GhostRenderer;
+import net.mcreator.survivalreimagined.client.renderer.BloodMoonZombieRenderer;
 import net.mcreator.survivalreimagined.client.model.Modelbear;
 import net.mcreator.survivalreimagined.client.model.Modelboar;
 import net.mcreator.survivalreimagined.client.model.Modelsow;
 import net.mcreator.survivalreimagined.client.model.Modelpiglet;
+import net.mcreator.survivalreimagined.client.model.Modelghost;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -44,10 +47,13 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BROWN_BEAR.get(), BrownBearRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.CRIMSON_ARACHNID.get(), CrimsonArachnidRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.ALPHA_CRIMSON_ARACHNID.get(), AlphaCrimsonArachnidRenderer::new);
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.GHOST.get(), GhostRenderer::new);
+		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BLOOD_MOON_ZOMBIE.get(), BloodMoonZombieRenderer::new);
 		EntityModelLayerRegistry.registerModelLayer(Modelbear.LAYER_LOCATION, Modelbear::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(Modelboar.LAYER_LOCATION, Modelboar::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(Modelsow.LAYER_LOCATION, Modelsow::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(Modelpiglet.LAYER_LOCATION, Modelpiglet::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(Modelghost.LAYER_LOCATION, Modelghost::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(ModelGasMask.LAYER_LOCATION, ModelGasMask::createBodyLayer);
 		ArmorRenderer.register((matrices, vertexConsumers, stack, entity, slot, light, contextModel) -> {
 			if (slot != EquipmentSlot.HEAD) return;
