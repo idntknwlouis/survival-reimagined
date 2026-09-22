@@ -3,7 +3,6 @@ package net.mcreator.survivalreimagined.init;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
@@ -32,7 +31,7 @@ public final class SurvivalReimaginedModArmorMaterials {
 					map.put(ArmorItem.Type.BODY, 4);
 				}),
 				9,
-				BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.ARMOR_EQUIP_LEATHER),
+				SoundEvents.ARMOR_EQUIP_LEATHER,
 				Ingredient::of,
 				List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath("survival_reimagined", "wooden"))),
 				0.0F,
@@ -48,7 +47,7 @@ public final class SurvivalReimaginedModArmorMaterials {
 					map.put(ArmorItem.Type.BODY, 6);
 				}),
 				9,
-				BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.ARMOR_EQUIP_IRON),
+				SoundEvents.ARMOR_EQUIP_IRON,
 				() -> Ingredient.of(new ItemStack(SurvivalReimaginedModItems.BRONZE_INGOT.get())),
 				List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath("survival_reimagined", "bronze"))),
 				0.0F,
@@ -64,7 +63,7 @@ public final class SurvivalReimaginedModArmorMaterials {
 					map.put(ArmorItem.Type.BODY, 7);
 				}),
 				10,
-				BuiltInRegistries.SOUND_EVENT.wrapAsHolder(SoundEvents.ARMOR_EQUIP_NETHERITE),
+				SoundEvents.ARMOR_EQUIP_NETHERITE,
 				() -> Ingredient.of(new ItemStack(SurvivalReimaginedModItems.STEEL_INGOT.get())),
 				List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath("survival_reimagined", "steel"))),
 				1.0F,
