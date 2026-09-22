@@ -14,9 +14,14 @@ import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.BlockOfCharcoalBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.RuneMagicInfuserBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.CarcassBlockEntity;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 public final class SurvivalReimaginedModBlockEntities {
+	public static final RegistryEntry<BlockEntityType<CarcassBlockEntity>> CARCASS = register(
+			"carcass",
+			BlockEntityType.Builder.of(CarcassBlockEntity::new, SurvivalReimaginedModBlocks.COW_CARCASS.get()).build(null)
+	);
 	public static final RegistryEntry<BlockEntityType<ForgeBlockEntity>> FORGE = register(
 			"forge",
 			BlockEntityType.Builder.of(ForgeBlockEntity::new, SurvivalReimaginedModBlocks.FORGE.get()).build(null)
