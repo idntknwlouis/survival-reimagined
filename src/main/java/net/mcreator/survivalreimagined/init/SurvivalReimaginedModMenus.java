@@ -15,6 +15,7 @@ import net.mcreator.survivalreimagined.world.inventory.AdvancedAlloyForgeGUIMenu
 import net.mcreator.survivalreimagined.world.inventory.MetalRefiningTableGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MPTGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.MillstoneGUIMenu;
+import net.mcreator.survivalreimagined.world.inventory.CampfireGUIMenu;
 import net.mcreator.survivalreimagined.world.inventory.RMIMenu;
 
 public final class SurvivalReimaginedModMenus {
@@ -29,6 +30,10 @@ public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<MillstoneGUIMenu>> MILLSTONE_GUI = register(
 			"millstone_gui",
 			new ExtendedScreenHandlerType<>(MillstoneGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<CampfireGUIMenu>> CAMPFIRE_GUI = register(
+			"campfire_gui",
+			new ExtendedScreenHandlerType<>(CampfireGUIMenu::new, BlockPos.STREAM_CODEC)
 	);
 	public static final RegistryEntry<MenuType<MPTGUIMenu>> MPTGUI = register(
 			"mptgui",
