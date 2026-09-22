@@ -38,7 +38,7 @@ public class AdvancedAlloyForgeBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
 	public AdvancedAlloyForgeBlock() {
-		super(BlockBehaviour.Properties.of().strength(4.0F).requiresCorrectToolForDrops());
+		super(BlockBehaviour.Properties.of().sound(net.mcreator.survivalreimagined.init.SurvivalReimaginedModSoundTypes.STEEL).strength(4.0F).requiresCorrectToolForDrops());
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
 
