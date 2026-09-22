@@ -61,6 +61,69 @@ public class CarcassBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+		int stage = state.getValue(CARCASS_STATE);
+		return switch (species) {
+			case COW -> cowShape(stage);
+			case PIG -> pigShape(stage);
+		};
+	}
+
+	private static VoxelShape cowShape(int stage) {
+		if (stage == 1) {
+			return Shapes.or(
+					box(-7, 2, -7, 1, 10, -1),
+					box(4, 8, 13, 16, 12, 17),
+					box(4, 0, 13, 16, 4, 17),
+					box(4, 8, -1, 16, 12, 3),
+					box(4, 0, -1, 16, 4, 3),
+					box(-6, 0, -1, 4, 12, 17)
+			);
+		}
+		if (stage == 2) {
+			return Shapes.or(
+					box(-7, 2, -7, 1, 10, -1),
+					box(-6, 0, -1, 4, 12, 17)
+			);
+		}
+		if (stage == 3 || stage == 4) {
+			return box(-6, 0, -1, 4, 12, 17);
+		}
+		return Shapes.or(
+				box(-7, 2, -7, 1, 10, -1),
+				box(-8, 10, -5, -5, 11, -4),
+				box(-8, 1, -5, -5, 2, -4),
+				box(4, 8, 13, 16, 12, 17),
+				box(4, 0, 13, 16, 4, 17),
+				box(4, 8, -1, 16, 12, 3),
+				box(4, 0, -1, 16, 4, 3),
+				box(-6, 0, -1, 4, 12, 17)
+		);
+	}
+
+	private static VoxelShape pigShape(int stage) {
+		if (stage == 2) {
+			return Shapes.or(
+					box(-0.64286, 1.35714, -2, 7.35714, 9.35714, 6),
+					box(3.35714, 3.35714, -3, 6.35714, 7.35714, -2),
+					box(1.35714, 0.35714, 4, 9.35714, 10.35714, 20)
+			);
+		}
+		if (stage == 3 || stage == 4) {
+			return box(1.35714, 0.35714, 4, 9.35714, 10.35714, 20);
+		}
+		return Shapes.or(
+				box(9.35714, 0.35714, 5, 15.35714, 4.35714, 9),
+				box(9.35714, 6.35714, 5, 15.35714, 10.35714, 9),
+				box(9.35714, 0.35714, 17, 15.35714, 4.35714, 21),
+				box(9.35714, 6.35714, 17, 15.35714, 10.35714, 21),
+				box(-0.64286, 1.35714, -2, 7.35714, 9.35714, 6),
+				box(3.35714, 3.35714, -3, 6.35714, 7.35714, -2),
+				box(1.35714, 0.35714, 4, 9.35714, 10.35714, 20)
+		);
+	}
+
+	@Override
 	protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
 	}
