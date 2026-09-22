@@ -28,7 +28,7 @@ public final class FoodTooltip {
 		CustomData data = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
 		double percentage = data.copyTag().getDouble("PercentageNumber");
 		if (percentage > 0.0D) {
-			int pct = Math.max(1, Math.min(100, (int) Math.round(percentage)));
+			int pct = Math.max(1, Math.min(100, (int) Math.round((percentage / 30.0D) * 100.0D)));
 			if (stack.is(RAW)) lines.add(Component.literal("§7 " + pct + "% Cooked"));
 			else if (stack.is(COOKED)) lines.add(Component.literal("§7 " + pct + "% Burnt"));
 			else if (stack.is(BURNT)) lines.add(Component.literal("§7 " + pct + "% Charred"));
