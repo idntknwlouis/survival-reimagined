@@ -87,9 +87,13 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RADIATED_SHALE = block(SurvivalReimaginedModBlocks.RADIATED_SHALE);
 	public static final RegistryEntry<Item> RADIANT_LOG = block(SurvivalReimaginedModBlocks.RADIANT_LOG);
 	public static final RegistryEntry<Item> RADIATED_LEAVES = block(SurvivalReimaginedModBlocks.RADIATED_LEAVES);
+	public static final RegistryEntry<Item> RADIATED_MOSS = block(SurvivalReimaginedModBlocks.RADIATED_MOSS);
+	public static final RegistryEntry<Item> RADIATED_TALL_GRASS = block(SurvivalReimaginedModBlocks.RADIATED_TALL_GRASS);
+	public static final RegistryEntry<Item> RADIATED_ORCHID = block(SurvivalReimaginedModBlocks.RADIATED_ORCHID);
 	public static final RegistryEntry<Item> WISTERIA_LOG = block(SurvivalReimaginedModBlocks.WISTERIA_LOG);
 	public static final RegistryEntry<Item> WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.WISTERIA_LEAVES);
 	public static final RegistryEntry<Item> FLOWING_WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.FLOWING_WISTERIA_LEAVES);
+	public static final RegistryEntry<Item> WISTERIA_SPIDER_LILY = block(SurvivalReimaginedModBlocks.WISTERIA_SPIDER_LILY);
 	public static final RegistryEntry<Item> SMALL_PALM_LOG = block(SurvivalReimaginedModBlocks.SMALL_PALM_LOG);
 	public static final RegistryEntry<Item> PALM_LOG = block(SurvivalReimaginedModBlocks.PALM_LOG);
 	public static final RegistryEntry<Item> PALM_LOG_BARKED_TOP = block(SurvivalReimaginedModBlocks.PALM_LOG_BARKED_TOP);
