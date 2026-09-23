@@ -21,6 +21,17 @@ public class SurvivalReimaginedModOverworldRegion extends Region {
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
+        Climate.ParameterPoint tropicalCoast = new Climate.ParameterPoint(
+                Climate.Parameter.span(-0.25F, 1.0F),
+                Climate.Parameter.span(-0.25F, 1.0F),
+                Climate.Parameter.span(-0.19F, -0.11F),
+                Climate.Parameter.span(-0.5F, 0.5F),
+                Climate.Parameter.span(0.2F, 0.9F),
+                Climate.Parameter.span(-0.5F, 0.0F),
+                0L
+        );
+        mapper.accept(Pair.of(tropicalCoast, SurvivalReimaginedModBiomes.TROPICAL_COAST));
+
         Climate.ParameterPoint wisteriaLowDepth = new Climate.ParameterPoint(
                 Climate.Parameter.span(-0.8F, -0.1F),
                 Climate.Parameter.span(-0.5F, 0.5F),
