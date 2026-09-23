@@ -12,6 +12,7 @@ import net.mcreator.survivalreimagined.world.features.StoneGenFeature;
 import net.mcreator.survivalreimagined.world.features.WildBeetrootFeature;
 import net.mcreator.survivalreimagined.world.features.WildCarrotsFeature;
 import net.mcreator.survivalreimagined.world.features.WildPotatoFeature;
+import net.mcreator.survivalreimagined.world.features.StructureFeature;
 
 import java.util.function.Supplier;
 
@@ -22,6 +23,7 @@ public final class SurvivalReimaginedModFeatures {
 	public static final RegistryEntry<Feature<?>> WILD_CARROTS = register("wild_carrots", WildCarrotsFeature::new);
 	public static final RegistryEntry<Feature<?>> WILD_POTATO = register("wild_potato", WildPotatoFeature::new);
 	public static final RegistryEntry<Feature<?>> WILD_BEETROOT = register("wild_beetroot", WildBeetrootFeature::new);
+	public static final RegistryEntry<Feature<?>> STRUCTURE_FEATURE = register("structure_feature", StructureFeature::new);
 
 	private SurvivalReimaginedModFeatures() {
 	}
