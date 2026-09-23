@@ -3,15 +3,21 @@
   "config": {
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
-      "state": { "Name": "minecraft:dirt" }
+      "state": {
+        "Name": "minecraft:dirt"
+      }
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
-      "state": { "Name": "survival_reimagined:wisteria_leaves" }
+      "state": {
+        "Name": "survival_reimagined:flowing_wisteria_leaves"
+      }
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
-      "state": { "Name": "survival_reimagined:wisteria_log" }
+      "state": {
+        "Name": "survival_reimagined:wisteria_log"
+      }
     },
     "force_dirt": false,
     "ignore_vines": false,
