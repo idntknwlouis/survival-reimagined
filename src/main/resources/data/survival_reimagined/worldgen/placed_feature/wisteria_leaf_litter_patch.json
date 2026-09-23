@@ -9,16 +9,38 @@
         "max_inclusive": 12
       }
     },
-    { "type": "minecraft:in_square" },
-    { "type": "minecraft:heightmap", "heightmap": "OCEAN_FLOOR_WG" },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:solid",
+        "offset": [
+          0,
+          -1,
+          0
+        ]
+      }
+    },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "minecraft:matching_blocks",
         "blocks": "minecraft:grass_block",
-        "offset": [0, -1, 0]
+        "offset": [
+          0,
+          -1,
+          0
+        ]
       }
     },
-    { "type": "minecraft:biome" }
+    {
+      "type": "minecraft:biome"
+    }
   ]
 }
