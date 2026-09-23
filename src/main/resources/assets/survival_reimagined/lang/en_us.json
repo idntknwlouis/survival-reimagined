@@ -540,5 +540,11 @@
   "block.survival_reimagined.radiated_leaves": "Radiated Leaves",
   "block.survival_reimagined.wisteria_log": "Wisteria Log",
   "block.survival_reimagined.wisteria_leaves": "Wisteria Leaves",
-  "block.survival_reimagined.flowing_wisteria_leaves": "Flowering Wisteria Leaves"
+  "block.survival_reimagined.flowing_wisteria_leaves": "Flowering Wisteria Leaves",
+  "block.survival_reimagined.small_palm_log": "Small Palm Log",
+  "block.survival_reimagined.palm_log": "Palm Log",
+  "block.survival_reimagined.palm_log_barked_top": "Palm Log Barked Top",
+  "block.survival_reimagined.palm_crown": "Palm Crown",
+  "block.survival_reimagined.palm_leaves": "Palm Leaves",
+  "block.survival_reimagined.aloe_vera": "Aloe Vera"
 }
