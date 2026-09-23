@@ -26,7 +26,7 @@ public class SurvivalReimaginedModOverworldRegion extends Region {
                 Climate.Parameter.span(-0.25F, 1.0F),
                 Climate.Parameter.span(-0.19F, -0.11F),
                 Climate.Parameter.span(-0.5F, 0.5F),
-                Climate.Parameter.span(0.2F, 0.9F),
+                Climate.Parameter.point(0.0F),
                 Climate.Parameter.span(-0.5F, 0.0F),
                 0L
         );
