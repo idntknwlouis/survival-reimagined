@@ -535,5 +535,10 @@
   "block.survival_reimagined.shale_stalagtite_tip": "Shale Stalactite",
   "biome.survival_reimagined.radiated_forest": "Radiated Forest",
   "biome.survival_reimagined.tropical_coast": "Tropical Coast",
-  "biome.survival_reimagined.wisteria_forest": "Wisteria Forest"
+  "biome.survival_reimagined.wisteria_forest": "Wisteria Forest",
+  "block.survival_reimagined.radiant_log": "Radiant Log",
+  "block.survival_reimagined.radiated_leaves": "Radiated Leaves",
+  "block.survival_reimagined.wisteria_log": "Wisteria Log",
+  "block.survival_reimagined.wisteria_leaves": "Wisteria Leaves",
+  "block.survival_reimagined.flowing_wisteria_leaves": "Flowering Wisteria Leaves"
 }
