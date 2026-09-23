@@ -43,6 +43,12 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addWisteriaForestVegetation("wisteria_tree_1");
 		addWisteriaForestVegetation("wisteria_bushes");
 		addWisteriaForestVegetation("wisteria_leaf_litter_patch");
+		addTropicalCoastVegetation("bamboo");
+		addTropicalCoastVegetation("palm_trees");
+		addTropicalCoastVegetation("grass_patch");
+		addTropicalCoastVegetation("grass_patches");
+		addTropicalCoastVegetation("tropical_bushes");
+		addTropicalCoastVegetation("aloe_vera_feature");
 		addUndergroundEverywhere("liginite_ore_feature_surface");
 		addUndergroundEverywhere("ilmenite_ore_feature");
 		addUndergroundEverywhere("anthracite_ore_feature");
@@ -106,6 +112,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 						Biomes.TAIGA, Biomes.SNOWY_TAIGA,
 						Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA),
 				MobCategory.CREATURE, SurvivalReimaginedModEntities.BROWN_BEAR.get(), 20, 1, 2);
+	}
+
+	private static void addTropicalCoastVegetation(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.TROPICAL_COAST),
+				GenerationStep.Decoration.VEGETAL_DECORATION,
+				featureKey);
 	}
 
 	private static void addWisteriaForestVegetation(String path) {
