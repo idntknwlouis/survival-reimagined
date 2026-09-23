@@ -82,7 +82,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> PALM_LOG = register("palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> PALM_LOG_BARKED_TOP = register("palm_log_barked_top", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f).noOcclusion()));
 	public static final RegistryEntry<Block> PALM_CROWN = register("palm_crown", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f).noOcclusion()));
-	public static final RegistryEntry<Block> PALM_LEAVES = register("palm_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> PALM_LEAVES = register("palm_leaves", PalmLeavesBlock::new);
 	public static final RegistryEntry<Block> ALOE_VERA = register("aloe_vera", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).strength(0.2f).noCollission().noOcclusion()));
 	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
 	private static final IntegerProperty RYE_AGE = IntegerProperty.create("age", 0, 6);
