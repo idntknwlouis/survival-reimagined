@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "minecraft:block/flowering_azalea_leaves"
+    "all": "survival_reimagined:block/flowering_wisteria_leaves"
   }
 }
