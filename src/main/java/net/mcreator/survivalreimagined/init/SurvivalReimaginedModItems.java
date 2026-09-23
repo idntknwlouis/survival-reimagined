@@ -90,6 +90,12 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> WISTERIA_LOG = block(SurvivalReimaginedModBlocks.WISTERIA_LOG);
 	public static final RegistryEntry<Item> WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.WISTERIA_LEAVES);
 	public static final RegistryEntry<Item> FLOWING_WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.FLOWING_WISTERIA_LEAVES);
+	public static final RegistryEntry<Item> SMALL_PALM_LOG = block(SurvivalReimaginedModBlocks.SMALL_PALM_LOG);
+	public static final RegistryEntry<Item> PALM_LOG = block(SurvivalReimaginedModBlocks.PALM_LOG);
+	public static final RegistryEntry<Item> PALM_LOG_BARKED_TOP = block(SurvivalReimaginedModBlocks.PALM_LOG_BARKED_TOP);
+	public static final RegistryEntry<Item> PALM_CROWN = block(SurvivalReimaginedModBlocks.PALM_CROWN);
+	public static final RegistryEntry<Item> PALM_LEAVES = block(SurvivalReimaginedModBlocks.PALM_LEAVES);
+	public static final RegistryEntry<Item> ALOE_VERA = block(SurvivalReimaginedModBlocks.ALOE_VERA);
 	public static final RegistryEntry<Item> SHALE_ROCK = block(SurvivalReimaginedModBlocks.SHALE_ROCK);
 	public static final RegistryEntry<Item> POLISHED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_SHALE);
 	public static final RegistryEntry<Item> POLISHED_SHALE_BRICKS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICKS);
