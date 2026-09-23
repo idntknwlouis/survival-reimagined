@@ -27,7 +27,7 @@ public class WisteriaLeafLitterBlock extends Block {
 
     public WisteriaLeafLitterBlock() {
         super(BlockBehaviour.Properties.of()
-                .sound(SoundType.PINK_PETALS)
+                .sound(SoundType.GRASS)
                 .instabreak()
                 .noCollission()
                 .noOcclusion());
