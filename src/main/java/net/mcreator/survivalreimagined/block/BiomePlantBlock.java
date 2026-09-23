@@ -1,5 +1,7 @@
 package net.mcreator.survivalreimagined.block;
 
+import com.mojang.serialization.MapCodec;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -16,14 +18,23 @@ public class BiomePlantBlock extends BushBlock {
     private final VoxelShape shape;
 
     public BiomePlantBlock(VoxelShape shape, SoundType sound, int lightLevel) {
-        super(BlockBehaviour.Properties.of()
+        this(shape, BlockBehaviour.Properties.of()
                 .sound(sound)
                 .instabreak()
                 .noCollission()
                 .noOcclusion()
                 .offsetType(Block.OffsetType.XZ)
                 .lightLevel(state -> lightLevel));
+    }
+
+    private BiomePlantBlock(VoxelShape shape, BlockBehaviour.Properties properties) {
+        super(properties);
         this.shape = shape;
+    }
+
+    @Override
+    protected MapCodec<? extends BushBlock> codec() {
+        return simpleCodec(properties -> new BiomePlantBlock(this.shape, properties));
     }
 
     @Override
