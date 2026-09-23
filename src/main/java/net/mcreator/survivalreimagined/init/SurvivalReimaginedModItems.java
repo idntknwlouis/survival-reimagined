@@ -94,6 +94,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.WISTERIA_LEAVES);
 	public static final RegistryEntry<Item> FLOWING_WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.FLOWING_WISTERIA_LEAVES);
 	public static final RegistryEntry<Item> WISTERIA_SPIDER_LILY = block(SurvivalReimaginedModBlocks.WISTERIA_SPIDER_LILY);
+	public static final RegistryEntry<Item> WISTERIA_SAPLING = block(SurvivalReimaginedModBlocks.WISTERIA_SAPLING);
+	public static final RegistryEntry<Item> WISTERIA_LEAF_LITTER = block(SurvivalReimaginedModBlocks.WISTERIA_LEAF_LITTER);
 	public static final RegistryEntry<Item> SMALL_PALM_LOG = block(SurvivalReimaginedModBlocks.SMALL_PALM_LOG);
 	public static final RegistryEntry<Item> PALM_LOG = block(SurvivalReimaginedModBlocks.PALM_LOG);
 	public static final RegistryEntry<Item> PALM_LOG_BARKED_TOP = block(SurvivalReimaginedModBlocks.PALM_LOG_BARKED_TOP);
