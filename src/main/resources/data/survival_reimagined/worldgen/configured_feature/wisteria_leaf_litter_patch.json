@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 96,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              { "data": { "Name": "minecraft:pink_petals" }, "weight": 9 },
+              { "data": { "Name": "minecraft:short_grass" }, "weight": 14 }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": { "type": "minecraft:matching_blocks", "blocks": "minecraft:air" }
+        }
+      ]
+    }
+  }
+}
