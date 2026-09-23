@@ -75,8 +75,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RADIATED_TALL_GRASS = register("radiated_tall_grass", () -> new BiomePlantBlock(Block.box(0, 0, 0, 16, 11, 16), SoundType.MOSS, 0));
 	public static final RegistryEntry<Block> RADIATED_ORCHID = register("radiated_orchid", () -> new BiomePlantBlock(Block.box(3, 0, 3, 13, 11, 13), SoundType.GRASS, 8));
 	public static final RegistryEntry<Block> WISTERIA_LOG = register("wisteria_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
-	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
-	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", WisteriaLeavesBlock::new);
+	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", WisteriaLeavesBlock::new);
 	public static final RegistryEntry<Block> WISTERIA_SPIDER_LILY = register("wisteria_spider_lily", () -> new BiomePlantBlock(Block.box(3, 0, 3, 10, 11, 10), SoundType.GRASS, 0));
 	public static final RegistryEntry<Block> WISTERIA_SAPLING = register("wisteria_sapling", () -> new BiomePlantBlock(Block.box(2, 0, 2, 12, 14, 12), SoundType.GRASS, 0));
 	public static final RegistryEntry<Block> WISTERIA_LEAF_LITTER = register("wisteria_leaf_litter", WisteriaLeafLitterBlock::new);
