@@ -85,6 +85,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.OBSIDIAN_ROCK::get, "block.stone.place"));
 	public static final RegistryEntry<Item> SHALE = block(SurvivalReimaginedModBlocks.SHALE);
 	public static final RegistryEntry<Item> RADIATED_SHALE = block(SurvivalReimaginedModBlocks.RADIATED_SHALE);
+	public static final RegistryEntry<Item> RADIANT_LOG = block(SurvivalReimaginedModBlocks.RADIANT_LOG);
+	public static final RegistryEntry<Item> RADIATED_LEAVES = block(SurvivalReimaginedModBlocks.RADIATED_LEAVES);
 	public static final RegistryEntry<Item> SHALE_ROCK = block(SurvivalReimaginedModBlocks.SHALE_ROCK);
 	public static final RegistryEntry<Item> POLISHED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_SHALE);
 	public static final RegistryEntry<Item> POLISHED_SHALE_BRICKS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICKS);
