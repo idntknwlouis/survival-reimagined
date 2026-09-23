@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.world.worldgen;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBiomes;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -37,6 +38,28 @@ public class SurvivalReimaginedModSurfaceRules {
                                                         SurfaceRules.UNDER_FLOOR,
                                                         SurfaceRules.state(shale)
                                                 )
+                                        )
+                                )
+                        )
+                ),
+                SurfaceRules.ifTrue(
+                        SurfaceRules.isBiome(SurvivalReimaginedModBiomes.WISTERIA_FOREST),
+                        SurfaceRules.ifTrue(
+                                SurfaceRules.abovePreliminarySurface(),
+                                SurfaceRules.sequence(
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.ON_FLOOR,
+                                                SurfaceRules.sequence(
+                                                        SurfaceRules.ifTrue(
+                                                                SurfaceRules.waterBlockCheck(-1, 0),
+                                                                SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState())
+                                                        ),
+                                                        SurfaceRules.state(Blocks.DIRT.defaultBlockState())
+                                                )
+                                        ),
+                                        SurfaceRules.ifTrue(
+                                                SurfaceRules.UNDER_FLOOR,
+                                                SurfaceRules.state(Blocks.DIRT.defaultBlockState())
                                         )
                                 )
                         )
