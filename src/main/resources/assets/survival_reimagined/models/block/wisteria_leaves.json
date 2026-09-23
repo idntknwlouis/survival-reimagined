@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "minecraft:block/cherry_leaves"
+    "all": "survival_reimagined:block/wisteria_leaves"
   }
 }
