@@ -43,22 +43,6 @@ public class SurvivalReimaginedModSurfaceRules {
                         )
                 ),
                 SurfaceRules.ifTrue(
-                        SurfaceRules.isBiome(SurvivalReimaginedModBiomes.TROPICAL_COAST),
-                        SurfaceRules.ifTrue(
-                                SurfaceRules.abovePreliminarySurface(),
-                                SurfaceRules.sequence(
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.ON_FLOOR,
-                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())
-                                        ),
-                                        SurfaceRules.ifTrue(
-                                                SurfaceRules.UNDER_FLOOR,
-                                                SurfaceRules.state(Blocks.SAND.defaultBlockState())
-                                        )
-                                )
-                        )
-                ),
-                SurfaceRules.ifTrue(
                         SurfaceRules.isBiome(SurvivalReimaginedModBiomes.WISTERIA_FOREST),
                         SurfaceRules.ifTrue(
                                 SurfaceRules.abovePreliminarySurface(),
