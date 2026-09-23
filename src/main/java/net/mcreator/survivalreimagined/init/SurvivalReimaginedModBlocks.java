@@ -71,9 +71,13 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RADIATED_SHALE = register("radiated_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> RADIANT_LOG = register("radiant_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> RADIATED_LEAVES = register("radiated_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.AZALEA_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> RADIATED_MOSS = register("radiated_moss", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MOSS).strength(0.1f)));
+	public static final RegistryEntry<Block> RADIATED_TALL_GRASS = register("radiated_tall_grass", () -> new BiomePlantBlock(Block.box(0, 0, 0, 16, 11, 16), SoundType.MOSS, 0));
+	public static final RegistryEntry<Block> RADIATED_ORCHID = register("radiated_orchid", () -> new BiomePlantBlock(Block.box(3, 0, 3, 13, 11, 13), SoundType.GRASS, 8));
 	public static final RegistryEntry<Block> WISTERIA_LOG = register("wisteria_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> WISTERIA_SPIDER_LILY = register("wisteria_spider_lily", () -> new BiomePlantBlock(Block.box(3, 0, 3, 10, 11, 10), SoundType.GRASS, 0));
 	public static final RegistryEntry<Block> SMALL_PALM_LOG = register("small_palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> PALM_LOG = register("palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> PALM_LOG_BARKED_TOP = register("palm_log_barked_top", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f).noOcclusion()));
