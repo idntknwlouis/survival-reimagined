@@ -39,10 +39,15 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addRadiantForestUnderground("shale_uraninite");
 		addRadiantForestUndergroundDecoration("thin_radiated_vines_feature");
 		addRadiantForestUndergroundDecoration("thick_radiated_vines_feature");
-		addRadiantForestVegetation("radiated_tree");
+		addRadiantForestUndergroundDecoration("radiated_tree");
+		addRadiantForestUndergroundDecoration("ceiling_radiated_moss_feature");
+		addRadiantForestUndergroundDecoration("radiated_grass_patch");
+		addRadiantForestUndergroundDecoration("radiated_orchid_feature");
+		addRadiantForestLocalModification("radiated_bush_feature");
 		addWisteriaForestVegetation("wisteria_tree_1");
 		addWisteriaForestVegetation("wisteria_bushes");
 		addWisteriaForestVegetation("wisteria_leaf_litter_patch");
+		addWisteriaForestVegetation("wsiteria_flower_feature");
 		addTropicalCoastVegetation("bamboo");
 		addTropicalCoastVegetation("palm_trees");
 		addTropicalCoastVegetation("grass_patch");
@@ -150,7 +155,17 @@ public final class SurvivalReimaginedModBiomeModifications {
 				SurvivalReimaginedMod.asResource(path));
 		BiomeModifications.addFeature(
 				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
-				GenerationStep.Decoration.VEGETAL_DECORATION,
+				GenerationStep.Decoration.UNDERGROUND_DECORATION,
+				featureKey);
+	}
+
+	private static void addRadiantForestLocalModification(String path) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.RADIANT_FOREST),
+				GenerationStep.Decoration.LOCAL_MODIFICATIONS,
 				featureKey);
 	}
 	@SafeVarargs
