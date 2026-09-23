@@ -7,5 +7,5 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 
 public class SurvivalReimaginedModBiomes {
-    public static final ResourceKey<Biome> RADIANT_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiant_forest"));
+    public static final ResourceKey<Biome> RADIANT_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_forest"));
 }

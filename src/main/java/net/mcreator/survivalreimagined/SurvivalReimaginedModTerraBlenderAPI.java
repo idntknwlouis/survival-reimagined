@@ -11,7 +11,7 @@ public class SurvivalReimaginedModTerraBlenderAPI implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
         Regions.register(new SurvivalReimaginedModOverworldRegion(
-                ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiant_forest"),
+                ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_forest"),
                 4
                 )
         );

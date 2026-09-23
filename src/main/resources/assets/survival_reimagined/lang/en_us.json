@@ -530,5 +530,7 @@
   "block.survival_reimagined.goat_leg": "Goat Leg",
   "item.survival_reimagined.goat_hide": "Goat Hide",
   "block.survival_reimagined.chicken_carcass": "Chicken Carcass",
-  "enchantment.survival_reimagined.perpetual_filtering": "Perpetual Filtering"
+  "enchantment.survival_reimagined.perpetual_filtering": "Perpetual Filtering",
+  "block.survival_reimagined.shale_stalagmite_top": "Shale Stalagmite",
+  "block.survival_reimagined.shale_stalagtite_tip": "Shale Stalactite"
 }
