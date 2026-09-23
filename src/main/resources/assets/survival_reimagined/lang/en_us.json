@@ -550,5 +550,9 @@
   "block.survival_reimagined.radiated_moss": "Radiated Moss",
   "block.survival_reimagined.radiated_tall_grass": "Radiated Tall Grass",
   "block.survival_reimagined.radiated_orchid": "Radiated Orchid",
-  "block.survival_reimagined.wisteria_spider_lily": "Wisteria Spider Lily"
+  "block.survival_reimagined.wisteria_spider_lily": "Wisteria Spider Lily",
+  "block.survival_reimagined.wisteria_sapling": "Wisteria Sapling",
+  "block.survival_reimagined.wisteria_leaf_litter": "Wisteria Leaf Litter",
+  "block.survival_reimagined.wisteria_flower_upper": "Wisteria Flower",
+  "block.survival_reimagined.wisteria_flower_lower": "Wisteria Flower"
 }
