@@ -93,6 +93,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.PALM_CROWN.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.PALM_LEAVES.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.ALOE_VERA.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RADIATED_TALL_GRASS.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RADIATED_ORCHID.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.WISTERIA_SPIDER_LILY.get(), RenderType.cutout());
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
