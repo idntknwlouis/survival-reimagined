@@ -8,4 +8,6 @@ import net.minecraft.world.level.biome.Biome;
 
 public class SurvivalReimaginedModBiomes {
     public static final ResourceKey<Biome> RADIANT_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_forest"));
+    public static final ResourceKey<Biome> TROPICAL_COAST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "tropical_coast"));
+    public static final ResourceKey<Biome> WISTERIA_FOREST = ResourceKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_forest"));
 }
