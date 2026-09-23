@@ -71,6 +71,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RADIATED_SHALE = register("radiated_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> RADIANT_LOG = register("radiant_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> RADIATED_LEAVES = register("radiated_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.AZALEA_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> WISTERIA_LOG = register("wisteria_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
+	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
 	private static final IntegerProperty RYE_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty SPELT_AGE = IntegerProperty.create("age", 0, 6);
