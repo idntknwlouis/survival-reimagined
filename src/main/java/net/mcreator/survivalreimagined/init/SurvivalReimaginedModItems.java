@@ -87,6 +87,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> RADIATED_SHALE = block(SurvivalReimaginedModBlocks.RADIATED_SHALE);
 	public static final RegistryEntry<Item> RADIANT_LOG = block(SurvivalReimaginedModBlocks.RADIANT_LOG);
 	public static final RegistryEntry<Item> RADIATED_LEAVES = block(SurvivalReimaginedModBlocks.RADIATED_LEAVES);
+	public static final RegistryEntry<Item> WISTERIA_LOG = block(SurvivalReimaginedModBlocks.WISTERIA_LOG);
+	public static final RegistryEntry<Item> WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.WISTERIA_LEAVES);
+	public static final RegistryEntry<Item> FLOWING_WISTERIA_LEAVES = block(SurvivalReimaginedModBlocks.FLOWING_WISTERIA_LEAVES);
 	public static final RegistryEntry<Item> SHALE_ROCK = block(SurvivalReimaginedModBlocks.SHALE_ROCK);
 	public static final RegistryEntry<Item> POLISHED_SHALE = block(SurvivalReimaginedModBlocks.POLISHED_SHALE);
 	public static final RegistryEntry<Item> POLISHED_SHALE_BRICKS = block(SurvivalReimaginedModBlocks.POLISHED_SHALE_BRICKS);
