@@ -74,6 +74,12 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WISTERIA_LOG = register("wisteria_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> SMALL_PALM_LOG = register("small_palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> PALM_LOG = register("palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
+	public static final RegistryEntry<Block> PALM_LOG_BARKED_TOP = register("palm_log_barked_top", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f).noOcclusion()));
+	public static final RegistryEntry<Block> PALM_CROWN = register("palm_crown", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f).noOcclusion()));
+	public static final RegistryEntry<Block> PALM_LEAVES = register("palm_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> ALOE_VERA = register("aloe_vera", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).strength(0.2f).noCollission().noOcclusion()));
 	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
 	private static final IntegerProperty RYE_AGE = IntegerProperty.create("age", 0, 6);
 	private static final IntegerProperty SPELT_AGE = IntegerProperty.create("age", 0, 6);
