@@ -78,6 +78,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> WISTERIA_SPIDER_LILY = register("wisteria_spider_lily", () -> new BiomePlantBlock(Block.box(3, 0, 3, 10, 11, 10), SoundType.GRASS, 0));
+	public static final RegistryEntry<Block> WISTERIA_SAPLING = register("wisteria_sapling", () -> new BiomePlantBlock(Block.box(2, 0, 2, 12, 14, 12), SoundType.GRASS, 0));
+	public static final RegistryEntry<Block> WISTERIA_LEAF_LITTER = register("wisteria_leaf_litter", WisteriaLeafLitterBlock::new);
 	public static final RegistryEntry<Block> SMALL_PALM_LOG = register("small_palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(0.2f).noOcclusion()));
 	public static final RegistryEntry<Block> PALM_LOG = register("palm_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f)));
 	public static final RegistryEntry<Block> PALM_LOG_BARKED_TOP = register("palm_log_barked_top", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2f).noOcclusion()));
