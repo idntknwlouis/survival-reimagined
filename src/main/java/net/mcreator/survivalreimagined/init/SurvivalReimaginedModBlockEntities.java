@@ -15,9 +15,14 @@ import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.BlockOfCharcoalBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.RuneMagicInfuserBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.CarcassBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.PalmLeavesBlockEntity;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 public final class SurvivalReimaginedModBlockEntities {
+	public static final RegistryEntry<BlockEntityType<PalmLeavesBlockEntity>> PALM_LEAVES = register(
+			"palm_leaves",
+			BlockEntityType.Builder.of(PalmLeavesBlockEntity::new, SurvivalReimaginedModBlocks.PALM_LEAVES.get()).build(null)
+	);
 	public static final RegistryEntry<BlockEntityType<CarcassBlockEntity>> CARCASS = register(
 			"carcass",
 			BlockEntityType.Builder.of(CarcassBlockEntity::new, SurvivalReimaginedModBlocks.COW_CARCASS.get(), SurvivalReimaginedModBlocks.PIG_CARCASS.get(), SurvivalReimaginedModBlocks.SHEEP_CARCASS.get(), SurvivalReimaginedModBlocks.GOAT_CARCASS.get(), SurvivalReimaginedModBlocks.CHICKEN_CARCASS.get()).build(null)
