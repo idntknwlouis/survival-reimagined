@@ -40,7 +40,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addRadiantForestUndergroundDecoration("thin_radiated_vines_feature");
 		addRadiantForestUndergroundDecoration("thick_radiated_vines_feature");
 		addRadiantForestUndergroundDecoration("radiated_tree");
-		addRadiantForestUndergroundDecoration("ceiling_radiated_moss_feature");
+		//addRadiantForestUndergroundDecoration("ceiling_radiated_moss_feature"); <- This feature was done for NeoForge as I did not know about SurfaceRules, will be removed and SurfaceRules will be back-ported to NeoForge
 		addRadiantForestUndergroundDecoration("radiated_grass_patch");
 		addRadiantForestUndergroundDecoration("radiated_orchid_feature");
 		addRadiantForestLocalModification("radiated_bush_feature");

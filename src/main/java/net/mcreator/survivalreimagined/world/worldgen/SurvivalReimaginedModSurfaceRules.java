@@ -11,6 +11,7 @@ public class SurvivalReimaginedModSurfaceRules {
     public static SurfaceRules.RuleSource makeRules() {
         BlockState radiatedSurface = SurvivalReimaginedModBlocks.RADIATED_SHALE.get().defaultBlockState();
         BlockState shale = SurvivalReimaginedModBlocks.SHALE.get().defaultBlockState();
+        BlockState moss = SurvivalReimaginedModBlocks.RADIATED_MOSS.get().defaultBlockState();
 
         return SurfaceRules.sequence(
                 SurfaceRules.ifTrue(
@@ -32,7 +33,7 @@ public class SurvivalReimaginedModSurfaceRules {
                                                 ),
                                                 SurfaceRules.ifTrue(
                                                         SurfaceRules.ON_CEILING,
-                                                        SurfaceRules.state(shale)
+                                                        SurfaceRules.state(moss)
                                                 ),
                                                 SurfaceRules.ifTrue(
                                                         SurfaceRules.UNDER_FLOOR,
