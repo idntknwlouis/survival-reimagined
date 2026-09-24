@@ -70,9 +70,13 @@ dependencies {
 	// Optional worldgen compatibility test stack. Enable with -Penable_c2me_runtime=true.
 	// These are NOT bundled and are NOT required by Survival Reimagined.
 	if (project.findProperty("enable_c2me_runtime") == "true") {
-		modLocalRuntime "maven.modrinth:VSNURh3q:${project.c2me_version_id}"
-		modLocalRuntime "maven.modrinth:qtPMklut:${project.c2me_opencl_version_id}"
-		modLocalRuntime "maven.modrinth:Ps1zyz6x:${project.scalablelux_version_id}"
+		// Do not use Loom's modLocalRuntime here: Loom strips nested jars from
+		// mod dependencies, while C2ME ships its internal modules as nested jars.
+		// Keeping the production jars intact lets Fabric Loader discover
+		// c2me-base, c2me-opts-dfc, c2me-rewrites-chunk-system, etc.
+		runtimeOnly "maven.modrinth:VSNURh3q:${project.c2me_version_id}"
+		runtimeOnly "maven.modrinth:qtPMklut:${project.c2me_opencl_version_id}"
+		runtimeOnly "maven.modrinth:Ps1zyz6x:${project.scalablelux_version_id}"
 	}
 }
 
