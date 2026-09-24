@@ -36,6 +36,10 @@ loom {
 			runDir = "run"
 			programArgs "--username", "Dev"
 
+			if (project.findProperty("enable_c2me_runtime") == "true") {
+				vmArg "-Dc2me.base.config.override.openclAccel.deviceUUIDWhitelist="
+			}
+
 		}
 	}
 }
@@ -121,8 +125,10 @@ tasks.register("prepareC2meDevConfig") {
 	}
 }
 
-tasks.matching { it.name == "runClient" }.configureEach {
-	dependsOn tasks.named("prepareC2meDevConfig")
+afterEvaluate {
+	tasks.named("runClient").configure {
+		dependsOn tasks.named("prepareC2meDevConfig")
+	}
 }
 
 processResources {
