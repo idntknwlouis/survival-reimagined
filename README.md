@@ -55,8 +55,10 @@ This table tracks broad feature parity against the original.
 | Blood Moon Event | ❌ | ❌ | ❌ | ❌ |
 | Decorative / Utility Blocks | 🟡 | 🟡 | 🟡 | — |
 | Sounds / Particles | 🟡 | — | 🟡 | — |
+| Survival Progression | ❌ | ❌ | ❌ | ❌ |
 | Advancements | 🟡 | 🟡 | 🟡 | — |
 | Compat Content | ❌ | ❌ | ❌ | ❌ |
+
 
 
 ## Current Roadmap
