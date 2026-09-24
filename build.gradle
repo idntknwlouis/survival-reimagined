@@ -76,7 +76,9 @@ dependencies {
 		// c2me-base, c2me-opts-dfc, c2me-rewrites-chunk-system, etc.
 		runtimeOnly "maven.modrinth:VSNURh3q:${project.c2me_version_id}"
 		runtimeOnly "maven.modrinth:qtPMklut:${project.c2me_opencl_version_id}"
-		runtimeOnly "maven.modrinth:Ps1zyz6x:${project.scalablelux_version_id}"
+		// ScalableLux is standalone and carries an intermediary class tweaker,
+		// so let Loom remap it into the named dev namespace.
+		modLocalRuntime "maven.modrinth:Ps1zyz6x:${project.scalablelux_version_id}"
 	}
 }
 
