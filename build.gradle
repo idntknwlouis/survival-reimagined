@@ -14,17 +14,7 @@ repositories {
 	mavenCentral()
 	maven { url = 'https://maven.shedaniel.me' }
 	maven { url = 'https://maven.blamejared.com' }
-	maven { url = 'https://www.cursemaven.com'}
-	exclusiveContent {
-		forRepository {
-			maven {
-				name = "Modrinth"
-				url = "https://api.modrinth.com/maven"
-			}
-		}
-		filter { includeGroup "maven.modrinth" }
-	}
-}
+	maven { url = 'https://www.cursemaven.com'}}
 
 
 loom {
@@ -35,10 +25,6 @@ loom {
 			ideConfigGenerated = true
 			runDir = "run"
 			programArgs "--username", "Dev"
-
-			if (project.findProperty("enable_c2me_runtime") == "true") {
-				vmArg "-Dc2me.base.config.override.openclAccel.deviceUUIDWhitelist="
-			}
 
 		}
 	}
@@ -71,65 +57,8 @@ dependencies {
 	modImplementation "curse.maven:terrablender-fabric-565956:6054948"
 	implementation "com.electronwill.night-config:core:3.8.1"
 	implementation "com.electronwill.night-config:toml:3.8.1"
-
-	// Optional worldgen compatibility test stack. Enable with -Penable_c2me_runtime=true.
-	// These are NOT bundled and are NOT required by Survival Reimagined.
-	if (project.findProperty("enable_c2me_runtime") == "true") {
-		// Do not use Loom's modLocalRuntime here: Loom strips nested jars from
-		// mod dependencies, while C2ME ships its internal modules as nested jars.
-		// Keeping the production jars intact lets Fabric Loader discover
-		// c2me-base, c2me-opts-dfc, c2me-rewrites-chunk-system, etc.
-		runtimeOnly "maven.modrinth:VSNURh3q:${project.c2me_version_id}"
-		// Match the C2ME 0.4.0-alpha.0.29 backport exactly.
-		runtimeOnly "curse.maven:c2me-ocl-1563823:${project.c2me_opencl_curse_file}"
-		// ScalableLux is standalone and carries an intermediary class tweaker,
-		// so let Loom remap it into the named dev namespace.
-		modLocalRuntime "maven.modrinth:Ps1zyz6x:${project.scalablelux_version_id}"
-	}
 }
 
-
-tasks.register("prepareC2meDevConfig") {
-	doLast {
-		if (project.findProperty("enable_c2me_runtime") != "true") return
-
-		def uuid = project.findProperty("c2me_opencl_device_uuid")?.toString()?.trim()
-		if (!uuid) return
-
-		def configFile = file("run/config/c2me.toml")
-		configFile.parentFile.mkdirs()
-
-		def contents = configFile.exists() ? configFile.getText("UTF-8") : "version = 3\n\n"
-		if (!(contents =~ /(?m)^\s*version\s*=\s*3\s*$/)) {
-			contents = contents.replaceFirst(/(?m)^\s*version\s*=.*$/, "version = 3")
-			if (!(contents =~ /(?m)^\s*version\s*=/)) {
-				contents = "version = 3\n" + contents
-			}
-		}
-
-		def keyPattern = ~/(?m)^\s*deviceUUIDWhitelist\s*=.*$/
-		if (contents =~ keyPattern) {
-			contents = contents.replaceFirst(keyPattern, "deviceUUIDWhitelist = \"${uuid}\"")
-		} else {
-			def sectionPattern = ~/(?m)^\[openclAccel\]\s*$/
-			def matcher = sectionPattern.matcher(contents)
-			if (matcher.find()) {
-				def pos = matcher.end()
-				contents = contents.substring(0, pos) + "\ndeviceUUIDWhitelist = \"${uuid}\"" + contents.substring(pos)
-			} else {
-				contents = contents.stripTrailing() + "\n\n[openclAccel]\ndeviceUUIDWhitelist = \"${uuid}\"\n"
-			}
-		}
-
-		configFile.setText(contents, "UTF-8")
-	}
-}
-
-afterEvaluate {
-	tasks.named("runClient").configure {
-		dependsOn tasks.named("prepareC2meDevConfig")
-	}
-}
 
 processResources {
 	inputs.property "version", project.version
