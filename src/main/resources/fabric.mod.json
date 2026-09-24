@@ -45,5 +45,10 @@
     "java": ">=21",
     "fabric-api": "*",
     "terrablender": ">=4.1.0"
+  },
+  "suggests": {
+    "c2me": "*",
+    "c2me-opts-accel-opencl": "*",
+    "scalablelux": "*"
   }
 }
