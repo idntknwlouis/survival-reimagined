@@ -24,7 +24,8 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.mcreator.survivalreimagined.SurvivalReimaginedMod"
+      "net.mcreator.survivalreimagined.SurvivalReimaginedMod",
+      "net.mcreator.survivalreimagined.init.SurvivalReimaginedModProcedures"
     ],
     "client": [
       "net.mcreator.survivalreimagined.SurvivalReimaginedModClient"

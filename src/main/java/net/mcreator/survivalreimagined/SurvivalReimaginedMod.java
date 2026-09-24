@@ -59,9 +59,6 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
-		RuneEffects.register();
-		CropEffects.register();
-		CrimsonThreadDrops.register();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {
