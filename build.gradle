@@ -35,6 +35,13 @@ loom {
 			ideConfigGenerated = true
 			runDir = "run"
 			programArgs "--username", "Dev"
+
+			// C2ME OpenCL can expose the same AMD GPU through multiple installed
+			// OpenCL runtimes. Allow the dev profile to pin one device explicitly.
+			def openclDeviceUuid = project.findProperty("c2me_opencl_device_uuid")?.toString()?.trim()
+			if (project.findProperty("enable_c2me_runtime") == "true" && openclDeviceUuid) {
+				vmArg "-Dc2me.base.config.override.openclAccel.deviceUUIDWhitelist=${openclDeviceUuid}"
+			}
 		}
 	}
 }
