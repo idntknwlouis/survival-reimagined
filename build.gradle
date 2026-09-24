@@ -15,6 +15,15 @@ repositories {
 	maven { url = 'https://maven.shedaniel.me' }
 	maven { url = 'https://maven.blamejared.com' }
 	maven { url = 'https://www.cursemaven.com'}
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter { includeGroup "maven.modrinth" }
+	}
 }
 
 
@@ -57,6 +66,14 @@ dependencies {
 	modImplementation "curse.maven:terrablender-fabric-565956:6054948"
 	implementation "com.electronwill.night-config:core:3.8.1"
 	implementation "com.electronwill.night-config:toml:3.8.1"
+
+	// Optional worldgen compatibility test stack. Enable with -Penable_c2me_runtime=true.
+	// These are NOT bundled and are NOT required by Survival Reimagined.
+	if (project.findProperty("enable_c2me_runtime") == "true") {
+		modLocalRuntime "maven.modrinth:VSNURh3q:${project.c2me_version_id}"
+		modLocalRuntime "maven.modrinth:qtPMklut:${project.c2me_opencl_version_id}"
+		modLocalRuntime "maven.modrinth:Ps1zyz6x:${project.scalablelux_version_id}"
+	}
 }
 
 processResources {
@@ -68,7 +85,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 25
+	it.options.release = 21
 }
 
 // IntelliJ's generated Fabric dev run can invoke compileJava without refreshing resources.
@@ -79,8 +96,8 @@ tasks.named("compileJava") {
 
 java {
 	withSourcesJar()
-	sourceCompatibility = JavaVersion.VERSION_25
-	targetCompatibility = JavaVersion.VERSION_25
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {
