@@ -4,10 +4,12 @@ import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -24,6 +26,9 @@ import net.mcreator.survivalreimagined.block.entity.PalmLeavesBlockEntity;
 
 public class PalmLeavesBlock extends BaseEntityBlock {
     public static final MapCodec<PalmLeavesBlock> CODEC = simpleCodec(PalmLeavesBlock::new);
+    private static final TagKey<Block> PALM_LOGS = TagKey.create(
+            Registries.BLOCK,
+            ResourceLocation.fromNamespaceAndPath("survival_reimagined", "palm_logs"));
 
     public PalmLeavesBlock() {
         this(BlockBehaviour.Properties.of()
@@ -66,9 +71,7 @@ public class PalmLeavesBlock extends BaseEntityBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockState below = level.getBlockState(pos.below());
-        return below.canOcclude()
-                || below.is(BlockTags.create(ResourceLocation.fromNamespaceAndPath(
-                        "survival_reimagined", "palm_logs")));
+        return below.canOcclude() || below.is(PALM_LOGS);
     }
 
     @Override
