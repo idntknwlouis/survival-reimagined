@@ -1,11 +1,11 @@
 # Survival Reimagined: Fabricated
 
-Official Fabric port of [**Survival Reimagined**](https://modrinth.com/mod/survival-reimagined), based on the original NeoForge project by ShotUGMG.
+Official Fabric port of [**Survival Reimagined**](https://modrinth.com/mod/survival-reimagined), based on the original NeoForge mod by ShotUGMG.
 
-This table tracks broad feature parity against the original mod.
-> ✅ = implemented / working  
-> 🟡 = partial / still needs parity work  
-> ❌ = not ported yet  
+This table tracks broad feature parity against the original.
+> ✅ = completed / working  
+> 🟡 = partial / still needs work  
+> ❌ = not yet  /  not started  
 > 🔎 = needs audit
 
 | System | Function | Recipes / Logic | Assets / UI | World Gen |
@@ -67,40 +67,4 @@ This table tracks broad feature parity against the original mod.
 4. Release-ready testing and balancing
 5. Compat content
 
-## World Generation Notes
 
-- Overworld depth parity is enabled for testing: `min_y = -256`, `height = 512` (Y -256 through Y 255), matching the original project.
-
-
-## Recent Core Port Progress
-
-- Mobs / Entities roster is now ported and runtime-tested: Boar, Sow, Piglet, Black Bear, Brown Bear, Crimson Arachnid, Alpha Crimson Arachnid, Ghost, and Blood Moon Zombie all have models/renderers, sounds, attributes, spawn eggs, and core AI/combat behavior. Pig-family alarm behavior and Crimson Arachnid collision sizes now match the original, and the Ghost idle animation is restored. Remaining logic/worldgen parity is dependency-bound: Piglet maturation requires the Small Trough/hunger system, while Blood Moon mob natural spawning requires the Blood Moon Event state.
-- Carcass / Butchering is runtime-verified and complete for the current livestock set, including staged processing, detached-part drops/highlights, Goat/Chicken parity, and final remnant break behavior.
-- Armor parity is complete: Wooden, Bronze, and Steel armor sets match the original stats/durability/recipes/assets; Diamond Plate + Leather upgrade recipes are restored; RMI armor infusion and armor rune effects are implemented; Gas Mask rendering, filters, filter recharge, and Perpetual Filtering are restored. Radiation damage/protection integration remains tracked under the separate Radiation Systems row.
-- Food / Cooking parity is runtime-verified and complete: crop-derived foods, custom Campfire processing, raw → cooked → burnt → charcoal progression, spoilage states/tooltips, Rotten Biomatter conversion, wooden-container spoilage, cured-meat recipes, and the original vanilla bread/campfire recipe overrides are restored.
-- Food / Cooking parity is actively restored: the custom 5-slot Campfire GUI, directional block/highlight, smoke/crackle effects, fuel handling, staged raw → cooked → burnt → charcoal-powder cooking, Fire Starter support, Block of Charcoal propagation, cooking/spoilage tooltips, and Rotten Biomatter spoilage conversion are now implemented. Basic food/cooking works in-game; the latest spoilage lifecycle still needs runtime verification before this row can be marked complete.
-- Food / Cooking second-half work now includes the original-style custom Campfire framework: a 5-slot Campfire block entity/menu/screen, lit state/light level, starter/fuel tags, persistent fuel meter, raw → cooked → burnt → Charcoal Powder progression, and Campfire registry/data assets. Runtime verification is pending before Food / Cooking is marked complete.
-- Food / Cooking parity is partially restored. The crop-derived first half (wheat/rye/spelt flour-dough-bread, potatoes, and corn foods) is working, and the second half now restores raw/cooked/burnt meat families for beef, mutton, pork, chicken, rabbit, cod, salmon, and equine with original nutrition values, furnace/smoker/campfire cooking paths, overcooking-to-burnt campfire recipes, and common food tags. Original spoilage/decay visuals, cured-meat recipes, and custom campfire processing still remain for a later pass.
-- Food / Cooking first-half parity pass restored the basic crop-derived food set: Wheat/Rye/Spelt flour and dough, Rye/Spelt bread, Corn on the Cob and cooked/burnt variants, plus Burnt/Charred Potato. Item nutrition, names, models, textures, and creative-tab visibility now match the original. Millstone/Campfire processing behavior and the broader meat/advanced cooking chains remain for the second half.
-- Crops / Plants gameplay parity is runtime-verified: Rye, Spelt, Hemp, Wild Carrot, Wheat/Wild Wheat, Potatoes/Wild Potatoes, Strawberry, Raspberry, and full three-part Corn placement/growth/harvest now work, with restored crop block/item names and textures. Natural generation for the previously disabled Wild Wheat, Wild Potato, Strawberry, and Raspberry families remains pending, so the World Gen column stays partial.
-- Native Mineral Ores are runtime-verified and complete: Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite Stone/Deepslate families, resource blocks, loot, recipes, mining/common tags, and worldgen work as intended.
-- Kimberlite Geology is runtime-verified and complete: Kimberlite generation matches the original (`count 8`, radius `12`, `Y -256..-128`), Sapphire/Diamond/Emerald/Ruby/Lapis/Amber replacement targets and loot match, and Kimberlite stalagmites/stalactites use the vanilla-style single `kimberlite_pointed_stone` block.
-- Native Mineral Ores parity pass restored the missing Desert/Badlands `extra_calaverite_feature` hook and completed the original common ore/metal-rock tags for Hematite/Magnetite, Calaverite, Ilmenite, and Uranophane families. Existing ore heights/counts and processing outputs match the original; runtime verification of the final tag/worldgen pass is pending.
-
-- Basalt Geology Extensions are runtime-verified and complete: the original Basalt layer depth (`Y -128..-64`) is restored, Hematite, Magnetite, Calaverite, Uranophane, Ilmenite, Anthracite, and Liginite Basalt variants use their original shared ore features without duplicate Fabric-only passes, and vanilla-style Basalt pointed-stone stalagmite/stalactite worldgen works in-game.
-- Manganese parity is runtime-verified: Manganese, Manganite, and Pyrolusite blocks/items, ore loot, smelting/blasting and compression recipes, common tags, AAF alloy inputs, and worldgen are aligned with the original. Fabric keeps the corrected `c:manganese_ores` spelling and includes it in `c:ores`; duplicate Fabric-only Basalt Manganite worldgen was removed.
-- Tin parity is complete: Tin/Cassiterite blocks, items, processing recipes, loot, mining tiers, common tags, AAF inputs, and Cassiterite worldgen match the original; Cassiterite is restored to `c:tin_ores` and the common ore tag so infused ore-mining bonuses apply correctly.
-- Broad core gameplay parity audit completed. The remaining major gaps are now classified: Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation are not yet ported; Food / Cooking is missing its gameplay/recipe systems but retains some crop/food assets; Advancements and Decorative / Utility Blocks are partial. Fabric currently has only the Radiant Forest of the original custom biomes, with Tropical Coast and Wisteria Forest still missing.
-- Shale geology parity is runtime-verified: Radiated Shale surface layering, Shale underground replacement, mining/loot integration, and Radiant Forest Uraninite/Uranophane vein generation all work as intended.
-- Rune Magic Infuser parity restored: original textured Fuse button, target/rune/lapis validation, Gold/Silver XP + lapis costs, infusion sounds, direct rune recognition, and common `c:runes` compatibility.
-- Rune effects restored and hardened for Fabric tool/weapon detection, including Diamond Unbreaking progression, Ocean's Wrath, Sapphire underwater mining, Amber/Ruby/Lapis/Emerald effects, action-bar feedback, and gray rune effect tooltips.
-- Advanced Alloy Forge parity restored: setup requirement, held-item/empty-hand interaction handling, smoke/sounds, staged progress arrow, fuel gauge/capacity markers, reactor rods, Advanced Reactor Rod, upgrade slots, Fuel/Yield/Efficiency upgrades, and Block Packaging recipes.
-- AAF upgrade item models/textures and explanatory tooltips restored.
-- Uranium Rod parity restored with translucent rendering, radiation particles, and ambient hum.
-- Titanium nugget/processing parity restored, including smelting/blasting, forge output, and common titanium tags.
-- Dark Cinder block, loot, Nether worldgen, and Dark Cinder Coal forge recipe restored; Fuels / Forge Materials is now complete.
-- Kimberlite geology and ore variants are implemented; missing English names were restored.
-- Native mineral Stone/Deepslate ore families for Hematite, Magnetite, Calaverite, Pyrolusite, Uranophane, Ilmenite, Anthracite, and Liginite are ported with assets, loot, mining tags, worldgen, resource blocks, and recipes; runtime-tested successfully. Shale Uranophane generation is also wired.
-- Core parity audit found additional active original geology still missing from Fabric: Cassiterite, Manganite, Azurite, Malachite, Nitre, Sulfur, Salt deposits, plus Basalt/Kimberlite stalagmite and stalactite formations. Spinel assets exist in the original but are not actively registered for worldgen, so Spinel is treated as dormant content for now.
-- Native Copper and Native Gold worldgen parity restored, including the original extra Badlands Gold pass. Crop worldgen selectors were also corrected to the original biome lists, removing duplicate/unrestricted Rye, Spelt, and Wild Carrot generation.
-- Dedicated mold geometry restored for Hoe, Knife, Plate, Clay Plate, and Clay Ingot molds.
