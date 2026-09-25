@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.mcreator.survivalreimagined.init.*;
+import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModOverworldRegion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
@@ -59,6 +60,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
+		SurvivalReimaginedModVariables.register();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {

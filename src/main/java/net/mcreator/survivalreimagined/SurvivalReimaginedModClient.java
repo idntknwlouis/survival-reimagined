@@ -2,10 +2,14 @@ package net.mcreator.survivalreimagined;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.mcreator.survivalreimagined.network.PlayerVariables;
+import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
+import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
@@ -110,6 +114,13 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
 			FoodTooltip.append(stack, lines);
+		});
+
+		ClientPlayNetworking.registerGlobalReceiver(PlayerVariablesSyncMessage.TYPE, (payload, context) -> {
+			context.client().execute(() -> {});
+		});
+		ClientPlayNetworking.registerGlobalReceiver(SavedDataSyncMessage.TYPE, (payload, context) -> {
+			context.client().execute(() -> {});
 		});
 	}
 }

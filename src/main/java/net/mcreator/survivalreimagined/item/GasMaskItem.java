@@ -39,7 +39,6 @@ public class GasMaskItem extends ArmorItem {
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
 		super.inventoryTick(stack, level, entity, slotId, isSelected);
 
-		//GasMaskHelmetTickEventProcedure.java <- Needs this class port for gas mask to stop Radiation
 
 		if (!(entity instanceof Player player)
 				|| player.getItemBySlot(EquipmentSlot.HEAD) != stack
