@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
+import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
@@ -122,5 +123,6 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		ClientPlayNetworking.registerGlobalReceiver(SavedDataSyncMessage.TYPE, (payload, context) -> {
 			context.client().execute(() -> {});
 		});
+		BloodMoonTexture.registerClientReceiver();
 	}
 }

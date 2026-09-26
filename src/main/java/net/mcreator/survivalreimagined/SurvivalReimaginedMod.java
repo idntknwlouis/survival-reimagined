@@ -3,8 +3,10 @@ package net.mcreator.survivalreimagined;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.mcreator.survivalreimagined.command.EventsCommand;
 import net.mcreator.survivalreimagined.init.*;
 import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
+import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModOverworldRegion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
@@ -61,6 +63,10 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
 		SurvivalReimaginedModVariables.register();
+		SurvivalReimaginedModConfig.load();
+		EventsCommand.register();
+		BloodMoonTexture.initPackets();
+		BloodMoonTexture.registerServerTicker();
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {
