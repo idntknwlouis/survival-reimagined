@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
@@ -24,9 +25,12 @@ public class SurvivalReimaginedModVariables {
     public static double OceansWrathDamageMultiplier = 0;
     public static AttributeModifier OceansWrath = null;
 
-    private static final Map<UUID, PlayerVariables> PLAYER_VARIABLES_MAP = new ConcurrentHashMap<>();
-    private static PlayerVariables getPlayerVariables(ServerPlayer player) {
-        return PLAYER_VARIABLES_MAP.computeIfAbsent(player.getUUID(), id -> new PlayerVariables());
+    public static final Map<UUID, PlayerVariables> PLAYER_VARIABLES_MAP = new ConcurrentHashMap<>();
+    public static PlayerVariables getPlayerVariables(Entity entity) {
+        if (entity instanceof ServerPlayer player) {
+            return PLAYER_VARIABLES_MAP.computeIfAbsent(player.getUUID(), id -> new PlayerVariables());
+        }
+        return new PlayerVariables();
     }
 
     public static void register() {

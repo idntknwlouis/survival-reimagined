@@ -168,7 +168,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> ALPHA_CRIMSON_ARACHNID_SPAWN_EGG = register("alpha_crimson_arachnid_spawn_egg",
 			() -> new SpawnEggItem(SurvivalReimaginedModEntities.ALPHA_CRIMSON_ARACHNID.get(), -14941694, -426884, new Item.Properties()));
 
-	public static final RegistryEntry<Item> GAS_MASK_HELMET = register("gas_mask_helmet", GasMaskItem::new);
+	public static final RegistryEntry<Item> GAS_MASK_HELMET = register("gas_mask_helmet", GasMaskItem.Helmet::new);
 	public static final RegistryEntry<Item> GAS_MASK_FILTER = register("gas_mask_filter", GasMaskFilterItem::new);
 	public static final RegistryEntry<Item> USED_FILTER = simple("used_filter");
 	public static final RegistryEntry<Item> HEMP_MESH = simple("hemp_mesh");

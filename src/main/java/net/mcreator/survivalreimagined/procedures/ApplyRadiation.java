@@ -36,20 +36,19 @@ public class ApplyRadiation  {
         boolean isInRadiatedForest = world.getBiome(currentPos).is(ResourceLocation.parse("survival_reimagined:radiated_forest"));
         MobEffect rawEffect = SurvivalReimaginedModMobEffects.RADIATION.get();
         Holder<MobEffect> radiation = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(rawEffect);
+        double filterPercentage = headArmor.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("FilterPercentage");
 
         
 
-        if (hasGasMask ^ headArmor.isEmpty()
-                && (isInRadiatedForest)
-                && (entity instanceof Player)
-                && (getEntityGameType(entity) != GameType.CREATIVE)) {
-                if (((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(radiation) ? _livEnt.getEffect(radiation).getDuration() : 0) == 1) ^ !(entity instanceof LivingEntity _livEnt13 && _livEnt13.hasEffect(radiation))) {
-                        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) _entity.addEffect(new MobEffectInstance(radiation, 60, 0, true, false));
-                }
-        } else if (headArmor.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("FilterPercentage") <= 0) {
-            if ((isInRadiatedForest) && (entity instanceof Player) && getEntityGameType(entity) != GameType.CREATIVE) {
-                if  (((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(radiation) ? _livEnt.getEffect(radiation).getDuration() : 0) == 1) ^ !(entity instanceof LivingEntity _livEnt25 && _livEnt25.hasEffect(radiation))) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) _entity.addEffect(new MobEffectInstance(radiation, 60, 0, true, false));
+        if (entity instanceof Player && isInRadiatedForest) {
+            GameType gameType = getEntityGameType(entity);
+            if (gameType != GameType.CREATIVE && gameType != GameType.SPECTATOR) {
+                if (!hasGasMask || filterPercentage <= 0) {
+                    if (((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(radiation) ? _livEnt.getEffect(radiation).getDuration() : 0) == 1) ^ !(entity instanceof LivingEntity _livEnt13 && _livEnt13.hasEffect(radiation))) {
+                        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide()) {
+                            _entity.addEffect(new MobEffectInstance(radiation, 60, 0, true, false));
+                        }
+                    }
                 }
             }
         }
