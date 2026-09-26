@@ -52,7 +52,7 @@ This table tracks broad feature parity against the original.
 | Structures | ❌ | ❌ | ❌ | ❌ |
 | Biomes | — | —  | —  | 🟡 |
 | Radiation Systems | 🟡 | — | — | — |
-| Blood Moon Event | ❌ | ❌ | ❌ | ❌ |
+| Blood Moon Event | ✅ | ✅ | ✅ | 🟡 (Mobs) |
 | Decorative / Utility Blocks | 🟡 | 🟡 | 🟡 | — |
 | Sounds / Particles | 🟡 | — | 🟡 | — |
 | Survival Progression | ❌ | ❌ | ❌ | ❌ |
