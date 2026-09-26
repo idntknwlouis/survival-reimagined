@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,6 +34,8 @@ public class SurvivalReimaginedModVariables {
 
         PayloadTypeRegistry.playS2C().register(SavedDataSyncMessage.TYPE, SavedDataSyncMessage.STREAM_CODEC);
         PayloadTypeRegistry.playS2C().register(PlayerVariablesSyncMessage.TYPE, PlayerVariablesSyncMessage.STREAM_CODEC);
+        PayloadTypeRegistry.playS2C().register(WorldVariablesSyncMessage.TYPE, WorldVariablesSyncMessage.STREAM_CODEC);
+        PayloadTypeRegistry.playS2C().register(MapVariablesSyncMessage.TYPE, MapVariablesSyncMessage.STREAM_CODEC);
 
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server ) -> {
             ServerPlayer player = handler.getPlayer();
@@ -181,12 +184,56 @@ public class SurvivalReimaginedModVariables {
     public static class MapVariables extends SavedData {
         public static final String DATA_NAME = "survival_reimagined_mapvars";
         public boolean _syncDirty = false;
+        public boolean BloodMoonTimer = false;
+        public boolean AnnouncementPlayed = false;
+        public boolean sculk_hearts = false;
+        public double MPT_Time = 0;
+        public double BloodMoonChanceRan = 0;
+        public boolean isBloodMoon = false;
+        public double BloodMoon = 0;
+        public boolean ValueSetBloodMoon = false;
+        public boolean isDay = false;
+        public ItemStack MoldOutput = ItemStack.EMPTY;
+        public boolean BunkerPlaced = false;
+
+        public static MapVariables load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
+            MapVariables data = new MapVariables();
+            data.read(tag, lookupProvider);
+            return data;
+        }
+        public void read(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
+            BloodMoonTimer = nbt.getBoolean("BloodMoonTimer");
+            AnnouncementPlayed = nbt.getBoolean("AnnouncementPlayed");
+            sculk_hearts = nbt.getBoolean("sculk_hearts");
+            MPT_Time = nbt.getDouble("MPT_Time");
+            BloodMoonChanceRan = nbt.getDouble("BloodMoonChanceRan");
+            isBloodMoon = nbt.getBoolean("isBloodmoon");
+            BloodMoon = nbt.getDouble("BloodMoon");
+            ValueSetBloodMoon = nbt.getBoolean("ValueSetBloodMoon");
+            isDay = nbt.getBoolean("isDay");
+            MoldOutput = ItemStack.parseOptional(lookupProvider, nbt.getCompound("MoldOutput"));
+            BunkerPlaced = nbt.getBoolean("BunkerPlaced");
+        }
+
+        @Override
+        public CompoundTag save(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
+            nbt.putBoolean("BloodMoonTimer", BloodMoonTimer);
+            nbt.putBoolean("AnnouncementPlayed", AnnouncementPlayed);
+            nbt.putBoolean("sculk_hearts", sculk_hearts);
+            nbt.putDouble("MPT_Time", MPT_Time);
+            nbt.putDouble("BloodMoonChanceRan", BloodMoonChanceRan);
+            nbt.putBoolean("isBloodMoon", isBloodMoon);
+            nbt.putDouble("BloodMoon", BloodMoon);
+            nbt.putBoolean("ValueSetBloodMoon", ValueSetBloodMoon);
+            nbt.putBoolean("isDay", isDay);
+            nbt.put("MoldOutput", MoldOutput.saveOptional(lookupProvider));
+            nbt.putBoolean("BunkerPlaced", BunkerPlaced);
+            return nbt;
+        }
 
         public static MapVariables get(ServerLevel level) {
-            DimensionDataStorage storage = level.getServer().overworld().getDataStorage();
-            return storage.computeIfAbsent(new SavedData.Factory<>(MapVariables::new, (tag, lookup) -> new MapVariables(), null), DATA_NAME);
+            DimensionDataStorage storage = level.getDataStorage();
+            return storage.computeIfAbsent(new SavedData.Factory<>(MapVariables::new, MapVariables::load, null), DATA_NAME);
         }
-        @Override
-        public CompoundTag save(CompoundTag tag, HolderLookup.Provider lookupProvider) {return tag;}
     }
 }
