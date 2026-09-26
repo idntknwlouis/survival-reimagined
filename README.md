@@ -51,7 +51,7 @@ This table tracks broad feature parity against the original.
 | Carcass / Butchering | ✅ | ✅ | ✅ | — |
 | Structures | ❌ | ❌ | ❌ | ❌ |
 | Biomes | — | —  | —  | 🟡 |
-| Radiation Systems | 🟡 | — | — | — |
+| Radiation Systems | ✅ | — | — | — |
 | Blood Moon Event | ✅ | ✅ | ✅ | 🟡 (Mobs) |
 | Decorative / Utility Blocks | 🟡 | 🟡 | 🟡 | — |
 | Sounds / Particles | 🟡 | — | 🟡 | — |
