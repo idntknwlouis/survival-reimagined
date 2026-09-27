@@ -1,7 +1,10 @@
 {
-  "parent": "survival_reimagined:custom/mold",
+  "parent": "survival_reimagined:custom/axe_mold",
   "textures": {
-    "0": "survival_reimagined:block/dried_clay",
-    "particle": "survival_reimagined:block/axe_head_mold"
-  }
+    "all": "survival_reimagined:block/axe_head_mold",
+    "particle": "survival_reimagined:block/axe_head_mold",
+    "22": "survival_reimagined:block/dried_clay",
+    "21": "survival_reimagined:block/axe_head_mold"
+  },
+  "render_type": "solid"
 }

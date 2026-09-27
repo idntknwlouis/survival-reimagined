@@ -287,6 +287,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> DIAMOND_PLATE = register("diamond_plate", () -> new PlateBlock(SurvivalReimaginedModSoundTypes.STEEL, 4.0F));
 	public static final RegistryEntry<Block> NETHERITE_PLATE = register("netherite_plate", () -> new PlateBlock(SoundType.NETHERITE_BLOCK, 5.0F));
 	public static final RegistryEntry<Block> CLAY_METAL_PLATE_MOLD = register("clay_metal_plate_mold", () -> new ClayMoldBlock(() -> METAL_PLATE_MOLD.get(), true));
+	public static final RegistryEntry<Block> CRUCIBLE = register("crucible", Crucible::new);
 
 	public static final RegistryEntry<Block> INGOT_CLAY_MOLD = register("ingot_clay_mold", () -> new ClayMoldBlock(() -> INGOT_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_SWORD_BLADE_MOLD = register("clay_sword_blade_mold", () -> new ClayMoldBlock(() -> SWORD_BLADE_MOLD.get()));
@@ -297,6 +298,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> CLAY_HAMMER_HEAD_MOLD = register("clay_hammer_head_mold", () -> new ClayMoldBlock(() -> HAMMER_HEAD_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_SAW_BLADE_MOLD = register("clay_saw_blade_mold", () -> new ClayMoldBlock(() -> SAW_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_KNIFE_MOLD = register("clay_knife_mold", () -> new ClayMoldBlock(() -> KNIFE_BLADE_MOLD.get()));
+	public static final RegistryEntry<Block> CLAY_CRUCIBLE = register("clay_crucible", () -> new ClayCrucible(() -> CRUCIBLE.get()));
 
 	public static final RegistryEntry<Block> COPPER_ROCK_BLOCK = register("copper_rock_block", CopperRockBlockBlock::new);
 	public static final RegistryEntry<Block> ANDESITE_ROCK_BLOCK = register("andesite_rock_block", AndesiteRockBlockBlock::new);
@@ -316,6 +318,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> THIN_RADIATED_VINE_BASE = register("thin_radiated_vine_base", ThinRadiatedVineBaseBlock::new);
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES = register("thick_radiated_vines", ThickRadiatedVinesBlock::new);
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES_BASE = register("thick_radiated_vines_base", ThickRadiatedVinesBaseBlock::new);
+
+	public static final RegistryEntry<Block> SAND_SALT_DESPOSIT = register("sand_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).))
+
+
 
 	private SurvivalReimaginedModBlocks() {
 	}

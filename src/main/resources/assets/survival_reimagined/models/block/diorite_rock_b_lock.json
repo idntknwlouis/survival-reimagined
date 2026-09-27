@@ -1,7 +1,9 @@
 {
-  "parent": "survival_reimagined:custom/surface_rock",
+  "parent": "survival_reimagined:custom/diorite_rock",
   "textures": {
-    "texture": "minecraft:block/diorite",
-    "particle": "minecraft:block/diorite"
-  }
+    "all": "minecraft:block/diorite",
+    "particle": "minecraft:block/diorite",
+    "2": "minecraft:block/diorite"
+  },
+  "render_type": "solid"
 }

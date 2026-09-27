@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": {"model": "survival_reimagined:block/dark_cinder"}
+    "": {
+      "model": "survival_reimagined:block/dark_cinder"
+    }
   }
 }

@@ -1,6 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "survival_reimagined:block/thin_radiated_vines_end"
-  }
+    "layer0": "survival_reimagined:item/thin_radiated_vines"
+  },
+  "render_type": "translucent"
 }

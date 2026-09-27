@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/raw_silver_block"
-  }
+    "down": "survival_reimagined:block/raw_silver_block",
+    "up": "survival_reimagined:block/raw_silver_block",
+    "north": "survival_reimagined:block/raw_silver_block",
+    "east": "survival_reimagined:block/raw_silver_block",
+    "south": "survival_reimagined:block/raw_silver_block",
+    "west": "survival_reimagined:block/raw_silver_block",
+    "particle": "survival_reimagined:block/raw_silver_block"
+  },
+  "render_type": "solid"
 }

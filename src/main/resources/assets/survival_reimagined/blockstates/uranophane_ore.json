@@ -1,1 +1,7 @@
-{"variants":{"":{"model":"survival_reimagined:block/uranophane_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "survival_reimagined:block/uranophane_ore"
+    }
+  }
+}

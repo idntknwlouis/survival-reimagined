@@ -1,8 +1,5 @@
 {
   "variants": {
-    "age=0": {
-      "model": "survival_reimagined:block/potatoes"
-    },
     "age=1": {
       "model": "survival_reimagined:block/potatoes_0"
     },
@@ -11,6 +8,9 @@
     },
     "age=3": {
       "model": "survival_reimagined:block/potatoes_2"
+    },
+    "age=0": {
+      "model": "survival_reimagined:block/potatoes"
     }
   }
 }

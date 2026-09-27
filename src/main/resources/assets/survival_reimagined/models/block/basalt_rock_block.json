@@ -1,7 +1,9 @@
 {
-  "parent": "survival_reimagined:custom/surface_rock",
+  "parent": "survival_reimagined:custom/basalt_rock",
   "textures": {
-    "texture": "minecraft:block/smooth_basalt",
-    "particle": "minecraft:block/smooth_basalt"
-  }
+    "all": "minecraft:block/smooth_basalt",
+    "particle": "minecraft:block/smooth_basalt",
+    "3": "minecraft:block/smooth_basalt"
+  },
+  "render_type": "solid"
 }

@@ -1,6 +1,13 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/basalt_pyrolusite_ore"
-  }
+    "down": "survival_reimagined:block/basalt_manganite_ore",
+    "up": "survival_reimagined:block/basalt_manganite_ore",
+    "north": "survival_reimagined:block/basalt_manganite_ore",
+    "east": "survival_reimagined:block/basalt_manganite_ore",
+    "south": "survival_reimagined:block/basalt_manganite_ore",
+    "west": "survival_reimagined:block/basalt_manganite_ore",
+    "particle": "survival_reimagined:block/basalt_manganite_ore"
+  },
+  "render_type": "solid"
 }

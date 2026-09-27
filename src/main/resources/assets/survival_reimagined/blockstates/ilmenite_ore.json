@@ -1,1 +1,7 @@
-{"variants":{"":{"model":"survival_reimagined:block/ilmenite_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "survival_reimagined:block/ilmenite_ore"
+    }
+  }
+}

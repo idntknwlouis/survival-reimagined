@@ -1,7 +1,9 @@
 {
-  "parent": "survival_reimagined:custom/surface_rock",
+  "parent": "survival_reimagined:custom/netherrack_rock",
   "textures": {
-    "texture": "minecraft:block/netherrack",
-    "particle": "minecraft:block/netherrack"
-  }
+    "all": "minecraft:block/netherrack",
+    "particle": "minecraft:block/netherrack",
+    "7": "minecraft:block/netherrack"
+  },
+  "render_type": "solid"
 }

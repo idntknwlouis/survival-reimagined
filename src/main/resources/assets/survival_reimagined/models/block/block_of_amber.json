@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/block_of_amber"
-  }
+    "down": "survival_reimagined:block/block_of_amber",
+    "up": "survival_reimagined:block/block_of_amber",
+    "north": "survival_reimagined:block/block_of_amber",
+    "east": "survival_reimagined:block/block_of_amber",
+    "south": "survival_reimagined:block/block_of_amber",
+    "west": "survival_reimagined:block/block_of_amber",
+    "particle": "survival_reimagined:block/block_of_amber"
+  },
+  "render_type": "solid"
 }

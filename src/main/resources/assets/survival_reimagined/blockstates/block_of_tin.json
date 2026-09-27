@@ -1,1 +1,7 @@
-{"variants":{"":{"model":"survival_reimagined:block/block_of_tin"}}}
+{
+  "variants": {
+    "": {
+      "model": "survival_reimagined:block/block_of_tin"
+    }
+  }
+}

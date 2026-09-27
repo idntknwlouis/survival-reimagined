@@ -1,9 +1,7 @@
 {
-  "multipart": [
-    {
-      "apply": {
-        "model": "survival_reimagined:block/clay_axe_head_mold"
-      }
+  "variants": {
+    "": {
+      "model": "survival_reimagined:block/clay_axe_head_mold"
     }
-  ]
+  }
 }

@@ -1,1 +1,7 @@
-{"variants":{"":{"model":"survival_reimagined:block/polished_chiseled_shale"}}}
+{
+  "variants": {
+    "": {
+      "model": "survival_reimagined:block/polished_chiseled_shale"
+    }
+  }
+}

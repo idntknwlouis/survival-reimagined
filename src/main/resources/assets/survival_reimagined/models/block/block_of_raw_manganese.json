@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/block_of_raw_manganese"
-  }
+    "down": "survival_reimagined:block/block_of_raw_manganese",
+    "up": "survival_reimagined:block/block_of_raw_manganese",
+    "north": "survival_reimagined:block/block_of_raw_manganese",
+    "east": "survival_reimagined:block/block_of_raw_manganese",
+    "south": "survival_reimagined:block/block_of_raw_manganese",
+    "west": "survival_reimagined:block/block_of_raw_manganese",
+    "particle": "survival_reimagined:block/block_of_raw_manganese"
+  },
+  "render_type": "solid"
 }

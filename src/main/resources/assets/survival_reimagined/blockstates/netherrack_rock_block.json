@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": {"model": "survival_reimagined:block/netherrack_rock_block"}
+    "": {
+      "model": "survival_reimagined:block/netherrack_rock_block"
+    }
   }
 }

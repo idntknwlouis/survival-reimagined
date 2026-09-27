@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "item/generated",
   "textures": {
     "layer0": "survival_reimagined:item/clay_plate_mold_item"
-  }
+  },
+  "render_type": "translucent"
 }

@@ -46,8 +46,7 @@
     },
     "face=ceiling,facing=south": {
       "model": "survival_reimagined:block/netherite_plate",
-      "x": 180,
-      "y": 0
+      "x": 180
     },
     "face=ceiling,facing=west": {
       "model": "survival_reimagined:block/netherite_plate",

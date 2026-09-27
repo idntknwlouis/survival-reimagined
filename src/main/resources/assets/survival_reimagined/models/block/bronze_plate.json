@@ -3,5 +3,6 @@
   "textures": {
     "all": "survival_reimagined:block/bronze_plate",
     "particle": "survival_reimagined:block/bronze_plate"
-  }
+  },
+  "render_type": "solid"
 }

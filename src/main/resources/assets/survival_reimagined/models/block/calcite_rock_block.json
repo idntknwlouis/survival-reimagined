@@ -1,7 +1,9 @@
 {
-  "parent": "survival_reimagined:custom/surface_rock",
+  "parent": "survival_reimagined:custom/calcite_rock",
   "textures": {
-    "texture": "minecraft:block/calcite",
-    "particle": "minecraft:block/calcite"
-  }
+    "all": "minecraft:block/calcite",
+    "particle": "minecraft:block/calcite",
+    "5": "minecraft:block/calcite"
+  },
+  "render_type": "solid"
 }

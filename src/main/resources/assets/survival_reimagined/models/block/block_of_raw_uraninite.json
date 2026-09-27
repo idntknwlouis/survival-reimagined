@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/raw_uraninite"
-  }
+    "down": "survival_reimagined:block/raw_uraninite",
+    "up": "survival_reimagined:block/raw_uraninite",
+    "north": "survival_reimagined:block/raw_uraninite",
+    "east": "survival_reimagined:block/raw_uraninite",
+    "south": "survival_reimagined:block/raw_uraninite",
+    "west": "survival_reimagined:block/raw_uraninite",
+    "particle": "survival_reimagined:block/raw_uraninite"
+  },
+  "render_type": "solid"
 }

@@ -1,1 +1,7 @@
-{"variants":{"":{"model":"survival_reimagined:block/deepslate_calaverite_ore"}}}
+{
+  "variants": {
+    "": {
+      "model": "survival_reimagined:block/deepslate_calaverite_ore"
+    }
+  }
+}

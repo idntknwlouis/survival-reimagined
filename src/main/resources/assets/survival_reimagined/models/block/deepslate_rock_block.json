@@ -1,7 +1,9 @@
 {
-  "parent": "survival_reimagined:custom/surface_rock",
+  "parent": "survival_reimagined:custom/deepslate_rock",
   "textures": {
-    "texture": "minecraft:block/deepslate_top",
-    "particle": "minecraft:block/deepslate_top"
-  }
+    "all": "minecraft:block/deepslate_top",
+    "particle": "minecraft:block/deepslate_top",
+    "11": "minecraft:block/deepslate_top"
+  },
+  "render_type": "solid"
 }

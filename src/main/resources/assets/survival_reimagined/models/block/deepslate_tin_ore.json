@@ -1,1 +1,13 @@
-{"parent":"minecraft:block/cube_all","textures":{"all":"survival_reimagined:block/deepslate_tin_ore"}}
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival_reimagined:block/deepslate_tin_ore",
+    "up": "survival_reimagined:block/deepslate_tin_ore",
+    "north": "survival_reimagined:block/deepslate_tin_ore",
+    "east": "survival_reimagined:block/deepslate_tin_ore",
+    "south": "survival_reimagined:block/deepslate_tin_ore",
+    "west": "survival_reimagined:block/deepslate_tin_ore",
+    "particle": "survival_reimagined:block/deepslate_tin_ore"
+  },
+  "render_type": "solid"
+}

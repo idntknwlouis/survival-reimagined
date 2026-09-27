@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/block_of_liginite"
-  }
+    "down": "survival_reimagined:block/block_of_liginite",
+    "up": "survival_reimagined:block/block_of_liginite",
+    "north": "survival_reimagined:block/block_of_liginite",
+    "east": "survival_reimagined:block/block_of_liginite",
+    "south": "survival_reimagined:block/block_of_liginite",
+    "west": "survival_reimagined:block/block_of_liginite",
+    "particle": "survival_reimagined:block/block_of_liginite"
+  },
+  "render_type": "solid"
 }

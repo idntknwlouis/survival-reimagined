@@ -1,1 +1,13 @@
-{"parent":"minecraft:block/cube_all","textures":{"all":"survival_reimagined:block/block_of_tin"}}
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival_reimagined:block/block_of_tin",
+    "up": "survival_reimagined:block/block_of_tin",
+    "north": "survival_reimagined:block/block_of_tin",
+    "east": "survival_reimagined:block/block_of_tin",
+    "south": "survival_reimagined:block/block_of_tin",
+    "west": "survival_reimagined:block/block_of_tin",
+    "particle": "survival_reimagined:block/block_of_tin"
+  },
+  "render_type": "solid"
+}

@@ -1,7 +1,9 @@
 {
   "parent": "survival_reimagined:custom/mold",
   "textures": {
-    "0": "survival_reimagined:block/dried_clay",
-    "particle": "survival_reimagined:block/rune_mold"
-  }
+    "all": "survival_reimagined:block/",
+    "particle": "survival_reimagined:block/rune_mold",
+    "0": "survival_reimagined:block/dried_clay"
+  },
+  "render_type": "cutout_mipped"
 }

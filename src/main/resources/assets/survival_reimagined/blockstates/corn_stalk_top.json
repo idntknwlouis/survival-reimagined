@@ -1,8 +1,5 @@
 {
   "variants": {
-    "age=0": {
-      "model": "survival_reimagined:block/corn_stalk_top"
-    },
     "age=1": {
       "model": "survival_reimagined:block/corn_stalk_top_0"
     },
@@ -14,6 +11,9 @@
     },
     "age=4": {
       "model": "survival_reimagined:block/corn_stalk_top_3"
+    },
+    "age=0": {
+      "model": "survival_reimagined:block/corn_stalk_top"
     }
   }
 }

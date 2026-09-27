@@ -1,8 +1,5 @@
 {
   "variants": {
-    "age=0": {
-      "model": "survival_reimagined:block/strawberry_plant"
-    },
     "age=1": {
       "model": "survival_reimagined:block/strawberry_plant_0"
     },
@@ -17,6 +14,9 @@
     },
     "age=5": {
       "model": "survival_reimagined:block/strawberry_plant_4"
+    },
+    "age=0": {
+      "model": "survival_reimagined:block/strawberry_plant"
     }
   }
 }

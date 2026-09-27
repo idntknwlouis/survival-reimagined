@@ -1,7 +1,7 @@
 {
-  "parent": "block/cross",
+  "parent": "survival_reimagined:custom/berry_bush_land",
   "textures": {
-    "cross": "survival_reimagined:block/strawberry_plant_1",
+    "all": "survival_reimagined:block/strawberry_plant_1",
     "particle": "survival_reimagined:block/strawberry_plant_1"
   },
   "render_type": "cutout"

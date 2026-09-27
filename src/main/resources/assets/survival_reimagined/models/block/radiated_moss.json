@@ -8,5 +8,6 @@
     "south": "survival_reimagined:block/radiated_grass_top",
     "west": "survival_reimagined:block/radiated_grass_top",
     "particle": "survival_reimagined:block/radiated_grass_top"
-  }
+  },
+  "render_type": "solid"
 }

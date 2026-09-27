@@ -1,7 +1,9 @@
 {
-  "parent": "survival_reimagined:custom/surface_rock",
+  "parent": "survival_reimagined:custom/dripstone_rock",
   "textures": {
-    "texture": "minecraft:block/dripstone_block",
-    "particle": "minecraft:block/dripstone_block"
-  }
+    "all": "minecraft:block/dripstone_block",
+    "particle": "minecraft:block/dripstone_block",
+    "4": "minecraft:block/dripstone_block"
+  },
+  "render_type": "solid"
 }

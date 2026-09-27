@@ -1,8 +1,5 @@
 {
   "variants": {
-    "age=0": {
-      "model": "survival_reimagined:block/wheat_crop"
-    },
     "age=1": {
       "model": "survival_reimagined:block/wheat_crop_0"
     },
@@ -23,6 +20,9 @@
     },
     "age=7": {
       "model": "survival_reimagined:block/wheat_crop_6"
+    },
+    "age=0": {
+      "model": "survival_reimagined:block/wheat_crop"
     }
   }
 }

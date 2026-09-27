@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/deepslate_amber_ore"
-  }
+    "down": "survival_reimagined:block/deepslate_amber_ore",
+    "up": "survival_reimagined:block/deepslate_amber_ore",
+    "north": "survival_reimagined:block/deepslate_amber_ore",
+    "east": "survival_reimagined:block/deepslate_amber_ore",
+    "south": "survival_reimagined:block/deepslate_amber_ore",
+    "west": "survival_reimagined:block/deepslate_amber_ore",
+    "particle": "survival_reimagined:block/deepslate_amber_ore"
+  },
+  "render_type": "solid"
 }

@@ -1,6 +1,13 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "block/cube",
   "textures": {
-    "all": "survival_reimagined:block/deepslate_silver_ore"
-  }
+    "down": "survival_reimagined:block/deepslate_silver_ore",
+    "up": "survival_reimagined:block/deepslate_silver_ore",
+    "north": "survival_reimagined:block/deepslate_silver_ore",
+    "east": "survival_reimagined:block/deepslate_silver_ore",
+    "south": "survival_reimagined:block/deepslate_silver_ore",
+    "west": "survival_reimagined:block/deepslate_silver_ore",
+    "particle": "survival_reimagined:block/deepslate_silver_ore"
+  },
+  "render_type": "solid"
 }
