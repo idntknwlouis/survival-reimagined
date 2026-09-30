@@ -1,8 +1,9 @@
 {
   "type": "minecraft:block",
+  "random_sequence": "survival_reimagined:blocks/rune_clay_mold",
   "pools": [
     {
-      "rolls": 1,
+      "rolls": 1.0,
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"

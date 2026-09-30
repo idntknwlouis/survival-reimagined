@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "survival_reimagined:stomach",
+    "minecraft:beef",
+    "minecraft:rabbit",
+    "survival_reimagined:lungs",
+    "survival_reimagined:intestines",
+    "survival_reimagined:brain",
+    "minecraft:mutton",
+    "minecraft:chicken",
+    "minecraft:porkchop",
+    "minecraft:cod",
+    "survival_reimagined:liver",
+    "survival_reimagined:heart_item",
+    "minecraft:salmon"
+  ]
+}

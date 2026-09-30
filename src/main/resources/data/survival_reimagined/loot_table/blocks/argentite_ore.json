@@ -10,7 +10,7 @@
         {
           "type": "minecraft:item",
           "name": "survival_reimagined:argentite",
-          "weight": 1,
+          "weight": 3,
           "conditions": [
             {
               "condition": "minecraft:inverted",
@@ -54,7 +54,7 @@
         {
           "type": "minecraft:item",
           "name": "survival_reimagined:argentite_nugget",
-          "weight": 1,
+          "weight": 30,
           "conditions": [
             {
               "condition": "minecraft:inverted",
@@ -98,7 +98,7 @@
         {
           "type": "minecraft:item",
           "name": "survival_reimagined:stone_rock",
-          "weight": 1,
+          "weight": 30,
           "conditions": [
             {
               "condition": "minecraft:inverted",

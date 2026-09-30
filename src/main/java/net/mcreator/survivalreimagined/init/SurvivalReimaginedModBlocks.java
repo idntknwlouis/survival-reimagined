@@ -2,16 +2,19 @@ package net.mcreator.survivalreimagined.init;
 
 import net.mcreator.survivalreimagined.block.CarcassPartBlock;
 import net.mcreator.survivalreimagined.block.*;
+import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
+import net.mcreator.survivalreimagined.block.fruit.FruitDropCondition;
+import net.mcreator.survivalreimagined.block.fruit.FruitTypeConfig;
+import net.mcreator.survivalreimagined.block.fruit.FruitValidPlacement;
+import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModTreeGrowers;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
@@ -36,7 +39,6 @@ import net.mcreator.survivalreimagined.block.PlateBlock;
 import net.mcreator.survivalreimagined.block.StoneRockBlocBlock;
 import net.mcreator.survivalreimagined.block.ShaleBlock;
 import net.mcreator.survivalreimagined.block.ShaleRockBlock;
-import net.mcreator.survivalreimagined.block.WildPlantBlock;
 import net.mcreator.survivalreimagined.block.CornUpperBlock;
 import net.mcreator.survivalreimagined.block.CornCropBlock;
 import net.mcreator.survivalreimagined.block.CampfireBlock;
@@ -78,7 +80,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WISTERIA_LEAVES = register("wisteria_leaves", WisteriaLeavesBlock::new);
 	public static final RegistryEntry<Block> FLOWING_WISTERIA_LEAVES = register("flowing_wisteria_leaves", WisteriaLeavesBlock::new);
 	public static final RegistryEntry<Block> WISTERIA_SPIDER_LILY = register("wisteria_spider_lily", () -> new BiomePlantBlock(Block.box(3, 0, 3, 10, 11, 10), SoundType.GRASS, 0));
-	public static final RegistryEntry<Block> WISTERIA_SAPLING = register("wisteria_sapling", () -> new BiomePlantBlock(Block.box(2, 0, 2, 12, 14, 12), SoundType.GRASS, 0));
+	public static final RegistryEntry<Block> WISTERIA_SAPLING = register("wisteria_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.WISTERIA, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_SAPLING).instabreak()));
 	public static final RegistryEntry<Block> WISTERIA_LEAF_LITTER = register("wisteria_leaf_litter", WisteriaLeafLitterBlock::new);
 	public static final RegistryEntry<Block> WISTERIA_FLOWER_UPPER = register("wisteria_flower_upper", () -> new WisteriaHangingFlowerBlock(true));
 	public static final RegistryEntry<Block> WISTERIA_FLOWER_LOWER = register("wisteria_flower_lower", () -> new WisteriaHangingFlowerBlock(false));
@@ -94,15 +96,21 @@ public final class SurvivalReimaginedModBlocks {
 	private static final IntegerProperty HEMP_AGE = IntegerProperty.create("age", 0, 3);
 	private static final IntegerProperty WHEAT_AGE = IntegerProperty.create("age", 0, 7);
 	private static final IntegerProperty POTATO_AGE = IntegerProperty.create("age", 0, 3);
+	private static final IntegerProperty CARROT_AGE = IntegerProperty.create("age", 0,3);
+	private static final IntegerProperty BEETROOT_AGE = IntegerProperty.create("age", 0, 3);
 	private static final IntegerProperty WILD_WHEAT_AGE = IntegerProperty.create("age", 0, 7);
 	private static final IntegerProperty WILD_POTATO_AGE = IntegerProperty.create("age", 0, 3);
+	private static final IntegerProperty WILD_BEETROOT_AGE = IntegerProperty.create("age", 0, 3);
 	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(RYE_AGE, 6));
 	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(SPELT_AGE, 6));
 	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(HEMP_AGE, 3));
 	public static final RegistryEntry<Block> WHEAT_CROP = register("wheat_crop", () -> new SimpleAgeCropBlock(WHEAT_AGE, 7));
 	public static final RegistryEntry<Block> POTATOES = register("potatoes", () -> new SimpleAgeCropBlock(POTATO_AGE, 3));
+	public static final RegistryEntry<Block> BEETROOT = register("beetroot", () -> new SimpleAgeCropBlock(BEETROOT_AGE, 3));
+	public static final RegistryEntry<Block> CARROT = register("carrot", () -> new SimpleAgeCropBlock(CARROT_AGE, 3));
 	public static final RegistryEntry<Block> WILD_WHEAT = register("wild_wheat", () -> new SimpleAgeCropBlock(WILD_WHEAT_AGE, 7, false));
 	public static final RegistryEntry<Block> WILD_POTATOES = register("wild_potatoes", () -> new SimpleAgeCropBlock(WILD_POTATO_AGE, 3, false));
+	public static final RegistryEntry<Block> WILD_BEETROOT = register("wild_beetroot", () -> new SimpleAgeCropBlock(WILD_BEETROOT_AGE, 3, false));
 	public static final RegistryEntry<Block> STRAWBERRY_PLANT = register("strawberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.STRAWBERRY.get()));
 	public static final RegistryEntry<Block> RASPBERRY_PLANT = register("raspberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.RASPBERRY.get()));
 	public static final RegistryEntry<Block> CORN_STALK_MIDDLE = register("corn_stalk_middle",
@@ -133,7 +141,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> POLISHED_SHALE_BRICK_STAIRS = register("polished_shale_brick_stairs", () -> new StairBlock(POLISHED_SHALE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> POLISHED_SHALE_BRICK_SLAB = register("polished_shale_brick_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> POLOSHED_SHALE_BRICK_WALL = register("poloshed_shale_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
-
 	public static final RegistryEntry<Block> TIN_ORE = register("tin_ore", TinOreBlock::new);
 	public static final RegistryEntry<Block> CASSITERITE_ORE = register("cassiterite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_CASSITERITE_ORE = register("deepslate_cassiterite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
@@ -217,15 +224,12 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_BASE = register("basalt_stalagtite_base", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.BASE, "basalt_stalagtite", false));
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_MIDDLE = register("basalt_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.MIDDLE, "basalt_stalagtite", false));
 	public static final RegistryEntry<Block> BASALT_STALAGTITE_TIP = register("basalt_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.BASALT, GeologySegmentBlock.Segment.TIP, "basalt_stalagtite", false));
-
 	public static final RegistryEntry<Block> SHALE_STALAGMITE_BASE = register("shale_stalagmite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "shale_stalagmite", true));
 	public static final RegistryEntry<Block> SHALE_STALAGMITE_MIDDLE = register("shale_stalagmite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "shale_stalagmite", true));
 	public static final RegistryEntry<Block> SHALE_STALAGMITE_TOP = register("shale_stalagmite_top", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.TIP, "shale_stalagmite", true));
 	public static final RegistryEntry<Block> SHALE_STALAGTITE_BASE = register("shale_stalagtite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "shale_stalagtite", false));
 	public static final RegistryEntry<Block> SHALE_STALAGTITE_MIDDLE = register("shale_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "shale_stalagtite", false));
 	public static final RegistryEntry<Block> SHALE_STALAGTITE_TIP = register("shale_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.TIP, "shale_stalagtite", false));
-
-
 	public static final RegistryEntry<Block> KIMBERLITE = register("kimberlite", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGMITE_BASE = register("kimberlite_stalagmite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "kimberlite_stalagmite", true));
 	public static final RegistryEntry<Block> KIMBERLITE_STALAGMITE_MIDDLE = register("kimberlite_stalagmite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "kimberlite_stalagmite", true));
@@ -239,7 +243,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> STONE_STALAGTITE_BASE = register("stone_stalagtite_base", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.BASE, "stone_stalagtite", false));
 	public static final RegistryEntry<Block> STONE_STALAGTITE_MIDDLE = register("stone_stalagtite_middle", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.MIDDLE, "stone_stalagtite", false));
 	public static final RegistryEntry<Block> STONE_STALAGTITE_TIP = register("stone_stalagtite_tip", () -> new GeologySegmentBlock(SoundType.STONE, GeologySegmentBlock.Segment.TIP, "stone_stalagtite", false));
-
 	public static final RegistryEntry<Block> DEEPSLATE_STALAGMITE_BASE = register("deepslate_stalagmite_base", () -> new GeologySegmentBlock(SoundType.DEEPSLATE, GeologySegmentBlock.Segment.BASE, "deepslate_stalagmite", true));
 	public static final RegistryEntry<Block> DEEPSLATE_STALAGMITE_MIDDLE = register("deepslate_stalagmite_middle", () -> new GeologySegmentBlock(SoundType.DEEPSLATE, GeologySegmentBlock.Segment.MIDDLE, "deepslate_stalagmite", true));
 	public static final RegistryEntry<Block> DEEPSLATE_STALAGMITE_TOP = register("deepslate_stalagmite_top", () -> new GeologySegmentBlock(SoundType.DEEPSLATE, GeologySegmentBlock.Segment.TIP, "deepslate_stalagmite", true));
@@ -288,7 +291,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> NETHERITE_PLATE = register("netherite_plate", () -> new PlateBlock(SoundType.NETHERITE_BLOCK, 5.0F));
 	public static final RegistryEntry<Block> CLAY_METAL_PLATE_MOLD = register("clay_metal_plate_mold", () -> new ClayMoldBlock(() -> METAL_PLATE_MOLD.get(), true));
 	public static final RegistryEntry<Block> CRUCIBLE = register("crucible", Crucible::new);
-
 	public static final RegistryEntry<Block> INGOT_CLAY_MOLD = register("ingot_clay_mold", () -> new ClayMoldBlock(() -> INGOT_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_SWORD_BLADE_MOLD = register("clay_sword_blade_mold", () -> new ClayMoldBlock(() -> SWORD_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_PICKAXE_HEAD_MOLD = register("clay_pickaxe_head_mold", () -> new ClayMoldBlock(() -> PICKAXE_HEAD_MOLD.get()));
@@ -299,7 +301,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> CLAY_SAW_BLADE_MOLD = register("clay_saw_blade_mold", () -> new ClayMoldBlock(() -> SAW_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_KNIFE_MOLD = register("clay_knife_mold", () -> new ClayMoldBlock(() -> KNIFE_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_CRUCIBLE = register("clay_crucible", () -> new ClayCrucible(() -> CRUCIBLE.get()));
-
 	public static final RegistryEntry<Block> COPPER_ROCK_BLOCK = register("copper_rock_block", CopperRockBlockBlock::new);
 	public static final RegistryEntry<Block> ANDESITE_ROCK_BLOCK = register("andesite_rock_block", AndesiteRockBlockBlock::new);
 	public static final RegistryEntry<Block> GRANITE_ROCK_BLOCK = register("granite_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.GRANITE_ROCK.get()));
@@ -313,15 +314,160 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLACKSTONE_ROCK_BLOCK = register("blackstone_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.BLACKSTONE_ROCK.get()));
 	public static final RegistryEntry<Block> BASALT_ROCK_BLOCK = register("basalt_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.BASALT_ROCK.get()));
 	public static final RegistryEntry<Block> DEEPSLATE_ROCK_BLOCK = register("deepslate_rock_block", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DEEPSLATE_ROCK.get()));
-
 	public static final RegistryEntry<Block> THIN_RADIATED_VINES = register("thin_radiated_vines", ThinRadiatedVinesBlock::new);
 	public static final RegistryEntry<Block> THIN_RADIATED_VINE_BASE = register("thin_radiated_vine_base", ThinRadiatedVineBaseBlock::new);
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES = register("thick_radiated_vines", ThickRadiatedVinesBlock::new);
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES_BASE = register("thick_radiated_vines_base", ThickRadiatedVinesBaseBlock::new);
+	public static final RegistryEntry<Block> SAND_SALT_DESPOSIT = register("sand_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.7f, 0.7f)));
+	public static final RegistryEntry<Block> BLOCK_OF_RAW_REDSTONE = register("block_of_raw_redstone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> EMBEDDED_OBSIDIAN = register("embedded_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> APPLE_TREE_SAPLING = register("apple_tree_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.APPLE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).instabreak()));
 
-	public static final RegistryEntry<Block> SAND_SALT_DESPOSIT = register("sand_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).))
+	private static FruitTypeConfig AppleConfig() {
+		return new FruitTypeConfig(
+				"apple", () -> SurvivalReimaginedModBlockEntities.FRUIT_BLOCK_ENTITY,
+				(state, age) -> age == 1
+						? Shapes.or(Block.box(5.5, 10, 5.5, 10.5, 15, 10.5), Block.box(7.5, 15, 7.5, 8.5, 16, 8.5))
+						: Shapes.or(Block.box(6.5, 12, 6.5, 9.5, 15, 9.5), Block.box(7.5, 15, 7.5, 8.5, 16, 8.5)),
+				(world, pos) -> FruitValidPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ()),
+				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, () -> Items.APPLE,1 ),
+				true, false
+		);
+	}
+	private static FruitTypeConfig MandarinConfig() {
+		return new FruitTypeConfig(
+				"mandarin", () -> SurvivalReimaginedModBlockEntities.FRUIT_BLOCK_ENTITY,
+				(state, age) -> {
+					if (age == 1) return Shapes.or(Block.box(6.5,11,6.5,9.5,14,9.5), Block.box(7.5, 14, 7.5, 8.5, 16, 8.5));
+					if (age == 2) return Shapes.or(Block.box(6,10,6, 10, 14, 10), Block.box(7.5, 14, 7.5, 8.5, 16, 8.5));
+					return Shapes.or(Block.box(6.5, 11, 6.5, 9.5, 14, 9.5), Block.box(7.5, 14, 7.5, 8.5, 16, 8.5));
+				},
+				(world, pos) -> FruitValidPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ()),
+				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, SurvivalReimaginedModItems.MANDARIN,2 ),
+				true, false
+		);
+	}
+	private static FruitTypeConfig BananaConfig() {
+		return new FruitTypeConfig(
+				"banana", () -> SurvivalReimaginedModBlockEntities.FRUIT_BLOCK_ENTITY,
+				(state, age) -> {
+					Direction facing = state.hasProperty(FruitBlock.FACING) ? state.getValue(FruitBlock.FACING) : Direction.NORTH;
+					return switch (facing) {
+						case NORTH -> Block.box(4,4,14,12,12,20);
+						case EAST -> Block.box(-4,4,4,2,12,12);
+						case WEST -> Block.box(14,4,4,20,12,12);
+						default -> Block.box(4,4,-4,12,12,2);
+					};
+				},
+				null,
+				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, SurvivalReimaginedModItems.BANANA_CLUSTER, 2),
+				false, true
+		);
+	}
+	private static FruitTypeConfig CherriesConfig() {
+		return new FruitTypeConfig(
+				"red_cherries", () -> SurvivalReimaginedModBlockEntities.FRUIT_BLOCK_ENTITY,
+				(state, age) -> {
+					if (age == 2) return Shapes.or(Block.box(5.5,10,4,10.5,16,12));
+					return Shapes.or(Block.box(5.5,10,4,10.5,16,12));
+				},
+				(world, pos) -> FruitValidPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ()),
+				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, SurvivalReimaginedModItems.RED_CHERRIES,2 ),
+				true, false
+		);
+
+	}
 
 
+
+	public static final RegistryEntry<Block> APPLE_FRUIT = register("apple", () -> new FruitBlock(AppleConfig()));
+	public static final RegistryEntry<Block> MANDARIN_FRUIT = register("mandarin_fruit", () -> new FruitBlock(MandarinConfig()));
+	public static final RegistryEntry<Block> BANANA_FRUIT = register("banana", () -> new FruitBlock(BananaConfig()));
+	public static final RegistryEntry<Block> RED_CHERRIES_FRUIT = register("cherries_fruit", () -> new FruitBlock(CherriesConfig()));
+
+	public static final RegistryEntry<Block> FRUITING_MANDARIN_LEAVES = register("fruiting_mandarin_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> APPLE_OAK_LEAVES = register("apple_oak_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> FLOWERING_RED_CHERRY_LEAVES = register("flowering_red_cherry_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+
+	public static final RegistryEntry<Block> STRIPPED_RADIANT_LOG = register("stripped_radiant_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).ignitedByLava()));
+	public static final RegistryEntry<Block> RADIANT_PLANKS = register("radiant_planks", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).ignitedByLava()));
+	public static final RegistryEntry<Block> RADIATED_SAPLING = register("radiated_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.RADIATED, BlockBehaviour.Properties.of().sound(SoundType.FUNGUS).instabreak()));
+	public static final RegistryEntry<Block> RADIATED_STAIRS = register("radiated_stairs", () -> new StairBlock(RADIANT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(2,3).sound(SoundType.NETHER_WOOD)));
+	public static final RegistryEntry<Block> RADIATED_SLAB = register("radiated_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> RADIATED_FENCE = register("radiated_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().strength(2,3).sound(SoundType.NETHER_WOOD)));
+	public static final RegistryEntry<Block> RADIATED_FENCE_GATE = register("radiated_fence_gate", () -> new FenceGateBlock(WoodType.CRIMSON, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).forceSolidOn().isRedstoneConductor(((blockState, blockGetter, blockPos) -> false))));
+	public static final RegistryEntry<Block> RADIATED_PRESSURE_PLATE = register("radiated_pressure_plate", () -> new PressurePlateBlock(BlockSetType.CRIMSON, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).isRedstoneConductor(((blockState, blockGetter, blockPos) -> false))));
+	public static final RegistryEntry<Block> RADIATED_BUTTON = register("radiated_button", () -> new ButtonBlock(BlockSetType.CRIMSON, 1, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> RADIANT_TRAPDOOR = register("radiant_trapdoor", () -> new TrapDoorBlock(BlockSetType.CRIMSON, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).dynamicShape()));
+	public static final RegistryEntry<Block> RADIANT_DOOR = register("radiant_door", () -> new DoorBlock(BlockSetType.CRIMSON, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).isRedstoneConductor(((blockState, blockGetter, blockPos) -> false)).dynamicShape()));
+	public static final RegistryEntry<Block> STEEL_DOOR = register("steel_door", () -> new DoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(5,5).noOcclusion().requiresCorrectToolForDrops().isRedstoneConductor(((blockState, blockGetter, blockPos) -> false)).dynamicShape()));
+	public static final RegistryEntry<Block> STEEL_TRAPDOOR = register("steel_trapdoor", () -> new TrapDoorBlock(BlockSetType.IRON, BlockBehaviour.Properties.of().strength(5,5).sound(SurvivalReimaginedModSoundTypes.STEEL).noOcclusion().requiresCorrectToolForDrops().isRedstoneConductor(((blockState, blockGetter, blockPos) -> false)).dynamicShape()));
+	public static final RegistryEntry<Block> NETHERITE_SCRAP_BLOCK = register("netherite_scrap_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.ANCIENT_DEBRIS).strength(30, 1200).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> NITRE_POWDER = register("nitre_powder", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.5f, 0.5f)));
+	public static final RegistryEntry<Block> MALACHITE_ORE = register("malachite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_MALACHITE_ORE = register("deepslate_malachite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> RAW_MALACHITE_BLOCK = register("raw_malachite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> AZURITE_ORE = register("azurite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_AZURITE_ORE = register("deepslate_azurite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> RAW_AZURITE_BLOCK = register("raw_azurite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3, 4).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SULFUR_ORE = register("sulfur_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> NITRE_BLOCK = register("nitre_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.TUFF).strength(1.5f, 6)));
+	public static final RegistryEntry<Block> STRIPPED_WISTERIA_LOG = register("stripped_wisteria_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_WOOD = register("wistera_wood", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_PLANKS = register("wisteria_planks", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_STAIRS = register("wisteria_stairs", () -> new StairBlock(WISTERIA_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_SLAB = register("wisteria_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_FENCE = register("wisteria_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_FENCE_GATE = register("wisteria_fence_gate", () -> new FenceGateBlock(WoodType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).dynamicShape()));
+	public static final RegistryEntry<Block> WISTERIA_DOOR = register("wisteria_door", () -> new DoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).dynamicShape().noOcclusion()));
+	public static final RegistryEntry<Block> WISTERIA_TRAPDOOR = register("wisteria_trapdoor", () -> new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noOcclusion().dynamicShape()));
+	public static final RegistryEntry<Block> WISTERIA_BUTTON = register("wisteria_button", () -> new ButtonBlock(BlockSetType.CHERRY, 1, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noOcclusion().dynamicShape()));
+	public static final RegistryEntry<Block> WISTERIA_PRESSURE_PLATE = register("wisteria_pressure_plate", () -> new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> PURE_SALT_BLOCK = register("pure_salt_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.TUFF).strength(2,2)));
+	public static final RegistryEntry<Block> SALT_DEPOSIT = register("salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3)));
+	public static final RegistryEntry<Block> BANANA_JUNGLE_LOG = register("banana_jungle_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> SMALL_BANANA_JUNGLE_LOG = register("small_banana_jungle_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> BANANA_CLUSTER = register("banana_cluster", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).instabreak().noCollission()));
+	public static final RegistryEntry<Block> BANANA_GROW_BLOCK = register("banana_grow_block", BananaGrowBlock::new);
+	public static final RegistryEntry<Block> BANANA_LEAVES = register("banana_leaves", BananaLeavesBlock::new);
+	public static final RegistryEntry<Block> MANDARIN_LOG = register("mandarin_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
+	public static final RegistryEntry<Block> MANDARIN_LEAVES = register("mandarin_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f,0.2f).noOcclusion().ignitedByLava()));
+	public static final RegistryEntry<Block> MANDARIN_SAPLING = register("mandarin_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.MANDARIN, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_SAPLING).instabreak().noOcclusion()));
+	public static final RegistryEntry<Block> LOW_FERTILITY_FARMLAND = register("low_fertility_farmland", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f, 0.5f)));
+	public static final RegistryEntry<Block> MEDIUM_FERTILITY_DIRT = register("medium_fertility_dirt", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
+	public static final RegistryEntry<Block> MEDIUM_FERTILITY_GRASS = register("medium_fertility_grass", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.5f)));
+	public static final RegistryEntry<Block> MEDIUM_FERTILITY_SOIL = register("medium_fertility_soil", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
+	public static final RegistryEntry<Block> HIGH_FERTILITY_DIRT = register("high_fertility_dirt", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
+	public static final RegistryEntry<Block> HIGH_FERTILITY_GRASS = register("high_fertility_grass", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.5f)));
+	public static final RegistryEntry<Block> HIGH_FERTILITY_SOIL = register("high_fertility_soil", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
+	public static final RegistryEntry<Block> BRITTLE_OBSIDIAN = register("brittle_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(2,4).lightLevel(blockstate -> 5).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> STONE_SALT_DEPOSIT = register("stone_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> TEOSINTE = register("teosinte", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).instabreak().noCollission().noOcclusion()));
+	public static final RegistryEntry<Block> MANDARIN_PLANKS = register("mandarin_planks", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
+	public static final RegistryEntry<Block> MANDARIN_STAIRS = register("mandarin_stairs", () -> new StairBlock(MANDARIN_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> MANDARIN_SLAB = register("mandarin_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+ 	public static final RegistryEntry<Block> MANDARIN_FENCE = register("mandarin_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> MANDARIN_FENCE_GATE = register("mandarin_fence_gate", () -> new FenceGateBlock(WoodType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
+	public static final RegistryEntry<Block> MANDARIN_BUTTON = register("mandarin_button", () -> new ButtonBlock(BlockSetType.CHERRY, 1, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
+	public static final RegistryEntry<Block> MANDARIN_TRAPDOOR = register("mandarin_trapdoor", () -> new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
+	public static final RegistryEntry<Block> MANDARIN_DOOR = register("mandarin_door", () -> new DoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
+	public static final RegistryEntry<Block> MANDARIN_PRESSURE_PLATE = register("mandarin_pressure_plate", () -> new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().strength(2,3).sound(SoundType.CHERRY_WOOD).noCollission()));
+	public static final RegistryEntry<Block> STRIPPED_MANDARIN_LOG = register("stripped_mandarin_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> RED_CHERRY_LEAVES = register("red_cherry_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> RED_CHERRY_SAPLING = register("red_cherry_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.RED_CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_SAPLING).instabreak().noOcclusion().noCollission()));
+
+	public static final RegistryEntry<Block> MANDARIN_SIGN = register("mandarin_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().noOcclusion()));
+	public static final RegistryEntry<Block> MANDARIN_WALL_SIGN = register("mandarin_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().noOcclusion().dropsLike(SurvivalReimaginedModBlocks.MANDARIN_SIGN.get())));
+	public static final RegistryEntry<Block> MANDARIN_HANGING_SIGN = register("mandarin_hanging_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().noOcclusion()));
+	public static final RegistryEntry<Block> MANDARIN_CEILING_HANGING_SIGN = register("mandarin_ceiling_hanging_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noOcclusion().noCollission().dropsLike(SurvivalReimaginedModBlocks.MANDARIN_HANGING_SIGN.get())));
+	//public static final RegistryEntry<Block> RADIATED_SIGN = register("radiated_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).noCollission()));
+	//public static final RegistryEntry<Block> RADIATED_WALL_SIGN = register("radiated_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.RADIATED_SIGN.get())));
+	//public static final RegistryEntry<Block> HANGING_RADIATED_SIGN = register("hanging_radiated_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
+	//public static final RegistryEntry<Block> CEILING_HANGING_RADIATED_SIGN = register("ceiling_hanging_radiated_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.HANGING_RADIATED_SIGN.get())));
+	//public static final RegistryEntry<Block> WISTERIA_SIGN = register("wisteria_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission()));
+	//public static final RegistryEntry<Block> WISTERIA_WALL_SIGN = register("wisteria_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_SIGN.get())));
+	//public static final RegistryEntry<Block> HANGING_WISTERIA_SIGN = register("hanging_wisteria_wall_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
+	//public static final RegistryEntry<Block> CEILING_HANGING_WISTERIA_SIGN = register("ceiling_hanging_wisteria_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.HANGING_WISTERIA_SIGN.get())));
 
 	private SurvivalReimaginedModBlocks() {
 	}

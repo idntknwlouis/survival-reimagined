@@ -1,7 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern": ["aa","aa"],
-  "key": {"a":{"item":"survival_reimagined:polished_shale"}},
-  "result": {"id":"survival_reimagined:polished_shale_bricks","count":4}
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:polished_shale"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:polished_shale_bricks",
+    "count": 4
+  }
 }

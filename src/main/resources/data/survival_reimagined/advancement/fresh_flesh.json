@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "id": "survival_reimagined:flesh"
+    },
+    "title": {
+      "translate": "advancements.fresh_flesh.title"
+    },
+    "description": {
+      "translate": "advancements.fresh_flesh.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "fresh_flesh_1": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "survival_reimagined:flesh",
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "survival_reimagined:blood_moon_hours"
+}

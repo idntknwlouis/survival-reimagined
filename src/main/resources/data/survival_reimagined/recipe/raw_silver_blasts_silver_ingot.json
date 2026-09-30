@@ -2,7 +2,7 @@
   "type": "minecraft:blasting",
   "category": "misc",
   "experience": 1,
-  "cookingtime": 100,
+  "cookingtime": 200,
   "ingredient": {
     "item": "survival_reimagined:raw_silver"
   },

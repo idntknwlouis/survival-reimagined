@@ -1,8 +1,10 @@
 {
   "replace": false,
   "values": [
+    "survival_reimagined:azurite",
     "survival_reimagined:rough_copper",
     "minecraft:raw_copper",
-    "minecraft:copper_ingot"
+    "minecraft:copper_ingot",
+    "survival_reimagined:malachite"
   ]
 }

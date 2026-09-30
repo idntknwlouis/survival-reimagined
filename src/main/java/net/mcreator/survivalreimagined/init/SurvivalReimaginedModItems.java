@@ -3,10 +3,10 @@ package net.mcreator.survivalreimagined.init;
 import net.minecraft.core.Registry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.level.block.Block;
 
@@ -51,10 +51,12 @@ import net.mcreator.survivalreimagined.item.SpoilingFoodItem;
 import net.mcreator.survivalreimagined.item.GasMaskItem;
 import net.mcreator.survivalreimagined.item.GasMaskFilterItem;
 import net.mcreator.survivalreimagined.item.SurvivalArmorItem;
-import net.minecraft.world.item.ArmorItem;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
+
+import static net.minecraft.world.item.Items.registerItem;
 
 public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FLINTBLOCK = block(SurvivalReimaginedModBlocks.FLINTBLOCK);
@@ -189,7 +191,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
+	public static final RegistryEntry<Item> BEETROOT_SEEDS = cropSeed("beetroot_seeds", SurvivalReimaginedModBlocks.BEETROOT);
 	public static final RegistryEntry<Item> POTATO = plantFood("potato", SurvivalReimaginedModBlocks.POTATOES, 1, 0.6f);
+	public static final RegistryEntry<Item> CARROT = plantFood("carrot", SurvivalReimaginedModBlocks.CARROT, 4, 3.6f);
 	public static final RegistryEntry<Item> BURNT_POTATO = register("burnt_potato", () -> new Item(new Item.Properties()
 			.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.3f).build())));
 	public static final RegistryEntry<Item> CHARRED_POTATO = register("charred_potato", () -> new Item(new Item.Properties()
@@ -562,7 +566,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DIAMOND_PLATE = block(SurvivalReimaginedModBlocks.DIAMOND_PLATE);
 	public static final RegistryEntry<Item> NETHERITE_PLATE = block(SurvivalReimaginedModBlocks.NETHERITE_PLATE);
 
-
 	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
 	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);
 	public static final RegistryEntry<Item> TIN_NUGGET = register("tin_nugget", TinNuggetItem::new);
@@ -599,10 +602,117 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DEEPSLATE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.DEEPSLATE_ROCK_BLOCK);
 	public static final RegistryEntry<Item> THIN_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THIN_RADIATED_VINES);
 	public static final RegistryEntry<Item> THICK_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THICK_RADIATED_VINES);
+	public static final RegistryEntry<Item> SAND_SALT_DEPOSIT = block(SurvivalReimaginedModBlocks.SAND_SALT_DESPOSIT);
+	public static final RegistryEntry<Item> BLOCK_OF_RAW_REDSTONE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_REDSTONE);
+	public static final RegistryEntry<Item> EMBEDDED_OBSIDIAN = block(SurvivalReimaginedModBlocks.EMBEDDED_OBSIDIAN);
+	public static final RegistryEntry<Item> APPLE_OAK_LEAVES = block(SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES);
+ 	public static final RegistryEntry<Item> APPLE_OAK_SAPLING = block(SurvivalReimaginedModBlocks.APPLE_TREE_SAPLING);
+	public static final RegistryEntry<Item> MANDARIN = stableFood("mandarin", 5, 0.8f);
+	public static final RegistryEntry<Item> BANANA_CLUSTER = block(SurvivalReimaginedModBlocks.BANANA_CLUSTER);
+	public static final RegistryEntry<Item> RED_CHERRIES = stableFood("red_cherries", 3, 0.4f);
+	public static final RegistryEntry<Item> BANANA_LEAVES = block(SurvivalReimaginedModBlocks.BANANA_LEAVES);
+	public static final RegistryEntry<Item> BANANA = stableFood("banana", 4, 0.3f);
+	public static final RegistryEntry<Item> BANANA_JUNGLE_LOG = block(SurvivalReimaginedModBlocks.BANANA_JUNGLE_LOG);
+	public static final RegistryEntry<Item> SMALL_BANANA_JUNGLE_LOG = block(SurvivalReimaginedModBlocks.SMALL_BANANA_JUNGLE_LOG);
+
+	public static final RegistryEntry<Item> STRIPPED_RADIANT_LOG = block(SurvivalReimaginedModBlocks.STRIPPED_RADIANT_LOG);
+	public static final RegistryEntry<Item> RADIANT_PLANKS = block(SurvivalReimaginedModBlocks.RADIANT_PLANKS);
+	public static final RegistryEntry<Item> RADIATED_SAPLING = block(SurvivalReimaginedModBlocks.RADIATED_SAPLING);
+	public static final RegistryEntry<Item> RADIATED_STAIRS = block(SurvivalReimaginedModBlocks.RADIATED_STAIRS);
+	public static final RegistryEntry<Item> RADIATED_SLAB = block(SurvivalReimaginedModBlocks.RADIATED_SLAB);
+	public static final RegistryEntry<Item> RADIATED_FENCE = block(SurvivalReimaginedModBlocks.RADIATED_FENCE);
+	public static final RegistryEntry<Item> RADIATED_FENCE_GATE = block(SurvivalReimaginedModBlocks.RADIATED_FENCE_GATE);
+	public static final RegistryEntry<Item> RADIATED_PRESSURE_PLATE = block(SurvivalReimaginedModBlocks.RADIATED_PRESSURE_PLATE);
+	public static final RegistryEntry<Item> RADIATED_BUTTON = block(SurvivalReimaginedModBlocks.RADIATED_BUTTON);
+	public static final RegistryEntry<Item> RADIANT_TRAPDOOR = block(SurvivalReimaginedModBlocks.RADIANT_TRAPDOOR);
+	public static final RegistryEntry<Item> RADIANT_DOOR = block(SurvivalReimaginedModBlocks.RADIANT_DOOR);
+	public static final RegistryEntry<Item> STEEL_DOOR = block(SurvivalReimaginedModBlocks.STEEL_DOOR);
+	public static final RegistryEntry<Item> STEEL_TRAPDOOR = block(SurvivalReimaginedModBlocks.STEEL_TRAPDOOR);
+	public static final RegistryEntry<Item> NETHERITE_SCRAP_BLOCK = block(SurvivalReimaginedModBlocks.NETHERITE_SCRAP_BLOCK);
+	public static final RegistryEntry<Item> NITRE_POWDER = block(SurvivalReimaginedModBlocks.NITRE_POWDER);
+	public static final RegistryEntry<Item> MALACHITE_ORE = block(SurvivalReimaginedModBlocks.MALACHITE_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_MALACHITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_MALACHITE_ORE);
+	public static final RegistryEntry<Item> RAW_MALACHITE_BLOCK = block(SurvivalReimaginedModBlocks.RAW_MALACHITE_BLOCK);
+	public static final RegistryEntry<Item> AZURITE_ORE = block(SurvivalReimaginedModBlocks.AZURITE_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_AZURITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_AZURITE_ORE);
+	public static final RegistryEntry<Item> SULFUR_ORE = block(SurvivalReimaginedModBlocks.SULFUR_ORE);
+	public static final RegistryEntry<Item> NITRE_BLOCK = block(SurvivalReimaginedModBlocks.NITRE_BLOCK);
+	public static final RegistryEntry<Item> STRIPPED_WISTERIA_LOG = block(SurvivalReimaginedModBlocks.STRIPPED_WISTERIA_LOG);
+	public static final RegistryEntry<Item> WISTERIA_WOOD = block(SurvivalReimaginedModBlocks.WISTERIA_WOOD);
+	public static final RegistryEntry<Item> WISTERIA_PLANKS = block(SurvivalReimaginedModBlocks.WISTERIA_PLANKS);
+	public static final RegistryEntry<Item> WISTERIA_STAIRS = block(SurvivalReimaginedModBlocks.WISTERIA_STAIRS);
+	public static final RegistryEntry<Item> WISTERIA_SLAB = block(SurvivalReimaginedModBlocks.WISTERIA_SLAB);
+	public static final RegistryEntry<Item> WISTERIA_FENCE = block(SurvivalReimaginedModBlocks.WISTERIA_FENCE);
+	public static final RegistryEntry<Item> WISTERIA_FENCE_GATE = block(SurvivalReimaginedModBlocks.WISTERIA_FENCE_GATE);
+	public static final RegistryEntry<Item> WISTERIA_DOOR = block(SurvivalReimaginedModBlocks.WISTERIA_DOOR);
+	public static final RegistryEntry<Item> WISTERIA_TRAPDOOR = block(SurvivalReimaginedModBlocks.WISTERIA_TRAPDOOR);
+	public static final RegistryEntry<Item> WISTERIA_BUTTON = block(SurvivalReimaginedModBlocks.WISTERIA_BUTTON);
+	public static final RegistryEntry<Item> WISTERIA_PRESSURE_PLATE = block(SurvivalReimaginedModBlocks.WISTERIA_PRESSURE_PLATE);
+	public static final RegistryEntry<Item> PURE_SALT_BLOCK = block(SurvivalReimaginedModBlocks.PURE_SALT_BLOCK);
+	public static final RegistryEntry<Item> SALT_DEPOSIT = block(SurvivalReimaginedModBlocks.SALT_DEPOSIT);
+	public static final RegistryEntry<Item> MANDARIN_LOG = block(SurvivalReimaginedModBlocks.MANDARIN_LOG);
+	public static final RegistryEntry<Item> MANDARIN_LEAVES = block(SurvivalReimaginedModBlocks.MANDARIN_LEAVES);
+	public static final RegistryEntry<Item> FRUITING_MANDARIN_LEAVES = block(SurvivalReimaginedModBlocks.FRUITING_MANDARIN_LEAVES);
+	public static final RegistryEntry<Item> MANDARIN_SAPLING = block(SurvivalReimaginedModBlocks.MANDARIN_SAPLING);
+	public static final RegistryEntry<Item> LOW_FERTILITY_FARMLAND = block(SurvivalReimaginedModBlocks.LOW_FERTILITY_FARMLAND);
+	public static final RegistryEntry<Item> MEDIUM_FERTILITY_DIRT = block(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT);
+	public static final RegistryEntry<Item> MEDIUM_FERTILITY_GRASS = block(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS);
+	public static final RegistryEntry<Item> MEDIUM_FERTILITY_SOIL = block(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_SOIL);
+	public static final RegistryEntry<Item> HIGH_FERTILITY_DIRT = block(SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT);
+	public static final RegistryEntry<Item> HIGH_FERTILITY_GRASS = block(SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS);
+	public static final RegistryEntry<Item> HIGH_FERTILITY_SOIL = block(SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL);
+	public static final RegistryEntry<Item> BRITTLE_OBSIDIAN = block(SurvivalReimaginedModBlocks.BRITTLE_OBSIDIAN);
+	public static final RegistryEntry<Item> STONE_SALT_DEPOSIT = block(SurvivalReimaginedModBlocks.STONE_SALT_DEPOSIT);
+	public static final RegistryEntry<Item> TEOSINTE = block(SurvivalReimaginedModBlocks.TEOSINTE);
+	public static final RegistryEntry<Item> MANDARIN_PLANKS = block(SurvivalReimaginedModBlocks.MANDARIN_PLANKS);
+	public static final RegistryEntry<Item> MANDARIN_STAIRS = block(SurvivalReimaginedModBlocks.MANDARIN_STAIRS);
+	public static final RegistryEntry<Item> MANDARIN_SLAB = block(SurvivalReimaginedModBlocks.MANDARIN_SLAB);
+	public static final RegistryEntry<Item> MANDARIN_FENCE = block(SurvivalReimaginedModBlocks.MANDARIN_FENCE);
+	public static final RegistryEntry<Item> MANDARIN_FENCE_GATE = block(SurvivalReimaginedModBlocks.MANDARIN_FENCE_GATE);
+	public static final RegistryEntry<Item> MANDARIN_BUTTON = block(SurvivalReimaginedModBlocks.MANDARIN_BUTTON);
+	public static final RegistryEntry<Item> MANDARIN_TRAPDOOR = block(SurvivalReimaginedModBlocks.MANDARIN_TRAPDOOR);
+	public static final RegistryEntry<Item> MANDARIN_DOOR = block(SurvivalReimaginedModBlocks.MANDARIN_DOOR);
+	public static final RegistryEntry<Item> MANDARIN_PRESSURE_PLATE = block(SurvivalReimaginedModBlocks.MANDARIN_PRESSURE_PLATE);
+	public static final RegistryEntry<Item> STRIPPED_MANDARIN_LOG = block(SurvivalReimaginedModBlocks.STRIPPED_MANDARIN_LOG);
+	public static final RegistryEntry<Item> RED_CHERRY_LEAVES = block(SurvivalReimaginedModBlocks.RED_CHERRY_LEAVES);
+	public static final RegistryEntry<Item> FLOWERING_RED_CHERRY_LEAVES = block(SurvivalReimaginedModBlocks.FLOWERING_RED_CHERRY_LEAVES);
+	public static final RegistryEntry<Item> RED_CHERRY_SAPLING = block(SurvivalReimaginedModBlocks.RED_CHERRY_SAPLING);
+
+	public static final RegistryEntry<Item> MANDARIN_SIGN = registerItem("mandarin_sign",
+			(properties) -> new SignItem(properties,
+					SurvivalReimaginedModBlocks.MANDARIN_SIGN.get(),
+					SurvivalReimaginedModBlocks.MANDARIN_WALL_SIGN.get()
+				) {
+				@Override
+				public String getDescriptionId() {
+					return "item.survival_reimagined.mandarin_sign";
+				}
+			}
+			);
+	public static final RegistryEntry<Item> MANDARIN_HANGING_SIGN = registerItem("mandarin_hanging_sign",
+			(properties) -> new HangingSignItem(
+					SurvivalReimaginedModBlocks.MANDARIN_HANGING_SIGN.get(),
+					SurvivalReimaginedModBlocks.MANDARIN_CEILING_HANGING_SIGN.get(),
+					properties
+			) {
+				@Override
+				public String getDescriptionId() {
+					return "item.survival_reimagined.mandarin_hanging_sign";
+				}
+			}
+	);
+
+
 
 
 	private SurvivalReimaginedModItems() {
 	}
+
+	private static RegistryEntry<Item> registerItem(String id, Function<Item.Properties, Item> itemFactory) {
+		Item.Properties properties = new Item.Properties();
+		return register(id, () -> itemFactory.apply(properties));
+	}
+
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));

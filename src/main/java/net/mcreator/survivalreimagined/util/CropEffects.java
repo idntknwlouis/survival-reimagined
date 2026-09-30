@@ -38,7 +38,7 @@ public final class CropEffects {
 			return;
 		}
 
-		if (block == SurvivalReimaginedModBlocks.WILD_CARROT.get()) {
+		if (block == SurvivalReimaginedModBlocks.WILD_CARROT.get() || block == SurvivalReimaginedModBlocks.CARROT.get()) {
 			drop(level, pos, Items.CARROT, age >= 3 ? 2 + level.random.nextInt(3) : 1);
 			return;
 		}
@@ -52,6 +52,16 @@ public final class CropEffects {
 			}
 			return;
 		}
+
+		if (block == SurvivalReimaginedModBlocks.BEETROOT.get() || block == SurvivalReimaginedModBlocks.WILD_BEETROOT.get()) {
+			if (age >= 3) {
+				drop(level, pos, Items.BEETROOT, 1);
+				drop(level, pos, SurvivalReimaginedModItems.BEETROOT_SEEDS.get(), 1 + level.random.nextInt(3));
+			} else {
+				drop(level, pos, SurvivalReimaginedModItems.BEETROOT_SEEDS.get(), 1);
+			}
+		}
+
 
 		if (block == SurvivalReimaginedModBlocks.POTATOES.get() || block == SurvivalReimaginedModBlocks.WILD_POTATOES.get()) {
 			drop(level, pos, SurvivalReimaginedModItems.POTATO.get(), age >= 3 ? 2 + level.random.nextInt(3) : 1);

@@ -1,10 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern": ["a", "b"],
+  "pattern": [
+    "a",
+    "b"
+  ],
   "key": {
-    "a": { "item": "survival_reimagined:hemp_mesh" },
-    "b": { "item": "survival_reimagined:used_filter" }
+    "a": {
+      "item": "survival_reimagined:hemp_mesh"
+    },
+    "b": {
+      "item": "survival_reimagined:used_filter"
+    }
   },
   "result": {
     "id": "survival_reimagined:gas_mask_filter",

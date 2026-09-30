@@ -94,7 +94,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "survival_reimagined:basalt_emerald_ore",
+          "name": "minecraft:basalt_emerald_ore",
           "weight": 1,
           "conditions": [
             {

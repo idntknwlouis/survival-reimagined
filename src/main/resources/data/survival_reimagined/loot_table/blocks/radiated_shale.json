@@ -7,6 +7,7 @@
         {
           "type": "minecraft:item",
           "name": "survival_reimagined:shale_rock",
+          "weight": 1,
           "conditions": [
             {
               "condition": "minecraft:inverted",
@@ -17,7 +18,9 @@
                     "minecraft:enchantments": [
                       {
                         "enchantments": "minecraft:silk_touch",
-                        "levels": { "min": 1 }
+                        "levels": {
+                          "min": 1
+                        }
                       }
                     ]
                   }
@@ -28,7 +31,10 @@
           "functions": [
             {
               "function": "minecraft:set_count",
-              "count": { "min": 3, "max": 4 }
+              "count": {
+                "min": 3,
+                "max": 4
+              }
             },
             {
               "function": "minecraft:apply_bonus",
@@ -45,6 +51,7 @@
         {
           "type": "minecraft:item",
           "name": "survival_reimagined:radiated_shale",
+          "weight": 1,
           "conditions": [
             {
               "condition": "minecraft:match_tool",
@@ -53,10 +60,21 @@
                   "minecraft:enchantments": [
                     {
                       "enchantments": "minecraft:silk_touch",
-                      "levels": { "min": 1 }
+                      "levels": {
+                        "min": 1
+                      }
                     }
                   ]
                 }
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 1
               }
             }
           ]

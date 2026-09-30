@@ -1,7 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern": ["aa","aa"],
-  "key": {"a":{"item":"survival_reimagined:basalt_rock"}},
-  "result": {"id":"minecraft:smooth_basalt","count":1}
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:basalt_rock"
+    }
+  },
+  "result": {
+    "id": "minecraft:smooth_basalt",
+    "count": 1
+  }
 }

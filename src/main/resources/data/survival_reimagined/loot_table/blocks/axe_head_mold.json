@@ -3,7 +3,7 @@
   "random_sequence": "survival_reimagined:blocks/axe_head_mold",
   "pools": [
     {
-      "rolls": 1,
+      "rolls": 1.0,
       "conditions": [
         {
           "condition": "minecraft:survives_explosion"
