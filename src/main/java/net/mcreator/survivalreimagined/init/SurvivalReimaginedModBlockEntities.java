@@ -67,23 +67,7 @@ public final class SurvivalReimaginedModBlockEntities {
 	public static BlockEntityType<FruitBlockEntity> FRUIT_BLOCK_ENTITY;
 
 
-	public static void registerBlockEntities() {
-		FRUIT_BLOCK_ENTITY = Registry.register(
-				BuiltInRegistries.BLOCK_ENTITY_TYPE,
-				ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "fruit_block_entity"),
-				BlockEntityType.Builder.of((pos, state) -> {
-					if (state.getBlock() instanceof FruitBlock fruitBlock) {
-						return (FruitBlockEntity) fruitBlock.newBlockEntity(pos, state);
-					}
-					return null;
-				},
-					SurvivalReimaginedModBlocks.APPLE_FRUIT.get(),
-					SurvivalReimaginedModBlocks.MANDARIN_FRUIT.get(),
-					SurvivalReimaginedModBlocks.BANANA_FRUIT.get(),
-					SurvivalReimaginedModBlocks.RED_CHERRIES_FRUIT.get()
-				).build(null)
-		);
-	}
+
 	public static Supplier<BlockEntityType<?>> getSupplier() {
 		return () -> FRUIT_BLOCK_ENTITY;
 	}
@@ -99,6 +83,20 @@ public final class SurvivalReimaginedModBlockEntities {
 	}
 
 	public static void register() {
-		// Forces class initialization.
+		FRUIT_BLOCK_ENTITY = Registry.register(
+				BuiltInRegistries.BLOCK_ENTITY_TYPE,
+				ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "fruit_block_entity"),
+				BlockEntityType.Builder.of((pos, state) -> {
+							if (state.getBlock() instanceof FruitBlock fruitBlock) {
+								return (FruitBlockEntity) fruitBlock.newBlockEntity(pos, state);
+							}
+							return null;
+						},
+						SurvivalReimaginedModBlocks.APPLE_FRUIT.get(),
+						SurvivalReimaginedModBlocks.MANDARIN_FRUIT.get(),
+						SurvivalReimaginedModBlocks.BANANA_FRUIT.get(),
+						SurvivalReimaginedModBlocks.RED_CHERRIES_FRUIT.get()
+				).build(null)
+		);
 	}
 }

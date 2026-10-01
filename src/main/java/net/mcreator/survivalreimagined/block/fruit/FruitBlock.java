@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.procedures.GrowingLogic;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -15,6 +16,7 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -35,6 +37,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.mcreator.survivalreimagined.block.fruit.FruitTypeConfig;
+import org.jetbrains.annotations.Nullable;
 
 import static com.mojang.serialization.Codec.lazyInitialized;
 
@@ -74,6 +77,18 @@ public class FruitBlock extends BaseEntityBlock {
         }
         this.registerDefaultState(defaultBlockState);
         this.shapes = this.makeShapes();
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+    @Override
+    public void playerDestroy(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
+        super.playerDestroy(world, player, pos, state, blockEntity, tool);
+        if (this.config.harvestCondition() != null) {
+            this.config.harvestCondition().canHarvest(world, pos, player, state);
+        }
     }
 
 
@@ -167,12 +182,12 @@ public class FruitBlock extends BaseEntityBlock {
     @Override
     public void neighborChanged(BlockState state, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
         super.neighborChanged(state, world, pos, neighborBlock, fromPos, moving);
-        //FruitNeighborBlockChanges.execute(world, pos.getX(), pos.getY(), pos,getZ(), state);
+        FruitNeighborBlockChanges.execute(world, pos.getX(), pos.getY(), pos.getZ(), state);
     }
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         super.tick(state, world, pos, random);
-        //GrowingLogic.execute(world, pos.getX(), pos.getY(), pos.getZ(), state);
+        GrowingLogic.execute(world, pos.getX(), pos.getY(), pos.getZ(), state);
         world.scheduleTick(pos, this, 20);
     }
     @Override

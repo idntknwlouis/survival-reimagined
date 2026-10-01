@@ -56,9 +56,9 @@ public final class CropEffects {
 		if (block == SurvivalReimaginedModBlocks.BEETROOT.get() || block == SurvivalReimaginedModBlocks.WILD_BEETROOT.get()) {
 			if (age >= 3) {
 				drop(level, pos, Items.BEETROOT, 1);
-				drop(level, pos, SurvivalReimaginedModItems.BEETROOT_SEEDS.get(), 1 + level.random.nextInt(3));
+				drop(level, pos, Items.BEETROOT_SEEDS, 1 + level.random.nextInt(3));
 			} else {
-				drop(level, pos, SurvivalReimaginedModItems.BEETROOT_SEEDS.get(), 1);
+				drop(level, pos, Items.BEETROOT_SEEDS, 1);
 			}
 		}
 

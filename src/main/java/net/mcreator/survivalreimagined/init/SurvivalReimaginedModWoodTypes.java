@@ -6,10 +6,10 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.mcreator.survivalreimagined.mixin.WoodTypeInvoker;
 
 public final class SurvivalReimaginedModWoodTypes {
-	public static final WoodType RADIATED_SIGN_WOOD_TYPE = register("survival_reimagined:radiated_sign");
-	public static final WoodType HANGING_RADIATED_SIGN_WOOD_TYPE = register("survival_reimagined:hanging_radiated_sign");
+	public static final WoodType RADIATED_SIGN_WOOD_TYPE = register("survival_reimagined:radiant_sign");
+	public static final WoodType RADIATED_HANGING_SIGN_WOOD_TYPE = register("survival_reimagined:radiant_hanging_sign");
 	public static final WoodType WISTERIA_SIGN_WOOD_TYPE = register("survival_reimagined:wisteria_sign");
-	public static final WoodType HANGING_WISTERIA_SIGN_WOOD_TYPE = register("survival_reimagined:hanging_wisteria_sign");
+	public static final WoodType WISTERIA_HANGING_SIGN_WOOD_TYPE = register("survival_reimagined:wisteria_hanging_sign");
 	public static final WoodType MANDARIN_SIGN_WOOD_TYPE = register("survival_reimagined:mandarin_sign");
 	public static final WoodType MANDARIN_HANGING_SIGN_WOOD_TYPE = register("survival_reimagined:mandarin_hanging_sign");
 

@@ -7,7 +7,7 @@
     "east": "survival_reimagined:block/stripped_wisteria_log",
     "south": "survival_reimagined:block/stripped_wisteria_log",
     "west": "survival_reimagined:block/stripped_wisteria_log",
-    "particle": "survival_reimagined:block/stripped_wisteria_log_top"
+    "particle": "survival_reimagined:block/stripped_wisteria_log"
   },
   "render_type": "solid"
 }

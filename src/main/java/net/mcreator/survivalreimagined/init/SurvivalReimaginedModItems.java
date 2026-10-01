@@ -191,7 +191,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
-	public static final RegistryEntry<Item> BEETROOT_SEEDS = cropSeed("beetroot_seeds", SurvivalReimaginedModBlocks.BEETROOT);
 	public static final RegistryEntry<Item> POTATO = plantFood("potato", SurvivalReimaginedModBlocks.POTATOES, 1, 0.6f);
 	public static final RegistryEntry<Item> CARROT = plantFood("carrot", SurvivalReimaginedModBlocks.CARROT, 4, 3.6f);
 	public static final RegistryEntry<Item> BURNT_POTATO = register("burnt_potato", () -> new Item(new Item.Properties()
@@ -608,12 +607,16 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> APPLE_OAK_LEAVES = block(SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES);
  	public static final RegistryEntry<Item> APPLE_OAK_SAPLING = block(SurvivalReimaginedModBlocks.APPLE_TREE_SAPLING);
 	public static final RegistryEntry<Item> MANDARIN = stableFood("mandarin", 5, 0.8f);
-	public static final RegistryEntry<Item> BANANA_CLUSTER = block(SurvivalReimaginedModBlocks.BANANA_CLUSTER);
-	public static final RegistryEntry<Item> RED_CHERRIES = stableFood("red_cherries", 3, 0.4f);
+	public static final RegistryEntry<Item> RED_CHERRIES = stableFood("cherries", 3, 0.4f);
 	public static final RegistryEntry<Item> BANANA_LEAVES = block(SurvivalReimaginedModBlocks.BANANA_LEAVES);
 	public static final RegistryEntry<Item> BANANA = stableFood("banana", 4, 0.3f);
 	public static final RegistryEntry<Item> BANANA_JUNGLE_LOG = block(SurvivalReimaginedModBlocks.BANANA_JUNGLE_LOG);
 	public static final RegistryEntry<Item> SMALL_BANANA_JUNGLE_LOG = block(SurvivalReimaginedModBlocks.SMALL_BANANA_JUNGLE_LOG);
+
+	public static final RegistryEntry<Item> APPLE = block(SurvivalReimaginedModBlocks.APPLE_FRUIT);
+	public static final RegistryEntry<Item> MANDARIN_FRUIT = block(SurvivalReimaginedModBlocks.MANDARIN_FRUIT);
+	public static final RegistryEntry<Item> BANANA_FRUIT = block(SurvivalReimaginedModBlocks.BANANA_FRUIT);
+	public static final RegistryEntry<Item> RED_CHERRIES_FRUIT = block(SurvivalReimaginedModBlocks.RED_CHERRIES_FRUIT);
 
 	public static final RegistryEntry<Item> STRIPPED_RADIANT_LOG = block(SurvivalReimaginedModBlocks.STRIPPED_RADIANT_LOG);
 	public static final RegistryEntry<Item> RADIANT_PLANKS = block(SurvivalReimaginedModBlocks.RADIANT_PLANKS);
@@ -688,7 +691,7 @@ public final class SurvivalReimaginedModItems {
 					return "item.survival_reimagined.mandarin_sign";
 				}
 			}
-			);
+	);
 	public static final RegistryEntry<Item> MANDARIN_HANGING_SIGN = registerItem("mandarin_hanging_sign",
 			(properties) -> new HangingSignItem(
 					SurvivalReimaginedModBlocks.MANDARIN_HANGING_SIGN.get(),
@@ -698,6 +701,52 @@ public final class SurvivalReimaginedModItems {
 				@Override
 				public String getDescriptionId() {
 					return "item.survival_reimagined.mandarin_hanging_sign";
+				}
+			}
+	);
+	public static final RegistryEntry<Item> RADIATED_SIGN = registerItem("radiant_sign",
+			(properties) -> new SignItem(properties,
+					SurvivalReimaginedModBlocks.RADIATED_SIGN.get(),
+					SurvivalReimaginedModBlocks.RADIATED_WALL_SIGN.get()
+			) {
+				@Override
+				public String getDescriptionId() {
+					return "item.survival_reimagined.radiant_sign";
+				}
+			}
+	);
+	public static final RegistryEntry<Item> RADIATED_HANGING_SIGN = registerItem("radiant_hanging_sign",
+			(properties) -> new HangingSignItem(
+					SurvivalReimaginedModBlocks.RADIATED_HANGING_SIGN.get(),
+					SurvivalReimaginedModBlocks.RADIATED_CEILING_HANGING_SIGN.get(),
+					properties
+			) {
+				@Override
+				public String getDescriptionId() {
+					return "item.survival_reimagined.radiant_hanging_sign";
+				}
+			}
+	);
+	public static final RegistryEntry<Item> WISTERIA_SIGN = registerItem("wisteria_sign",
+			(properties) -> new SignItem(properties,
+					SurvivalReimaginedModBlocks.WISTERIA_SIGN.get(),
+					SurvivalReimaginedModBlocks.WISTERIA_WALL_SIGN.get()
+			) {
+				@Override
+				public String getDescriptionId() {
+					return "item.survival_reimagined.wisteria_sign";
+				}
+			}
+	);
+	public static final RegistryEntry<Item> WISTERIA_HANGING_SIGN = registerItem("wisteria_hanging_sign",
+			(properties) -> new HangingSignItem(
+					SurvivalReimaginedModBlocks.WISTERIA_HANGING_SIGN.get(),
+					SurvivalReimaginedModBlocks.WISTERIA_CEILING_HANGING_SIGN.get(),
+					properties
+			) {
+				@Override
+				public String getDescriptionId() {
+					return "item.survival_reimagined.wisteria_hanging_sign";
 				}
 			}
 	);

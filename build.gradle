@@ -14,7 +14,8 @@ repositories {
 	mavenCentral()
 	maven { url = 'https://maven.shedaniel.me' }
 	maven { url = 'https://maven.blamejared.com' }
-	maven { url = 'https://www.cursemaven.com'}}
+	maven { url = 'https://www.cursemaven.com'}
+}
 
 
 loom {
@@ -57,6 +58,9 @@ dependencies {
 	modImplementation "curse.maven:terrablender-fabric-565956:6054948"
 	implementation "com.electronwill.night-config:core:3.8.1"
 	implementation "com.electronwill.night-config:toml:3.8.1"
+
+	// Serene Seasons & GlitchCore
+	modImplementation "curse.maven:serene-seasons-291874:6182595"
 }
 
 

@@ -20,28 +20,26 @@ public class GrowBanana {
         BlockPos currentPos = BlockPos.containing(x,y,z);
 
         if (Math.random() < 0.05) {
-            double numGen = getBlockNBTNumber(world, currentPos, "NumberGen");
+            int numGen = (int) getBlockNBTNumber(world, currentPos, "NumberGen");
+            BlockPos targetPos = null;
+            Direction dir = null;
+
 
             if (numGen == 1) {
-                BlockPos targetPos = BlockPos.containing(x,y,z -1);
-                if (world.isEmptyBlock(targetPos)) {
-                    world.setBlock(targetPos, blockStateWithDirection(SurvivalReimaginedModBlocks.BANANA_CLUSTER.get().defaultBlockState(), Direction.NORTH),3);
-                }
-            } else if (numGen == 2) {
-                BlockPos targetPos = BlockPos.containing(x,y,z -1);
-                if (world.isEmptyBlock(targetPos)) {
-                    world.setBlock(targetPos, blockStateWithDirection(SurvivalReimaginedModBlocks.BANANA_CLUSTER.get().defaultBlockState(), Direction.SOUTH),3);
-                }
+                targetPos = currentPos.north();
+                dir = Direction.NORTH;
+            } else if (numGen ==2) {
+                targetPos = currentPos.south();
+                dir = Direction.SOUTH;
             } else if (numGen == 3) {
-                BlockPos targetPos = BlockPos.containing(x,y,z -1);
-                if (world.isEmptyBlock(targetPos)) {
-                    world.setBlock(targetPos, blockStateWithDirection(SurvivalReimaginedModBlocks.BANANA_CLUSTER.get().defaultBlockState(), Direction.WEST),3);
-                }
+                targetPos = currentPos.west();
+                dir = Direction.WEST;
             } else if (numGen == 4) {
-                BlockPos targetPos = BlockPos.containing(x,y,z -1);
-                if (world.isEmptyBlock(targetPos)) {
-                    world.setBlock(targetPos, blockStateWithDirection(SurvivalReimaginedModBlocks.BANANA_CLUSTER.get().defaultBlockState(), Direction.EAST),3);
-                }
+                targetPos = currentPos.east();
+                dir = Direction.EAST;
+            }
+            if (targetPos != null && world.isEmptyBlock(targetPos)) {
+                world.setBlock(targetPos, blockStateWithDirection(SurvivalReimaginedModBlocks.BANANA_FRUIT.get().defaultBlockState(), dir),3);
             }
         }
         if (!world.isClientSide()) {
@@ -58,8 +56,7 @@ public class GrowBanana {
     private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {
-            CompoundTag nbt = new CompoundTag();
-            blockEntity.saveWithFullMetadata(world.registryAccess());
+            CompoundTag nbt = blockEntity.saveWithFullMetadata(world.registryAccess());
             return nbt.getDouble(tag);
         }
         return -1;
@@ -67,13 +64,13 @@ public class GrowBanana {
     private static void setBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag, double value) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {
-            CompoundTag nbt = new CompoundTag();
-            blockEntity.saveWithFullMetadata(world.registryAccess());
+            CompoundTag nbt = blockEntity.saveWithFullMetadata(world.registryAccess());
             nbt.putDouble(tag, value);
             blockEntity.loadWithComponents(nbt, world.registryAccess());
             blockEntity.setChanged();
         }
     }
+    @SuppressWarnings("unchecked")
     private static BlockState blockStateWithDirection(BlockState blockState, Direction newValue) {
         Property<?> prop = blockState.getBlock().getStateDefinition().getProperty("facing");
         if (prop instanceof DirectionProperty dp && dp.getPossibleValues().contains(newValue))

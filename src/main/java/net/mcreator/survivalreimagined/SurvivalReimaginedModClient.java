@@ -12,6 +12,8 @@ import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.Sheets;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticles;
@@ -36,13 +38,17 @@ import net.mcreator.survivalreimagined.client.model.Modelpiglet;
 import net.mcreator.survivalreimagined.client.model.Modelghost;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
 import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
 import net.mcreator.survivalreimagined.util.FoodTooltip;
+
+import static com.mojang.text2speech.Narrator.LOGGER;
 
 public class SurvivalReimaginedModClient implements ClientModInitializer {
 	@Override

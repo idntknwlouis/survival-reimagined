@@ -6,6 +6,7 @@ import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitDropCondition;
 import net.mcreator.survivalreimagined.block.fruit.FruitTypeConfig;
 import net.mcreator.survivalreimagined.block.fruit.FruitValidPlacement;
+import net.mcreator.survivalreimagined.util.SignInjection;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModTreeGrowers;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
@@ -360,7 +361,7 @@ public final class SurvivalReimaginedModBlocks {
 					};
 				},
 				null,
-				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, SurvivalReimaginedModItems.BANANA_CLUSTER, 2),
+				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, SurvivalReimaginedModItems.BANANA_FRUIT, 2),
 				false, true
 		);
 	}
@@ -382,7 +383,7 @@ public final class SurvivalReimaginedModBlocks {
 
 	public static final RegistryEntry<Block> APPLE_FRUIT = register("apple", () -> new FruitBlock(AppleConfig()));
 	public static final RegistryEntry<Block> MANDARIN_FRUIT = register("mandarin_fruit", () -> new FruitBlock(MandarinConfig()));
-	public static final RegistryEntry<Block> BANANA_FRUIT = register("banana", () -> new FruitBlock(BananaConfig()));
+	public static final RegistryEntry<Block> BANANA_FRUIT = register("banana_cluster", () -> new FruitBlock(BananaConfig()));
 	public static final RegistryEntry<Block> RED_CHERRIES_FRUIT = register("cherries_fruit", () -> new FruitBlock(CherriesConfig()));
 
 	public static final RegistryEntry<Block> FRUITING_MANDARIN_LEAVES = register("fruiting_mandarin_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
@@ -412,8 +413,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> RAW_AZURITE_BLOCK = register("raw_azurite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3, 4).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SULFUR_ORE = register("sulfur_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> NITRE_BLOCK = register("nitre_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.TUFF).strength(1.5f, 6)));
-	public static final RegistryEntry<Block> STRIPPED_WISTERIA_LOG = register("stripped_wisteria_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
-	public static final RegistryEntry<Block> WISTERIA_WOOD = register("wistera_wood", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> STRIPPED_WISTERIA_LOG = register("stripped_wisteria_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> WISTERIA_WOOD = register("wisteria_wood", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
 	public static final RegistryEntry<Block> WISTERIA_PLANKS = register("wisteria_planks", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
 	public static final RegistryEntry<Block> WISTERIA_STAIRS = register("wisteria_stairs", () -> new StairBlock(WISTERIA_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
 	public static final RegistryEntry<Block> WISTERIA_SLAB = register("wisteria_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
@@ -427,7 +428,6 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> SALT_DEPOSIT = register("salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3)));
 	public static final RegistryEntry<Block> BANANA_JUNGLE_LOG = register("banana_jungle_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
 	public static final RegistryEntry<Block> SMALL_BANANA_JUNGLE_LOG = register("small_banana_jungle_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
-	public static final RegistryEntry<Block> BANANA_CLUSTER = register("banana_cluster", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).instabreak().noCollission()));
 	public static final RegistryEntry<Block> BANANA_GROW_BLOCK = register("banana_grow_block", BananaGrowBlock::new);
 	public static final RegistryEntry<Block> BANANA_LEAVES = register("banana_leaves", BananaLeavesBlock::new);
 	public static final RegistryEntry<Block> MANDARIN_LOG = register("mandarin_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
@@ -444,11 +444,11 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> STONE_SALT_DEPOSIT = register("stone_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> TEOSINTE = register("teosinte", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).instabreak().noCollission().noOcclusion()));
 	public static final RegistryEntry<Block> MANDARIN_PLANKS = register("mandarin_planks", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
-	public static final RegistryEntry<Block> MANDARIN_STAIRS = register("mandarin_stairs", () -> new StairBlock(MANDARIN_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
-	public static final RegistryEntry<Block> MANDARIN_SLAB = register("mandarin_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
- 	public static final RegistryEntry<Block> MANDARIN_FENCE = register("mandarin_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
-	public static final RegistryEntry<Block> MANDARIN_FENCE_GATE = register("mandarin_fence_gate", () -> new FenceGateBlock(WoodType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
-	public static final RegistryEntry<Block> MANDARIN_BUTTON = register("mandarin_button", () -> new ButtonBlock(BlockSetType.CHERRY, 1, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
+	public static final RegistryEntry<Block> MANDARIN_STAIRS = register("mandarin_planks_stairs", () -> new StairBlock(MANDARIN_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> MANDARIN_SLAB = register("mandarin_planks_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+ 	public static final RegistryEntry<Block> MANDARIN_FENCE = register("mandarin_planks_fence", () -> new FenceBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> MANDARIN_FENCE_GATE = register("mandarin_planks_fence_gate", () -> new FenceGateBlock(WoodType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
+	public static final RegistryEntry<Block> MANDARIN_BUTTON = register("mandarin_planks_button", () -> new ButtonBlock(BlockSetType.CHERRY, 1, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
 	public static final RegistryEntry<Block> MANDARIN_TRAPDOOR = register("mandarin_trapdoor", () -> new TrapDoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
 	public static final RegistryEntry<Block> MANDARIN_DOOR = register("mandarin_door", () -> new DoorBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).forceSolidOn()));
 	public static final RegistryEntry<Block> MANDARIN_PRESSURE_PLATE = register("mandarin_pressure_plate", () -> new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().strength(2,3).sound(SoundType.CHERRY_WOOD).noCollission()));
@@ -460,14 +460,14 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> MANDARIN_WALL_SIGN = register("mandarin_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().noOcclusion().dropsLike(SurvivalReimaginedModBlocks.MANDARIN_SIGN.get())));
 	public static final RegistryEntry<Block> MANDARIN_HANGING_SIGN = register("mandarin_hanging_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().noOcclusion()));
 	public static final RegistryEntry<Block> MANDARIN_CEILING_HANGING_SIGN = register("mandarin_ceiling_hanging_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.MANDARIN_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noOcclusion().noCollission().dropsLike(SurvivalReimaginedModBlocks.MANDARIN_HANGING_SIGN.get())));
-	//public static final RegistryEntry<Block> RADIATED_SIGN = register("radiated_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).noCollission()));
-	//public static final RegistryEntry<Block> RADIATED_WALL_SIGN = register("radiated_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.RADIATED_SIGN.get())));
-	//public static final RegistryEntry<Block> HANGING_RADIATED_SIGN = register("hanging_radiated_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
-	//public static final RegistryEntry<Block> CEILING_HANGING_RADIATED_SIGN = register("ceiling_hanging_radiated_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.HANGING_RADIATED_SIGN.get())));
-	//public static final RegistryEntry<Block> WISTERIA_SIGN = register("wisteria_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission()));
-	//public static final RegistryEntry<Block> WISTERIA_WALL_SIGN = register("wisteria_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_SIGN.get())));
-	//public static final RegistryEntry<Block> HANGING_WISTERIA_SIGN = register("hanging_wisteria_wall_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
-	//public static final RegistryEntry<Block> CEILING_HANGING_WISTERIA_SIGN = register("ceiling_hanging_wisteria_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.HANGING_WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.HANGING_WISTERIA_SIGN.get())));
+	public static final RegistryEntry<Block> RADIATED_SIGN = register("radiant_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).noCollission()));
+	public static final RegistryEntry<Block> RADIATED_WALL_SIGN = register("radiant_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.RADIATED_SIGN.get())));
+	public static final RegistryEntry<Block> RADIATED_HANGING_SIGN = register("radiant_hanging_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
+	public static final RegistryEntry<Block> RADIATED_CEILING_HANGING_SIGN = register("radiant_ceiling_hanging_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.RADIATED_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.RADIATED_HANGING_SIGN.get())));
+	public static final RegistryEntry<Block> WISTERIA_SIGN = register("wisteria_sign", () -> new StandingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission()));
+	public static final RegistryEntry<Block> WISTERIA_WALL_SIGN = register("wisteria_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_SIGN.get())));
+	public static final RegistryEntry<Block> WISTERIA_HANGING_SIGN = register("wisteria_hanging_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
+	public static final RegistryEntry<Block> WISTERIA_CEILING_HANGING_SIGN = register("wisteria_ceiling_hanging_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_HANGING_SIGN.get())));
 
 	private SurvivalReimaginedModBlocks() {
 	}
@@ -481,5 +481,8 @@ public final class SurvivalReimaginedModBlocks {
 
 	public static void register() {
 		// Forces class initialization.
+
+		// Sign Registration
+		SignInjection.InjectAllSigns();
 	}
 }

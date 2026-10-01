@@ -51,6 +51,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModSounds.register();
 		SurvivalReimaginedModEntities.register();
 		SurvivalReimaginedModParticleTypes.register();
+		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModBlocks.register();
 		SurvivalReimaginedModArmorMaterials.register();
 		SurvivalReimaginedModItems.register();
@@ -59,7 +60,6 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModMobEffects.register();
 		SurvivalReimaginedModFeatures.register();
 		SurvivalReimaginedModRecipeTypes.register();
-		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
 		SurvivalReimaginedModVariables.register();
