@@ -10,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -24,6 +25,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -42,22 +45,16 @@ import org.jetbrains.annotations.Nullable;
 import static com.mojang.serialization.Codec.lazyInitialized;
 
 public class FruitBlock extends BaseEntityBlock {
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
+    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 2);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     private final FruitTypeConfig config;
     private final ImmutableMap<BlockState, VoxelShape> shapes;
 
-    public static final MapCodec<FruitBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
-            instance.group(propertiesCodec()).apply(instance, properties -> {
-                return (FruitBlock) BuiltInRegistries.BLOCK.get(
-                        ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "apple")
-                );
-            })
-    );
+    private final MapCodec<FruitBlock> dynamicCodec = MapCodec.unit(() -> this);
 
     @Override
     protected MapCodec<? extends BaseEntityBlock> codec() {
-        return lazyInitialized(() -> BuiltInRegistries.BLOCK.byNameCodec()).dispatchMap("fruit_type", block -> this, block -> CODEC);
+        return dynamicCodec;
     }
 
 
@@ -77,6 +74,17 @@ public class FruitBlock extends BaseEntityBlock {
         }
         this.registerDefaultState(defaultBlockState);
         this.shapes = this.makeShapes();
+    }
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+        if (world.isClientSide()) return null;
+
+        return createTickerHelper(type, this.config.blockEntityType().get(), (world1, pos1, state1, blockEntity1) -> {
+            if (world1.getGameTime() % 20 == 0) {
+                GrowingLogic.execute(world1, pos1.getX(), pos1.getY(), pos1.getZ(), state1);
+            }
+        });
     }
 
     @Override
@@ -117,10 +125,7 @@ public class FruitBlock extends BaseEntityBlock {
     }
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState state = super.getStateForPlacement(context);
-        if (state == null) return null;
-
-        state = state.setValue(AGE, 0);
+        BlockState state = this.defaultBlockState().setValue(AGE, 0);
         if (config.hasFacing()) {
             Direction clickedFace = context.getClickedFace();
             if (clickedFace.getAxis() == Direction.Axis.Y) {
@@ -128,7 +133,7 @@ public class FruitBlock extends BaseEntityBlock {
             }
             return state.setValue(FACING, clickedFace);
         }
-        return state;
+        return state.setValue(FACING, Direction.NORTH);
     }
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
@@ -151,7 +156,7 @@ public class FruitBlock extends BaseEntityBlock {
         if (config.placementCondition() != null && world instanceof LevelAccessor levelAccessor) {
             return  config.placementCondition().canSurvive(levelAccessor, pos);
         }
-        return super.canSurvive(state, world, pos);
+        return world.getBlockState(pos.above()).is(BlockTags.LEAVES);
     }
     @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor world, BlockPos currentPos, BlockPos facingPos) {
@@ -184,14 +189,14 @@ public class FruitBlock extends BaseEntityBlock {
         super.neighborChanged(state, world, pos, neighborBlock, fromPos, moving);
         FruitNeighborBlockChanges.execute(world, pos.getX(), pos.getY(), pos.getZ(), state);
     }
-    @Override
-    public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        super.tick(state, world, pos, random);
-        GrowingLogic.execute(world, pos.getX(), pos.getY(), pos.getZ(), state);
-        world.scheduleTick(pos, this, 20);
-    }
+
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        var type = this.config.blockEntityType().get();
+        if (type == null) {
+            return null;
+        }
         return new FruitBlockEntity(pos, state, config);
     }
     @Override
@@ -199,17 +204,7 @@ public class FruitBlock extends BaseEntityBlock {
         BlockEntity tileEntity = world.getBlockEntity(pos);
         return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
     }
-    @Override
-    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof FruitBlockEntity container) {
-                Containers.dropContents(world, pos, container);
-                world.updateNeighbourForOutputSignal(pos, this);
-            }
-            super.onRemove(state, world, pos, newState, isMoving);
-        }
-    }
+
     @Override
     public boolean hasAnalogOutputSignal(BlockState state) {
         return true;
@@ -221,5 +216,22 @@ public class FruitBlock extends BaseEntityBlock {
             return AbstractContainerMenu.getRedstoneSignalFromContainer(container);
         }
         return 0;
+    }
+    @Override
+    public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int id, int param) {
+        super.triggerEvent(state, world, pos, id, param);
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        return blockEntity != null && blockEntity.triggerEvent(id, param);
+    }
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof FruitBlockEntity container) {
+                Containers.dropContents(world, pos, container);
+                world.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, world, pos, newState, isMoving);
+        }
     }
 }

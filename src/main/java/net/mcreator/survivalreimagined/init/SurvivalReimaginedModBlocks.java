@@ -386,9 +386,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BANANA_FRUIT = register("banana_cluster", () -> new FruitBlock(BananaConfig()));
 	public static final RegistryEntry<Block> RED_CHERRIES_FRUIT = register("cherries_fruit", () -> new FruitBlock(CherriesConfig()));
 
-	public static final RegistryEntry<Block> FRUITING_MANDARIN_LEAVES = register("fruiting_mandarin_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
-	public static final RegistryEntry<Block> APPLE_OAK_LEAVES = register("apple_oak_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
-	public static final RegistryEntry<Block> FLOWERING_RED_CHERRY_LEAVES = register("flowering_red_cherry_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion()));
+	public static final RegistryEntry<Block> FRUITING_MANDARIN_LEAVES = register("fruiting_mandarin_leaves", () -> new FruitBearingLeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion(), () -> SurvivalReimaginedModBlocks.MANDARIN_FRUIT.get(), 0.05));
+	public static final RegistryEntry<Block> APPLE_OAK_LEAVES = register("apple_oak_leaves", () -> new FruitBearingLeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.2f).noOcclusion(), () -> SurvivalReimaginedModBlocks.APPLE_FRUIT.get(), 0.05));
+	public static final RegistryEntry<Block> FLOWERING_RED_CHERRY_LEAVES = register("flowering_red_cherry_leaves", () -> new FruitBearingLeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f).noOcclusion(), () -> SurvivalReimaginedModBlocks.RED_CHERRIES_FRUIT.get(), 0.05));
+
 
 	public static final RegistryEntry<Block> STRIPPED_RADIANT_LOG = register("stripped_radiant_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).ignitedByLava()));
 	public static final RegistryEntry<Block> RADIANT_PLANKS = register("radiant_planks", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.NETHER_WOOD).strength(2,3).ignitedByLava()));

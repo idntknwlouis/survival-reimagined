@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
+import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -11,6 +12,7 @@ import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
@@ -47,6 +49,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
 import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
 import net.mcreator.survivalreimagined.util.FoodTooltip;
+import net.minecraft.world.level.FoliageColor;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
@@ -131,5 +134,14 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 			context.client().execute(() -> {});
 		});
 		BloodMoonTexture.registerClientReceiver();
+
+		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+			return view != null && pos != null
+					? BiomeColors.getAverageFoliageColor(view, pos)
+					: FoliageColor.getDefaultColor();
+		}, SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get());
+		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+			return FoliageColor.getDefaultColor();
+		}, SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get().asItem());
 	}
 }

@@ -19,14 +19,26 @@ import java.util.stream.IntStream;
 public class FruitBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
     private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
     private final FruitTypeConfig config;
+    private double growClock = 0;
+
 
     public FruitBlockEntity(BlockPos position, BlockState state, FruitTypeConfig config) {
         super(config.blockEntityType().get(), position, state);
         this.config = config;
     }
+    public double getGrowClock() {
+        return growClock;
+    }
+
+    public void setGrowClock(double growClock) {
+        this.growClock = growClock;
+        this.setChanged();
+    }
+
     @Override
     public void loadAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
         super.loadAdditional(compound, lookupProvider);
+        this.growClock = compound.getDouble("GrowClock");
         if (!this.tryLoadLootTable(compound)) {
             this.stacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         }

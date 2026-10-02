@@ -9,14 +9,21 @@ import sereneseasons.api.season.SeasonHelper;
 public class GetCurrentSeason {
     public static String execute(LevelAccessor world) {
         if (!world.isClientSide()) {
-            if (world instanceof Level level && SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.SPRING) {
-                return "Spring";
-            } else if (world instanceof Level level && SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.SUMMER) {
-                return "Summer";
-            } else if (world instanceof Level level && SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.AUTUMN) {
-                return "Autumn";
-            } else if (world instanceof Level level && SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.WINTER) {
-                return "Winter";
+            switch (world) {
+                case Level level when SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.SPRING -> {
+                    return "Spring";
+                }
+                case Level level when SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.SUMMER -> {
+                    return "Summer";
+                }
+                case Level level when SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.AUTUMN -> {
+                    return "Autumn";
+                }
+                case Level level when SeasonHelper.getSeasonState(level).getSubSeason().getSeason() == Season.WINTER -> {
+                    return "Winter";
+                }
+                default -> {
+                }
             }
         }
         return "Unknown";
