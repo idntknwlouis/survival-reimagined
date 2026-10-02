@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.block.fruit;
 
+import net.mcreator.survivalreimagined.block.entity.GrowthClockAccess;
 import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -16,16 +17,16 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.IntStream;
 
-public class FruitBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
+public class FruitBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, GrowthClockAccess {
     private NonNullList<ItemStack> stacks = NonNullList.withSize(9, ItemStack.EMPTY);
     private final FruitTypeConfig config;
     private double growClock = 0;
-
 
     public FruitBlockEntity(BlockPos position, BlockState state, FruitTypeConfig config) {
         super(config.blockEntityType().get(), position, state);
         this.config = config;
     }
+
     public double getGrowClock() {
         return growClock;
     }
@@ -33,6 +34,16 @@ public class FruitBlockEntity extends RandomizableContainerBlockEntity implement
     public void setGrowClock(double growClock) {
         this.growClock = growClock;
         this.setChanged();
+    }
+
+    @Override
+    public double survivalReimagined$getGrowClock() {
+        return getGrowClock();
+    }
+
+    @Override
+    public void survivalReimagined$setGrowClock(double value) {
+        setGrowClock(value);
     }
 
     @Override
@@ -44,6 +55,7 @@ public class FruitBlockEntity extends RandomizableContainerBlockEntity implement
         }
         ContainerHelper.loadAllItems(compound, this.stacks, lookupProvider);
     }
+
     @Override
     public void saveAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
         super.saveAdditional(compound, lookupProvider);
@@ -52,18 +64,22 @@ public class FruitBlockEntity extends RandomizableContainerBlockEntity implement
             ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
         }
     }
+
     @Override
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
+
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider lookupProvider) {
         return this.saveWithFullMetadata(lookupProvider);
     }
+
     @Override
     public int getContainerSize() {
         return 9;
     }
+
     @Override
     public boolean isEmpty() {
         for (ItemStack itemstack : this.stacks) {
@@ -71,43 +87,53 @@ public class FruitBlockEntity extends RandomizableContainerBlockEntity implement
         }
         return true;
     }
+
     @Override
     public Component getDefaultName() {
         return Component.literal(config.name() + "_fruit");
     }
+
     @Override
     public Component getDisplayName() {
         String name = config.name();
         return Component.literal(name.substring(0, 1).toUpperCase() + name.substring(1));
     }
+
     @Override
     public int getMaxStackSize() {
         return 64;
     }
+
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory) {
         return ChestMenu.threeRows(id, inventory);
     }
+
     @Override
     protected NonNullList<ItemStack> getItems() {
         return this.stacks;
     }
+
     @Override
     protected void setItems(NonNullList<ItemStack> stacks) {
         this.stacks = stacks;
     }
+
     @Override
     public boolean canPlaceItem(int index, ItemStack stack) {
         return true;
     }
+
     @Override
     public int[] getSlotsForFace(Direction side) {
-        return IntStream.range(0,this.getContainerSize()).toArray();
+        return IntStream.range(0, this.getContainerSize()).toArray();
     }
+
     @Override
     public boolean canPlaceItemThroughFace(int index, ItemStack itemstack, @Nullable Direction direction) {
         return this.canPlaceItem(index, itemstack);
     }
+
     @Override
     public boolean canTakeItemThroughFace(int index, ItemStack itemstack, Direction direction) {
         return true;
