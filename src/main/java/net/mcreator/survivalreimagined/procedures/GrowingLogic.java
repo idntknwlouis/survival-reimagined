@@ -1,8 +1,8 @@
 package net.mcreator.survivalreimagined.procedures;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.mcreator.survivalreimagined.block.entity.GrowthClockAccess;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
-import net.mcreator.survivalreimagined.block.fruit.FruitBlockEntity;
 import net.mcreator.survivalreimagined.compat.sereneseasons.GetCurrentSeason;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.minecraft.advancements.AdvancementHolder;
@@ -25,10 +25,23 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 public class GrowingLogic {
+    private static final TagKey<net.minecraft.world.level.block.Block> SOIL =
+            TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:soil"));
+    private static final TagKey<net.minecraft.world.level.block.Block> FRUIT_OF_TREE =
+            TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:fruit_of_tree"));
+    private static final TagKey<net.minecraft.world.level.block.Block> BERRY_BUSH =
+            TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:berry_bush"));
+
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockState) {
         if (world.isClientSide()) return;
 
-        BlockPos pos = BlockPos.containing(x,y,z);
+        // The NeoForge blocks called their growth procedure from a 20-tick scheduled tick.
+        // Fabric block-entity tickers run every game tick, so retain the original once-per-second cadence.
+        if (world instanceof ServerLevel serverLevel && serverLevel.getGameTime() % 20L != 0L) {
+            return;
+        }
+
+        BlockPos pos = BlockPos.containing(x, y, z);
         boolean hasSereneSeasons = FabricLoader.getInstance().isModLoaded("sereneseasons");
         double maxClock = 200;
 
@@ -47,20 +60,19 @@ public class GrowingLogic {
             }
         }
 
-        boolean isFruitOrBush = blockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:fruit_of_tree")))
-                || blockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:berry_bush")))
+        boolean isFruitOrBush = blockState.is(FRUIT_OF_TREE)
+                || blockState.is(BERRY_BUSH)
                 || blockState.getBlock() instanceof FruitBlock;
 
-        boolean canGrowGroundCrop = false;
         BlockPos belowPos = pos.below();
         BlockState belowState = world.getBlockState(belowPos);
+        boolean canGrowGroundCrop = false;
 
-        if (belowState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:soil")))) {
+        if (belowState.is(SOIL)) {
             int currentAge = getAge(blockState);
             int maxAge = getMaxAge(blockState);
 
-            if (currentAge < maxAge
-                && getBlockNBTNumber(world, belowPos, "N") > 0 && getBlockNBTNumber(world, belowPos, "P") > 0 && getBlockNBTNumber(world, belowPos, "K") > 0) {
+            if (currentAge < maxAge && soilHasNutrients(world, belowPos)) {
                 canGrowGroundCrop = true;
             }
         }
@@ -68,13 +80,13 @@ public class GrowingLogic {
         if (canGrowGroundCrop || isFruitOrBush) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
 
-            if (blockEntity instanceof FruitBlockEntity fruitEntity) {
-                double nextClockValue = fruitEntity.getGrowClock() + 1;
+            if (blockEntity instanceof GrowthClockAccess growthClock) {
+                double nextClockValue = growthClock.survivalReimagined$getGrowClock() + 1;
 
                 if (nextClockValue >= maxClock) {
-                    fruitEntity.setGrowClock(0);
+                    growthClock.survivalReimagined$setGrowClock(0);
 
-                    if (Math.random() < 0.45) {
+                    if (world.getRandom().nextDouble() < 0.45) {
                         IntegerProperty ageProperty = getAgeProperty(blockState);
                         int currentAge = getAge(blockState);
                         int maxAge = getMaxAge(blockState);
@@ -85,31 +97,44 @@ public class GrowingLogic {
                         }
                     }
                 } else {
-                    fruitEntity.setGrowClock(nextClockValue);
+                    growthClock.survivalReimagined$setGrowClock(nextClockValue);
                 }
             }
         }
-        handleCornAndFarmingFailure(world, x,y,z, blockState, pos);
+
+        handleCornAndFarmingFailure(world, x, y, z, blockState, pos);
     }
-    private static void handleCornAndFarmingFailure(LevelAccessor world, double x, double y, double z, BlockState blockState, BlockPos pos) {
-        if (blockState.is(SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM.get())) {
-            int age = getAge(blockState);
-            if (age == 4 && world.isEmptyBlock(pos.above())) {
-                world.setBlock(pos.above(), SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM.get().defaultBlockState(), 3);
-            }
+
+    private static boolean soilHasNutrients(LevelAccessor world, BlockPos soilPos) {
+        BlockEntity soilEntity = world.getBlockEntity(soilPos);
+
+        // The fertility block-entity system has not been ported yet. Until it exists,
+        // don't make all crops sterile simply because N/P/K storage is unavailable.
+        if (soilEntity == null) {
+            return true;
         }
+
+        return getBlockNBTNumber(world, soilPos, "N") > 0
+                && getBlockNBTNumber(world, soilPos, "P") > 0
+                && getBlockNBTNumber(world, soilPos, "K") > 0;
+    }
+
+    private static void handleCornAndFarmingFailure(LevelAccessor world, double x, double y, double z, BlockState blockState, BlockPos pos) {
+        // Corn's visible middle/top segments are synchronized by CornCropBlock after growth.
         BlockPos belowPos = pos.below();
-        if (world.getBlockState(belowPos).is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:soil")))) {
-            if (getBlockNBTNumber(world, belowPos, "N") <= 0 || getBlockNBTNumber(world, belowPos, "P") <= 0 || getBlockNBTNumber(world, belowPos, "K") <= 0) {
+        BlockEntity soilEntity = world.getBlockEntity(belowPos);
+
+        if (world.getBlockState(belowPos).is(SOIL) && soilEntity != null) {
+            if (!soilHasNutrients(world, belowPos)) {
                 double deathClock = getBlockNBTNumber(world, belowPos, "DeathClock") + 1;
                 putBlockNBTNumber(world, belowPos, "DeathClock", deathClock);
 
-                if (deathClock > 2000) {
+                if (deathClock >= 2000) {
                     putBlockNBTNumber(world, belowPos, "DeathClock", 0);
                     world.setBlock(pos, Blocks.DEAD_BUSH.defaultBlockState(), 3);
 
                     if (world instanceof ServerLevel serverLevel) {
-                        final Vec3 center = new Vec3(x,y,z);
+                        final Vec3 center = new Vec3(x, y, z);
                         for (Entity entity : serverLevel.getEntitiesOfClass(Entity.class, new AABB(center, center).inflate(10), e -> e instanceof ServerPlayer)) {
                             ServerPlayer player = (ServerPlayer) entity;
                             AdvancementHolder adv = player.server.getAdvancements().get(ResourceLocation.parse("survival_reimagined:terrible_farmer"));
@@ -129,6 +154,7 @@ public class GrowingLogic {
             }
         }
     }
+
     private static IntegerProperty getAgeProperty(BlockState state) {
         Property<?> property = state.getBlock().getStateDefinition().getProperty("age");
         return property instanceof IntegerProperty integerProperty ? integerProperty : null;
@@ -156,6 +182,7 @@ public class GrowingLogic {
         }
         return 0;
     }
+
     private static void putBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag, double value) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {
