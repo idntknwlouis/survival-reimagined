@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.procedures;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.mcreator.survivalreimagined.block.CornCropBlock;
 import net.mcreator.survivalreimagined.block.entity.GrowthClockAccess;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.compat.sereneseasons.GetCurrentSeason;
@@ -93,7 +94,11 @@ public class GrowingLogic {
                         int nextAge = currentAge + 1;
 
                         if (ageProperty != null && currentAge >= 0 && nextAge <= maxAge) {
-                            world.setBlock(pos, blockState.setValue(ageProperty, nextAge), 3);
+                            BlockState grownState = blockState.setValue(ageProperty, nextAge);
+                            world.setBlock(pos, grownState, 3);
+                            if (blockState.getBlock() instanceof CornCropBlock corn && world instanceof ServerLevel serverLevel) {
+                                corn.syncUpper(serverLevel, pos, grownState);
+                            }
                         }
                     }
                 } else {
@@ -120,7 +125,6 @@ public class GrowingLogic {
     }
 
     private static void handleCornAndFarmingFailure(LevelAccessor world, double x, double y, double z, BlockState blockState, BlockPos pos) {
-        // Corn's visible middle/top segments are synchronized by CornCropBlock after growth.
         BlockPos belowPos = pos.below();
         BlockEntity soilEntity = world.getBlockEntity(belowPos);
 
