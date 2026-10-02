@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:obsidian_rock"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:obsidian_handle",
+    "count": 1
+  }
+}

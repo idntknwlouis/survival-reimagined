@@ -1,0 +1,9 @@
+{
+  "parent": "survival_reimagined:custom/sheep_leg",
+  "textures": {
+    "all": "survival_reimagined:block/skinned_sheep",
+    "particle": "survival_reimagined:block/skinned_sheep",
+    "2": "survival_reimagined:block/skinned_sheep"
+  },
+  "render_type": "solid"
+}

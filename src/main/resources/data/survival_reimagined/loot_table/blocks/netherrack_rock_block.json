@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "survival_reimagined:blocks/netherrack_rock_block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {"condition": "minecraft:survives_explosion"}
+      ],
+      "entries": [
+        {"type": "minecraft:item", "name": "survival_reimagined:netherrack_rock"}
+      ]
+    }
+  ]
+}

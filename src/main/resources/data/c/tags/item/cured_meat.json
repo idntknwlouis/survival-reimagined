@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "survival_reimagined:cured_chicken",
+    "survival_reimagined:cured_mutton",
+    "survival_reimagined:cured_rabbit",
+    "survival_reimagined:cured_porkchop",
+    "survival_reimagined:cured_steak"
+  ]
+}

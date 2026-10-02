@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "survival_reimagined:netherite_knife",
+    "survival_reimagined:stone_knife",
+    "survival_reimagined:bronze_knife",
+    "survival_reimagined:diamond_knife",
+    "survival_reimagined:flint_tool",
+    "survival_reimagined:steel_knife"
+  ]
+}
