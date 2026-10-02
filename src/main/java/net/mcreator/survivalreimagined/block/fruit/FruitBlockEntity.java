@@ -47,6 +47,7 @@ public class FruitBlockEntity extends RandomizableContainerBlockEntity implement
     @Override
     public void saveAdditional(CompoundTag compound, HolderLookup.Provider lookupProvider) {
         super.saveAdditional(compound, lookupProvider);
+        compound.putDouble("GrowClock", this.growClock);
         if (!this.trySaveLootTable(compound)) {
             ContainerHelper.saveAllItems(compound, this.stacks, lookupProvider);
         }
