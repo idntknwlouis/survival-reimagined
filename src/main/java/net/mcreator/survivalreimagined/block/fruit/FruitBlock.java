@@ -80,11 +80,8 @@ public class FruitBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
         if (world.isClientSide()) return null;
 
-        return createTickerHelper(type, this.config.blockEntityType().get(), (world1, pos1, state1, blockEntity1) -> {
-            if (world1.getGameTime() % 20 == 0) {
-                GrowingLogic.execute(world1, pos1.getX(), pos1.getY(), pos1.getZ(), state1);
-            }
-        });
+        return createTickerHelper(type, this.config.blockEntityType().get(), (world1, pos1, state1, blockEntity1) ->
+                GrowingLogic.execute(world1, pos1.getX(), pos1.getY(), pos1.getZ(), state1));
     }
 
     @Override
