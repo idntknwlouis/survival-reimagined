@@ -19,6 +19,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -54,8 +56,8 @@ public class GrowingLogic {
         BlockState belowState = world.getBlockState(belowPos);
 
         if (belowState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:soil")))) {
-            int currentAge = blockState.hasProperty(FruitBlock.AGE) ? blockState.getValue(FruitBlock.AGE) : -1;
-            int maxAge = 2;
+            int currentAge = getAge(blockState);
+            int maxAge = getMaxAge(blockState);
 
             if (currentAge < maxAge
                 && getBlockNBTNumber(world, belowPos, "N") > 0 && getBlockNBTNumber(world, belowPos, "P") > 0 && getBlockNBTNumber(world, belowPos, "K") > 0) {
@@ -73,13 +75,13 @@ public class GrowingLogic {
                     fruitEntity.setGrowClock(0);
 
                     if (Math.random() < 0.45) {
-                        int currentAge = blockState.hasProperty(FruitBlock.AGE)
-                                ? blockState.getValue(FruitBlock.AGE) : -1;
-
+                        IntegerProperty ageProperty = getAgeProperty(blockState);
+                        int currentAge = getAge(blockState);
+                        int maxAge = getMaxAge(blockState);
                         int nextAge = currentAge + 1;
 
-                        if (nextAge <= 2) {
-                            world.setBlock(pos, blockState.setValue(FruitBlock.AGE, nextAge), 3);
+                        if (ageProperty != null && currentAge >= 0 && nextAge <= maxAge) {
+                            world.setBlock(pos, blockState.setValue(ageProperty, nextAge), 3);
                         }
                     }
                 } else {
@@ -91,7 +93,7 @@ public class GrowingLogic {
     }
     private static void handleCornAndFarmingFailure(LevelAccessor world, double x, double y, double z, BlockState blockState, BlockPos pos) {
         if (blockState.is(SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM.get())) {
-            int age = blockState.hasProperty(FruitBlock.AGE) ? blockState.getValue(FruitBlock.AGE) : -1;
+            int age = getAge(blockState);
             if (age == 4 && world.isEmptyBlock(pos.above())) {
                 world.setBlock(pos.above(), SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM.get().defaultBlockState(), 3);
             }
@@ -127,6 +129,23 @@ public class GrowingLogic {
             }
         }
     }
+    private static IntegerProperty getAgeProperty(BlockState state) {
+        Property<?> property = state.getBlock().getStateDefinition().getProperty("age");
+        return property instanceof IntegerProperty integerProperty ? integerProperty : null;
+    }
+
+    private static int getAge(BlockState state) {
+        IntegerProperty ageProperty = getAgeProperty(state);
+        return ageProperty == null ? -1 : state.getValue(ageProperty);
+    }
+
+    private static int getMaxAge(BlockState state) {
+        IntegerProperty ageProperty = getAgeProperty(state);
+        return ageProperty == null
+                ? -1
+                : ageProperty.getPossibleValues().stream().max(Integer::compareTo).orElse(-1);
+    }
+
     private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {
