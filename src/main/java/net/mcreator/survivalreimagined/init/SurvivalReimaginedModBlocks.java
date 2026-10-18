@@ -2,12 +2,14 @@ package net.mcreator.survivalreimagined.init;
 
 import net.mcreator.survivalreimagined.block.CarcassPartBlock;
 import net.mcreator.survivalreimagined.block.*;
+import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitDropCondition;
 import net.mcreator.survivalreimagined.block.fruit.FruitTypeConfig;
 import net.mcreator.survivalreimagined.block.fruit.FruitValidPlacement;
 import net.mcreator.survivalreimagined.util.SignInjection;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModTreeGrowers;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -92,26 +94,20 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> PALM_LEAVES = register("palm_leaves", PalmLeavesBlock::new);
 	public static final RegistryEntry<Block> ALOE_VERA = register("aloe_vera", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).strength(0.2f).noCollission().noOcclusion()));
 	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
-	private static final IntegerProperty RYE_AGE = IntegerProperty.create("age", 0, 6);
-	private static final IntegerProperty SPELT_AGE = IntegerProperty.create("age", 0, 6);
-	private static final IntegerProperty HEMP_AGE = IntegerProperty.create("age", 0, 3);
-	private static final IntegerProperty WHEAT_AGE = IntegerProperty.create("age", 0, 7);
-	private static final IntegerProperty POTATO_AGE = IntegerProperty.create("age", 0, 3);
-	private static final IntegerProperty CARROT_AGE = IntegerProperty.create("age", 0,3);
-	private static final IntegerProperty BEETROOT_AGE = IntegerProperty.create("age", 0, 3);
-	private static final IntegerProperty WILD_WHEAT_AGE = IntegerProperty.create("age", 0, 7);
-	private static final IntegerProperty WILD_POTATO_AGE = IntegerProperty.create("age", 0, 3);
-	private static final IntegerProperty WILD_BEETROOT_AGE = IntegerProperty.create("age", 0, 3);
-	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(RYE_AGE, 6));
-	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(SPELT_AGE, 6));
-	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(HEMP_AGE, 3));
-	public static final RegistryEntry<Block> WHEAT_CROP = register("wheat_crop", () -> new SimpleAgeCropBlock(WHEAT_AGE, 7));
-	public static final RegistryEntry<Block> POTATOES = register("potatoes", () -> new SimpleAgeCropBlock(POTATO_AGE, 3));
-	public static final RegistryEntry<Block> BEETROOT = register("beetroot", () -> new SimpleAgeCropBlock(BEETROOT_AGE, 3));
-	public static final RegistryEntry<Block> CARROT = register("carrot", () -> new SimpleAgeCropBlock(CARROT_AGE, 3));
-	public static final RegistryEntry<Block> WILD_WHEAT = register("wild_wheat", () -> new SimpleAgeCropBlock(WILD_WHEAT_AGE, 7, false));
-	public static final RegistryEntry<Block> WILD_POTATOES = register("wild_potatoes", () -> new SimpleAgeCropBlock(WILD_POTATO_AGE, 3, false));
-	public static final RegistryEntry<Block> WILD_BEETROOT = register("wild_beetroot", () -> new SimpleAgeCropBlock(WILD_BEETROOT_AGE, 3, false));
+	private static final IntegerProperty AGE_6 = IntegerProperty.create("age", 0, 6);
+	private static final IntegerProperty AGE_3 = IntegerProperty.create("age", 0, 3);
+	private static final IntegerProperty AGE_7 = IntegerProperty.create("age", 0, 7);
+	private static final IntegerProperty AGE_5 = IntegerProperty.create("age", 0, 5);
+	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(AGE_6, 6));
+	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(AGE_6, 6));
+	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(AGE_3, 3));
+	public static final RegistryEntry<Block> WHEAT_CROP = register("wheat_crop", () -> new SimpleAgeCropBlock(AGE_7, 7));
+	public static final RegistryEntry<Block> POTATOES = register("potatoes", () -> new SimpleAgeCropBlock(AGE_3, 3));
+	public static final RegistryEntry<Block> BEETROOT = register("beetroot", () -> new SimpleAgeCropBlock(AGE_3, 3));
+	public static final RegistryEntry<Block> CARROT = register("carrots", () -> new SimpleAgeCropBlock(AGE_3, 3));
+	public static final RegistryEntry<Block> WILD_WHEAT = register("wild_wheat", () -> new SimpleAgeCropBlock(AGE_7, 7, false));
+	public static final RegistryEntry<Block> WILD_POTATOES = register("wild_potatoes", () -> new SimpleAgeCropBlock(AGE_3, 3, false));
+	public static final RegistryEntry<Block> WILD_BEETROOT = register("wild_beetroot", () -> new SimpleAgeCropBlock(AGE_3, 3, false));
 	public static final RegistryEntry<Block> STRAWBERRY_PLANT = register("strawberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.STRAWBERRY.get()));
 	public static final RegistryEntry<Block> RASPBERRY_PLANT = register("raspberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.RASPBERRY.get()));
 	public static final RegistryEntry<Block> CORN_STALK_MIDDLE = register("corn_stalk_middle",
@@ -434,13 +430,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> MANDARIN_LOG = register("mandarin_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
 	public static final RegistryEntry<Block> MANDARIN_LEAVES = register("mandarin_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f,0.2f).noOcclusion().ignitedByLava()));
 	public static final RegistryEntry<Block> MANDARIN_SAPLING = register("mandarin_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.MANDARIN, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_SAPLING).instabreak().noOcclusion()));
-	public static final RegistryEntry<Block> LOW_FERTILITY_FARMLAND = register("low_fertility_farmland", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f, 0.5f)));
 	public static final RegistryEntry<Block> MEDIUM_FERTILITY_DIRT = register("medium_fertility_dirt", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
 	public static final RegistryEntry<Block> MEDIUM_FERTILITY_GRASS = register("medium_fertility_grass", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.5f)));
-	public static final RegistryEntry<Block> MEDIUM_FERTILITY_SOIL = register("medium_fertility_soil", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
 	public static final RegistryEntry<Block> HIGH_FERTILITY_DIRT = register("high_fertility_dirt", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
 	public static final RegistryEntry<Block> HIGH_FERTILITY_GRASS = register("high_fertility_grass", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.5f)));
-	public static final RegistryEntry<Block> HIGH_FERTILITY_SOIL = register("high_fertility_soil", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
 	public static final RegistryEntry<Block> BRITTLE_OBSIDIAN = register("brittle_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(2,4).lightLevel(blockstate -> 5).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> STONE_SALT_DEPOSIT = register("stone_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> TEOSINTE = register("teosinte", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).instabreak().noCollission().noOcclusion()));
@@ -469,6 +462,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WISTERIA_WALL_SIGN = register("wisteria_wall_sign", () -> new WallSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_SIGN.get())));
 	public static final RegistryEntry<Block> WISTERIA_HANGING_SIGN = register("wisteria_hanging_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
 	public static final RegistryEntry<Block> WISTERIA_CEILING_HANGING_SIGN = register("wisteria_ceiling_hanging_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_HANGING_SIGN.get())));
+
+	public static final RegistryEntry<Block> LOW_FERTILITY_FARMLAND = register("low_fertility_farmland", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.LOW_FERTILITY_FARMLAND.get()));
+	public static final RegistryEntry<Block> MEDIUM_FERTILITY_SOIL = register("medium_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.MEDIUM_FERTILITY_SOIL.get()));
+	public static final RegistryEntry<Block> HIGH_FERTILITY_SOIL = register("high_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.HIGH_FERTILITY_SOIL.get()));
 
 	private SurvivalReimaginedModBlocks() {
 	}

@@ -3,11 +3,9 @@ package net.mcreator.survivalreimagined;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.mcreator.survivalreimagined.client.gui.NPKValueOverlay;
 import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
@@ -49,6 +47,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
 import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
 import net.mcreator.survivalreimagined.util.FoodTooltip;
+import net.mcreator.survivalreimagined.util.SoilTooltip;
 import net.minecraft.world.level.FoliageColor;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
@@ -125,7 +124,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
 			FoodTooltip.append(stack, lines);
+			SoilTooltip.append(stack, lines);
 		});
+		HudRenderCallback.EVENT.register(NPKValueOverlay::onHudRender);
 
 		ClientPlayNetworking.registerGlobalReceiver(PlayerVariablesSyncMessage.TYPE, (payload, context) -> {
 			context.client().execute(() -> {});

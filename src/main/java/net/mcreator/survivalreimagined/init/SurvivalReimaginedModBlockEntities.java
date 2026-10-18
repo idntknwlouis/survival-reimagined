@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.init;
 
 import net.mcreator.survivalreimagined.block.entity.*;
+import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlockEntity;
 import net.minecraft.core.Registry;
@@ -63,6 +64,24 @@ public final class SurvivalReimaginedModBlockEntities {
     public static final RegistryEntry<BlockEntityType<AdvancedAlloyForgeBlockEntity>> ADVANCED_ALLOY_FORGE = register(
             "advanced_alloy_forge",
             BlockEntityType.Builder.of(AdvancedAlloyForgeBlockEntity::new, SurvivalReimaginedModBlocks.ADVANCED_ALLOY_FORGE.get()).build(null)
+    );
+    public static final RegistryEntry<BlockEntityType<FertilitySoilBlockEntity>> LOW_FERTILITY_FARMLAND = register(
+            "low_fertility_farmland",
+            BlockEntityType.Builder.of((pos, state) -> new FertilitySoilBlockEntity(SurvivalReimaginedModBlockEntities.LOW_FERTILITY_FARMLAND.get(), pos, state),
+                    SurvivalReimaginedModBlocks.LOW_FERTILITY_FARMLAND.get()
+            ).build(null)
+    );
+    public static final RegistryEntry<BlockEntityType<FertilitySoilBlockEntity>> MEDIUM_FERTILITY_SOIL = register(
+            "medium_fertility_soil",
+            BlockEntityType.Builder.of((pos, state) -> new FertilitySoilBlockEntity(SurvivalReimaginedModBlockEntities.MEDIUM_FERTILITY_SOIL.get(), pos, state),
+                    SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_SOIL.get()
+            ).build(null)
+    );
+    public static final RegistryEntry<BlockEntityType<FertilitySoilBlockEntity>> HIGH_FERTILITY_SOIL = register(
+            "high_fertility_soil",
+            BlockEntityType.Builder.of((pos, state) -> new FertilitySoilBlockEntity(SurvivalReimaginedModBlockEntities.HIGH_FERTILITY_SOIL.get(), pos, state),
+                    SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL.get()
+            ).build(null)
     );
     public static final RegistryEntry<BlockEntityType<CropGrowthBlockEntity>> CROP_GROWTH = register(
             "crop_growth",

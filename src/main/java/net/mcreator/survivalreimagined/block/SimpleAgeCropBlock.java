@@ -38,6 +38,10 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     private final int maxAge;
     private final boolean farmlandOnly;
 
+    public int getMaxAge() {
+        return this.maxAge;
+    }
+
     public SimpleAgeCropBlock(int maxAge) {
         this(maxAge, true);
     }

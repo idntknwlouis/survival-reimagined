@@ -3,9 +3,11 @@ package net.mcreator.survivalreimagined.procedures;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mcreator.survivalreimagined.block.CornCropBlock;
 import net.mcreator.survivalreimagined.block.entity.GrowthClockAccess;
+import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
+import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilTickUpdate;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.compat.sereneseasons.GetCurrentSeason;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+import net.mcreator.survivalreimagined.block.SimpleAgeCropBlock;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
@@ -88,16 +90,20 @@ public class GrowingLogic {
                     growthClock.survivalReimagined$setGrowClock(0);
 
                     if (world.getRandom().nextDouble() < 0.45) {
-                        IntegerProperty ageProperty = getAgeProperty(blockState);
-                        int currentAge = getAge(blockState);
-                        int maxAge = getMaxAge(blockState);
-                        int nextAge = currentAge + 1;
+                        BlockState currentState = world.getBlockState(pos);
+                        IntegerProperty ageProperty = getAgeProperty(currentState);
 
-                        if (ageProperty != null && currentAge >= 0 && nextAge <= maxAge) {
-                            BlockState grownState = blockState.setValue(ageProperty, nextAge);
-                            world.setBlock(pos, grownState, 3);
-                            if (blockState.getBlock() instanceof CornCropBlock corn && world instanceof ServerLevel serverLevel) {
-                                corn.syncUpper(serverLevel, pos, grownState);
+                        if (ageProperty != null) {
+                            int currentAge = currentState.getValue(ageProperty);
+                            int maxAge = currentState.getBlock() instanceof SimpleAgeCropBlock crop ? crop.getMaxAge() : getMaxAge(currentState);
+
+                            if (currentAge < maxAge) {
+                                BlockState grownState = currentState.setValue(ageProperty, currentAge + 1);
+                                world.setBlock(pos, grownState, 3);
+
+                                if (currentState.getBlock() instanceof CornCropBlock corn && world instanceof ServerLevel serverLevel) {
+                                    corn.syncUpper(serverLevel, pos, grownState);
+                                }
                             }
                         }
                     }
@@ -108,14 +114,14 @@ public class GrowingLogic {
         }
 
         handleCornAndFarmingFailure(world, x, y, z, blockState, pos);
+
     }
 
     private static boolean soilHasNutrients(LevelAccessor world, BlockPos soilPos) {
         BlockEntity soilEntity = world.getBlockEntity(soilPos);
 
-        // The fertility block-entity system has not been ported yet. Until it exists,
-        // don't make all crops sterile simply because N/P/K storage is unavailable.
-        if (soilEntity == null) {
+
+        if (!(soilEntity instanceof FertilitySoilBlockEntity)) {
             return true;
         }
 
@@ -178,8 +184,8 @@ public class GrowingLogic {
 
     private static double getBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity != null) {
-            CompoundTag compound = blockEntity.saveWithId(world.registryAccess());
+        if (blockEntity instanceof FertilitySoilTickUpdate.CustomDataHolder holder) {
+            CompoundTag compound = holder.getPersistentData();
             if (compound.contains(tag)) {
                 return compound.getDouble(tag);
             }
@@ -189,14 +195,15 @@ public class GrowingLogic {
 
     private static void putBlockNBTNumber(LevelAccessor world, BlockPos pos, String tag, double value) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity != null) {
-            CompoundTag compound = blockEntity.saveWithId(world.registryAccess());
-            compound.putDouble(tag, value);
-            blockEntity.loadWithComponents(compound, world.registryAccess());
+        if (blockEntity == null) return;
+
+        if (blockEntity instanceof FertilitySoilTickUpdate.CustomDataHolder holder) {
+            holder.getPersistentData().putDouble(tag, value);
             blockEntity.setChanged();
 
             if (world instanceof ServerLevel serverLevel) {
-                serverLevel.getChunkSource().blockChanged(pos);
+                BlockState state = world.getBlockState(pos);
+                serverLevel.sendBlockUpdated(pos, state, state, 3);
             }
         }
     }
