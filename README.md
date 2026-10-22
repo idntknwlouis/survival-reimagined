@@ -44,7 +44,7 @@ This table tracks broad feature parity against the original.
 | Rune Socketing | ✅ | ✅ | ✅ | — |
 | Rune Effects / Tooltips | ✅ | ✅ | ✅ | — |
 | Fuels / Forge Materials | ✅ | ✅ | ✅ | ✅ |
-| Crops / Plants | ✅ | ✅ | ✅ | 🟡 |
+| Crops / Plants | 🟡 | ✅ | ✅ | 🟡 |
 | Food / Cooking | ✅ | ✅ | ✅ | — |
 | Armor | ✅ | ✅ | ✅ | — |
 | Mobs / Entities | ✅ | 🟡 | ✅ | 🟡 |
