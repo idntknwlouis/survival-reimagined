@@ -11,11 +11,24 @@ base {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	mavenCentral()
+	maven { url = 'https://maven.shedaniel.me' }
+	maven { url = 'https://maven.blamejared.com' }
+	maven { url = 'https://www.cursemaven.com'}
+}
+
+
+loom {
+	runs {
+		client {
+			client()
+			configName = "Minecraft Client"
+			ideConfigGenerated = true
+			runDir = "run"
+			programArgs "--username", "Dev"
+
+		}
+	}
 }
 
 fabricApi {
@@ -25,15 +38,31 @@ fabricApi {
 }
 
 dependencies {
-	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	// Keep Mojang's official names so the existing NeoForge source needs far fewer mapping changes.
+	mappings loom.officialMojangMappings()
+
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	
+
+	// JEI is optional for players, but available in dev so custom machine recipes can be tested.
+	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"
+	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
+	modLocalRuntime "mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}"
+
+	// The NeoForge version uses MixinExtras 0.5.3 in several mixins.
+	include(modImplementation("io.github.llamalad7:mixinextras-fabric:${project.mixinextras_version}"))
+
+	// TerraBlender is required for Fabric Version to allow Mod-Specific Biome Generation
+	modImplementation "curse.maven:terrablender-fabric-565956:6054948"
+	implementation "com.electronwill.night-config:core:3.8.1"
+	implementation "com.electronwill.night-config:toml:3.8.1"
+
+	// Serene Seasons & GlitchCore
+	modImplementation "curse.maven:serene-seasons-291874:6182595"
 }
+
 
 processResources {
 	inputs.property "version", project.version
@@ -47,12 +76,14 @@ tasks.withType(JavaCompile).configureEach {
 	it.options.release = 21
 }
 
-java {
-	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-	// if it is present.
-	// If you remove this line, sources will not be generated.
-	withSourcesJar()
+// IntelliJ's generated Fabric dev run can invoke compileJava without refreshing resources.
+// Keep build/resources/main in sync so lang files, models and GUI textures are never stale.
+tasks.named("compileJava") {
+	finalizedBy tasks.named("processResources")
+}
 
+java {
+	withSourcesJar()
 	sourceCompatibility = JavaVersion.VERSION_21
 	targetCompatibility = JavaVersion.VERSION_21
 }
@@ -61,11 +92,10 @@ jar {
 	inputs.property "archivesName", project.base.archivesName
 
 	from("LICENSE") {
-		rename { "${it}_${inputs.properties.archivesName}"}
+		rename { "${it}_${inputs.properties.archivesName}" }
 	}
 }
 
-// configure the maven publication
 publishing {
 	publications {
 		create("mavenJava", MavenPublication) {
@@ -74,11 +104,6 @@ publishing {
 		}
 	}
 
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
 	}
 }

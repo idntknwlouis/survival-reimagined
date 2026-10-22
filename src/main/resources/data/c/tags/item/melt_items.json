@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:melt/steel_melt_items",
+      "required": false
+    },
+    {
+      "id": "#c:melt/iron_melt_items",
+      "required": false
+    },
+    {
+      "id": "#c:melt/diamond_melt_items",
+      "required": false
+    },
+    {
+      "id": "#c:melt/bronze_melt_items",
+      "required": false
+    },
+    {
+      "id": "#c:melt/gold_melt_items",
+      "required": false
+    }
+  ]
+}

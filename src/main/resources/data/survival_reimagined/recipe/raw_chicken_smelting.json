@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "experience": 0.35,
+  "cookingtime": 200,
+  "ingredient": {
+    "item": "survival_reimagined:raw_chicken"
+  },
+  "result": {
+    "id": "survival_reimagined:cooked_chicken"
+  }
+}

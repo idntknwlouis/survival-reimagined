@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=1": {
+      "model": "survival_reimagined:block/apple_0"
+    },
+    "age=0": {
+      "model": "survival_reimagined:block/apple"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "experience": 0,
+  "cookingtime": 600,
+  "ingredient": {
+    "item": "survival_reimagined:cooked_salmon"
+  },
+  "result": {
+    "id": "survival_reimagined:burnt_salmon"
+  }
+}
