@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -55,6 +56,10 @@ public class RubyHeartItem extends Item {
 			maxHealth.setBaseValue(Math.min(40.0D, player.getMaxHealth() + 2.0D));
 			if (!player.getAbilities().instabuild) stack.shrink(1);
 			player.getCooldowns().addCooldown(this, 100);
+		}
+
+		if (level.isClientSide()) {
+			Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(this));
 		}
 
 		return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());

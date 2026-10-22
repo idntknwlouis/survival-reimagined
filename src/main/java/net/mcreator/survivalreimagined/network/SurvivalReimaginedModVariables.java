@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.storage.DimensionDataStorage;
@@ -28,7 +29,12 @@ public class SurvivalReimaginedModVariables {
     public static final Map<UUID, PlayerVariables> PLAYER_VARIABLES_MAP = new ConcurrentHashMap<>();
     public static PlayerVariables getPlayerVariables(Entity entity) {
         if (entity instanceof ServerPlayer player) {
-            return PLAYER_VARIABLES_MAP.computeIfAbsent(player.getUUID(), id -> new PlayerVariables());
+            PlayerVariablesData data = PlayerVariablesData.get(player);
+
+            PlayerVariables vars = data.get(player.getUUID());
+            PLAYER_VARIABLES_MAP.put(player.getUUID(), vars);
+
+            return vars;
         }
         return new PlayerVariables();
     }
@@ -46,8 +52,10 @@ public class SurvivalReimaginedModVariables {
             syncPlayerVariables(player);
             syncWorldData(player);
         });
+
         ServerPlayConnectionEvents.DISCONNECT.register((handler, server) -> {
-            PLAYER_VARIABLES_MAP.remove(handler.getPlayer().getUUID());
+            ServerPlayer player = handler.getPlayer();
+            ServerLevel level = player.serverLevel();
         });
 
         ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, newPlayer, alive) -> {
@@ -126,6 +134,48 @@ public class SurvivalReimaginedModVariables {
             ServerPlayNetworking.send(player, new SavedDataSyncMessage(0, mapData));
         if (worldData != null)
             ServerPlayNetworking.send(player, new SavedDataSyncMessage(1, worldData));
+    }
+    public static class PlayerVariablesData extends SavedData {
+        public static final String DATA_NAME = "survival_reimagined_playervars";
+
+        private final Map<UUID, PlayerVariables> variables = new ConcurrentHashMap<>();
+
+        public static PlayerVariablesData load(CompoundTag tag, HolderLookup.Provider provider) {
+            PlayerVariablesData data = new PlayerVariablesData();
+
+            for (String key : tag.getAllKeys()) {
+                try {
+                    UUID uuid = UUID.fromString(key);
+                    PlayerVariables vars = new PlayerVariables();
+                    vars.read(tag.getCompound(key));
+                    data.variables.put(uuid, vars);
+                } catch (IllegalArgumentException ignored) {
+
+                }
+            }
+            return data;
+        }
+
+        @Override
+        public CompoundTag save(CompoundTag tag, HolderLookup.Provider provider) {
+            for (Map.Entry<UUID, PlayerVariables> entry : variables.entrySet()) {
+                tag.put(
+                        entry.getKey().toString(),
+                        entry.getValue().write(new CompoundTag())
+                );
+            }
+            return tag;
+        }
+
+        public PlayerVariables get(UUID uuid) {
+            return variables.computeIfAbsent(uuid, id -> new PlayerVariables());
+        }
+        public void markDirty() {
+            setDirty();
+        }
+        public static PlayerVariablesData get(ServerPlayer player) {
+            return player.getServer().overworld().getDataStorage().computeIfAbsent(new SavedData.Factory<>(PlayerVariablesData::new, PlayerVariablesData::load, null), DATA_NAME);
+        }
     }
     public static class WorldVariables extends SavedData {
         public static final String DATA_NAME = "survival_reimagined_worldvars";

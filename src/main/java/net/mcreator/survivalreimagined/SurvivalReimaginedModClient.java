@@ -5,10 +5,12 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.mcreator.survivalreimagined.client.gui.AAFScriptureGUIScreen;
 import net.mcreator.survivalreimagined.client.gui.NPKValueOverlay;
 import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
+import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
@@ -134,6 +136,15 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		ClientPlayNetworking.registerGlobalReceiver(SavedDataSyncMessage.TYPE, (payload, context) -> {
 			context.client().execute(() -> {});
 		});
+		ClientPlayNetworking.registerGlobalReceiver(
+				AAFScripturePageSyncPayload.TYPE,
+				(payload, context) -> context.client().execute(() -> {
+					if (context.client().screen instanceof AAFScriptureGUIScreen screen) {
+						screen.setCurrentPage(payload.page());
+					}
+				})
+		);
+
 		BloodMoonTexture.registerClientReceiver();
 
 		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {

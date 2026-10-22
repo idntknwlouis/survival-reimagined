@@ -18,15 +18,15 @@ import java.util.Comparator;
 import java.util.List;
 
 public final class SurvivalReimaginedModTabs {
-	public static final RegistryEntry<CreativeModeTab> SURVIVAL_REBORN = registerTab();
+	public static final RegistryEntry<CreativeModeTab> SURVIVAL_REIMAGINED = registerTab();
 
 	private SurvivalReimaginedModTabs() {
 	}
 
 	private static RegistryEntry<CreativeModeTab> registerTab() {
-		var id = SurvivalReimaginedMod.asResource("survival_reborn");
+		var id = SurvivalReimaginedMod.asResource("survival_reimagined");
 		CreativeModeTab tab = FabricItemGroup.builder()
-				.title(Component.translatable("item_group.survival_reimagined.survival_reborn"))
+				.title(Component.translatable("item_group.survival_reimagined.survival_reimagined"))
 				.icon(() -> new ItemStack(SurvivalReimaginedModItems.HEART.get()))
 				.displayItems((parameters, output) -> {
 					List<Item> items = new ArrayList<>();

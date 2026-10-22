@@ -1,58 +1,26 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.mcreator.survivalreimagined.item.*;
+import net.mcreator.survivalreimagined.world.inventory.AAFScriptureGUIMenu;
 import net.minecraft.core.Registry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
-import net.mcreator.survivalreimagined.item.AndesiteRockItem;
-import net.mcreator.survivalreimagined.item.RuneItem;
-import net.mcreator.survivalreimagined.item.RubyHeartItem;
-import net.mcreator.survivalreimagined.item.DiamondKnifeItem;
-import net.mcreator.survivalreimagined.item.DiamondSawItem;
-import net.mcreator.survivalreimagined.item.DiamondHammerItem;
-import net.mcreator.survivalreimagined.item.SteelKnifeItem;
-import net.mcreator.survivalreimagined.item.SteelSawItem;
-import net.mcreator.survivalreimagined.item.SteelHammerItem;
-import net.mcreator.survivalreimagined.item.SteelHoeItem;
-import net.mcreator.survivalreimagined.item.SteelShovelItem;
-import net.mcreator.survivalreimagined.item.SteelAxeItem;
-import net.mcreator.survivalreimagined.item.SteelPickaxeItem;
-import net.mcreator.survivalreimagined.item.SteelSwordItem;
-import net.mcreator.survivalreimagined.item.BronzeKnifeItem;
-import net.mcreator.survivalreimagined.item.BronzeSawItem;
-import net.mcreator.survivalreimagined.item.BronzeHammerItem;
-import net.mcreator.survivalreimagined.item.BronzeHoeItem;
-import net.mcreator.survivalreimagined.item.BronzeShovelItem;
-import net.mcreator.survivalreimagined.item.BronzeAxeItem;
-import net.mcreator.survivalreimagined.item.BronzePickaxeItem;
-import net.mcreator.survivalreimagined.item.BronzeSwordItem;
-import net.mcreator.survivalreimagined.item.CopperChunkItem;
-import net.mcreator.survivalreimagined.item.CopperChiselItem;
-import net.mcreator.survivalreimagined.item.FlintToolItem;
-import net.mcreator.survivalreimagined.item.StoneHammerItem;
-import net.mcreator.survivalreimagined.item.WoodenHammerItem;
-import net.mcreator.survivalreimagined.item.WoodenSawItem;
-import net.mcreator.survivalreimagined.item.WoodenKnifeItem;
-import net.mcreator.survivalreimagined.item.RawTinItem;
-import net.mcreator.survivalreimagined.item.RoughTinItem;
-import net.mcreator.survivalreimagined.item.StoneRockItem;
-import net.mcreator.survivalreimagined.item.SurfaceRockItem;
-import net.mcreator.survivalreimagined.item.TinChunkItem;
-import net.mcreator.survivalreimagined.item.TinIngotItem;
-import net.mcreator.survivalreimagined.item.TinNuggetItem;
-import net.mcreator.survivalreimagined.item.SpoilingFoodItem;
-import net.mcreator.survivalreimagined.item.GasMaskItem;
-import net.mcreator.survivalreimagined.item.GasMaskFilterItem;
-import net.mcreator.survivalreimagined.item.SurvivalArmorItem;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -249,27 +217,15 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BLOCK_OF_CHARCOAL = block(SurvivalReimaginedModBlocks.BLOCK_OF_CHARCOAL);
 	public static final RegistryEntry<Item> CHARCOAL_POWDER = simple("charcoal_powder");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
-	public static final RegistryEntry<Item> COPPER_CHISEL = register("copper_chisel", CopperChiselItem::new);
 	public static final RegistryEntry<Item> SMALL_COAL_CHUNK = simple("small_coal_chunk");
 	public static final RegistryEntry<Item> SMALL_STICK = simple("small_stick");
 	public static final RegistryEntry<Item> WOOD_INGOT = simple("wood_ingot");
-	public static final RegistryEntry<Item> WOODEN_HAMMER = register("wooden_hammer", WoodenHammerItem::new);
-	public static final RegistryEntry<Item> WOODEN_SAW = register("wooden_saw", WoodenSawItem::new);
-	public static final RegistryEntry<Item> WOODEN_KNIFE = register("wooden_knife", WoodenKnifeItem::new);
 	public static final RegistryEntry<Item> BRONZE_INGOT = simple("bronze_ingot");
 	public static final RegistryEntry<Item> BRONZE_NUGGET = simple("bronze_nugget");
 	public static final RegistryEntry<Item> COPPER_HANDLE = simple("copper_handle");
 	public static final RegistryEntry<Item> SMALL_COPPER_HANDLE = simple("small_copper_handle");
 	public static final RegistryEntry<Item> BRONZE_HANDLE = simple("bronze_handle");
 	public static final RegistryEntry<Item> SMALL_BRONZE_HANDLE = simple("small_bronze_handle");
-	public static final RegistryEntry<Item> BRONZE_SWORD = register("bronze_sword", BronzeSwordItem::new);
-	public static final RegistryEntry<Item> BRONZE_PICKAXE = register("bronze_pickaxe", BronzePickaxeItem::new);
-	public static final RegistryEntry<Item> BRONZE_AXE = register("bronze_axe", BronzeAxeItem::new);
-	public static final RegistryEntry<Item> BRONZE_SHOVEL = register("bronze_shovel", BronzeShovelItem::new);
-	public static final RegistryEntry<Item> BRONZE_HOE = register("bronze_hoe", BronzeHoeItem::new);
-	public static final RegistryEntry<Item> BRONZE_HAMMER = register("bronze_hammer", BronzeHammerItem::new);
-	public static final RegistryEntry<Item> BRONZE_SAW = register("bronze_saw", BronzeSawItem::new);
-	public static final RegistryEntry<Item> BRONZE_KNIFE = register("bronze_knife", BronzeKnifeItem::new);
 	public static final RegistryEntry<Item> ROUGH_BRONZE = simple("rough_bronze");
 	public static final RegistryEntry<Item> ROUGH_IRON = simple("rough_iron");
 	public static final RegistryEntry<Item> ROUGH_GOLD = simple("rough_gold");
@@ -349,7 +305,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> AMBER = simple("amber");
 	public static final RegistryEntry<Item> RUBY = simple("ruby");
 	public static final RegistryEntry<Item> RUBY_HEART_SHARD = simple("ruby_heart_shard");
-	public static final RegistryEntry<Item> GLASS_SHARD = simple("glass_shard");
 	public static final RegistryEntry<Item> RUBY_HEART = register("ruby_heart", RubyHeartItem::new);
 	public static final RegistryEntry<Item> SAPPHIRE_SILVER_RUNE = rune("sapphire_silver_rune", "Silver", ChatFormatting.WHITE, "Sapphire", ChatFormatting.BLUE);
 	public static final RegistryEntry<Item> SAPPHIRE_GOLD_RUNE = rune("sapphire_gold_rune", "Gold", ChatFormatting.GOLD, "Sapphire", ChatFormatting.BLUE);
@@ -381,14 +336,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> STEEL_HAMMER_HEAD = simpleUnstackable("steel_hammer_head");
 	public static final RegistryEntry<Item> STEEL_SAW_BLADE = simpleUnstackable("steel_saw_blade");
 	public static final RegistryEntry<Item> STEEL_KNIFE_BLADE = simpleUnstackable("steel_knife_blade");
-	public static final RegistryEntry<Item> STEEL_SWORD = register("steel_sword", SteelSwordItem::new);
-	public static final RegistryEntry<Item> STEEL_PICKAXE = register("steel_pickaxe", SteelPickaxeItem::new);
-	public static final RegistryEntry<Item> STEEL_AXE = register("steel_axe", SteelAxeItem::new);
-	public static final RegistryEntry<Item> STEEL_SHOVEL = register("steel_shovel", SteelShovelItem::new);
-	public static final RegistryEntry<Item> STEEL_HOE = register("steel_hoe", SteelHoeItem::new);
-	public static final RegistryEntry<Item> STEEL_HAMMER = register("steel_hammer", SteelHammerItem::new);
-	public static final RegistryEntry<Item> STEEL_SAW = register("steel_saw", SteelSawItem::new);
-	public static final RegistryEntry<Item> STEEL_KNIFE = register("steel_knife", SteelKnifeItem::new);
 	public static final RegistryEntry<Item> DIAMOND_SWORD_BLADE = simpleUnstackable("diamond_sword_blade");
 	public static final RegistryEntry<Item> DIAMOND_PICKAXE_HEAD = simpleUnstackable("diamond_pickaxe_head");
 	public static final RegistryEntry<Item> DIAMOND_AXE_HEAD = simpleUnstackable("diamond_axe_head");
@@ -397,10 +344,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DIAMOND_HAMMER_HEAD = simpleUnstackable("diamond_hammer_head");
 	public static final RegistryEntry<Item> DIAMOND_SAW_BLADE = simpleUnstackable("diamond_saw_blade");
 	public static final RegistryEntry<Item> DIAMOND_KNIFE_BLADE = simpleUnstackable("diamond_knife_blade");
-	public static final RegistryEntry<Item> DIAMOND_HAMMER = register("diamond_hammer", DiamondHammerItem::new);
-	public static final RegistryEntry<Item> DIAMOND_SAW = register("diamond_saw", DiamondSawItem::new);
-	public static final RegistryEntry<Item> DIAMOND_KNIFE = register("diamond_knife", DiamondKnifeItem::new);
-	public static final RegistryEntry<Item> STONE_HAMMER = register("stone_hammer", StoneHammerItem::new);
 	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
 
 	public static final RegistryEntry<Item> TIN_ORE = block(SurvivalReimaginedModBlocks.TIN_ORE);
@@ -565,11 +508,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DIAMOND_PLATE = block(SurvivalReimaginedModBlocks.DIAMOND_PLATE);
 	public static final RegistryEntry<Item> NETHERITE_PLATE = block(SurvivalReimaginedModBlocks.NETHERITE_PLATE);
 
-	public static final RegistryEntry<Item> RAW_TIN = register("raw_tin", RawTinItem::new);
-	public static final RegistryEntry<Item> TIN_INGOT = register("tin_ingot", TinIngotItem::new);
-	public static final RegistryEntry<Item> TIN_NUGGET = register("tin_nugget", TinNuggetItem::new);
-	public static final RegistryEntry<Item> TIN_CHUNK = register("tin_chunk", TinChunkItem::new);
-	public static final RegistryEntry<Item> ROUGH_TIN = register("rough_tin", RoughTinItem::new);
+
 
 	public static final RegistryEntry<Item> COPPER_CHUNK = register("copper_chunk", CopperChunkItem::new);
 	public static final RegistryEntry<Item> COPPER_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.COPPER_ROCK_BLOCK);
@@ -681,6 +620,165 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FLOWERING_RED_CHERRY_LEAVES = block(SurvivalReimaginedModBlocks.FLOWERING_RED_CHERRY_LEAVES);
 	public static final RegistryEntry<Item> RED_CHERRY_SAPLING = block(SurvivalReimaginedModBlocks.RED_CHERRY_SAPLING);
 
+	public static final Item OAK_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_oak_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item DARK_OAK_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_dark_oak_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item SPRUCE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_spruce_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item BIRCH_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_birch_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item MANGROVE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_mangrove_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item ACACIA_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_acacia_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item JUNGLE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_jungle_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item CHERRY_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_cherry_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item MANDARIN_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mandarin_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item RADIATED_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item WISTERIA_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_bark"), new BarkItem(new Item.Properties(), 400));
+	public static final Item CRIMSON_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_crimson_bark"), new BarkItem(new Item.Properties(), 0));
+	public static final Item WARPED_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_warped_bark"), new BarkItem(new Item.Properties(), 0));
+
+	public static final Item OAK_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "oak_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item DARK_OAK_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "dark_oak_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item SPRUCE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "spruce_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item BIRCH_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "birch_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item ACACIA_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "acacia_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item JUNGLE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "jungle_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item MANGROVE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mangrove_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item CHERRY_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cherry_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item RADIATED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item WISTERIA_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item MANDARIN_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mandarin_plank"), new BarkItem(new Item.Properties(), 400));
+	public static final Item CRIMSON_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "crimson_plank"), new BarkItem(new Item.Properties(), 0));
+	public static final Item WARPED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "warped_plank"), new BarkItem(new Item.Properties(), 0));
+
+	public static final Item BRONZE_SWORD = registerTool("bronze_sword", new SwordItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(SwordItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 5, -2.4F))));
+	public static final Item BRONZE_PICKAXE = registerTool("bronze_pickaxe", new PickaxeItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 3, -2.8F))));
+	public static final Item BRONZE_AXE = registerTool("bronze_axe", new AxeItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 8, -3.2F))));
+	public static final Item BRONZE_SHOVEL = registerTool("bronze_shovel", new ShovelItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 1, -3F))));
+	public static final Item BRONZE_HOE = registerTool("bronze_hoe", new HoeItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 0, -1))));
+	public static final Item BRONZE_HAMMER = registerTool("bronze_hammer", new HammerItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 5.5F, -3.4F))));
+	public static final Item BRONZE_SAW = registerTool("bronze_saw", new SawItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 1, -3))));
+	public static final Item BRONZE_KNIFE = registerTool("bronze_knife", new KnifeItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 2, -2))));
+
+	public static final Item STEEL_SWORD = registerTool("steel_sword", new SwordItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(SwordItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 6, -2.4F))));
+	public static final Item STEEL_PICKAXE = registerTool("steel_pickaxe", new PickaxeItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 3.5F, -2.8F))));
+	public static final Item STEEL_AXE = registerTool("steel_axe", new AxeItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 9F, -3.1F))));
+	public static final Item STEEL_SHOVEL = registerTool("steel_shovel", new ShovelItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 1.5F, -3F))));
+	public static final Item STEEL_HOE = registerTool("steel_hoe", new HoeItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 0, -1))));
+	public static final Item STEEL_HAMMER = registerTool("steel_hammer", new HammerItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 6, -3.4F))));
+	public static final Item STEEL_SAW = registerTool("steel_saw", new SawItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 2, -3))));
+	public static final Item STEEL_KNIFE = registerTool("steel_knife", new KnifeItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 2.5F, -2))));
+
+	public static final Item DIAMOND_HAMMER = registerTool("diamond_hammer", new HammerItem(Tiers.DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 7, -3.4F))));
+	public static final Item DIAMOND_SAW = registerTool("diamond_saw", new SawItem(Tiers.DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 3, -3))));
+	public static final Item DIAMOND_KNIFE = registerTool("diamond_knife", new KnifeItem(Tiers.DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 2.5F, -2))));
+
+	public static final Item WOODEN_HAMMER = registerTool("wooden_hammer", new HammerItem(Tiers.WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.WOOD, 2, -3.4F))));
+	public static final Item WOODEN_SAW = registerTool("wooden_saw", new SawItem(Tiers.WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.WOOD, 1, -3))));
+	public static final Item WOODEN_KNIFE = registerTool("wooden_knife", new KnifeItem(Tiers.WOOD, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.WOOD, 2, -2))));
+
+	public static final Item STONE_HAMMER = registerTool("stone_hammer", new HammerItem(Tiers.STONE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.STONE, 2.5f, -3.4F))));
+	public static final Item STONE_SAW = registerTool("stone_saw", new SawItem(Tiers.STONE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.STONE, 1.5f, -3))));
+	public static final Item STONE_KNIFE = registerTool("stone_knife", new KnifeItem(Tiers.STONE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.STONE, 2.5f, -2))));
+
+	public static final Item NETHERITE_HAMMER = registerTool("netherite_hammer", new HammerItem(Tiers.NETHERITE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.NETHERITE, 8, -3.4F))));
+	public static final Item NETHERITE_SAW = registerTool("netherite_saw", new SawItem(Tiers.NETHERITE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.NETHERITE, 3.5f, -3))));
+	public static final Item NETHERITE_KNIFE = registerTool("netherite_knife", new KnifeItem(Tiers.NETHERITE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.NETHERITE, 4, -2))));
+
+	public static final Item BRONZE_CHISEL = registerTool("bronze_chisel", new ChiselItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 2, -2))));
+	public static final Item STEEL_CHISEL = registerTool("steel_chisel", new ChiselItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 2, -2))));
+	public static final Item DIAMOND_CHISEL = registerTool("diamond_chisel", new ChiselItem(Tiers.DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 2, -2))));
+
+	public static final RegistryEntry<Item> BOAT_PADDLES = simple("boat_paddles");
+	public static final RegistryEntry<Item> MORTAR_PESTAL = damageOnCrafting("mortar_pestal", new Item.Properties().stacksTo(1).durability(64), ItemStack.EMPTY);
+
+	public static final RegistryEntry<Item> CLAY_BRICK = simple("clay_brick");
+	public static final RegistryEntry<Item> IRON_CHUNK = simple("iron_chunk");
+	public static final RegistryEntry<Item> GOLD_CHUNK = simple("gold_chunk");
+	public static final RegistryEntry<Item> REDSTONE_CHUNK = simple("redstone_chunk");
+	public static final RegistryEntry<Item> STEEL_NUGGET = simple("steel_nugget");
+	public static final RegistryEntry<Item> ROUGH_REDSTONE = simple("rough_redstone");
+	public static final RegistryEntry<Item> REDSTONE_INGOT = simple("redstone_ingot");
+	public static final RegistryEntry<Item> REDSTONE_NUGGET = simple("redstone_nugget");
+	public static final RegistryEntry<Item> SULFUR = simple("sulfur");
+	public static final RegistryEntry<Item> NITRE = simple("nitre");
+	public static final RegistryEntry<Item> SALTPETER = simple("saltpeter");
+	public static final RegistryEntry<Item> SULFUR_POWDER = simple("sulfur_powder");
+	public static final RegistryEntry<Item> MALACHITE = simple("malachite");
+	public static final RegistryEntry<Item> MALACHITE_NUGGET = simple("malachite_nugget");
+	public static final RegistryEntry<Item> AZURITE = simple("azurite");
+	public static final RegistryEntry<Item> AZURITE_NUGGET = simple("azurite_nugget");
+	public static final RegistryEntry<Item> TURANITE_NUGGET = simple("turanite_nugget");
+	public static final RegistryEntry<Item> MUD_ROCK = simple("turanite_nugget");
+	public static final RegistryEntry<Item> CRYING_OBSIDIAN_ROCK = simple("crying_obsidian_rock");
+	public static final RegistryEntry<Item> ANCIENT_DEBRIS_CHUNK = simple("ancient_debris_chunk");
+	public static final RegistryEntry<Item> ARGILLITE_ROCK = simple("argillite_rock");
+	public static final RegistryEntry<Item> CHALK_ROCK = simple("chalk_rock");
+	public static final RegistryEntry<Item> SALT_ROCK = simple("salt_rock");
+	public static final RegistryEntry<Item> DIRT_PILE = simple("dirt_pile");
+	public static final RegistryEntry<Item> SAND_PILE = simple("sand_pile");
+	public static final RegistryEntry<Item> RED_SAND_PILE = simple("red_sand_pile");
+	public static final RegistryEntry<Item> COARSE_DIRT_PILE = simple("coarse_dirt_pile");
+	public static final RegistryEntry<Item> ROOTED_DIRT_PILE = simple("rooted_dirt_pile");
+	public static final RegistryEntry<Item> GRAVEL_PILE = simple("gravel_pile");
+	public static final RegistryEntry<Item> SOUL_SAND_PILE = simple("soul_sand_pile");
+	public static final RegistryEntry<Item> MUD_PILE = simple("mud_pile");
+	public static final RegistryEntry<Item> SANDSTONE_CHUNK = simple("sandstone_chunk");
+	public static final RegistryEntry<Item> RED_SANDSTONE_CHUNK = simple("red_sandstone_chunk");
+	public static final RegistryEntry<Item> ENDER_DUST = simple("ender_dust");
+	public static final RegistryEntry<Item> TIN_CHUNK = simple("tin_chunk");
+	public static final RegistryEntry<Item> TIN_INGOT = simple("tin_ingot");
+	public static final RegistryEntry<Item> TIN_NUGGET = simple("tin_nugget");
+	public static final RegistryEntry<Item> RAW_TIN = simple("raw_tin");
+	public static final RegistryEntry<Item> ROUGH_TIN = simple("rough_tin");
+
+	public static final RegistryEntry<Item> GLASS_SHARD = simple("glass_shard");
+	public static final RegistryEntry<Item> WHITE_GLASS_SHARD = simple("white_glass_shard");
+	public static final RegistryEntry<Item> ORANGE_GLASS_SHARD = simple("orange_glass_shard");
+	public static final RegistryEntry<Item> MAGENTA_GLASS_SHARD = simple("magenta_glass_shard");
+	public static final RegistryEntry<Item> LIGHT_BLUE_GLASS_SHARD = simple("light_blue_glass_shard");
+	public static final RegistryEntry<Item> YELLOW_GLASS_SHARD = simple("yellow_glass_shard");
+	public static final RegistryEntry<Item> LIME_GLASS_SHARD = simple("lime_green_glass_shard");
+	public static final RegistryEntry<Item> PINK_GLASS_SHARD = simple("pink_glass_shard");
+	public static final RegistryEntry<Item> BLACK_GLASS_SHARD = simple("black_glass_shard");
+	public static final RegistryEntry<Item> LIGHT_GREY_GLASS_SHARD = simple("light_grey_glass_shard");
+	public static final RegistryEntry<Item> CYAN_GLASS_SHARD = simple("cyan_glass_shard");
+	public static final RegistryEntry<Item> PURPLE_GLASS_SHARD = simple("purple_glass_shard");
+	public static final RegistryEntry<Item> BLUE_GLASS_SHARD = simple("blue_glass_shard");
+	public static final RegistryEntry<Item> GREEN_GLASS_SHARD = simple("green_glass_shard");
+	public static final RegistryEntry<Item> BROWN_GLASS_SHARD = simple("brown_glass_shard");
+	public static final RegistryEntry<Item> RED_GLASS_SHARD = simple("red_glass_shard");
+	public static final RegistryEntry<Item> GREY_GLASS_SHARD = simple("grey_glass_shard");
+
+	public static final RegistryEntry<Item> HEMP_PAPER = simple("hemp_paper");
+	public static final RegistryEntry<Item> GOLD_HEART = register("gold_heart", GoldHeartItem::new);
+
+	public static final RegistryEntry<Item> BLOOD_MOON_ITEM = simple("blood_moon_item");
+	public static final RegistryEntry<Item> RADIATION_ITEM = simple("radiation_item");
+	public static final RegistryEntry<Item> ZOMBIE_FACE = simple("zombie_face");
+	public static final RegistryEntry<Item> PARANOIA_EYE = simple("paranoia_eye");
+	public static final RegistryEntry<Item> FEAR_EYE = simple("fear_eye");
+	public static final RegistryEntry<Item> EYE_CLOSED = simple("eye_closed");
+
+	public static final RegistryEntry<Item> FLESH = food("flesh", 2, 0.3f);
+	public static final RegistryEntry<Item> HEART_OF_THE_BLOOD_MOON = uniqueItem("heart_of_the_blood_moon", Rarity.RARE);
+	public static final RegistryEntry<Item> HEART_OF_THE_NETHER = uniqueItem("heart_of_the_nether", Rarity.EPIC);
+
+
+
+	public static final RegistryEntry<Item> AAF_BOOK_SCRIPTURE = register(
+			"aaf_scripture",
+			() -> new BookScriptureItem(
+					Rarity.EPIC,
+					Component.literal(" §7Advanced Alloy Forge"),
+					List.of(),
+                    AAFScriptureGUIMenu::new
+			)
+	);
+
+
+
+
+
+
+
 	public static final RegistryEntry<Item> MANDARIN_SIGN = registerItem("mandarin_sign",
 			(properties) -> new SignItem(properties,
 					SurvivalReimaginedModBlocks.MANDARIN_SIGN.get(),
@@ -762,9 +860,38 @@ public final class SurvivalReimaginedModItems {
 		return register(id, () -> itemFactory.apply(properties));
 	}
 
+	private static Item registerTool(String name, Item item) {
+		return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, name), item);
+	}
+
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
+	}
+	private static RegistryEntry<Item> simpleProperties(String path, Item.Properties properties) {
+		return register(path, () -> new Item(properties));
+	}
+
+
+
+	private static RegistryEntry<Item> damageOnCrafting(String path, Item.Properties properties, ItemStack retval) {
+		return register(path, () -> new Item(properties) {
+			@Override
+			public boolean hasCraftingRemainingItem() {
+				return true;
+			}
+
+			@Override
+			public ItemStack getRecipeRemainder(ItemStack stack) {
+				ItemStack copy = stack.copy();
+				copy.setDamageValue(copy.getDamageValue() + 1);
+
+				if (copy.getDamageValue() >= copy.getMaxDamage()) {
+					return retval != null ? retval.copy() : ItemStack.EMPTY;
+				}
+				return copy;
+			}
+		});
 	}
 
 	private static RegistryEntry<Item> food(String path, int nutrition, float saturation) {
@@ -798,8 +925,8 @@ public final class SurvivalReimaginedModItems {
 		return register(path, () -> new RuneItem(runeType, runeTypeColor, crystal, crystalColor));
 	}
 
-	private static RegistryEntry<Item> rare(String path) {
-		return register(path, () -> new Item(new Item.Properties().rarity(net.minecraft.world.item.Rarity.RARE)));
+	private static RegistryEntry<Item> uniqueItem(String path, Rarity rarity) {
+		return register(path, () -> new Item(new Item.Properties().rarity(rarity)));
 	}
 
 	private static RegistryEntry<Item> register(String path, Supplier<? extends Item> factory) {

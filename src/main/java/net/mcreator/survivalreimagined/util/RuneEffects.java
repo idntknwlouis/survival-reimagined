@@ -619,8 +619,8 @@ public final class RuneEffects {
 		return stack.is(INFUSABLE_WEAPON)
 				|| stack.getItem() instanceof SwordItem
 				|| stack.is(net.minecraft.tags.ItemTags.SWORDS)
-				|| stack.is(SurvivalReimaginedModItems.BRONZE_SWORD.get())
-				|| stack.is(SurvivalReimaginedModItems.STEEL_SWORD.get());
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SWORD)
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SWORD);
 	}
 
 	private static boolean isRuneTool(ItemStack stack) {
@@ -629,19 +629,19 @@ public final class RuneEffects {
 				|| stack.getItem() instanceof AxeItem
 				|| stack.getItem() instanceof ShovelItem
 				|| stack.getItem() instanceof HoeItem
-				|| stack.is(SurvivalReimaginedModItems.BRONZE_HAMMER.get())
-				|| stack.is(SurvivalReimaginedModItems.BRONZE_SAW.get())
-				|| stack.is(SurvivalReimaginedModItems.BRONZE_KNIFE.get())
-				|| stack.is(SurvivalReimaginedModItems.STEEL_HAMMER.get())
-				|| stack.is(SurvivalReimaginedModItems.STEEL_SAW.get())
-				|| stack.is(SurvivalReimaginedModItems.STEEL_KNIFE.get())
-				|| stack.is(SurvivalReimaginedModItems.DIAMOND_HAMMER.get())
-				|| stack.is(SurvivalReimaginedModItems.DIAMOND_SAW.get())
-				|| stack.is(SurvivalReimaginedModItems.DIAMOND_KNIFE.get())
-				|| stack.is(SurvivalReimaginedModItems.WOODEN_HAMMER.get())
-				|| stack.is(SurvivalReimaginedModItems.WOODEN_SAW.get())
-				|| stack.is(SurvivalReimaginedModItems.WOODEN_KNIFE.get())
-				|| stack.is(SurvivalReimaginedModItems.STONE_HAMMER.get());
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_HAMMER)
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_SAW)
+				|| stack.is(SurvivalReimaginedModItems.BRONZE_KNIFE)
+				|| stack.is(SurvivalReimaginedModItems.STEEL_HAMMER)
+				|| stack.is(SurvivalReimaginedModItems.STEEL_SAW)
+				|| stack.is(SurvivalReimaginedModItems.STEEL_KNIFE)
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_HAMMER)
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_SAW)
+				|| stack.is(SurvivalReimaginedModItems.DIAMOND_KNIFE)
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_HAMMER)
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_SAW)
+				|| stack.is(SurvivalReimaginedModItems.WOODEN_KNIFE)
+				|| stack.is(SurvivalReimaginedModItems.STONE_HAMMER);
 	}
 
 	private static boolean isPickaxe(ItemStack stack) {

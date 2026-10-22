@@ -28,7 +28,7 @@ public class GhostEntity extends PathfinderMob {
 		xpReward = 0;
 		setNoAi(true);
 		setNoGravity(true);
-		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SurvivalReimaginedModItems.BRONZE_HOE.get()));
+		setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(SurvivalReimaginedModItems.BRONZE_HOE));
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}
 

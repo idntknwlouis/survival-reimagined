@@ -3,9 +3,12 @@ package net.mcreator.survivalreimagined;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.mcreator.survivalreimagined.command.EventsCommand;
 import net.mcreator.survivalreimagined.init.*;
 import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
+import net.mcreator.survivalreimagined.network.gui.AAFScriptureGUIButtonMessage;
+import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModOverworldRegion;
 import net.minecraft.resources.ResourceLocation;
@@ -63,10 +66,16 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
 		SurvivalReimaginedModVariables.register();
+		SurvivalReimaginedModFuels.register();
 		SurvivalReimaginedModConfig.load();
 		EventsCommand.register();
 		BloodMoonTexture.initPackets();
 		BloodMoonTexture.registerServerTicker();
+		AAFScriptureGUIButtonMessage.registerC2S();
+		PayloadTypeRegistry.playS2C().register(
+				AAFScripturePageSyncPayload.TYPE,
+				AAFScripturePageSyncPayload.STREAM_CODEC
+		);
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {
