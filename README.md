@@ -44,29 +44,28 @@ This table tracks broad feature parity against the original.
 | Rune Socketing | ✅ | ✅ | ✅ | — |
 | Rune Effects / Tooltips | ✅ | ✅ | ✅ | — |
 | Fuels / Forge Materials | ✅ | ✅ | ✅ | ✅ |
-| Crops / Plants | 🟡 | ✅ | ✅ | 🟡 |
+| Crops / Plants | ✅ | ✅ | ✅ | ✅ |
 | Food / Cooking | ✅ | ✅ | ✅ | — |
 | Armor | ✅ | ✅ | ✅ | — |
-| Mobs / Entities | ✅ | 🟡 | ✅ | 🟡 |
+| Mobs / Entities | ✅ | ✅ | ✅ | ✅ |
 | Carcass / Butchering | ✅ | ✅ | ✅ | — |
 | Structures | ❌ | ❌ | ❌ | ❌ |
-| Biomes | — | —  | —  | 🟡 |
-| Radiation Systems | 🟡 | — | — | — |
+| Biomes | — | —  | —  | ✅ |
+| Radiation Systems | ✅ | — | — | — |
 | Blood Moon Event | ✅ | ✅ | ✅ | 🟡 (Mobs) |
-| Decorative / Utility Blocks | 🟡 | 🟡 | 🟡 | — |
+| Decorative / Utility Blocks | ✅ | ✅ | ✅ | — |
 | Sounds / Particles | 🟡 | — | 🟡 | — |
 | Survival Progression | ❌ | ❌ | ❌ | ❌ |
-| Advancements | 🟡 | 🟡 | 🟡 | — |
+| Advancements | 🟡 | ✅ | ✅ | — |
 | Compat Content | ❌ | ❌ | ❌ | ❌ |
 
 
 
 ## Current Roadmap
 
-1. Finish Armor, Mobs / Entities, Carcass / Butchering, Structures, and Radiation Systems
-2. Advancement parity and cleanup
-3. Decorative / utility block parity
-4. Release-ready testing and balancing
-5. Compat content
+1. Carcass / Butchering, Structures
+2. Decorative / utility block parity
+3. Release-ready testing and balancing
+4. Compat content
 
 
