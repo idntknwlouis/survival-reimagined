@@ -16,5 +16,7 @@ public final class SurvivalReimaginedModScreens {
 		MenuScreens.register(SurvivalReimaginedModMenus.RMI.get(), RMIScreen::new);
 		MenuScreens.register(SurvivalReimaginedModMenus.ADVANCED_ALLOY_FORGE_GUI.get(), AdvancedAlloyForgeGUIScreen::new);
 		MenuScreens.register(SurvivalReimaginedModMenus.AAF_SCRIPTURE_GUI.get(), AAFScriptureGUIScreen::new);
+		MenuScreens.register(SurvivalReimaginedModMenus.DRYING_RACK_GUI.get(), DryingRackGUIScreen::new);
+		MenuScreens.register(SurvivalReimaginedModMenus.TANNING_BARREL_GUI.get(), TanningBarrelGUIScreen::new);
 	}
 }

@@ -4,9 +4,9 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-import net.mcreator.survivalreimagined.procedures.BleedingActiveTickConditionProcedure;
-import net.mcreator.survivalreimagined.procedures.BleedingEffectStartedappliedProcedure;
-import net.mcreator.survivalreimagined.procedures.BleedingOnEffectActiveTickProcedure;
+import net.mcreator.survivalreimagined.potion.ActiveTickCondition.BleedingActiveTickConditionProcedure;
+import net.mcreator.survivalreimagined.potion.EffectStarted.BleedingEffectStartedAppliedProcedure;
+import net.mcreator.survivalreimagined.potion.EffectActiveTick.BleedingOnEffectActiveTickProcedure;
 
 public class BleedingMobEffect extends MobEffect {
 	public BleedingMobEffect() {
@@ -15,7 +15,7 @@ public class BleedingMobEffect extends MobEffect {
 
 	@Override
 	public void onEffectStarted(LivingEntity entity, int amplifier) {
-		BleedingEffectStartedappliedProcedure.execute(entity);
+		BleedingEffectStartedAppliedProcedure.execute(entity);
 	}
 
 	@Override

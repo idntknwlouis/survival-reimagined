@@ -1,15 +1,15 @@
 {
   "variants": {
-    "carcass_stage=1": {
+    "horse_carcass_state=1": {
       "model": "survival_reimagined:block/skinned_horse_0"
     },
-    "carcass_stage=2": {
+    "horse_carcass_state=2": {
       "model": "survival_reimagined:block/skinned_horse_1"
     },
-    "carcass_stage=3": {
+    "horse_carcass_state=3": {
       "model": "survival_reimagined:block/skinned_horse_2"
     },
-    "carcass_stage=0": {
+    "horse_carcass_state=0": {
       "model": "survival_reimagined:block/skinned_horse"
     }
   }

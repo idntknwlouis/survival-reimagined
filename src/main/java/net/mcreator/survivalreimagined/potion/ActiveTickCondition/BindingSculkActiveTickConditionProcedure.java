@@ -1,4 +1,4 @@
-package net.mcreator.survivalreimagined.procedures;
+package net.mcreator.survivalreimagined.potion.ActiveTickCondition;
 
 public class BindingSculkActiveTickConditionProcedure {
 	public static boolean execute(double amplifier, double duration) {

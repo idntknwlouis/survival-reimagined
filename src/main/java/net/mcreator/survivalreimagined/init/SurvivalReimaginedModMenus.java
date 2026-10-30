@@ -6,6 +6,8 @@ import net.mcreator.survivalreimagined.world.inventory.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 
@@ -46,6 +48,16 @@ public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<AAFScriptureGUIMenu>> AAF_SCRIPTURE_GUI = register(
 			"aaf_scripture_gui",
 			new ExtendedScreenHandlerType<>(AAFScriptureGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<DryingRackGUIMenu>> DRYING_RACK_GUI = register(
+			"drying_rack_gui",
+			new ExtendedScreenHandlerType<>(
+                    DryingRackGUIMenu::new, BlockPos.STREAM_CODEC
+			)
+	);
+	public static final RegistryEntry<MenuType<TanningBarrelGUIMenu>> TANNING_BARREL_GUI = register(
+			"tanning_barrel_gui",
+			new ExtendedScreenHandlerType<>(TanningBarrelGUIMenu::new, BlockPos.STREAM_CODEC)
 	);
 
 	private SurvivalReimaginedModMenus() {

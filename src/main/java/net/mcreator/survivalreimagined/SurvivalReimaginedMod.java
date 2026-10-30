@@ -9,10 +9,11 @@ import net.mcreator.survivalreimagined.init.*;
 import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
 import net.mcreator.survivalreimagined.network.gui.AAFScriptureGUIButtonMessage;
 import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
+import net.mcreator.survivalreimagined.network.gui.TanningBarrelGUIButtonMessage;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
-import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModOverworldRegion;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -22,14 +23,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.server.MinecraftServer;
 
 
-import net.mcreator.survivalreimagined.util.RuneEffects;
-import net.mcreator.survivalreimagined.util.CropEffects;
 import net.mcreator.survivalreimagined.util.FoodSpoilage;
-import net.mcreator.survivalreimagined.util.CrimsonThreadDrops;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import terrablender.api.Regions;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -56,8 +53,10 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModParticleTypes.register();
 		SurvivalReimaginedModWoodTypes.register();
 		SurvivalReimaginedModBlocks.register();
+		SurvivalReimaginedModBlocks.registerBlocks();
 		SurvivalReimaginedModArmorMaterials.register();
 		SurvivalReimaginedModItems.register();
+		SurvivalReimaginedModItems.registerItems();
 		SurvivalReimaginedModBlockEntities.register();
 		SurvivalReimaginedModMenus.register();
 		SurvivalReimaginedModMobEffects.register();
@@ -67,15 +66,24 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModBiomeModifications.register();
 		SurvivalReimaginedModVariables.register();
 		SurvivalReimaginedModFuels.register();
+		SurvivalReimaginedModProcedures.register();
 		SurvivalReimaginedModConfig.load();
+		SurvivalReimaginedModJukeboxSongs.register();
 		EventsCommand.register();
 		BloodMoonTexture.initPackets();
 		BloodMoonTexture.registerServerTicker();
 		AAFScriptureGUIButtonMessage.registerC2S();
+		TanningBarrelGUIButtonMessage.registerC2S();
 		PayloadTypeRegistry.playS2C().register(
 				AAFScripturePageSyncPayload.TYPE,
 				AAFScripturePageSyncPayload.STREAM_CODEC
 		);
+		ServerTickEvents.END_SERVER_TICK.register(server -> {
+			for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+				SurvivalReimaginedModMobEffects.onEffectRemoved(player);
+			}
+		});
+
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
 			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {

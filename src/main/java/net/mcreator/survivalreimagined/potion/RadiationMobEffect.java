@@ -4,9 +4,9 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-import net.mcreator.survivalreimagined.procedures.RadiationActiveTickConditionProcedure;
-import net.mcreator.survivalreimagined.procedures.RadiationEffectStartedappliedProcedure;
-import net.mcreator.survivalreimagined.procedures.RadiationOnEffectActiveTickProcedure;
+import net.mcreator.survivalreimagined.potion.ActiveTickCondition.RadiationActiveTickConditionProcedure;
+import net.mcreator.survivalreimagined.potion.EffectStarted.RadiationEffectStartedAppliedProcedure;
+import net.mcreator.survivalreimagined.potion.EffectActiveTick.RadiationOnEffectActiveTickProcedure;
 
 public class RadiationMobEffect extends MobEffect {
 	public RadiationMobEffect() {
@@ -15,7 +15,7 @@ public class RadiationMobEffect extends MobEffect {
 
 	@Override
 	public void onEffectStarted(LivingEntity entity, int amplifier) {
-		RadiationEffectStartedappliedProcedure.execute(entity);
+		RadiationEffectStartedAppliedProcedure.execute(entity);
 	}
 
 	@Override

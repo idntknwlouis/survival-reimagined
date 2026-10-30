@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.mcreator.survivalreimagined.block.HorseCarcasses;
 import net.mcreator.survivalreimagined.block.entity.*;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
@@ -7,6 +8,7 @@ import net.mcreator.survivalreimagined.block.fruit.FruitBlockEntity;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -15,6 +17,7 @@ import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public final class SurvivalReimaginedModBlockEntities {
     public static final RegistryEntry<BlockEntityType<PalmLeavesBlockEntity>> PALM_LEAVES = register(
@@ -30,8 +33,17 @@ public final class SurvivalReimaginedModBlockEntities {
             BlockEntityType.Builder.of(BananaGrowBlockEntity::new, SurvivalReimaginedModBlocks.BANANA_GROW_BLOCK.get()).build(null)
     );
     public static final RegistryEntry<BlockEntityType<CarcassBlockEntity>> CARCASS = register(
-            "carcass",
-            BlockEntityType.Builder.of(CarcassBlockEntity::new, SurvivalReimaginedModBlocks.COW_CARCASS.get(), SurvivalReimaginedModBlocks.PIG_CARCASS.get(), SurvivalReimaginedModBlocks.SHEEP_CARCASS.get(), SurvivalReimaginedModBlocks.GOAT_CARCASS.get(), SurvivalReimaginedModBlocks.CHICKEN_CARCASS.get()).build(null)
+            "carcass", BlockEntityType.Builder.of(
+                    CarcassBlockEntity::new,
+                    Stream.concat(Stream.of(
+                            SurvivalReimaginedModBlocks.COW_CARCASS.get(),
+                            SurvivalReimaginedModBlocks.PIG_CARCASS.get(),
+                            SurvivalReimaginedModBlocks.SHEEP_CARCASS.get(),
+                            SurvivalReimaginedModBlocks.GOAT_CARCASS.get(),
+                            SurvivalReimaginedModBlocks.CHICKEN_CARCASS.get(),
+                            SurvivalReimaginedModBlocks.SKINNED_HORSE.get()
+                    ), HorseCarcasses.HORSE_CARCASSES_BLOCK.values().stream()).toArray(Block[]::new)
+            ).build(null)
     );
     public static final RegistryEntry<BlockEntityType<ForgeBlockEntity>> FORGE = register(
             "forge",
@@ -82,6 +94,16 @@ public final class SurvivalReimaginedModBlockEntities {
             BlockEntityType.Builder.of((pos, state) -> new FertilitySoilBlockEntity(SurvivalReimaginedModBlockEntities.HIGH_FERTILITY_SOIL.get(), pos, state),
                     SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL.get()
             ).build(null)
+    );
+    public static final RegistryEntry<BlockEntityType<DryingRackBlockEntity>> DRYING_RACK = register(
+            "drying_rack",
+            BlockEntityType.Builder.of(DryingRackBlockEntity::new,
+                    SurvivalReimaginedModBlocks.DRYING_RACK.get()
+                    ).build(null)
+    );
+    public static final RegistryEntry<BlockEntityType<TanningBarrelBlockEntity>> TANNING_BARREL = register(
+            "tanning_barrel",
+            BlockEntityType.Builder.of(TanningBarrelBlockEntity::new, SurvivalReimaginedModBlocks.TANNING_BARREL.get()).build(null)
     );
     public static final RegistryEntry<BlockEntityType<CropGrowthBlockEntity>> CROP_GROWTH = register(
             "crop_growth",

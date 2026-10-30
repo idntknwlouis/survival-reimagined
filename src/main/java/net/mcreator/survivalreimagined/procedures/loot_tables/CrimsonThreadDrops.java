@@ -1,4 +1,4 @@
-package net.mcreator.survivalreimagined.util;
+package net.mcreator.survivalreimagined.procedures.loot_tables;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.minecraft.core.registries.Registries;

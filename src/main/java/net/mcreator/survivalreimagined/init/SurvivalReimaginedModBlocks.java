@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.init;
 
 import net.mcreator.survivalreimagined.block.CarcassPartBlock;
 import net.mcreator.survivalreimagined.block.*;
+import net.mcreator.survivalreimagined.block.entity.DryingRackBlockEntity;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitDropCondition;
@@ -323,11 +324,11 @@ public final class SurvivalReimaginedModBlocks {
 	private static FruitTypeConfig AppleConfig() {
 		return new FruitTypeConfig(
 				"apple", () -> SurvivalReimaginedModBlockEntities.FRUIT_BLOCK_ENTITY,
-				(state, age) -> age == 1
+				(state, age) -> age == 2
 						? Shapes.or(Block.box(5.5, 10, 5.5, 10.5, 15, 10.5), Block.box(7.5, 15, 7.5, 8.5, 16, 8.5))
 						: Shapes.or(Block.box(6.5, 12, 6.5, 9.5, 15, 9.5), Block.box(7.5, 15, 7.5, 8.5, 16, 8.5)),
 				(world, pos) -> FruitValidPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ()),
-				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, () -> Items.APPLE,1 ),
+				(world, pos, player, state) -> FruitDropCondition.execute(world, pos, state, () -> Items.APPLE,2 ),
 				true, false
 		);
 	}
@@ -466,6 +467,15 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> LOW_FERTILITY_FARMLAND = register("low_fertility_farmland", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.LOW_FERTILITY_FARMLAND.get()));
 	public static final RegistryEntry<Block> MEDIUM_FERTILITY_SOIL = register("medium_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.MEDIUM_FERTILITY_SOIL.get()));
 	public static final RegistryEntry<Block> HIGH_FERTILITY_SOIL = register("high_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.HIGH_FERTILITY_SOIL.get()));
+	public static final RegistryEntry<Block> DRYING_RACK = register("drying_rack", DryingRack::new);
+	public static final RegistryEntry<Block> TANNING_BARREL = register("tanning_barrel", TanningBarrel::new);
+	public static final RegistryEntry<Block> SKINNED_HORSE = register("skinned_horse", SkinnedHorse::new);
+	public static final RegistryEntry<Block> HORSE_LEG = register("horse_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 11, 10)));
+	public static final RegistryEntry<Block> HORSE_HEAD = register("horse_head", () -> new CarcassPartBlock(Block.box(6, 0, 6, 11, 9, 12)));
+
+	public static void registerBlocks() {
+		HorseCarcasses.registerBlocks();
+	}
 
 	private SurvivalReimaginedModBlocks() {
 	}

@@ -5,12 +5,14 @@ import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.*;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.mcreator.survivalreimagined.block.HorseCarcasses;
 import net.mcreator.survivalreimagined.client.gui.AAFScriptureGUIScreen;
 import net.mcreator.survivalreimagined.client.gui.NPKValueOverlay;
 import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
 import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
+import net.mcreator.survivalreimagined.procedures.TextureStateProvider;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
@@ -41,16 +43,21 @@ import net.mcreator.survivalreimagined.client.model.Modelghost;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+import static net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems.*;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
 import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
 import net.mcreator.survivalreimagined.util.FoodTooltip;
 import net.mcreator.survivalreimagined.util.SoilTooltip;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.block.Block;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
 
@@ -122,6 +129,24 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.WISTERIA_LEAF_LITTER.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.WISTERIA_FLOWER_UPPER.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.WISTERIA_FLOWER_LOWER.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.DRYING_RACK.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.BEETROOT.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.CHICKEN_CARCASS.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.GOAT_CARCASS.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RADIATED_SAPLING.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.APPLE_TREE_SAPLING.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RADIANT_TRAPDOOR.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RADIANT_DOOR.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.STEEL_DOOR.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MANDARIN_DOOR.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MANDARIN_TRAPDOOR.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.STEEL_TRAPDOOR.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.TEOSINTE.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MANDARIN_SAPLING.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RED_CHERRY_SAPLING.get(), RenderType.cutout());
+
+		HorseCarcasses.HORSE_CARCASSES_BLOCK.values().forEach(carcass -> BlockRenderLayerMap.INSTANCE.putBlock(carcass, RenderType.translucent()));
+
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
@@ -146,6 +171,96 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		);
 
 		BloodMoonTexture.registerClientReceiver();
+
+		ItemProperties.register(BRAIN.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "brain_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(HEART_ITEM.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "heart_item_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(INTESTINES.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "intestines_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(STOMACH.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "stomach_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(LIVER.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "liver_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(LUNGS.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "lungs_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BEEF.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "beef_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_BEEF.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_beef_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_BEEF.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_beef_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_PORKCHOP.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_porkchop_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_PORKCHOP.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_porkchop_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_PORKCHOP.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_porkchop_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_CHICKEN.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_chicken_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_CHICKEN.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_chicken_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_CHICKEN.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_chicken_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_COD.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_cod_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_COD.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_cod_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_COD.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_cod_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_SALMON.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_salmon_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_SALMON.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_salmon_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_SALMON.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_salmon_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_MUTTON.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_mutton_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_MUTTON.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_mutton_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_MUTTON.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_mutton_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_RABBIT.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_rabbit_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_RABBIT.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_rabbit_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_RABBIT.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_rabbit_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(RAW_EQUINE.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "raw_equine_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(COOKED_EQUINE.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_equine_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		ItemProperties.register(BURNT_EQUINE.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_equine_texture"),
+				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
 
 		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
 			return view != null && pos != null

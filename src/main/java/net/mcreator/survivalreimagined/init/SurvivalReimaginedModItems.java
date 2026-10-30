@@ -1,5 +1,7 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.fabricmc.api.ModInitializer;
+import net.mcreator.survivalreimagined.block.HorseCarcasses;
 import net.mcreator.survivalreimagined.item.*;
 import net.mcreator.survivalreimagined.world.inventory.AAFScriptureGUIMenu;
 import net.minecraft.core.Registry;
@@ -761,6 +763,28 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HEART_OF_THE_BLOOD_MOON = uniqueItem("heart_of_the_blood_moon", Rarity.RARE);
 	public static final RegistryEntry<Item> HEART_OF_THE_NETHER = uniqueItem("heart_of_the_nether", Rarity.EPIC);
 
+	public static final RegistryEntry<Item> HEMP_BANDAGE = register("hemp_bandage", BandageItem::new);
+	public static final RegistryEntry<Item> STRING_BANDAGE = register("string_bandage", BandageItem::new);
+	public static final RegistryEntry<Item> SPLINT = register("splint", SplintItem::new);
+
+	public static final RegistryEntry<Item> BLOOD_MOON_DISC = register("blood_moons_music_disc", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(SurvivalReimaginedModJukeboxSongs.BLOOD_MOON_SONG)));
+	public static final RegistryEntry<Item> BLOOD_MOON_DISC_FRAGMENT = simple("blood_moon_disc_fragment");
+
+	public static final RegistryEntry<Item> BONEMEAL_SR = simple("bonemeal_sr");
+	public static final RegistryEntry<Item> BIO_COMPOST = simple("bio_compost");
+
+	public static final RegistryEntry<Item> GREEN_ARROW = simple("green_arrow");
+	public static final RegistryEntry<Item> BRONZE_SEEDS = simple("bronze_seeds");
+	public static final RegistryEntry<Item> SILVER_SEEDS = simple("silver_seeds");
+	public static final RegistryEntry<Item> GOLD_SEEDS = simple("gold_seeds");
+	public static final RegistryEntry<Item> HIDE = simple("hide");
+	public static final RegistryEntry<Item> DRIED_HIDE = simple("dried_hide");
+	public static final RegistryEntry<Item> PREPARED_HIDE = simple("prepared_hide");
+	public static final RegistryEntry<Item> DRYING_RACK = block(SurvivalReimaginedModBlocks.DRYING_RACK);
+	public static final RegistryEntry<Item> TANNING_BARREL = block(SurvivalReimaginedModBlocks.TANNING_BARREL);
+	public static final RegistryEntry<Item> HORSE_HEAD = block(SurvivalReimaginedModBlocks.HORSE_HEAD);
+	public static final RegistryEntry<Item> HORSE_LEG = block(SurvivalReimaginedModBlocks.HORSE_LEG);
+	public static final RegistryEntry<Item> SKINNED_HORSE = block(SurvivalReimaginedModBlocks.SKINNED_HORSE);
 
 
 	public static final RegistryEntry<Item> AAF_BOOK_SCRIPTURE = register(
@@ -774,9 +798,10 @@ public final class SurvivalReimaginedModItems {
 	);
 
 
-
-
-
+	public static void registerItems() {
+		HorseHides.registerItems();
+		HorseCarcasses.registerItems();
+	}
 
 
 	public static final RegistryEntry<Item> MANDARIN_SIGN = registerItem("mandarin_sign",
@@ -864,6 +889,13 @@ public final class SurvivalReimaginedModItems {
 		return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, name), item);
 	}
 
+	public static RegistryEntry<Item> registerBlockItem(String path, Supplier<? extends Block> block) {
+		var id = SurvivalReimaginedMod.asResource(path);
+
+		Item item = Registry.register(BuiltInRegistries.ITEM, id, new BlockItem(block.get(), new Item.Properties()));
+		return new RegistryEntry<>(id, item);
+	}
+
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
@@ -902,10 +934,6 @@ public final class SurvivalReimaginedModItems {
 	private static RegistryEntry<Item> stableFood(String path, int nutrition, float saturation) {
 		return register(path, () -> new Item(new Item.Properties()
 				.food(new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build())));
-	}
-
-	private static RegistryEntry<Item> seed(String path, RegistryEntry<? extends Block> crop) {
-		return register(path, () -> new ItemNameBlockItem(crop.get(), new Item.Properties()));
 	}
 
 	private static RegistryEntry<Item> plantFood(String path, RegistryEntry<? extends Block> crop, int nutrition, float saturation) {

@@ -1,4 +1,4 @@
-package net.mcreator.survivalreimagined.procedures;
+package net.mcreator.survivalreimagined.potion.EffectActiveTick;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;

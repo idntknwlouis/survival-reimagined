@@ -1,8 +1,8 @@
-package net.mcreator.survivalreimagined.procedures;
+package net.mcreator.survivalreimagined.potion.ActiveTickCondition;
 
-public class BleedingActiveTickConditionProcedure {
+public class RadiationActiveTickConditionProcedure {
 	public static boolean execute(double amplifier, double duration) {
-		double rateWithAmplifier = 20 / Math.pow(2, amplifier);
+		double rateWithAmplifier = 50 / Math.pow(2, amplifier);
 		if (Math.floor(rateWithAmplifier) > 0) {
 			return duration % Math.floor(rateWithAmplifier) == 0;
 		}

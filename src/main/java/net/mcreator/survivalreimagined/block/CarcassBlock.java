@@ -1,11 +1,15 @@
 package net.mcreator.survivalreimagined.block;
 
+import net.mcreator.survivalreimagined.item.HorseHides;
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
+import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -38,26 +42,43 @@ public class CarcassBlock extends Block implements EntityBlock {
 		PIG,
 		SHEEP,
 		GOAT,
-		CHICKEN
+		CHICKEN,
+		HORSE
 	}
 
 	public static final IntegerProperty CARCASS_STATE = IntegerProperty.create("carcass_state", 0, 4);
+	public static final IntegerProperty CARCASS_STATE_HORSE = IntegerProperty.create("horse_carcass_state", 0, 3);
 	private static final TagKey<Item> KNIVES =
 			TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
 	private static final TagKey<Item> SAWS =
 			TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/saw"));
 
 	private final Species species;
+	private final String horseHideID;
 
 	public CarcassBlock(Species species) {
-		super(BlockBehaviour.Properties.of()
-				.sound(SoundType.MUD)
-				.strength(1.0F)
-				.noOcclusion()
-				.isRedstoneConductor((state, level, pos) -> false));
-		this.species = species;
-		registerDefaultState(stateDefinition.any().setValue(CARCASS_STATE, 0));
+		this(species, null, true);
 	}
+
+	public CarcassBlock(Species species, String horseHideID) {
+		this(species, horseHideID, true);
+	}
+
+	protected CarcassBlock(Species species, String horseHideID, boolean normalState) {
+		super(BlockBehaviour.Properties.of().sound(SoundType.MUD).strength(1.0f).noOcclusion().isRedstoneConductor((state, level, pos) -> false));
+		this.species = species;
+		this.horseHideID = horseHideID;
+
+		if (normalState) {
+			registerDefaultState(stateDefinition.any().setValue(CARCASS_STATE, 0));
+		}
+	}
+
+	protected boolean isSkinnedHorse() {
+		return false;
+	}
+
+
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -66,13 +87,14 @@ public class CarcassBlock extends Block implements EntityBlock {
 
 	@Override
 	protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		int stage = state.getValue(CARCASS_STATE);
+		int stage = isSkinnedHorse() ? state.getValue(CARCASS_STATE_HORSE) : state.getValue(CARCASS_STATE);
 		return switch (species) {
 			case COW -> cowShape(stage);
 			case PIG -> pigShape(stage);
 			case SHEEP -> sheepShape(stage);
 			case GOAT -> goatShape(stage);
 			case CHICKEN -> chickenShape(stage);
+			case HORSE -> horseShape(stage);
 		};
 	}
 
@@ -210,6 +232,29 @@ public class CarcassBlock extends Block implements EntityBlock {
 		);
 	}
 
+	private static VoxelShape horseShape(int stage) {
+		return Shapes.or(
+				box(3, 0, -3, 13, 10, 19),
+				box(13, 0, -3, 24, 4, 1),
+				box(13, 6, -3, 24, 10, 1),
+				box(13, 0, 15, 24, 4, 19),
+				box(13, 6, 15, 24, 10, 19),
+				box(3, 2.5, 19, 19, 6.5, 24),
+				box(-3, 3, -2.95, 9, 7, 4.05),
+				box(-8, 2, -2.95, -3, 8, 4.05),
+				box(-7, 3, -8, -3, 7, -3),
+				box(-11, 2, 2.5, -8, 4, 3.5),
+				box(-11, 6, 2.5, -8, 8, 3.5),
+				box(-8, 4, 4, 8, 6, 6),
+				box(3, 0, -3, 13, 10, 19),
+				box(13, 0, -3, 24, 4, 1),
+				box(13, 6, -3, 24, 10, 1),
+				box(13, 0, 15, 24, 4, 19),
+				box(13, 6, 15, 24, 10, 19),
+				box(-3, 3, -2.95, 9, 7, 4.05)
+		);
+	}
+
 	@Override
 	protected VoxelShape getVisualShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return Shapes.empty();
@@ -231,13 +276,34 @@ public class CarcassBlock extends Block implements EntityBlock {
 	}
 
 	@Override
+	public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack tool) {
+		super.playerDestroy(level, player, pos, state, blockEntity, tool);
+
+		if (level.isClientSide() || species != Species.HORSE && !isSkinnedHorse()) {
+			return;
+		}
+
+		int stage = isSkinnedHorse() ? state.getValue(CARCASS_STATE_HORSE) : state.getValue(CARCASS_STATE);
+		boolean finalStage = isSkinnedHorse() ? stage == 3 : stage == 4;
+
+		if (!finalStage) {
+			return;
+		}
+
+		for (int i = 0; i < Mth.nextInt(RandomSource.create(), 1, 3); i++) {
+			Block.popResource(level, pos, meat());
+			Block.popResource(level, pos, new ItemStack(Items.BONE));
+		}
+	}
+
+	@Override
 	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
 			Player player, InteractionHand hand, BlockHitResult hit) {
 		if (hand != InteractionHand.MAIN_HAND || !(level.getBlockEntity(pos) instanceof CarcassBlockEntity carcass)) {
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		}
 
-		int stage = state.getValue(CARCASS_STATE);
+		int stage = isSkinnedHorse() ? state.getValue(CARCASS_STATE_HORSE) : state.getValue(CARCASS_STATE);
 
 		if (species == Species.CHICKEN) {
 			if (stage != 0 || !stack.isEmpty()) {
@@ -252,7 +318,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 			level.playSound(null, pos, SoundEvents.WOOL_HIT, SoundSource.BLOCKS, 1.0F, 1.0F);
 			if (carcass.incrementProgress() >= 10) {
 				carcass.resetProgress();
-				level.setBlock(pos, state.setValue(CARCASS_STATE, 1), 3);
+				level.setBlock(pos, state.setValue(isSkinnedHorse() ? CARCASS_STATE_HORSE : CARCASS_STATE, 1), 3);
 				int feathers = 3 + level.random.nextInt(7);
 				for (int i = 0; i < feathers; i++) {
 					Block.popResource(level, pos, new ItemStack(Items.FEATHER));
@@ -262,8 +328,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 			return ItemInteractionResult.SUCCESS;
 		}
 
-		boolean knifeStage = stack.is(KNIVES) && (stage == 0 || stage == 3);
-		boolean sawStage = stack.is(SAWS) && (stage == 1 || stage == 2);
+		boolean knifeStage = stack.is(KNIVES) && (stage == 3 || (stage == 0 && !isSkinnedHorse()) || (stage == 2 && isSkinnedHorse()));
+		boolean sawStage = stack.is(SAWS) && (isSkinnedHorse() ? (stage == 0 || stage == 1) : (stage == 1 || stage == 2));
 		if (!knifeStage && !sawStage) {
 			return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 		}
@@ -281,31 +347,67 @@ public class CarcassBlock extends Block implements EntityBlock {
 		}
 
 		carcass.resetProgress();
-		if (stage == 0) {
-			level.setBlock(pos, state.setValue(CARCASS_STATE, 1), 3);
-			Block.popResource(level, pos.above(), hide());
-			level.playSound(null, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.BLOCKS, 1.0F, 1.0F);
-		} else if (stage == 1) {
-			level.setBlock(pos, state.setValue(CARCASS_STATE, 2), 3);
-			for (int i = 0; i < 4; i++) {
-				Block.popResource(level, pos, leg());
-			}
-			level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-		} else if (stage == 2) {
-			level.setBlock(pos, state.setValue(CARCASS_STATE, 3), 3);
-			Block.popResource(level, pos, head());
-			level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-		} else if (stage == 3) {
-			level.setBlock(pos, state.setValue(CARCASS_STATE, 4), 3);
-			Block.popResource(level, pos, meat());
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LUNGS.get()));
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.HEART_ITEM.get()));
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LIVER.get()));
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.STOMACH.get()));
-			Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.INTESTINES.get()));
-			level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-		}
+		if (isSkinnedHorse()) {
+			if (stage == 0) {
+				level.setBlock(pos, state.setValue(CARCASS_STATE_HORSE, 1), 3);
 
+				for (int i = 0; i < 4; i++) {
+					Block.popResource(level, pos, leg());
+				}
+				level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+			} else if (stage == 1) {
+				level.setBlock(pos, state.setValue(CARCASS_STATE_HORSE, 2), 3);
+
+				Block.popResource(level, pos, head());
+
+				level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+			} else if (stage == 2) {
+				level.setBlock(pos, state.setValue(CARCASS_STATE_HORSE, 3), 3);
+
+				Block.popResource(level, pos, meat());
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LUNGS.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.HEART_ITEM.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LIVER.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.STOMACH.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.INTESTINES.get()));
+
+				level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 1.0f,1.0f);
+			}
+		} else {
+			if (stage == 0) {
+				if (species == Species.HORSE) {
+					level.setBlock(pos, SurvivalReimaginedModBlocks.SKINNED_HORSE.get().defaultBlockState().setValue(CARCASS_STATE_HORSE,0), 3);
+				} else {
+					level.setBlock(pos, state.setValue(CARCASS_STATE, 1), 3);
+				}
+				Block.popResource(level, pos.above(), hide());
+				level.playSound(null, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+			} else if (stage == 1) {
+				level.setBlock(pos, state.setValue(isSkinnedHorse() ? CARCASS_STATE_HORSE : CARCASS_STATE, 2), 3);
+				for (int i = 0; i < 4; i++) {
+					Block.popResource(level, pos, leg());
+				}
+				level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+			} else if (stage == 2) {
+				level.setBlock(pos, state.setValue(isSkinnedHorse() ? CARCASS_STATE_HORSE : CARCASS_STATE, 3), 3);
+				Block.popResource(level, pos, head());
+				level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+			} else if (stage == 3) {
+				if (isSkinnedHorse()) {
+					level.removeBlock(pos, false);
+				} else {
+					level.setBlock(pos, state.setValue(CARCASS_STATE, 4), 3);
+				}
+				Block.popResource(level, pos, meat());
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LUNGS.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.HEART_ITEM.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.LIVER.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.STOMACH.get()));
+				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.INTESTINES.get()));
+				level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+			}
+		}
 		return ItemInteractionResult.SUCCESS;
 	}
 
@@ -316,6 +418,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case SHEEP -> new ItemStack(SurvivalReimaginedModItems.SHEEP_HIDE.get());
 			case GOAT -> new ItemStack(SurvivalReimaginedModItems.GOAT_HIDE.get());
 			case CHICKEN -> new ItemStack(Items.FEATHER);
+			case HORSE -> new ItemStack(HorseHides.get(horseHideID));
 		};
 	}
 
@@ -326,6 +429,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case SHEEP -> new ItemStack(SurvivalReimaginedModBlocks.SHEEP_LEG.get());
 			case GOAT -> new ItemStack(SurvivalReimaginedModBlocks.GOAT_LEG.get());
 			case CHICKEN -> ItemStack.EMPTY;
+			case HORSE -> new ItemStack(SurvivalReimaginedModBlocks.HORSE_LEG.get());
 		};
 	}
 
@@ -336,6 +440,7 @@ public class CarcassBlock extends Block implements EntityBlock {
 			case SHEEP -> new ItemStack(SurvivalReimaginedModBlocks.SHEEP_HEAD.get());
 			case GOAT -> new ItemStack(SurvivalReimaginedModBlocks.GOAT_HEAD.get());
 			case CHICKEN -> ItemStack.EMPTY;
+			case HORSE -> new ItemStack(SurvivalReimaginedModBlocks.HORSE_HEAD.get());
 		};
 	}
 
@@ -343,9 +448,9 @@ public class CarcassBlock extends Block implements EntityBlock {
 		return switch (species) {
 			case COW -> new ItemStack(SurvivalReimaginedModItems.BEEF.get());
 			case PIG -> new ItemStack(SurvivalReimaginedModItems.RAW_PORKCHOP.get());
-			case SHEEP -> new ItemStack(SurvivalReimaginedModItems.RAW_MUTTON.get());
-			case GOAT -> new ItemStack(SurvivalReimaginedModItems.RAW_MUTTON.get());
-			case CHICKEN -> new ItemStack(SurvivalReimaginedModItems.RAW_CHICKEN.get());
+			case SHEEP, GOAT -> new ItemStack(SurvivalReimaginedModItems.RAW_MUTTON.get());
+            case CHICKEN -> new ItemStack(SurvivalReimaginedModItems.RAW_CHICKEN.get());
+			case HORSE -> new ItemStack(SurvivalReimaginedModItems.RAW_EQUINE.get());
 		};
 	}
 

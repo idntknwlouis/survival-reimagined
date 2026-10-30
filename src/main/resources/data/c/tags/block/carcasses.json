@@ -16,6 +16,10 @@
     {
       "id": "#c:carcass/beef",
       "required": false
+    },
+    {
+      "id": "#c:carcass/equine",
+      "required": false
     }
   ]
 }

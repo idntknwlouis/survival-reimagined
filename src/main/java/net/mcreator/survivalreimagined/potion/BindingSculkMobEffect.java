@@ -4,8 +4,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 
-import net.mcreator.survivalreimagined.procedures.BindingSculkActiveTickConditionProcedure;
-import net.mcreator.survivalreimagined.procedures.BindingSculkOnEffectActiveTickProcedure;
+import net.mcreator.survivalreimagined.potion.ActiveTickCondition.BindingSculkActiveTickConditionProcedure;
+import net.mcreator.survivalreimagined.potion.EffectActiveTick.BindingSculkOnEffectActiveTickProcedure;
 
 public class BindingSculkMobEffect extends MobEffect {
 	public BindingSculkMobEffect() {
