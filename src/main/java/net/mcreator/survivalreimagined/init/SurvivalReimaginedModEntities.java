@@ -1,13 +1,13 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonSpawnConditions;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.tags.BlockTags;
 
@@ -63,9 +63,22 @@ public final class SurvivalReimaginedModEntities {
 		FabricDefaultAttributeRegistry.register(PIGLET.get(), PigletEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(BLACK_BEAR.get(), BlackBearEntity.createAttributes());
 		FabricDefaultAttributeRegistry.register(BROWN_BEAR.get(), BrownBearEntity.createAttributes());
+
+
 		SpawnPlacements.register(BLACK_BEAR.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 				(type, level, reason, pos, random) -> level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && level.getRawBrightness(pos, 0) > 8);
 		SpawnPlacements.register(BROWN_BEAR.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 				(type, level, reason, pos, random) -> level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && level.getRawBrightness(pos, 0) > 8);
+
+		SpawnPlacements.register(BLOOD_MOON_ZOMBIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level));
+		SpawnPlacements.register(CRIMSON_ARACHNID.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level));
+		SpawnPlacements.register(ALPHA_CRIMSON_ARACHNID.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level));
+
+		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, BLOOD_MOON_ZOMBIE.get(), 40, 1, 3);
+		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, CRIMSON_ARACHNID.get(), 80, 1, 3);
+		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, ALPHA_CRIMSON_ARACHNID.get(), 10, 1, 1);
 	}
 }
