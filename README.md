@@ -49,14 +49,14 @@ This table tracks broad feature parity against the original.
 | Armor | ✅ | ✅ | ✅ | — |
 | Mobs / Entities | ✅ | ✅ | ✅ | ✅ |
 | Carcass / Butchering | ✅ | ✅ | ✅ | — |
-| Structures | ❌ | ❌ | ❌ | ❌ |
+| Structures | ✅ | ✅ | ✅ | ✅ |
 | Biomes | — | —  | —  | ✅ |
 | Radiation Systems | ✅ | — | — | — |
-| Blood Moon Event | ✅ | ✅ | ✅ | 🟡 (Mobs) |
+| Blood Moon Event | ✅ | ✅ | ✅ | ✅ |
 | Decorative / Utility Blocks | ✅ | ✅ | ✅ | — |
-| Sounds / Particles | 🟡 | — | 🟡 | — |
-| Survival Progression | ❌ | ❌ | ❌ | ❌ |
-| Advancements | 🟡 | ✅ | ✅ | — |
+| Sounds / Particles | ✅ | — | ✅ | — |
+| Survival Progression | ✅ | ✅ | ✅ | ✅ |
+| Advancements | ✅ | ✅ | ✅ | — |
 | Compat Content | ❌ | ❌ | ❌ | ❌ |
 
 
