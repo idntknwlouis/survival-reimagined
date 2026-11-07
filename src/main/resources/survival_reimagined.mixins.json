@@ -8,7 +8,10 @@
     "DimensionTypesMixin",
     "HideExperimentalWarningMixin",
     "NoiseBasedChunkGeneratorMixin",
-    "CancelTillingMixin"
+    "CancelTillingMixin",
+    "ComposterDropMixin",
+    "ItemstackFixForMeatItemsMixin",
+    "RockTypeMixin"
   ],
   "client": [],
   "injectors": {
