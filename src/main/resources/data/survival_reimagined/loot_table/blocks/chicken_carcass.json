@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "survival_reimagined:chicken_carcass",
+          "properties": {
+            "carcass_state": "0"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:chicken_carcass"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "survival_reimagined:chicken_carcass",
+          "properties": {
+            "carcass_state": "1"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:raw_chicken"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "survival_reimagined:blocks/chicken_carcass"
+}

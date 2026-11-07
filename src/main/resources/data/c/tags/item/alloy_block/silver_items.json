@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "survival_reimagined:raw_silver_block",
+    "survival_reimagined:silver_block",
+    "survival_reimagined:argentite_block"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        { "type": "minecraft:item", "name": "survival_reimagined:hemp_seeds" }
+      ]
+    },
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "survival_reimagined:hemp",
+          "properties": { "age": "3" }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:hemp_leaf",
+          "functions": [
+            { "function": "minecraft:set_count", "count": 2 }
+          ]
+        },
+        { "type": "minecraft:item", "name": "survival_reimagined:hemp_seeds" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+package net.mcreator.survivalreimagined.procedures.gui.AAF;
+
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.scores.Objective;
+import net.minecraft.world.scores.ScoreHolder;
+import net.minecraft.world.scores.Scoreboard;
+
+public class NextPage {
+    public static void execute(LevelAccessor level, double x, double y, double z, Entity entity) {
+        if (!(entity instanceof Player player) || level.isClientSide()) {
+            return;
+        }
+
+        Scoreboard scoreboard = player.getScoreboard();
+        Objective objective = scoreboard.getObjective("SR_PageNumber");
+
+        if (objective == null) { return; }
+
+        ScoreHolder holder = ScoreHolder.forNameOnly(player.getScoreboardName());
+        var score = scoreboard.getOrCreatePlayerScore(holder, objective);
+        int currentPage = score.get();
+
+        if (currentPage < 2) {
+            score.set(currentPage + 1);
+
+
+            level.playSound(
+                    null,
+                    player.blockPosition(),
+                    SoundEvents.BOOK_PAGE_TURN,
+                    SoundSource.PLAYERS,
+                    0.8f,
+                    1.0f
+            );
+        }
+    }
+}

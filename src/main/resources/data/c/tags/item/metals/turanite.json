@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:ingots/turanite",
+      "required": false
+    },
+    {
+      "id": "#c:rough_ingots/turanite",
+      "required": false
+    }
+  ]
+}

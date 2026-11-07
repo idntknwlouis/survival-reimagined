@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:diamond_shovel",
+    "survival_reimagined:diamond_saw",
+    "survival_reimagined:diamond_hammer",
+    "minecraft:diamond_leggings",
+    "survival_reimagined:diamond_knife",
+    "minecraft:diamond_sword",
+    "minecraft:diamond_boots",
+    "minecraft:diamond_axe",
+    "minecraft:diamond_hoe",
+    "minecraft:diamond_pickaxe",
+    "minecraft:diamond_helmet",
+    "minecraft:diamond_chestplate"
+  ]
+}
