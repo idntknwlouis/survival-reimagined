@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.network;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.saveddata.SavedData;
 
 public class MapVariables {
     public boolean _syncDirty = false;
@@ -17,6 +18,7 @@ public class MapVariables {
     public boolean isDay = false;
     public ItemStack MoldOutput = ItemStack.EMPTY;
     public boolean BunkerPlaced = false;
+
 
 
     public void read(CompoundTag nbt, HolderLookup.Provider lookupProvider) {

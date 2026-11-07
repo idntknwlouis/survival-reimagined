@@ -261,7 +261,7 @@ public class SurvivalReimaginedModVariables {
             sculk_hearts = nbt.getBoolean("sculk_hearts");
             MPT_Time = nbt.getDouble("MPT_Time");
             BloodMoonChanceRan = nbt.getDouble("BloodMoonChanceRan");
-            isBloodMoon = nbt.getBoolean("isBloodmoon");
+            isBloodMoon = nbt.getBoolean("isBloodMoon");
             BloodMoon = nbt.getDouble("BloodMoon");
             ValueSetBloodMoon = nbt.getBoolean("ValueSetBloodMoon");
             isDay = nbt.getBoolean("isDay");

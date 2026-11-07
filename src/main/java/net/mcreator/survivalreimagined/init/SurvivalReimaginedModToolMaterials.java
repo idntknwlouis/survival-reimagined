@@ -7,6 +7,14 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 public enum SurvivalReimaginedModToolMaterials implements Tier {
+    COPPER (
+      BlockTags.INCORRECT_FOR_IRON_TOOL,
+            115,
+            2.0f,
+            0.0f,
+            2,
+            Ingredient.of(SurvivalReimaginedModItems.COPPER_NUGGET.get())
+    ),
     BRONZE (
            BlockTags.INCORRECT_FOR_IRON_TOOL,
             350,

@@ -55,6 +55,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModBlocks.register();
 		SurvivalReimaginedModBlocks.registerBlocks();
 		SurvivalReimaginedModArmorMaterials.register();
+		SurvivalReimaginedModBoatTypes.register();
 		SurvivalReimaginedModItems.register();
 		SurvivalReimaginedModItems.registerItems();
 		SurvivalReimaginedModBlockEntities.register();

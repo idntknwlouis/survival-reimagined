@@ -27,7 +27,7 @@ public class FruitBearingLeavesBlock extends LeavesBlock {
     }
     @Override
     public boolean isRandomlyTicking(BlockState state) {
-        return false;
+        return super.isRandomlyTicking(state);
     }
 
 
@@ -54,10 +54,14 @@ public class FruitBearingLeavesBlock extends LeavesBlock {
 
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        super.tick(state, world, pos, random);
+        if (!world.getBlockState(pos).is(this)) {
+            return;
+        }
 
         world.scheduleTick(pos, this, TICK_RATE);
 
-        if (state.getValue(PERSISTENT) || state.getValue(DISTANCE) > 7) {
+        if (state.getValue(PERSISTENT) || state.getValue(DISTANCE) >= 7) {
             return;
         }
         BlockPos belowPos = pos.below();

@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.mcreator.survivalreimagined.block.HorseCarcasses;
 import net.mcreator.survivalreimagined.client.gui.AAFScriptureGUIScreen;
 import net.mcreator.survivalreimagined.client.gui.NPKValueOverlay;
+import net.mcreator.survivalreimagined.init.*;
 import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
@@ -17,15 +18,11 @@ import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModWoodTypes;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModParticles;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.client.model.ModelGasMask;
 import net.mcreator.survivalreimagined.client.model.Modelleaves;
 import net.mcreator.survivalreimagined.client.renderer.block.PalmLeavesRenderer;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
 import net.mcreator.survivalreimagined.client.renderer.BoarRenderer;
 import net.mcreator.survivalreimagined.client.renderer.SowRenderer;
 import net.mcreator.survivalreimagined.client.renderer.PigletRenderer;
@@ -34,13 +31,13 @@ import net.mcreator.survivalreimagined.client.renderer.BrownBearRenderer;
 import net.mcreator.survivalreimagined.client.renderer.CrimsonArachnidRenderer;
 import net.mcreator.survivalreimagined.client.renderer.AlphaCrimsonArachnidRenderer;
 import net.mcreator.survivalreimagined.client.renderer.GhostRenderer;
+import net.mcreator.survivalreimagined.client.renderer.BoatRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BloodMoonZombieRenderer;
 import net.mcreator.survivalreimagined.client.model.Modelbear;
 import net.mcreator.survivalreimagined.client.model.Modelboar;
 import net.mcreator.survivalreimagined.client.model.Modelsow;
 import net.mcreator.survivalreimagined.client.model.Modelpiglet;
 import net.mcreator.survivalreimagined.client.model.Modelghost;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -48,13 +45,14 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
+
 import static net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems.*;
-import net.mcreator.survivalreimagined.init.SurvivalReimaginedModScreens;
+
 import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
 import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
 import net.mcreator.survivalreimagined.util.FoodTooltip;
 import net.mcreator.survivalreimagined.util.SoilTooltip;
+import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Block;
@@ -261,6 +259,21 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 
 		ItemProperties.register(BURNT_EQUINE.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "burnt_equine_texture"),
 				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
+
+		EntityRendererRegistry.register(SurvivalReimaginedModBoatTypes.WISTERIA_BOAT, context ->
+				new BoatRenderer(context, "textures/entity/boat/wisteria_boat.png")
+		);
+
+		EntityRendererRegistry.register(SurvivalReimaginedModBoatTypes.RADIATED_BOAT, context ->
+				new BoatRenderer(context, "textures/entity/boat/radiated_boat.png")
+		);
+
+		EntityRendererRegistry.register(SurvivalReimaginedModBoatTypes.MANDARIN_BOAT, context ->
+				new BoatRenderer(context, "textures/entity/boat/mandarin_boat.png")
+		);
+
+
+
 
 		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
 			return view != null && pos != null

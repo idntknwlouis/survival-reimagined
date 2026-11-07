@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:raw_silver_block",
-    "minecraft:silver_block",
+    "survival_reimagined:raw_silver_block",
+    "survival_reimagined:silver_block",
     "survival_reimagined:argentite_block"
   ]
 }

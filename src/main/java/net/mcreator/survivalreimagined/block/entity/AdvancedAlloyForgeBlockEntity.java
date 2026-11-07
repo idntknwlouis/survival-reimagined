@@ -1,7 +1,11 @@
 package net.mcreator.survivalreimagined.block.entity;
 
+import com.terraformersmc.modmenu.gui.widget.entries.ModListEntry;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.Tag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.server.level.ServerLevel;
@@ -24,6 +28,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -34,6 +39,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.world.inventory.AdvancedAlloyForgeGUIMenu;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer, ExtendedScreenHandlerFactory<BlockPos> {
@@ -42,16 +48,40 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 	public static final int BASE_FUEL_CAPACITY = 3000;
 	private static final int[] SLOTS = IntStream.range(0, CONTAINER_SIZE).toArray();
 
+	// Alloy Rocks
 	private static final TagKey<Item> COPPER = alloyTag("copper_items");
 	private static final TagKey<Item> TIN = alloyTag("tin_items");
 	private static final TagKey<Item> IRON = alloyTag("iron_items");
 	private static final TagKey<Item> MANGANESE = alloyTag("manganese_items");
-	private static final TagKey<Item> URANIUM = alloyTag("uranium_items");
-	private static final TagKey<Item> TITANIUM = alloyTag("titanium_items");
 	private static final TagKey<Item> DIAMOND = alloyTag("diamond_items");
 	private static final TagKey<Item> STEEL = alloyTag("steel_items");
-	private static final TagKey<Item> NETHERITE = alloyTag("netherite_items");
 	private static final TagKey<Item> GOLD = alloyTag("gold_items");
+	private static final TagKey<Item> NETHERITE = alloyTag("netherite_items");
+	private static final TagKey<Item> TITANIUM = alloyTag("titanium_items");
+	private static final TagKey<Item> URANIUM = alloyTag("uranium_items");
+	private static final TagKey<Item> SILVER = alloyTag("silver_items");
+	private static final TagKey<Item> LIME = alloyTag("lime_items");
+
+	// Alloy Blocks
+	private static final TagKey<Item> COPPER_BLOCKS = alloyBlockTag("copper_items");
+	private static final TagKey<Item> TIN_BLOCKS = alloyBlockTag("tin_items");
+	private static final TagKey<Item> IRON_BLOCKS = alloyBlockTag("iron_items");
+	private static final TagKey<Item> MANGANESE_BLOCKS = alloyBlockTag("manganese_items");
+	private static final TagKey<Item> DIAMOND_BLOCKS = alloyBlockTag("diamond_items");
+	private static final TagKey<Item> STEEL_BLOCKS = alloyBlockTag("steel_items");
+	private static final TagKey<Item> GOLD_BLOCKS = alloyBlockTag("gold_items");
+	private static final TagKey<Item> NETHERITE_BLOCKS = alloyBlockTag("netherite_items");
+	private static final TagKey<Item> TITANIUM_BLOCKS = alloyBlockTag("titanium_items");
+	private static final TagKey<Item> URANIUM_BLOCKS = alloyBlockTag("uranium_items");
+
+	// Create Compat
+	private static final TagKey<Item> ZINC = alloyTag("zinc_items");
+	private static final TagKey<Item> ZINC_BLOCKS = alloyBlockTag("zinc_items");
+	private static final TagKey<Item> ANDESITE = alloyTag("andesite_items");
+
+
+
+
 
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
 	private int progress;
@@ -136,19 +166,19 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 				|| stack.is(SurvivalReimaginedModItems.BLOCK_PACKAGING_UPGRADE.get());
 	}
 
+	public static final TagKey<Item> ALLOY_INPUTS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "alloy"));
+	public static final TagKey<Item> ALLOY_BLOCK_INPUTS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "alloy_block_items"));
+
 	public static boolean isAlloyInput(ItemStack stack) {
-		return stack.is(COPPER) || stack.is(TIN) || stack.is(IRON) || stack.is(MANGANESE)
-				|| stack.is(URANIUM) || stack.is(TITANIUM) || stack.is(DIAMOND)
-				|| stack.is(STEEL) || stack.is(NETHERITE) || stack.is(GOLD)
-				|| stack.is(Items.COPPER_BLOCK) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_TIN.get())
-				|| stack.is(Items.IRON_BLOCK) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get())
-				|| stack.is(SurvivalReimaginedModItems.BLOCK_OF_URANIUM.get()) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get())
-				|| stack.is(Items.DIAMOND_BLOCK) || stack.is(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get())
-				|| stack.is(Items.NETHERITE_BLOCK) || stack.is(Items.GOLD_BLOCK);
+		return stack.is(ALLOY_INPUTS) || stack.is(ALLOY_BLOCK_INPUTS);
+
 	}
 
 	private static TagKey<Item> alloyTag(String path) {
 		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "alloy/" + path));
+	}
+	private static TagKey<Item> alloyBlockTag(String path) {
+		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "alloy_block/" + path));
 	}
 
 	private boolean hasUpgrade(Item item) {
@@ -263,18 +293,59 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 
 	private AlloyRecipe getRecipe(ItemStack a, ItemStack b) {
 		if (hasBlockPackagingUpgrade()) {
-			if (matchesItems(a, b, Items.COPPER_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_TIN.get()))
-				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_BRONZE.get(), 2, false);
-			if (matchesItems(a, b, SurvivalReimaginedModItems.BLOCK_OF_RAW_MANGANESE.get(), SurvivalReimaginedModItems.BLOCK_OF_RAW_MANGANESE.get()))
-				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get(), 2, false);
-			if (matchesItems(a, b, Items.IRON_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get()))
-				return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get(), 2, false);
-			if (matchesItems(a, b, SurvivalReimaginedModItems.BLOCK_OF_URANIUM.get(), SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get()))
-				return new AlloyRecipe(SurvivalReimaginedModItems.TURANITE_BLOCK.get(), 2, false);
-			if (matchesItems(a, b, Items.DIAMOND_BLOCK, SurvivalReimaginedModItems.BLOCK_OF_STEEL.get()))
-				return new AlloyRecipe(SurvivalReimaginedModItems.PLATED_DIAMOND_BLOCK.get(), 2, false);
-			if (matchesItems(a, b, Items.NETHERITE_BLOCK, Items.GOLD_BLOCK))
-				return new AlloyRecipe(Items.NETHERITE_BLOCK, 1, false);
+
+			// Alloy Block Recipes
+			if (matches(a, b, COPPER_BLOCKS, TIN_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_BRONZE.get(), 2, false);
+			if (matches(a, b, IRON_BLOCKS, MANGANESE_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_STEEL.get(), 2, false);
+			if (matches(a, b, DIAMOND_BLOCKS, STEEL_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.PLATED_DIAMOND_BLOCK.get(), 2, false);
+			if (matches(a, b, TITANIUM_BLOCKS, URANIUM_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.TURANITE_BLOCK.get(), 2, false);
+			if (matches(a ,b, GOLD_BLOCKS, NETHERITE_BLOCKS)) return new AlloyRecipe(Items.NETHERITE_BLOCK, 1,false);
+
+			// Block Recipes
+			class BlockLists {
+				static final List<ItemStack> COPPER_BLOCKS = List.of(
+						new ItemStack(Items.RAW_COPPER_BLOCK),
+						new ItemStack(SurvivalReimaginedModItems.RAW_MALACHITE_BLOCK.get()),
+						new ItemStack(SurvivalReimaginedModItems.RAW_AZURITE_BLOCK.get())
+				);
+				static final List<ItemStack> TIN_BLOCKS = List.of(
+						new ItemStack(SurvivalReimaginedModItems.BLOCK_OF_RAW_TIN.get()),
+						new ItemStack(SurvivalReimaginedModItems.RAW_CASSITERITE_BLOCK.get())
+				);
+				static final List<ItemStack> IRON_BLOCKS = List.of(
+						new ItemStack(Items.RAW_IRON_BLOCK),
+						new ItemStack(SurvivalReimaginedModItems.HEMATITE_BLOCK.get()),
+						new ItemStack(SurvivalReimaginedModItems.MAGNETITE_BLOCK.get())
+				);
+				static final List<ItemStack> MANGANESE_BLOCKS = List.of(
+						new ItemStack(SurvivalReimaginedModItems.BLOCK_OF_RAW_MANGANESE.get()),
+						new ItemStack(SurvivalReimaginedModItems.PYROLUSITE_BLOCK.get()),
+						new ItemStack(SurvivalReimaginedModItems.MANGANITE_BLOCK.get())
+				);
+				static final List<ItemStack> GOLD_BLOCKS = List.of(
+						new ItemStack(Items.RAW_GOLD_BLOCK),
+						new ItemStack(SurvivalReimaginedModItems.CALAVERITE_BLOCK.get())
+				);
+				static final List<ItemStack> TITANIUM_BLOCKS = List.of(
+						new ItemStack(SurvivalReimaginedModItems.BLOCK_OF_RAW_TITANIUM.get()),
+						new ItemStack(SurvivalReimaginedModItems.ILMENITE_BLOCK.get())
+				);
+				static final List<ItemStack> URANIUM_BLOCKS = List.of(
+						new ItemStack(SurvivalReimaginedModItems.BLOCK_OF_RAW_URANINITE.get()),
+						new ItemStack(SurvivalReimaginedModItems.URANOPHANE_BLOCK.get())
+				);
+			}
+			if (matchesList(a, b, BlockLists.COPPER_BLOCKS, BlockLists.COPPER_BLOCKS)) return new AlloyRecipe(Items.COPPER_BLOCK, 2, false);
+			if (matchesList(a, b, BlockLists.TIN_BLOCKS, BlockLists.TIN_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_TIN.get(), 2, false);
+			if (matchesList(a, b, BlockLists.IRON_BLOCKS, BlockLists.IRON_BLOCKS)) return new AlloyRecipe(Items.IRON_BLOCK, 2, false);
+			if (matchesList(a, b, BlockLists.MANGANESE_BLOCKS, BlockLists.MANGANESE_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_MANGANESE.get(), 2, false);
+			if (matchesList(a, b, BlockLists.GOLD_BLOCKS, BlockLists.GOLD_BLOCKS)) return new AlloyRecipe(Items.GOLD_BLOCK, 2, false);
+			if (matchesList(a, b, BlockLists.TITANIUM_BLOCKS, BlockLists.TITANIUM_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_TITANIUM.get(), 2, false);
+			if (matchesList(a, b, BlockLists.URANIUM_BLOCKS, BlockLists.URANIUM_BLOCKS)) return new AlloyRecipe(SurvivalReimaginedModItems.BLOCK_OF_URANIUM.get(), 2, false);
+
+			// Create Compat
+			//if (FabricLoader.getInstance().isModLoaded("create")) {}
+
 		}
 		if (matches(a, b, COPPER, TIN)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_BRONZE.get(), 2, true);
 		if (matches(a, b, IRON, MANGANESE)) return new AlloyRecipe(SurvivalReimaginedModItems.ROUGH_STEEL.get(), 2, true);
@@ -286,6 +357,11 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 
 	private static boolean matches(ItemStack a, ItemStack b, TagKey<Item> first, TagKey<Item> second) {
 		return a.is(first) && b.is(second) || a.is(second) && b.is(first);
+	}
+
+	private static boolean matchesList(ItemStack a, ItemStack b, List<ItemStack> first, List<ItemStack> second) {
+		return first.stream().anyMatch(item -> ItemStack.isSameItem(a, item)) && second.stream().anyMatch(item -> ItemStack.isSameItem(b, item))
+				|| second.stream().anyMatch(item -> ItemStack.isSameItem(a, item)) && first.stream().anyMatch(item -> ItemStack.isSameItem(b, item));
 	}
 
 	private static boolean matchesItems(ItemStack a, ItemStack b, Item first, Item second) {

@@ -26,7 +26,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
 
 public class ApplyRadiation  {
-    public static void execute(LevelAccessor world, Entity entity) {
+    public static void onServerTick(LevelAccessor world, Entity entity) {
         if (entity == null) return;
 
 

@@ -11,8 +11,8 @@ public class PlayerVariables {
     public boolean PlayerPositionSet = false;
     public double NBTPercentage = 0;
     public double SpoilTimer = 0;
-    public boolean HungerSprinting = false;
-    public boolean HungerSwimming = false;
+    public double HungerSprinting = 0;
+    public double HungerSwimming = 0;
     public double ScrapeHandler = 0;
     public double ItemCount = 0;
     //public double WeightMediumItems = 0; <- Used in the experimental inventory weight system
@@ -28,8 +28,8 @@ public class PlayerVariables {
         this.PlayerPositionSet = nbt.getBoolean("PlayerPositionSet");
         this.NBTPercentage = nbt.getDouble("NBTPercentage");
         this.SpoilTimer = nbt.getDouble("SpoilTimer");
-        this.HungerSprinting = nbt.getBoolean("HungerSprinting");
-        this.HungerSwimming = nbt.getBoolean("HungerSwimming");
+        this.HungerSprinting = nbt.getDouble("HungerSprinting");
+        this.HungerSwimming = nbt.getDouble("HungerSwimming");
         this.ScrapeHandler = nbt.getDouble("ScrapeHandler");
         this.ItemCount = nbt.getDouble("ItemCount");
         //this.WeightMediumItems = nbt.getDouble("WeightMediumItems");
@@ -44,8 +44,8 @@ public class PlayerVariables {
         nbt.putBoolean("PlayerPositionSet", this.PlayerPositionSet);
         nbt.putDouble("NBTPercentage", this.NBTPercentage);
         nbt.putDouble("SpoilTimer", this.SpoilTimer);
-        nbt.putBoolean("HungerSprinting", this.HungerSprinting);
-        nbt.putBoolean("HungerSwimming", this.HungerSwimming);
+        nbt.putDouble("HungerSprinting", this.HungerSprinting);
+        nbt.putDouble("HungerSwimming", this.HungerSwimming);
         nbt.putDouble("ScrapeHandler", this.ScrapeHandler);
         nbt.putDouble("ItemCount", this.ItemCount);
         //nbt.putDouble("WeightMediumItems", this.WeightMediumItems);

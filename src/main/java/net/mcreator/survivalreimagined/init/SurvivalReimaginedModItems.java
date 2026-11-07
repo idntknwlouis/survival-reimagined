@@ -3,6 +3,7 @@ package net.mcreator.survivalreimagined.init;
 import net.fabricmc.api.ModInitializer;
 import net.mcreator.survivalreimagined.block.HorseCarcasses;
 import net.mcreator.survivalreimagined.item.*;
+import net.mcreator.survivalreimagined.item.BoatItem;
 import net.mcreator.survivalreimagined.world.inventory.AAFScriptureGUIMenu;
 import net.minecraft.core.Registry;
 import net.minecraft.ChatFormatting;
@@ -12,6 +13,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.*;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -553,6 +555,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BANANA = stableFood("banana", 4, 0.3f);
 	public static final RegistryEntry<Item> BANANA_JUNGLE_LOG = block(SurvivalReimaginedModBlocks.BANANA_JUNGLE_LOG);
 	public static final RegistryEntry<Item> SMALL_BANANA_JUNGLE_LOG = block(SurvivalReimaginedModBlocks.SMALL_BANANA_JUNGLE_LOG);
+	public static final RegistryEntry<Item> BANANA_GROW_BLOCK = block(SurvivalReimaginedModBlocks.BANANA_GROW_BLOCK);
 
 	public static final RegistryEntry<Item> APPLE = block(SurvivalReimaginedModBlocks.APPLE_FRUIT);
 	public static final RegistryEntry<Item> MANDARIN_FRUIT = block(SurvivalReimaginedModBlocks.MANDARIN_FRUIT);
@@ -684,6 +687,7 @@ public final class SurvivalReimaginedModItems {
 	public static final Item NETHERITE_SAW = registerTool("netherite_saw", new SawItem(Tiers.NETHERITE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.NETHERITE, 3.5f, -3))));
 	public static final Item NETHERITE_KNIFE = registerTool("netherite_knife", new KnifeItem(Tiers.NETHERITE, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.NETHERITE, 4, -2))));
 
+	public static final Item COPPER_CHISEL = registerTool("copper_chisel", new ChiselItem(SurvivalReimaginedModToolMaterials.COPPER, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.COPPER, 2, -2))));
 	public static final Item BRONZE_CHISEL = registerTool("bronze_chisel", new ChiselItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 2, -2))));
 	public static final Item STEEL_CHISEL = registerTool("steel_chisel", new ChiselItem(SurvivalReimaginedModToolMaterials.STEEL, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.STEEL, 2, -2))));
 	public static final Item DIAMOND_CHISEL = registerTool("diamond_chisel", new ChiselItem(Tiers.DIAMOND, new Item.Properties().attributes(DiggerItem.createAttributes(Tiers.DIAMOND, 2, -2))));
@@ -760,8 +764,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> EYE_CLOSED = simple("eye_closed");
 
 	public static final RegistryEntry<Item> FLESH = food("flesh", 2, 0.3f);
-	public static final RegistryEntry<Item> HEART_OF_THE_BLOOD_MOON = uniqueItem("heart_of_the_blood_moon", Rarity.RARE);
-	public static final RegistryEntry<Item> HEART_OF_THE_NETHER = uniqueItem("heart_of_the_nether", Rarity.EPIC);
+	public static final RegistryEntry<Item> HEART_OF_THE_BLOOD_MOON = register("heart_of_the_blood_moon", BloodMoonHeart::new);
+	public static final RegistryEntry<Item> HEART_OF_THE_NETHER = register("heart_of_the_nether", NetherHeart::new);
 
 	public static final RegistryEntry<Item> HEMP_BANDAGE = register("hemp_bandage", BandageItem::new);
 	public static final RegistryEntry<Item> STRING_BANDAGE = register("string_bandage", BandageItem::new);
@@ -785,6 +789,13 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HORSE_HEAD = block(SurvivalReimaginedModBlocks.HORSE_HEAD);
 	public static final RegistryEntry<Item> HORSE_LEG = block(SurvivalReimaginedModBlocks.HORSE_LEG);
 	public static final RegistryEntry<Item> SKINNED_HORSE = block(SurvivalReimaginedModBlocks.SKINNED_HORSE);
+	public static final RegistryEntry<Item> RAW_AZURITE_BLOCK = block(SurvivalReimaginedModBlocks.RAW_AZURITE_BLOCK);
+
+	public static final Item WISTERIA_BOAT = registerBoat("wisteria_boat", new BoatItem(SurvivalReimaginedModBoatTypes.WISTERIA_BOAT, new Item.Properties().stacksTo(1)));
+	public static final Item RADIATED_BOAT = registerBoat("radiated_boat", new BoatItem(SurvivalReimaginedModBoatTypes.RADIATED_BOAT, new Item.Properties().stacksTo(1)));
+	public static final Item MANDARIN_BOAT = registerBoat("mandarin_boat", new BoatItem(SurvivalReimaginedModBoatTypes.MANDARIN_BOAT, new Item.Properties().stacksTo(1)));
+
+
 
 
 	public static final RegistryEntry<Item> AAF_BOOK_SCRIPTURE = register(
@@ -801,6 +812,10 @@ public final class SurvivalReimaginedModItems {
 	public static void registerItems() {
 		HorseHides.registerItems();
 		HorseCarcasses.registerItems();
+	}
+
+	private static Item registerBoat(String name, Item item) {
+		return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, name), item);
 	}
 
 

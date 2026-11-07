@@ -8,8 +8,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -37,16 +40,21 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
 
     private final int maxAge;
     private final boolean farmlandOnly;
+    private final boolean triggersHempADV;
 
     public int getMaxAge() {
         return this.maxAge;
     }
 
     public SimpleAgeCropBlock(int maxAge) {
-        this(maxAge, true);
+        this(maxAge, true, false);
     }
 
     public SimpleAgeCropBlock(int maxAge, boolean farmlandOnly) {
+        this(maxAge, farmlandOnly, false);
+    }
+
+    public SimpleAgeCropBlock(int maxAge, boolean farmlandOnly, boolean triggersHempADV) {
         super(BlockBehaviour.Properties.of()
                 .sound(SoundType.CROP)
                 .instabreak()
@@ -54,6 +62,7 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
                 .randomTicks());
         this.maxAge = maxAge;
         this.farmlandOnly = farmlandOnly;
+        this.triggersHempADV = triggersHempADV;
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }
 
@@ -61,8 +70,8 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
         this(maxAge, true);
     }
 
-    public SimpleAgeCropBlock(IntegerProperty ignoredAgeProperty, int maxAge, boolean farmlandOnly) {
-        this(maxAge, farmlandOnly);
+    public SimpleAgeCropBlock(IntegerProperty ignoredAgeProperty, int maxAge, boolean farmlandOnly, boolean triggersHempADV) {
+        this(maxAge, farmlandOnly, triggersHempADV);
     }
 
     @Override
@@ -101,6 +110,22 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!this.farmlandOnly && level.getRawBrightness(pos, 0) >= 9 && !isMaxAge(state) && random.nextInt(5) == 0) {
             level.setBlock(pos, state.setValue(AGE, getAge(state) + 1), 2);
+        }
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
+        super.setPlacedBy(level, pos, state, placer, itemStack);
+
+        if (triggersHempADV && placer instanceof ServerPlayer player) {
+            var advancement = player.server.getAdvancements().get(ResourceLocation.parse("survival_reimagined:growing_hemp"));
+
+            if (advancement != null) {
+                var progress = player.getAdvancements().getOrStartProgress(advancement);
+                for (String criteria : progress.getRemainingCriteria()) {
+                    player.getAdvancements().award(advancement, criteria);
+                }
+            }
         }
     }
 

@@ -17,6 +17,7 @@ public final class SurvivalReimaginedModParticleTypes {
 	public static final RegistryEntry<SimpleParticleType> FALLING_WISTERIA = register("falling_wisteria", false);
 	public static final RegistryEntry<SimpleParticleType> FALLING_WISTERIA_DARK = register("falling_wisteria_dark", false);
 	public static final RegistryEntry<SimpleParticleType> BLACK_SMOKE = register("black_smoke", false);
+	public static final RegistryEntry<SimpleParticleType> DARK_CINDER = register("dark_cinder", false);
 
 	private SurvivalReimaginedModParticleTypes() {
 	}

@@ -1,15 +1,13 @@
 package net.mcreator.survivalreimagined.init;
 
-import net.mcreator.survivalreimagined.potion.BrokenLegMobEffect;
+import net.mcreator.survivalreimagined.potion.*;
 import net.mcreator.survivalreimagined.potion.EffectExpires.BrokenLegEffectExpires;
+import net.mcreator.survivalreimagined.potion.EffectExpires.ZombificationEffectExpires;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
-import net.mcreator.survivalreimagined.potion.BindingSculkMobEffect;
-import net.mcreator.survivalreimagined.potion.BleedingMobEffect;
-import net.mcreator.survivalreimagined.potion.RadiationMobEffect;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 
 import net.minecraft.world.entity.LivingEntity;
@@ -22,6 +20,10 @@ public final class SurvivalReimaginedModMobEffects {
 	public static final RegistryEntry<MobEffect> BLEEDING = register("bleeding", BleedingMobEffect::new);
 	public static final RegistryEntry<MobEffect> RADIATION = register("radiation", RadiationMobEffect::new);
 	public static final RegistryEntry<MobEffect> BROKEN_LEG = register("broken_leg_potion", BrokenLegMobEffect::new);
+	public static final RegistryEntry<MobEffect> ZOMBIFICATION = register("zombification", ZombificationMobEffect::new);
+	public static final RegistryEntry<MobEffect> PARANOIA = register("paranoia", ParanoiaMobEffect::new);
+	public static final RegistryEntry<MobEffect> FEAR = register("fear", FearMobEffect::new);
+
 
 
 	private static final Map<UUID, Set<MobEffect>> RECENTLY_ACTIVE_EFFECTS = new HashMap<>();
@@ -44,6 +46,7 @@ public final class SurvivalReimaginedModMobEffects {
 
 		// Monitors Effects that has expiry condition
 		checkEffectState(entity, BROKEN_LEG.get(), pastEffects, currentEffects);
+		checkEffectState(entity, ZOMBIFICATION.get(), pastEffects, currentEffects);
 
 
 
@@ -63,6 +66,7 @@ public final class SurvivalReimaginedModMobEffects {
 	private static void executeEffectExpiry(LivingEntity entity, MobEffect expiredEffect) {
 		// Executes expiry conditions
 		if (expiredEffect == BROKEN_LEG.get()) { BrokenLegEffectExpires.execute(entity); }
+		if (expiredEffect == ZOMBIFICATION.get()) { ZombificationEffectExpires.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity); }
 	}
 
 	public static void register() {

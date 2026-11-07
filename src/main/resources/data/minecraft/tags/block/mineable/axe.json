@@ -5,12 +5,12 @@
     "survival_reimagined:mandarin_wall_sign",
     "survival_reimagined:mandarin_pressure_plate",
     "survival_reimagined:wisteria_wall_sign",
-    "survival_reimagined:hanging_wisteria_sign",
+    "survival_reimagined:wisteria_hanging_sign",
     "survival_reimagined:campfire",
     "survival_reimagined:radiant_log",
     "survival_reimagined:mandarin_planks_fence",
     "survival_reimagined:tanning_barrel",
-    "survival_reimagined:hanging_radiated_wall_sign",
+    "survival_reimagined:radiant_hanging_wall_sign",
     "survival_reimagined:stripped_radiant_log",
     "survival_reimagined:drying_rack",
     "survival_reimagined:stripped_wisteria_log",
@@ -39,10 +39,10 @@
     "survival_reimagined:small_palm_log",
     "survival_reimagined:stripped_mandarin_log",
     "survival_reimagined:mandarin_planks_stairs",
-    "survival_reimagined:hanging_radiated_sign",
+    "survival_reimagined:radiant_hanging_sign",
     "survival_reimagined:wooden_plate",
-    "survival_reimagined:hanging_wisteria_wall_sign",
-    "survival_reimagined:radiated_wall_sign",
+    "survival_reimagined:wisteria_hanging_wall_sign",
+    "survival_reimagined:radiant_wall_sign",
     "survival_reimagined:mandarin_planks"
   ]
 }

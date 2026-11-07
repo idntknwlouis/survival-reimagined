@@ -12,31 +12,31 @@ import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 
 public class BindingSculkOnEffectActiveTickProcedure {
-	private static final ResourceKey<DamageType> DAMAGE_TYPE = ResourceKey.create(
-			Registries.DAMAGE_TYPE, ResourceLocation.parse("survival_reimagined:binding_sculk_damage"));
+	public static void execute(Level world, double x, double y, double z, Entity entity) {
+		if (entity == null) return;
 
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null) {
-			return;
-		}
+		boolean notCreative = false;
 
 		if (entity instanceof ServerPlayer player) {
 			GameType gameType = player.gameMode.getGameModeForPlayer();
-			if ((gameType == GameType.SURVIVAL || gameType == GameType.ADVENTURE)
-					&& world instanceof Level level && !level.isClientSide()) {
-				level.playSound(null, BlockPos.containing(x, y, z),
-						BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("particle.soul_escape")),
-						SoundSource.PLAYERS, 2, 1);
-			}
+			notCreative = gameType == GameType.SURVIVAL || gameType == GameType.ADVENTURE;
 		}
 
-		entity.hurt(new DamageSource(entity.level().registryAccess()
-				.registryOrThrow(Registries.DAMAGE_TYPE)
-				.getHolderOrThrow(DAMAGE_TYPE)), 2);
-		entity.setDeltaMovement(Vec3.ZERO);
+		if (notCreative && world.isClientSide()) {
+			world.playLocalSound(x,y,z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("particle.soul_escape")), SoundSource.PLAYERS, 2.0f, 1.0f, false);
+		} else if (notCreative && !world.isClientSide()) {
+			world.playSound(null, BlockPos.containing(x,y,z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("particle.soul_escape")), SoundSource.PLAYERS, 2.0f, 1.0f);
+		}
+
+		if (!world.isClientSide()) {
+			ResourceKey<DamageType> damageType = ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse("survival_reimagined:binding_sculk_damage"));
+			DamageSource damageSource = world.damageSources().source(damageType);
+
+			entity.hurt(damageSource, 2.0f);
+			entity.setDeltaMovement(Vec3.ZERO);
+		}
 	}
 }
