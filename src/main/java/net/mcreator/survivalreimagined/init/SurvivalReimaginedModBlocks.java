@@ -426,8 +426,8 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WISTERIA_PRESSURE_PLATE = register("wisteria_pressure_plate", () -> new PressurePlateBlock(BlockSetType.CHERRY, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3)));
 	public static final RegistryEntry<Block> PURE_SALT_BLOCK = register("pure_salt_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.TUFF).strength(2,2)));
 	public static final RegistryEntry<Block> SALT_DEPOSIT = register("salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3)));
-	public static final RegistryEntry<Block> BANANA_JUNGLE_LOG = register("banana_jungle_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
-	public static final RegistryEntry<Block> SMALL_BANANA_JUNGLE_LOG = register("small_banana_jungle_log", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> BANANA_JUNGLE_LOG = register("banana_jungle_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
+	public static final RegistryEntry<Block> SMALL_BANANA_JUNGLE_LOG = register("small_banana_jungle_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).strength(2,3)));
 	public static final RegistryEntry<Block> BANANA_GROW_BLOCK = register("banana_grow_block", BananaGrowBlock::new);
 	public static final RegistryEntry<Block> BANANA_LEAVES = register("banana_leaves", BananaLeavesBlock::new);
 	public static final RegistryEntry<Block> MANDARIN_LOG = register("mandarin_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
