@@ -26,6 +26,7 @@ public class SurvivalReimaginedModMenu implements ModMenuApi {
             ConfigCategory hunger = builder.getOrCreateCategory(Component.literal("Hunger Changes"));
             ConfigCategory experimental = builder.getOrCreateCategory(Component.literal("Experimental Features"));
             ConfigCategory lore = builder.getOrCreateCategory(Component.literal("Lore Content"));
+            ConfigCategory jade = builder.getOrCreateCategory(Component.literal("Jade Integration"));
 
 
             // ZOMBIFICATION
@@ -78,6 +79,10 @@ public class SurvivalReimaginedModMenu implements ModMenuApi {
             // LORE
 
             lore.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enables Ghosts"), values.enables_ghosts).setDefaultValue(false).setSaveConsumer(v -> values.enables_ghosts =v).build());
+
+            // JADE INTEGRATION
+
+            jade.addEntry(entryBuilder.startBooleanToggle(Component.literal("Require Sneaking to Show Machine Details"), values.jade_machine_details_require_sneak).setDefaultValue(true).setSaveConsumer(v -> values.jade_machine_details_require_sneak = v).build());
 
             builder.setSavingRunnable(SurvivalReimaginedModConfig::save);
             return builder.build();
