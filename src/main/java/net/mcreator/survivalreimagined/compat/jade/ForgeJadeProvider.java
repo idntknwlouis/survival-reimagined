@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
@@ -35,17 +36,20 @@ public enum ForgeJadeProvider implements IBlockComponentProvider, StreamServerDa
 		tooltip.append(helper.spacer(4, 0));
 		tooltip.append(helper.progress(data.total() == 0 ? 0F : (float) data.progress() / data.total()).translate(new Vec2(-2, 0)));
 		tooltip.append(helper.item(data.inventory().get(2)));
-		if (data.advanced()) {
+		if (data.advanced() && shouldShowMachineDetails(accessor)) {
 			tooltip.add(Component.literal("Reactor Rod Capacity: " + data.capacity() + " / " + data.maxCapacity()));
 			if (!data.upgrades().isEmpty()) {
-				MutableComponent upgrades = Component.literal("Upgrades: ");
-				for (int i = 0; i < data.upgrades().size(); i++) {
-					if (i > 0) upgrades.append(Component.literal(", "));
-					upgrades.append(data.upgrades().get(i).getHoverName());
+				tooltip.add(Component.literal("Installed upgrades:"));
+				for (ItemStack upgrade : data.upgrades()) {
+					tooltip.add(Component.literal("- " + upgrade.getHoverName().getString()));
 				}
-				tooltip.add(upgrades);
 			}
 		}
+	}
+
+	private static boolean shouldShowMachineDetails(BlockAccessor accessor) {
+		return !SurvivalReimaginedModConfig.VALUES.jade_machine_details_require_sneak
+				|| (accessor.getPlayer() != null && accessor.getPlayer().isShiftKeyDown());
 	}
 
 	@Override
