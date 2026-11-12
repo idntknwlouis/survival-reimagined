@@ -82,7 +82,7 @@ public class BlackBearEntity extends Animal {
 	public static AttributeSupplier.Builder createAttributes() {
 		return Mob.createMobAttributes()
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
-				.add(Attributes.MAX_HEALTH, 25.0D)
+				.add(Attributes.MAX_HEALTH, 40.0D)
 				.add(Attributes.ARMOR, 0.0D)
 				.add(Attributes.ATTACK_DAMAGE, 4.0D)
 				.add(Attributes.FOLLOW_RANGE, 16.0D)

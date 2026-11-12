@@ -14,7 +14,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class AnimalKilled {
     public static void register() {
-        ServerLivingEntityEvents.AFTER_DAMAGE.register((LivingEntity entity, DamageSource damageSource, float baseDamageTaken, float damageTaken, boolean blocked) -> {
+        ServerLivingEntityEvents.AFTER_DEATH.register((LivingEntity entity, DamageSource damageSource) -> {
             if (entity != null && damageSource.getEntity() != null) {
                 execute(entity, damageSource.getEntity());
             }

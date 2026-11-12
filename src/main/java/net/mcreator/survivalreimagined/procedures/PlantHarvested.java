@@ -13,7 +13,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -26,20 +25,7 @@ public class PlantHarvested {
             int age = getAge(state);
             int maxAge = getMaxAge(state);
 
-            if (state.is(SurvivalReimaginedModBlocks.WILD_WHEAT.get()) || state.is(SurvivalReimaginedModBlocks.WHEAT_CROP.get())) {
-                if (age == 7) {
-                    drop(serverLevel, pos, SurvivalReimaginedModItems.WHEAT_SEEDS.get(), random(1,3));
-                    drop(serverLevel, pos, Items.WHEAT, 1);
-                } else {
-                    drop(serverLevel, pos, SurvivalReimaginedModItems.WHEAT_SEEDS.get(), 1);
-                }
-            } else if (state.is(SurvivalReimaginedModBlocks.WILD_CARROT.get()) || state.is(SurvivalReimaginedModBlocks.CARROT.get())) {
-               drop(serverLevel, pos, SurvivalReimaginedModItems.CARROT.get(), age == 3 ? random(2,4) : 1);
-            } else if (state.is(SurvivalReimaginedModBlocks.WILD_POTATOES.get()) || state.is(SurvivalReimaginedModBlocks.POTATOES.get())) {
-                drop(serverLevel, pos, SurvivalReimaginedModItems.POTATO.get(), age == 3 ? random(2,4) : 1);
-            }
-
-            else if (state.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("survival_reimagined:corn")))) {
+            if (state.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("survival_reimagined:corn")))) {
                 int amount = age == maxAge ? random(1, 4) : 0;
 
                 if (state.is(SurvivalReimaginedModBlocks.CORN_STALK_TOP.get())) {

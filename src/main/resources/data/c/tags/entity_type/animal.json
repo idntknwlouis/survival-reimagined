@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "horse",
+    "chicken",
+    "cow",
+    "pig",
+    "sheep",
+    "goat"
+  ]
+}

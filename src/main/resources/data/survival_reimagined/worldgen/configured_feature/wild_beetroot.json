@@ -11,7 +11,7 @@
             "entries": [
               {
                 "data": {
-                  "Name": "survival_reimagined:beetroot",
+                  "Name": "survival_reimagined:wild_beetroot",
                   "Properties": {
                     "age": "0"
                   }
@@ -20,7 +20,7 @@
               },
               {
                 "data": {
-                  "Name": "survival_reimagined:beetroot",
+                  "Name": "survival_reimagined:wild_beetroot",
                   "Properties": {
                     "age": "1"
                   }
@@ -29,7 +29,7 @@
               },
               {
                 "data": {
-                  "Name": "survival_reimagined:beetroot",
+                  "Name": "survival_reimagined:wild_beetroot",
                   "Properties": {
                     "age": "2"
                   }
@@ -38,7 +38,7 @@
               },
               {
                 "data": {
-                  "Name": "survival_reimagined:beetroot",
+                  "Name": "survival_reimagined:wild_beetroot",
                   "Properties": {
                     "age": "3"
                   }

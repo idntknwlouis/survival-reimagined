@@ -5,7 +5,10 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.mcreator.survivalreimagined.command.EventsCommand;
+import net.mcreator.survivalreimagined.compat.jei.plugin.JEIPlugin;
+import net.mcreator.survivalreimagined.compat.jei.plugin.RecipeTypes;
 import net.mcreator.survivalreimagined.init.*;
+import net.mcreator.survivalreimagined.network.DynamicLightNetworking;
 import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
 import net.mcreator.survivalreimagined.network.gui.AAFScriptureGUIButtonMessage;
 import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
@@ -62,7 +65,6 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModMenus.register();
 		SurvivalReimaginedModMobEffects.register();
 		SurvivalReimaginedModFeatures.register();
-		SurvivalReimaginedModRecipeTypes.register();
 		SurvivalReimaginedModTabs.register();
 		SurvivalReimaginedModBiomeModifications.register();
 		SurvivalReimaginedModVariables.register();
@@ -75,6 +77,11 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		BloodMoonTexture.registerServerTicker();
 		AAFScriptureGUIButtonMessage.registerC2S();
 		TanningBarrelGUIButtonMessage.registerC2S();
+		DynamicLightNetworking.register();
+
+		//JEI
+		RecipeTypes.register();
+
 		PayloadTypeRegistry.playS2C().register(
 				AAFScripturePageSyncPayload.TYPE,
 				AAFScripturePageSyncPayload.STREAM_CODEC

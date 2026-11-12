@@ -1,0 +1,29 @@
+{
+  "type": "survival_reimagined:alloy_forge",
+  "ingredients": [
+    {
+      "item": "survival_reimagined:advanced_reactor_rod"
+    },
+    {
+      "item": "survival_reimagined:ingot_mold"
+    },
+    {
+      "item": "survival_reimagined:rough_plated_diamond"
+    },
+    {
+      "tag": "survival_reimagined:jei_empty_tag"
+    }
+  ],
+  "integers": [
+    1,
+    1,
+    1,
+    0
+  ],
+  "outputs": [
+    {
+      "id": "survival_reimagined:diamond_plated_ingot",
+      "count": 1
+    }
+  ]
+}

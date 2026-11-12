@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern": [
-    "a",
-    "b"
-  ],
   "key": {
-    "a": {
-      "item": "survival_reimagined:dark_cinder_coal"
-    },
-    "b": {
+    "#": {
       "item": "minecraft:stick"
-    }
+    },
+    "X": {
+      "tag": "minecraft:coals"
+      }
   },
+  "pattern": [
+    "X",
+    "#"
+  ],
   "result": {
-    "id": "minecraft:torch",
-    "count": 4
+    "count": 4,
+    "id": "minecraft:torch"
   }
 }

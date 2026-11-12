@@ -1,6 +1,7 @@
 package net.mcreator.survivalreimagined.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItem;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
@@ -14,6 +15,10 @@ public class HammerItem extends DiggerItem implements FabricItem {
 
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
+        if (stack.is(SurvivalReimaginedModItems.WOODEN_HAMMER)) {
+            return ItemStack.EMPTY;
+        }
+
         ItemStack remainder = stack.copy();
         remainder.setDamageValue(stack.getDamageValue() + 1);
 

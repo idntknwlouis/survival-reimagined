@@ -1,5 +1,5 @@
 {
-  "type": "survival_reimagined:forging",
+  "type": "survival_reimagined:forge_jei",
   "ingredients": [
     {
       "item": "survival_reimagined:silver_ingot"
@@ -8,11 +8,18 @@
       "item": "survival_reimagined:rune_mold"
     },
     {
-      "tag": "c:fuels"
+      "tag": "c:forge/fuels"
     }
   ],
-  "output": {
-    "id": "survival_reimagined:empty_silver_rune",
-    "count": 1
-  }
+  "integers": [
+    1,
+    1,
+    1
+  ],
+  "outputs": [
+    {
+      "id": "survival_reimagined:empty_silver_rune",
+      "count": 1
+    }
+  ]
 }

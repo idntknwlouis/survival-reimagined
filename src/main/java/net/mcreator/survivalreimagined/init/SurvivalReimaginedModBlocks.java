@@ -317,7 +317,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES = register("thick_radiated_vines", ThickRadiatedVinesBlock::new);
 	public static final RegistryEntry<Block> THICK_RADIATED_VINES_BASE = register("thick_radiated_vines_base", ThickRadiatedVinesBaseBlock::new);
 	public static final RegistryEntry<Block> SAND_SALT_DESPOSIT = register("sand_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.7f, 0.7f)));
-	public static final RegistryEntry<Block> BLOCK_OF_RAW_REDSTONE = register("block_of_raw_redstone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> BLOCK_OF_CINNABAR = register("block_of_cinnabar", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> CINNABAR_ORE = register("cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3, 3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_CINNABAR_ORE = register("deepslate_cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> EMBEDDED_OBSIDIAN = register("embedded_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> APPLE_TREE_SAPLING = register("apple_tree_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.APPLE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).instabreak()));
 

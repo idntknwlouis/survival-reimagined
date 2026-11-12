@@ -4,6 +4,7 @@ import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -45,5 +46,20 @@ public class HorseCarcasses {
             RegistryEntry<Item> item = registerBlockItem(ID, () -> block);
             HORSE_CARCASSES_ITEM.put(ID, item);
         }
+    }
+
+    public static Item getCarcassItemForHorse(Horse horse) {
+        int color = horse.getVariant().getId();
+        int markings = horse.getMarkings().getId();
+
+        if (color >= BASE_COLORS.length || markings >= VARIANTS.length) {
+            color = 0;
+            markings = 0;
+        }
+
+        String ID = BASE_COLORS[color] + "_horse" + VARIANTS[markings];
+        RegistryEntry<Item> entry = HORSE_CARCASSES_ITEM.get(ID);
+
+        return entry != null ? entry.get() : null;
     }
 }

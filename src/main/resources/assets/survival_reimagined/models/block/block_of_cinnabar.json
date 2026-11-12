@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "survival_reimagined:block/block_of_cinnabar",
+    "up": "survival_reimagined:block/block_of_cinnabar",
+    "north": "survival_reimagined:block/block_of_cinnabar",
+    "east": "survival_reimagined:block/block_of_cinnabar",
+    "south": "survival_reimagined:block/block_of_cinnabar",
+    "west": "survival_reimagined:block/block_of_cinnabar",
+    "particle": "survival_reimagined:block/block_of_cinnabar"
+  },
+  "render_type": "solid"
+}

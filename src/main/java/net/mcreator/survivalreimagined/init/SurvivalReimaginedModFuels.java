@@ -36,6 +36,16 @@ public class SurvivalReimaginedModFuels {
         fuels.put(SurvivalReimaginedModItems.MANDARIN_PLANK, 400);
         fuels.put(SurvivalReimaginedModItems.CHERRY_PLANK, 400);
 
+        //Coals
+        fuels.put(SurvivalReimaginedModItems.LIGINITE, 800);
+        fuels.put(SurvivalReimaginedModItems.SMALL_LIGINITE, 400);
+        fuels.put(SurvivalReimaginedModItems.ANTHRACITE, 3200);
+        fuels.put(SurvivalReimaginedModItems.SMALL_ANTHRACITE, 1600);
+        fuels.put(SurvivalReimaginedModItems.DARK_CINDER_POWDER, 1600);
+        fuels.put(SurvivalReimaginedModItems.DARK_CINDER_COAL, 4000);
+        fuels.put(SurvivalReimaginedModBlocks.ANTHRACITE_BLOCK.get().asItem(), 28800);
+        fuels.put(SurvivalReimaginedModBlocks.LIGINITE_BLOCK.get().asItem(), 7200);
+
         fuels.forEach(FuelRegistry.INSTANCE::add);
     }
 }

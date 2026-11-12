@@ -5,11 +5,11 @@
   "name": "Survival Reimagined: Fabricated",
   "description": "Harder and a more realistic survival experience",
   "authors": [
-    "louis, ShotUGMG"
+    "lou, ShotUGMG"
   ],
   "contributors": [
     "SnugWisp",
-    "louis",
+    "lou",
     "Krowdn",
     "Venyena",
     "Finkle"
@@ -37,6 +37,9 @@
     ],
     "modmenu": [
       "net.mcreator.survivalreimagined.config.SurvivalReimaginedModMenu"
+    ],
+    "jei_mod_plugin": [
+      "net.mcreator.survivalreimagined.compat.jei.plugin.JEIPlugin"
     ]
   },
   "mixins": [

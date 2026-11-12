@@ -7,6 +7,7 @@ import net.mcreator.survivalreimagined.procedures.*;
 import net.mcreator.survivalreimagined.procedures.advancements.*;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.*;
 import net.mcreator.survivalreimagined.procedures.loot_tables.CrimsonThreadDrops;
+import net.mcreator.survivalreimagined.procedures.loot_tables.HorseCarcassSpawner;
 import net.mcreator.survivalreimagined.procedures.loot_tables.PointedStonesLoot;
 import net.mcreator.survivalreimagined.procedures.loot_tables.StickDrops;
 import net.mcreator.survivalreimagined.util.*;
@@ -19,14 +20,13 @@ import net.minecraft.world.entity.Entity;
 public class SurvivalReimaginedModProcedures {
     public static void register() {
         //Progression Events
-        CropEffects.register();
+        CropDrops.register();
         FertilitySoilTilling.register();
         AddFertilizer.register();
         DisableNetherPortal.register();
         FlintScrape.register();
         LeavesDropCondition.register();
         LogsDrops.register();
-        HempLoot.register();
         PlantFiberDrops.register();
         PlantHarvested.register();
         StickDrops.register();
@@ -43,19 +43,12 @@ public class SurvivalReimaginedModProcedures {
         GoldenAppleEaten.register();
         StandingOnSculk.register();
 
-
-        //Tooltips
-        RuneEffects.register();
-        HideTooltip.register();
-        FertilizerTooltip.register();
-        HungerMessages.register();
-
-
         //Mob Drops/LootTable
         CrimsonThreadDrops.register();
         EntityHasItem.register();
         LootExtended.register();
         PointedStonesLoot.register();
+        HorseCarcassSpawner.register();
 
         //Advancements
         AnimalKilled.register();

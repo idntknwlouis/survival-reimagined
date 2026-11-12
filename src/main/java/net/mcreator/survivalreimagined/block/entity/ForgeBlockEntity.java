@@ -6,11 +6,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -40,6 +43,19 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	public static final int MAX_BURN_TIME = 60;
 	private static final int MAX_FUEL_HUNDREDTHS = MAX_FUEL * 100;
 	private static final int[] SLOTS = IntStream.range(0, CONTAINER_SIZE).toArray();
+
+	private static final TagKey<Item> COPPER = alloyTag("copper_items");
+	private static final TagKey<Item> TIN = alloyTag("tin_items");
+	private static final TagKey<Item> IRON = alloyTag("iron_items");
+	private static final TagKey<Item> MANGANESE = alloyTag("manganese_items");
+	private static final TagKey<Item> DIAMOND = alloyTag("diamond_items");
+	private static final TagKey<Item> STEEL = alloyTag("steel_items");
+	private static final TagKey<Item> GOLD = alloyTag("gold_items");
+	private static final TagKey<Item> NETHERITE = alloyTag("netherite_items");
+	private static final TagKey<Item> TITANIUM = alloyTag("titanium_items");
+	private static final TagKey<Item> URANIUM = alloyTag("uranium_items");
+	private static final TagKey<Item> SILVER = alloyTag("silver_items");
+	private static final TagKey<Item> LIME = alloyTag("lime_items");
 
 	private NonNullList<ItemStack> stacks = NonNullList.withSize(CONTAINER_SIZE, ItemStack.EMPTY);
 	private int fuelMeterHundredths;
@@ -379,9 +395,9 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 			return new ForgeRecipe(SurvivalReimaginedModItems.QUICK_LIME.get(), 2, 1, 1, 100);
 		}
 
-		if (first.is(SurvivalReimaginedModItems.DARK_CINDER_POWDER.get()) && second.is(SurvivalReimaginedModItems.ANTHRACITE.get())
-				|| second.is(SurvivalReimaginedModItems.DARK_CINDER_POWDER.get()) && first.is(SurvivalReimaginedModItems.ANTHRACITE.get())) {
-			return new ForgeRecipe(SurvivalReimaginedModItems.DARK_CINDER_COAL.get(), 2, 1, 1, 100);
+		if (first.is(SurvivalReimaginedModItems.DARK_CINDER_POWDER) && second.is(SurvivalReimaginedModItems.ANTHRACITE)
+				|| second.is(SurvivalReimaginedModItems.DARK_CINDER_POWDER) && first.is(SurvivalReimaginedModItems.ANTHRACITE)) {
+			return new ForgeRecipe(SurvivalReimaginedModItems.DARK_CINDER_COAL, 2, 1, 1, 100);
 		}
 
 		ForgeRecipe rune = findRuneRecipe(first, second);
@@ -427,9 +443,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		return null;
 	}
 
-	private static boolean isLimeItem(ItemStack stack) {
-		return stack.is(Items.BONE) || stack.is(SurvivalReimaginedModItems.CALCITE_ROCK.get()) || stack.is(SurvivalReimaginedModItems.DIORITE_ROCK.get());
-	}
+
 
 	private static ForgeRecipe findPlateRecipe(ItemStack first, ItemStack second) {
 		ForgeRecipe recipe = plateFor(first, second);
@@ -510,55 +524,47 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 	}
 
 	private static boolean isTitaniumAlloyItem(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.RAW_TITANIUM.get())
-				|| stack.is(SurvivalReimaginedModItems.ROUGH_TITANIUM.get())
-				|| stack.is(SurvivalReimaginedModItems.TITANIUM_INGOT.get());
+		return stack.is(TITANIUM);
 	}
 
 	private static boolean isUraniumAlloyItem(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.RAW_URANINITE.get())
-				|| stack.is(SurvivalReimaginedModItems.ROUGH_URANIUM.get())
-				|| stack.is(SurvivalReimaginedModItems.URANIUM_INGOT.get());
+		return stack.is(URANIUM);
 	}
 
 	private static boolean isGoldAlloyItem(ItemStack stack) {
-		return stack.is(Items.RAW_GOLD) || stack.is(Items.GOLD_INGOT) || stack.is(SurvivalReimaginedModItems.ROUGH_GOLD.get());
+		return stack.is(GOLD);
 	}
 
 	private static boolean isNetheriteAlloyItem(ItemStack stack) {
-		return stack.is(Items.NETHERITE_SCRAP) || stack.is(Blocks.ANCIENT_DEBRIS.asItem());
+		return stack.is(NETHERITE);
 	}
 
 	private static boolean isDiamondAlloyItem(ItemStack stack) {
-		return stack.is(Items.DIAMOND);
+		return stack.is(DIAMOND);
 	}
 
 	private static boolean isSteelAlloyItem(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.ROUGH_STEEL.get()) || stack.is(SurvivalReimaginedModItems.STEEL_INGOT.get());
+		return stack.is(STEEL);
 	}
 
 	private static boolean isCopperAlloyItem(ItemStack stack) {
-		return stack.is(Items.RAW_COPPER)
-				|| stack.is(Items.COPPER_INGOT)
-				|| stack.is(SurvivalReimaginedModItems.ROUGH_COPPER.get());
+		return stack.is(COPPER);
 	}
 
 	private static boolean isTinAlloyItem(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.RAW_TIN.get())
-				|| stack.is(SurvivalReimaginedModItems.TIN_INGOT.get())
-				|| stack.is(SurvivalReimaginedModItems.ROUGH_TIN.get());
+		return stack.is(TIN);
 	}
 
 	private static boolean isIronAlloyItem(ItemStack stack) {
-		return stack.is(Items.RAW_IRON)
-				|| stack.is(Items.IRON_INGOT)
-				|| stack.is(SurvivalReimaginedModItems.ROUGH_IRON.get());
+		return stack.is(IRON);
 	}
 
 	private static boolean isManganeseAlloyItem(ItemStack stack) {
-		return stack.is(SurvivalReimaginedModItems.RAW_MANGANESE.get())
-				|| stack.is(SurvivalReimaginedModItems.MANGANESE_INGOT.get())
-				|| stack.is(SurvivalReimaginedModItems.ROUGH_MANGANESE.get());
+		return stack.is(MANGANESE);
+	}
+
+	private static boolean isLimeItem(ItemStack stack) {
+		return stack.is(LIME);
 	}
 
 	private static Item getIngotResult(ItemStack stack) {
@@ -611,19 +617,19 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		if (stack.is(Blocks.COAL_BLOCK.asItem())) {
 			return 60;
 		}
-		if (stack.is(SurvivalReimaginedModItems.LIGINITE.get())) {
+		if (stack.is(SurvivalReimaginedModItems.LIGINITE)) {
 			return 5;
 		}
-		if (stack.is(SurvivalReimaginedModItems.ANTHRACITE.get())) {
+		if (stack.is(SurvivalReimaginedModItems.ANTHRACITE)) {
 			return 20;
 		}
-		if (stack.is(SurvivalReimaginedModItems.DARK_CINDER_COAL.get())) {
+		if (stack.is(SurvivalReimaginedModItems.DARK_CINDER_COAL)) {
 			return 40;
 		}
-		if (stack.is(SurvivalReimaginedModItems.SMALL_LIGINITE.get())) {
+		if (stack.is(SurvivalReimaginedModItems.SMALL_LIGINITE)) {
 			return 1;
 		}
-		if (stack.is(SurvivalReimaginedModItems.SMALL_ANTHRACITE.get())) {
+		if (stack.is(SurvivalReimaginedModItems.SMALL_ANTHRACITE)) {
 			return 4;
 		}
 		if (stack.is(SurvivalReimaginedModBlocks.LIGINITE_BLOCK.get().asItem())) {
@@ -682,6 +688,10 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 				this.setOpened(false);
 			}
 		}
+	}
+
+	private static TagKey<Item> alloyTag(String path) {
+		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "alloy/" + path));
 	}
 
 	private void setOpened(boolean opened) {

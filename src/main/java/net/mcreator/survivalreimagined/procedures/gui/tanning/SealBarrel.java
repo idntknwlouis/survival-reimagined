@@ -30,15 +30,9 @@ public class SealBarrel {
                 if (blockState.getBlock().getStateDefinition().getProperty("opened") instanceof BooleanProperty booleanProperty)
                     world.setBlock(pos, blockState.setValue(booleanProperty, false), 3);
             }
-            SurvivalReimaginedMod.queueServerWork(1, () -> {
-                if (world instanceof Level level) {
-                    if (!level.isClientSide()) {
-                        level.playSound(null, pos, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("survival_reimagined:barrel/seal")), SoundSource.BLOCKS, 2, 1);
-                    } else {
-                        level.playLocalSound(x,y,z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("survival_reimagined:barrel/seal")), SoundSource.BLOCKS,2,1,false);
-                    }
-                }
-            });
+            if (world instanceof Level level && !level.isClientSide()) {
+                level.playSound(null, pos, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("survival_reimagined:barrel/seal")), SoundSource.BLOCKS, 2, 1);
+            }
             if (!world.isClientSide()) {
                 BlockState blockState = world.getBlockState(pos);
 

@@ -1,8 +1,7 @@
 {
   "replace": false,
   "values": [
-    "survival_reimagined:large_dark_oak_bark",
-    "survival_reimagined:large_acacia_bark",
-    "survival_reimagined:large_oak_bark"
+    "minecraft:oak_log",
+    "minecraft:acacia_log"
   ]
 }

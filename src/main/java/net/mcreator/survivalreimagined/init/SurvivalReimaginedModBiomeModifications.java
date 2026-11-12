@@ -22,6 +22,7 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addEverywhere("copper_gen");
 		addUndergroundEverywhere("diamond_ore_feature");
 		addUndergroundEverywhere("emerald_ore_feature");
+		addUndergroundEverywhere("cinnabar_ore_feature");
 		addUndergroundEverywhere("lazurite_ore");
 		addUndergroundEverywhere("hematite");
 		addUndergroundEverywhere("magnetite");
@@ -57,9 +58,9 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("liginite_ore_feature_surface");
 		addUndergroundEverywhere("ilmenite_ore_feature");
 		addUndergroundEverywhere("anthracite_ore_feature");
+		addUndergroundEverywhere("bituminous_ore_feature");
 		addUndergroundEverywhere("liginite_ore_feature");
 		addUndergroundEverywhere("uraninite_feature");
-		addUndergroundEverywhere("titanium_ore_feature");
 		addUndergroundEverywhere("amber_ore_feature");
 		addUndergroundEverywhere("ruby_ore_feature");
 		addUndergroundEverywhere("sapphire_ore_feature");
@@ -78,6 +79,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 				Biomes.ERODED_BADLANDS,
 				Biomes.WOODED_BADLANDS);
 		addLocalEverywhere("basalt_layer");
+		addVegetationToBiomes("apple_oak_tree", Biomes.PLAINS, Biomes.MEADOW, Biomes.FOREST);
+		addVegetationToBiomes("mandarin_trees", Biomes.PLAINS);
+		addVegetationToBiomes("banana_trees", Biomes.JUNGLE, Biomes.BAMBOO_JUNGLE, Biomes.SPARSE_JUNGLE);
+		addUndergroundToBiomes("mandarin_trees_cave", Biomes.LUSH_CAVES);
+		addVegetationToBiomes("red_cherry_trees", Biomes.CHERRY_GROVE);
+		addVegetationToBiomes("red_cherry_tree", Biomes.CHERRY_GROVE);
+		addVegetationToBiomes("wild_strawberries", Biomes.MEADOW, Biomes.BIRCH_FOREST, Biomes.SAVANNA, Biomes.PLAINS, Biomes.TAIGA);
+		addVegetationToBiomes("wild_raspberry", Biomes.BIRCH_FOREST, Biomes.CHERRY_GROVE, Biomes.FLOWER_FOREST, Biomes.FOREST, Biomes.GROVE, Biomes.TAIGA);
+		addLocalEverywhere("medium_soil");
+		addLocalEverywhere("high_soil");
 		addFluidSprings("lava_srpings");
 		addUndergroundDecorationEverywhere("deltas");
 		addPointedStonesUndergroundEverywhere("basalt_stalagmite");
@@ -86,23 +97,10 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addPointedStonesUndergroundEverywhere("kimberlite_stalagmite");
 		addPointedStonesUndergroundEverywhere("kimberlite_stalagtite");
 		addNether("dark_cinder_blobs");
-		addVegetationToBiomes("natural_rye",
-				Biomes.OLD_GROWTH_PINE_TAIGA,
-				Biomes.OLD_GROWTH_SPRUCE_TAIGA,
-				Biomes.TAIGA,
-				Biomes.SAVANNA,
-				Biomes.SAVANNA_PLATEAU,
-				Biomes.WINDSWEPT_SAVANNA);
-		addVegetationToBiomes("natural_spelt",
-				Biomes.TAIGA,
-				Biomes.BIRCH_FOREST,
-				Biomes.OLD_GROWTH_BIRCH_FOREST);
-		addVegetationToBiomes("wild_carrots",
-				Biomes.PLAINS,
-				Biomes.SUNFLOWER_PLAINS,
-				Biomes.OLD_GROWTH_PINE_TAIGA,
-				Biomes.OLD_GROWTH_SPRUCE_TAIGA,
-				Biomes.TAIGA);
+		addVegetationToBiomes("natural_rye", Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.TAIGA, Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU, Biomes.WINDSWEPT_SAVANNA);
+		addVegetationToBiomes("natural_spelt", Biomes.TAIGA, Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST);
+		addVegetationToBiomes("wild_carrots", Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.TAIGA);
+		addVegetationToBiomes("wild_beetroot", Biomes.BEACH, Biomes.DESERT, Biomes.SAVANNA);
 
 		BiomeModifications.addSpawn(
 				BiomeSelectors.includeByKey(

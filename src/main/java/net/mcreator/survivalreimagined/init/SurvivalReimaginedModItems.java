@@ -49,7 +49,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> GOAT_LEG = block(SurvivalReimaginedModBlocks.GOAT_LEG);
 	public static final RegistryEntry<Item> GOAT_HIDE = simple("goat_hide");
 	public static final RegistryEntry<Item> CHICKEN_CARCASS = block(SurvivalReimaginedModBlocks.CHICKEN_CARCASS);
-	public static final RegistryEntry<Item> BRAIN = register("brain", () -> new SpoilingFoodItem(new Item.Properties()));
+	public static final RegistryEntry<Item> BRAIN = simple("brain");
 	public static final RegistryEntry<Item> LUNGS = simple("lungs");
 	public static final RegistryEntry<Item> HEART_ITEM = simple("heart_item");
 	public static final RegistryEntry<Item> LIVER = simple("liver");
@@ -164,7 +164,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
 	public static final RegistryEntry<Item> POTATO = plantFood("potato", SurvivalReimaginedModBlocks.POTATOES, 1, 0.6f);
-	public static final RegistryEntry<Item> CARROT = plantFood("carrot", SurvivalReimaginedModBlocks.CARROT, 4, 3.6f);
+	public static final RegistryEntry<Item> CARROT = plantFood("carrot", SurvivalReimaginedModBlocks.CARROT, 4, 0.6f);
 	public static final RegistryEntry<Item> BURNT_POTATO = register("burnt_potato", () -> new Item(new Item.Properties()
 			.food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.3f).build())));
 	public static final RegistryEntry<Item> CHARRED_POTATO = register("charred_potato", () -> new Item(new Item.Properties()
@@ -174,46 +174,46 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> CORN = simple("corn");
 	public static final RegistryEntry<Item> CORN_ON_THE_COB = simple("corn_on_the_cob");
 	public static final RegistryEntry<Item> COOKED_CORN_ON_THE_COB = register("cooked_corn_on_the_cob", () -> new Item(new Item.Properties()
-			.food(new FoodProperties.Builder().nutrition(6).saturationModifier(1.5f).build())));
+			.food(new FoodProperties.Builder().nutrition(6).saturationModifier(0.5f).build())));
 	public static final RegistryEntry<Item> BURNT_CORN_ON_THE_COB = simple("burnt_corn_on_the_cob");
 	public static final RegistryEntry<Item> BEEF = food("beef", 3, 0.3f);
-	public static final RegistryEntry<Item> COOKED_BEEF = food("cooked_beef", 5, 12.8f);
+	public static final RegistryEntry<Item> COOKED_BEEF = food("cooked_beef", 5, 0.4f);
 	public static final RegistryEntry<Item> BURNT_BEEF = food("burnt_beef", 2, 0.1f);
 
 	public static final RegistryEntry<Item> RAW_MUTTON = food("raw_mutton", 2, 0.3f);
-	public static final RegistryEntry<Item> COOKED_MUTTON = food("cooked_mutton", 4, 6.8f);
+	public static final RegistryEntry<Item> COOKED_MUTTON = food("cooked_mutton", 4, 0.4f);
 	public static final RegistryEntry<Item> BURNT_MUTTON = food("burnt_mutton", 1, 0.1f);
 
 	public static final RegistryEntry<Item> RAW_PORKCHOP = food("raw_porkchop", 3, 0.3f);
-	public static final RegistryEntry<Item> COOKED_PORKCHOP = food("cooked_porkchop", 4, 12.8f);
+	public static final RegistryEntry<Item> COOKED_PORKCHOP = food("cooked_porkchop", 4, 0.4f);
 	public static final RegistryEntry<Item> BURNT_PORKCHOP = food("burnt_porkchop", 2, 0.1f);
 
 	public static final RegistryEntry<Item> RAW_CHICKEN = food("raw_chicken", 2, 0.2f);
-	public static final RegistryEntry<Item> COOKED_CHICKEN = food("cooked_chicken", 5, 6.8f);
+	public static final RegistryEntry<Item> COOKED_CHICKEN = food("cooked_chicken", 5, 0.4f);
 	public static final RegistryEntry<Item> BURNT_CHICKEN = food("burnt_chicken", 1, 0.1f);
 
 	public static final RegistryEntry<Item> RAW_RABBIT = food("raw_rabbit", 2, 0.1f);
-	public static final RegistryEntry<Item> COOKED_RABBIT = food("cooked_rabbit", 4, 6.8f);
+	public static final RegistryEntry<Item> COOKED_RABBIT = food("cooked_rabbit", 4, 0.4f);
 	public static final RegistryEntry<Item> BURNT_RABBIT = food("burnt_rabbit", 1, 0.1f);
 	public static final RegistryEntry<Item> ROTTEN_BIOMATTER = simple("rotten_biomatter");
 	public static final RegistryEntry<Item> SALT = simple("salt");
 	public static final RegistryEntry<Item> CURED_STEAK = stableFood("cured_steak", 10, 0.6f);
 	public static final RegistryEntry<Item> CURED_PORKCHOP = stableFood("cured_porkchop", 10, 0.6f);
-	public static final RegistryEntry<Item> CURED_CHICKEN = stableFood("cured_chicken", 8, 0.5f);
-	public static final RegistryEntry<Item> CURED_MUTTON = stableFood("cured_mutton", 8, 0.5f);
-	public static final RegistryEntry<Item> CURED_RABBIT = stableFood("cured_rabbit", 8, 0.5f);
+	public static final RegistryEntry<Item> CURED_CHICKEN = stableFood("cured_chicken", 8, 0.6f);
+	public static final RegistryEntry<Item> CURED_MUTTON = stableFood("cured_mutton", 8, 0.6f);
+	public static final RegistryEntry<Item> CURED_RABBIT = stableFood("cured_rabbit", 8, 0.6f);
 
 	public static final RegistryEntry<Item> RAW_COD = food("raw_cod", 2, 0.1f);
-	public static final RegistryEntry<Item> COOKED_COD = food("cooked_cod", 4, 0.3f);
+	public static final RegistryEntry<Item> COOKED_COD = food("cooked_cod", 4, 0.2f);
 	public static final RegistryEntry<Item> BURNT_COD = food("burnt_cod", 1, 0.1f);
 
 	public static final RegistryEntry<Item> RAW_SALMON = food("raw_salmon", 2, 0.2f);
-	public static final RegistryEntry<Item> COOKED_SALMON = food("cooked_salmon", 4, 0.3f);
+	public static final RegistryEntry<Item> COOKED_SALMON = food("cooked_salmon", 4, 0.2f);
 	public static final RegistryEntry<Item> BURNT_SALMON = food("burnt_salmon", 1, 0.1f);
 
-	public static final RegistryEntry<Item> RAW_EQUINE = food("raw_equine", 5, 2.4f);
-	public static final RegistryEntry<Item> COOKED_EQUINE = food("cooked_equine", 10, 13.4f);
-	public static final RegistryEntry<Item> BURNT_EQUINE = food("burnt_equine", 7, 11.5f);
+	public static final RegistryEntry<Item> RAW_EQUINE = food("raw_equine", 3, 2.4f);
+	public static final RegistryEntry<Item> COOKED_EQUINE = food("cooked_equine", 10, 0.4f);
+	public static final RegistryEntry<Item> BURNT_EQUINE = food("burnt_equine", 3, 1f);
 	public static final RegistryEntry<Item> CORN_SEEDS = cropSeed("corn_seeds", SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM);
 	public static final RegistryEntry<Item> HEMP_FIBER = simple("hemp_fiber");
 	public static final RegistryEntry<Item> CAMPFIRE = block(SurvivalReimaginedModBlocks.CAMPFIRE);
@@ -246,10 +246,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> URANOPHANE_NUGGET = simple("uranophane_nugget");
 	public static final RegistryEntry<Item> ILMENITE = simple("ilmenite");
 	public static final RegistryEntry<Item> ILMENITE_NUGGET = simple("ilmenite_nugget");
-	public static final RegistryEntry<Item> ANTHRACITE = simple("anthracite");
-	public static final RegistryEntry<Item> SMALL_ANTHRACITE = simple("small_anthracite");
-	public static final RegistryEntry<Item> LIGINITE = simple("liginite");
-	public static final RegistryEntry<Item> SMALL_LIGINITE = simple("small_liginite");
 	public static final RegistryEntry<Item> ROUGH_MANGANESE = simple("rough_manganese");
 	public static final RegistryEntry<Item> MANGANESE_INGOT = simple("manganese_ingot");
 	public static final RegistryEntry<Item> MANGANESE_NUGGET = simple("manganese_nugget");
@@ -272,11 +268,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> URANIUM_INGOT = simple("uranium_ingot");
 	public static final RegistryEntry<Item> URANIUM_NUGGET = simple("uranium_nugget");
 	public static final RegistryEntry<Item> URANIUM_ROD = block(SurvivalReimaginedModBlocks.URANIUM_ROD);
+	public static final RegistryEntry<Item> CINNABAR_ORE = block(SurvivalReimaginedModBlocks.CINNABAR_ORE);
+	public static final RegistryEntry<Item> DEEPSLATE_CINNABAR_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_CINNABAR_ORE);
 	public static final RegistryEntry<Item> ROUGH_TURANITE = simple("rough_turanite");
 	public static final RegistryEntry<Item> TURANITE_INGOT = simple("turanite_ingot");
-	public static final RegistryEntry<Item> QUICK_LIME = simple("quick_lime");
-	public static final RegistryEntry<Item> DARK_CINDER_POWDER = simple("dark_cinder_powder");
-	public static final RegistryEntry<Item> DARK_CINDER_COAL = simple("dark_cinder_coal");
+	public static final RegistryEntry<Item> QUICK_LIME = simple("quicklime");
 	public static final RegistryEntry<Item> DARK_CINDER = block(SurvivalReimaginedModBlocks.DARK_CINDER);
 	public static final RegistryEntry<Item> SILVER_INGOT = simple("silver_ingot");
 	public static final RegistryEntry<Item> RAW_SILVER = simple("raw_silver");
@@ -545,7 +541,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> THIN_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THIN_RADIATED_VINES);
 	public static final RegistryEntry<Item> THICK_RADIATED_VINES = block(SurvivalReimaginedModBlocks.THICK_RADIATED_VINES);
 	public static final RegistryEntry<Item> SAND_SALT_DEPOSIT = block(SurvivalReimaginedModBlocks.SAND_SALT_DESPOSIT);
-	public static final RegistryEntry<Item> BLOCK_OF_RAW_REDSTONE = block(SurvivalReimaginedModBlocks.BLOCK_OF_RAW_REDSTONE);
+	public static final RegistryEntry<Item> BLOCK_OF_CINNABAR = block(SurvivalReimaginedModBlocks.BLOCK_OF_CINNABAR);
 	public static final RegistryEntry<Item> EMBEDDED_OBSIDIAN = block(SurvivalReimaginedModBlocks.EMBEDDED_OBSIDIAN);
 	public static final RegistryEntry<Item> APPLE_OAK_LEAVES = block(SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES);
  	public static final RegistryEntry<Item> APPLE_OAK_SAPLING = block(SurvivalReimaginedModBlocks.APPLE_TREE_SAPLING);
@@ -625,33 +621,40 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FLOWERING_RED_CHERRY_LEAVES = block(SurvivalReimaginedModBlocks.FLOWERING_RED_CHERRY_LEAVES);
 	public static final RegistryEntry<Item> RED_CHERRY_SAPLING = block(SurvivalReimaginedModBlocks.RED_CHERRY_SAPLING);
 
-	public static final Item OAK_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_oak_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item DARK_OAK_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_dark_oak_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item SPRUCE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_spruce_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item BIRCH_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_birch_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item MANGROVE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_mangrove_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item ACACIA_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_acacia_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item JUNGLE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_jungle_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item CHERRY_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_cherry_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item MANDARIN_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mandarin_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item RADIATED_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item WISTERIA_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_bark"), new BarkItem(new Item.Properties(), 400));
-	public static final Item CRIMSON_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_crimson_bark"), new BarkItem(new Item.Properties(), 0));
-	public static final Item WARPED_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_warped_bark"), new BarkItem(new Item.Properties(), 0));
+	public static final Item OAK_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_oak_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item DARK_OAK_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_dark_oak_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item SPRUCE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_spruce_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item BIRCH_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_birch_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item MANGROVE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_mangrove_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item ACACIA_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_acacia_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item JUNGLE_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_jungle_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item CHERRY_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_cherry_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item MANDARIN_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mandarin_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item RADIATED_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item WISTERIA_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_bark"), new FuelItem(new Item.Properties(), 400));
+	public static final Item CRIMSON_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_crimson_bark"), new FuelItem(new Item.Properties(), 0));
+	public static final Item WARPED_BARK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "large_warped_bark"), new FuelItem(new Item.Properties(), 0));
 
-	public static final Item OAK_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "oak_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item DARK_OAK_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "dark_oak_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item SPRUCE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "spruce_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item BIRCH_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "birch_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item ACACIA_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "acacia_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item JUNGLE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "jungle_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item MANGROVE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mangrove_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item CHERRY_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cherry_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item RADIATED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item WISTERIA_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item MANDARIN_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mandarin_plank"), new BarkItem(new Item.Properties(), 400));
-	public static final Item CRIMSON_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "crimson_plank"), new BarkItem(new Item.Properties(), 0));
-	public static final Item WARPED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "warped_plank"), new BarkItem(new Item.Properties(), 0));
+	public static final Item OAK_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "oak_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item DARK_OAK_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "dark_oak_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item SPRUCE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "spruce_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item BIRCH_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "birch_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item ACACIA_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "acacia_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item JUNGLE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "jungle_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item MANGROVE_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mangrove_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item CHERRY_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cherry_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item RADIATED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "radiated_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item WISTERIA_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "wisteria_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item MANDARIN_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "mandarin_plank"), new FuelItem(new Item.Properties(), 400));
+	public static final Item CRIMSON_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "crimson_plank"), new FuelItem(new Item.Properties(), 0));
+	public static final Item WARPED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "warped_plank"), new FuelItem(new Item.Properties(), 0));
+
+	public static final Item LIGINITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "liginite"), new FuelItem(new Item.Properties(), 800));
+	public static final Item SMALL_LIGINITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "small_liginite"), new FuelItem(new Item.Properties(), 400));
+	public static final Item ANTHRACITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "anthracite"), new FuelItem(new Item.Properties(), 3200));
+	public static final Item SMALL_ANTHRACITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "small_anthracite"), new FuelItem(new Item.Properties(), 1600));
+	public static final Item DARK_CINDER_POWDER = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "dark_cinder_powder"), new FuelItem(new Item.Properties(), 1600));
+	public static final Item DARK_CINDER_COAL = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "dark_cinder_coal"), new FuelItem(new Item.Properties(), 4000));
 
 	public static final Item BRONZE_SWORD = registerTool("bronze_sword", new SwordItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(SwordItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 5, -2.4F))));
 	public static final Item BRONZE_PICKAXE = registerTool("bronze_pickaxe", new PickaxeItem(SurvivalReimaginedModToolMaterials.BRONZE, new Item.Properties().attributes(DiggerItem.createAttributes(SurvivalReimaginedModToolMaterials.BRONZE, 3, -2.8F))));
@@ -698,11 +701,9 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> CLAY_BRICK = simple("clay_brick");
 	public static final RegistryEntry<Item> IRON_CHUNK = simple("iron_chunk");
 	public static final RegistryEntry<Item> GOLD_CHUNK = simple("gold_chunk");
-	public static final RegistryEntry<Item> REDSTONE_CHUNK = simple("redstone_chunk");
 	public static final RegistryEntry<Item> STEEL_NUGGET = simple("steel_nugget");
-	public static final RegistryEntry<Item> ROUGH_REDSTONE = simple("rough_redstone");
-	public static final RegistryEntry<Item> REDSTONE_INGOT = simple("redstone_ingot");
-	public static final RegistryEntry<Item> REDSTONE_NUGGET = simple("redstone_nugget");
+	public static final RegistryEntry<Item> CINNABAR = simple("cinnabar");
+	public static final RegistryEntry<Item> CINNABAR_CHUNK = simple("cinnabar_chunk");
 	public static final RegistryEntry<Item> SULFUR = simple("sulfur");
 	public static final RegistryEntry<Item> NITRE = simple("nitre");
 	public static final RegistryEntry<Item> SALTPETER = simple("saltpeter");
@@ -712,7 +713,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> AZURITE = simple("azurite");
 	public static final RegistryEntry<Item> AZURITE_NUGGET = simple("azurite_nugget");
 	public static final RegistryEntry<Item> TURANITE_NUGGET = simple("turanite_nugget");
-	public static final RegistryEntry<Item> MUD_ROCK = simple("turanite_nugget");
+	public static final RegistryEntry<Item> MUD_ROCK = simple("mud_rock");
 	public static final RegistryEntry<Item> CRYING_OBSIDIAN_ROCK = simple("crying_obsidian_rock");
 	public static final RegistryEntry<Item> ANCIENT_DEBRIS_CHUNK = simple("ancient_debris_chunk");
 	public static final RegistryEntry<Item> ARGILLITE_ROCK = simple("argillite_rock");
