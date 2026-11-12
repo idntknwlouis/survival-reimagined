@@ -35,8 +35,14 @@ public class HungerMessages {
 
         int foodLevel = player.getFoodData().getFoodLevel();
 
+        if (foodLevel > 2) {
+            if (player.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED)) {
+                player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
+            }
+        }
+
         if (foodLevel <= 6 && foodLevel >= 5) {
-            player.displayClientMessage(Component.literal("Peskish"), true);
+            player.displayClientMessage(Component.literal("Peckish"), true);
         } else if (foodLevel <= 4 && foodLevel >= 3) {
             player.displayClientMessage(Component.literal("Famished"), true);
         } else if (foodLevel <= 2 && foodLevel >= 1) {
@@ -66,11 +72,7 @@ public class HungerMessages {
                 }
             }
 
-            if (foodLevel > 2) {
-                if (player.getAttributes().hasAttribute(Attributes.MOVEMENT_SPEED)) {
-                    player.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.1);
-                }
-            }
+
 
             delay++;
             if (delay >= 20) delay = 0;

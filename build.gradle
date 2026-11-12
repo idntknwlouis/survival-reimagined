@@ -46,6 +46,7 @@ dependencies {
 	// Optional JEI integration: compile against its API and include it only in dev runs.
 	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"
 	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
+	modImplementation "curse.maven:mezzconfig-1689768:9374028"
 	modLocalRuntime "mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}"
 
 	// Optional Jade integration: compile against the API and include it only in dev runs.

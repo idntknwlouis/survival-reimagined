@@ -1,0 +1,30 @@
+{
+  "type": "survival_reimagined:tanning_barrel_jei",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "survival_reimagined:quick_lime"
+    },
+    {
+      "item": "survival_reimagined:dried_hide"
+    },
+    {
+      "tag": "c:tanning/makes_tannin"
+    },
+    {
+      "item": "survival_reimagined:prepared_hide"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "survival_reimagined:prepared_hide",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather",
+      "count": 1
+    }
+  ]
+}

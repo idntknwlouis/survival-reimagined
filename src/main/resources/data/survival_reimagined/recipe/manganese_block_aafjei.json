@@ -1,0 +1,29 @@
+{
+  "type": "survival_reimagined:alloy_forge",
+  "ingredients": [
+    {
+      "item": "survival_reimagined:advanced_reactor_rod"
+    },
+    {
+      "tag": "c:alloy_block/manganese_items"
+    },
+    {
+      "tag": "c:alloy_block/manganese_items"
+    },
+    {
+      "item": "survival_reimagined:block_packaging_upgrade"
+    }
+  ],
+  "integers": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "outputs": [
+    {
+      "id": "survival_reimagined:block_of_manganese",
+      "count": 2
+    }
+  ]
+}

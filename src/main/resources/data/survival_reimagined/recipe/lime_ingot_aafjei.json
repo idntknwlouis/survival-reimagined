@@ -1,0 +1,29 @@
+{
+  "type": "survival_reimagined:alloy_forge",
+  "ingredients": [
+    {
+      "item": "survival_reimagined:advanced_reactor_rod"
+    },
+    {
+      "tag": "c:alloy/lime_items"
+    },
+    {
+      "tag": "c:alloy/lime_items"
+    },
+    {
+      "tag": "survival_reimagined:jei_empty_tag"
+    }
+  ],
+  "integers": [
+    1,
+    1,
+    1,
+    0
+  ],
+  "outputs": [
+    {
+      "id": "survival_reimagined:quicklime",
+      "count": 2
+    }
+  ]
+}

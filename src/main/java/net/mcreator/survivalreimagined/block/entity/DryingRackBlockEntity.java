@@ -46,6 +46,9 @@ public class DryingRackBlockEntity extends RandomizableContainerBlockEntity impl
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
+
+        ContainerHelper.loadAllItems(tag, this.stacks, registries);
+
         dryClockSlot0 = tag.getDouble("DryClockSlot0");
         dryClockSlot1 = tag.getDouble("DryClockSlot1");
     }
@@ -53,6 +56,9 @@ public class DryingRackBlockEntity extends RandomizableContainerBlockEntity impl
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
+
+        ContainerHelper.saveAllItems(tag, this.stacks, registries);
+
         tag.putDouble("DryClockSlot0", dryClockSlot0);
         tag.putDouble("DryClockSlot1", dryClockSlot1);
     }

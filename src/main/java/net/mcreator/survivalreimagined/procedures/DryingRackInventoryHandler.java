@@ -60,8 +60,8 @@ public class DryingRackInventoryHandler {
             }
             rack.setDryClock(slot, clock);
         }
-        boolean slot0HasHide = rack.getItem(0).is(SurvivalReimaginedModItems.HIDE.get());
-        boolean slot1HasHide = rack.getItem(1).is(SurvivalReimaginedModItems.HIDE.get());
+        boolean slot0HasHide = rack.getItem(0).is(SurvivalReimaginedModItems.HIDE.get()) || rack.getItem(0).is(SurvivalReimaginedModItems.DRIED_HIDE.get());
+        boolean slot1HasHide = rack.getItem(1).is(SurvivalReimaginedModItems.HIDE.get()) || rack.getItem(1).is(SurvivalReimaginedModItems.DRIED_HIDE.get());
 
         int occupied = 0;
 

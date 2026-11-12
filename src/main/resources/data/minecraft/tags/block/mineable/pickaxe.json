@@ -48,10 +48,10 @@
     "survival_reimagined:basalt_hematite_ore",
     "survival_reimagined:stone_stalagtite_base",
     "survival_reimagined:calaverite_block",
+    "survival_reimagined:block_of_cinnabar",
     "survival_reimagined:raw_azurite_block",
     "survival_reimagined:polished_chiseled_shale",
     "survival_reimagined:bronze_plate",
-    "survival_reimagined:block_of_raw_redstone",
     "survival_reimagined:uraninite_ore",
     "survival_reimagined:deepslate_malachite_ore",
     "survival_reimagined:basalt_magnetite_ore",
@@ -153,6 +153,8 @@
     "survival_reimagined:raw_malachite_block",
     "survival_reimagined:basalt_stalagmite_top",
     "survival_reimagined:deepslate_pyrolusite_ore",
-    "survival_reimagined:turanite_block"
+    "survival_reimagined:turanite_block",
+    "survival_reimagined:cinnabar_ore",
+    "survival_reimagined:deepslate_cinnabar_ore"
   ]
 }

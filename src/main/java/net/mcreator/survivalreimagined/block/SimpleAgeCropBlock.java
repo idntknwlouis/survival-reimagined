@@ -96,7 +96,8 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     protected boolean mayPlaceOn(BlockState floor, BlockGetter level, BlockPos pos) {
         return this.farmlandOnly
                 ? floor.is(FARMLAND)
-                : floor.is(Blocks.GRASS_BLOCK) || floor.is(Blocks.DIRT) || floor.is(Blocks.COARSE_DIRT) || floor.is(Blocks.PODZOL);
+                : floor.is(Blocks.GRASS_BLOCK) || floor.is(Blocks.DIRT) || floor.is(Blocks.COARSE_DIRT) || floor.is(Blocks.PODZOL) || floor.is(Blocks.SAND);
+
     }
 
     @Override

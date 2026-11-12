@@ -1,0 +1,26 @@
+{
+  "type": "survival_reimagined:campfire_jei",
+  "ingredients": [
+    {
+      "tag": "c:campfire/raw"
+    },
+    {
+      "tag": "c:campfire/raw"
+    },
+    {
+      "tag": "c:campfire/raw"
+    },
+    {
+      "tag": "c:campfire/raw"
+    },
+    {
+      "tag": "c:campfire_fuels"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "survival_reimagined:heart",
+      "count": 1
+    }
+  ]
+}

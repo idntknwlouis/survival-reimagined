@@ -9,12 +9,15 @@ import net.mcreator.survivalreimagined.block.HorseCarcasses;
 import net.mcreator.survivalreimagined.client.gui.AAFScriptureGUIScreen;
 import net.mcreator.survivalreimagined.client.gui.NPKValueOverlay;
 import net.mcreator.survivalreimagined.init.*;
+import net.mcreator.survivalreimagined.network.DynamicLightClientHandler;
 import net.mcreator.survivalreimagined.network.PlayerVariables;
 import net.mcreator.survivalreimagined.network.PlayerVariablesSyncMessage;
 import net.mcreator.survivalreimagined.network.SavedDataSyncMessage;
 import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
+import net.mcreator.survivalreimagined.procedures.HungerMessages;
 import net.mcreator.survivalreimagined.procedures.TextureStateProvider;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
+import net.mcreator.survivalreimagined.util.*;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
@@ -48,10 +51,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 
 import static net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems.*;
 
-import net.mcreator.survivalreimagined.util.RuneInfusionTooltip;
-import net.mcreator.survivalreimagined.util.AAFUpgradeTooltip;
-import net.mcreator.survivalreimagined.util.FoodTooltip;
-import net.mcreator.survivalreimagined.util.SoilTooltip;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.FoliageColor;
@@ -64,6 +63,11 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		SurvivalReimaginedModParticles.register();
 		SurvivalReimaginedModScreens.register();
+		HideTooltip.register();
+		RuneEffects.register();
+		DynamicLightClientHandler.register();
+		FertilizerTooltip.register();
+		HungerMessages.register();
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.BOAR.get(), BoarRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.SOW.get(), SowRenderer::new);
 		EntityRendererRegistry.register(SurvivalReimaginedModEntities.PIGLET.get(), PigletRenderer::new);
@@ -129,6 +133,7 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.WISTERIA_FLOWER_LOWER.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.DRYING_RACK.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.BEETROOT.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.WILD_BEETROOT.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.CHICKEN_CARCASS.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.GOAT_CARCASS.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RADIATED_SAPLING.get(), RenderType.cutout());
@@ -142,6 +147,12 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.TEOSINTE.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MANDARIN_SAPLING.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RED_CHERRY_SAPLING.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get(), RenderType.cutout());
+
+
+
+
 
 		HorseCarcasses.HORSE_CARCASSES_BLOCK.values().forEach(carcass -> BlockRenderLayerMap.INSTANCE.putBlock(carcass, RenderType.translucent()));
 
@@ -275,13 +286,34 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 
 
 
+
+
 		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
 			return view != null && pos != null
 					? BiomeColors.getAverageFoliageColor(view, pos)
 					: FoliageColor.getDefaultColor();
-		}, SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get());
+		},
+				SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get()
+		);
+
+
+		ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> {
+			return view != null && pos != null
+					? BiomeColors.getAverageGrassColor(view, pos)
+					: FoliageColor.getDefaultColor();
+		},
+				SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get(),
+				SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get()
+		);
+
+
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
 			return FoliageColor.getDefaultColor();
-		}, SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get().asItem());
+		},
+				SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get().asItem(),
+				SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get().asItem(),
+				SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get().asItem()
+		);
 	}
+
 }

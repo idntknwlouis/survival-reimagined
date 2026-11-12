@@ -1,0 +1,17 @@
+{
+  "type": "survival_reimagined:magic_infuser",
+  "ingredients": [
+    {
+      "tag": "c:rmi_infusable"
+    },
+    {
+      "tag": "c:runes"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "minecraft:lapis_lazuli",
+      "count": 1
+    }
+  ]
+}

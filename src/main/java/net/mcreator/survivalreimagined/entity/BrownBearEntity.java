@@ -82,7 +82,7 @@ public class BrownBearEntity extends Animal {
 	public static AttributeSupplier.Builder createAttributes() {
 		return Mob.createMobAttributes()
 				.add(Attributes.MOVEMENT_SPEED, 0.3D)
-				.add(Attributes.MAX_HEALTH, 35.0D)
+				.add(Attributes.MAX_HEALTH, 50.0D)
 				.add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.ATTACK_DAMAGE, 8.0D)
 				.add(Attributes.FOLLOW_RANGE, 16.0D)

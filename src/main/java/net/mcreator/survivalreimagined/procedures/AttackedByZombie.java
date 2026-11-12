@@ -29,6 +29,17 @@ public class AttackedByZombie {
             execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity, sourceEntity);
             return true;
         });
+
+        ServerLivingEntityEvents.AFTER_DEATH.register((entity, damageSource) -> {
+            if (entity instanceof ServerPlayer player) {
+                ServerLevel level = player.serverLevel();
+
+                SurvivalReimaginedModVariables.WorldVariables vars = SurvivalReimaginedModVariables.WorldVariables.get(level);
+
+                vars.EffectDanger = 0;
+                vars.setDirty();
+            }
+        });
     }
 
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceEntity) {
@@ -46,7 +57,7 @@ public class AttackedByZombie {
                                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).setDirty();
 
                                     if (entity instanceof LivingEntity living && !living.level().isClientSide()) {
-                                        living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) SurvivalReimaginedModConfig.VALUES.zombification_time, 1, true, false));
+                                        living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) SurvivalReimaginedModConfig.VALUES.zombification_time, 0, true, false));
                                     }
                                     if (world instanceof ServerLevel level) {
                                         level.playSound(null, BlockPos.containing(x,y,z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("entity.zombie_villager.converted")), SoundSource.PLAYERS, 1, 1);

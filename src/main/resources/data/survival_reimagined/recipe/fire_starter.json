@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "b "
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:hemp_fiber"
+    },
+    "b": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:fire_starter",
+    "count": 1
+  }
+}

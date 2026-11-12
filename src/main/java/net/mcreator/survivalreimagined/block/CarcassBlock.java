@@ -1,10 +1,12 @@
 package net.mcreator.survivalreimagined.block;
 
+import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.HorseHides;
 import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
@@ -48,10 +50,9 @@ public class CarcassBlock extends Block implements EntityBlock {
 
 	public static final IntegerProperty CARCASS_STATE = IntegerProperty.create("carcass_state", 0, 4);
 	public static final IntegerProperty CARCASS_STATE_HORSE = IntegerProperty.create("horse_carcass_state", 0, 3);
-	private static final TagKey<Item> KNIVES =
-			TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
-	private static final TagKey<Item> SAWS =
-			TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/saw"));
+	private static final TagKey<Item> KNIVES = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
+	private static final TagKey<Item> SAWS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/saw"));
+	private static final ResourceLocation CARCASS_ADVANCEMENT = ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "animal_hide");
 
 	private final Species species;
 	private final String horseHideID;
@@ -374,6 +375,17 @@ public class CarcassBlock extends Block implements EntityBlock {
 				level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 1.0f,1.0f);
 			}
 		} else {
+			if (player instanceof ServerPlayer serverPlayer) {
+				var advancement = serverPlayer.server.getAdvancements().get(CARCASS_ADVANCEMENT);
+
+				if (advancement != null) {
+					var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+					if (!progress.isDone()) {
+						serverPlayer.getAdvancements().award(advancement, "animal_hide_0");
+					}
+				}
+			}
+
 			if (stage == 0) {
 				if (species == Species.HORSE) {
 					level.setBlock(pos, SurvivalReimaginedModBlocks.SKINNED_HORSE.get().defaultBlockState().setValue(CARCASS_STATE_HORSE,0), 3);

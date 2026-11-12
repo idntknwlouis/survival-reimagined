@@ -18,9 +18,10 @@ public class BleedingOnEffectActiveTickProcedure {
 			return;
 		}
 
-		entity.hurt(new DamageSource(entity.level().registryAccess()
-				.registryOrThrow(Registries.DAMAGE_TYPE)
-				.getHolderOrThrow(DAMAGE_TYPE)), 1);
-		entity.setDeltaMovement(new Vec3(entity.getDeltaMovement().x(), 0, entity.getDeltaMovement().z()));
+		Vec3 oldVelocity = entity.getDeltaMovement();
+
+		entity.hurt(new DamageSource(entity.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DAMAGE_TYPE)), 1);
+		entity.setDeltaMovement(oldVelocity);
+		entity.hurtMarked = true;
 	}
 }

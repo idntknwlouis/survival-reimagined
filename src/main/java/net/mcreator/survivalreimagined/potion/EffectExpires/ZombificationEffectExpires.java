@@ -29,13 +29,14 @@ import net.minecraft.world.level.LevelAccessor;
 public class ZombificationEffectExpires {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null) return;
+        if (!(entity instanceof LivingEntity livingEntity) || !livingEntity.isAlive()) return;
 
         if (getEntityGameType(entity) == GameType.SURVIVAL) {
             if (world instanceof ServerLevel serverLevel) {
                 if (SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger == 0) {
                     SurvivalReimaginedMod.queueServerWork(1, () -> {
-                        if (entity instanceof LivingEntity living && !living.level().isClientSide())
-                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) (double) SurvivalReimaginedModConfig.VALUES.zombification_time, 1, true, false));
+                        if (entity instanceof LivingEntity living && living.isAlive())
+                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) SurvivalReimaginedModConfig.VALUES.zombification_time, 0, true, false));
                     });
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger = 1;
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).setDirty();
@@ -50,7 +51,7 @@ public class ZombificationEffectExpires {
                 } else if (SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger == 1) {
                     SurvivalReimaginedMod.queueServerWork(1, () -> {
                         if (entity instanceof LivingEntity living && !living.level().isClientSide())
-                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) (double) SurvivalReimaginedModConfig.VALUES.zombification_time, 2, true, false));
+                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) SurvivalReimaginedModConfig.VALUES.zombification_time, 1, true, false));
                     });
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger = 2;
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).setDirty();
@@ -65,7 +66,7 @@ public class ZombificationEffectExpires {
                 } else if (SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger == 2) {
                     SurvivalReimaginedMod.queueServerWork(1, () -> {
                         if (entity instanceof LivingEntity living && !living.level().isClientSide())
-                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) (double) SurvivalReimaginedModConfig.VALUES.zombification_time, 3, true, false));
+                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) SurvivalReimaginedModConfig.VALUES.zombification_time, 2, true, false));
                     });
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger = 3;
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).setDirty();
@@ -80,7 +81,7 @@ public class ZombificationEffectExpires {
                 } else if (SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger == 3) {
                     SurvivalReimaginedMod.queueServerWork(1, () -> {
                         if (entity instanceof LivingEntity living && !living.level().isClientSide())
-                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) (double) SurvivalReimaginedModConfig.VALUES.zombification_time, 4, true, false));
+                            living.addEffect(new MobEffectInstance(BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.ZOMBIFICATION.get()), (int) SurvivalReimaginedModConfig.VALUES.zombification_time, 3, true, false));
                     });
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).EffectDanger = 4;
                     SurvivalReimaginedModVariables.WorldVariables.get(serverLevel).setDirty();

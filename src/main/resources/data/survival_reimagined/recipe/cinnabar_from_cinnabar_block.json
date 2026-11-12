@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:block_of_cinnabar"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:cinnabar",
+    "count": 9
+  }
+}

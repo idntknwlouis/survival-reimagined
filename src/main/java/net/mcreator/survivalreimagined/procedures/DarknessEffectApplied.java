@@ -1,20 +1,19 @@
 
 package net.mcreator.survivalreimagined.procedures;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMobEffects;
 import net.mcreator.survivalreimagined.potion.DarknessLevelHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.LevelAccessor;
+
+import net.mcreator.survivalreimagined.network.DynamicLightNetworking;
 
 public class DarknessEffectApplied {
 
@@ -31,12 +30,7 @@ public class DarknessEffectApplied {
 
         int brightness = world.getMaxLocalRawBrightness(BlockPos.containing(entity.getX(), entity.getY() + 0.2, entity.getZ()));
 
-        boolean dynamicLightLoaded = FabricLoader.getInstance().isModLoaded("dynamiclights") || FabricLoader.getInstance().isModLoaded("lambdynlights");
-
-        boolean holdingLightSource = player.getMainHandItem().is(TagKey.create(Registries.ITEM, ResourceLocation.parse("c:dynlights/light")))
-                        || player.getOffhandItem().is(TagKey.create(Registries.ITEM, ResourceLocation.parse("c:dynlights/light")));
-
-        boolean hasDynamicLightExemption = dynamicLightLoaded && holdingLightSource;
+        boolean hasDynamicLightExemption = DynamicLightNetworking.hasDynamicLightExemption(player);
 
         var PARANOIA = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.PARANOIA.get());
         var FEAR = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(SurvivalReimaginedModMobEffects.FEAR.get());
@@ -71,8 +65,8 @@ public class DarknessEffectApplied {
         if (advancement == null) return;
         var progress = player.getAdvancements().getOrStartProgress(advancement);
         if (!progress.isDone()) {
-            for (String criterion : progress.getRemainingCriteria()) {
-                player.getAdvancements().award(advancement, criterion);
+            for (String criteria : progress.getRemainingCriteria()) {
+                player.getAdvancements().award(advancement, criteria);
             }
         }
     }

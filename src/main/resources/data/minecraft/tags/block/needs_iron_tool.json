@@ -8,6 +8,7 @@
     "survival_reimagined:sapphire_ore",
     "survival_reimagined:kimberlite_ruby_ore",
     "survival_reimagined:hematite_ore",
+    "survival_reimagined:block_of_cinnabar",
     "survival_reimagined:ruby_ore",
     "survival_reimagined:shale_uraninite_ore",
     "survival_reimagined:basalt_emerald_ore",
@@ -41,7 +42,6 @@
     "survival_reimagined:calaverite_block",
     "survival_reimagined:deepslate_argentite_ore",
     "survival_reimagined:raw_silver_block",
-    "survival_reimagined:block_of_raw_redstone",
     "survival_reimagined:silver_block",
     "survival_reimagined:basalt_ilmenite_ore",
     "survival_reimagined:deepslate_calaverite_ore",
@@ -62,6 +62,8 @@
     "survival_reimagined:basalt_pyrolusite_ore",
     "survival_reimagined:deepslate_manganite_ore",
     "survival_reimagined:deepslate_uraninite_ore",
-    "survival_reimagined:deepslate_pyrolusite_ore"
+    "survival_reimagined:deepslate_pyrolusite_ore",
+    "survival_reimagined:deepslate_cinnabar_ore",
+    "survival_reimagined:cinnabar_ore"
   ]
 }
