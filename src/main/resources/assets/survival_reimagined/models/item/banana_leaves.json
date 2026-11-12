@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "survival_reimagined:block/bannana_leaf"
+    "layer0": "minecraft:item/kelp"
   },
   "render_type": "translucent"
 }
