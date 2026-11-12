@@ -27,11 +27,15 @@ public class BananaJungleLogBlock extends Block {
     private static final VoxelShape SHAPE_Z = box(2, 2, 0, 14, 14, 16);
 
     public BananaJungleLogBlock() {
-        super(BlockBehaviour.Properties.of()
+        this(BlockBehaviour.Properties.of()
                 .sound(SoundType.WOOD)
                 .strength(2f, 3f)
                 .noOcclusion()
                 .isRedstoneConductor((state, level, pos) -> false));
+    }
+
+    public BananaJungleLogBlock(BlockBehaviour.Properties properties) {
+        super(properties);
         registerDefaultState(defaultBlockState().setValue(AXIS, Direction.Axis.Y));
     }
 
