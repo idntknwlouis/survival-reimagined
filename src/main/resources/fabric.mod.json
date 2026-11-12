@@ -12,7 +12,7 @@
     "issues": "https://github.com/idntknwlouis/survival-reimagined/issues"
   },
   "license": "All Rights Reserved",
-  "icon": "assets/survival-re-imagined-fabric/icon.png",
+  "icon": "assets/survival-reimagined-fabric/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": ["net.mcreator.survivalreimagined.SurvivalReimaginedMod"],
