@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
@@ -33,7 +34,10 @@ public enum MineralProcessingJadeProvider implements IBlockComponentProvider,
 		tooltip.append(helper.spacer(4, 0));
 		tooltip.append(helper.progress(data.total() == 0 ? 0F : (float) data.progress() / data.total()).translate(new Vec2(-2, 0)));
 		tooltip.append(helper.item(data.inventory().get(1)));
-		tooltip.add(Component.literal("Reactor Rod Capacity: " + (data.capacityTenths() / 10.0) + " / " + (data.maxCapacityTenths() / 10.0)));
+		if (!SurvivalReimaginedModConfig.VALUES.jade_machine_details_require_sneak
+				|| (accessor.getPlayer() != null && accessor.getPlayer().isShiftKeyDown())) {
+			tooltip.add(Component.literal("Reactor Rod Capacity: " + (data.capacityTenths() / 10.0) + " / " + (data.maxCapacityTenths() / 10.0)));
+		}
 	}
 
 	@Override
