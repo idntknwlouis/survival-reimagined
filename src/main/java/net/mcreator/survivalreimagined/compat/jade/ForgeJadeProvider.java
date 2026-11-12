@@ -69,7 +69,7 @@ public enum ForgeJadeProvider implements IBlockComponentProvider, StreamServerDa
 		return SurvivalReimaginedJadePlugin.FORGE_PROGRESS;
 	}
 
-\tpublic record Data(int progress, int total, List<ItemStack> inventory, boolean advanced, int capacity, int maxCapacity, List<ItemStack> upgrades) {
+	public record Data(int progress, int total, List<ItemStack> inventory, boolean advanced, int capacity, int maxCapacity, List<ItemStack> upgrades) {
 		private Extra extra() {
 			return new Extra(advanced, capacity, maxCapacity, upgrades);
 		}
