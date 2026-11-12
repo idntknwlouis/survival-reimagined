@@ -1,8 +1,9 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "survival_reimagined:custom/banana_log",
   "textures": {
-    "end": "survival_reimagined:block/bannana_leaf",
-    "side": "survival_reimagined:block/bannana_leaf",
-    "particle": "survival_reimagined:block/bannana_leaf"
-  }
+    "all": "survival_reimagined:block/bannana_leaf",
+    "particle": "survival_reimagined:block/bannana_leaf",
+    "1": "survival_reimagined:block/bannana_leaf"
+  },
+  "render_type": "cutout_mipped"
 }
