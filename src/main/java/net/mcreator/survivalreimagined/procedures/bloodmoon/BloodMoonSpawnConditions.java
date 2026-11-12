@@ -2,15 +2,11 @@ package net.mcreator.survivalreimagined.procedures.bloodmoon;
 
 import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.server.level.ServerLevelAccessor;
 
 public class BloodMoonSpawnConditions {
-    public static boolean execute(LevelAccessor world) {
-        if (world instanceof ServerLevel level) {
-            if (SurvivalReimaginedModVariables.MapVariables.get(level).isBloodMoon) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean execute(ServerLevelAccessor world) {
+        ServerLevel level = world.getLevel();
+        return SurvivalReimaginedModVariables.MapVariables.get(level).isBloodMoon;
     }
 }
