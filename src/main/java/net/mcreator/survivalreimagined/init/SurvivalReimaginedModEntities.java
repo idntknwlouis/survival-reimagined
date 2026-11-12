@@ -8,7 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.tags.BlockTags;
 
@@ -72,11 +72,11 @@ public final class SurvivalReimaginedModEntities {
 				(type, level, reason, pos, random) -> level.getBlockState(pos.below()).is(BlockTags.ANIMALS_SPAWNABLE_ON) && level.getRawBrightness(pos, 0) > 8);
 
 		SpawnPlacements.register(BLOOD_MOON_ZOMBIE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level) && Monster.checkMonsterSpawnRules(type, level, reason, pos, random));
+				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level) && Mob.checkMobSpawnRules(type, level, reason, pos, random));
 		SpawnPlacements.register(CRIMSON_ARACHNID.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level) && Monster.checkMonsterSpawnRules(type, level, reason, pos, random));
+				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level) && Mob.checkMobSpawnRules(type, level, reason, pos, random));
 		SpawnPlacements.register(ALPHA_CRIMSON_ARACHNID.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level) && Monster.checkMonsterSpawnRules(type, level, reason, pos, random));
+				(type, level, reason, pos, random) -> BloodMoonSpawnConditions.execute(level) && Mob.checkMobSpawnRules(type, level, reason, pos, random));
 
 		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, BLOOD_MOON_ZOMBIE.get(), 40, 1, 3);
 		BiomeModifications.addSpawn(BiomeSelectors.foundInOverworld(), MobCategory.MONSTER, CRIMSON_ARACHNID.get(), 80, 1, 3);
