@@ -24,7 +24,7 @@ public enum ForgeJadeProvider implements IBlockComponentProvider, StreamServerDa
 	@Override
 	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
 		Data data = decodeFromData(accessor).orElse(null);
-		if (data == null || data.inventory().stream().allMatch(ItemStack::isEmpty)) {
+		if (data == null || (!data.advanced() && data.inventory().stream().allMatch(ItemStack::isEmpty))) {
 			return;
 		}
 
