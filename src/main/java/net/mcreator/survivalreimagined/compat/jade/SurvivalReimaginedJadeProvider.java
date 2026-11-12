@@ -5,6 +5,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
@@ -24,7 +26,8 @@ public final class SurvivalReimaginedJadeProvider implements IBlockComponentProv
 		}
 
 		BlockEntity blockEntity = accessor.getBlockEntity();
-		if (!(blockEntity instanceof Container container) || container.getContainerSize() <= 0) {
+		if (blockEntity instanceof ForgeBlockEntity || blockEntity instanceof AdvancedAlloyForgeBlockEntity
+				|| !(blockEntity instanceof Container container) || container.getContainerSize() <= 0) {
 			return;
 		}
 
