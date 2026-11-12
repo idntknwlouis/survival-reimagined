@@ -1249,5 +1249,6 @@
   "block.survival_reimagined.shale_stalagmite_tip": "Shale Stalagmite",
   "config.jade.plugin_survival_reimagined.machine_info": "Machine inventory",
   "tooltip.survival_reimagined.jade.inventory": "Inventory: %1$s/%2$s slots occupied",
-  "config.jade.plugin_survival_reimagined.forge_progress": "Forge processing"
+  "config.jade.plugin_survival_reimagined.forge_progress": "Forge processing",
+  "config.jade.plugin_survival_reimagined.mpt_progress": "Mineral processing"
 }
