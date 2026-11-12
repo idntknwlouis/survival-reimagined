@@ -146,6 +146,8 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 
 	public ContainerData getDataAccess() { return this.dataAccess; }
 
+	public int getProgress() { return this.progress; }
+
 	public static boolean isReactorRod(ItemStack stack) {
 		return stack.is(SurvivalReimaginedModItems.REACTOR_ROD.get())
 				|| stack.is(SurvivalReimaginedModItems.ADVANCED_REACTOR_ROD.get());
