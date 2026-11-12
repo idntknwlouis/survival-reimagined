@@ -27,6 +27,8 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(ForgeJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerBlockDataProvider(ForgeJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 		registration.registerBlockDataProvider(MineralProcessingJadeProvider.INSTANCE, MineralProcessingTableBlockEntity.class);
+		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, ForgeBlockEntity.class);
+		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 	}
 
 	@Override
