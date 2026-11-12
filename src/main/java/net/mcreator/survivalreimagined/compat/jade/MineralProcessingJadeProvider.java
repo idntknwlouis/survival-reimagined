@@ -24,7 +24,7 @@ public enum MineralProcessingJadeProvider implements IBlockComponentProvider,
 	@Override
 	public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
 		Data data = decodeFromData(accessor).orElse(null);
-		if (data == null || data.inventory().stream().allMatch(ItemStack::isEmpty)) {
+		if (data == null || (data.inventory().stream().allMatch(ItemStack::isEmpty) && data.capacityTenths() == 0)) {
 			return;
 		}
 
