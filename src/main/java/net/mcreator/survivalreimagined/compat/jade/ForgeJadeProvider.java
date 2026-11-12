@@ -6,6 +6,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec2;
@@ -37,7 +38,7 @@ public enum ForgeJadeProvider implements IBlockComponentProvider, StreamServerDa
 		if (data.advanced()) {
 			tooltip.add(Component.literal("Reactor Rod Capacity: " + data.capacity() + " / " + data.maxCapacity()));
 			if (!data.upgrades().isEmpty()) {
-				Component upgrades = Component.literal("Upgrades: ");
+				MutableComponent upgrades = Component.literal("Upgrades: ");
 				for (int i = 0; i < data.upgrades().size(); i++) {
 					if (i > 0) upgrades.append(Component.literal(", "));
 					upgrades.append(data.upgrades().get(i).getHoverName());
@@ -68,15 +69,26 @@ public enum ForgeJadeProvider implements IBlockComponentProvider, StreamServerDa
 		return SurvivalReimaginedJadePlugin.FORGE_PROGRESS;
 	}
 
-	public record Data(int progress, int total, List<ItemStack> inventory, boolean advanced, int capacity, int maxCapacity, List<ItemStack> upgrades) {
+\tpublic record Data(int progress, int total, List<ItemStack> inventory, boolean advanced, int capacity, int maxCapacity, List<ItemStack> upgrades) {
+		private Extra extra() {
+			return new Extra(advanced, capacity, maxCapacity, upgrades);
+		}
+
 		public static final StreamCodec<RegistryFriendlyByteBuf, Data> STREAM_CODEC = StreamCodec.composite(
 				ByteBufCodecs.VAR_INT, Data::progress,
 				ByteBufCodecs.VAR_INT, Data::total,
 				ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inventory,
-				ByteBufCodecs.BOOL, Data::advanced,
-				ByteBufCodecs.VAR_INT, Data::capacity,
-				ByteBufCodecs.VAR_INT, Data::maxCapacity,
-				ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::upgrades,
-				Data::new);
+				Extra.STREAM_CODEC, Data::extra,
+				(progress, total, inventory, extra) -> new Data(progress, total, inventory,
+					extra.advanced(), extra.capacity(), extra.maxCapacity(), extra.upgrades()));
+
+		private record Extra(boolean advanced, int capacity, int maxCapacity, List<ItemStack> upgrades) {
+			private static final StreamCodec<RegistryFriendlyByteBuf, Extra> STREAM_CODEC = StreamCodec.composite(
+					ByteBufCodecs.BOOL, Extra::advanced,
+					ByteBufCodecs.VAR_INT, Extra::capacity,
+					ByteBufCodecs.VAR_INT, Extra::maxCapacity,
+					ItemStack.OPTIONAL_LIST_STREAM_CODEC, Extra::upgrades,
+					Extra::new);
+		}
 	}
 }
