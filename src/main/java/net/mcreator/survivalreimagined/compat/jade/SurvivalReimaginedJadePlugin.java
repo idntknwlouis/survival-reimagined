@@ -37,5 +37,6 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(ForgeJadeProvider.INSTANCE, ForgeBlock.class);
 		registration.registerBlockComponent(ForgeJadeProvider.INSTANCE, AdvancedAlloyForgeBlock.class);
 		registration.registerBlockComponent(MineralProcessingJadeProvider.INSTANCE, net.mcreator.survivalreimagined.block.MineralProcessingTableBlock.class);
+		registration.registerItemStorageClient(ForgeInventoryJadeProvider.INSTANCE);
 	}
 }
