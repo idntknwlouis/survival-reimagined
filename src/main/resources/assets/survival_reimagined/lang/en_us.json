@@ -1250,5 +1250,22 @@
   "gui.survival_reimagined.tanning_barrel_jei.label_half_fluid_tank_needs_32_items": "Half tank needs == 32 items",
   "gui.survival_reimagined.tanning_barrel_jei.label_leather_recipes_is_6_hide_rat": "Hide recipes is <= 6 ratio",
   "block.survival_reimagined.shale_stalagtite_tip": "Shale Stalagtite",
-  "block.survival_reimagined.shale_stalagmite_tip": "Shale Stalagmite"
+  "block.survival_reimagined.shale_stalagmite_tip": "Shale Stalagmite",
+  "config.jade.plugin_survival_reimagined.machine_info": "Machine inventory",
+  "tooltip.survival_reimagined.jade.inventory": "Inventory: %1$s/%2$s slots occupied",
+  "config.jade.plugin_survival_reimagined.forge_progress": "Forge processing",
+  "config.jade.plugin_survival_reimagined.mpt_progress": "Mineral processing",
+  "block.survival_reimagined.wild_beetroot": "Wild Beetroot",
+  "block.survival_reimagined.shale_stalagmite_base": "Shale Stalagmite Base",
+  "block.survival_reimagined.shale_stalagmite_middle": "Shale Stalagmite Middle",
+  "block.survival_reimagined.shale_stalagmite_top": "Shale Stalagmite Top",
+  "block.survival_reimagined.shale_stalagtite_base": "Shale Stalactite Base",
+  "block.survival_reimagined.shale_stalagtite_middle": "Shale Stalactite Middle",
+  "block.survival_reimagined.mandarin_wall_sign": "Mandarin Wall Sign",
+  "block.survival_reimagined.mandarin_ceiling_hanging_sign": "Mandarin Ceiling Hanging Sign",
+  "block.survival_reimagined.radiant_wall_sign": "Radiant Wall Sign",
+  "block.survival_reimagined.radiant_ceiling_hanging_sign": "Radiant Ceiling Hanging Sign",
+  "block.survival_reimagined.wisteria_wall_sign": "Wisteria Wall Sign",
+  "block.survival_reimagined.wisteria_ceiling_hanging_sign": "Wisteria Ceiling Hanging Sign",
+  "item.survival_reimagined.obsidian_rock": "Obsidian Rock"
 }

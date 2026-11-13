@@ -4,16 +4,8 @@
   "version": "${version}",
   "name": "Survival Reimagined: Fabricated",
   "description": "Harder and a more realistic survival experience",
-  "authors": [
-    "lou, ShotUGMG"
-  ],
-  "contributors": [
-    "SnugWisp",
-    "lou",
-    "Krowdn",
-    "Venyena",
-    "Finkle"
-  ],
+  "authors": ["lou, ShotUGMG"],
+  "contributors": ["SnugWisp", "lou", "Krowdn", "Venyena", "Finkle"],
   "contact": {
     "homepage": "https://modrinth.com/project/survival-reimagined-fabricated",
     "sources": "https://github.com/idntknwlouis/survival-reimagined",
@@ -23,28 +15,17 @@
   "icon": "assets/survival-reimagined-fabric/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      "net.mcreator.survivalreimagined.SurvivalReimaginedMod"
-    ],
-    "client": [
-      "net.mcreator.survivalreimagined.SurvivalReimaginedModClient"
-    ],
-    "fabric-datagen": [
-      "net.mcreator.survivalreimagined.SurvivalReimaginedModDataGenerator"
-    ],
-    "terrablender": [
-      "net.mcreator.survivalreimagined.SurvivalReimaginedModTerraBlenderAPI"
-    ],
-    "modmenu": [
-      "net.mcreator.survivalreimagined.config.SurvivalReimaginedModMenu"
-    ],
+    "main": ["net.mcreator.survivalreimagined.SurvivalReimaginedMod"],
+    "client": ["net.mcreator.survivalreimagined.SurvivalReimaginedModClient"],
+    "fabric-datagen": ["net.mcreator.survivalreimagined.SurvivalReimaginedModDataGenerator"],
+    "terrablender": ["net.mcreator.survivalreimagined.SurvivalReimaginedModTerraBlenderAPI"],
+    "modmenu": ["net.mcreator.survivalreimagined.config.SurvivalReimaginedModMenu"],
+    "jade": ["net.mcreator.survivalreimagined.compat.jade.SurvivalReimaginedJadePlugin"],
     "jei_mod_plugin": [
       "net.mcreator.survivalreimagined.compat.jei.plugin.JEIPlugin"
     ]
   },
-  "mixins": [
-    "survival_reimagined.mixins.json"
-  ],
+  "mixins": ["survival_reimagined.mixins.json"],
   "depends": {
     "fabricloader": ">=0.18.4",
     "minecraft": "1.21.1",

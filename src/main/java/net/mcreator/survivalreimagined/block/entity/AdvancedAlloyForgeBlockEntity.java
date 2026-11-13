@@ -146,6 +146,19 @@ public class AdvancedAlloyForgeBlockEntity extends RandomizableContainerBlockEnt
 
 	public ContainerData getDataAccess() { return this.dataAccess; }
 
+	public int getProgress() { return this.progress; }
+
+	public int getFuelCapacity() { return this.fuelCapacity; }
+
+	public int getMaxFuelCapacity() { return this.forgeMaxFuelCapacity(); }
+
+	public List<ItemStack> getInstalledUpgrades() {
+		return java.util.stream.IntStream.range(4, 8)
+				.mapToObj(this::getItem)
+				.filter(stack -> !stack.isEmpty())
+				.toList();
+	}
+
 	public static boolean isReactorRod(ItemStack stack) {
 		return stack.is(SurvivalReimaginedModItems.REACTOR_ROD.get())
 				|| stack.is(SurvivalReimaginedModItems.ADVANCED_REACTOR_ROD.get());

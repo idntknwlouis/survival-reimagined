@@ -61,6 +61,9 @@ public class SurvivalReimaginedModConfig {
 
         // Lore
         public boolean enables_ghosts = false;
+
+        // Jade machine tooltip details
+        public boolean jade_machine_details_require_sneak = true;
     }
 
     public static void load() {

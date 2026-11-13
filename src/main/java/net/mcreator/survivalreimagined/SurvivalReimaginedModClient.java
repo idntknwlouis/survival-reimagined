@@ -25,7 +25,9 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 
 import net.mcreator.survivalreimagined.client.model.ModelGasMask;
 import net.mcreator.survivalreimagined.client.model.Modelleaves;
+import net.mcreator.survivalreimagined.client.model.ModelCustomModel;
 import net.mcreator.survivalreimagined.client.renderer.block.PalmLeavesRenderer;
+import net.mcreator.survivalreimagined.client.renderer.block.BananaLeavesRenderer;
 import net.mcreator.survivalreimagined.client.renderer.BoarRenderer;
 import net.mcreator.survivalreimagined.client.renderer.SowRenderer;
 import net.mcreator.survivalreimagined.client.renderer.PigletRenderer;
@@ -84,7 +86,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		EntityModelLayerRegistry.registerModelLayer(Modelghost.LAYER_LOCATION, Modelghost::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(ModelGasMask.LAYER_LOCATION, ModelGasMask::createBodyLayer);
 		EntityModelLayerRegistry.registerModelLayer(Modelleaves.LAYER_LOCATION, Modelleaves::createBodyLayer);
+		EntityModelLayerRegistry.registerModelLayer(ModelCustomModel.LAYER_LOCATION, ModelCustomModel::createBodyLayer);
 		BlockEntityRenderers.register(SurvivalReimaginedModBlockEntities.PALM_LEAVES.get(), PalmLeavesRenderer::new);
+		BlockEntityRenderers.register(SurvivalReimaginedModBlockEntities.BANANA_LEAVES.get(), BananaLeavesRenderer::new);
 		ArmorRenderer.register((matrices, vertexConsumers, stack, entity, slot, light, contextModel) -> {
 			if (slot != EquipmentSlot.HEAD) return;
 			ModelGasMask model = new ModelGasMask(

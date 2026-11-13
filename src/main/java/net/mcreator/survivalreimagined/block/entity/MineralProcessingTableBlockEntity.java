@@ -134,6 +134,14 @@ public class MineralProcessingTableBlockEntity extends RandomizableContainerBloc
 		return this.dataAccess;
 	}
 
+	public int getProgress() {
+		return this.progress;
+	}
+
+	public int getReactorRodCapacityTenths() {
+		return this.reactorRodCapacityTenths;
+	}
+
 	public static boolean isReactorRod(ItemStack stack) {
 		return stack.is(SurvivalReimaginedModItems.REACTOR_ROD.get());
 	}
