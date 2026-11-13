@@ -56,8 +56,8 @@ This table tracks broad feature parity against the original.
 | Decorative / Utility Blocks | ✅ | ✅ | ✅ | — |
 | Sounds / Particles | ✅ | — | ✅ | — |
 | Survival Progression | ✅ | ✅ | ✅ | ✅ |
-| Advancements | ✅ | ✅ | ✅ | — |
-| Compat Content | ❌ | ❌ | ❌ | ❌ |
+| Advancements | 🟡 | 🟡 | ✅ | — |
+| Compat Content | 🟡 | 🟡 | 🟡 | 🟡 |
 
 
 
