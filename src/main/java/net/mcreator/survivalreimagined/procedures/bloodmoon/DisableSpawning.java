@@ -11,29 +11,28 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 
 public class DisableSpawning {
-    public static void onEntityTick(Entity entity, ServerLevel world) {
+    public static void onEntityTick(LevelAccessor world, Entity entity) {
         execute(world, entity);
     }
 
     public static void execute(LevelAccessor world, Entity entity) {
         if (entity == null) return;
+        if (!(world instanceof ServerLevel serverLevel)) return;
+        if (!SurvivalReimaginedModConfig.VALUES.disable_normal_mob_spawning) return;
 
-        if (SurvivalReimaginedModConfig.VALUES.disable_normal_mob_spawning) {
-            if (world instanceof ServerLevel serverLevel) {
-                if (SurvivalReimaginedModVariables.MapVariables.get(serverLevel).isBloodMoon) {
-                    if ((entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:skeletons")))
-                    || entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:zombies")))
-                    || entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:spiders"))))
-                    && !(entity instanceof BloodMoonZombieEntity)
-                    && !entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("c:blood_moon/spider")))) {
-                        entity.discard();
-                    }
-                } else {
-                    if (entity instanceof BloodMoonZombieEntity || entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("c:blood_moon/spider")))) {
-                        entity.discard();
-                    }
-                }
-            }
+        boolean isBloodMoon = SurvivalReimaginedModVariables.MapVariables.get(serverLevel).isBloodMoon;
+        boolean isNormalMob =
+                entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:skeletons")))
+                || entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:zombies")))
+                || entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("minecraft:spiders")));
+
+        boolean isBloodMoonMob = entity instanceof BloodMoonZombieEntity || entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("c:blood_moon/spider")));
+
+        if (isBloodMoon && isNormalMob && !isBloodMoonMob) {
+            entity.discard();
+        }
+        if (!isBloodMoon && isBloodMoonMob) {
+            entity.discard();
         }
     }
 }

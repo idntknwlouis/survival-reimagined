@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.mcreator.survivalreimagined.network.SurvivalReimaginedModVariables;
 import net.minecraft.client.Minecraft;
@@ -37,6 +38,11 @@ public class BloodMoonTexture {
    }
 
    public static void registerServerTicker() {
+       ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+           boolean currentState = SurvivalReimaginedModVariables.MapVariables.get(server.overworld()).isBloodMoon;
+           ServerPlayNetworking.send(handler.player, new BloodMoonPayload(currentState));
+       });
+
        ServerTickEvents.END_SERVER_TICK.register(server -> {
            var overworld = server.overworld();
            if (overworld != null) {
