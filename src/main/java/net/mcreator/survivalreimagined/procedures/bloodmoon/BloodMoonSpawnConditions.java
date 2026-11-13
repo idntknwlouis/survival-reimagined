@@ -7,9 +7,7 @@ import net.minecraft.world.level.LevelAccessor;
 public class BloodMoonSpawnConditions {
     public static boolean execute(LevelAccessor world) {
         if (world instanceof ServerLevel level) {
-            if (SurvivalReimaginedModVariables.MapVariables.get(level).isBloodMoon) {
-                return true;
-            }
+            return SurvivalReimaginedModVariables.MapVariables.get(level).isBloodMoon;
         }
         return false;
     }

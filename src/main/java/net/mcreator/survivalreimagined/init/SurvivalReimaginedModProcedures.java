@@ -96,7 +96,7 @@ public class SurvivalReimaginedModProcedures {
             }
         });
         ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {
-            DisableSpawning.onEntityTick(entity, world);
+            DisableSpawning.onEntityTick(world, entity);
         });
     }
 }
