@@ -64,7 +64,7 @@ public final class FoodSpoilage {
         updateContainer(level, container);
     }
 
-    private static void updateContainer(Level level, Container container) {
+    private static boolean updateContainer(Level level, Container container) {
         long currentTime = level.getGameTime();
         boolean changed = false;
 
@@ -124,12 +124,20 @@ public final class FoodSpoilage {
                     nbt.putLong("ContainerSpoilageLastTick", newLastChecked);
                 });
                 changed = true;
+            } else if (!tag.contains("ContainerSpoilageLastTick")) {
+                // Mark the stack as container-resident immediately, even before
+                // its first 100-tick spoilage step, so moving it back to inventory
+                // switches clocks correctly.
+                CustomData.update(DataComponents.CUSTOM_DATA, stack,
+                        nbt -> nbt.putLong("ContainerSpoilageLastTick", lastChecked));
+                changed = true;
             }
         }
 
         if (changed) {
             container.setChanged();
         }
+        return changed;
     }
 
     /**
@@ -231,7 +239,9 @@ public final class FoodSpoilage {
 
             OpenMenuTimer timer = OPEN_MENU_TIMERS.get(playerId);
             if (timer == null || timer.menu() != menu || currentTick >= timer.nextScanTick()) {
-                updateOpenWoodenContainers(player.level(), menu);
+                if (updateOpenWoodenContainers(player.level(), menu)) {
+                    player.containerMenu.broadcastChanges();
+                }
                 OPEN_MENU_TIMERS.put(playerId,
                         new OpenMenuTimer(menu, currentTick + CONTAINER_SCAN_INTERVAL));
             }
@@ -240,7 +250,8 @@ public final class FoodSpoilage {
         OPEN_MENU_TIMERS.keySet().removeIf(playerId -> !onlinePlayers.contains(playerId));
     }
 
-    private static void updateOpenWoodenContainers(Level level, AbstractContainerMenu menu) {
+    private static boolean updateOpenWoodenContainers(Level level, AbstractContainerMenu menu) {
+        boolean changed = false;
         Set<BlockEntity> visited = Collections.newSetFromMap(new IdentityHashMap<>());
         Set<Container> visitedComposite = Collections.newSetFromMap(new IdentityHashMap<>());
 
@@ -255,14 +266,15 @@ public final class FoodSpoilage {
                 }
                 BlockPos pos = blockEntity.getBlockPos();
                 if (level.getBlockState(pos).is(WOODEN_CONTAINERS)) {
-                    updateContainer(level, container);
+                    changed |= updateContainer(level, container);
                 }
             } else if (slot.container instanceof CompoundContainer && visitedComposite.add(container)) {
                 // Vanilla double chests expose a CompoundContainer rather than either
                 // individual ChestBlockEntity through their menu slots.
-                updateContainer(level, container);
+                changed |= updateContainer(level, container);
             }
         }
+        return changed;
     }
 
     private static boolean hasSpoilableItem(Container container) {
