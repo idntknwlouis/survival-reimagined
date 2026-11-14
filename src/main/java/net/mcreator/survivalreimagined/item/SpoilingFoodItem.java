@@ -40,28 +40,52 @@ public class SpoilingFoodItem extends Item {
 		boolean changed = false;
 
 		if (!tag.contains("SpoilageLastTick") || currentTick < lastTick) {
-			CustomData.update(DataComponents.CUSTOM_DATA, stack,
-					nbt -> nbt.putLong("SpoilageLastTick", currentTick));
+			CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+				nbt.putLong("SpoilageLastTick", currentTick);
+				nbt.remove("ContainerSpoilageLastTick");
+			});
 			changed = true;
-		} else {
-			long elapsed = currentTick - lastTick;
-			if (elapsed >= 1200) {
-				long percentSteps = elapsed / 1200;
-				spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) (percentSteps * 20));
-				long nextTick = lastTick + percentSteps * 1200;
+		} else if (tag.contains("ContainerSpoilageLastTick")) {
+			// The stack has just moved from a container into the player's inventory.
+			// First account for any container-time progress, then switch its clock
+			// to the faster inventory rate without counting the same elapsed time twice.
+			long containerElapsed = currentTick - lastTick;
+			long containerSteps = containerElapsed / 100L;
+			long containerRemainder = containerElapsed % 100L;
+			spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) containerSteps);
 
-				final int newSpoilage = spoilage;
-				final long newLastTick = nextTick;
-				CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-					nbt.putDouble("SpoilageMax", newSpoilage);
-					nbt.putLong("SpoilageLastTick", newLastTick);
-					nbt.remove("InventoryClock");
-					nbt.remove("ContainerSpoilageLastTick");
-				});
-				changed = true;
-			}
+			// Preserve the fractional progress when converting from 1 point / 100
+			// ticks in containers to 1 point / 60 ticks in the inventory.
+			long inventoryRemainder = containerRemainder * 60L / 100L;
+			long inventoryLastTick = currentTick - inventoryRemainder;
+			final int convertedSpoilage = spoilage;
+			CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+				nbt.putDouble("SpoilageMax", convertedSpoilage);
+				nbt.putLong("SpoilageLastTick", inventoryLastTick);
+				nbt.remove("ContainerSpoilageLastTick");
+				nbt.remove("InventoryClock");
+			});
+			lastTick = inventoryLastTick;
+			changed = true;
 		}
 
+		// Inventory spoilage advances by one point every 60 ticks. Persist in
+		// 20-point batches to avoid syncing the stack every minute.
+		long elapsed = currentTick - lastTick;
+		if (elapsed >= 1200) {
+			long percentSteps = elapsed / 1200;
+			spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) (percentSteps * 20));
+			long nextTick = lastTick + percentSteps * 1200;
+
+			final int newSpoilage = spoilage;
+			final long newLastTick = nextTick;
+			CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+				nbt.putDouble("SpoilageMax", newSpoilage);
+				nbt.putLong("SpoilageLastTick", newLastTick);
+				nbt.remove("InventoryClock");
+			});
+			changed = true;
+		}
 		if (spoilage >= ROT_THRESHOLD) {
 			ItemStack rotten = new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount());
 			player.getInventory().setItem(slotId, rotten);
