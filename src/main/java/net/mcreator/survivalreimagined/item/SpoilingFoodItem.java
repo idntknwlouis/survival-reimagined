@@ -107,8 +107,6 @@ public class SpoilingFoodItem extends Item {
 		var spoilageTag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = spoilageTag.getDouble("SpoilageMax");
 
-		// SpoilageMax is synchronized by the server as spoilage advances.
-
 		if (spoilage <= 499) {
 			tooltip.add(Component.literal("\u00A72 Fresh"));
 		} else if (spoilage <= 999) {
