@@ -137,6 +137,84 @@ public final class FoodSpoilage {
      * player's currently-open menu. A new menu gets a fresh timer immediately;
      * while it remains open, the scan repeats once per second.
      */
+    /**
+     * Updates all spoilable stacks in online player inventories. This uses the
+     * item tag instead of Item.inventoryTick so every tagged item is covered.
+     */
+    public static void tickPlayerInventories(MinecraftServer server) {
+        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            long currentTime = player.level().getGameTime();
+            var inventory = player.getInventory();
+            boolean changed = false;
+
+            for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
+                ItemStack stack = inventory.getItem(slot);
+                if (stack.isEmpty() || !stack.is(CAN_ROT)) {
+                    continue;
+                }
+
+                var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+                long lastTick = tag.getLong("SpoilageLastTick");
+                int spoilage = (int) tag.getDouble("SpoilageMax");
+
+                if (!tag.contains("SpoilageLastTick") || currentTime < lastTick) {
+                    CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+                        nbt.putLong("SpoilageLastTick", currentTime);
+                        nbt.remove("ContainerSpoilageLastTick");
+                    });
+                    changed = true;
+                    continue;
+                }
+
+                if (tag.contains("ContainerSpoilageLastTick")) {
+                    long containerElapsed = currentTime - lastTick;
+                    long containerSteps = containerElapsed / CONTAINER_TICKS_PER_SPOILAGE;
+                    long containerRemainder = containerElapsed % CONTAINER_TICKS_PER_SPOILAGE;
+                    spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) containerSteps);
+                    long inventoryRemainder = containerRemainder * 60L / CONTAINER_TICKS_PER_SPOILAGE;
+                    lastTick = currentTime - inventoryRemainder;
+
+                    final int convertedSpoilage = spoilage;
+                    final long inventoryLastTick = lastTick;
+                    CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+                        nbt.putDouble("SpoilageMax", convertedSpoilage);
+                        nbt.putLong("SpoilageLastTick", inventoryLastTick);
+                        nbt.remove("ContainerSpoilageLastTick");
+                        nbt.remove("InventoryClock");
+                    });
+                    changed = true;
+                }
+
+                long elapsed = currentTime - lastTick;
+                if (elapsed >= 60L) {
+                    long steps = elapsed / 60L;
+                    spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) steps);
+                    lastTick += steps * 60L;
+
+                    final int updatedSpoilage = spoilage;
+                    final long updatedTick = lastTick;
+                    CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
+                        nbt.putDouble("SpoilageMax", updatedSpoilage);
+                        nbt.putLong("SpoilageLastTick", updatedTick);
+                        nbt.remove("InventoryClock");
+                    });
+                    changed = true;
+                }
+
+                if (spoilage >= ROT_THRESHOLD) {
+                    inventory.setItem(slot,
+                            new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+                    changed = true;
+                }
+            }
+
+            if (changed) {
+                inventory.setChanged();
+                player.containerMenu.broadcastChanges();
+            }
+        }
+    }
+
     public static void tickOpenContainers(MinecraftServer server) {
         long currentTick = server.getTickCount();
         Set<UUID> onlinePlayers = new HashSet<>();
