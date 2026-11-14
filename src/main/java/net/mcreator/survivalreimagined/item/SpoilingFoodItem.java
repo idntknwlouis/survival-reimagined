@@ -37,18 +37,15 @@ public class SpoilingFoodItem extends Item {
 		int spoilage = (int) tag.getDouble("SpoilageMax");
 		long currentTick = level.getGameTime();
 		long lastTick = tag.getLong("SpoilageLastTick");
+		boolean changed = false;
 
-		// One spoilage percent is 20 points. At the original rate of one point
-		// every 60 ticks, the stack only needs a data update once every 1200 ticks.
-		if (!tag.contains("SpoilageLastTick")) {
+		if (!tag.contains("SpoilageLastTick") || currentTick < lastTick) {
 			CustomData.update(DataComponents.CUSTOM_DATA, stack,
 					nbt -> nbt.putLong("SpoilageLastTick", currentTick));
+			changed = true;
 		} else {
 			long elapsed = currentTick - lastTick;
-			if (elapsed < 0) {
-				CustomData.update(DataComponents.CUSTOM_DATA, stack,
-						nbt -> nbt.putLong("SpoilageLastTick", currentTick));
-			} else if (elapsed >= 1200) {
+			if (elapsed >= 1200) {
 				long percentSteps = elapsed / 1200;
 				spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) (percentSteps * 20));
 				long nextTick = lastTick + percentSteps * 1200;
@@ -60,12 +57,21 @@ public class SpoilingFoodItem extends Item {
 					nbt.putLong("SpoilageLastTick", newLastTick);
 					nbt.remove("InventoryClock");
 				});
+				changed = true;
 			}
 		}
 
 		if (spoilage >= ROT_THRESHOLD) {
 			ItemStack rotten = new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount());
 			player.getInventory().setItem(slotId, rotten);
+			changed = true;
+		}
+
+		if (changed) {
+			// Mark the inventory dirty and sync the current menu so the client tooltip
+			// updates without requiring the player to move or consume the item.
+			player.getInventory().setChanged();
+			player.containerMenu.broadcastChanges();
 		}
 	}
 
