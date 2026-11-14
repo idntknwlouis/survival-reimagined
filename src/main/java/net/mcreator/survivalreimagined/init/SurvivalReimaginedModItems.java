@@ -49,12 +49,12 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> GOAT_LEG = block(SurvivalReimaginedModBlocks.GOAT_LEG);
 	public static final RegistryEntry<Item> GOAT_HIDE = simple("goat_hide");
 	public static final RegistryEntry<Item> CHICKEN_CARCASS = block(SurvivalReimaginedModBlocks.CHICKEN_CARCASS);
-	public static final RegistryEntry<Item> BRAIN = simple("brain");
-	public static final RegistryEntry<Item> LUNGS = simple("lungs");
-	public static final RegistryEntry<Item> HEART_ITEM = simple("heart_item");
-	public static final RegistryEntry<Item> LIVER = simple("liver");
-	public static final RegistryEntry<Item> STOMACH = simple("stomach");
-	public static final RegistryEntry<Item> INTESTINES = simple("intestines");
+	public static final RegistryEntry<Item> BRAIN = spoilingSimple("brain");
+	public static final RegistryEntry<Item> LUNGS = spoilingSimple("lungs");
+	public static final RegistryEntry<Item> HEART_ITEM = spoilingSimple("heart_item");
+	public static final RegistryEntry<Item> LIVER = spoilingSimple("liver");
+	public static final RegistryEntry<Item> STOMACH = spoilingSimple("stomach");
+	public static final RegistryEntry<Item> INTESTINES = spoilingSimple("intestines");
 	public static final RegistryEntry<Item> STONE_ROCK = register("stone_rock", StoneRockItem::new);
 	public static final RegistryEntry<Item> OBSIDIAN_ROCK = register("obsidian_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.OBSIDIAN_ROCK::get, "block.stone.place"));
 	public static final RegistryEntry<Item> SHALE = block(SurvivalReimaginedModBlocks.SHALE);
@@ -915,6 +915,9 @@ public final class SurvivalReimaginedModItems {
 
 	private static RegistryEntry<Item> simple(String path) {
 		return register(path, () -> new Item(new Item.Properties()));
+	}
+	private static RegistryEntry<Item> spoilingSimple(String path) {
+		return register(path, () -> new SpoilingFoodItem(new Item.Properties()));
 	}
 	private static RegistryEntry<Item> simpleProperties(String path, Item.Properties properties) {
 		return register(path, () -> new Item(properties));
