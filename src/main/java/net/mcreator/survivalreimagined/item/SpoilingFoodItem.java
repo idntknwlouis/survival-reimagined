@@ -117,7 +117,10 @@ public class SpoilingFoodItem extends Item {
 				if (spoilageTag.contains("ContainerSpoilageLastTick")) {
 					spoilage += elapsed / 100L;
 				} else {
-					spoilage += (elapsed / 1200L) * 20L;
+					// Inventory spoilage advances by one point every 60 ticks.
+					// The server persists it in 20-point batches (every 1200 ticks),
+					// so calculate the in-between progress for the tooltip here.
+					spoilage += elapsed / 60L;
 				}
 				spoilage = Math.min(ROT_THRESHOLD, spoilage);
 			}
