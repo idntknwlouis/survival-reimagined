@@ -56,6 +56,7 @@ public class SpoilingFoodItem extends Item {
 					nbt.putDouble("SpoilageMax", newSpoilage);
 					nbt.putLong("SpoilageLastTick", newLastTick);
 					nbt.remove("InventoryClock");
+					nbt.remove("ContainerSpoilageLastTick");
 				});
 				changed = true;
 			}
@@ -79,8 +80,24 @@ public class SpoilingFoodItem extends Item {
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		super.appendHoverText(stack, context, tooltip, flag);
 
-		double spoilage = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
-				.copyTag().getDouble("SpoilageMax");
+		var spoilageTag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+		double spoilage = spoilageTag.getDouble("SpoilageMax");
+
+		// Predict the current value for display without mutating client-side item data.
+		// The server persists spoilage in batches, so reading SpoilageMax alone makes
+		// the tooltip appear frozen between inventory/container updates.
+		if (context.level() != null && spoilage < ROT_THRESHOLD
+				&& spoilageTag.contains("SpoilageLastTick")) {
+			long elapsed = context.level().getGameTime() - spoilageTag.getLong("SpoilageLastTick");
+			if (elapsed > 0) {
+				if (spoilageTag.contains("ContainerSpoilageLastTick")) {
+					spoilage += elapsed / 100L;
+				} else {
+					spoilage += (elapsed / 1200L) * 20L;
+				}
+				spoilage = Math.min(ROT_THRESHOLD, spoilage);
+			}
+		}
 
 		if (spoilage <= 499) {
 			tooltip.add(Component.literal("\u00A72 Fresh"));
