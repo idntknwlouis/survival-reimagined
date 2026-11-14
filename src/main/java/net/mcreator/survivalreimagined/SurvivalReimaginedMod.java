@@ -87,6 +87,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 				AAFScripturePageSyncPayload.STREAM_CODEC
 		);
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
+			FoodSpoilage.tickPlayerInventories(server);
 			FoodSpoilage.tickOpenContainers(server);
 			for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 				SurvivalReimaginedModMobEffects.onEffectRemoved(player);
