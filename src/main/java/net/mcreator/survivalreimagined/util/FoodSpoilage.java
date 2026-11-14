@@ -37,8 +37,6 @@ public final class FoodSpoilage {
     private static final int ROT_THRESHOLD = 2000;
     private static final int SPOILAGE_PER_PERCENT = ROT_THRESHOLD / 100;
     private static final long CONTAINER_TICKS_PER_SPOILAGE = 100L;
-    private static final long CONTAINER_TICKS_PER_PERCENT =
-            CONTAINER_TICKS_PER_SPOILAGE * SPOILAGE_PER_PERCENT;
     private static final long CONTAINER_SCAN_INTERVAL = 20L;
 
     private record OpenMenuTimer(AbstractContainerMenu menu, long nextScanTick) {
@@ -77,12 +75,18 @@ public final class FoodSpoilage {
             }
 
             var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-            long lastChecked = tag.getLong("ContainerSpoilageLastTick");
+            // SpoilageLastTick is the shared baseline for both inventory and
+            // container time. Fall back to the older container-only key for
+            // stacks created by earlier versions of this Fabric port.
+            long lastChecked = tag.contains("SpoilageLastTick")
+                    ? tag.getLong("SpoilageLastTick")
+                    : tag.getLong("ContainerSpoilageLastTick");
 
-            if (!tag.contains("ContainerSpoilageLastTick") || currentTime < lastChecked) {
+            if ((!tag.contains("SpoilageLastTick") && !tag.contains("ContainerSpoilageLastTick"))
+                    || currentTime < lastChecked) {
                 CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-                    nbt.putLong("ContainerSpoilageLastTick", currentTime);
                     nbt.putLong("SpoilageLastTick", currentTime);
+                    nbt.putLong("ContainerSpoilageLastTick", currentTime);
                 });
                 changed = true;
                 continue;
@@ -98,11 +102,12 @@ public final class FoodSpoilage {
                 continue;
             }
 
-            if (elapsed >= CONTAINER_TICKS_PER_PERCENT) {
-                long percentSteps = elapsed / CONTAINER_TICKS_PER_PERCENT;
-                spoilage = Math.min(ROT_THRESHOLD,
-                        spoilage + (int) (percentSteps * SPOILAGE_PER_PERCENT));
-                long nextTick = lastChecked + percentSteps * CONTAINER_TICKS_PER_PERCENT;
+            if (elapsed >= CONTAINER_TICKS_PER_SPOILAGE) {
+                // Match the NeoForge container rate: one spoilage point per 100
+                // elapsed world ticks. Keep the fractional remainder for the next scan.
+                long spoilageSteps = elapsed / CONTAINER_TICKS_PER_SPOILAGE;
+                spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) spoilageSteps);
+                long nextTick = lastChecked + spoilageSteps * CONTAINER_TICKS_PER_SPOILAGE;
 
                 if (spoilage >= ROT_THRESHOLD) {
                     container.setItem(slot,
@@ -112,18 +117,12 @@ public final class FoodSpoilage {
                 }
 
                 final int newSpoilage = spoilage;
-                final long newContainerTick = nextTick;
+                final long newLastChecked = nextTick;
                 CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
                     nbt.putDouble("SpoilageMax", newSpoilage);
-                    nbt.putLong("ContainerSpoilageLastTick", newContainerTick);
-                    nbt.putLong("SpoilageLastTick", currentTime);
+                    nbt.putLong("SpoilageLastTick", newLastChecked);
+                    nbt.putLong("ContainerSpoilageLastTick", newLastChecked);
                 });
-                changed = true;
-            } else if (tag.getLong("SpoilageLastTick") != currentTime) {
-                // Keep the player-inventory clock aligned while the item is stored,
-                // so taking it out cannot apply the same elapsed time a second time.
-                CustomData.update(DataComponents.CUSTOM_DATA, stack,
-                        nbt -> nbt.putLong("SpoilageLastTick", currentTime));
                 changed = true;
             }
         }
