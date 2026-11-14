@@ -4,9 +4,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -22,85 +20,6 @@ public class SpoilingFoodItem extends Item {
 
 	public SpoilingFoodItem(Properties properties) {
 		super(properties);
-	}
-
-	@Override
-	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-		super.inventoryTick(stack, level, entity, slotId, isSelected);
-
-		if (level.isClientSide() || !(entity instanceof Player player)) {
-			return;
-		}
-
-		CustomData data = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
-		var tag = data.copyTag();
-		int spoilage = (int) tag.getDouble("SpoilageMax");
-		long currentTick = level.getGameTime();
-		long lastTick = tag.getLong("SpoilageLastTick");
-		boolean changed = false;
-
-		if (!tag.contains("SpoilageLastTick") || currentTick < lastTick) {
-			CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-				nbt.putLong("SpoilageLastTick", currentTick);
-				nbt.remove("ContainerSpoilageLastTick");
-			});
-			// The local value was read before initialization; reset it as well so
-			// a newly obtained food stack does not count ticks since world start.
-			lastTick = currentTick;
-			changed = true;
-		} else if (tag.contains("ContainerSpoilageLastTick")) {
-			// The stack has just moved from a container into the player's inventory.
-			// First account for any container-time progress, then switch its clock
-			// to the faster inventory rate without counting the same elapsed time twice.
-			long containerElapsed = currentTick - lastTick;
-			long containerSteps = containerElapsed / 100L;
-			long containerRemainder = containerElapsed % 100L;
-			spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) containerSteps);
-
-			// Preserve the fractional progress when converting from 1 point / 100
-			// ticks in containers to 1 point / 60 ticks in the inventory.
-			long inventoryRemainder = containerRemainder * 60L / 100L;
-			long inventoryLastTick = currentTick - inventoryRemainder;
-			final int convertedSpoilage = spoilage;
-			CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-				nbt.putDouble("SpoilageMax", convertedSpoilage);
-				nbt.putLong("SpoilageLastTick", inventoryLastTick);
-				nbt.remove("ContainerSpoilageLastTick");
-				nbt.remove("InventoryClock");
-			});
-			lastTick = inventoryLastTick;
-			changed = true;
-		}
-
-		// Inventory spoilage advances by one point every 60 ticks. Update the
-		// stack at that same interval so open inventory tooltips receive fresh data.
-		long elapsed = currentTick - lastTick;
-		if (elapsed >= 60) {
-			long spoilageSteps = elapsed / 60;
-			spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) spoilageSteps);
-			long nextTick = lastTick + spoilageSteps * 60;
-
-			final int newSpoilage = spoilage;
-			final long newLastTick = nextTick;
-			CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-				nbt.putDouble("SpoilageMax", newSpoilage);
-				nbt.putLong("SpoilageLastTick", newLastTick);
-				nbt.remove("InventoryClock");
-			});
-			changed = true;
-		}
-		if (spoilage >= ROT_THRESHOLD) {
-			ItemStack rotten = new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount());
-			player.getInventory().setItem(slotId, rotten);
-			changed = true;
-		}
-
-		if (changed) {
-			// Mark the inventory dirty and sync the current menu so the client tooltip
-			// updates without requiring the player to move or consume the item.
-			player.getInventory().setChanged();
-			player.containerMenu.broadcastChanges();
-		}
 	}
 
 	@Override
@@ -120,9 +39,10 @@ public class SpoilingFoodItem extends Item {
 			tooltip.add(Component.literal("\u00A78 Rotten"));
 		}
 
-		int spoilagePercent = Math.max(0, Math.min(100, (int) Math.floor((spoilage / ROT_THRESHOLD) * 100.0D)));
-		if (spoilagePercent > 1) {
-			tooltip.add(Component.literal("\u00A77 " + spoilagePercent + "% Spoiled"));
+		// Show fractional progress so each server spoilage increment is visible.
+		double spoilagePercent = Math.max(0.0D, Math.min(100.0D, spoilage / ROT_THRESHOLD * 100.0D));
+		if (spoilage > 0) {
+			tooltip.add(Component.literal("\u00A77 " + String.format(java.util.Locale.ROOT, "%.2f", spoilagePercent) + "% Spoiled"));
 		}
 	}
 
