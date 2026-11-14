@@ -1,24 +1,11 @@
 package net.mcreator.survivalreimagined.util;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
-import net.minecraft.world.CompoundContainer;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -28,220 +15,72 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 
+/**
+ * Container spoilage follows the original NeoForge right-click check:
+ * elapsed world day-time is rounded to 100-tick spoilage units and applied
+ * when the player interacts with a wooden container.
+ *
+ * Inventory spoilage is handled by SpoilingFoodItem.inventoryTick().
+ */
 public final class FoodSpoilage {
-    private static final TagKey<Item> CAN_ROT = TagKey.create(
-            Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "food/can_rot"));
-    private static final TagKey<Block> WOODEN_CONTAINERS = TagKey.create(
-            Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "wooden_containers"));
+	private static final TagKey<Item> CAN_ROT = TagKey.create(
+			Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "food/can_rot"));
+	private static final TagKey<Block> WOODEN_CONTAINERS = TagKey.create(
+			Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "wooden_containers"));
+	private static final int ROT_THRESHOLD = 2000;
+	private static final long CONTAINER_TICKS_PER_SPOILAGE = 100L;
 
-    private static final int ROT_THRESHOLD = 2000;
-    private static final long CONTAINER_TICKS_PER_SPOILAGE = 100L;
-    private static final long CONTAINER_SCAN_INTERVAL = 1L;
+	private FoodSpoilage() {
+	}
 
-    private record OpenMenuTimer(AbstractContainerMenu menu, long nextScanTick) {
-    }
+	public static void updateWoodenContainer(Level level, BlockPos pos) {
+		if (level.isClientSide() || !level.getBlockState(pos).is(WOODEN_CONTAINERS)) {
+			return;
+		}
 
-    private static final Map<UUID, OpenMenuTimer> OPEN_MENU_TIMERS = new HashMap<>();
+		BlockEntity blockEntity = level.getBlockEntity(pos);
+		if (!(blockEntity instanceof Container container)) {
+			return;
+		}
 
-    private FoodSpoilage() {
-    }
+		long currentTime = level.getDayTime();
+		boolean changed = false;
+		for (int slot = 0; slot < container.getContainerSize(); slot++) {
+			ItemStack stack = container.getItem(slot);
+			if (stack.isEmpty() || !stack.is(CAN_ROT)) {
+				continue;
+			}
 
-    /**
-     * Called when a player opens/interacts with a block container. This performs
-     * an immediate pass; tickOpenContainers keeps the open container refreshed.
-     */
-    public static void updateWoodenContainer(Level level, BlockPos pos) {
-        if (level.isClientSide() || !level.getBlockState(pos).is(WOODEN_CONTAINERS)) {
-            return;
-        }
+			var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+			double previousCheck = tag.getDouble("TimeLastChecked");
+			double elapsed = currentTime - previousCheck;
+			double spoilage = Math.round(elapsed / (double) CONTAINER_TICKS_PER_SPOILAGE);
+			double currentSpoilage = tag.getDouble("SpoilageMax");
 
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (!(blockEntity instanceof Container container)) {
-            return;
-        }
+			// Match the source procedure's pre-increment rotten check.
+			if (currentSpoilage >= ROT_THRESHOLD) {
+				container.setItem(slot, new ItemStack(
+						SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+				changed = true;
+				continue;
+			}
 
-        updateContainer(level, container);
-    }
+			double updatedSpoilage = currentSpoilage + spoilage;
+			CustomData.update(DataComponents.CUSTOM_DATA, stack, data -> {
+				data.putDouble("CurrentTime", currentTime);
+				data.putDouble("Elapsed", elapsed);
+				data.putDouble("Spoilage", spoilage);
+				data.putDouble("TimeLastChecked", currentTime);
+				data.putDouble("SpoilageMax", updatedSpoilage);
+				// A container's elapsed-time clock replaces the inventory clock
+				// while the stack remains stored here.
+				data.remove("InventoryClock");
+			});
+			changed = true;
+		}
 
-    private static boolean updateContainer(Level level, Container container) {
-        long currentTime = level.getGameTime();
-        boolean changed = false;
-
-        for (int slot = 0; slot < container.getContainerSize(); slot++) {
-            ItemStack stack = container.getItem(slot);
-            if (stack.isEmpty() || !stack.is(CAN_ROT)) {
-                continue;
-            }
-
-            var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-            long lastTick = tag.getLong("SpoilageLastTick");
-            double spoilage = tag.getDouble("SpoilageMax");
-
-            // The first scan after an item enters a container switches its clock
-            // without applying time that it previously spent in the inventory.
-            if (!tag.contains("SpoilageLastTick") || !tag.contains("ContainerSpoilageLastTick")
-                    || currentTime < lastTick) {
-                CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-                    nbt.putLong("SpoilageLastTick", currentTime);
-                    nbt.putLong("ContainerSpoilageLastTick", currentTime);
-                });
-                changed = true;
-                continue;
-            }
-
-            long elapsed = currentTime - lastTick;
-            spoilage = Math.min(ROT_THRESHOLD, spoilage + elapsed / (double) CONTAINER_TICKS_PER_SPOILAGE);
-
-            if (spoilage >= ROT_THRESHOLD) {
-                container.setItem(slot,
-                        new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
-                changed = true;
-                continue;
-            }
-
-            // Store fractional progress and advance the baseline every tick.
-            final double updatedSpoilage = spoilage;
-            CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-                nbt.putDouble("SpoilageMax", updatedSpoilage);
-                nbt.putLong("SpoilageLastTick", currentTime);
-                nbt.putLong("ContainerSpoilageLastTick", currentTime);
-            });
-            if (elapsed > 0) {
-                changed = true;
-            }
-        }
-
-        if (changed) {
-            container.setChanged();
-        }
-        return changed;
-    }
-
-    /**
-     * Updates all spoilable stacks in online player inventories. This uses the
-     * item tag instead of Item.inventoryTick so every tagged item is covered.
-     */
-    public static void tickPlayerInventories(MinecraftServer server) {
-        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-            long currentTime = player.level().getGameTime();
-            var inventory = player.getInventory();
-            boolean changed = false;
-
-            for (int slot = 0; slot < inventory.getContainerSize(); slot++) {
-                ItemStack stack = inventory.getItem(slot);
-                if (stack.isEmpty() || !stack.is(CAN_ROT)) {
-                    continue;
-                }
-
-                var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-                long lastTick = tag.getLong("SpoilageLastTick");
-                double spoilage = tag.getDouble("SpoilageMax");
-
-                if (!tag.contains("SpoilageLastTick") || currentTime < lastTick) {
-                    CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-                        nbt.putLong("SpoilageLastTick", currentTime);
-                        nbt.remove("ContainerSpoilageLastTick");
-                    });
-                    changed = true;
-                    continue;
-                }
-
-                long elapsed = currentTime - lastTick;
-                double ticksPerPoint = tag.contains("ContainerSpoilageLastTick")
-                        ? (double) CONTAINER_TICKS_PER_SPOILAGE : 60.0D;
-                spoilage = Math.min(ROT_THRESHOLD, spoilage + elapsed / ticksPerPoint);
-
-                if (spoilage >= ROT_THRESHOLD) {
-                    inventory.setItem(slot,
-                            new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
-                    changed = true;
-                    continue;
-                }
-
-                final double updatedSpoilage = spoilage;
-                CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-                    nbt.putDouble("SpoilageMax", updatedSpoilage);
-                    nbt.putLong("SpoilageLastTick", currentTime);
-                    nbt.remove("ContainerSpoilageLastTick");
-                });
-                if (elapsed > 0 || tag.contains("ContainerSpoilageLastTick")) {
-                    changed = true;
-                }
-            }
-
-            if (changed) {
-                inventory.setChanged();
-                player.containerMenu.broadcastChanges();
-            }
-        }
-    }
-
-    public static void tickOpenContainers(MinecraftServer server) {
-        long currentTick = server.getTickCount();
-        Set<UUID> onlinePlayers = new HashSet<>();
-
-        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
-            UUID playerId = player.getUUID();
-            onlinePlayers.add(playerId);
-
-            AbstractContainerMenu menu = player.containerMenu;
-            if (menu == player.inventoryMenu) {
-                OPEN_MENU_TIMERS.remove(playerId);
-                continue;
-            }
-
-            OpenMenuTimer timer = OPEN_MENU_TIMERS.get(playerId);
-            if (timer == null || timer.menu() != menu || currentTick >= timer.nextScanTick()) {
-                if (updateOpenWoodenContainers(player.level(), menu)) {
-                    player.containerMenu.broadcastChanges();
-                }
-                OPEN_MENU_TIMERS.put(playerId,
-                        new OpenMenuTimer(menu, currentTick + CONTAINER_SCAN_INTERVAL));
-            }
-        }
-
-        OPEN_MENU_TIMERS.keySet().removeIf(playerId -> !onlinePlayers.contains(playerId));
-    }
-
-    private static boolean updateOpenWoodenContainers(Level level, AbstractContainerMenu menu) {
-        boolean changed = false;
-        Set<BlockEntity> visited = Collections.newSetFromMap(new IdentityHashMap<>());
-        Set<Container> visitedComposite = Collections.newSetFromMap(new IdentityHashMap<>());
-
-        for (Slot slot : menu.slots) {
-            if (!(slot.container instanceof Container container) || !hasSpoilableItem(container)) {
-                continue;
-            }
-
-            if (slot.container instanceof BlockEntity blockEntity) {
-                if (!visited.add(blockEntity)) {
-                    continue;
-                }
-                BlockPos pos = blockEntity.getBlockPos();
-                if (level.getBlockState(pos).is(WOODEN_CONTAINERS)) {
-                    changed |= updateContainer(level, container);
-                }
-            } else if (slot.container instanceof CompoundContainer && visitedComposite.add(container)) {
-                // Vanilla double chests expose a CompoundContainer rather than either
-                // individual ChestBlockEntity through their menu slots.
-                changed |= updateContainer(level, container);
-            }
-        }
-        return changed;
-    }
-
-    private static boolean hasSpoilableItem(Container container) {
-        for (int slot = 0; slot < container.getContainerSize(); slot++) {
-            ItemStack stack = container.getItem(slot);
-            if (!stack.isEmpty() && stack.is(CAN_ROT)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static void setSpoilage(ItemStack stack, int spoilage) {
-        CustomData.update(DataComponents.CUSTOM_DATA, stack,
-                tag -> tag.putDouble("SpoilageMax", Math.max(0, spoilage)));
-    }
+		if (changed) {
+			container.setChanged();
+		}
+	}
 }
