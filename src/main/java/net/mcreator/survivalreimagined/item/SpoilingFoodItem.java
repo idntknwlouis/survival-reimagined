@@ -69,13 +69,13 @@ public class SpoilingFoodItem extends Item {
 			changed = true;
 		}
 
-		// Inventory spoilage advances by one point every 60 ticks. Persist in
-		// 20-point batches to avoid syncing the stack every minute.
+		// Inventory spoilage advances by one point every 60 ticks. Update the
+		// stack at that same interval so open inventory tooltips receive fresh data.
 		long elapsed = currentTick - lastTick;
-		if (elapsed >= 1200) {
-			long percentSteps = elapsed / 1200;
-			spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) (percentSteps * 20));
-			long nextTick = lastTick + percentSteps * 1200;
+		if (elapsed >= 60) {
+			long spoilageSteps = elapsed / 60;
+			spoilage = Math.min(ROT_THRESHOLD, spoilage + (int) spoilageSteps);
+			long nextTick = lastTick + spoilageSteps * 60;
 
 			final int newSpoilage = spoilage;
 			final long newLastTick = nextTick;
@@ -107,24 +107,7 @@ public class SpoilingFoodItem extends Item {
 		var spoilageTag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = spoilageTag.getDouble("SpoilageMax");
 
-		// Predict the current value for display without mutating client-side item data.
-		// The server persists spoilage in batches, so reading SpoilageMax alone makes
-		// the tooltip appear frozen between inventory/container updates.
-		if (context.level() != null && spoilage < ROT_THRESHOLD
-				&& spoilageTag.contains("SpoilageLastTick")) {
-			long elapsed = context.level().getGameTime() - spoilageTag.getLong("SpoilageLastTick");
-			if (elapsed > 0) {
-				if (spoilageTag.contains("ContainerSpoilageLastTick")) {
-					spoilage += elapsed / 100L;
-				} else {
-					// Inventory spoilage advances by one point every 60 ticks.
-					// The server persists it in 20-point batches (every 1200 ticks),
-					// so calculate the in-between progress for the tooltip here.
-					spoilage += elapsed / 60L;
-				}
-				spoilage = Math.min(ROT_THRESHOLD, spoilage);
-			}
-		}
+		// SpoilageMax is synchronized by the server as spoilage advances.
 
 		if (spoilage <= 499) {
 			tooltip.add(Component.literal("\u00A72 Fresh"));
