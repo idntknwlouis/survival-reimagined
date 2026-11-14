@@ -44,6 +44,9 @@ public class SpoilingFoodItem extends Item {
 				nbt.putLong("SpoilageLastTick", currentTick);
 				nbt.remove("ContainerSpoilageLastTick");
 			});
+			// The local value was read before initialization; reset it as well so
+			// a newly obtained food stack does not count ticks since world start.
+			lastTick = currentTick;
 			changed = true;
 		} else if (tag.contains("ContainerSpoilageLastTick")) {
 			// The stack has just moved from a container into the player's inventory.
