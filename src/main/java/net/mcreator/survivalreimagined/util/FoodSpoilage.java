@@ -16,6 +16,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
+import net.minecraft.world.CompoundContainer;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.Item;
@@ -62,6 +63,10 @@ public final class FoodSpoilage {
             return;
         }
 
+        updateContainer(level, container);
+    }
+
+    private static void updateContainer(Level level, Container container) {
         long currentTime = level.getGameTime();
         boolean changed = false;
 
@@ -160,17 +165,25 @@ public final class FoodSpoilage {
 
     private static void updateOpenWoodenContainers(Level level, AbstractContainerMenu menu) {
         Set<BlockEntity> visited = Collections.newSetFromMap(new IdentityHashMap<>());
+        Set<Container> visitedComposite = Collections.newSetFromMap(new IdentityHashMap<>());
 
         for (Slot slot : menu.slots) {
-            if (!(slot.container instanceof BlockEntity blockEntity)
-                    || !(slot.container instanceof Container container)
-                    || !visited.add(blockEntity)) {
+            if (!(slot.container instanceof Container container) || !hasSpoilableItem(container)) {
                 continue;
             }
 
-            BlockPos pos = blockEntity.getBlockPos();
-            if (level.getBlockState(pos).is(WOODEN_CONTAINERS) && hasSpoilableItem(container)) {
-                updateWoodenContainer(level, pos);
+            if (slot.container instanceof BlockEntity blockEntity) {
+                if (!visited.add(blockEntity)) {
+                    continue;
+                }
+                BlockPos pos = blockEntity.getBlockPos();
+                if (level.getBlockState(pos).is(WOODEN_CONTAINERS)) {
+                    updateContainer(level, container);
+                }
+            } else if (slot.container instanceof CompoundContainer && visitedComposite.add(container)) {
+                // Vanilla double chests expose a CompoundContainer rather than either
+                // individual ChestBlockEntity through their menu slots.
+                updateContainer(level, container);
             }
         }
     }
