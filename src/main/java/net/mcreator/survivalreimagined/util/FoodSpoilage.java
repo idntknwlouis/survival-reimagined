@@ -35,7 +35,6 @@ public final class FoodSpoilage {
             Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "wooden_containers"));
 
     private static final int ROT_THRESHOLD = 2000;
-    private static final int SPOILAGE_PER_PERCENT = ROT_THRESHOLD / 100;
     private static final long CONTAINER_TICKS_PER_SPOILAGE = 100L;
     private static final long CONTAINER_SCAN_INTERVAL = 20L;
 
@@ -140,11 +139,6 @@ public final class FoodSpoilage {
         return changed;
     }
 
-    /**
-     * Periodically scans block containers represented by the slots in each
-     * player's currently-open menu. A new menu gets a fresh timer immediately;
-     * while it remains open, the scan repeats once per second.
-     */
     /**
      * Updates all spoilable stacks in online player inventories. This uses the
      * item tag instead of Item.inventoryTick so every tagged item is covered.
