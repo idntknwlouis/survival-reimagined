@@ -100,8 +100,9 @@ public final class FoodSpoilage {
             }
 
             // Store fractional progress and advance the baseline every tick.
+            final double updatedSpoilage = spoilage;
             CustomData.update(DataComponents.CUSTOM_DATA, stack, nbt -> {
-                nbt.putDouble("SpoilageMax", spoilage);
+                nbt.putDouble("SpoilageMax", updatedSpoilage);
                 nbt.putLong("SpoilageLastTick", currentTime);
                 nbt.putLong("ContainerSpoilageLastTick", currentTime);
             });
