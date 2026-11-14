@@ -1,7 +1,6 @@
 package net.mcreator.survivalreimagined;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.mcreator.survivalreimagined.command.EventsCommand;
@@ -17,16 +16,15 @@ import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.mcreator.survivalreimagined.util.FoodSpoilage;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.server.MinecraftServer;
 
-
-import net.mcreator.survivalreimagined.util.FoodSpoilage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,8 +85,6 @@ public class SurvivalReimaginedMod implements ModInitializer {
 				AAFScripturePageSyncPayload.STREAM_CODEC
 		);
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
-			FoodSpoilage.tickPlayerInventories(server);
-			FoodSpoilage.tickOpenContainers(server);
 			for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 				SurvivalReimaginedModMobEffects.onEffectRemoved(player);
 			}
