@@ -19,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 
 import java.util.List;
+import java.util.Locale;
 
 public class SpoilingFoodItem extends Item {
 	private static final TagKey<Item> CAN_ROT = TagKey.create(
@@ -74,6 +75,10 @@ public class SpoilingFoodItem extends Item {
 
 		var spoilageTag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = spoilageTag.getDouble("SpoilageMax");
+		double inventoryClock = spoilageTag.getDouble("InventoryClock");
+		// Include the partial 60-tick interval so the displayed percentage
+		// advances before a full spoilage point is added to SpoilageMax.
+		double spoilageProgress = spoilage + Math.min(59.0D, inventoryClock) / INVENTORY_TICKS_PER_SPOILAGE;
 
 		if (spoilage >= 0 && spoilage <= 499) {
 			tooltip.add(Component.literal("\u00A72 Fresh"));
@@ -85,10 +90,10 @@ public class SpoilingFoodItem extends Item {
 			tooltip.add(Component.literal("\u00A78 Rotten"));
 		}
 
-		int spoilagePercent = Math.max(0, Math.min(100,
-				(int) Math.floor((spoilage / ROT_THRESHOLD) * 100.0D)));
-		if (spoilagePercent > 1) {
-			tooltip.add(Component.literal("\u00A77 " + spoilagePercent + "% Spoiled"));
+		double spoilagePercent = Math.max(0.0D, Math.min(100.0D,
+				(spoilageProgress / ROT_THRESHOLD) * 100.0D));
+		if (spoilagePercent > 1.0D) {
+			tooltip.add(Component.literal("\u00A77 " + String.format(Locale.ROOT, "%.1f%% Spoiled", spoilagePercent)));
 		}
 	}
 
