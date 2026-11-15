@@ -88,6 +88,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 				SurvivalReimaginedModMobEffects.onEffectRemoved(player);
+				FoodSpoilage.tickPlayerInventory(player);
 			}
 		});
 
