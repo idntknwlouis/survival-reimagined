@@ -74,6 +74,10 @@ public final class FoodSpoilage {
 			});
 		}
 		player.getInventory().setChanged();
+		// The inventory scan runs at END_SERVER_TICK, after the normal menu
+		// broadcast. Push updated stack components now so an open player
+		// inventory tooltip receives the new spoilage data immediately.
+		player.containerMenu.broadcastChanges();
 	}
 
 	public static void updateWoodenContainer(Level level, BlockPos pos) {
