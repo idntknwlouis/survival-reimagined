@@ -9,6 +9,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -31,6 +32,48 @@ public final class FoodSpoilage {
 	private static final long CONTAINER_TICKS_PER_SPOILAGE = 100L;
 
 	private FoodSpoilage() {
+	}
+
+	/**
+	 * Tick every spoilable stack in a player's inventory. Fabric's ordinary
+	 * Item.inventoryTick path does not reliably visit every inventory slot,
+	 * so doing this from the server player tick keeps the whole inventory in
+	 * sync while it is open or closed.
+	 */
+	public static void tickPlayerInventory(Player player) {
+		if (player.level().isClientSide()) {
+			return;
+		}
+
+		for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
+			ItemStack stack = player.getInventory().getItem(slot);
+			if (stack.isEmpty() || !stack.is(CAN_ROT)) {
+				continue;
+			}
+
+			var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+			double spoilage = tag.getDouble("SpoilageMax");
+			if (spoilage >= ROT_THRESHOLD) {
+				player.getInventory().setItem(slot, new ItemStack(
+						SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+				continue;
+			}
+
+			double inventoryClock = tag.getDouble("InventoryClock") + 1.0D;
+			if (inventoryClock >= 60.0D) {
+				inventoryClock = 0.0D;
+				spoilage += 1.0D;
+			}
+			final double updatedClock = inventoryClock;
+			final double updatedSpoilage = spoilage;
+			CustomData.update(DataComponents.CUSTOM_DATA, stack, data -> {
+				data.putDouble("InventoryClock", updatedClock);
+				if (updatedSpoilage > 0.0D || data.contains("SpoilageMax")) {
+					data.putDouble("SpoilageMax", updatedSpoilage);
+				}
+			});
+		}
+		player.getInventory().setChanged();
 	}
 
 	public static void updateWoodenContainer(Level level, BlockPos pos) {
