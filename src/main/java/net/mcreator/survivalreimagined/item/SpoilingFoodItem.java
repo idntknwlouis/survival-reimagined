@@ -37,7 +37,9 @@ public class SpoilingFoodItem extends Item {
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(stack, level, entity, slot, selected);
-		if (level.isClientSide() || !stack.is(CAN_ROT)) {
+		// Player inventories are ticked centrally by FoodSpoilage so every slot
+		// advances, not just the currently selected hotbar stack.
+		if (level.isClientSide() || entity instanceof Player || !stack.is(CAN_ROT)) {
 			return;
 		}
 
