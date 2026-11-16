@@ -4,6 +4,9 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.resources.ResourceKey;
@@ -21,9 +24,13 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addEverywhere("stone_gen");
 		addEverywhere("copper_gen");
 		addUndergroundEverywhere("diamond_ore_feature");
+		addUndergroundEverywhere("embedded_obsidian_feature");
+		addUndergroundEverywhere("buried_diamond_ore");
 		addUndergroundEverywhere("emerald_ore_feature");
 		addUndergroundEverywhere("cinnabar_ore_feature");
 		addUndergroundEverywhere("lazurite_ore");
+		addUndergroundEverywhere("azurite_feature");
+		addUndergroundEverywhere("malachite_feature");
 		addUndergroundEverywhere("hematite");
 		addUndergroundEverywhere("magnetite");
 		addUndergroundEverywhere("calaverite_feature");
@@ -58,6 +65,13 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addUndergroundEverywhere("liginite_ore_feature_surface");
 		addUndergroundEverywhere("ilmenite_ore_feature");
 		addUndergroundEverywhere("anthracite_ore_feature");
+		addUndergroundEverywhere("basalt_anthracite_feature");
+		addUndergroundEverywhere("basalt_calaverite_feature");
+		addUndergroundEverywhere("basalt_hematite_feature");
+		addUndergroundEverywhere("basalt_ilmenite_feature");
+		addUndergroundEverywhere("basalt_liginite_feature");
+		addUndergroundEverywhere("basalt_magnetite_feature");
+		addUndergroundEverywhere("basalt_uranophane_feature");
 		addUndergroundEverywhere("bituminous_ore_feature");
 		addUndergroundEverywhere("liginite_ore_feature");
 		addUndergroundEverywhere("uraninite_feature");
@@ -88,8 +102,9 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addVegetationToBiomes("wild_strawberries", Biomes.MEADOW, Biomes.BIRCH_FOREST, Biomes.SAVANNA, Biomes.PLAINS, Biomes.TAIGA);
 		addVegetationToBiomes("wild_raspberry", Biomes.BIRCH_FOREST, Biomes.CHERRY_GROVE, Biomes.FLOWER_FOREST, Biomes.FOREST, Biomes.GROVE, Biomes.TAIGA);
 		addLocalEverywhere("medium_soil");
+		addLocalEverywhere("nitre_feature");
 		addLocalEverywhere("high_soil");
-		addFluidSprings("lava_srpings");
+		addFluidSprings("lava_springs");
 		addUndergroundDecorationEverywhere("deltas");
 		addPointedStonesUndergroundEverywhere("basalt_stalagmite");
 		addPointedStonesUndergroundEverywhere("basalt_stalagtite");
@@ -101,6 +116,12 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addVegetationToBiomes("natural_spelt", Biomes.TAIGA, Biomes.BIRCH_FOREST, Biomes.OLD_GROWTH_BIRCH_FOREST);
 		addVegetationToBiomes("wild_carrots", Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS, Biomes.OLD_GROWTH_PINE_TAIGA, Biomes.OLD_GROWTH_SPRUCE_TAIGA, Biomes.TAIGA);
 		addVegetationToBiomes("wild_beetroot", Biomes.BEACH, Biomes.DESERT, Biomes.SAVANNA);
+		addLocalToBiomes("sand_salt_feature", Biomes.WARM_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN);
+		addUndergroundToBiomes("stone_salt_feature", Biomes.OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_OCEAN, Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_FROZEN_OCEAN, Biomes.FROZEN_OCEAN);
+		addUndergroundEverywhere("sulfur_ore_feature");
+		addLocalEverywhere("teosinte_feature");
+		addUndergroundEverywhere("uraninite_feature");
+
 
 		BiomeModifications.addSpawn(
 				BiomeSelectors.includeByKey(
@@ -124,6 +145,16 @@ public final class SurvivalReimaginedModBiomeModifications {
 		BiomeModifications.addFeature(
 				BiomeSelectors.includeByKey(SurvivalReimaginedModBiomes.TROPICAL_COAST),
 				GenerationStep.Decoration.VEGETAL_DECORATION,
+				featureKey);
+	}
+
+	private static void addLocalToBiomes(String path, ResourceKey<Biome>... biomes) {
+		ResourceKey<PlacedFeature> featureKey = ResourceKey.create(
+				Registries.PLACED_FEATURE,
+				SurvivalReimaginedMod.asResource(path));
+		BiomeModifications.addFeature(
+				BiomeSelectors.includeByKey(biomes),
+				GenerationStep.Decoration.LOCAL_MODIFICATIONS,
 				featureKey);
 	}
 

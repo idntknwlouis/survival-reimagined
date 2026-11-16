@@ -39,6 +39,7 @@ public class SurvivalReimaginedModFuels {
         //Coals
         fuels.put(SurvivalReimaginedModItems.LIGINITE, 800);
         fuels.put(SurvivalReimaginedModItems.SMALL_LIGINITE, 400);
+        fuels.put(SurvivalReimaginedModItems.SMALL_BITUMINOUS, 600);
         fuels.put(SurvivalReimaginedModItems.ANTHRACITE, 3200);
         fuels.put(SurvivalReimaginedModItems.SMALL_ANTHRACITE, 1600);
         fuels.put(SurvivalReimaginedModItems.DARK_CINDER_POWDER, 1600);

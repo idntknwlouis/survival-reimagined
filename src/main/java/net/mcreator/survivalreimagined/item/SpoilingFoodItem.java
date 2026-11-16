@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
@@ -24,7 +25,7 @@ public class SpoilingFoodItem extends Item {
 	private static final TagKey<Item> CAN_ROT = TagKey.create(
 			Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "food/can_rot"));
 	private static final int ROT_THRESHOLD = 2000;
-	private static final int INVENTORY_TICKS_PER_SPOILAGE = 60;
+	private static final int INVENTORY_TICKS_PER_SPOILAGE = 120;
 
 	public SpoilingFoodItem(Properties properties) {
 		super(properties);
@@ -32,7 +33,7 @@ public class SpoilingFoodItem extends Item {
 
 	/**
 	 * NeoForge parity: each spoilable item carries its own inventory clock and
-	 * gains one spoilage point every 60 inventory ticks.
+	 * gains one spoilage point every 120 inventory ticks.
 	 */
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
@@ -45,8 +46,13 @@ public class SpoilingFoodItem extends Item {
 		double spoilage = tag.getDouble("SpoilageMax");
 		if (spoilage >= ROT_THRESHOLD) {
 			if (entity instanceof Player player && slot >= 0 && slot < player.getInventory().getContainerSize()) {
-				player.getInventory().setItem(slot,
-						new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+				ItemStack rottenItem;
+				if (stack.is(SurvivalReimaginedModItems.FLESH.get())) {
+					rottenItem = new ItemStack(Items.ROTTEN_FLESH, stack.getCount());
+				} else {
+					rottenItem = new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount());
+				}
+				player.getInventory().setItem(slot, rottenItem);
 			}
 			return;
 		}
@@ -92,15 +98,15 @@ public class SpoilingFoodItem extends Item {
 
 		if (!level.isClientSide()) {
 			if (spoilage >= 500 && spoilage <= 999) {
-				if (entity.getRandom().nextFloat() < 0.5F) {
-					entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 300, 1, true, false));
+				if (entity.getRandom().nextFloat() < 0.25F) {
+					entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 100, 1, false, false));
 				}
 			} else if (spoilage >= 1000 && spoilage <= 1499) {
-				entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 600, 2, true, false));
-				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1, true, false));
+				entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 300, 2, false, false));
+				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1, false, false));
 			} else if (spoilage >= 1500 && spoilage <= 1999) {
-				entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 2400, 2, true, false));
-				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 300, 1, true, false));
+				entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 1200, 2, false, false));
+				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 150, 1, false, false));
 				entity.hurt(entity.damageSources().generic(), 2.0F);
 			}
 		}

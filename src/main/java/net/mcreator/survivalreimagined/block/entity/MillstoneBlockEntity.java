@@ -147,6 +147,7 @@ public class MillstoneBlockEntity extends RandomizableContainerBlockEntity imple
         if (input.is(Items.WHEAT)) return Items.BREAD;
         if (input.is(SurvivalReimaginedModItems.RYE.get())) return SurvivalReimaginedModItems.RYE_BREAD.get();
         if (input.is(SurvivalReimaginedModItems.SPELT.get())) return SurvivalReimaginedModItems.SPELT_BREAD.get();
+        if (input.is(Items.BONE)) return SurvivalReimaginedModItems.BONEMEAL_SR.get();
         return null;
     }
 

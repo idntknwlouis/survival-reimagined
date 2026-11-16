@@ -221,7 +221,6 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> BLOCK_OF_CHARCOAL = block(SurvivalReimaginedModBlocks.BLOCK_OF_CHARCOAL);
 	public static final RegistryEntry<Item> CHARCOAL_POWDER = simple("charcoal_powder");
 	public static final RegistryEntry<Item> COPPER_NUGGET = simple("copper_nugget");
-	public static final RegistryEntry<Item> SMALL_COAL_CHUNK = simple("small_coal_chunk");
 	public static final RegistryEntry<Item> SMALL_STICK = simple("small_stick");
 	public static final RegistryEntry<Item> WOOD_INGOT = simple("wood_ingot");
 	public static final RegistryEntry<Item> BRONZE_INGOT = simple("bronze_ingot");
@@ -650,6 +649,7 @@ public final class SurvivalReimaginedModItems {
 	public static final Item WARPED_PLANK = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "warped_plank"), new FuelItem(new Item.Properties(), 0));
 
 	public static final Item LIGINITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "liginite"), new FuelItem(new Item.Properties(), 800));
+	public static final Item SMALL_BITUMINOUS = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "small_coal_chunk"), new FuelItem(new Item.Properties(), 600));
 	public static final Item SMALL_LIGINITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "small_liginite"), new FuelItem(new Item.Properties(), 400));
 	public static final Item ANTHRACITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "anthracite"), new FuelItem(new Item.Properties(), 3200));
 	public static final Item SMALL_ANTHRACITE = Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "small_anthracite"), new FuelItem(new Item.Properties(), 1600));

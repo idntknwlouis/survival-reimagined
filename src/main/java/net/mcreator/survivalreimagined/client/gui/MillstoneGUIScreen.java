@@ -26,13 +26,36 @@ public class MillstoneGUIScreen extends AbstractContainerScreen<MillstoneGUIMenu
     @Override
     protected void renderBg(GuiGraphics graphics, float partialTick, int mouseX, int mouseY) {
         RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
         graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
         int frame = Mth.clamp(this.menu.getProgress(), 0, MillstoneBlockEntity.MAX_PROGRESS);
         graphics.blit(ARROW, this.leftPos + 79, this.topPos + 41, 0, frame * 18, 18, 18, 18, 144);
+        RenderSystem.disableBlend();
+    }
+
+    @Override
+    public boolean keyPressed(int key, int b, int c) {
+        if (key == 256) {
+            this.minecraft.player.closeContainer();
+            return true;
+        }
+        return super.keyPressed(key, b, c);
+    }
+
+    @Override
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
+        super.render(guiGraphics, mouseX, mouseY, partialTicks);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     @Override
     protected void renderLabels(GuiGraphics graphics, int mouseX, int mouseY) {
+    }
+
+    @Override
+    public void init() {
+        super.init();
     }
 }

@@ -26,7 +26,7 @@ public enum SurvivalReimaginedModToolMaterials implements Tier {
     STEEL (
             BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
             475,
-            4.0F,
+            8.0F,
             0.0F,
             16,
             Ingredient.of(SurvivalReimaginedModItems.STEEL_INGOT.get())

@@ -22,7 +22,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-import net.mcreator.survivalreimagined.SurvivalReimaginedMod;\nimport net.mcreator.survivalreimagined.block.BananaJungleLogBlock;\nimport net.mcreator.survivalreimagined.block.SmallBananaJungleLogBlock;
+import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.block.BananaJungleLogBlock;
+import net.mcreator.survivalreimagined.block.SmallBananaJungleLogBlock;
 import net.mcreator.survivalreimagined.block.AndesiteRockBlockBlock;
 import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.block.BlockOfRawTinBlock;
@@ -320,7 +322,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> BLOCK_OF_CINNABAR = register("block_of_cinnabar", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> CINNABAR_ORE = register("cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3, 3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> DEEPSLATE_CINNABAR_ORE = register("deepslate_cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> EMBEDDED_OBSIDIAN = register("embedded_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> EMBEDDED_OBSIDIAN = register("embedded_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f,3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> APPLE_TREE_SAPLING = register("apple_tree_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.APPLE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).instabreak()));
 
 	private static FruitTypeConfig AppleConfig() {
@@ -406,10 +408,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> NETHERITE_SCRAP_BLOCK = register("netherite_scrap_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.ANCIENT_DEBRIS).strength(30, 1200).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> NITRE_POWDER = register("nitre_powder", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.5f, 0.5f)));
 	public static final RegistryEntry<Block> MALACHITE_ORE = register("malachite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> DEEPSLATE_MALACHITE_ORE = register("deepslate_malachite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_MALACHITE_ORE = register("deepslate_malachite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> RAW_MALACHITE_BLOCK = register("raw_malachite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> AZURITE_ORE = register("azurite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> DEEPSLATE_AZURITE_ORE = register("deepslate_azurite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_AZURITE_ORE = register("deepslate_azurite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> RAW_AZURITE_BLOCK = register("raw_azurite_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3, 4).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SULFUR_ORE = register("sulfur_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> NITRE_BLOCK = register("nitre_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.TUFF).strength(1.5f, 6)));

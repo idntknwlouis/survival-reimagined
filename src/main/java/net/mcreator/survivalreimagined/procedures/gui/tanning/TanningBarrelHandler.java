@@ -129,7 +129,7 @@ public class TanningBarrelHandler {
         }
 
         if (getBlockNBTLogic(world, pos, "Water") && itemFromBlockInventory(world, pos, 0).is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tanning/makes_tannin")))) {
-            double requiredAmount = (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * 64.0;
+            double requiredAmount = (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * 16.0;
             if (itemFromBlockInventory(world, pos, 0).getCount() >= requiredAmount && itemFromBlockInventory(world, pos, 0).getCount() > 0) {
                 if (!world.isClientSide()) {
                     if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
@@ -308,7 +308,8 @@ public class TanningBarrelHandler {
             }
         }
         if (getBlockNBTLogic(world, pos, "Water")) {
-            if (itemFromBlockInventory(world, pos, 0).getCount() < (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * 64.0) {
+            double requiredItems = itemFromBlockInventory(world, pos, 0).is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tanning/makes_tannin"))) ? 16.0 : 64.0;
+            if (itemFromBlockInventory(world, pos, 0).getCount() < (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * requiredItems) {
                 if (!world.isClientSide()) {
                     if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
                         barrel.getCustomData().putBoolean("CanSeal", false);
