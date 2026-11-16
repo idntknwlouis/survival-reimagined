@@ -60,6 +60,7 @@ public class SurvivalReimaginedModMenu implements ModMenuApi {
 
             overrides.addEntry(entryBuilder.startDoubleField(Component.literal("Block Break Speed Modifier"), values.block_break_speed).setDefaultValue(0.45).setSaveConsumer(v -> values.block_break_speed = v).build());
             overrides.addEntry(entryBuilder.startBooleanToggle(Component.literal("Allow Vanilla Portals"), values.vanilla_portal).setDefaultValue(false).setSaveConsumer(v -> values.vanilla_portal = v).build());
+            overrides.addEntry(entryBuilder.startBooleanToggle(Component.literal("Armor Weight"), values.weight_system).setDefaultValue(true).setSaveConsumer(v -> values.weight_system = v).build());
 
             // HUNGER
 

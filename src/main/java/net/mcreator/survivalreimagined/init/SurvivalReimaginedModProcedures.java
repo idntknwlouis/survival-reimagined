@@ -42,6 +42,7 @@ public class SurvivalReimaginedModProcedures {
         MechanicOverrides.register();
         GoldenAppleEaten.register();
         StandingOnSculk.register();
+        ArmorWeightCalculations.register();
 
         //Mob Drops/LootTable
         CrimsonThreadDrops.register();

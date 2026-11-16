@@ -16,11 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -38,40 +34,70 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     private static final TagKey<net.minecraft.world.level.block.Block> FARMLAND =
             TagKey.create(Registries.BLOCK, ResourceLocation.parse("c:farmland"));
 
+    private final IntegerProperty ageProperty;
     private final int maxAge;
     private final boolean farmlandOnly;
     private final boolean triggersHempADV;
+
+
+    public static class Age3 extends SimpleAgeCropBlock {
+        public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
+
+        public Age3(boolean farmlandOnly, boolean triggersHempADV) {
+            super(AGE, 3, farmlandOnly, triggersHempADV);
+        }
+
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(AGE);
+        }
+    }
+    public static class Age6 extends SimpleAgeCropBlock {
+        public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 6);
+
+        public Age6(boolean farmlandOnly, boolean triggersHempADV) {
+            super(AGE, 6, farmlandOnly, false);
+        }
+
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(AGE);
+        }
+    }
+    public static class Age7 extends SimpleAgeCropBlock {
+        public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 7);
+
+        public Age7(boolean farmlandOnly, boolean triggersHempADV) {
+            super(AGE, 7, farmlandOnly, false);
+        }
+
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(AGE);
+        }
+    }
+
+
 
     public int getMaxAge() {
         return this.maxAge;
     }
 
     public SimpleAgeCropBlock(int maxAge) {
-        this(maxAge, true, false);
+        this(AGE, maxAge, true, false);
     }
 
-    public SimpleAgeCropBlock(int maxAge, boolean farmlandOnly) {
-        this(maxAge, farmlandOnly, false);
-    }
-
-    public SimpleAgeCropBlock(int maxAge, boolean farmlandOnly, boolean triggersHempADV) {
+    public SimpleAgeCropBlock(IntegerProperty ageProperty, int maxAge, boolean farmlandOnly, boolean triggersHempADV) {
         super(BlockBehaviour.Properties.of()
                 .sound(SoundType.CROP)
                 .instabreak()
                 .noCollission()
                 .randomTicks());
+        this.ageProperty = ageProperty;
         this.maxAge = maxAge;
         this.farmlandOnly = farmlandOnly;
         this.triggersHempADV = triggersHempADV;
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
-    }
-
-    public SimpleAgeCropBlock(IntegerProperty ignoredAgeProperty, int maxAge) {
-        this(maxAge, true);
-    }
-
-    public SimpleAgeCropBlock(IntegerProperty ignoredAgeProperty, int maxAge, boolean farmlandOnly, boolean triggersHempADV) {
-        this(maxAge, farmlandOnly, triggersHempADV);
+        this.registerDefaultState(this.stateDefinition.any().setValue(this.ageProperty, 0));
     }
 
     @Override
@@ -85,7 +111,7 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     }
 
     public int getAge(BlockState state) {
-        return state.getValue(AGE);
+        return state.getValue(this.ageProperty);
     }
 
     public boolean isMaxAge(BlockState state) {
@@ -110,7 +136,7 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!this.farmlandOnly && level.getRawBrightness(pos, 0) >= 9 && !isMaxAge(state) && random.nextInt(5) == 0) {
-            level.setBlock(pos, state.setValue(AGE, getAge(state) + 1), 2);
+            level.setBlock(pos, state.setValue(this.ageProperty, getAge(state) + 1), 2);
         }
     }
 
@@ -165,6 +191,6 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
     @Override
     public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         int age = Math.min(this.maxAge, getAge(state) + 1 + random.nextInt(2));
-        level.setBlock(pos, state.setValue(AGE, age), 2);
+        level.setBlock(pos, state.setValue(this.ageProperty, age), 2);
     }
 }

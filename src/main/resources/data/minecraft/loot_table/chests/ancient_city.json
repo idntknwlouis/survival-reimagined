@@ -63,27 +63,9 @@
               "add": false,
               "count": 1.0,
               "function": "minecraft:set_count"
-            },
-            {
-              "add": false,
-              "damage": {
-                "type": "minecraft:uniform",
-                "max": 1.0,
-                "min": 0.8
-              },
-              "function": "minecraft:set_damage"
-            },
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": {
-                "type": "minecraft:uniform",
-                "max": 50.0,
-                "min": 30.0
-              },
-              "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "minecraft:diamond_hoe",
+          "name": "survival_reimagined:diamond_hoe_blade",
           "weight": 2
         },
         {
@@ -134,19 +116,8 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "function": "minecraft:enchant_with_levels",
-              "levels": {
-                "type": "minecraft:uniform",
-                "max": 50.0,
-                "min": 30.0
-              },
-              "options": "#minecraft:on_random_loot"
-            }
-          ],
-          "name": "minecraft:diamond_leggings",
-          "weight": 2
+          "name": "survival_reimagined:diamond_plate",
+          "weight": 6
         },
         {
           "type": "minecraft:item",
@@ -164,7 +135,7 @@
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
-              "options": "survival_reimagined:soul_purificaton"
+              "options": "survival_reimagined:soul_purification"
             }
           ],
           "name": "minecraft:book",
@@ -279,7 +250,7 @@
               "options": "#minecraft:on_random_loot"
             }
           ],
-          "name": "minecraft:iron_leggings",
+          "name": "survival_reimagined:bronze_plate",
           "weight": 3
         },
         {
@@ -406,7 +377,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:coal",
+          "name": "survival_reimagined:anthracite",
           "weight": 7
         }
       ],

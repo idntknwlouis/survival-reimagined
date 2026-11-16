@@ -163,6 +163,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> HEMP_LEAF = simple("hemp_leaf");
 	public static final RegistryEntry<Item> HEMP_SEEDS = cropSeed("hemp_seeds", SurvivalReimaginedModBlocks.HEMP);
 	public static final RegistryEntry<Item> WHEAT_SEEDS = cropSeed("wheat_seeds", SurvivalReimaginedModBlocks.WHEAT_CROP);
+	public static final RegistryEntry<Item> BEETROOT_SEEDS = cropSeed("beetroot_seeds", SurvivalReimaginedModBlocks.BEETROOT);
 	public static final RegistryEntry<Item> POTATO = plantFood("potato", SurvivalReimaginedModBlocks.POTATOES, 1, 0.6f);
 	public static final RegistryEntry<Item> CARROT = plantFood("carrot", SurvivalReimaginedModBlocks.CARROT, 4, 0.6f);
 	public static final RegistryEntry<Item> BURNT_POTATO = register("burnt_potato", () -> new Item(new Item.Properties()

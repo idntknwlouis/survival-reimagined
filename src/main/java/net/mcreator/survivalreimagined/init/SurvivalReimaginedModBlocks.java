@@ -97,20 +97,16 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> PALM_LEAVES = register("palm_leaves", PalmLeavesBlock::new);
 	public static final RegistryEntry<Block> ALOE_VERA = register("aloe_vera", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).strength(0.2f).noCollission().noOcclusion()));
 	public static final RegistryEntry<Block> SHALE_ROCK = register("shale_rock", ShaleRockBlock::new);
-	private static final IntegerProperty AGE_6 = IntegerProperty.create("age", 0, 6);
-	private static final IntegerProperty AGE_3 = IntegerProperty.create("age", 0, 3);
-	private static final IntegerProperty AGE_7 = IntegerProperty.create("age", 0, 7);
-	private static final IntegerProperty AGE_5 = IntegerProperty.create("age", 0, 5);
-	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock(AGE_6, 6));
-	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock(AGE_6, 6));
-	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock(AGE_3, 3, true, true));
-	public static final RegistryEntry<Block> WHEAT_CROP = register("wheat_crop", () -> new SimpleAgeCropBlock(AGE_7, 7));
-	public static final RegistryEntry<Block> POTATOES = register("potatoes", () -> new SimpleAgeCropBlock(AGE_3, 3));
-	public static final RegistryEntry<Block> BEETROOT = register("beetroot", () -> new SimpleAgeCropBlock(AGE_3, 3));
-	public static final RegistryEntry<Block> CARROT = register("carrots", () -> new SimpleAgeCropBlock(AGE_3, 3));
-	public static final RegistryEntry<Block> WILD_WHEAT = register("wild_wheat", () -> new SimpleAgeCropBlock(AGE_7, 7, false, false));
-	public static final RegistryEntry<Block> WILD_POTATOES = register("wild_potatoes", () -> new SimpleAgeCropBlock(AGE_3, 3, false, false));
-	public static final RegistryEntry<Block> WILD_BEETROOT = register("wild_beetroot", () -> new SimpleAgeCropBlock(AGE_3, 3, false, false));
+	public static final RegistryEntry<Block> RYE_SEEDS = register("rye_seeds", () -> new SimpleAgeCropBlock.Age6(true, false));
+	public static final RegistryEntry<Block> SPELT_SEEDS = register("spelt_seeds", () -> new SimpleAgeCropBlock.Age6(true, false));
+	public static final RegistryEntry<Block> HEMP = register("hemp", () -> new SimpleAgeCropBlock.Age3(true, true));
+	public static final RegistryEntry<Block> WHEAT_CROP = register("wheat_crop", () -> new SimpleAgeCropBlock.Age7(true, false));
+	public static final RegistryEntry<Block> POTATOES = register("potatoes", () -> new SimpleAgeCropBlock.Age3(true, false));
+	public static final RegistryEntry<Block> BEETROOT = register("beetroot", () -> new SimpleAgeCropBlock.Age3(true, false));
+	public static final RegistryEntry<Block> CARROT = register("carrots", () -> new SimpleAgeCropBlock.Age3(true, false));
+	public static final RegistryEntry<Block> WILD_WHEAT = register("wild_wheat", () -> new SimpleAgeCropBlock.Age7(false, false));
+	public static final RegistryEntry<Block> WILD_POTATOES = register("wild_potatoes", () -> new SimpleAgeCropBlock.Age3(false, false));
+	public static final RegistryEntry<Block> WILD_BEETROOT = register("wild_beetroot", () -> new SimpleAgeCropBlock.Age3(false, false));
 	public static final RegistryEntry<Block> STRAWBERRY_PLANT = register("strawberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.STRAWBERRY.get()));
 	public static final RegistryEntry<Block> RASPBERRY_PLANT = register("raspberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.RASPBERRY.get()));
 	public static final RegistryEntry<Block> CORN_STALK_MIDDLE = register("corn_stalk_middle",
@@ -121,12 +117,9 @@ public final class SurvivalReimaginedModBlocks {
 			() -> new CornCropBlock(
 					() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_middle")),
 					() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_top"))));
-	private static final IntegerProperty WILD_RYE_AGE = IntegerProperty.create("age", 0, 6);
-	private static final IntegerProperty WILD_SPELT_AGE = IntegerProperty.create("age", 0, 6);
-	private static final IntegerProperty WILD_CARROT_AGE = IntegerProperty.create("age", 0, 3);
-	public static final RegistryEntry<Block> WILD_RYE = register("wild_rye", () -> new SimpleAgeCropBlock(WILD_RYE_AGE, 6, false, false));
-	public static final RegistryEntry<Block> WILD_SPELT = register("wild_spelt", () -> new SimpleAgeCropBlock(WILD_SPELT_AGE, 6, false, false));
-	public static final RegistryEntry<Block> WILD_CARROT = register("wild_carrot", () -> new SimpleAgeCropBlock(WILD_CARROT_AGE, 3, false, false));
+	public static final RegistryEntry<Block> WILD_RYE = register("wild_rye", () -> new SimpleAgeCropBlock.Age6(false, false));
+	public static final RegistryEntry<Block> WILD_SPELT = register("wild_spelt", () -> new SimpleAgeCropBlock.Age6(false, false));
+	public static final RegistryEntry<Block> WILD_CARROT = register("wild_carrot", () -> new SimpleAgeCropBlock.Age3(false, false));
 	public static final RegistryEntry<Block> POLISHED_SHALE = register("polished_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> POLISHED_SHALE_BRICKS = register("polished_shale_bricks", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f)));
 	public static final RegistryEntry<Block> POLISHED_CHISELED_SHALE = register("polished_chiseled_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
