@@ -88,6 +88,12 @@ public class SpoilingFoodItem extends Item {
 		} else if (spoilage >= 1500 && spoilage <= 1999) {
 			tooltip.add(Component.literal("\u00A78 Rotten"));
 		}
+
+		int spoilagePercent = Math.max(0, Math.min(100,
+				(int) Math.floor((spoilage / ROT_THRESHOLD) * 100.0D)));
+		if (spoilagePercent > 1) {
+			tooltip.add(Component.literal("\u00A77 " + spoilagePercent + "% Spoiled"));
+		}
 	}
 
 	@Override
