@@ -71,6 +71,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		SurvivalReimaginedModProcedures.register();
 		SurvivalReimaginedModConfig.load();
 		SurvivalReimaginedModJukeboxSongs.register();
+		FoodSpoilage.register();
 		EventsCommand.register();
 		BloodMoonTexture.initPackets();
 		BloodMoonTexture.registerServerTicker();
@@ -88,15 +89,12 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			for (ServerPlayer player : server.getPlayerList().getPlayers()) {
 				SurvivalReimaginedModMobEffects.onEffectRemoved(player);
+				FoodSpoilage.tickPlayerInventory(player);
 			}
 		});
 
 
 		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
-			if (hand == net.minecraft.world.InteractionHand.MAIN_HAND) {
-				FoodSpoilage.updateWoodenContainer(level, hit.getBlockPos());
-			}
-
 			ItemStack stack = player.getItemInHand(hand);
 			if (!stack.is(Items.FLINT)) {
 				return InteractionResult.PASS;

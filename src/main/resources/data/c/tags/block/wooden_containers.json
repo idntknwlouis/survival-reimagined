@@ -1,10 +1,20 @@
 {
   "replace": false,
   "values": [
+    "survival_reimagined:advanced_alloy_forge",
+    "minecraft:smoker",
+    "survival_reimagined:millstone",
+    "survival_reimagined:campfire",
+    "survival_reimagined:forge",
+    "minecraft:blast_furnace",
+    "survival_reimagined:tanning_barrel",
+    "minecraft:furnace",
+    "survival_reimagined:mineral_processing_table",
     {
       "id": "#c:barrels/wooden",
       "required": false
     },
+    "survival_reimagined:metal_refining_table",
     {
       "id": "#c:chests/wooden",
       "required": false
