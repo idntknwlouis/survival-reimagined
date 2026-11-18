@@ -165,7 +165,7 @@ public final class FoodSpoilage {
             }
 
             double inventoryClock = tag.getDouble("InventoryClock") + 1.0D;
-            if (inventoryClock >= 60.0D) {
+            if (inventoryClock >= SPOILAGE_INTERVAL) {
                 inventoryClock = 0.0D;
                 spoilage += 1.0D;
             }
