@@ -7,6 +7,7 @@ import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitDropCondition;
 import net.mcreator.survivalreimagined.block.fruit.FruitTypeConfig;
 import net.mcreator.survivalreimagined.block.fruit.FruitValidPlacement;
+import net.mcreator.survivalreimagined.procedures.torch.TorchLuminance;
 import net.mcreator.survivalreimagined.util.SignInjection;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModTreeGrowers;
 import net.minecraft.core.Direction;
@@ -461,6 +462,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> SKINNED_HORSE = register("skinned_horse", SkinnedHorse::new);
 	public static final RegistryEntry<Block> HORSE_LEG = register("horse_leg", () -> new CarcassPartBlock(Block.box(6, 0, 6, 10, 11, 10)));
 	public static final RegistryEntry<Block> HORSE_HEAD = register("horse_head", () -> new CarcassPartBlock(Block.box(6, 0, 6, 11, 9, 12)));
+
+	public static final RegistryEntry<Block> CRUDE_TORCH = register("crude_torch", () -> new CrudeTorch(BlockBehaviour.Properties.of().instabreak().noOcclusion().noCollission().sound(SoundType.WOOD)));
+	public static final RegistryEntry<Block> BURNT_TORCH = register("burnt_torch", () -> new BurntTorch(BlockBehaviour.Properties.of().instabreak().noOcclusion().noCollission().sound(SoundType.WOOD)));
 
 	public static void registerBlocks() {
 		HorseCarcasses.registerBlocks();

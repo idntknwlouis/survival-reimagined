@@ -6,7 +6,7 @@
       "item": "minecraft:stick"
     },
     "X": {
-      "tag": "minecraft:coals"
+      "item": "survival_reimagined:dark_cinder_coal"
       }
   },
   "pattern": [
@@ -14,7 +14,7 @@
     "#"
   ],
   "result": {
-    "count": 4,
+    "count": 1,
     "id": "minecraft:torch"
   }
 }

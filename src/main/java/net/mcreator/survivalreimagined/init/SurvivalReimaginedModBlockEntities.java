@@ -105,6 +105,10 @@ public final class SurvivalReimaginedModBlockEntities {
             "tanning_barrel",
             BlockEntityType.Builder.of(TanningBarrelBlockEntity::new, SurvivalReimaginedModBlocks.TANNING_BARREL.get()).build(null)
     );
+    public static final RegistryEntry<BlockEntityType<CrudeTorchBlockEntity>> CRUDE_TORCH = register(
+            "crude_torch",
+            BlockEntityType.Builder.of(CrudeTorchBlockEntity::new, SurvivalReimaginedModBlocks.CRUDE_TORCH.get()).build(null)
+    );
     public static final RegistryEntry<BlockEntityType<CropGrowthBlockEntity>> CROP_GROWTH = register(
             "crop_growth",
             BlockEntityType.Builder.of(

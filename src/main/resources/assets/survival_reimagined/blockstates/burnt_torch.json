@@ -1,7 +1,24 @@
+
 {
   "variants": {
-    "": {
+    "facing=up": {
       "model": "survival_reimagined:block/burnt_torch"
+    },
+    "facing=south": {
+      "model": "survival_reimagined:block/burnt_torch_wall",
+      "y": 0
+    },
+    "facing=west": {
+      "model": "survival_reimagined:block/burnt_torch_wall",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "survival_reimagined:block/burnt_torch_wall",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "survival_reimagined:block/burnt_torch_wall",
+      "y": 270
     }
   }
 }

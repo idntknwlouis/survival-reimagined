@@ -1,10 +1,43 @@
+
 {
   "variants": {
-    "lit=true": {
-      "model": "survival_reimagined:block/crude_torch_0"
-    },
-    "lit=false": {
+    "facing=up,lit=false": {
       "model": "survival_reimagined:block/crude_torch"
+    },
+    "facing=up,lit=true": {
+      "model": "survival_reimagined:block/crude_torch_lit"
+    },
+    "facing=south,lit=false": {
+      "model": "survival_reimagined:block/crude_torch_wall",
+      "y": 0
+    },
+    "facing=south,lit=true": {
+      "model": "survival_reimagined:block/crude_torch_wall_lit",
+      "y": 0
+    },
+    "facing=west,lit=false": {
+      "model": "survival_reimagined:block/crude_torch_wall",
+      "y": 90
+    },
+    "facing=west,lit=true": {
+      "model": "survival_reimagined:block/crude_torch_wall_lit",
+      "y": 90
+    },
+    "facing=north,lit=false": {
+      "model": "survival_reimagined:block/crude_torch_wall",
+      "y": 180
+    },
+    "facing=north,lit=true": {
+      "model": "survival_reimagined:block/crude_torch_wall_lit",
+      "y": 180
+    },
+    "facing=east,lit=false": {
+      "model": "survival_reimagined:block/crude_torch_wall",
+      "y": 270
+    },
+    "facing=east,lit=true": {
+      "model": "survival_reimagined:block/crude_torch_wall_lit",
+      "y": 270
     }
   }
 }

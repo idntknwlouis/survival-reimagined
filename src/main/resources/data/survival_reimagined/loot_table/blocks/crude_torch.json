@@ -12,7 +12,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "survival_reimagined:crude_torch_item"
+          "name": "survival_reimagined:crude_torch"
         }
       ]
     }
