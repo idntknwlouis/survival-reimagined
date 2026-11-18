@@ -22,6 +22,8 @@ import net.minecraft.world.level.chunk.LevelChunk;
 
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 
+import java.util.Collections;
+import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -143,6 +145,10 @@ public final class FoodSpoilage {
             return;
         }
 
+        // Track the exact stacks whose custom data changed so the active menu
+        // can be sent fresh stack components for tooltip rendering.
+        Set<ItemStack> changedStacks = Collections.newSetFromMap(new IdentityHashMap<>());
+
         for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
             ItemStack stack = player.getInventory().getItem(slot);
             if (stack.isEmpty() || !stack.is(CAN_ROT)) {
@@ -154,6 +160,7 @@ public final class FoodSpoilage {
             if (spoilage >= MAX_SPOILAGE) {
                 player.getInventory().setItem(slot, new ItemStack(
                         SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+                changedStacks.add(player.getInventory().getItem(slot));
                 continue;
             }
 
@@ -170,8 +177,30 @@ public final class FoodSpoilage {
                     data.putDouble("SpoilageMax", updatedSpoilage);
                 }
             });
+            changedStacks.add(stack);
         }
+
+        if (changedStacks.isEmpty()) {
+            return;
+        }
+
         player.getInventory().setChanged();
-        player.containerMenu.broadcastChanges();
+
+        // InventoryClock contributes to the partial percentage displayed by
+        // the tooltip. Refresh visible slots once per second, not every tick.
+        if (player instanceof ServerPlayer serverPlayer
+                && player.level().getGameTime() % 20L == 0L) {
+            for (int menuSlot = 0; menuSlot < serverPlayer.containerMenu.slots.size(); menuSlot++) {
+                Slot slot = serverPlayer.containerMenu.slots.get(menuSlot);
+                ItemStack menuStack = slot.getItem();
+                if (changedStacks.contains(menuStack)) {
+                    serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(
+                            serverPlayer.containerMenu.containerId,
+                            serverPlayer.containerMenu.incrementStateId(),
+                            menuSlot,
+                            menuStack.copy()));
+                }
+            }
+        }
     }
 }
