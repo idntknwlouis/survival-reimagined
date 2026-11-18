@@ -2,7 +2,7 @@
   "parent": "survival_reimagined:custom/millstone_new2",
   "textures": {
     "all": "survival_reimagined:block/millstone",
-    "particle": "survival_reimagined:block/millstone",
+    "particle": "minecraft:block/polished_andesite",
     "0": "survival_reimagined:block/millstone",
     "missing": "minecraft:block/hay_block_top"
   },

@@ -9,6 +9,9 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -154,6 +157,18 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 		return this.burnTime;
 	}
 
+	public boolean hasFuel() { return this.fuelMeterHundredths > 0;}
+
+	@Override
+	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+		return this.saveWithoutMetadata(registries);
+	}
+
+	@Override
+	public Packet<ClientGamePacketListener> getUpdatePacket() {
+		return ClientboundBlockEntityDataPacket.create(this);
+	}
+
 	public static void serverTick(Level level, BlockPos pos, BlockState state, ForgeBlockEntity forge) {
 		if (level.isClientSide()) {
 			return;
@@ -164,6 +179,7 @@ public class ForgeBlockEntity extends RandomizableContainerBlockEntity implement
 
 		if (changed) {
 			forge.setChanged();
+			level.sendBlockUpdated(pos, state, state, 3);
 		}
 	}
 

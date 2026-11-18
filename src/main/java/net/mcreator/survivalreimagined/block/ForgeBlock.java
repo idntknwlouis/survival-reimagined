@@ -1,8 +1,13 @@
 package net.mcreator.survivalreimagined.block;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
@@ -12,6 +17,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -58,6 +64,17 @@ public class ForgeBlock extends Block implements EntityBlock {
 			ForgeBlockEntity.serverTick(level, pos, state, forge);
 		}
 		level.scheduleTick(pos, this, 5);
+	}
+
+	@Override
+	@Environment(EnvType.CLIENT)
+	public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource randomSource) {
+		super.animateTick(state, world, pos, randomSource);
+		if (world.getBlockEntity(pos) instanceof ForgeBlockEntity forge && forge.hasFuel()) {
+			if (randomSource.nextDouble() < 0.3) {
+				world.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS,1.0f, 1.0f, false);
+			}
+		}
 	}
 
 	@Override
