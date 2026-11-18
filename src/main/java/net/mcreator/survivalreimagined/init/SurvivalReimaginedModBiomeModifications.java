@@ -39,6 +39,14 @@ public final class SurvivalReimaginedModBiomeModifications {
 				Biomes.BADLANDS,
 				Biomes.ERODED_BADLANDS,
 				Biomes.WOODED_BADLANDS);
+		addUndergroundToBiomes("extra_native_gold",
+				Biomes.DESERT,
+				Biomes.BADLANDS,
+				Biomes.ERODED_BADLANDS,
+				Biomes.WOODED_BADLANDS);
+		addUndergroundToBiomes("extra_native_copper", Biomes.DRIPSTONE_CAVES);
+		addUndergroundToBiomes("extra_malachite", Biomes.DRIPSTONE_CAVES);
+		addUndergroundToBiomes("extra_azurite", Biomes.DRIPSTONE_CAVES);
 		addUndergroundEverywhere("pyrolusite_feature");
 		addUndergroundEverywhere("cassiterite_feature");
 		addUndergroundEverywhere("manganite_feature");
@@ -48,7 +56,6 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addRadiantForestUndergroundDecoration("thin_radiated_vines_feature");
 		addRadiantForestUndergroundDecoration("thick_radiated_vines_feature");
 		addRadiantForestUndergroundDecoration("radiated_tree");
-		//addRadiantForestUndergroundDecoration("ceiling_radiated_moss_feature"); <- This feature was done for NeoForge as I did not know about SurfaceRules, will be removed and SurfaceRules will be back-ported to NeoForge
 		addRadiantForestUndergroundDecoration("radiated_grass_patch");
 		addRadiantForestUndergroundDecoration("radiated_orchid_feature");
 		addRadiantForestLocalModification("radiated_bush_feature");
@@ -88,10 +95,6 @@ public final class SurvivalReimaginedModBiomeModifications {
 		addPointedStonesUndergroundEverywhere("deepslate_stalagtite");
 		addRadiantForestUndergroundDecoration("shale_stalagmite");
 		addRadiantForestUndergroundDecoration("shale_stalagtite");
-		addUndergroundToBiomes("extra_native_gold",
-				Biomes.BADLANDS,
-				Biomes.ERODED_BADLANDS,
-				Biomes.WOODED_BADLANDS);
 		addLocalEverywhere("basalt_layer");
 		addVegetationToBiomes("apple_oak_tree", Biomes.PLAINS, Biomes.MEADOW, Biomes.FOREST);
 		addVegetationToBiomes("mandarin_trees", Biomes.PLAINS);

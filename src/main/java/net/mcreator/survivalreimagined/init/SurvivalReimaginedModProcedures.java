@@ -3,13 +3,11 @@ package net.mcreator.survivalreimagined.init;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.mcreator.survivalreimagined.block.CornStalkBlock;
 import net.mcreator.survivalreimagined.procedures.*;
 import net.mcreator.survivalreimagined.procedures.advancements.*;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.*;
-import net.mcreator.survivalreimagined.procedures.loot_tables.CrimsonThreadDrops;
-import net.mcreator.survivalreimagined.procedures.loot_tables.HorseCarcassSpawner;
-import net.mcreator.survivalreimagined.procedures.loot_tables.PointedStonesLoot;
-import net.mcreator.survivalreimagined.procedures.loot_tables.StickDrops;
+import net.mcreator.survivalreimagined.procedures.loot_tables.*;
 import net.mcreator.survivalreimagined.util.*;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
@@ -33,6 +31,7 @@ public class SurvivalReimaginedModProcedures {
         StrippedLogs.register();
         StrippedLogToCraftingTable.register();
 
+
         //Survival/Difficulty Events
         EntityJumped.register();
         EntitySprinting.register();
@@ -50,6 +49,8 @@ public class SurvivalReimaginedModProcedures {
         LootExtended.register();
         PointedStonesLoot.register();
         HorseCarcassSpawner.register();
+        ModCompostables.register();
+        CornStalkBlock.registerBreakEvent();
 
         //Advancements
         AnimalKilled.register();

@@ -1,7 +1,8 @@
 package net.mcreator.survivalreimagined.procedures;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.mcreator.survivalreimagined.block.CornCropBlock;
+import net.mcreator.survivalreimagined.block.CornStalkBlock;
+import net.mcreator.survivalreimagined.block.CornStalkBottomBlock;
 import net.mcreator.survivalreimagined.block.entity.GrowthClockAccess;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilTickUpdate;
@@ -38,11 +39,6 @@ public class GrowingLogic {
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockState) {
         if (world.isClientSide()) return;
 
-        // The NeoForge blocks called their growth procedure from a 20-tick scheduled tick.
-        // Fabric block-entity tickers run every game tick, so retain the original once-per-second cadence.
-        if (world instanceof ServerLevel serverLevel && serverLevel.getGameTime() % 20L != 0L) {
-            return;
-        }
 
         BlockPos pos = BlockPos.containing(x, y, z);
         boolean hasSereneSeasons = FabricLoader.getInstance().isModLoaded("sereneseasons");
@@ -72,10 +68,11 @@ public class GrowingLogic {
         boolean canGrowGroundCrop = false;
 
         if (belowState.is(SOIL)) {
+            boolean isCorn = blockState.getBlock() instanceof CornStalkBottomBlock;
             int currentAge = getAge(blockState);
             int maxAge = getMaxAge(blockState);
 
-            if (currentAge < maxAge && soilHasNutrients(world, belowPos)) {
+            if ((isCorn || currentAge < maxAge) && soilHasNutrients(world, belowPos)) {
                 canGrowGroundCrop = true;
             }
         }
@@ -97,13 +94,18 @@ public class GrowingLogic {
                             int currentAge = currentState.getValue(ageProperty);
                             int maxAge = currentState.getBlock() instanceof SimpleAgeCropBlock crop ? crop.getMaxAge() : getMaxAge(currentState);
 
-                            if (currentAge < maxAge) {
+                            if (currentState.getBlock() instanceof CornStalkBottomBlock corn && world instanceof ServerLevel serverLevel) {
+
+                                BlockState grownState = currentState;
+
+                                if (currentAge < maxAge) {
+                                    grownState = currentState.setValue(ageProperty, currentAge + 1);
+                                    world.setBlock(pos, grownState, 3);
+                                }
+                                corn.syncUpper(serverLevel, pos, grownState);
+                            } else if (currentAge < maxAge) {
                                 BlockState grownState = currentState.setValue(ageProperty, currentAge + 1);
                                 world.setBlock(pos, grownState, 3);
-
-                                if (currentState.getBlock() instanceof CornCropBlock corn && world instanceof ServerLevel serverLevel) {
-                                    corn.syncUpper(serverLevel, pos, grownState);
-                                }
                             }
                         }
                     }

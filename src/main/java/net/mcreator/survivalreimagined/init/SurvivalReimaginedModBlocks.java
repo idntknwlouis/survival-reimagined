@@ -2,7 +2,6 @@ package net.mcreator.survivalreimagined.init;
 
 import net.mcreator.survivalreimagined.block.CarcassPartBlock;
 import net.mcreator.survivalreimagined.block.*;
-import net.mcreator.survivalreimagined.block.entity.DryingRackBlockEntity;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitBlock;
 import net.mcreator.survivalreimagined.block.fruit.FruitDropCondition;
@@ -10,7 +9,6 @@ import net.mcreator.survivalreimagined.block.fruit.FruitTypeConfig;
 import net.mcreator.survivalreimagined.block.fruit.FruitValidPlacement;
 import net.mcreator.survivalreimagined.util.SignInjection;
 import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModTreeGrowers;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.BananaJungleLogBlock;
@@ -45,8 +42,6 @@ import net.mcreator.survivalreimagined.block.PlateBlock;
 import net.mcreator.survivalreimagined.block.StoneRockBlocBlock;
 import net.mcreator.survivalreimagined.block.ShaleBlock;
 import net.mcreator.survivalreimagined.block.ShaleRockBlock;
-import net.mcreator.survivalreimagined.block.CornUpperBlock;
-import net.mcreator.survivalreimagined.block.CornCropBlock;
 import net.mcreator.survivalreimagined.block.CampfireBlock;
 import net.mcreator.survivalreimagined.block.BlockOfCharcoalBlock;
 import net.mcreator.survivalreimagined.block.BerryPlantBlock;
@@ -109,14 +104,11 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WILD_BEETROOT = register("wild_beetroot", () -> new SimpleAgeCropBlock.Age3(false, false));
 	public static final RegistryEntry<Block> STRAWBERRY_PLANT = register("strawberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.STRAWBERRY.get()));
 	public static final RegistryEntry<Block> RASPBERRY_PLANT = register("raspberry_plant", () -> new BerryPlantBlock(() -> SurvivalReimaginedModItems.RASPBERRY.get()));
-	public static final RegistryEntry<Block> CORN_STALK_MIDDLE = register("corn_stalk_middle",
-			() -> new CornUpperBlock(() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_bottom")), 7));
-	public static final RegistryEntry<Block> CORN_STALK_TOP = register("corn_stalk_top",
-			() -> new CornUpperBlock(() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_middle")), 4));
-	public static final RegistryEntry<Block> CORN_STALK_BOTTOM = register("corn_stalk_bottom",
-			() -> new CornCropBlock(
-					() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_middle")),
-					() -> BuiltInRegistries.BLOCK.get(SurvivalReimaginedMod.asResource("corn_stalk_top"))));
+	public static final RegistryEntry<Block> CORN_STALK_BOTTOM = register("corn_stalk_bottom", () -> new CornStalkBottomBlock(BlockBehaviour.Properties.of().instabreak().sound(SoundType.CROP).noOcclusion().noCollission()));
+	public static final RegistryEntry<Block> CORN_STALK_MIDDLE = register("corn_stalk_middle", () -> new CornStalkMiddleBlock(BlockBehaviour.Properties.of().instabreak().sound(SoundType.CROP).noOcclusion().noCollission()));
+	public static final RegistryEntry<Block> CORN_STALK_TOP = register("corn_stalk_top", () -> new CornStalkTopBlock(BlockBehaviour.Properties.of().instabreak().sound(SoundType.CROP).noOcclusion().noCollission()));
+
+
 	public static final RegistryEntry<Block> WILD_RYE = register("wild_rye", () -> new SimpleAgeCropBlock.Age6(false, false));
 	public static final RegistryEntry<Block> WILD_SPELT = register("wild_spelt", () -> new SimpleAgeCropBlock.Age6(false, false));
 	public static final RegistryEntry<Block> WILD_CARROT = register("wild_carrot", () -> new SimpleAgeCropBlock.Age3(false, false));

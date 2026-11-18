@@ -6,53 +6,30 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.FarmBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-public class FertilitySoilBlock extends Block implements EntityBlock {
+public class FertilitySoilBlock extends FarmBlock implements EntityBlock {
     private final Supplier<BlockEntityType<? extends FertilitySoilBlockEntity>> blockEntityTypeSupplier;
-    public static final IntegerProperty MOISTURE = BlockStateProperties.MOISTURE;
-    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 15,16);
 
 
 
     public FertilitySoilBlock(Properties properties, Supplier<BlockEntityType<? extends FertilitySoilBlockEntity>> blockEntityTypeSupplier) {
         super(properties);
         this.blockEntityTypeSupplier = blockEntityTypeSupplier;
-        this.registerDefaultState(this.getStateDefinition().any().setValue(MOISTURE, 0));
-    }
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return SHAPE;
     }
     public VoxelShape getVisualShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return Shapes.empty();
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
-        builder.add(MOISTURE);
-    }
-
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState placementState = super.getStateForPlacement(context);
-        return placementState != null ? placementState.setValue(MOISTURE, 0) : this.defaultBlockState();
     }
 
     @Override

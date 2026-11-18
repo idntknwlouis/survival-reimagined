@@ -11,7 +11,9 @@
     "CancelTillingMixin",
     "ComposterDropMixin",
     "ItemstackFixForMeatItemsMixin",
-    "RockTypeMixin"
+    "RockTypeMixin",
+    "CropBlockMixin",
+    "StemBlockMixin"
   ],
   "client": [],
   "injectors": {
