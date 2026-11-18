@@ -62,7 +62,9 @@ public class BoatItem extends Item {
             if (!level.isClientSide) {
                 level.addFreshEntity(boat);
                 level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
-                itemStack.shrink(1);
+                if (!player.getAbilities().instabuild) {
+                    itemStack.shrink(1);
+                }
             }
             player.awardStat(Stats.ITEM_USED.get(this));
             return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
