@@ -1,6 +1,6 @@
 # Survival Reimagined: Fabricated
 
-Official Fabric port of [**Survival Reimagined**](https://modrinth.com/mod/survival-reimagined), based on the original NeoForge mod by ShotUGMG.
+Official Repository for [**Survival Reimagined**](https://modrinth.com/mod/survival-reimagined) Fabric port, based on the original NeoForge mod by ShotUGMG.
 
 This table tracks broad feature parity against the original.
 > ✅ = completed / working  
