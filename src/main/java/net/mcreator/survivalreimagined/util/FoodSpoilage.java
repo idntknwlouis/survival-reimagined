@@ -136,8 +136,13 @@ public final class FoodSpoilage {
             double updatedSpoilage = Math.min(currentSpoilage + 1.0D, MAX_SPOILAGE);
             CustomData.update(DataComponents.CUSTOM_DATA, stack,
                     data -> data.putDouble("SpoilageMax", updatedSpoilage));
+            if (updatedSpoilage >= MAX_SPOILAGE) {
+                container.setItem(slot, getRottenStack(stack));
+                syncContainerStack(level, container.getItem(slot));
+            } else {
+                syncContainerStack(level, stack);
+            }
             changed = true;
-            syncContainerStack(level, stack);
         }
 
         if (changed) {
