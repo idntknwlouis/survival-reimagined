@@ -13,7 +13,8 @@
     "ItemstackFixForMeatItemsMixin",
     "RockTypeMixin",
     "CropBlockMixin",
-    "StemBlockMixin"
+    "StemBlockMixin",
+    "SkyRotationMixin"
   ],
   "client": [],
   "injectors": {

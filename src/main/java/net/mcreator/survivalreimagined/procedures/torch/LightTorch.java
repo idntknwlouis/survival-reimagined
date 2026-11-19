@@ -20,8 +20,6 @@ public class LightTorch {
     private static final TagKey<Item> TORCH_LIGHTERS = TagKey.create(Registries.ITEM, ResourceLocation.parse("c:torch_lighters"));
 
     public static void execute(Level level, BlockPos pos, Player player) {
-        if (level.isClientSide) return;
-
         ItemStack heldItem = player.getMainHandItem();
 
         if (!heldItem.is(TORCH_LIGHTERS)) return;
@@ -31,7 +29,10 @@ public class LightTorch {
         if (!state.is(SurvivalReimaginedModBlocks.CRUDE_TORCH.get())) return;
         if (state.getValue(CrudeTorch.LIT)) return;
 
-        player.swing(InteractionHand.MAIN_HAND);
+        if (level.isClientSide) {
+            player.swing(InteractionHand.MAIN_HAND);
+            return;
+        }
         level.setBlock(pos, state.setValue(CrudeTorch.LIT, true), 3);
         level.playSound(null, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f,1.0f);
 

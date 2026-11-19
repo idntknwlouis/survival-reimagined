@@ -17,6 +17,7 @@
   "entrypoints": {
     "main": ["net.mcreator.survivalreimagined.SurvivalReimaginedMod"],
     "client": ["net.mcreator.survivalreimagined.SurvivalReimaginedModClient"],
+    "lambdynlights:initializer": ["net.mcreator.survivalreimagined.compat.SurvivalReimaginedDynamicLights"],
     "fabric-datagen": ["net.mcreator.survivalreimagined.SurvivalReimaginedModDataGenerator"],
     "terrablender": ["net.mcreator.survivalreimagined.SurvivalReimaginedModTerraBlenderAPI"],
     "modmenu": ["net.mcreator.survivalreimagined.config.SurvivalReimaginedModMenu"],
@@ -32,5 +33,9 @@
     "java": ">=21",
     "fabric-api": "*",
     "terrablender": ">=4.1.0"
+  },
+  "suggests": {
+    "sereneseasons": "*",
+    "lambdynlights": "*"
   }
 }
