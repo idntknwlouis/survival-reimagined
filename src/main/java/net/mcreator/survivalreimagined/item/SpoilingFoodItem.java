@@ -76,7 +76,7 @@ public class SpoilingFoodItem extends Item {
 
 		double spoilagePercent = Math.max(0.0D, Math.min(100.0D,
 				(spoilage / ROT_THRESHOLD) * 100.0D));
-		if (spoilagePercent > 1.0D) {
+		if (spoilagePercent > 0.0D) {
 			tooltip.add(Component.literal("\u00A77 " + String.format(Locale.ROOT, "%.1f%% Spoiled", spoilagePercent)));
 		}
 	}
