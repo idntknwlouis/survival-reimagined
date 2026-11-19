@@ -26,52 +26,34 @@ public class SpoilingFoodItem extends Item {
 	private static final TagKey<Item> CAN_ROT = TagKey.create(
 			Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "food/can_rot"));
 	private static final int ROT_THRESHOLD = 2000;
-	private static final int INVENTORY_TICKS_PER_SPOILAGE = 120;
 
 	public SpoilingFoodItem(Properties properties) {
 		super(properties);
 	}
 
 	/**
-	 * NeoForge parity: each spoilable item carries its own inventory clock and
-	 * gains one spoilage point every 120 inventory ticks.
+	 * Non-player item entities use the same world-time spoilage interval as
+	 * player inventories and containers.
 	 */
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(stack, level, entity, slot, selected);
-		// Player inventories are ticked centrally by FoodSpoilage so every slot
-		// advances, not just the currently selected hotbar stack.
-		if (level.isClientSide() || entity instanceof Player || !stack.is(CAN_ROT)) {
+		if (level.isClientSide() || entity instanceof Player
+				|| !stack.is(CAN_ROT)
+					|| level.getGameTime() % 120L != 0L) {
 			return;
 		}
 
 		var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = tag.getDouble("SpoilageMax");
 		if (spoilage >= ROT_THRESHOLD) {
-			if (entity instanceof Player player && slot >= 0 && slot < player.getInventory().getContainerSize()) {
-				ItemStack rottenItem;
-				if (stack.is(SurvivalReimaginedModItems.FLESH.get())) {
-					rottenItem = new ItemStack(Items.ROTTEN_FLESH, stack.getCount());
-				} else {
-					rottenItem = new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount());
-				}
-				player.getInventory().setItem(slot, rottenItem);
-			}
 			return;
 		}
 
-		double inventoryClock = tag.getDouble("InventoryClock") + 1.0D;
-		if (inventoryClock >= INVENTORY_TICKS_PER_SPOILAGE) {
-			inventoryClock = 0.0D;
-			spoilage += 1.0D;
-		}
-		final double updatedClock = inventoryClock;
-		final double updatedSpoilage = spoilage;
+		double updatedSpoilage = Math.min(spoilage + 1.0D, ROT_THRESHOLD);
 		CustomData.update(DataComponents.CUSTOM_DATA, stack, data -> {
-			data.putDouble("InventoryClock", updatedClock);
-			if (updatedSpoilage > 0.0D || data.contains("SpoilageMax")) {
-				data.putDouble("SpoilageMax", updatedSpoilage);
-			}
+			data.putDouble("SpoilageMax", updatedSpoilage);
+			data.remove("InventoryClock");
 		});
 	}
 
@@ -81,10 +63,6 @@ public class SpoilingFoodItem extends Item {
 
 		var spoilageTag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = spoilageTag.getDouble("SpoilageMax");
-		double inventoryClock = spoilageTag.getDouble("InventoryClock");
-		// Include the partial 60-tick interval so the displayed percentage
-		// advances before a full spoilage point is added to SpoilageMax.
-		double spoilageProgress = spoilage + Math.min(59.0D, inventoryClock) / INVENTORY_TICKS_PER_SPOILAGE;
 
 		if (spoilage >= 0 && spoilage <= 499) {
 			tooltip.add(Component.literal("\u00A72 Fresh"));
@@ -97,7 +75,7 @@ public class SpoilingFoodItem extends Item {
 		}
 
 		double spoilagePercent = Math.max(0.0D, Math.min(100.0D,
-				(spoilageProgress / ROT_THRESHOLD) * 100.0D));
+				(spoilage / ROT_THRESHOLD) * 100.0D));
 		if (spoilagePercent > 1.0D) {
 			tooltip.add(Component.literal("\u00A77 " + String.format(Locale.ROOT, "%.1f%% Spoiled", spoilagePercent)));
 		}
