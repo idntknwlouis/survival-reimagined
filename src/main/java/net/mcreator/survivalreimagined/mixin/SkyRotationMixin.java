@@ -103,7 +103,7 @@ public class SkyRotationMixin {
     )
     private int sr$getCustomMoonPhase(ClientLevel level) {
         double progress = this.sr$getLunarProgress();
-        return ((int) Math.floor(progress * 8.0 + 0.5) + 4) % 8;
+        return ((int) Math.floor(progress * 8.0 + 0.5)) % 8;
     }
 
     @Unique
@@ -120,7 +120,7 @@ public class SkyRotationMixin {
 
         float lunarOffset = (float) (this.sr$getLunarProgress() * 360.0);
 
-        float moonAngle = sunAngle + 180.0f - lunarOffset;
+        float moonAngle = sunAngle + lunarOffset;
 
         return new Matrix4f(this.sr$cameraMatrix)
                 .rotate(Axis.XP.rotationDegrees(AXIAL_TILT))
@@ -196,6 +196,10 @@ public class SkyRotationMixin {
         }
         RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE, SourceFactor.ONE, DestFactor.ZERO);
         RenderSystem.setShaderColor(1.0f,1.0f, 1.0f,1.0f);
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.disableBlend();
+        RenderSystem.depthMask(true);
+        RenderSystem.enableDepthTest();
     }
 
 
