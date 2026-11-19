@@ -48,15 +48,6 @@ public class SpoilingFoodItem extends Item {
 		var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = tag.getDouble("SpoilageMax");
 		if (spoilage >= ROT_THRESHOLD) {
-			if (entity instanceof Player player && slot >= 0 && slot < player.getInventory().getContainerSize()) {
-				ItemStack rottenItem;
-				if (stack.is(SurvivalReimaginedModItems.FLESH.get())) {
-					rottenItem = new ItemStack(Items.ROTTEN_FLESH, stack.getCount());
-				} else {
-					rottenItem = new ItemStack(SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount());
-				}
-				player.getInventory().setItem(slot, rottenItem);
-			}
 			return;
 		}
 
@@ -82,9 +73,10 @@ public class SpoilingFoodItem extends Item {
 		var spoilageTag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 		double spoilage = spoilageTag.getDouble("SpoilageMax");
 		double inventoryClock = spoilageTag.getDouble("InventoryClock");
-		// Include the partial 60-tick interval so the displayed percentage
+		// Include the partial 120-tick interval so the displayed percentage
 		// advances before a full spoilage point is added to SpoilageMax.
-		double spoilageProgress = spoilage + Math.min(59.0D, inventoryClock) / INVENTORY_TICKS_PER_SPOILAGE;
+		double spoilageProgress = spoilage + Math.min(INVENTORY_TICKS_PER_SPOILAGE - 1.0D, inventoryClock)
+				/ INVENTORY_TICKS_PER_SPOILAGE;
 
 		if (spoilage >= 0 && spoilage <= 499) {
 			tooltip.add(Component.literal("\u00A72 Fresh"));
