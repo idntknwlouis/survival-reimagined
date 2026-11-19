@@ -92,6 +92,27 @@ public final class FoodSpoilage {
         }
     }
 
+    private static ItemStack getRottenStack(ItemStack spoiledStack) {
+        Item rottenItem = spoiledStack.is(SurvivalReimaginedModItems.FLESH.get())
+                ? net.minecraft.world.item.Items.ROTTEN_FLESH
+                : SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get();
+        return new ItemStack(rottenItem, spoiledStack.getCount());
+    }
+
+    private static void syncContainerStack(ServerLevel level, ItemStack stack) {
+        for (ServerPlayer player : level.players()) {
+            for (int menuSlot = 0; menuSlot < player.containerMenu.slots.size(); menuSlot++) {
+                if (player.containerMenu.slots.get(menuSlot).getItem() == stack) {
+                    player.connection.send(new ClientboundContainerSetSlotPacket(
+                            player.containerMenu.containerId,
+                            player.containerMenu.incrementStateId(),
+                            menuSlot,
+                            stack.copy()));
+                }
+            }
+        }
+    }
+
     private static void spoilContainer(Container container, ServerLevel level) {
         boolean changed = false;
         for (int slot = 0; slot < container.getContainerSize(); slot++) {
@@ -106,30 +127,17 @@ public final class FoodSpoilage {
                     : customData.copyTag().getDouble("SpoilageMax");
 
             if (currentSpoilage >= MAX_SPOILAGE) {
-                container.setItem(slot, new ItemStack(
-                        SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+                container.setItem(slot, getRottenStack(stack));
                 changed = true;
+                syncContainerStack(level, container.getItem(slot));
                 continue;
             }
 
             double updatedSpoilage = Math.min(currentSpoilage + 1.0D, MAX_SPOILAGE);
             CustomData.update(DataComponents.CUSTOM_DATA, stack,
-                    tag -> tag.putDouble("SpoilageMax", updatedSpoilage));
+                    data -> data.putDouble("SpoilageMax", updatedSpoilage));
             changed = true;
-
-            // Send changed components to players whose open menu displays this stack.
-            for (ServerPlayer player : level.players()) {
-                for (int menuSlot = 0; menuSlot < player.containerMenu.slots.size(); menuSlot++) {
-                    Slot menuSlotEntry = player.containerMenu.slots.get(menuSlot);
-                    if (menuSlotEntry.getItem() == stack) {
-                        player.connection.send(new ClientboundContainerSetSlotPacket(
-                                player.containerMenu.containerId,
-                                player.containerMenu.incrementStateId(),
-                                menuSlot,
-                                stack.copy()));
-                    }
-                }
-            }
+            syncContainerStack(level, stack);
         }
 
         if (changed) {
@@ -158,8 +166,7 @@ public final class FoodSpoilage {
             var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
             double spoilage = tag.getDouble("SpoilageMax");
             if (spoilage >= MAX_SPOILAGE) {
-                player.getInventory().setItem(slot, new ItemStack(
-                        SurvivalReimaginedModItems.ROTTEN_BIOMATTER.get(), stack.getCount()));
+                player.getInventory().setItem(slot, getRottenStack(stack));
                 changedStacks.add(player.getInventory().getItem(slot));
                 continue;
             }
