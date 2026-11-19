@@ -148,58 +148,69 @@ public final class FoodSpoilage {
     }
 
     /**
-     * Keep the existing player inventory spoilage behavior.
+     * Player inventory spoilage uses the same world-time interval as containers.
+     * Changed visible menu slots are explicitly synchronized so tooltip data
+     * reaches the client immediately.
      */
     public static void tickPlayerInventory(Player player) {
-        if (player.level().isClientSide()) {
-            return;
-        }
-
-        // InventoryClock is only synchronized once per second. Advancing it
-        // by 20 ticks at a time avoids replacing every inventory stack every
-        // server tick, which caused unnecessary menu packets and tooltip flicker.
-        if (player.level().getGameTime() % 20L != 0L) {
+        if (player.level().isClientSide()
+                || player.level().getGameTime() % SPOILAGE_INTERVAL != 0L) {
             return;
         }
 
         boolean changed = false;
-        for (int slot = 0; slot < player.getInventory().getContainerSize(); slot++) {
-            ItemStack stack = player.getInventory().getItem(slot);
+        for (int inventorySlot = 0;
+             inventorySlot < player.getInventory().getContainerSize();
+             inventorySlot++) {
+            ItemStack stack = player.getInventory().getItem(inventorySlot);
             if (stack.isEmpty() || !stack.is(CAN_ROT)) {
                 continue;
             }
 
-            var tag = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-            double spoilage = tag.getDouble("SpoilageMax");
+            double spoilage = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY)
+                    .copyTag().getDouble("SpoilageMax");
             if (spoilage >= MAX_SPOILAGE) {
-                player.getInventory().setItem(slot, getRottenStack(stack));
+                ItemStack rottenStack = getRottenStack(stack);
+                player.getInventory().setItem(inventorySlot, rottenStack);
+                syncPlayerInventoryStack(player, rottenStack);
                 changed = true;
                 continue;
             }
 
-            double inventoryClock = tag.getDouble("InventoryClock") + 20.0D;
-            if (inventoryClock >= SPOILAGE_INTERVAL) {
-                inventoryClock -= SPOILAGE_INTERVAL;
-                spoilage += 1.0D;
-            }
-
-            if (spoilage >= MAX_SPOILAGE) {
-                player.getInventory().setItem(slot, getRottenStack(stack));
+            double updatedSpoilage = Math.min(spoilage + 1.0D, MAX_SPOILAGE);
+            if (updatedSpoilage >= MAX_SPOILAGE) {
+                ItemStack rottenStack = getRottenStack(stack);
+                player.getInventory().setItem(inventorySlot, rottenStack);
+                syncPlayerInventoryStack(player, rottenStack);
             } else {
-                final double updatedClock = inventoryClock;
-                final double updatedSpoilage = spoilage;
-                CustomData.update(DataComponents.CUSTOM_DATA, stack, data -> {
-                    data.putDouble("InventoryClock", updatedClock);
-                    if (updatedSpoilage > 0.0D || data.contains("SpoilageMax")) {
-                        data.putDouble("SpoilageMax", updatedSpoilage);
-                    }
-                });
+                CustomData.update(DataComponents.CUSTOM_DATA, stack,
+                        data -> {
+                            data.putDouble("SpoilageMax", updatedSpoilage);
+                            data.remove("InventoryClock");
+                        });
+                syncPlayerInventoryStack(player, stack);
             }
             changed = true;
         }
 
         if (changed) {
             player.getInventory().setChanged();
+        }
+    }
+
+    private static void syncPlayerInventoryStack(Player player, ItemStack stack) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+
+        for (int menuSlot = 0; menuSlot < serverPlayer.containerMenu.slots.size(); menuSlot++) {
+            if (serverPlayer.containerMenu.slots.get(menuSlot).getItem() == stack) {
+                serverPlayer.connection.send(new ClientboundContainerSetSlotPacket(
+                        serverPlayer.containerMenu.containerId,
+                        serverPlayer.containerMenu.incrementStateId(),
+                        menuSlot,
+                        stack.copy()));
+            }
         }
     }
 }
