@@ -203,7 +203,7 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		ItemProperties.register(LUNGS.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "lungs_texture"),
 				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
 
-		ItemProperties.register(BEEF.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "beef_texture"),
+		ItemProperties.register(BEEF.get(), ResourceLocation.fromNamespaceAndPath("survival_reimagined", "beef_texture"),
 				(itemStackToRender, clientWorld, entity, itemEntityID) -> (float) TextureStateProvider.execute(itemStackToRender));
 
 		ItemProperties.register(COOKED_BEEF.get(), ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "cooked_beef_texture"),

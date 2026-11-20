@@ -67,6 +67,12 @@ public class SurvivalReimaginedModProcedures {
         CraftedItemADV.register();
         ProgressionStart.register();
         RuneAcquired.register();
+        MPTPower.register();
+        ObsidianInTheRocks.register();
+        EnterRadiantForest.register();
+        ItemInInventory.register();
+        PlanksADV.register();
+        CropsPlanted.register();
 
         //Blood Moon
         Bloodmoon.register();
@@ -99,6 +105,11 @@ public class SurvivalReimaginedModProcedures {
             }
             for (ServerPlayer player : server.getPlayerList().getPlayers()) {
                 DarknessEffectApplied.onPlayerTick(player);
+            }
+        });
+        ServerTickEvents.END_SERVER_TICK.register(server -> {
+            for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+                ForgedToolHead.execute(player.level(), player);
             }
         });
         ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> {

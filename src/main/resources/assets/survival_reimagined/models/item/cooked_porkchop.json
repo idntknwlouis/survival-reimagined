@@ -6,19 +6,19 @@
   "overrides": [
     {
       "predicate": {
-        "survival_reimagined:cooked_porkchop_texture": 1
+        "survival_reimagined:cooked_porkchop_texture": 0.1
       },
       "model": "survival_reimagined:item/cooked_porkchop_0"
     },
     {
       "predicate": {
-        "survival_reimagined:cooked_porkchop_texture": 2
+        "survival_reimagined:cooked_porkchop_texture": 0.2
       },
       "model": "survival_reimagined:item/cooked_porkchop_1"
     },
     {
       "predicate": {
-        "survival_reimagined:cooked_porkchop_texture": 3
+        "survival_reimagined:cooked_porkchop_texture": 0.3
       },
       "model": "survival_reimagined:item/cooked_porkchop_2"
     }

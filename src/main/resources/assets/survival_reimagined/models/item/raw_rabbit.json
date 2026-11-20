@@ -6,19 +6,19 @@
   "overrides": [
     {
       "predicate": {
-        "survival_reimagined:raw_rabbit_texture": 1
+        "survival_reimagined:raw_rabbit_texture": 0.1
       },
       "model": "survival_reimagined:item/raw_rabbit_0"
     },
     {
       "predicate": {
-        "survival_reimagined:raw_rabbit_texture": 2
+        "survival_reimagined:raw_rabbit_texture": 0.2
       },
       "model": "survival_reimagined:item/raw_rabbit_1"
     },
     {
       "predicate": {
-        "survival_reimagined:raw_rabbit_texture": 3
+        "survival_reimagined:raw_rabbit_texture": 0.3
       },
       "model": "survival_reimagined:item/raw_rabbit_2"
     }

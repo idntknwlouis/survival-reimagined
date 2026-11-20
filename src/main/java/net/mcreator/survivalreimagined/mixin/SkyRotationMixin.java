@@ -31,9 +31,9 @@ public class SkyRotationMixin {
     @Unique
     private static final float AXIAL_TILT = -23.44f;
     @Unique
-    private static final float MOON_TILT = 0f; //5.14f
+    private static final float MOON_TILT = 5.14f;
     @Unique
-    private static final double MONTH_TICKS = 29.530588 * 24000.0;
+    private static final double MONTH_TICKS = 29.530588 * 12000.0;
     @Unique
     private static final double MOON_ALPHA_BLEND_ANGLE = 8.0f;
     @Unique
@@ -83,9 +83,10 @@ public class SkyRotationMixin {
 
     @Unique
     private double sr$getSunMoonSeparation() {
-        double progress = this.sr$getLunarProgress();
-        double angle = progress * 360.0f;
-        return Math.min(angle, 360.0 - angle);
+        double lunarOffset = this.sr$getLunarProgress() * 360.0;
+        double separation = Math.abs(180.0 - lunarOffset);
+        return Math.min(separation, 360.0 - separation);
+
     }
 
     @Unique
@@ -181,15 +182,17 @@ public class SkyRotationMixin {
         }
 
         if (this.sr$moonMesh != null) {
-            RenderSystem.setShader(GameRenderer::getPositionTexShader);
-            RenderSystem.setShaderTexture(0, MOON_LOCATION);
-            RenderSystem.setShaderColor(1.0f,1.0f,1.0f, rainAlpha);
+            RenderSystem.enableBlend();
 
             if (sr$shouldUseAlphaBlending()) {
                 RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA, SourceFactor.ONE, DestFactor.ONE_MINUS_SRC_ALPHA);
             } else {
                 RenderSystem.blendFuncSeparate(SourceFactor.SRC_ALPHA, DestFactor.ONE, SourceFactor.ONE, DestFactor.ZERO);
             }
+
+            RenderSystem.setShader(GameRenderer::getPositionTexShader);
+            RenderSystem.setShaderTexture(0, MOON_LOCATION);
+            RenderSystem.setShaderColor(1.0f,1.0f,1.0f, rainAlpha);
 
             BufferUploader.drawWithShader(this.sr$moonMesh);
             this.sr$moonMesh = null;

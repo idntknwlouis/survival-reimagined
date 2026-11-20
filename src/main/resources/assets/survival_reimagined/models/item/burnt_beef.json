@@ -6,19 +6,19 @@
   "overrides": [
     {
       "predicate": {
-        "survival_reimagined:burnt_beef_texture": 1
+        "survival_reimagined:burnt_beef_texture": 0.1
       },
       "model": "survival_reimagined:item/burnt_beef_0"
     },
     {
       "predicate": {
-        "survival_reimagined:burnt_beef_texture": 2
+        "survival_reimagined:burnt_beef_texture": 0.2
       },
       "model": "survival_reimagined:item/burnt_beef_1"
     },
     {
       "predicate": {
-        "survival_reimagined:burnt_beef_texture": 3
+        "survival_reimagined:burnt_beef_texture": 0.3
       },
       "model": "survival_reimagined:item/burnt_beef_2"
     }
