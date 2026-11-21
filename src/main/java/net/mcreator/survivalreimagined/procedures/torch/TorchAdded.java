@@ -13,7 +13,7 @@ public class TorchAdded {
             BlockPos pos = BlockPos.containing(x,y,z);
 
             if (world.getBlockEntity(pos) instanceof CrudeTorchBlockEntity blockEntity) {
-                blockEntity.setBurnTarget(Mth.nextInt(RandomSource.create(), 200, 400));
+                blockEntity.setBurnTarget(Mth.nextInt(RandomSource.create(), 24000, 72000));
             }
 
             if (world instanceof Level level) {

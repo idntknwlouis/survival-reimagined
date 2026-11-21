@@ -29,12 +29,12 @@ public class LightTorch {
         if (!state.is(SurvivalReimaginedModBlocks.CRUDE_TORCH.get())) return;
         if (state.getValue(CrudeTorch.LIT)) return;
 
-        if (level.isClientSide) {
+        if (level.isClientSide()) {
             player.swing(InteractionHand.MAIN_HAND);
             return;
         }
         level.setBlock(pos, state.setValue(CrudeTorch.LIT, true), 3);
-        level.playSound(null, pos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0f,1.0f);
+        level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f,1.0f);
 
         if (!player.getAbilities().instabuild) {
             heldItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);

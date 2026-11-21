@@ -12,7 +12,29 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "survival_reimagined:crude_torch"
+          "name": "survival_reimagined:crude_torch",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "survival_reimagined:crude_torch",
+              "properties": {
+                "lit": "false"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "survival_reimagined:lit_crude_torch",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "survival_reimagined:crude_torch",
+              "properties": {
+                "lit": "true"
+              }
+            }
+          ]
         }
       ]
     }

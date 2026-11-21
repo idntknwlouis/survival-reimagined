@@ -793,6 +793,8 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> SKINNED_HORSE = block(SurvivalReimaginedModBlocks.SKINNED_HORSE);
 	public static final RegistryEntry<Item> RAW_AZURITE_BLOCK = block(SurvivalReimaginedModBlocks.RAW_AZURITE_BLOCK);
 	public static final RegistryEntry<Item> CRUDE_TORCH = block(SurvivalReimaginedModBlocks.CRUDE_TORCH);
+	public static final RegistryEntry<Item> BURNT_TORCH = block(SurvivalReimaginedModBlocks.BURNT_TORCH);
+	public static final RegistryEntry<Item> LIT_CRUDE_TORCH = register("lit_crude_torch", () -> new LitCrudeTorchItem(SurvivalReimaginedModBlocks.CRUDE_TORCH.get(), new Item.Properties()));
 
 	public static final Item WISTERIA_BOAT = registerBoat("wisteria_boat", new BoatItem(SurvivalReimaginedModBoatTypes.WISTERIA_BOAT, new Item.Properties().stacksTo(1)));
 	public static final Item RADIATED_BOAT = registerBoat("radiated_boat", new BoatItem(SurvivalReimaginedModBoatTypes.RADIATED_BOAT, new Item.Properties().stacksTo(1)));
