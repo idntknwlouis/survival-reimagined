@@ -39,34 +39,24 @@ public class LitCrudeTorchItem extends BlockItem {
     public void inventoryTick(ItemStack itemStack, Level world, Entity entity, int slot, boolean selected) {
         super.inventoryTick(itemStack, world, entity, slot, selected);
 
-        if (entity == null) return;
-        {
-            final String name = "BurnClock";
-            final double tagValue = (itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("BurnClock") + 1);
-            CustomData.update(DataComponents.CUSTOM_DATA, itemStack, tag -> tag.putDouble(name, tagValue));
-        }
-        if (itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("BurnClock") >= 20) {
-            {
-                final String name = "Burn";
-                final double value = (itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("Burn") + 1);
-                CustomData.update(DataComponents.CUSTOM_DATA, itemStack, tag -> tag.putDouble(name, value));
-            }
-            {
-                final String name = "BurnClock";
-                final double value = 0;
-                CustomData.update(DataComponents.CUSTOM_DATA, itemStack, tag -> tag.putDouble(name, value));
-            }
-        }
-        if (itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag().getDouble("Burn") >= 2000) {
-            if (entity instanceof LivingEntity livingEntity) {
-                if (livingEntity instanceof Player player) {
-                    ItemStack burntTorch = new ItemStack(SurvivalReimaginedModItems.BURNT_TORCH.get());
-                    burntTorch.setCount(itemStack.getCount());
+        if (world.isClientSide()) return;
+        if (world.getGameTime() % 20 != 0) return;
+        if (!(entity instanceof Player player)) return;
 
-                    player.getInventory().setItem(slot, burntTorch);
-                }
-            }
+        CompoundTag tag = itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+
+        double burn = tag.getDouble("Burn") + 1;
+
+        if (burn >= 2000) {
+            ItemStack burntTorch = new ItemStack(SurvivalReimaginedModItems.BURNT_TORCH.get());
+            burntTorch.setCount(itemStack.getCount());
+            player.getInventory().setItem(slot, burntTorch);
+            return;
         }
+        CustomData.update(DataComponents.CUSTOM_DATA, itemStack, data -> {
+            data.putDouble("Burn", burn);
+        });
+
     }
 
     @Override
