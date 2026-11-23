@@ -7,11 +7,13 @@ import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.block.MillstoneBlock;
 import net.mcreator.survivalreimagined.block.DryingRack;
+import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.DryingRackBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntity;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -37,6 +39,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(MineralProcessingJadeProvider.INSTANCE, MineralProcessingTableBlockEntity.class);
 		registration.registerBlockDataProvider(MillstoneJadeProvider.INSTANCE, MillstoneBlockEntity.class);
 		registration.registerBlockDataProvider(DryingRackJadeProvider.INSTANCE, DryingRackBlockEntity.class);
+		registration.registerBlockDataProvider(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 		// Override Jade's generic container item listing for the MPT; its custom
@@ -45,6 +48,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		// The custom Millstone component already displays its input and output.
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, MillstoneBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, DryingRackBlockEntity.class);
+		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
 	}
 
 	@Override
@@ -55,6 +59,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(MineralProcessingJadeProvider.INSTANCE, net.mcreator.survivalreimagined.block.MineralProcessingTableBlock.class);
 		registration.registerBlockComponent(MillstoneJadeProvider.INSTANCE, MillstoneBlock.class);
 		registration.registerBlockComponent(DryingRackJadeProvider.INSTANCE, DryingRack.class);
+		registration.registerBlockComponent(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlock.class);
 		registration.registerItemStorageClient(ForgeInventoryJadeProvider.INSTANCE);
 	}
 }
