@@ -10,7 +10,6 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec2;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.entity.TanningBarrelBlockEntity;
 import snownee.jade.api.BlockAccessor;
@@ -54,8 +53,7 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         if (data.stage() != IDLE) {
             int duration = data.stage() == WATER ? 24000 : 72000;
             float progress = Math.max(0.0F, Math.min(1.0F, (float) data.clock() / duration));
-            // Give the progress indicator its own row so it does not overlap the stage text.
-            tooltip.add(helper.progress(progress).translate(new Vec2(-2, 0)));
+            tooltip.add(Component.literal(Math.round(progress * 100.0F) + "%"));
         }
 
         for (ItemStack stack : data.inventory()) {
