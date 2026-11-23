@@ -4,6 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -47,7 +48,30 @@ public class HideTooltip {
         } else if (item == SurvivalReimaginedModItems.PREPARED_HIDE.get()) {
             tooltip.add(Component.literal("§7 Prepared"));
         } else if (itemstack.is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "animal/hide")))) {
-            tooltip.add(Component.literal("§7 Raw"));
+            appendHorseVariant(itemstack, tooltip, "horse_color",
+                    new String[][] {
+                            {"white", "white"}, {"creamy", "creamy"}, {"chestnut", "chestnut"},
+                            {"brown", "brown"}, {"darkbrown", "dark_brown"}, {"gray", "gray"}, {"black", "black"}
+                    });
+            appendHorseVariant(itemstack, tooltip, "horse_markings",
+                    new String[][] {
+                            {"stockings", "stockings"}, {"field", "field"},
+                            {"white_dots", "white_dots"}, {"black_dots", "black_dots"}
+                    });
+            tooltip.add(Component.literal("Raw").withStyle(ChatFormatting.GRAY));
+        }
+    }
+
+    private static void appendHorseVariant(ItemStack stack, List<Component> tooltip,
+                                           String tagFolder, String[][] variants) {
+        for (String[] variant : variants) {
+            TagKey<Item> tag = TagKey.create(Registries.ITEM,
+                    ResourceLocation.fromNamespaceAndPath("c", tagFolder + "/" + variant[0]));
+            if (stack.is(tag)) {
+                tooltip.add(Component.translatable("tooltip.survival_reimagined." + tagFolder + "." + variant[1])
+                        .withStyle(ChatFormatting.GRAY));
+                return;
+            }
         }
     }
 }
