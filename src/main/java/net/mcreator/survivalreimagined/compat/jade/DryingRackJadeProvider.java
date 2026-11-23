@@ -10,8 +10,8 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.component.CustomData;
-import net.minecraft.world.phys.Vec2;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
@@ -38,7 +38,7 @@ public enum DryingRackJadeProvider implements IBlockComponentProvider,
             ItemStack result = new ItemStack(SurvivalReimaginedModItems.DRIED_HIDE.get(), stack.getCount());
             tooltip.add(helper.item(stack));
             tooltip.append(helper.spacer(4, 0));
-            tooltip.append(helper.progress(progress).translate(new Vec2(-2, 0)));
+            tooltip.add(Component.literal(Math.round(progress * 100.0F) + "%"));
             tooltip.append(helper.item(result));
         } else {
             tooltip.add(helper.item(stack));
