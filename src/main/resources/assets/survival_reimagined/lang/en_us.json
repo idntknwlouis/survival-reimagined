@@ -1274,5 +1274,16 @@
   "tooltip.survival_reimagined.jade.reactor_rod_capacity_decimal": "Reactor Rod Capacity: %1$s / %2$s",
   "tooltip.survival_reimagined.jade.installed_upgrades": "Installed upgrades:",
   "config.jade.plugin_survival_reimagined.millstone_progress": "Millstone processing",
-  "config.jade.plugin_survival_reimagined.drying_rack_progress": "Drying Rack progress"
+  "config.jade.plugin_survival_reimagined.drying_rack_progress": "Drying Rack progress",
+  "tooltip.survival_reimagined.horse_color.white": "White",
+  "tooltip.survival_reimagined.horse_color.creamy": "Creamy",
+  "tooltip.survival_reimagined.horse_color.chestnut": "Chestnut",
+  "tooltip.survival_reimagined.horse_color.brown": "Brown",
+  "tooltip.survival_reimagined.horse_color.dark_brown": "Dark Brown",
+  "tooltip.survival_reimagined.horse_color.gray": "Gray",
+  "tooltip.survival_reimagined.horse_color.black": "Black",
+  "tooltip.survival_reimagined.horse_markings.stockings": "Stockings",
+  "tooltip.survival_reimagined.horse_markings.field": "Field",
+  "tooltip.survival_reimagined.horse_markings.white_dots": "White Dots",
+  "tooltip.survival_reimagined.horse_markings.black_dots": "Black Dots"
 }
