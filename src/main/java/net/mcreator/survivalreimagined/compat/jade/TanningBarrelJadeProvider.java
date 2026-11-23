@@ -54,7 +54,8 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         if (data.stage() != IDLE) {
             int duration = data.stage() == WATER ? 24000 : 72000;
             float progress = Math.max(0.0F, Math.min(1.0F, (float) data.clock() / duration));
-            tooltip.append(helper.progress(progress).translate(new Vec2(-2, 0)));
+            // Give the progress indicator its own row so it does not overlap the stage text.
+            tooltip.add(helper.progress(progress).translate(new Vec2(-2, 0)));
         }
 
         for (ItemStack stack : data.inventory()) {
