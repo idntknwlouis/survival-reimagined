@@ -36,7 +36,7 @@ public enum MineralProcessingJadeProvider implements IBlockComponentProvider,
 		tooltip.append(helper.item(data.inventory().get(1)));
 		if (!SurvivalReimaginedModConfig.VALUES.jade_machine_details_require_sneak
 				|| (accessor.getPlayer() != null && accessor.getPlayer().isShiftKeyDown())) {
-			tooltip.add(Component.literal("Reactor Rod Capacity: " + (data.capacityTenths() / 10.0) + " / " + (data.maxCapacityTenths() / 10.0)));
+			tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.reactor_rod_capacity_decimal", data.capacityTenths() / 10.0, data.maxCapacityTenths() / 10.0));
 		}
 	}
 
