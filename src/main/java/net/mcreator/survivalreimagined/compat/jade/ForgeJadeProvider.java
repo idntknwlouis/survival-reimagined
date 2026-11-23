@@ -37,9 +37,9 @@ public enum ForgeJadeProvider implements IBlockComponentProvider, StreamServerDa
 		tooltip.append(helper.progress(data.total() == 0 ? 0F : (float) data.progress() / data.total()).translate(new Vec2(-2, 0)));
 		tooltip.append(helper.item(data.inventory().get(2)));
 		if (data.advanced() && shouldShowMachineDetails(accessor)) {
-			tooltip.add(Component.literal("Reactor Rod Capacity: " + data.capacity() + " / " + data.maxCapacity()));
+			tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.reactor_rod_capacity", data.capacity(), data.maxCapacity()));
 			if (!data.upgrades().isEmpty()) {
-				tooltip.add(Component.literal("Installed upgrades:"));
+				tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.installed_upgrades"));
 				for (ItemStack upgrade : data.upgrades()) {
 					tooltip.add(Component.literal("- " + upgrade.getHoverName().getString()));
 				}
