@@ -31,6 +31,21 @@ public class HideTooltip {
 
         Item item = itemstack.getItem();
 
+        // Horse hide variants carry their color and markings as item tags.
+        // Add these independently of the generic hide-state tooltip so a
+        // variant still exposes its appearance even if it also matches a
+        // dedicated hide item branch.
+        appendHorseVariant(itemstack, tooltip, "horse_color",
+                new String[][] {
+                        {"white", "white"}, {"creamy", "creamy"}, {"chestnut", "chestnut"},
+                        {"brown", "brown"}, {"darkbrown", "dark_brown"}, {"gray", "gray"}, {"black", "black"}
+                });
+        appendHorseVariant(itemstack, tooltip, "horse_markings",
+                new String[][] {
+                        {"stockings", "stockings"}, {"field", "field"},
+                        {"white_dots", "white_dots"}, {"black_dots", "black_dots"}
+                });
+
         if (itemstack.getItem() == SurvivalReimaginedModItems.HIDE.get()) {
             CustomData customData = itemstack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
             double drying = customData.copyTag().getDouble("Drying");
@@ -47,17 +62,9 @@ public class HideTooltip {
             tooltip.add(Component.literal("§7 Dried"));
         } else if (item == SurvivalReimaginedModItems.PREPARED_HIDE.get()) {
             tooltip.add(Component.literal("§7 Prepared"));
-        } else if (itemstack.is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "animal/hide")))) {
-            appendHorseVariant(itemstack, tooltip, "horse_color",
-                    new String[][] {
-                            {"white", "white"}, {"creamy", "creamy"}, {"chestnut", "chestnut"},
-                            {"brown", "brown"}, {"darkbrown", "dark_brown"}, {"gray", "gray"}, {"black", "black"}
-                    });
-            appendHorseVariant(itemstack, tooltip, "horse_markings",
-                    new String[][] {
-                            {"stockings", "stockings"}, {"field", "field"},
-                            {"white_dots", "white_dots"}, {"black_dots", "black_dots"}
-                    });
+        }
+
+        if (itemstack.is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "animal/hide")))) {
             tooltip.add(Component.literal("Raw").withStyle(ChatFormatting.GRAY));
         }
     }
