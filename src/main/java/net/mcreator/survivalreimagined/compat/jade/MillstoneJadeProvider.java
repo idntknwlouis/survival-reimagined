@@ -27,23 +27,23 @@ public enum MillstoneJadeProvider implements IBlockComponentProvider,
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
         Data data = decodeFromData(accessor).orElse(null);
-        if (data == null || (data.input().isEmpty() && data.output().isEmpty())) {
+        if (data == null || (data.inventory().stream().allMatch(ItemStack::isEmpty))) {
             return;
         }
 
         IElementHelper helper = IElementHelper.get();
-        tooltip.add(helper.item(data.input()));
+        tooltip.add(helper.item(data.inventory().get(0)));
         tooltip.append(helper.spacer(4, 0));
         tooltip.append(helper.progress(data.total() <= 0 ? 0F : (float) data.progress() / data.total())
                 .translate(new Vec2(-2, 0)));
-        tooltip.append(helper.item(data.output()));
+        tooltip.append(helper.item(data.inventory().get(1)));
     }
 
     @Override
     public Data streamData(BlockAccessor accessor) {
         MillstoneBlockEntity millstone = (MillstoneBlockEntity) accessor.getBlockEntity();
-        return new Data(millstone.getItem(MillstoneBlockEntity.INPUT_SLOT),
-                millstone.getItem(MillstoneBlockEntity.OUTPUT_SLOT),
+        return new Data(List.of(millstone.getItem(MillstoneBlockEntity.INPUT_SLOT),
+                millstone.getItem(MillstoneBlockEntity.OUTPUT_SLOT)),
                 millstone.getDataAccess().get(0), MillstoneBlockEntity.MAX_PROGRESS);
     }
 
@@ -57,10 +57,9 @@ public enum MillstoneJadeProvider implements IBlockComponentProvider,
         return ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "millstone_progress");
     }
 
-    public record Data(ItemStack input, ItemStack output, int progress, int total) {
+    public record Data(List<ItemStack> inventory, int progress, int total) {
         public static final StreamCodec<RegistryFriendlyByteBuf, Data> STREAM_CODEC = StreamCodec.composite(
-                ItemStack.OPTIONAL_STREAM_CODEC, Data::input,
-                ItemStack.OPTIONAL_STREAM_CODEC, Data::output,
+                ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inventory,
                 ByteBufCodecs.VAR_INT, Data::progress,
                 ByteBufCodecs.VAR_INT, Data::total,
                 Data::new);
