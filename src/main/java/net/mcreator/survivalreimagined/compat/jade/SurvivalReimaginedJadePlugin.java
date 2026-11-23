@@ -29,6 +29,9 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(MineralProcessingJadeProvider.INSTANCE, MineralProcessingTableBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
+		// Override Jade's generic container item listing for the MPT; its custom
+		// progress component already displays the relevant input/output icons.
+		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, MineralProcessingTableBlockEntity.class);
 	}
 
 	@Override
