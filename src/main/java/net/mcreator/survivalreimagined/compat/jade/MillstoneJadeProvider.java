@@ -44,7 +44,7 @@ public enum MillstoneJadeProvider implements IBlockComponentProvider,
         MillstoneBlockEntity millstone = (MillstoneBlockEntity) accessor.getBlockEntity();
         return new Data(millstone.getItem(MillstoneBlockEntity.INPUT_SLOT),
                 millstone.getItem(MillstoneBlockEntity.OUTPUT_SLOT),
-                millstone.getProgress(), MillstoneBlockEntity.MAX_PROGRESS);
+                millstone.getDataAccess().get(0), MillstoneBlockEntity.MAX_PROGRESS);
     }
 
     @Override
