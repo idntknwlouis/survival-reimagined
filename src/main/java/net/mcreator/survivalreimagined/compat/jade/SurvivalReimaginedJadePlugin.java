@@ -5,9 +5,11 @@ import net.minecraft.world.level.block.Block;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
+import net.mcreator.survivalreimagined.block.MillstoneBlock;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -21,12 +23,15 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 			SurvivalReimaginedMod.MODID, "forge_progress");
 	public static final ResourceLocation MPT_PROGRESS = ResourceLocation.fromNamespaceAndPath(
 			SurvivalReimaginedMod.MODID, "mpt_progress");
+	public static final ResourceLocation MILLSTONE_PROGRESS = ResourceLocation.fromNamespaceAndPath(
+			SurvivalReimaginedMod.MODID, "millstone_progress");
 
 	@Override
 	public void register(IWailaCommonRegistration registration) {
 		registration.registerBlockDataProvider(ForgeJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerBlockDataProvider(ForgeJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 		registration.registerBlockDataProvider(MineralProcessingJadeProvider.INSTANCE, MineralProcessingTableBlockEntity.class);
+		registration.registerBlockDataProvider(MillstoneJadeProvider.INSTANCE, MillstoneBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 		// Override Jade's generic container item listing for the MPT; its custom
@@ -40,6 +45,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(ForgeJadeProvider.INSTANCE, ForgeBlock.class);
 		registration.registerBlockComponent(ForgeJadeProvider.INSTANCE, AdvancedAlloyForgeBlock.class);
 		registration.registerBlockComponent(MineralProcessingJadeProvider.INSTANCE, net.mcreator.survivalreimagined.block.MineralProcessingTableBlock.class);
+		registration.registerBlockComponent(MillstoneJadeProvider.INSTANCE, MillstoneBlock.class);
 		registration.registerItemStorageClient(ForgeInventoryJadeProvider.INSTANCE);
 	}
 }
