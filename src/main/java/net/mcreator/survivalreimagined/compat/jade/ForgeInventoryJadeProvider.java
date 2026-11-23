@@ -9,6 +9,7 @@ import net.minecraft.world.item.Items;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import snownee.jade.api.Accessor;
 import snownee.jade.api.view.ClientViewGroup;
 import snownee.jade.api.view.IClientExtensionProvider;
@@ -31,8 +32,18 @@ public enum ForgeInventoryJadeProvider implements
         if (accessor.getTarget() instanceof AdvancedAlloyForgeBlockEntity forge) {
             addReactorRodIfPresent(visibleItems, forge.getItem(3));
 
-            // Upgrades are described by ForgeJadeProvider as readable text
-            // while sneaking. Do not add a second row of upgrade item icons here.
+            boolean showDetails = !SurvivalReimaginedModConfig.VALUES.jade_machine_details_require_sneak
+                    || (accessor.getPlayer() != null && accessor.getPlayer().isShiftKeyDown());
+            if (showDetails) {
+                // Keep the upgrade icons as well as the readable names in the
+                // main Jade tooltip, so players can identify each installed upgrade.
+                for (int slot = 4; slot <= 7; slot++) {
+                    ItemStack upgrade = forge.getItem(slot);
+                    if (AdvancedAlloyForgeBlockEntity.isUpgrade(upgrade)) {
+                        visibleItems.add(upgrade.copy());
+                    }
+                }
+            }
         } else if (accessor.getTarget() instanceof ForgeBlockEntity forge) {
             ItemStack fuel = forge.getItem(2);
             if (fuel.is(Items.COAL) || fuel.is(Items.CHARCOAL)) {
