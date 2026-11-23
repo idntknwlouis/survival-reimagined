@@ -3,7 +3,7 @@ package net.mcreator.survivalreimagined.compat.jade;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.entity.DryingRackBlockEntity;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
-import net.minecraft.core.RegistryFriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
