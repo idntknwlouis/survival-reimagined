@@ -1273,5 +1273,6 @@
   "tooltip.survival_reimagined.jade.reactor_rod_capacity": "Reactor Rod Capacity: %1$s / %2$s",
   "tooltip.survival_reimagined.jade.reactor_rod_capacity_decimal": "Reactor Rod Capacity: %1$s / %2$s",
   "tooltip.survival_reimagined.jade.installed_upgrades": "Installed upgrades:",
-  "config.jade.plugin_survival_reimagined.millstone_progress": "Millstone processing"
+  "config.jade.plugin_survival_reimagined.millstone_progress": "Millstone processing",
+  "config.jade.plugin_survival_reimagined.drying_rack_progress": "Drying Rack progress"
 }
