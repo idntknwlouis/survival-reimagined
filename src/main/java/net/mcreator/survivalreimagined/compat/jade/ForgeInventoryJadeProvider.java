@@ -9,6 +9,7 @@ import net.minecraft.world.item.Items;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import snownee.jade.api.Accessor;
 import snownee.jade.api.view.ClientViewGroup;
 import snownee.jade.api.view.IClientExtensionProvider;
@@ -31,10 +32,14 @@ public enum ForgeInventoryJadeProvider implements
         if (accessor.getTarget() instanceof AdvancedAlloyForgeBlockEntity forge) {
             addReactorRodIfPresent(visibleItems, forge.getItem(3));
 
-            for (int slot = 4; slot <= 7; slot++) {
-                ItemStack stack = forge.getItem(slot);
-                if (AdvancedAlloyForgeBlockEntity.isUpgrade(stack)) {
-                    visibleItems.add(stack.copy());
+            boolean showDetails = !SurvivalReimaginedModConfig.VALUES.jade_machine_details_require_sneak
+                    || (accessor.getPlayer() != null && accessor.getPlayer().isShiftKeyDown());
+            if (showDetails) {
+                for (int slot = 4; slot <= 7; slot++) {
+                    ItemStack stack = forge.getItem(slot);
+                    if (AdvancedAlloyForgeBlockEntity.isUpgrade(stack)) {
+                        visibleItems.add(stack.copy());
+                    }
                 }
             }
         } else if (accessor.getTarget() instanceof ForgeBlockEntity forge) {
