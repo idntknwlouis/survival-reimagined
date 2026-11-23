@@ -1285,5 +1285,12 @@
   "tooltip.survival_reimagined.horse_markings.stockings": "Stockings",
   "tooltip.survival_reimagined.horse_markings.field": "Field",
   "tooltip.survival_reimagined.horse_markings.white_dots": "White Dots",
-  "tooltip.survival_reimagined.horse_markings.black_dots": "Black Dots"
+  "tooltip.survival_reimagined.horse_markings.black_dots": "Black Dots",
+  "config.jade.plugin_survival_reimagined.tanning_barrel": "Tanning Barrel status",
+  "tooltip.survival_reimagined.jade.tanning_barrel.fluid": "Fluid: %1$s / %2$s mB",
+  "tooltip.survival_reimagined.jade.tanning_barrel.stage.idle": "Stage: Idle",
+  "tooltip.survival_reimagined.jade.tanning_barrel.stage.water": "Stage: Preparing lime/tannin solution",
+  "tooltip.survival_reimagined.jade.tanning_barrel.stage.lime": "Stage: Lime treatment",
+  "tooltip.survival_reimagined.jade.tanning_barrel.stage.tannin": "Stage: Tannin treatment",
+  "tooltip.survival_reimagined.jade.tanning_barrel.ready_to_seal": "Ready to seal"
 }
