@@ -100,7 +100,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 
 		if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY); else slot.setChanged();
 		if (stack.getCount() == result.getCount()) return ItemStack.EMPTY;
-		slot.onTake(player, stack);
+		slot.onTake(player, result);
 		return result;
 	}
 
