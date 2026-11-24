@@ -86,8 +86,12 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 		ItemStack stack = slot.getItem();
 		result = stack.copy();
 
-		if (index < MACHINE_SLOTS) {
-			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), true)) return ItemStack.EMPTY;
+		// Shift-clicking an installed upgrade must return it to the player's inventory.
+		// If there is no room, leave it in the forge rather than dropping it.
+		if (index >= 4 && index < MACHINE_SLOTS) {
+			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), false)) return ItemStack.EMPTY;
+		} else if (index < MACHINE_SLOTS) {
+			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), false)) return ItemStack.EMPTY;
 		} else if (AdvancedAlloyForgeBlockEntity.isReactorRod(stack)) {
 			if (!moveItemStackTo(stack, 3, 4, false)) return ItemStack.EMPTY;
 		} else if (AdvancedAlloyForgeBlockEntity.isAlloyInput(stack)) {
