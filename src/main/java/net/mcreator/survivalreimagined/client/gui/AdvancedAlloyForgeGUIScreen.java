@@ -49,7 +49,7 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 
 	public AdvancedAlloyForgeGUIScreen(AdvancedAlloyForgeGUIMenu menu, Inventory inventory, Component title) {
 		super(menu, inventory, title);
-		this.imageWidth = 176;
+		this.imageWidth = 250;
 		this.imageHeight = 166;
 	}
 
