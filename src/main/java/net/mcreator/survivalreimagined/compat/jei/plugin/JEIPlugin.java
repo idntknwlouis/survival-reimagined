@@ -9,9 +9,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.survivalreimagined.compat.jei.gui.recipe.*;
+import net.mcreator.survivalreimagined.compat.jei.gui.AdvancedAlloyForgeGuiHandler;
+import net.mcreator.survivalreimagined.client.gui.AdvancedAlloyForgeGUIScreen;
 import net.mcreator.survivalreimagined.compat.jei.gui.recipe_category.*;
 
 import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.JeiPlugin;
@@ -39,6 +42,11 @@ public class JEIPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
         return ResourceLocation.parse("survival_reimagined:jei_plugin");
+    }
+
+    @Override
+    public void registerGuiHandlers(IGuiHandlerRegistration registration) {
+        registration.addGuiContainerHandler(AdvancedAlloyForgeGUIScreen.class, new AdvancedAlloyForgeGuiHandler());
     }
 
     @Override
