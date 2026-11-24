@@ -30,10 +30,12 @@ public class AlloyForgeJEIRecipeCategory implements IRecipeCategory<AlloyForgeJE
     public final static ResourceLocation TEXTURE = ResourceLocation.parse("survival_reimagined:textures/screens/aaf_gui.png");
     private final IDrawable background;
     private final IDrawable icon;
+    private final IDrawable slotBackground;
     private final Minecraft mc = Minecraft.getInstance();
 
     public AlloyForgeJEIRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 255, 86);
+        this.slotBackground = helper.getSlotDrawable();
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(SurvivalReimaginedModBlocks.ADVANCED_ALLOY_FORGE.get().asItem()));
     }
 
@@ -81,20 +83,20 @@ public class AlloyForgeJEIRecipeCategory implements IRecipeCategory<AlloyForgeJE
         stacks.clear();
         for (ItemStack item : List.of(recipe.getIngredients().get(0).getItems()))
             stacks.add(new ItemStack(item.getItem(), recipe.integers().get(0)));
-        builder.addSlot(RecipeIngredientRole.INPUT, 8, 57).addItemStacks(stacks);
+        builder.addSlot(RecipeIngredientRole.INPUT, 8, 57).setBackground(this.slotBackground, -1, -1).addItemStacks(stacks);
         stacks.clear();
         for (ItemStack item : List.of(recipe.getIngredients().get(1).getItems()))
             stacks.add(new ItemStack(item.getItem(), recipe.integers().get(1)));
-        builder.addSlot(RecipeIngredientRole.INPUT, 71, 39).addItemStacks(stacks);
+        builder.addSlot(RecipeIngredientRole.INPUT, 71, 39).setBackground(this.slotBackground, -1, -1).addItemStacks(stacks);
         stacks.clear();
         for (ItemStack item : List.of(recipe.getIngredients().get(2).getItems()))
             stacks.add(new ItemStack(item.getItem(), recipe.integers().get(2)));
-        builder.addSlot(RecipeIngredientRole.INPUT, 89, 39).addItemStacks(stacks);
+        builder.addSlot(RecipeIngredientRole.INPUT, 89, 39).setBackground(this.slotBackground, -1, -1).addItemStacks(stacks);
         stacks.clear();
         for (ItemStack item : List.of(recipe.getIngredients().get(3).getItems()))
             stacks.add(new ItemStack(item.getItem(), recipe.integers().get(3)));
-        builder.addSlot(RecipeIngredientRole.INPUT, 199, 21).addItemStacks(stacks);
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 134, 39).addItemStack(actualOutputs.get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 199, 21).setBackground(this.slotBackground, -1, -1).addItemStacks(stacks);
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 134, 39).setBackground(this.slotBackground, -1, -1).addItemStack(actualOutputs.get(0));
     }
 
 }
