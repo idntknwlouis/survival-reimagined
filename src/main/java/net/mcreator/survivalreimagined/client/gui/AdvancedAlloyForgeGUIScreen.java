@@ -50,7 +50,9 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 
 	public AdvancedAlloyForgeGUIScreen(AdvancedAlloyForgeGUIMenu menu, Inventory inventory, Component title) {
 		super(menu, inventory, title);
-		this.imageWidth = 250;
+		// Center the 176px machine panel like the NeoForge screen. The 72px upgrade
+		// panel is an extension drawn to the right, not part of the centered image.
+		this.imageWidth = 176;
 		this.imageHeight = 166;
 	}
 
