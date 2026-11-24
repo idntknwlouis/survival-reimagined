@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.client.gui;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -51,6 +52,11 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 		super(menu, inventory, title);
 		this.imageWidth = 250;
 		this.imageHeight = 166;
+	}
+
+	/** Area occupied by the upgrade panel drawn to the right of the standard machine background. */
+	public Rect2i getUpgradePanelArea() {
+		return new Rect2i(this.leftPos + 178, this.topPos, 72, 75);
 	}
 
 	private static ResourceLocation tex(String file) {
