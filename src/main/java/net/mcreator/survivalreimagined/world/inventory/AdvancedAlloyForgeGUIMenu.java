@@ -58,6 +58,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 			int y = i < 6 ? 19 : 37;
 			this.addSlot(new Slot(container, local, x, y) {
 				@Override public boolean mayPlace(ItemStack stack) { return AdvancedAlloyForgeBlockEntity.isUpgrade(stack); }
+				@Override public boolean mayPickup(Player player) { return true; }
 				@Override public int getMaxStackSize() { return 1; }
 			});
 		}
