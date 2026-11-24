@@ -58,7 +58,7 @@ public class TanningBarrelHandler {
                 if (!world.isClientSide()) {
                     if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
                         barrel.getCustomData().putBoolean("Water", true);
-                        barrel.getCustomData().putDouble("Fluid", (getBlockNBTNumber(world, pos, "Fluid") + 2000));
+                        barrel.getCustomData().putDouble("Fluid", (getBlockNBTNumber(world, pos, "Fluid") + 3000));
                         barrel.setItem(0, new ItemStack(Items.BUCKET));
                         barrel.setChanged();
 
@@ -74,7 +74,7 @@ public class TanningBarrelHandler {
         }
 
         if (getBlockNBTLogic(world, pos, "Water") && itemFromBlockInventory(world, pos, 0).is(SurvivalReimaginedModItems.QUICK_LIME.get())) {
-            double requiredAmount = (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * 64.0;
+            double requiredAmount = (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * 32.0;
             if (itemFromBlockInventory(world, pos, 0).getCount() >= requiredAmount && itemFromBlockInventory(world, pos, 0).getCount() > 0) {
                 if (!world.isClientSide()) {
                     if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
@@ -225,13 +225,14 @@ public class TanningBarrelHandler {
                             }
                             if (!world.isClientSide()) {
                                 int processedCount = itemstackiterator.getCount();
+                                double fluidCost = processedCount * 500.0;
                                 ItemStack preparedStack = new ItemStack(SurvivalReimaginedModItems.PREPARED_HIDE.get());
                                 preparedStack.setCount(processedCount);
                                 container.setItem(i, preparedStack);
 
                                 if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
                                     double fluid = barrel.getCustomData().getDouble("Fluid");
-                                    barrel.getCustomData().putDouble("Fluid", Math.max(0, fluid - processedCount * 500.0));
+                                    barrel.getCustomData().putDouble("Fluid", Math.max(0, fluid - fluidCost));
                                     barrel.setChanged();
                                 }
                                 container.setChanged();
@@ -308,7 +309,7 @@ public class TanningBarrelHandler {
             }
         }
         if (getBlockNBTLogic(world, pos, "Water")) {
-            double requiredItems = itemFromBlockInventory(world, pos, 0).is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tanning/makes_tannin"))) ? 16.0 : 64.0;
+            double requiredItems = itemFromBlockInventory(world, pos, 0).is(TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tanning/makes_tannin"))) ? 16.0 : 32.0;
             if (itemFromBlockInventory(world, pos, 0).getCount() < (getBlockNBTNumber(world, pos, "Fluid") / 6000.0) * requiredItems) {
                 if (!world.isClientSide()) {
                     if (blockEntity instanceof TanningBarrelBlockEntity barrel) {

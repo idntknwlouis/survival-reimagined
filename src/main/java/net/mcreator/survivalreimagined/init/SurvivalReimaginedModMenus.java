@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.init;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 
+import net.mcreator.survivalreimagined.util.BackpackMenuData;
 import net.mcreator.survivalreimagined.world.inventory.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
@@ -13,6 +14,7 @@ import net.minecraft.world.inventory.MenuType;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.util.RegistryEntry;
+import net.minecraft.world.item.ItemStack;
 
 import java.awt.*;
 
@@ -58,6 +60,18 @@ public final class SurvivalReimaginedModMenus {
 	public static final RegistryEntry<MenuType<TanningBarrelGUIMenu>> TANNING_BARREL_GUI = register(
 			"tanning_barrel_gui",
 			new ExtendedScreenHandlerType<>(TanningBarrelGUIMenu::new, BlockPos.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<BackpackGUI1Menu>> BACKPACK_GUI_1 = register(
+			"backpack_gui_1",
+			new ExtendedScreenHandlerType<>(BackpackGUI1Menu::new, BackpackMenuData.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<BackpackGUI2Menu>> BACKPACK_GUI_2 = register(
+			"backpack_gui_2",
+			new ExtendedScreenHandlerType<>(BackpackGUI2Menu::new, BackpackMenuData.STREAM_CODEC)
+	);
+	public static final RegistryEntry<MenuType<BackpackGUI3Menu>> BACKPACK_GUI_3 = register(
+			"backpack_gui_3",
+			new ExtendedScreenHandlerType<>(BackpackGUI3Menu::new, BackpackMenuData.STREAM_CODEC)
 	);
 
 	private SurvivalReimaginedModMenus() {

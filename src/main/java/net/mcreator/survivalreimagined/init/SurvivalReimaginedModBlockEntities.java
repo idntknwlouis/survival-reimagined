@@ -101,6 +101,14 @@ public final class SurvivalReimaginedModBlockEntities {
                     SurvivalReimaginedModBlocks.DRYING_RACK.get()
                     ).build(null)
     );
+    public static final RegistryEntry<BlockEntityType<BerryPlantBlockEntity>> BERRY_PLANT = register(
+            "berry_plant",
+            BlockEntityType.Builder.of(
+                    BerryPlantBlockEntity::new,
+                    SurvivalReimaginedModBlocks.STRAWBERRY_PLANT.get(),
+                    SurvivalReimaginedModBlocks.RASPBERRY_PLANT.get()
+            ).build(null)
+    );
     public static final RegistryEntry<BlockEntityType<TanningBarrelBlockEntity>> TANNING_BARREL = register(
             "tanning_barrel",
             BlockEntityType.Builder.of(TanningBarrelBlockEntity::new, SurvivalReimaginedModBlocks.TANNING_BARREL.get()).build(null)

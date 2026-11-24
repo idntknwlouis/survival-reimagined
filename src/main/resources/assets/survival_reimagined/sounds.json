@@ -771,5 +771,313 @@
         "stream": false
       }
     ]
+  },
+  "stone_metal_ore/break": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_stone_ore_place1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_place2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_place3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_place4",
+        "stream": false
+      }
+    ]
+  },
+  "stone_metal_ore/step": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_stone_ore_step1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_step2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_step3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_step4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_step5",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_stone_ore_step6",
+        "stream": false
+      }
+    ]
+  },
+  "deepslate_metal_ore/step": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_step1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_step2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_step3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_step4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_step5",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_step6",
+        "stream": false
+      }
+    ]
+  },
+  "deepslate_metal_ore/place": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_place1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_place2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_place3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_place4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_place5",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_place6",
+        "stream": false
+      }
+    ]
+  },
+  "deepslate_metal_ore/break": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_break1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_break2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_break3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_deepslate_ore_break4",
+        "stream": false
+      }
+    ]
+  },
+  "basalt_metal_ore/break": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_basalt_ore_break1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_break2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_break3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_break4",
+        "stream": false
+      }
+    ]
+  },
+  "basalt_metal_ore/step": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:metal_basalt_ore_step1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_step2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_step3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_step4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_step5",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:metal_basalt_ore_step5",
+        "stream": false
+      }
+    ]
+  },
+  "stone_gem_ore/break": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:stone_gem_ore_break1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:stone_gem_ore_break2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:stone_gem_ore_break3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:stone_gem_ore_break4",
+        "stream": false
+      }
+    ]
+  },
+  "stone_gem_ore/place": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:stone_gem_ore_place1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:stone_gem_ore_place2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:stone_gem_ore_place3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:stone_gem_ore_place4",
+        "stream": false
+      }
+    ]
+  },
+  "deepslate_gem_ore/break": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_break1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_break2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_break3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_break4",
+        "stream": false
+      }
+    ]
+  },
+  "deepslate_gem_ore/place": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_place1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_place2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_place3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_place4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_place5",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:deepslate_gem_ore_place6",
+        "stream": false
+      }
+    ]
+  },
+  "basalt_gem_ore/break": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:basalt_gem_ore_break1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_break2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_break3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_break4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_break5",
+        "stream": false
+      }
+    ]
+  },
+  "basalt_gem_ore/place": {
+    "sounds": [
+      {
+        "name": "survival_reimagined:basalt_gem_ore_place1",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_place2",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_place3",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_place4",
+        "stream": false
+      },
+      {
+        "name": "survival_reimagined:basalt_gem_ore_place5",
+        "stream": false
+      }
+    ]
   }
 }

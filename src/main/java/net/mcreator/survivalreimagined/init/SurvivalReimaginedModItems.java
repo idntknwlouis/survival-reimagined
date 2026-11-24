@@ -800,6 +800,10 @@ public final class SurvivalReimaginedModItems {
 	public static final Item RADIATED_BOAT = registerBoat("radiated_boat", new BoatItem(SurvivalReimaginedModBoatTypes.RADIATED_BOAT, new Item.Properties().stacksTo(1)));
 	public static final Item MANDARIN_BOAT = registerBoat("mandarin_boat", new BoatItem(SurvivalReimaginedModBoatTypes.MANDARIN_BOAT, new Item.Properties().stacksTo(1)));
 
+	public static final RegistryEntry<Item> BACKPACK_T1 = register("backpack_t1", BackpackT1::new);
+	public static final RegistryEntry<Item> BACKPACK_T2 = register("backpack_t2", BackpackT2::new);
+	public static final RegistryEntry<Item> BACKPACK_T3 = register("backpack_t3", BackpackT3::new);
+
 
 
 

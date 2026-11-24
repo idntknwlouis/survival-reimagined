@@ -3,6 +3,7 @@ package net.mcreator.survivalreimagined.network;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.loader.api.FabricLoader;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModItems;
 import net.minecraft.world.item.Items;
 
 public class DynamicLightClientHandler {
@@ -21,10 +22,12 @@ public class DynamicLightClientHandler {
                     || client.player.getMainHandItem().is(Items.SOUL_TORCH)
                     || client.player.getMainHandItem().is(Items.LANTERN)
                     || client.player.getMainHandItem().is(Items.SOUL_LANTERN)
+                    || client.player.getMainHandItem().is(SurvivalReimaginedModItems.LIT_CRUDE_TORCH.get())
                     || client.player.getOffhandItem().is(Items.TORCH)
                     || client.player.getOffhandItem().is(Items.SOUL_TORCH)
                     || client.player.getOffhandItem().is(Items.LANTERN)
-                    || client.player.getOffhandItem().is(Items.SOUL_LANTERN);
+                    || client.player.getOffhandItem().is(Items.SOUL_LANTERN)
+                    || client.player.getOffhandItem().is(SurvivalReimaginedModItems.LIT_CRUDE_TORCH.get());
 
             boolean exemption = dynamicLightsLoaded && holdingLightSource;
 

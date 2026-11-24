@@ -18,5 +18,8 @@ public final class SurvivalReimaginedModScreens {
 		MenuScreens.register(SurvivalReimaginedModMenus.AAF_SCRIPTURE_GUI.get(), AAFScriptureGUIScreen::new);
 		MenuScreens.register(SurvivalReimaginedModMenus.DRYING_RACK_GUI.get(), DryingRackGUIScreen::new);
 		MenuScreens.register(SurvivalReimaginedModMenus.TANNING_BARREL_GUI.get(), TanningBarrelGUIScreen::new);
+		MenuScreens.register(SurvivalReimaginedModMenus.BACKPACK_GUI_1.get(), BackpackGUI1Screen::new);
+		MenuScreens.register(SurvivalReimaginedModMenus.BACKPACK_GUI_2.get(), BackpackGUI2Screen::new);
+		MenuScreens.register(SurvivalReimaginedModMenus.BACKPACK_GUI_3.get(), BackpackGUI3Screen::new);
 	}
 }

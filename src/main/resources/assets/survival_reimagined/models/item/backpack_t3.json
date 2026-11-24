@@ -1,0 +1,6 @@
+{
+  "parent": "survival_reimagined:custom/backpack_3",
+  "textures": {
+    "particle": "survival_reimagined:item/backpack"
+  }
+}

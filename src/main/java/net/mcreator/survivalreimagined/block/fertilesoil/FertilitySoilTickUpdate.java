@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.Optional;
 
@@ -26,31 +27,16 @@ import java.util.Optional;
 public class FertilitySoilTickUpdate {
     public static void execute(LevelAccessor world, BlockPos currentPos, BlockState blockState) {
 
-        boolean hasWater =
-                   (world.getFluidState(currentPos.offset(0, 0, -2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(0, 0, -1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(0, 0, 1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(0, 0, 2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(2, 0, -2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(2, 0, -1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(2, 0, 0)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(2, 0, 1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(2, 0, 2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(1, 0, -2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(1, 0, -1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(1, 0, 0)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(1, 0, 1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(1, 0, 2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-1, 0, -2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-1, 0, -1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-1, 0, 0)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-1, 0, 1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-1, 0, 2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-2, 0, -2)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-2, 0, -1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-2, 0, 0)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-2, 0, 1)).createLegacyBlock()).getBlock() == Blocks.WATER
-                || (world.getFluidState(currentPos.offset(-2, 0, 2)).createLegacyBlock()).getBlock() == Blocks.WATER;
+        boolean hasWater = false;
+        int radius = 5;
+
+        for (int x = -radius; x <= radius && !hasWater; x++) {
+            for (int z = -radius; z <= radius && !hasWater; z++) {
+                BlockPos checkPos = currentPos.offset(x,0,z);
+
+                if (world.getFluidState(checkPos).isSourceOfType(Fluids.WATER)) hasWater = true;
+            }
+        }
 
         if (hasWater) {
             int currentMoisture = blockState.getOptionalValue(BlockStateProperties.MOISTURE).orElse(-1);

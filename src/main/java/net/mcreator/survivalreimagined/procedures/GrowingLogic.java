@@ -42,22 +42,25 @@ public class GrowingLogic {
 
         BlockPos pos = BlockPos.containing(x, y, z);
         boolean hasSereneSeasons = FabricLoader.getInstance().isModLoaded("sereneseasons");
+        boolean isBerryBush = blockState.is(BERRY_BUSH);
         double maxClock = 200;
+
 
         if (hasSereneSeasons) {
             String currentSeason = GetCurrentSeason.execute(world);
-            maxClock = 800;
+            maxClock = 400;
 
             if ("Spring".equals(currentSeason) && blockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("sereneseasons:spring_crops")))) {
-                maxClock = 100;
+                maxClock = 200;
             } else if ("Summer".equals(currentSeason) && blockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("sereneseasons:summer_crops")))) {
-                maxClock = 100;
+                maxClock = 200;
             } else if ("Autumn".equals(currentSeason) && blockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("sereneseasons:autumn_crops")))) {
-                maxClock = 100;
+                maxClock = 200;
             } else if ("Winter".equals(currentSeason) && blockState.is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("sereneseasons:winter_crops")))) {
-                maxClock = 100;
+                maxClock = 200;
             }
         }
+
 
         boolean isFruitOrBush = blockState.is(FRUIT_OF_TREE)
                 || blockState.is(BERRY_BUSH)

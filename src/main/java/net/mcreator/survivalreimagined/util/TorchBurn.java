@@ -23,7 +23,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TorchBurn {
-    private static final int BURN_INTERVAL = 20;
+    private static final int BURN_INTERVAL = 120;
     private static final int MAX_BURN = 2000;
     private static final int BURN_PER_INTERVAL = 1;
     private static final TagKey<Block> WOODEN_CONTAINERS = TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", "wooden_containers"));

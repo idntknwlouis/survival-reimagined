@@ -21,8 +21,8 @@ public class ForgedToolHead {
         if (player instanceof ServerPlayer serverPlayer) {
             if (player.containerMenu instanceof ForgeGUIMenu) {
                 checkInventoryTag(serverPlayer, "c:tool_part/bronze", "survival_reimagined:forged_bronze");
-                checkInventoryTag(serverPlayer, "c:tool_part/steel", "survival_reimagined:forged_bronze");
-                checkInventoryTag(serverPlayer, "c:tool_part/diamond", "survival_reimagined:forged_bronze");
+                checkInventoryTag(serverPlayer, "c:tool_part/steel", "survival_reimagined:forged_steel");
+                checkInventoryTag(serverPlayer, "c:tool_part/diamond", "survival_reimagined:forged_plated_diamond");
             }
             if (player.containerMenu instanceof MPTGUIMenu) {
                 checkInventoryTag(serverPlayer, "c:processed_item",  "survival_reimagined:mineral_processed");

@@ -9,7 +9,9 @@ import net.minecraft.server.level.ServerPlayer;
 public class ProgressionStart {
     public static void register() {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
-            execute(handler.player);
+            server.execute(() -> {
+                execute(handler.player);
+            });
         });
     }
 

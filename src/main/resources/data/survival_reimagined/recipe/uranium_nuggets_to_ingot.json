@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "survival_reimagined:uranium_nuggets"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:rough_uranium",
+    "count": 1
+  }
+}

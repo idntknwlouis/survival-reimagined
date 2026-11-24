@@ -162,14 +162,21 @@ public class SimpleAgeCropBlock extends BushBlock implements BonemealableBlock, 
         return this.farmlandOnly ? new CropGrowthBlockEntity(pos, state) : null;
     }
 
-    @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        if (!this.farmlandOnly || level.isClientSide() || type != SurvivalReimaginedModBlockEntities.CROP_GROWTH.get()) {
-            return null;
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+        if (oldState.getBlock() != this) {
+            level.scheduleTick(pos, this, 20);
         }
-        return (world, pos, currentState, blockEntity) ->
-                GrowingLogic.execute(world, pos.getX(), pos.getY(), pos.getZ(), currentState);
+    }
+
+    @Override
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource source) {
+        GrowingLogic.execute(level, pos.getX(), pos.getY(), pos.getZ(), state);
+
+        if (level.getBlockState(pos).getBlock() == this) {
+            level.scheduleTick(pos, this, 20);
+        }
     }
 
     @Override

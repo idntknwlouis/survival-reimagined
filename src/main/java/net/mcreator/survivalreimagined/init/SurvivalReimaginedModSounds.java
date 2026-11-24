@@ -1,5 +1,6 @@
 package net.mcreator.survivalreimagined.init;
 
+import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
@@ -59,6 +60,19 @@ public final class SurvivalReimaginedModSounds {
 	public static final RegistryEntry<SoundEvent> SQUEAL_PIGLET = register("squeal/piglet");
 	public static final RegistryEntry<SoundEvent> BARREL_SEAL = register("barrel/seal");
 	public static final RegistryEntry<SoundEvent> MILLSTONE = register("millstone");
+	public static final RegistryEntry<SoundEvent> STONE_METAL_ORE_PLACE_BREAK = register("stone_metal_ore/break");
+	public static final RegistryEntry<SoundEvent> STONE_METAL_ORE_STEP_HIT = register("stone_metal_ore/step");
+	public static final RegistryEntry<SoundEvent> DEEPSLATE_METAL_ORE_PLACE = register("deepslate_metal_ore/place");
+	public static final RegistryEntry<SoundEvent> DEEPSLATE_METAL_ORE_BREAK = register("deepslate_metal_ore/break");
+	public static final RegistryEntry<SoundEvent> DEEPSLATE_METAL_ORE_STEP_HIT = register("deepslate_metal_ore/step");
+	public static final RegistryEntry<SoundEvent> BASALT_METAL_ORE_PLACE_BREAK = register("basalt_metal_ore/break");
+	public static final RegistryEntry<SoundEvent> BASALT_METAL_ORE_STEP_HIT = register("basalt_metal_ore/step");
+	public static final RegistryEntry<SoundEvent> STONE_GEM_ORE_BREAK = register("stone_gem_ore/break");
+	public static final RegistryEntry<SoundEvent> STONE_GEM_ORE_PLACE = register("stone_gem_ore/place");
+	public static final RegistryEntry<SoundEvent> DEEPSLATE_GEM_ORE_BREAK = register("deepslate_gem_ore/break");
+	public static final RegistryEntry<SoundEvent> DEEPSLATE_GEM_ORE_PLACE = register("deepslate_gem_ore/place");
+	public static final RegistryEntry<SoundEvent> BASALT_GEM_ORE_BREAK = register("basalt_gem_ore/break");
+	public static final RegistryEntry<SoundEvent> BASALT_GEM_ORE_PLACE = register("basalt_gem_ore/place");
 
 	private SurvivalReimaginedModSounds() {
 	}
