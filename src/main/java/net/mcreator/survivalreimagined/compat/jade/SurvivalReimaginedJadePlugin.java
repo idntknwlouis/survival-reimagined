@@ -10,6 +10,7 @@ import net.mcreator.survivalreimagined.block.MillstoneBlock;
 import net.mcreator.survivalreimagined.block.DryingRack;
 import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
 import net.mcreator.survivalreimagined.block.TanningBarrel;
+import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlock;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
@@ -18,6 +19,7 @@ import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.DryingRackBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.TanningBarrelBlockEntity;
+import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -48,6 +50,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
 		registration.registerBlockDataProvider(TanningBarrelJadeProvider.INSTANCE, TanningBarrelBlockEntity.class);
 		registration.registerBlockDataProvider(CampfireJadeProvider.INSTANCE, CampfireBlockEntity.class);
+		registration.registerBlockDataProvider(SoilNutrientsJadeProvider.INSTANCE, FertilitySoilBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 		// Override Jade's generic container item listing for the MPT; its custom
@@ -73,6 +76,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlock.class);
 		registration.registerBlockComponent(TanningBarrelJadeProvider.INSTANCE, TanningBarrel.class);
 		registration.registerBlockComponent(CampfireJadeProvider.INSTANCE, CampfireBlock.class);
+		registration.registerBlockComponent(SoilNutrientsJadeProvider.INSTANCE, FertilitySoilBlock.class);
 		registration.registerItemStorageClient(ForgeInventoryJadeProvider.INSTANCE);
 	}
 }
