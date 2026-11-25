@@ -39,8 +39,11 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         }
 
         IElementHelper helper = IElementHelper.get();
+        float fluidProgress = Math.max(0.0F, Math.min(1.0F, data.fluid() / 6000.0F));
         tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.fluid",
                 data.fluid(), 6000));
+        tooltip.append(helper.spacer(4, 0));
+        tooltip.append(helper.progress(fluidProgress));
 
         Component stageText = switch (data.stage()) {
             case WATER -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage.water");
@@ -53,12 +56,20 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         if (data.stage() != IDLE) {
             int duration = data.stage() == WATER ? 24000 : 72000;
             float progress = Math.max(0.0F, Math.min(1.0F, (float) data.clock() / duration));
+            tooltip.append(helper.progress(progress));
+            tooltip.append(helper.spacer(4, 0));
             tooltip.add(Component.literal(Math.round(progress * 100.0F) + "%"));
         }
 
+        boolean hasItems = false;
         for (ItemStack stack : data.inventory()) {
             if (!stack.isEmpty()) {
-                tooltip.add(helper.item(stack));
+                if (!hasItems) {
+                    tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.contents"));
+                    hasItems = true;
+                }
+                tooltip.append(helper.item(stack));
+                tooltip.append(helper.spacer(2, 0));
             }
         }
 
