@@ -4,12 +4,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
+import net.mcreator.survivalreimagined.block.CampfireBlock;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
 import net.mcreator.survivalreimagined.block.MillstoneBlock;
 import net.mcreator.survivalreimagined.block.DryingRack;
 import net.mcreator.survivalreimagined.block.MetalRefiningTableBlock;
 import net.mcreator.survivalreimagined.block.TanningBarrel;
 import net.mcreator.survivalreimagined.block.entity.AdvancedAlloyForgeBlockEntity;
+import net.mcreator.survivalreimagined.block.entity.CampfireBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.ForgeBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
@@ -33,6 +35,8 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 			SurvivalReimaginedMod.MODID, "millstone_progress");
 	public static final ResourceLocation DRYING_RACK_PROGRESS = ResourceLocation.fromNamespaceAndPath(
 			SurvivalReimaginedMod.MODID, "drying_rack_progress");
+	public static final ResourceLocation CAMPFIRE_PROGRESS = ResourceLocation.fromNamespaceAndPath(
+			SurvivalReimaginedMod.MODID, "campfire_progress");
 
 	@Override
 	public void register(IWailaCommonRegistration registration) {
@@ -43,6 +47,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(DryingRackJadeProvider.INSTANCE, DryingRackBlockEntity.class);
 		registration.registerBlockDataProvider(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
 		registration.registerBlockDataProvider(TanningBarrelJadeProvider.INSTANCE, TanningBarrelBlockEntity.class);
+		registration.registerBlockDataProvider(CampfireJadeProvider.INSTANCE, CampfireBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, ForgeBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, AdvancedAlloyForgeBlockEntity.class);
 		// Override Jade's generic container item listing for the MPT; its custom
@@ -53,6 +58,8 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, DryingRackBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, TanningBarrelBlockEntity.class);
+		// The campfire component displays its fuel and cooking slots itself.
+		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, CampfireBlockEntity.class);
 	}
 
 	@Override
@@ -65,6 +72,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(DryingRackJadeProvider.INSTANCE, DryingRack.class);
 		registration.registerBlockComponent(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlock.class);
 		registration.registerBlockComponent(TanningBarrelJadeProvider.INSTANCE, TanningBarrel.class);
+		registration.registerBlockComponent(CampfireJadeProvider.INSTANCE, CampfireBlock.class);
 		registration.registerItemStorageClient(ForgeInventoryJadeProvider.INSTANCE);
 	}
 }
