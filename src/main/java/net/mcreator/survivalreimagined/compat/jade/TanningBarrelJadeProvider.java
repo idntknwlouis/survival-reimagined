@@ -11,6 +11,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.block.TanningBarrel;
 import net.mcreator.survivalreimagined.block.entity.TanningBarrelBlockEntity;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
@@ -40,28 +41,25 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
 
         IElementHelper helper = IElementHelper.get();
 
-        // Fluid amount and tank fill are presented together on one compact row.
-        float fluidProgress = Math.max(0.0F, Math.min(1.0F, data.fluid() / 6000.0F));
         tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.fluid",
                 data.fluid(), 6000));
-        tooltip.append(helper.spacer(4, 0));
-        tooltip.append(helper.progress(fluidProgress));
 
-        Component stageText = switch (data.stage()) {
-            case WATER -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage.water");
-            case LIME -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage.lime");
-            case TANNIN -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage.tannin");
-            default -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage.idle");
+        Component treatment = switch (data.stage()) {
+            case WATER -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.treatment.water");
+            case LIME -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.treatment.lime");
+            case TANNIN -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.treatment.tannin");
+            default -> Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.treatment.idle");
         };
-        tooltip.add(stageText);
 
-        // Keep the treatment progress and its percentage together, on the stage row.
-        if (data.stage() != IDLE) {
+        if (data.stage() == IDLE) {
+            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage",
+                    treatment));
+        } else {
             int duration = data.stage() == WATER ? 24000 : 72000;
             float progress = Math.max(0.0F, Math.min(1.0F, (float) data.clock() / duration));
-            tooltip.append(helper.progress(progress));
-            tooltip.append(helper.spacer(4, 0));
-            tooltip.append(helper.text(Component.literal(Math.round(progress * 100.0F) + "%")));
+            Component percentage = Component.literal(Math.round(progress * 100.0F) + "%");
+            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.stage_progress",
+                    treatment, percentage));
         }
 
         boolean hasItems = false;
@@ -76,7 +74,9 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
             }
         }
 
-        if (data.canSeal()) {
+        // The barrel's OPENED state becomes false when sealed. The handler may
+        // recalculate CanSeal while sealed, so gate the label with OPENED as well.
+        if (data.canSeal() && data.opened()) {
             tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.ready_to_seal"));
         }
     }
@@ -100,11 +100,13 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
             inventory.add(barrel.getItem(slot).copy());
         }
 
+        boolean opened = barrel.getBlockState().getValue(TanningBarrel.OPENED);
         return new Data(inventory,
                 Math.max(0, Math.min(6000, (int) customData.getDouble("Fluid"))),
                 Math.max(0, (int) customData.getDouble("BarrelClock")),
                 stage,
-                customData.getBoolean("CanSeal"));
+                customData.getBoolean("CanSeal"),
+                opened);
     }
 
     @Override
@@ -117,13 +119,14 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         return ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "tanning_barrel");
     }
 
-    public record Data(List<ItemStack> inventory, int fluid, int clock, int stage, boolean canSeal) {
+    public record Data(List<ItemStack> inventory, int fluid, int clock, int stage, boolean canSeal, boolean opened) {
         public static final StreamCodec<RegistryFriendlyByteBuf, Data> STREAM_CODEC = StreamCodec.composite(
                 ItemStack.OPTIONAL_LIST_STREAM_CODEC, Data::inventory,
                 ByteBufCodecs.VAR_INT, Data::fluid,
                 ByteBufCodecs.VAR_INT, Data::clock,
                 ByteBufCodecs.VAR_INT, Data::stage,
                 ByteBufCodecs.BOOL, Data::canSeal,
+                ByteBufCodecs.BOOL, Data::opened,
                 Data::new);
     }
 }
