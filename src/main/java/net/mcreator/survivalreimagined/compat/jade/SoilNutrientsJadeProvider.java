@@ -4,6 +4,8 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
 import net.minecraft.resources.ResourceLocation;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
@@ -20,12 +22,12 @@ public enum SoilNutrientsJadeProvider implements IBlockComponentProvider,
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
-        if (!SurvivalReimaginedModConfig.VALUES.jade_soil_nutrients
-                || !shouldShowNutrients(accessor, decodeFromData(accessor).orElse(null))) {
+        if (!SurvivalReimaginedModConfig.VALUES.jade_soil_nutrients) {
             return;
         }
 
         Data data = decodeFromData(accessor).orElse(null);
+        if (!shouldShowNutrients(accessor, data)) return;
         if (data == null) return;
 
         tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.soil_nutrients",
@@ -42,7 +44,8 @@ public enum SoilNutrientsJadeProvider implements IBlockComponentProvider,
     @Override
     public Data streamData(BlockAccessor accessor) {
         FertilitySoilBlockEntity soil = (FertilitySoilBlockEntity) accessor.getBlockEntity();
-        boolean hasCrop = !accessor.getLevel().getBlockState(accessor.getPosition().above()).isAir();
+        boolean hasCrop = accessor.getLevel().getBlockState(accessor.getPosition().above())
+                .is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("minecraft:maintains_farmland")));
         return new Data(
                 soil.getPersistentData().getDouble("N"),
                 soil.getPersistentData().getDouble("P"),
