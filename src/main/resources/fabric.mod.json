@@ -32,7 +32,8 @@
     "minecraft": "1.21.1",
     "java": ">=21",
     "fabric-api": "*",
-    "terrablender": ">=4.1.0"
+    "terrablender": ">=4.1.0",
+    "yet_another_config_lib_v3": "*"
   },
   "suggests": {
     "sereneseasons": "*",
