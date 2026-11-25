@@ -1303,5 +1303,7 @@
   "tooltip.survival_reimagined.jade.tanning_barrel.treatment.tannin": "Tannin treatment",
   "config.jade.plugin_survival_reimagined.campfire_progress": "Campfire cooking",
   "tooltip.survival_reimagined.jade.campfire.fuel": "Fuel:",
-  "tooltip.survival_reimagined.jade.campfire.cooking": "Cooking:"
+  "tooltip.survival_reimagined.jade.campfire.cooking": "Cooking:",
+  "config.jade.plugin_survival_reimagined.soil_nutrients": "Soil nutrient information",
+  "tooltip.survival_reimagined.jade.soil_nutrients": "N: %1$s%  P: %2$s%  K: %3$s%"
 }
