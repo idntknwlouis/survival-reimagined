@@ -4,12 +4,15 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.TagKey;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
+import net.mcreator.survivalreimagined.block.SimpleAgeCropBlock;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
@@ -22,32 +25,36 @@ public enum SoilNutrientsJadeProvider implements IBlockComponentProvider,
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
-        if (!SurvivalReimaginedModConfig.VALUES.jade_soil_nutrients) {
+        if (!SurvivalReimaginedModConfig.VALUES.jade_soil_nutrients) return;
+
+        Data data = decodeFromData(accessor).orElse(null);
+        if (data == null || (data.hasCrop()
+                && (accessor.getPlayer() == null || !accessor.getPlayer().isShiftKeyDown()))) {
             return;
         }
 
-        Data data = decodeFromData(accessor).orElse(null);
-        if (!shouldShowNutrients(accessor, data)) return;
-        if (data == null) return;
-
-        // Build this line directly so the formatted values are never shown as
-        // literal %1$s placeholders by the tooltip translation parser.
         tooltip.add(Component.literal("N: " + Math.round(data.nitrogen()) + "%  P: "
                 + Math.round(data.phosphorus()) + "%  K: " + Math.round(data.potassium()) + "%"));
     }
 
-    private static boolean shouldShowNutrients(BlockAccessor accessor, Data data) {
-        if (data == null) return false;
-        // Unplanted soil always shows its nutrient values. Once a crop is planted,
-        // require sneaking so the information does not clutter the normal crop tooltip.
-        return !data.hasCrop() || (accessor.getPlayer() != null && accessor.getPlayer().isShiftKeyDown());
-    }
-
     @Override
     public Data streamData(BlockAccessor accessor) {
-        FertilitySoilBlockEntity soil = (FertilitySoilBlockEntity) accessor.getBlockEntity();
-        boolean hasCrop = accessor.getLevel().getBlockState(accessor.getPosition().above())
-                .is(TagKey.create(Registries.BLOCK, ResourceLocation.parse("minecraft:maintains_farmland")));
+        BlockPos targetPos = accessor.getPosition();
+        BlockState targetState = accessor.getBlockState();
+
+        // When Jade is looking at a crop, read the fertility soil directly below it.
+        if (!(targetState.getBlock() instanceof net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlock)) {
+            targetPos = targetPos.below();
+        }
+
+        BlockEntity blockEntity = accessor.getLevel().getBlockEntity(targetPos);
+        if (!(blockEntity instanceof FertilitySoilBlockEntity soil)) {
+            return new Data(0, 0, 0, false);
+        }
+
+        boolean hasCrop = accessor.getLevel().getBlockState(targetPos.above()).getBlock() instanceof SimpleAgeCropBlock
+                || accessor.getLevel().getBlockState(targetPos.above()).getBlock() instanceof CropBlock;
+
         return new Data(
                 soil.getPersistentData().getDouble("N"),
                 soil.getPersistentData().getDouble("P"),
