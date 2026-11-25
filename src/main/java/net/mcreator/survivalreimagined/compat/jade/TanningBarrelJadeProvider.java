@@ -39,6 +39,8 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         }
 
         IElementHelper helper = IElementHelper.get();
+
+        // Fluid amount and tank fill are presented together on one compact row.
         float fluidProgress = Math.max(0.0F, Math.min(1.0F, data.fluid() / 6000.0F));
         tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.tanning_barrel.fluid",
                 data.fluid(), 6000));
@@ -53,12 +55,13 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
         };
         tooltip.add(stageText);
 
+        // Keep the treatment progress and its percentage together, on the stage row.
         if (data.stage() != IDLE) {
             int duration = data.stage() == WATER ? 24000 : 72000;
             float progress = Math.max(0.0F, Math.min(1.0F, (float) data.clock() / duration));
             tooltip.append(helper.progress(progress));
             tooltip.append(helper.spacer(4, 0));
-            tooltip.add(Component.literal(Math.round(progress * 100.0F) + "%"));
+            tooltip.append(helper.text(Component.literal(Math.round(progress * 100.0F) + "%")));
         }
 
         boolean hasItems = false;
