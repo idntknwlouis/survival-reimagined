@@ -1295,8 +1295,7 @@
   "tooltip.survival_reimagined.jade.tanning_barrel.ready_to_seal": "Ready to seal",
   "tooltip.survival_reimagined.jade.drying_rack.slot": "Slot %1$s",
   "tooltip.survival_reimagined.jade.drying_rack.ready": "Ready",
-  "tooltip.survival_reimagined.jade.tanning_barrel.contents": "Contents:"
-  "tooltip.survival_reimagined.jade.tanning_barrel.ready_to_seal": "Ready to seal"
+  "tooltip.survival_reimagined.jade.tanning_barrel.contents": "Contents:",
   "item.survival_reimagined.obsidian_rock": "Obsidian Rock",
   "item.survival_reimagined.backpack_t1": "Backpack",
   "item.survival_reimagined.backpack_t2": "Backpack",
