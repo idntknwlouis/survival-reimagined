@@ -44,12 +44,11 @@ public enum CampfireJadeProvider implements IBlockComponentProvider,
                 hasFood = true;
             }
 
-            tooltip.append(helper.item(stack));
+            tooltip.add(helper.item(stack));
             CompoundTag customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
             int stageProgress = Math.max(0, Math.min(30, (int) customData.getDouble("PercentageNumber")));
             tooltip.append(helper.spacer(4, 0));
             tooltip.append(helper.text(Component.literal(Math.round(stageProgress / 30.0F * 100.0F) + "%")));
-            tooltip.add(Component.empty());
         }
     }
 
