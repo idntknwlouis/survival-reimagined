@@ -36,11 +36,11 @@ public enum DryingRackJadeProvider implements IBlockComponentProvider,
     private void appendSlot(ITooltip tooltip, IElementHelper helper, ItemStack stack, float progress) {
         if (stack.isEmpty()) return;
 
-        // Give each occupied rack slot its own row, with its percentage beside the item.
+        // Give each occupied rack slot its own row, with its percentage aligned farther right.
         if (stack.is(SurvivalReimaginedModItems.HIDE.get())) {
             float clampedProgress = Math.max(0.0F, Math.min(1.0F, progress));
             tooltip.add(helper.item(stack));
-            tooltip.append(helper.spacer(4, 0));
+            tooltip.append(helper.spacer(78, 0));
             tooltip.append(helper.text(Component.literal(Math.round(clampedProgress * 100.0F) + "%"))
                     .translate(new Vec2(0, 4)));
         } else {
