@@ -30,8 +30,10 @@ public enum SoilNutrientsJadeProvider implements IBlockComponentProvider,
         if (!shouldShowNutrients(accessor, data)) return;
         if (data == null) return;
 
-        tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.soil_nutrients",
-                Math.round(data.nitrogen()), Math.round(data.phosphorus()), Math.round(data.potassium())));
+        // Build this line directly so the formatted values are never shown as
+        // literal %1$s placeholders by the tooltip translation parser.
+        tooltip.add(Component.literal("N: " + Math.round(data.nitrogen()) + "%  P: "
+                + Math.round(data.phosphorus()) + "%  K: " + Math.round(data.potassium()) + "%"));
     }
 
     private static boolean shouldShowNutrients(BlockAccessor accessor, Data data) {
