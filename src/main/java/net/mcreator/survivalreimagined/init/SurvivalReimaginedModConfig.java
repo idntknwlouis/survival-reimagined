@@ -64,6 +64,7 @@ public class SurvivalReimaginedModConfig {
 
         // Jade machine tooltip details
         public boolean jade_machine_details_require_sneak = true;
+       public boolean jade_soil_nutrients = true;
     }
 
     public static void load() {
