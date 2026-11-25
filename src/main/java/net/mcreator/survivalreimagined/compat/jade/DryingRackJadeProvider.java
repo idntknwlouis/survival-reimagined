@@ -28,30 +28,19 @@ public enum DryingRackJadeProvider implements IBlockComponentProvider,
         Data data = decodeFromData(accessor).orElse(null);
         if (data == null) return;
         IElementHelper helper = IElementHelper.get();
-        appendSlot(tooltip, helper, 0, data.slot0(), data.progress0());
-        appendSlot(tooltip, helper, 1, data.slot1(), data.progress1());
+        appendSlot(tooltip, helper, data.slot0(), data.progress0());
+        appendSlot(tooltip, helper, data.slot1(), data.progress1());
     }
 
-    private void appendSlot(ITooltip tooltip, IElementHelper helper, int slot, ItemStack stack, float progress) {
+    private void appendSlot(ITooltip tooltip, IElementHelper helper, ItemStack stack, float progress) {
         if (stack.isEmpty()) return;
-        tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.drying_rack.slot", slot + 1));
+
+        // Keep the rack display compact: show the item being dried and its percentage only.
         tooltip.append(helper.item(stack));
         if (stack.is(SurvivalReimaginedModItems.HIDE.get())) {
-            ItemStack result = new ItemStack(SurvivalReimaginedModItems.DRIED_HIDE.get(), stack.getCount());
             float clampedProgress = Math.max(0.0F, Math.min(1.0F, progress));
-            tooltip.append(helper.spacer(4, 0));
-            tooltip.append(helper.progress(clampedProgress));
-            tooltip.append(helper.spacer(4, 0));
-            tooltip.append(helper.item(result));
-
-            // Add the percentage in the value column so it sits beneath the progress arrow,
-            // rather than starting at the far left of the tooltip.
             tooltip.add(Component.empty());
             tooltip.append(helper.text(Component.literal(Math.round(clampedProgress * 100.0F) + "%")));
-
-            if (clampedProgress >= 1.0F) {
-                tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.drying_rack.ready"));
-            }
         }
     }
 
