@@ -43,7 +43,12 @@ public enum DryingRackJadeProvider implements IBlockComponentProvider,
             tooltip.append(helper.progress(clampedProgress));
             tooltip.append(helper.spacer(4, 0));
             tooltip.append(helper.item(result));
-            tooltip.add(Component.literal(Math.round(clampedProgress * 100.0F) + "%"));
+
+            // Add the percentage in the value column so it sits beneath the progress arrow,
+            // rather than starting at the far left of the tooltip.
+            tooltip.add(Component.empty());
+            tooltip.append(helper.text(Component.literal(Math.round(clampedProgress * 100.0F) + "%")));
+
             if (clampedProgress >= 1.0F) {
                 tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.drying_rack.ready"));
             }
