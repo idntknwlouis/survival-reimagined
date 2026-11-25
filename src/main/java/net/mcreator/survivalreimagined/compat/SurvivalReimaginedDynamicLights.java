@@ -12,5 +12,8 @@ public class SurvivalReimaginedDynamicLights implements DynamicLightsInitializer
         itemLightSourceManager.onRegisterEvent().register(context -> {
             context.register(SurvivalReimaginedModItems.CRUDE_TORCH.get(), 0);
         });
+        itemLightSourceManager.onRegisterEvent().register(context -> {
+            context.register(SurvivalReimaginedModItems.LIT_CRUDE_TORCH.get(), 14);
+        });
     }
 }

@@ -14,7 +14,10 @@
     "RockTypeMixin",
     "CropBlockMixin",
     "StemBlockMixin",
-    "SkyRotationMixin"
+    "SkyRotationMixin",
+    "ItemTickRenderer",
+    "BlockSoundOverride",
+    "CopyItemData"
   ],
   "client": [],
   "injectors": {

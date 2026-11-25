@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aca",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:leather"
+    },
+    "b": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "survival_reimagined:backpack_t1"
+    }
+  },
+  "result": {
+    "id": "survival_reimagined:backpack_t2",
+    "count": 1
+  }
+}

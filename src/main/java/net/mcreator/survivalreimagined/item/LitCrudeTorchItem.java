@@ -40,7 +40,7 @@ public class LitCrudeTorchItem extends BlockItem {
         super.inventoryTick(itemStack, world, entity, slot, selected);
 
         if (world.isClientSide()) return;
-        if (world.getGameTime() % 20 != 0) return;
+        if (world.getGameTime() % 120 != 0) return;
         if (!(entity instanceof Player player)) return;
 
         CompoundTag tag = itemStack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();

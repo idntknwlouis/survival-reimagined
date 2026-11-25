@@ -1293,4 +1293,8 @@
   "tooltip.survival_reimagined.jade.tanning_barrel.stage.lime": "Stage: Lime treatment",
   "tooltip.survival_reimagined.jade.tanning_barrel.stage.tannin": "Stage: Tannin treatment",
   "tooltip.survival_reimagined.jade.tanning_barrel.ready_to_seal": "Ready to seal"
+  "item.survival_reimagined.obsidian_rock": "Obsidian Rock",
+  "item.survival_reimagined.backpack_t1": "Backpack",
+  "item.survival_reimagined.backpack_t2": "Backpack",
+  "item.survival_reimagined.backpack_t3": "Backpack"
 }

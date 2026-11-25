@@ -26,7 +26,7 @@ public final class CropDrops {
 
 	private static void handleHarvest(ServerLevel level, BlockPos pos, BlockState state) {
 		Block block = state.getBlock();
-		int age = state.hasProperty(SimpleAgeCropBlock.AGE) ? state.getValue(SimpleAgeCropBlock.AGE) : 0;
+		int age = block instanceof SimpleAgeCropBlock crop ? crop.getAge(state) : 0;
 
 		if (block == SurvivalReimaginedModBlocks.HEMP.get()) {
 			if (age >= 3) {

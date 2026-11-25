@@ -35,8 +35,6 @@ public class PlantHarvested {
                             drop(serverLevel, pos.below(), SurvivalReimaginedModItems.CORN.get(),1);
                             drop(serverLevel, pos.below(2), SurvivalReimaginedModItems.CORN.get(),1);
                         }
-                    } else {
-                        drop(serverLevel, pos, SurvivalReimaginedModItems.CORN.get(), 1);
                     }
                 } else if (state.is(SurvivalReimaginedModBlocks.CORN_STALK_MIDDLE.get())) {
                     if (amount > 0) {
@@ -45,8 +43,6 @@ public class PlantHarvested {
                             drop(serverLevel, pos.below(), SurvivalReimaginedModItems.CORN.get(),1);
                             drop(serverLevel, pos.above(), SurvivalReimaginedModItems.CORN.get(),1);
                         }
-                    } else {
-                        drop(serverLevel, pos, SurvivalReimaginedModItems.CORN.get(), 1);
                     }
                 } else if (state.is(SurvivalReimaginedModBlocks.CORN_STALK_BOTTOM.get())) {
                     if (amount > 0) {
@@ -55,8 +51,6 @@ public class PlantHarvested {
                             drop(serverLevel, pos.above(), SurvivalReimaginedModItems.CORN.get(),1);
                             drop(serverLevel, pos.above(2), SurvivalReimaginedModItems.CORN.get(),1);
                         }
-                    } else {
-                        drop(serverLevel, pos, SurvivalReimaginedModItems.CORN.get(), 1);
                     }
                 }
             }

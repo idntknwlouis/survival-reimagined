@@ -94,10 +94,10 @@ public class SpoilingFoodItem extends Item {
 				}
 			} else if (spoilage >= 1000 && spoilage <= 1499) {
 				entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 300, 2, false, false));
-				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1, false, false));
+				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 120, 0, false, false));
 			} else if (spoilage >= 1500 && spoilage <= 1999) {
 				entity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 1200, 2, false, false));
-				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 150, 1, false, false));
+				entity.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 1, false, false));
 				entity.hurt(entity.damageSources().generic(), 2.0F);
 			}
 		}

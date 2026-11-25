@@ -50,6 +50,12 @@ public class CrudeTorch extends Block implements EntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction clickedFace = context.getClickedFace();
+        BlockPos supportPos = context.getClickedPos().relative(clickedFace.getOpposite());
+        BlockState supportState = context.getLevel().getBlockState(supportPos);
+
+        if (!Shapes.block().equals(supportState.getCollisionShape(context.getLevel(), supportPos))) {
+            return null;
+        }
 
         if (clickedFace == Direction.UP) {
             return defaultBlockState().setValue(FACING, Direction.UP).setValue(LIT, false);
@@ -98,6 +104,11 @@ public class CrudeTorch extends Block implements EntityBlock {
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
+        Direction facing = state.getValue(FACING);
+        Direction support = facing == Direction.UP ? Direction.DOWN : facing;
+        if (direction == support && !state.canSurvive(level, pos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
         return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, facingState, level, pos, facingPos);
     }
 

@@ -1,15 +1,24 @@
 package net.mcreator.survivalreimagined.block;
 
+import net.mcreator.survivalreimagined.block.entity.BerryPlantBlockEntity;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlockEntities;
+import net.mcreator.survivalreimagined.procedures.GrowingLogic;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -22,8 +31,19 @@ public class BerryPlantBlock extends SimpleAgeCropBlock {
 	}
 
 	@Override
+	public boolean isRandomlyTicking(BlockState state) {
+		return false;
+	}
+
+	@Override
 	protected boolean mayPlaceOn(BlockState floor, net.minecraft.world.level.BlockGetter level, BlockPos pos) {
 		return floor.is(net.minecraft.tags.BlockTags.DIRT) || super.mayPlaceOn(floor, level, pos);
+	}
+
+	@Nullable
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new BerryPlantBlockEntity(pos, state);
 	}
 
 	@Override

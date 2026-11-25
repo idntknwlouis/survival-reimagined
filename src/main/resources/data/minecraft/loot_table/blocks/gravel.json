@@ -45,7 +45,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "survival_reimagined:flintblock",
+          "name": "minecraft:flint",
           "weight": 3,
           "conditions": [
             {

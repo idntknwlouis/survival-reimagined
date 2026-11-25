@@ -58,6 +58,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 			int y = i < 6 ? 19 : 37;
 			this.addSlot(new Slot(container, local, x, y) {
 				@Override public boolean mayPlace(ItemStack stack) { return AdvancedAlloyForgeBlockEntity.isUpgrade(stack); }
+				@Override public boolean mayPickup(Player player) { return true; }
 				@Override public int getMaxStackSize() { return 1; }
 			});
 		}
@@ -86,8 +87,12 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 		ItemStack stack = slot.getItem();
 		result = stack.copy();
 
-		if (index < MACHINE_SLOTS) {
-			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), true)) return ItemStack.EMPTY;
+		// Shift-clicking an installed upgrade must return it to the player's inventory.
+		// If there is no room, leave it in the forge rather than dropping it.
+		if (index >= 4 && index < MACHINE_SLOTS) {
+			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), false)) return ItemStack.EMPTY;
+		} else if (index < MACHINE_SLOTS) {
+			if (!moveItemStackTo(stack, MACHINE_SLOTS, slots.size(), false)) return ItemStack.EMPTY;
 		} else if (AdvancedAlloyForgeBlockEntity.isReactorRod(stack)) {
 			if (!moveItemStackTo(stack, 3, 4, false)) return ItemStack.EMPTY;
 		} else if (AdvancedAlloyForgeBlockEntity.isAlloyInput(stack)) {
@@ -100,7 +105,7 @@ public class AdvancedAlloyForgeGUIMenu extends AbstractContainerMenu {
 
 		if (stack.isEmpty()) slot.setByPlayer(ItemStack.EMPTY); else slot.setChanged();
 		if (stack.getCount() == result.getCount()) return ItemStack.EMPTY;
-		slot.onTake(player, stack);
+		slot.onTake(player, result);
 		return result;
 	}
 

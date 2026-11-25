@@ -2,6 +2,7 @@ package net.mcreator.survivalreimagined.client.gui;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.Rect2i;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -49,8 +50,28 @@ public class AdvancedAlloyForgeGUIScreen extends AbstractContainerScreen<Advance
 
 	public AdvancedAlloyForgeGUIScreen(AdvancedAlloyForgeGUIMenu menu, Inventory inventory, Component title) {
 		super(menu, inventory, title);
+		// Keep the 176px machine panel centered, matching the NeoForge layout.
+		// The upgrade panel is a visual extension to the right; its slots remain
+		// independently hit-testable through the menu's slot coordinates.
 		this.imageWidth = 176;
 		this.imageHeight = 166;
+	}
+
+	/** Area occupied by the upgrade panel drawn to the right of the standard machine background. */
+	public Rect2i getUpgradePanelArea() {
+		return new Rect2i(this.leftPos + 178, this.topPos, 72, 75);
+	}
+
+	@Override
+	protected boolean hasClickedOutside(double mouseX, double mouseY, int left, int top, int button) {
+		// The upgrade panel is drawn outside imageWidth, so vanilla would otherwise
+		// classify every click there as an outside click (slot -999), which drops
+		// the carried stack instead of interacting with the upgrade slots.
+		boolean insideUpgradePanel = mouseX >= this.leftPos + 178
+				&& mouseX < this.leftPos + 250
+				&& mouseY >= this.topPos
+				&& mouseY < this.topPos + 75;
+		return !insideUpgradePanel && super.hasClickedOutside(mouseX, mouseY, left, top, button);
 	}
 
 	private static ResourceLocation tex(String file) {
