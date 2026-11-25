@@ -58,7 +58,7 @@ public enum TanningBarrelJadeProvider implements IBlockComponentProvider,
             float progress = Math.max(0.0F, Math.min(1.0F, (float) data.clock() / duration));
             tooltip.append(helper.progress(progress));
             tooltip.append(helper.spacer(4, 0));
-            tooltip.append(Component.literal(Math.round(progress * 100.0F) + "%"));
+            tooltip.add(Component.literal(Math.round(progress * 100.0F) + "%"));
         }
 
         boolean hasItems = false;
