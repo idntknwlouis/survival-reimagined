@@ -1288,16 +1288,17 @@
   "tooltip.survival_reimagined.horse_markings.black_dots": "Black Dots",
   "config.jade.plugin_survival_reimagined.tanning_barrel": "Tanning Barrel status",
   "tooltip.survival_reimagined.jade.tanning_barrel.fluid": "Fluid: %1$s / %2$s mB",
-  "tooltip.survival_reimagined.jade.tanning_barrel.stage.idle": "Stage: Idle",
-  "tooltip.survival_reimagined.jade.tanning_barrel.stage.water": "Stage: Preparing lime/tannin solution",
-  "tooltip.survival_reimagined.jade.tanning_barrel.stage.lime": "Stage: Lime treatment",
-  "tooltip.survival_reimagined.jade.tanning_barrel.stage.tannin": "Stage: Tannin treatment",
   "tooltip.survival_reimagined.jade.tanning_barrel.ready_to_seal": "Ready to seal",
   "tooltip.survival_reimagined.jade.drying_rack.slot": "Slot %1$s",
   "tooltip.survival_reimagined.jade.drying_rack.ready": "Ready",
   "tooltip.survival_reimagined.jade.tanning_barrel.contents": "Contents:",
-  "item.survival_reimagined.obsidian_rock": "Obsidian Rock",
   "item.survival_reimagined.backpack_t1": "Backpack",
   "item.survival_reimagined.backpack_t2": "Backpack",
-  "item.survival_reimagined.backpack_t3": "Backpack"
+  "item.survival_reimagined.backpack_t3": "Backpack",
+  "tooltip.survival_reimagined.jade.tanning_barrel.stage": "Stage: %1$s",
+  "tooltip.survival_reimagined.jade.tanning_barrel.stage_progress": "Stage: %1$s: %2$s",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.idle": "Idle",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.water": "Preparing solution",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.lime": "Lime",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.tannin": "Tanning"
 }
