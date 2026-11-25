@@ -84,6 +84,7 @@ public class SurvivalReimaginedModMenu implements ModMenuApi {
             // JADE INTEGRATION
 
             jade.addEntry(entryBuilder.startBooleanToggle(Component.literal("Require Sneaking to Show Machine Details"), values.jade_machine_details_require_sneak).setDefaultValue(true).setSaveConsumer(v -> values.jade_machine_details_require_sneak = v).build());
+            jade.addEntry(entryBuilder.startBooleanToggle(Component.literal("Show Soil Nutrients in Jade"), values.jade_soil_nutrients).setDefaultValue(true).setSaveConsumer(v -> values.jade_soil_nutrients = v).build());
 
             builder.setSavingRunnable(SurvivalReimaginedModConfig::save);
             return builder.build();
