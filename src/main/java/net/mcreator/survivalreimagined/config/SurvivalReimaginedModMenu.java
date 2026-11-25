@@ -143,7 +143,7 @@ public class SurvivalReimaginedModMenu implements ModMenuApi {
                     .group(group("Jade", "Configure information displayed by Jade.",
                             bool("Require Sneaking for Machine Details", "Require holding Shift to display additional machine information in Jade.", true,
                                     () -> values.jade_machine_details_require_sneak, v -> values.jade_machine_details_require_sneak = v),
-                            bool("Show Soil Nutrients in Jade", "Display nitrogen, phosphorus and potassium values on fertility soil and planted crops.", true,
+                            bool("Display Soil Nutrients in Jade", "Choose where soil nutrients appear. Enabled: show NPK in Jade's block-info panel. Disabled: show NPK beside the crosshair instead.", true,
                                     () -> values.jade_soil_nutrients, v -> values.jade_soil_nutrients = v)))
                     .build();
 
