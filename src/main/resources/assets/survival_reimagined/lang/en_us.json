@@ -1298,9 +1298,9 @@
   "tooltip.survival_reimagined.jade.tanning_barrel.stage": "Stage: %1$s",
   "tooltip.survival_reimagined.jade.tanning_barrel.stage_progress": "Stage: %1$s: %2$s",
   "tooltip.survival_reimagined.jade.tanning_barrel.treatment.idle": "Idle",
-  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.water": "Preparing solution",
-  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.lime": "Lime",
-  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.tannin": "Tanning",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.water": "Water treatment",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.lime": "Lime treatment",
+  "tooltip.survival_reimagined.jade.tanning_barrel.treatment.tannin": "Tannin treatment",
   "config.jade.plugin_survival_reimagined.campfire_progress": "Campfire cooking",
   "tooltip.survival_reimagined.jade.campfire.fuel": "Fuel:",
   "tooltip.survival_reimagined.jade.campfire.cooking": "Cooking:"
