@@ -20,10 +20,13 @@ import snownee.jade.api.StreamServerDataProvider;
 import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.IElementHelper;
 
-/** Displays campfire fuel and the cooking progress of each occupied cooking slot. */
+/** Displays campfire fuel and cooking progress in a compact two-column grid. */
 public enum CampfireJadeProvider implements IBlockComponentProvider,
         StreamServerDataProvider<BlockAccessor, CampfireJadeProvider.Data> {
     INSTANCE;
+
+    private static final int COLUMN_GAP = 20;
+    private static final int CELL_WIDTH = 40;
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
@@ -36,20 +39,44 @@ public enum CampfireJadeProvider implements IBlockComponentProvider,
             tooltip.append(helper.item(data.fuel()));
         }
 
-        boolean hasFood = false;
-        for (ItemStack stack : data.food()) {
-            if (stack.isEmpty()) continue;
-            if (!hasFood) {
-                tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.campfire.cooking"));
-                hasFood = true;
-            }
+        ItemStack slot1 = data.food().size() > 0 ? data.food().get(0) : ItemStack.EMPTY;
+        ItemStack slot2 = data.food().size() > 1 ? data.food().get(1) : ItemStack.EMPTY;
+        ItemStack slot3 = data.food().size() > 2 ? data.food().get(2) : ItemStack.EMPTY;
+        ItemStack slot4 = data.food().size() > 3 ? data.food().get(3) : ItemStack.EMPTY;
 
-            tooltip.add(helper.item(stack));
-            CompoundTag customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
-            int stageProgress = Math.max(0, Math.min(30, (int) customData.getDouble("PercentageNumber")));
-            tooltip.append(helper.spacer(4, 0));
-            tooltip.append(helper.text(Component.literal(Math.round(stageProgress / 30.0F * 100.0F) + "%")));
+        if (!slot1.isEmpty() || !slot2.isEmpty() || !slot3.isEmpty() || !slot4.isEmpty()) {
+            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.campfire.cooking"));
+            appendCookingRow(tooltip, helper, slot1, slot2);
+            appendCookingRow(tooltip, helper, slot3, slot4);
         }
+    }
+
+    private void appendCookingRow(ITooltip tooltip, IElementHelper helper, ItemStack first, ItemStack second) {
+        if (first.isEmpty() && second.isEmpty()) return;
+
+        if (!first.isEmpty()) {
+            tooltip.add(helper.item(first));
+            appendPercentage(tooltip, helper, first);
+        } else {
+            // Keep slot 2/4 in the second column when slot 1/3 is empty.
+            tooltip.add(helper.spacer(CELL_WIDTH + COLUMN_GAP, 0));
+        }
+
+        if (!second.isEmpty()) {
+            if (!first.isEmpty()) {
+                tooltip.append(helper.spacer(COLUMN_GAP, 0));
+            }
+            tooltip.append(helper.item(second));
+            appendPercentage(tooltip, helper, second);
+        }
+    }
+
+    private void appendPercentage(ITooltip tooltip, IElementHelper helper, ItemStack stack) {
+        CompoundTag customData = stack.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        int stageProgress = Math.max(0, Math.min(30, (int) customData.getDouble("PercentageNumber")));
+        int percentage = Math.round(stageProgress / 30.0F * 100.0F);
+        tooltip.append(helper.spacer(4, 0));
+        tooltip.append(helper.text(Component.literal(percentage + "%")));
     }
 
     @Override
