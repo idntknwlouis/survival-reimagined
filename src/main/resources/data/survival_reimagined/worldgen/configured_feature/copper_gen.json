@@ -10,7 +10,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "survival_reimagined:copper_rock_block"
+              "Name": "survival_reimagined:copper_rock"
             }
           }
         }
