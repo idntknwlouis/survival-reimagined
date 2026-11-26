@@ -18,6 +18,8 @@ import net.mcreator.survivalreimagined.block.entity.MineralProcessingTableBlockE
 import net.mcreator.survivalreimagined.block.entity.MillstoneBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.DryingRackBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.MetalRefiningTableBlockEntity;
+import net.mcreator.survivalreimagined.block.RuneMagicInfuserBlock;
+import net.mcreator.survivalreimagined.block.entity.RuneMagicInfuserBlockEntity;
 import net.mcreator.survivalreimagined.block.entity.TanningBarrelBlockEntity;
 import net.mcreator.survivalreimagined.block.fertilesoil.FertilitySoilBlockEntity;
 import net.mcreator.survivalreimagined.block.SimpleAgeCropBlock;
@@ -50,6 +52,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockDataProvider(MillstoneJadeProvider.INSTANCE, MillstoneBlockEntity.class);
 		registration.registerBlockDataProvider(DryingRackJadeProvider.INSTANCE, DryingRackBlockEntity.class);
 		registration.registerBlockDataProvider(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
+		registration.registerBlockDataProvider(RuneMagicInfuserJadeProvider.INSTANCE, RuneMagicInfuserBlockEntity.class);
 		registration.registerBlockDataProvider(TanningBarrelJadeProvider.INSTANCE, TanningBarrelBlockEntity.class);
 		registration.registerBlockDataProvider(CampfireJadeProvider.INSTANCE, CampfireBlockEntity.class);
 		registration.registerBlockDataProvider(SoilNutrientsJadeProvider.INSTANCE, FertilitySoilBlockEntity.class);
@@ -77,6 +80,7 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerBlockComponent(MillstoneJadeProvider.INSTANCE, MillstoneBlock.class);
 		registration.registerBlockComponent(DryingRackJadeProvider.INSTANCE, DryingRack.class);
 		registration.registerBlockComponent(MetalRefiningTableJadeProvider.INSTANCE, MetalRefiningTableBlock.class);
+		registration.registerBlockComponent(RuneMagicInfuserJadeProvider.INSTANCE, RuneMagicInfuserBlock.class);
 		registration.registerBlockComponent(TanningBarrelJadeProvider.INSTANCE, TanningBarrel.class);
 		registration.registerBlockComponent(CampfireJadeProvider.INSTANCE, CampfireBlock.class);
 		registration.registerBlockComponent(SoilNutrientsJadeProvider.INSTANCE, FertilitySoilBlock.class);
