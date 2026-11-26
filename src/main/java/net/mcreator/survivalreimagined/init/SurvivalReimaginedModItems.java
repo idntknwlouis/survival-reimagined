@@ -344,8 +344,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> DIAMOND_HAMMER_HEAD = simpleUnstackable("diamond_hammer_head");
 	public static final RegistryEntry<Item> DIAMOND_SAW_BLADE = simpleUnstackable("diamond_saw_blade");
 	public static final RegistryEntry<Item> DIAMOND_KNIFE_BLADE = simpleUnstackable("diamond_knife_blade");
-	public static final RegistryEntry<Item> STONE_ROCK_BLOC = block(SurvivalReimaginedModBlocks.STONE_ROCK_BLOC);
-
+	
 	public static final RegistryEntry<Item> TIN_ORE = block(SurvivalReimaginedModBlocks.TIN_ORE);
 	public static final RegistryEntry<Item> CASSITERITE_ORE = block(SurvivalReimaginedModBlocks.CASSITERITE_ORE);
 	public static final RegistryEntry<Item> DEEPSLATE_CASSITERITE_ORE = block(SurvivalReimaginedModBlocks.DEEPSLATE_CASSITERITE_ORE);
