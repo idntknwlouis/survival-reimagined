@@ -510,10 +510,10 @@ public final class SurvivalReimaginedModItems {
 
 
 
-	public static final RegistryEntry<Item> COPPER_CHUNK = register("copper_chunk", CopperChunkItem::new);
+	public static final RegistryEntry<Item> COPPER_CHUNK = register("copper_chunk", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.COPPER_ROCK_BLOCK::get, "block.stone.break"));
 	public static final RegistryEntry<Item> COPPER_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.COPPER_ROCK_BLOCK);
 
-	public static final RegistryEntry<Item> ANDESITE_ROCK = register("andesite_rock", AndesiteRockItem::new);
+	public static final RegistryEntry<Item> ANDESITE_ROCK = register("andesite_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.ANDESITE_ROCK_BLOCK::get, "block.stone.break"));
 	public static final RegistryEntry<Item> ANDESITE_ROCK_BLOCK = block(SurvivalReimaginedModBlocks.ANDESITE_ROCK_BLOCK);
 
 	public static final RegistryEntry<Item> GRANITE_ROCK = register("granite_rock", () -> new SurfaceRockItem(SurvivalReimaginedModBlocks.GRANITE_ROCK_BLOCK::get, "block.stone.break"));
