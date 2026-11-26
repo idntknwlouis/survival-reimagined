@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
+import snownee.jade.api.JadeIds;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.StreamServerDataProvider;
 import snownee.jade.api.config.IPluginConfig;
@@ -27,6 +28,20 @@ public enum SoilNutrientsJadeProvider implements IBlockComponentProvider,
 
     @Override
     public void appendTooltip(ITooltip tooltip, BlockAccessor accessor, IPluginConfig config) {
+        BlockState targetState = accessor.getBlockState();
+        if (targetState.getBlock() instanceof SimpleAgeCropBlock crop) {
+            // Jade's built-in crop provider does not recognize our custom IntegerProperty
+            // instances and can incorrectly fall back to "Mature" for these crops.
+            tooltip.remove(JadeIds.MC_CROP_PROGRESS);
+
+            int age = crop.getAge(targetState);
+            int maxAge = Math.max(1, crop.getMaxAge());
+            Component growth = age >= maxAge
+                    ? Component.translatable("tooltip.jade.crop_mature")
+                    : Component.literal(Math.round(age * 100.0F / maxAge) + "%");
+            tooltip.add(Component.translatable("tooltip.jade.crop_growth", growth));
+        }
+
         if (!SurvivalReimaginedModConfig.VALUES.jade_soil_nutrients) return;
 
         Data data = decodeFromData(accessor).orElse(null);
