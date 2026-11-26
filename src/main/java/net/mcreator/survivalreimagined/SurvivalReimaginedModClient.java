@@ -44,6 +44,8 @@ import net.mcreator.survivalreimagined.client.model.Modelsow;
 import net.mcreator.survivalreimagined.client.model.Modelpiglet;
 import net.mcreator.survivalreimagined.client.model.Modelghost;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
+import net.mcreator.survivalreimagined.item.RuneItem;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
@@ -161,6 +163,9 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		HorseCarcasses.HORSE_CARCASSES_BLOCK.values().forEach(carcass -> BlockRenderLayerMap.INSTANCE.putBlock(carcass, RenderType.translucent()));
 
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
+			if (stack.getItem() instanceof RuneItem rune && Screen.hasShiftDown()) {
+				rune.appendDetailedDescription(lines);
+			}
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
 			FoodTooltip.append(stack, lines);
