@@ -44,7 +44,7 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
             }
             if (!second.isEmpty()) {
                 if (!first.isEmpty()) {
-                    tooltip.append(helper.spacer(4, 0));
+                    tooltip.append(helper.spacer(4, 5));
                     tooltip.append(helper.text(Component.literal("+")));
                     tooltip.append(helper.spacer(4, 0));
                     tooltip.append(helper.item(second));
@@ -65,6 +65,12 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
         if (!hammer.isEmpty()) {
             tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.metal_refining_table.hammer"));
             tooltip.append(helper.item(hammer));
+            if (hammer.isDamageableItem()) {
+                int remainingDurability = hammer.getMaxDamage() - hammer.getDamageValue();
+                int durabilityPercent = Math.round(remainingDurability * 100.0F / hammer.getMaxDamage());
+                tooltip.append(helper.spacer(4, 0));
+                tooltip.append(helper.text(Component.literal(durabilityPercent + "%")));
+            }
         }
     }
 
