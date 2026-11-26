@@ -4,6 +4,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.chat.Component;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
@@ -37,7 +38,7 @@ public enum SoilNutrientsJadeProvider implements IBlockComponentProvider,
             int age = crop.getAge(targetState);
             int maxAge = Math.max(1, crop.getMaxAge());
             Component growth = age >= maxAge
-                    ? Component.translatable("tooltip.jade.crop_mature")
+                    ? Component.translatable("tooltip.jade.crop_mature").withStyle(ChatFormatting.GREEN)
                     : Component.literal(Math.round(age * 100.0F / maxAge) + "%");
             tooltip.add(Component.translatable("tooltip.jade.crop_growth", growth));
         }
