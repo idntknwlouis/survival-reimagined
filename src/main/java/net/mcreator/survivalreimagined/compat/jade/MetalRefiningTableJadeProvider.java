@@ -43,7 +43,7 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
             }
             if (!second.isEmpty()) {
                 if (!first.isEmpty()) {
-                    tooltip.append(helper.spacer(4, 5));
+                    tooltip.append(helper.spacer(4, 0));
                     tooltip.append(helper.text(Component.literal("+")));
                     tooltip.append(helper.spacer(4, 0));
                     tooltip.append(helper.item(second));
