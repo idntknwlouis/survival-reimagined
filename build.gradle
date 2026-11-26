@@ -17,6 +17,7 @@ repositories {
 	maven { url = 'https://maven.terraformersmc.com/releases/'}
 	maven { url = 'https://api.modrinth.com/maven' }
 	maven { url = 'https://maven.gegy.dev'}
+	maven { url = 'https://maven.isxander.dev/releases'}
 }
 
 loom {
@@ -44,9 +45,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	// Optional JEI integration: compile against its API and include it only in dev runs.
-	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-common-api:${project.jei_version}"
 	modCompileOnly "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
-	modImplementation "curse.maven:mezzconfig-1689768:9374028"
 	modLocalRuntime "mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}"
 
 	// Optional Jade integration: compile against the API and include it only in dev runs.
@@ -60,7 +59,7 @@ dependencies {
 	modImplementation "curse.maven:serene-seasons-291874:6182595"
 	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
 	// YACL provides the left-sidebar configuration screen.
-	modImplementation "maven.modrinth:1eAoo2KR:7lgiCSAC"
+	modImplementation "dev.isxander:yet-another-config-lib:${project.yacl_version}"
 
 	//Dynamic Lights
 	modImplementation("maven.modrinth:yBW8D80W:ksaGCvSu")
