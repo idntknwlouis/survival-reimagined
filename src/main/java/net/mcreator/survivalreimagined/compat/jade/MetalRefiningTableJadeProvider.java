@@ -37,7 +37,6 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
         IElementHelper helper = IElementHelper.get();
 
         if (!first.isEmpty() || !second.isEmpty() || !result.isEmpty()) {
-            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.metal_refining_table.inputs"));
 
             if (!first.isEmpty()) {
                 tooltip.add(helper.item(first));
