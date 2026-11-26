@@ -34,10 +34,6 @@ public enum CampfireJadeProvider implements IBlockComponentProvider,
         if (data == null) return;
 
         IElementHelper helper = IElementHelper.get();
-        if (!data.fuel().isEmpty()) {
-            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.campfire.fuel"));
-            tooltip.append(helper.item(data.fuel()));
-        }
 
         ItemStack slot1 = data.food().size() > 0 ? data.food().get(0) : ItemStack.EMPTY;
         ItemStack slot2 = data.food().size() > 1 ? data.food().get(1) : ItemStack.EMPTY;
@@ -48,6 +44,12 @@ public enum CampfireJadeProvider implements IBlockComponentProvider,
             tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.campfire.cooking"));
             appendCookingRow(tooltip, helper, slot1, slot2);
             appendCookingRow(tooltip, helper, slot3, slot4);
+        }
+
+        // Keep the fuel indicator below the cooking grid to match the campfire GUI.
+        if (!data.fuel().isEmpty()) {
+            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.campfire.fuel"));
+            tooltip.append(helper.item(data.fuel()));
         }
     }
 
