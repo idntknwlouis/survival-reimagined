@@ -1,7 +1,6 @@
 package net.mcreator.survivalreimagined;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.mcreator.survivalreimagined.command.EventsCommand;
 import net.mcreator.survivalreimagined.compat.jei.plugin.JEIPlugin;
@@ -14,17 +13,11 @@ import net.mcreator.survivalreimagined.network.gui.AAFScripturePageSyncPayload;
 import net.mcreator.survivalreimagined.network.gui.TanningBarrelGUIButtonMessage;
 import net.mcreator.survivalreimagined.procedures.bloodmoon.BloodMoonTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.BlockPos;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.mcreator.survivalreimagined.util.FoodSpoilage;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.state.BlockState;
+import net.mcreator.survivalreimagined.interaction.FlintBlockPlacementHandler;
 
 
 import org.slf4j.Logger;
@@ -94,31 +87,7 @@ public class SurvivalReimaginedMod implements ModInitializer {
 		});
 
 
-		UseBlockCallback.EVENT.register((player, level, hand, hit) -> {
-			ItemStack stack = player.getItemInHand(hand);
-			if (!stack.is(Items.FLINT)) {
-				return InteractionResult.PASS;
-			}
-
-			BlockPos clicked = hit.getBlockPos();
-			BlockPos placePos = level.getBlockState(clicked).canBeReplaced()
-					? clicked
-					: clicked.relative(hit.getDirection());
-			BlockState placed = SurvivalReimaginedModBlocks.FLINTBLOCK.get().defaultBlockState();
-
-			if (!level.getBlockState(placePos).canBeReplaced() || !placed.canSurvive(level, placePos)) {
-				return InteractionResult.PASS;
-			}
-
-			if (!level.isClientSide()) {
-				level.setBlock(placePos, placed, 11);
-				level.playSound(null, placePos, SoundEvents.DRIPSTONE_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-				if (!player.getAbilities().instabuild) {
-					stack.shrink(1);
-				}
-			}
-			return InteractionResult.SUCCESS;
-		});
+		FlintBlockPlacementHandler.register();
 
 		ServerTickEvents.END_SERVER_TICK.register(SurvivalReimaginedMod::onServerTick);
 		LOGGER.info("Initializing Survival Reimagined Fabric port");
