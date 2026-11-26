@@ -1305,5 +1305,7 @@
   "tooltip.survival_reimagined.jade.campfire.fuel": "Fuel:",
   "tooltip.survival_reimagined.jade.campfire.cooking": "Cooking:",
   "config.jade.plugin_survival_reimagined.soil_nutrients": "Soil nutrient information",
+  "tooltip.survival_reimagined.jade.metal_refining_table.inputs": "Inputs:",
+  "tooltip.survival_reimagined.jade.metal_refining_table.hammer": "Required hammer:",
   "tooltip.survival_reimagined.jade.soil_nutrients": "N: %1$s%  P: %2$s%  K: %3$s%"
 }
