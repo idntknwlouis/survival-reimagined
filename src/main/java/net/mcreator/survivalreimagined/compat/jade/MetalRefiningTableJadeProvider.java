@@ -67,9 +67,9 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
             tooltip.append(helper.item(hammer));
             if (hammer.isDamageableItem()) {
                 int remainingDurability = hammer.getMaxDamage() - hammer.getDamageValue();
-                int durabilityPercent = Math.round(remainingDurability * 100.0F / hammer.getMaxDamage());
+                int maxDurability = hammer.getMaxDamage();
                 tooltip.append(helper.spacer(4, 0));
-                tooltip.append(helper.text(Component.literal(durabilityPercent + "%")));
+                tooltip.append(helper.text(Component.literal(remainingDurability + " / " + maxDurability)));
             }
         }
     }
