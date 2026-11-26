@@ -33,7 +33,7 @@ public class MPTPower {
                     BlockPos pos = BlockPos.containing(x + sx, y + sy, z + sz);
                     BlockState state = world.getBlockState(pos);
                     if (state.is(SurvivalReimaginedModBlocks.MINERAL_PROCESSING_TABLE.get())) {
-                        Property<?> property = getPropertyByName(state, "redstone_power");
+                        Property<?> property = getPropertyByName(state, "powered");
                         if (property instanceof BooleanProperty booleanProperty && state.getValue(booleanProperty)) {
                             found = true;
                             if(entity instanceof ServerPlayer player) {

@@ -18,7 +18,9 @@
     "ItemTickRenderer",
     "BlockSoundOverride",
     "CopyItemData",
-    "ObsidianFluidInteraction"
+    "ObsidianFluidInteraction",
+    "ComposterHopperMixin",
+    "ComposterHopperCheckMixin"
   ],
   "client": [],
   "injectors": {

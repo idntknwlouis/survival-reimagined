@@ -2,12 +2,16 @@ package net.mcreator.survivalreimagined.block.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModMenus;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -115,7 +119,7 @@ public class MetalRefiningTableBlockEntity extends RandomizableContainerBlockEnt
 		this.setChanged();
 	}
 
-	public void takeResult(Player player) {
+	public void takeResult(Player player, ItemStack output) {
 		if (getRefiningResult(this.getItem(0), this.getItem(1)) == null || !isHammer(this.getItem(2))) return;
 		this.getItem(0).shrink(1);
 		if (!this.getItem(1).isEmpty()) this.getItem(1).shrink(1);
@@ -126,6 +130,15 @@ public class MetalRefiningTableBlockEntity extends RandomizableContainerBlockEnt
 		}
 		if (this.level != null) {
 			this.level.playSound(null, this.worldPosition, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1.0F, 0.8F);
+		}
+		if (player instanceof ServerPlayer serverPlayer && output.is(TagKey.create(Registries.ITEM, ResourceLocation.parse("c:soft_metals")))) {
+			AdvancementHolder advancement = serverPlayer.server.getAdvancements().get(ResourceLocation.parse("survival_reimagined:quick_metal"));
+			if (advancement != null) {
+				AdvancementProgress progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+				for (String criteria : progress.getRemainingCriteria()) {
+					serverPlayer.getAdvancements().award(advancement, criteria);
+				}
+			}
 		}
 		this.refreshResult();
 	}

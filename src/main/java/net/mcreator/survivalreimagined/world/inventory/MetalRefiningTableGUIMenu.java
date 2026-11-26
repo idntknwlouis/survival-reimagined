@@ -50,7 +50,7 @@ public class MetalRefiningTableGUIMenu extends AbstractContainerMenu {
 			public void onTake(Player player, ItemStack stack) {
 				super.onTake(player, stack);
 				if (MetalRefiningTableGUIMenu.this.container instanceof MetalRefiningTableBlockEntity table) {
-					table.takeResult(player);
+					table.takeResult(player, stack);
 				}
 			}
 		});
