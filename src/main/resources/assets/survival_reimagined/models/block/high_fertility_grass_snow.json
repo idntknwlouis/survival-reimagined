@@ -3,7 +3,7 @@
   "textures": {
     "bottom": "survival_reimagined:block/high_fertility_dirt",
     "top": "minecraft:block/snow",
-    "side": "minecraft:block/grass_block_snow",
+    "side": "survival_reimagined:block/high_fertility_dirt",
     "particle": "survival_reimagined:block/high_fertility_dirt"
   }
 }
