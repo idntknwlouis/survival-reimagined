@@ -164,11 +164,15 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
 			if (stack.getItem() instanceof RuneItem rune) {
-				if (Screen.hasShiftDown()) {
+				boolean shiftDown = Screen.hasShiftDown();
+				lines.add(net.minecraft.network.chat.Component.literal("Hold [")
+						.withStyle(net.minecraft.ChatFormatting.DARK_GRAY)
+						.append(net.minecraft.network.chat.Component.literal("Shift")
+								.withStyle(shiftDown ? net.minecraft.ChatFormatting.WHITE : net.minecraft.ChatFormatting.GRAY))
+						.append(net.minecraft.network.chat.Component.literal("] for Info")
+								.withStyle(net.minecraft.ChatFormatting.DARK_GRAY)));
+				if (shiftDown) {
 					rune.appendDetailedDescription(lines);
-				} else {
-					lines.add(net.minecraft.network.chat.Component.literal("Hold [Shift] for Info")
-							.withStyle(net.minecraft.ChatFormatting.DARK_GRAY, net.minecraft.ChatFormatting.ITALIC));
 				}
 			}
 			RuneInfusionTooltip.append(stack, lines);
