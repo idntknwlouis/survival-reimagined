@@ -24,11 +24,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.block.BananaJungleLogBlock;
 import net.mcreator.survivalreimagined.block.SmallBananaJungleLogBlock;
-import net.mcreator.survivalreimagined.block.AndesiteRockBlockBlock;
 import net.mcreator.survivalreimagined.block.AdvancedAlloyForgeBlock;
 import net.mcreator.survivalreimagined.block.BlockOfRawTinBlock;
 import net.mcreator.survivalreimagined.block.BlockOfTinBlock;
-import net.mcreator.survivalreimagined.block.CopperRockBlockBlock;
 import net.mcreator.survivalreimagined.block.DeepslateTinOreBlock;
 import net.mcreator.survivalreimagined.block.FlintblockBlock;
 import net.mcreator.survivalreimagined.block.ForgeBlock;
@@ -288,8 +286,16 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> CLAY_SAW_BLADE_MOLD = register("clay_saw_blade_mold", () -> new ClayMoldBlock(() -> SAW_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_KNIFE_MOLD = register("clay_knife_mold", () -> new ClayMoldBlock(() -> KNIFE_BLADE_MOLD.get()));
 	public static final RegistryEntry<Block> CLAY_CRUCIBLE = register("clay_crucible", () -> new ClayCrucible(() -> CRUCIBLE.get()));
-	public static final RegistryEntry<Block> COPPER_ROCK = register("copper_rock", CopperRockBlockBlock::new);
-	public static final RegistryEntry<Block> ANDESITE_ROCK = register("andesite_rock", AndesiteRockBlockBlock::new);
+	public static final RegistryEntry<Block> COPPER_ROCK = register("copper_rock", () -> new SurfaceRockBlock(
+			() -> SurvivalReimaginedModItems.COPPER_CHUNK.get(),
+			Shapes.or(
+				Block.box(7, 0, 6, 11, 2, 10),
+				Block.box(7, 2, 7, 10, 3, 10),
+				Block.box(7, 0, 10, 10, 2, 11),
+				Block.box(6, 0, 7, 7, 2, 11)
+			)
+	));
+	public static final RegistryEntry<Block> ANDESITE_ROCK = register("andesite_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.ANDESITE_ROCK.get()));
 	public static final RegistryEntry<Block> GRANITE_ROCK = register("granite_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.GRANITE_ROCK.get()));
 	public static final RegistryEntry<Block> DIORITE_ROCK = register("diorite_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DIORITE_ROCK.get()));
 	public static final RegistryEntry<Block> DRIPSTONE_ROCK = register("dripstone_rock", () -> new SurfaceRockBlock(() -> SurvivalReimaginedModItems.DRIPSTONE_ROCK.get()));
