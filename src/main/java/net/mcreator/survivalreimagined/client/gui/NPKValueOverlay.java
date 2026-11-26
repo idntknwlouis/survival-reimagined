@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -12,7 +13,8 @@ public class NPKValueOverlay {
 
     public static void onHudRender(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.screen != null || minecraft.options.hideGui) {
+        if (minecraft.screen != null || minecraft.options.hideGui
+                || SurvivalReimaginedModConfig.VALUES.jade_soil_nutrients) {
             return;
         }
 

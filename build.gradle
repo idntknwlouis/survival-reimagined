@@ -12,7 +12,6 @@ base {
 
 repositories {
 	mavenCentral()
-	maven { url = 'https://maven.shedaniel.me' }
 	maven { url = 'https://maven.blamejared.com' }
 	maven { url = 'https://www.cursemaven.com'}
 	maven { url = 'https://maven.terraformersmc.com/releases/'}
@@ -60,8 +59,8 @@ dependencies {
 	implementation "com.electronwill.night-config:toml:3.8.1"
 	modImplementation "curse.maven:serene-seasons-291874:6182595"
 	modApi "com.terraformersmc:modmenu:${project.modmenu_version}"
-	modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
-	include "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
+	// YACL provides the left-sidebar configuration screen.
+	modImplementation "maven.modrinth:1eAoo2KR:7lgiCSAC"
 
 	//Dynamic Lights
 	modImplementation("maven.modrinth:yBW8D80W:ksaGCvSu")

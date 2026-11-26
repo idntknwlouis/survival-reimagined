@@ -31,10 +31,12 @@ public enum ForgeInventoryJadeProvider implements
         if (accessor.getTarget() instanceof AdvancedAlloyForgeBlockEntity forge) {
             addReactorRodIfPresent(visibleItems, forge.getItem(3));
 
+            // Upgrade icons are always visible beside the reactor rod icon.
+            // Readable upgrade names in ForgeJadeProvider remain sneak-gated.
             for (int slot = 4; slot <= 7; slot++) {
-                ItemStack stack = forge.getItem(slot);
-                if (AdvancedAlloyForgeBlockEntity.isUpgrade(stack)) {
-                    visibleItems.add(stack.copy());
+                ItemStack upgrade = forge.getItem(slot);
+                if (AdvancedAlloyForgeBlockEntity.isUpgrade(upgrade)) {
+                    visibleItems.add(upgrade.copy());
                 }
             }
         } else if (accessor.getTarget() instanceof ForgeBlockEntity forge) {

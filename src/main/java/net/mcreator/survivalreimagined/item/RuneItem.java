@@ -30,49 +30,53 @@ public class RuneItem extends Item {
 				.append(Component.literal(runeType).withStyle(runeTypeColor)));
 		tooltip.add(Component.literal(" Crystal: ").withStyle(ChatFormatting.GRAY)
 				.append(Component.literal(crystal).withStyle(crystalColor)));
+	}
+
+	public void appendDetailedDescription(List<Component> tooltip) {
 		tooltip.add(Component.empty());
+		tooltip.add(Component.literal("Item and Effects:").withStyle(ChatFormatting.WHITE));
 		appendEffectDescription(tooltip);
-		tooltip.add(Component.empty());
-		tooltip.add(Component.literal("Applies to:").withStyle(ChatFormatting.WHITE));
-		tooltip.add(Component.literal(" Weapons").withStyle(ChatFormatting.GRAY));
-		tooltip.add(Component.literal(" Armor").withStyle(ChatFormatting.GRAY));
-		tooltip.add(Component.literal(" Tools").withStyle(ChatFormatting.GRAY));
 	}
 
 	private void appendEffectDescription(List<Component> tooltip) {
 		switch (crystal) {
 			case "Sapphire" -> {
-				gray(tooltip, "Weapon: Ocean's Wrath grows by defeating aquatic mobs");
-				gray(tooltip, "Armor: Grants Dolphin's Grace while underwater");
-				gray(tooltip, "Tool: Increases underwater mining speed");
+				category(tooltip, "Weapons", "Ocean's Wrath grows by defeating aquatic mobs");
+				category(tooltip, "Armor", "Grants Dolphin's Grace while underwater");
+				category(tooltip, "Tools", "Increases underwater mining speed");
 			}
 			case "Amber" -> {
-				gray(tooltip, "Weapon: Has a chance to ignite enemies");
-				gray(tooltip, "Armor: Full set can grant Fire Resistance");
-				gray(tooltip, "Tool: Grants bonus drops from certain blocks");
+				category(tooltip, "Weapons", "Has a chance to ignite enemies");
+				category(tooltip, "Armor", "Full set can grant Fire Resistance");
+				category(tooltip, "Tools", "Grants bonus drops from certain blocks");
 			}
 			case "Diamond" -> {
-				gray(tooltip, "Weapon: Undead kills progress Unbreaking I-IV");
-				gray(tooltip, "Armor: Can grant Resistance when hit");
-				gray(tooltip, "Tool: Ore mining progresses Unbreaking I-IV");
+				category(tooltip, "Weapons", "Undead kills progress Unbreaking I-IV");
+				category(tooltip, "Armor", "Can grant Resistance when hit");
+				category(tooltip, "Tools", "Ore mining progresses Unbreaking I-IV");
 			}
 			case "Emerald" -> {
-				gray(tooltip, "Weapon: Illager kills can drop Rough Emerald");
-				gray(tooltip, "Armor: Can grant Hero of the Village");
-				gray(tooltip, "Tool: Can drop Rough Emerald while mining");
+				category(tooltip, "Weapons", "Illager kills can drop Rough Emerald");
+				category(tooltip, "Armor", "Can grant Hero of the Village");
+				category(tooltip, "Tools", "Can drop Rough Emerald while mining");
 			}
 			case "Ruby" -> {
-				gray(tooltip, "Weapon: Kills can restore health");
-				gray(tooltip, "Armor: Full set can heal and regenerate at low health");
-				gray(tooltip, "Tool: Can repair itself while mining");
+				category(tooltip, "Weapons", "Kills can restore health");
+				category(tooltip, "Armor", "Full set can heal and regenerate at low health");
+				category(tooltip, "Tools", "Can repair itself while mining");
 			}
 			case "Lapis" -> {
-				gray(tooltip, "Weapon: Kills can grant extra experience");
-				gray(tooltip, "Armor: Periodically grants experience");
-				gray(tooltip, "Tool: Mining can spawn experience orbs");
+				category(tooltip, "Weapons", "Kills can grant extra experience");
+				category(tooltip, "Armor", "Periodically grants experience");
+				category(tooltip, "Tools", "Mining can spawn experience orbs");
 			}
-			default -> gray(tooltip, "Infuses equipment with a crystal effect");
+			default -> category(tooltip, "Effects", "Infuses equipment with a crystal effect");
 		}
+	}
+
+	private static void category(List<Component> tooltip, String category, String description) {
+		tooltip.add(Component.literal(category + ":").withStyle(ChatFormatting.GRAY));
+		tooltip.add(Component.literal("  " + description).withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	private static void gray(List<Component> tooltip, String text) {

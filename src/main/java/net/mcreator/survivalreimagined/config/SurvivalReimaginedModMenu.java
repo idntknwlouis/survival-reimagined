@@ -2,91 +2,168 @@ package net.mcreator.survivalreimagined.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
-import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import me.shedaniel.clothconfig2.api.ConfigCategory;
-import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
+import dev.isxander.yacl3.api.ConfigCategory;
+import dev.isxander.yacl3.api.Option;
+import dev.isxander.yacl3.api.OptionDescription;
+import dev.isxander.yacl3.api.OptionGroup;
+import dev.isxander.yacl3.api.YetAnotherConfigLib;
+import dev.isxander.yacl3.api.controller.DoubleSliderControllerBuilder;
+import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import net.mcreator.survivalreimagined.init.SurvivalReimaginedModConfig;
 import net.minecraft.network.chat.Component;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 public class SurvivalReimaginedModMenu implements ModMenuApi {
+    private static Component text(String value) {
+        return Component.literal(value);
+    }
+
+    private static Option<Boolean> bool(String name, String description, boolean defaultValue,
+                                        Supplier<Boolean> getter, Consumer<Boolean> setter) {
+        return Option.<Boolean>createBuilder()
+                .name(text(name))
+                .description(OptionDescription.of(text(description)))
+                .binding(defaultValue, getter, setter)
+                .controller(TickBoxControllerBuilder::create)
+                .build();
+    }
+
+    private static Option<Double> decimal(String name, String description, double defaultValue,
+                                          double min, double max, double step,
+                                          Supplier<Double> getter, Consumer<Double> setter) {
+        return Option.<Double>createBuilder()
+                .name(text(name))
+                .description(OptionDescription.of(text(description)))
+                .binding(defaultValue, getter, setter)
+                .controller(option -> DoubleSliderControllerBuilder.create(option)
+                        .range(min, max)
+                        .step(step))
+                .build();
+    }
+
+    private static OptionGroup group(String name, String description, Option<?>... options) {
+        OptionGroup.Builder builder = OptionGroup.createBuilder()
+                .name(text(name))
+                .description(OptionDescription.of(text(description)));
+        for (Option<?> option : options) {
+            builder.option(option);
+        }
+        return builder.build();
+    }
+
+    private static ConfigCategory.Builder category(String name, String description) {
+        return ConfigCategory.createBuilder()
+                .name(text(name))
+                .tooltip(text(description));
+    }
+
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
         return parent -> {
-            ConfigBuilder builder = ConfigBuilder.create().setParentScreen(parent).setTitle(Component.literal("Survival Reimagined Config"));
-
-            ConfigEntryBuilder entryBuilder = builder.entryBuilder();
             SurvivalReimaginedModConfig.ConfigValues values = SurvivalReimaginedModConfig.VALUES;
 
-            // Categories
-            ConfigCategory zombification = builder.getOrCreateCategory(Component.literal("Zombification"));
-            ConfigCategory darkness = builder.getOrCreateCategory(Component.literal("Paranoia/Fear"));
-            ConfigCategory sculk = builder.getOrCreateCategory(Component.literal("Sculk Changes"));
-            ConfigCategory bloodmoon = builder.getOrCreateCategory(Component.literal("Blood Moon"));
-            ConfigCategory overrides = builder.getOrCreateCategory(Component.literal("Mechanic Overrides"));
-            ConfigCategory hunger = builder.getOrCreateCategory(Component.literal("Hunger Changes"));
-            ConfigCategory experimental = builder.getOrCreateCategory(Component.literal("Experimental Features"));
-            ConfigCategory lore = builder.getOrCreateCategory(Component.literal("Lore Content"));
-            ConfigCategory jade = builder.getOrCreateCategory(Component.literal("Jade Integration"));
+            ConfigCategory survival = category("Survival", "Food, hunger, and core survival mechanics.")
+                    .group(group("Hunger & Food", "Food handling and hunger behavior.",
+                            bool("Food Spoiling", "Enable food spoilage over time.", true,
+                                    () -> values.food_spoil, v -> values.food_spoil = v),
+                            bool("Raw Food Restrictions", "Apply the mod's restrictions to eating raw foods.", true,
+                                    () -> values.raw_food, v -> values.raw_food = v),
+                            bool("Vanilla Hunger", "Use Minecraft's vanilla hunger behavior instead of the mod's hunger changes.", false,
+                                    () -> values.vanilla_hunger, v -> values.vanilla_hunger = v),
+                            bool("Hunger Debuffs", "Enable negative effects caused by low hunger.", true,
+                                    () -> values.hunger_debuffs, v -> values.hunger_debuffs = v),
+                            bool("Vanilla Hunger Effect System", "Use vanilla's hunger effect handling for hunger-related effects.", false,
+                                    () -> values.vanilla_hunger_effect, v -> values.vanilla_hunger_effect = v)))
+                    .group(group("Zombification", "Settings for the zombification mechanic.",
+                            bool("Enable Zombification", "Allow the player to become zombified through the mod's mechanics.", true,
+                                    () -> values.zombification, v -> values.zombification = v),
+                            bool("Zombification Immunity", "Enable the zombification immunity mechanic.", true,
+                                    () -> values.zombification_immunity, v -> values.zombification_immunity = v),
+                            decimal("Zombification Time", "Time before zombification completes, in ticks (20 ticks = 1 second).", 6000.0, 0.0, 24000.0, 100.0,
+                                    () -> values.zombification_time, v -> values.zombification_time = v),
+                            decimal("Zombification Chance", "Chance from 0% to 100%.", 0.25, 0.0, 1.0, 0.01,
+                                    () -> values.zombification_chance, v -> values.zombification_chance = v)))
+                    .group(group("Armor", "Equipment weight mechanics.",
+                            bool("Armor Weight", "Enable the armor weight mechanic.", true,
+                                    () -> values.weight_system, v -> values.weight_system = v)))
+                    .build();
 
+            ConfigCategory world = category("World & Events", "World events, moon phases, and environmental changes.")
+                    .group(group("Blood Moon", "Control the Blood Moon event and its moon-phase chances.",
+                            bool("Enable Blood Moon", "Enable Blood Moon events.", true,
+                                    () -> values.blood_moon, v -> values.blood_moon = v),
+                            bool("Allow Sleeping During Blood Moon", "Allow players to sleep while a Blood Moon is active.", false,
+                                    () -> values.bloodmoon_sleep, v -> values.bloodmoon_sleep = v),
+                            bool("Disable Normal Mob Spawning", "Disable regular hostile mob spawning during a Blood Moon.", true,
+                                    () -> values.disable_normal_mob_spawning, v -> values.disable_normal_mob_spawning = v),
+                            decimal("Full Moon Chance", "Chance from 0% to 100% for the full-moon event roll.", 0.15, 0.0, 1.0, 0.01,
+                                    () -> values.full_moon_chance, v -> values.full_moon_chance = v),
+                            decimal("Gibbous / Quarter Chance", "Chance from 0% to 100% for the gibbous or quarter-moon event roll.", 0.1, 0.0, 1.0, 0.01,
+                                    () -> values.gibbous_quarter_chance, v -> values.gibbous_quarter_chance = v),
+                            decimal("New Moon / Crescent Chance", "Chance from 0% to 100% for the new-moon or crescent event roll.", 0.075, 0.0, 1.0, 0.01,
+                                    () -> values.new_moon_crescent_chance, v -> values.new_moon_crescent_chance = v)))
+                    .group(group("Sculk", "Changes related to Binding Sculk.",
+                            bool("Binding Sculk", "Enable the Binding Sculk changes.", true,
+                                    () -> values.binding_sculk, v -> values.binding_sculk = v)))
+                    .build();
 
-            // ZOMBIFICATION
+            ConfigCategory playerEffects = category("Player Effects", "Status effects and injuries affecting the player.")
+                    .group(group("Paranoia & Fear", "Darkness-based paranoia and fear behavior.",
+                            bool("Enable Paranoia & Fear", "Enable the paranoia and fear mechanics.", true,
+                                    () -> values.paranoia_and_fear, v -> values.paranoia_and_fear = v),
+                            decimal("Darkness Level Trigger", "Darkness level at which paranoia can begin.", 0.0, 0.0, 15.0, 1.0,
+                                    () -> values.darkness_level, v -> values.darkness_level = v),
+                            decimal("Light Level Limit", "Maximum light level for the darkness-related trigger.", 5.0, 0.0, 15.0, 1.0,
+                                    () -> values.light_level, v -> values.light_level = v),
+                            decimal("Paranoia to Fear Delay", "Delay before paranoia escalates into fear, in ticks.", 1000.0, 0.0, 12000.0, 20.0,
+                                    () -> values.paranoia_to_fear_delay, v -> values.paranoia_to_fear_delay = v)))
+                    .group(group("Bleeding", "Settings for the bleeding mechanic.",
+                            bool("Enable Bleeding", "Enable the bleeding mechanic.", true,
+                                    () -> values.bleeding, v -> values.bleeding = v),
+                            decimal("Bleeding Chance", "Chance from 0% to 100% to trigger bleeding.", 0.1, 0.0, 1.0, 0.01,
+                                    () -> values.bleeding_chance, v -> values.bleeding_chance = v)))
+                    .group(group("Broken Legs", "Settings for leg injuries.",
+                            bool("Enable Broken Legs", "Enable the broken-leg injury mechanic.", true,
+                                    () -> values.broken_legs, v -> values.broken_legs = v),
+                            decimal("Broken Leg Chance", "Chance from 0% to 100% to trigger a broken-leg injury.", 0.2, 0.0, 1.0, 0.01,
+                                    () -> values.broken_leg_chance, v -> values.broken_leg_chance = v)))
+                    .build();
 
-            zombification.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Zombification"), values.zombification).setDefaultValue(true).setSaveConsumer(v -> values.zombification = v).build());
-            zombification.addEntry(entryBuilder.startBooleanToggle(Component.literal("Zombification Immunity"), values.zombification_immunity).setDefaultValue(true).setSaveConsumer(v -> values.zombification_immunity = v).build());
-            zombification.addEntry(entryBuilder.startDoubleField(Component.literal("Zombification Timer"), values.zombification_time).setDefaultValue(6000.0).setSaveConsumer(v -> values.zombification_time = v).build());
-            zombification.addEntry(entryBuilder.startDoubleField(Component.literal("Zombification Chance (0.0 - 1.0)"), values.zombification_chance).setDefaultValue(0.25).setSaveConsumer(v -> values.zombification_chance = v).build());
+            ConfigCategory gameplay = category("Gameplay Rules", "Overrides that change how vanilla gameplay behaves.")
+                    .group(group("Mechanic Overrides", "Adjust global gameplay overrides.",
+                            decimal("Block Break Speed Modifier", "Multiplier applied to the mod's block-breaking speed adjustment.", 0.45, 0.0, 2.0, 0.01,
+                                    () -> values.block_break_speed, v -> values.block_break_speed = v),
+                            bool("Allow Vanilla Portals", "Allow vanilla portal behavior.", false,
+                                    () -> values.vanilla_portal, v -> values.vanilla_portal = v)))
+                    .build();
 
-            // PARANOIA & FEAR
+            ConfigCategory integrations = category("Integrations", "Configure compatibility features provided by other mods.")
+                    .group(group("Jade", "Configure information displayed by Jade.",
+                            bool("Require Sneaking for Machine Details", "Require holding Shift to display additional machine information in Jade.", true,
+                                    () -> values.jade_machine_details_require_sneak, v -> values.jade_machine_details_require_sneak = v),
+                            bool("Display Soil Nutrients in Jade", "Choose where soil nutrients appear. Enabled: show NPK in Jade's block-info panel. Disabled: show NPK beside the crosshair instead.", true,
+                                    () -> values.jade_soil_nutrients, v -> values.jade_soil_nutrients = v)))
+                    .build();
 
-            darkness.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Paranoia & Fear"), values.paranoia_and_fear).setDefaultValue(true).setSaveConsumer(v -> values.paranoia_and_fear = v).build());
-            darkness.addEntry(entryBuilder.startDoubleField(Component.literal("Darkness Level Trigger"), values.darkness_level).setDefaultValue(0.0).setSaveConsumer(v -> values.darkness_level = v).build());
-            darkness.addEntry(entryBuilder.startDoubleField(Component.literal("Light Level Limit"), values.light_level).setDefaultValue(5.0).setSaveConsumer(v -> values.light_level = v).build());
-            darkness.addEntry(entryBuilder.startDoubleField(Component.literal("Paranoia to Fear Delay"), values.paranoia_to_fear_delay).setDefaultValue(1000.0).setSaveConsumer(v -> values.paranoia_to_fear_delay = v).build());
+            ConfigCategory experimental = category("Experimental & Lore", "Experimental mechanics and optional lore content.")
+                    .group(group("Lore", "Optional lore-related content.",
+                            bool("Ghosts", "Enable ghost-related content.", false,
+                                    () -> values.enables_ghosts, v -> values.enables_ghosts = v)))
+                    .build();
 
-            // SCULK
-
-            sculk.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Binding Sculk"), values.binding_sculk).setDefaultValue(true).setSaveConsumer(v -> values.binding_sculk = v).build());
-
-            // BLOOD MOON
-
-            bloodmoon.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Blood Moon"), values.blood_moon).setDefaultValue(true).setSaveConsumer(v -> values.blood_moon = v).build());
-            bloodmoon.addEntry(entryBuilder.startBooleanToggle(Component.literal("Allow Sleeping During Blood Moon"), values.bloodmoon_sleep).setDefaultValue(true).setSaveConsumer(v -> values.bloodmoon_sleep = v).build());
-            bloodmoon.addEntry(entryBuilder.startBooleanToggle(Component.literal("Disable Normal Mob Spawning during Blood Moon"), values.disable_normal_mob_spawning).setDefaultValue(true).setSaveConsumer(v -> values.disable_normal_mob_spawning = v).build());
-            bloodmoon.addEntry(entryBuilder.startDoubleField(Component.literal("Full Moon Chance"), values.full_moon_chance).setDefaultValue(0.15).setSaveConsumer(v -> values.full_moon_chance = v).build());
-            bloodmoon.addEntry(entryBuilder.startDoubleField(Component.literal("Gibbous / Quarter Chance"), values.gibbous_quarter_chance).setDefaultValue(0.1).setSaveConsumer(v -> values.gibbous_quarter_chance = v).build());
-            bloodmoon.addEntry(entryBuilder.startDoubleField(Component.literal("New Moon / Crescent Chance"), values.new_moon_crescent_chance).setDefaultValue(0.075).setSaveConsumer(v -> values.new_moon_crescent_chance = v).build());
-
-            // MECHANIC OVERRIDES
-
-            overrides.addEntry(entryBuilder.startDoubleField(Component.literal("Block Break Speed Modifier"), values.block_break_speed).setDefaultValue(0.45).setSaveConsumer(v -> values.block_break_speed = v).build());
-            overrides.addEntry(entryBuilder.startBooleanToggle(Component.literal("Allow Vanilla Portals"), values.vanilla_portal).setDefaultValue(false).setSaveConsumer(v -> values.vanilla_portal = v).build());
-            overrides.addEntry(entryBuilder.startBooleanToggle(Component.literal("Armor Weight"), values.weight_system).setDefaultValue(true).setSaveConsumer(v -> values.weight_system = v).build());
-
-            // HUNGER
-
-            hunger.addEntry(entryBuilder.startBooleanToggle(Component.literal("Use Vanilla Hunger"), values.vanilla_hunger).setDefaultValue(false).setSaveConsumer(v -> values.vanilla_hunger = v).build());
-            hunger.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Hunger Debuffs"), values.hunger_debuffs).setDefaultValue(true).setSaveConsumer(v -> values.hunger_debuffs = v).build());
-            hunger.addEntry(entryBuilder.startBooleanToggle(Component.literal("Use Vanilla Hunger Effect System"), values.vanilla_hunger_effect).setDefaultValue(false).setSaveConsumer(v -> values.vanilla_hunger_effect = v).build());
-            hunger.addEntry(entryBuilder.startBooleanToggle(Component.literal("Raw Food Restrictions"), values.raw_food).setDefaultValue(true).setSaveConsumer(v -> values.raw_food = v).build());
-            hunger.addEntry(entryBuilder.startBooleanToggle(Component.literal("Food Spoiling Mechanics"), values.food_spoil).setDefaultValue(true).setSaveConsumer(v -> values.food_spoil= v).build());
-
-            // EXPERIMENTAL FEATURES
-
-            experimental.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Bleeding"), values.bleeding).setDefaultValue(true).setSaveConsumer(v -> values.bleeding = v).build());
-            experimental.addEntry(entryBuilder.startDoubleField(Component.literal("Bleeding Chance Trigger"), values.bleeding_chance).setDefaultValue(0.1).setSaveConsumer(v -> values.bleeding_chance = v).build());
-            experimental.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enable Broken Legs"), values.broken_legs).setDefaultValue(true).setSaveConsumer(v -> values.broken_legs = v).build());
-            experimental.addEntry(entryBuilder.startDoubleField(Component.literal("Broken Injury Leg Chance"), values.broken_leg_chance).setDefaultValue(0.2).setSaveConsumer(v -> values.broken_leg_chance = v).build());
-
-            // LORE
-
-            lore.addEntry(entryBuilder.startBooleanToggle(Component.literal("Enables Ghosts"), values.enables_ghosts).setDefaultValue(false).setSaveConsumer(v -> values.enables_ghosts =v).build());
-
-            // JADE INTEGRATION
-
-            jade.addEntry(entryBuilder.startBooleanToggle(Component.literal("Require Sneaking to Show Machine Details"), values.jade_machine_details_require_sneak).setDefaultValue(true).setSaveConsumer(v -> values.jade_machine_details_require_sneak = v).build());
-
-            builder.setSavingRunnable(SurvivalReimaginedModConfig::save);
-            return builder.build();
+            return YetAnotherConfigLib.createBuilder()
+                    .title(text("Survival Reimagined"))
+                    .category(survival)
+                    .category(world)
+                    .category(playerEffects)
+                    .category(gameplay)
+                    .category(integrations)
+                    .category(experimental)
+                    .save(SurvivalReimaginedModConfig::save)
+                    .build()
+                    .generateScreen(parent);
         };
     }
 }
