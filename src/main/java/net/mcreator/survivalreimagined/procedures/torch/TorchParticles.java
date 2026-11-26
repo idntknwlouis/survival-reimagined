@@ -17,19 +17,19 @@ public class TorchParticles {
         double particleZ = z + 0.5;
 
         switch (facing) {
-            case SOUTH -> {
+            case NORTH -> {
                 particleY = y + 0.9;
                 particleZ = z + 0.75;
             }
-            case NORTH -> {
+            case SOUTH -> {
                 particleY = y + 0.9;
                 particleZ = z + 0.25;
             }
-            case EAST -> {
+            case WEST -> {
                 particleY = y + 0.9;
                 particleX = x + 0.75;
             }
-            case WEST -> {
+            case EAST -> {
                 particleY = y + 0.9;
                 particleX = x + 0.25;
             }

@@ -256,7 +256,7 @@ public class TanningBarrelHandler {
                             }
                         }
                     } else if (getBlockNBTLogic(world, pos, "Tannin") && itemstackiterator.is(SurvivalReimaginedModItems.PREPARED_HIDE.get())) {
-                        if (itemFromBlockInventory(world, pos, 1).getCount() <= (getBlockNBTNumber(world,pos, "Fluid") / 6000.0) * 6.0 && itemFromBlockInventory(world, pos, 1).getCount() > 0) {
+                        if (itemFromBlockInventory(world, pos, 1).getCount() <= (getBlockNBTNumber(world,pos, "Fluid") / 3000.0) * 6.0 && itemFromBlockInventory(world, pos, 1).getCount() > 0) {
                             if (!world.isClientSide()) {
                                 if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
                                     barrel.getCustomData().putBoolean("CanSeal", true);
@@ -322,7 +322,7 @@ public class TanningBarrelHandler {
                     }
                 }
             }
-        } else if (getBlockNBTLogic(world, pos, "Lime") || getBlockNBTLogic(world, pos, "Tannin")) {
+        } else if (getBlockNBTLogic(world, pos, "Lime")) {
             int itemCount = itemFromBlockInventory(world, pos, 1).getCount();
             double fluid = getBlockNBTNumber(world, pos, "Fluid");
             double requireAmount = (fluid / 6000.0) * 6.0;
@@ -330,6 +330,26 @@ public class TanningBarrelHandler {
             boolean canSeal = itemCount > 0 && itemCount <= requireAmount;
 
             if (itemCount <=0 || itemCount > requireAmount) {
+                if (!world.isClientSide()) {
+                    if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
+                        barrel.getCustomData().putBoolean("CanSeal", canSeal);
+                        barrel.setChanged();
+                    }
+
+                    if (world instanceof Level level) {
+                        BlockState state1 = world.getBlockState(pos);
+                        level.sendBlockUpdated(pos, state1, state1, 3);
+                    }
+                }
+            }
+        } else if (getBlockNBTLogic(world, pos, "Tannin")) {
+            int itemCount = itemFromBlockInventory(world, pos, 1).getCount();
+            double fluid = getBlockNBTNumber(world, pos, "Fluid");
+            double requireAmount = (fluid / 3000.0) * 6.0;
+
+            boolean canSeal = itemCount > 0 && itemCount <= requireAmount;
+
+            if (itemCount <= 0 || itemCount > requireAmount) {
                 if (!world.isClientSide()) {
                     if (blockEntity instanceof TanningBarrelBlockEntity barrel) {
                         barrel.getCustomData().putBoolean("CanSeal", canSeal);

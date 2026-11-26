@@ -151,8 +151,8 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.TEOSINTE.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MANDARIN_SAPLING.get(), RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.RED_CHERRY_SAPLING.get(), RenderType.cutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get(), RenderType.cutout());
-		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get(), RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS, RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS, RenderType.cutout());
 
 
 
@@ -306,8 +306,8 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 					? BiomeColors.getAverageGrassColor(view, pos)
 					: FoliageColor.getDefaultColor();
 		},
-				SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get(),
-				SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get()
+				SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS,
+				SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS
 		);
 
 
@@ -315,8 +315,8 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 			return FoliageColor.getDefaultColor();
 		},
 				SurvivalReimaginedModBlocks.APPLE_OAK_LEAVES.get().asItem(),
-				SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get().asItem(),
-				SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get().asItem()
+				SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.asItem(),
+				SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.asItem()
 		);
 	}
 

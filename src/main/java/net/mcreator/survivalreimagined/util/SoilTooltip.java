@@ -25,7 +25,7 @@ public class SoilTooltip {
                 lines.add(Component.literal("  P: 20%").withStyle(ChatFormatting.GRAY));
                 lines.add(Component.literal("  K: 20%").withStyle(ChatFormatting.GRAY));
             }
-        } else if (stack.is(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT.get().asItem())) {
+        } else if (stack.is(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT.asItem())) {
             lines.add(Component.literal(" Medium Fertility").withStyle(ChatFormatting.GRAY));
             if (Screen.hasShiftDown()) {
                 lines.add(Component.literal("  Nitrogen: 60%").withStyle(ChatFormatting.GRAY));
@@ -36,7 +36,7 @@ public class SoilTooltip {
                 lines.add(Component.literal("  P: 60%").withStyle(ChatFormatting.GRAY));
                 lines.add(Component.literal("  K: 60%").withStyle(ChatFormatting.GRAY));
             }
-        } else if (stack.is(SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT.get().asItem())) {
+        } else if (stack.is(SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT.asItem())) {
             lines.add(Component.literal(" High Fertility").withStyle(ChatFormatting.GRAY));
             if (Screen.hasShiftDown()) {
                 lines.add(Component.literal("  Nitrogen: 80%").withStyle(ChatFormatting.GRAY));
