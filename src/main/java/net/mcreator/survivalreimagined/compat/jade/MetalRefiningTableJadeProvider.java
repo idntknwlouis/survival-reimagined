@@ -3,6 +3,7 @@ package net.mcreator.survivalreimagined.compat.jade;
 import java.util.List;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -16,7 +17,7 @@ import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.IElementHelper;
 
 /**
- * Shows the Metal Refining Table's two ingredients, hammer, and result preview.
+ * Shows the Metal Refining Table's ingredients, required hammer, and result preview.
  */
 public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
         StreamServerDataProvider<BlockAccessor, MetalRefiningTableJadeProvider.Data> {
@@ -29,11 +30,41 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
             return;
         }
 
+        ItemStack first = data.inventory().get(0);
+        ItemStack second = data.inventory().get(1);
+        ItemStack hammer = data.inventory().get(2);
+        ItemStack result = data.inventory().get(3);
         IElementHelper helper = IElementHelper.get();
-        for (ItemStack stack : data.inventory()) {
-            if (!stack.isEmpty()) {
-                tooltip.add(helper.item(stack));
+
+        if (!first.isEmpty() || !second.isEmpty() || !result.isEmpty()) {
+            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.metal_refining_table.inputs"));
+
+            if (!first.isEmpty()) {
+                tooltip.add(helper.item(first));
             }
+            if (!second.isEmpty()) {
+                if (!first.isEmpty()) {
+                    tooltip.append(helper.spacer(4, 0));
+                    tooltip.append(helper.text(Component.literal("+")));
+                    tooltip.append(helper.spacer(4, 0));
+                    tooltip.append(helper.item(second));
+                } else {
+                    tooltip.add(helper.item(second));
+                }
+            }
+            if (!result.isEmpty()) {
+                if (!first.isEmpty() || !second.isEmpty()) {
+                    tooltip.append(helper.spacer(8, 0));
+                    tooltip.append(helper.text(Component.literal("→")));
+                    tooltip.append(helper.spacer(8, 0));
+                }
+                tooltip.append(helper.item(result));
+            }
+        }
+
+        if (!hammer.isEmpty()) {
+            tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.metal_refining_table.hammer"));
+            tooltip.append(helper.item(hammer));
         }
     }
 
