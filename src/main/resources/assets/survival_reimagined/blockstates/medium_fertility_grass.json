@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "snowy=false": {
       "model": "survival_reimagined:block/medium_fertility_grass"
+    },
+    "snowy=true": {
+      "model": "survival_reimagined:block/medium_fertility_grass_snow"
     }
   }
 }
