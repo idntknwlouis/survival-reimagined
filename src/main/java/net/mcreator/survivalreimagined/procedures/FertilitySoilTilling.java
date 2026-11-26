@@ -10,6 +10,7 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -19,8 +20,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -96,15 +96,13 @@ public class FertilitySoilTilling {
             TillTarget target = DIRT_TO_SOIL.get(block);
             CustomData customData = handItem.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
             CompoundTag nbt = customData.copyTag();
-            double progressPerUse = 1.0D;
-            MobEffectInstance haste = BuiltInRegistries.MOB_EFFECT.getHolder(ResourceLocation.withDefaultNamespace("haste"))
-                    .map(entity::getEffect)
-                    .orElse(null);
+            double tillingSpeed = 1.0;
+            MobEffectInstance haste = entity.getEffect(MobEffects.HASTE);
             if (haste != null) {
-                // Match Minecraft's 20% mining-speed bonus per Haste level.
-                progressPerUse += 0.2D * (haste.getAmplifier() + 1);
+                // Match vanilla Haste: each level increases mining speed by 20%.
+                tillingSpeed += 0.2 * (haste.getAmplifier() + 1);
             }
-            double currentTicks = nbt.getDouble("TillClock") + progressPerUse;
+            double currentTicks = nbt.getDouble("TillClock") + tillingSpeed;
 
             nbt.putDouble("TillClock", currentTicks);
             handItem.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
