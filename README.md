@@ -62,7 +62,7 @@ This table tracks broad feature parity against the original.
 
 
 ## Current Roadmap
-3. Release-ready testing and balancing
-4. Compat content
+1. Release-ready testing and balancing
+2. Compat content
 
 
