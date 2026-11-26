@@ -32,7 +32,9 @@ public final class SurvivalReimaginedModTabs {
 					List<Item> items = new ArrayList<>();
 					BuiltInRegistries.ITEM.forEach(item -> {
 						var key = BuiltInRegistries.ITEM.getKey(item);
-						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace()) || isPairedRockBlock(item) || isInternalGeologySegment(item)) {
+						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace()) || isPairedRockBlock(item) || isInternalGeologySegment(item)
+								|| item == SurvivalReimaginedModItems.FLINTBLOCK.get()
+								|| item == SurvivalReimaginedModItems.COPPER_ROCK_BLOCK.get()) {
 							return;
 						}
 						items.add(item);
