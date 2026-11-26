@@ -371,7 +371,7 @@ public final class SurvivalReimaginedModTabs {
 
 	private static boolean isHiddenCreativeBlockItem(String path) {
 		// Keep legacy internal block items out of the creative tab.
-		return path.equals("stone_rock_bloc") || path.equals("flintblock");
+		return path.equals("flintblock");
 	}
 
 	public static void register() {

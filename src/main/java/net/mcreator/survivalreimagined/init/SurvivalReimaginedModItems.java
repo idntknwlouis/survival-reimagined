@@ -55,7 +55,7 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> LIVER = spoilingSimple("liver");
 	public static final RegistryEntry<Item> STOMACH = spoilingSimple("stomach");
 	public static final RegistryEntry<Item> INTESTINES = spoilingSimple("intestines");
-	public static final RegistryEntry<Item> STONE_ROCK = register("stone_rock", StoneRockItem::new);
+	public static final RegistryEntry<Item> STONE_ROCK = block(SurvivalReimaginedModBlocks.STONE_ROCK);
 	public static final RegistryEntry<Item> OBSIDIAN_ROCK = block(SurvivalReimaginedModBlocks.OBSIDIAN_ROCK);
 	public static final RegistryEntry<Item> SHALE = block(SurvivalReimaginedModBlocks.SHALE);
 	public static final RegistryEntry<Item> RADIATED_SHALE = block(SurvivalReimaginedModBlocks.RADIATED_SHALE);

@@ -1,6 +1,6 @@
 {
   "type": "minecraft:block",
-  "random_sequence": "survival_reimagined:blocks/stone_rock_bloc",
+  "random_sequence": "survival_reimagined:blocks/stone_rock",
   "pools": [
     {
       "rolls": 1.0,
