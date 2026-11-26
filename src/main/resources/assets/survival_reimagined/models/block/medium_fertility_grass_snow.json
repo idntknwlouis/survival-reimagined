@@ -1,0 +1,9 @@
+{
+  "parent": "block/grass_block_snow",
+  "textures": {
+    "bottom": "survival_reimagined:block/medium_fertilirt_dirt",
+    "top": "minecraft:block/snow",
+    "side": "minecraft:block/grass_block_snow",
+    "particle": "survival_reimagined:block/medium_fertilirt_dirt"
+  }
+}
