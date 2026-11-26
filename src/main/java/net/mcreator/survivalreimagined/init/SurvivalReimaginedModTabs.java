@@ -372,9 +372,7 @@ public final class SurvivalReimaginedModTabs {
 	private static boolean isHiddenCreativeBlockItem(String path) {
 		// Surface-rock items are the collectible entries; their placed BlockItems are internal.
 		// Most use the *_rock_block suffix, while the original stone rock block has a legacy ID.
-		return path.endsWith("_rock_block")
-				|| path.equals("stone_rock_bloc")
-				|| path.equals("flintblock");
+		return path.equals("stone_rock_bloc") || path.equals("flintblock");
 	}
 
 	public static void register() {
