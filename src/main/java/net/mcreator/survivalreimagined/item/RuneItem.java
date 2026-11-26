@@ -30,13 +30,15 @@ public class RuneItem extends Item {
 				.append(Component.literal(runeType).withStyle(runeTypeColor)));
 		tooltip.add(Component.literal(" Crystal: ").withStyle(ChatFormatting.GRAY)
 				.append(Component.literal(crystal).withStyle(crystalColor)));
+	}
+
+	public void appendDetailedDescription(List<Component> tooltip) {
 		tooltip.add(Component.empty());
+		tooltip.add(Component.literal("Effects").withStyle(ChatFormatting.WHITE));
 		appendEffectDescription(tooltip);
 		tooltip.add(Component.empty());
-		tooltip.add(Component.literal("Applies to:").withStyle(ChatFormatting.WHITE));
-		tooltip.add(Component.literal(" Weapons").withStyle(ChatFormatting.GRAY));
-		tooltip.add(Component.literal(" Armor").withStyle(ChatFormatting.GRAY));
-		tooltip.add(Component.literal(" Tools").withStyle(ChatFormatting.GRAY));
+		tooltip.add(Component.literal("Applies to").withStyle(ChatFormatting.WHITE));
+		tooltip.add(Component.literal("Weapons  •  Armor  •  Tools").withStyle(ChatFormatting.GRAY));
 	}
 
 	private void appendEffectDescription(List<Component> tooltip) {
