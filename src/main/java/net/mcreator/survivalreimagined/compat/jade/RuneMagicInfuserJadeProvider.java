@@ -30,7 +30,6 @@ public enum RuneMagicInfuserJadeProvider implements IBlockComponentProvider,
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.rune_magic_infuser.inputs"));
         IElementHelper helper = IElementHelper.get();
 
         ItemStack target = data.inventory().get(0);
