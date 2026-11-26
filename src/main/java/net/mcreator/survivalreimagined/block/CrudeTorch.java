@@ -17,6 +17,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -32,10 +33,10 @@ public class CrudeTorch extends Block implements EntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
 
     private static final VoxelShape STANDING = Block.box(6, 0, 6, 10,10,10);
-    private static final VoxelShape SOUTH = Block.box(6, 3, 11, 10,13,16);
-    private static final VoxelShape NORTH = Block.box(6, 3, 0, 10, 13, 5);
-    private static final VoxelShape EAST = Block.box(11, 3, 6, 16,13,10);
-    private static final VoxelShape WEST = Block.box(0, 3, 6, 5, 13, 10);
+    private static final VoxelShape NORTH = Block.box(6, 3, 11, 10,13,16);
+    private static final VoxelShape SOUTH = Block.box(6, 3, 0, 10, 13, 5);
+    private static final VoxelShape WEST = Block.box(11, 3, 6, 16,13,10);
+    private static final VoxelShape EAST = Block.box(0, 3, 6, 5, 13, 10);
 
     public CrudeTorch(Properties properties) {
         super(properties.lightLevel(state -> state.getValue(LIT) ? 14 : 0));
@@ -50,19 +51,14 @@ public class CrudeTorch extends Block implements EntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         Direction clickedFace = context.getClickedFace();
-        BlockPos supportPos = context.getClickedPos().relative(clickedFace.getOpposite());
-        BlockState supportState = context.getLevel().getBlockState(supportPos);
-
-        if (!Shapes.block().equals(supportState.getCollisionShape(context.getLevel(), supportPos))) {
-            return null;
-        }
 
         if (clickedFace == Direction.UP) {
-            return defaultBlockState().setValue(FACING, Direction.UP).setValue(LIT, false);
+            BlockState state = defaultBlockState().setValue(FACING, Direction.UP).setValue(LIT, false);
+            return state.canSurvive(context.getLevel(), context.getClickedPos()) ? state : null;
         }
 
         if (clickedFace.getAxis().isHorizontal()) {
-            BlockState state = defaultBlockState().setValue(FACING, clickedFace.getOpposite()).setValue(LIT, false);
+            BlockState state = defaultBlockState().setValue(FACING, clickedFace).setValue(LIT, false);
             return state.canSurvive(context.getLevel(), context.getClickedPos()) ? state : null;
         }
         return null;
@@ -97,19 +93,19 @@ public class CrudeTorch extends Block implements EntityBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         if (level instanceof LevelAccessor world) {
-            return TorchPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ());
+            return TorchPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ(), state.getValue(FACING));
         }
         return super.canSurvive(state, level, pos);
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
-        Direction facing = state.getValue(FACING);
-        Direction support = facing == Direction.UP ? Direction.DOWN : facing;
-        if (direction == support && !state.canSurvive(level, pos)) {
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        Direction supportDirection = state.getValue(FACING).getOpposite();
+
+        if (direction == supportDirection && !state.canSurvive(level, pos)) {
             return Blocks.AIR.defaultBlockState();
         }
-        return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, facingState, level, pos, facingPos);
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 
     @Override

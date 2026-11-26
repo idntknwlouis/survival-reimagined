@@ -73,9 +73,9 @@ public class FertilitySoilTickUpdate {
                     if (world.getBlockState(currentPos).is(SurvivalReimaginedModBlocks.LOW_FERTILITY_FARMLAND.get())) {
                         targetState = Blocks.DIRT.defaultBlockState();
                     } else if (world.getBlockState(currentPos).is(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_SOIL.get())) {
-                        targetState = SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT.get().defaultBlockState();
+                        targetState = SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT.defaultBlockState();
                     } else if (world.getBlockState(currentPos).is(SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL.get())) {
-                        targetState = SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT.get().defaultBlockState();
+                        targetState = SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT.defaultBlockState();
                     }
 
                     if (targetState != null) {

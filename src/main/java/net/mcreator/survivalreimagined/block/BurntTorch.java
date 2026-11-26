@@ -41,12 +41,12 @@ public class BurntTorch extends Block {
         Direction clickedFace = context.getClickedFace();
 
         if (clickedFace == Direction.UP) {
-            return defaultBlockState().setValue(FACING, Direction.UP);
+            BlockState state = defaultBlockState().setValue(FACING, Direction.UP);
+            return state.canSurvive(context.getLevel(), context.getClickedPos()) ? state : null;
         }
 
         if (clickedFace.getAxis().isHorizontal()) {
-            Direction facing = clickedFace.getOpposite();
-            BlockState state = defaultBlockState().setValue(FACING, facing);
+            BlockState state = defaultBlockState().setValue(FACING, clickedFace);
             return state.canSurvive(context.getLevel(), context.getClickedPos()) ? state : null;
         }
         return null;
@@ -82,13 +82,18 @@ public class BurntTorch extends Block {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         if (level instanceof LevelAccessor world) {
-            return TorchPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ());
+            return TorchPlacement.execute(world, pos.getX(), pos.getY(), pos.getZ(), state.getValue(FACING));
         }
         return super.canSurvive(state, level, pos);
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
-        return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, facingState, level, pos, facingPos);
+    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        Direction supportDirection = state.getValue(FACING).getOpposite();
+
+        if (direction == supportDirection && !state.canSurvive(level, pos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
     }
 }

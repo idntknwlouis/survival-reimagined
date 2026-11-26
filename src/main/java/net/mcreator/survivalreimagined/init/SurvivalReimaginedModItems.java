@@ -598,11 +598,11 @@ public final class SurvivalReimaginedModItems {
 	public static final RegistryEntry<Item> FRUITING_MANDARIN_LEAVES = block(SurvivalReimaginedModBlocks.FRUITING_MANDARIN_LEAVES);
 	public static final RegistryEntry<Item> MANDARIN_SAPLING = block(SurvivalReimaginedModBlocks.MANDARIN_SAPLING);
 	public static final RegistryEntry<Item> LOW_FERTILITY_FARMLAND = block(SurvivalReimaginedModBlocks.LOW_FERTILITY_FARMLAND);
-	public static final RegistryEntry<Item> MEDIUM_FERTILITY_DIRT = block(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT);
-	public static final RegistryEntry<Item> MEDIUM_FERTILITY_GRASS = block(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS);
+	public static final Item MEDIUM_FERTILITY_DIRT = registerDirt("medium_fertility_dirt", new BlockItem(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT, new Item.Properties()));
+	public static final Item MEDIUM_FERTILITY_GRASS = registerDirt("medium_fertility_grass", new BlockItem(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS, new Item.Properties()));
 	public static final RegistryEntry<Item> MEDIUM_FERTILITY_SOIL = block(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_SOIL);
-	public static final RegistryEntry<Item> HIGH_FERTILITY_DIRT = block(SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT);
-	public static final RegistryEntry<Item> HIGH_FERTILITY_GRASS = block(SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS);
+	public static final Item HIGH_FERTILITY_DIRT = registerDirt("high_fertility_dirt", new BlockItem(SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT, new Item.Properties()));
+	public static final Item HIGH_FERTILITY_GRASS = registerDirt("high_fertility_grass", new BlockItem(SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS, new Item.Properties()));
 	public static final RegistryEntry<Item> HIGH_FERTILITY_SOIL = block(SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL);
 	public static final RegistryEntry<Item> BRITTLE_OBSIDIAN = block(SurvivalReimaginedModBlocks.BRITTLE_OBSIDIAN);
 	public static final RegistryEntry<Item> STONE_SALT_DEPOSIT = block(SurvivalReimaginedModBlocks.STONE_SALT_DEPOSIT);
@@ -897,6 +897,10 @@ public final class SurvivalReimaginedModItems {
 				}
 			}
 	);
+
+	private static Item registerDirt(String name, Item item) {
+		return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, name), item);
+	}
 
 
 

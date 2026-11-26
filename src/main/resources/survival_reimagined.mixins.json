@@ -17,7 +17,8 @@
     "SkyRotationMixin",
     "ItemTickRenderer",
     "BlockSoundOverride",
-    "CopyItemData"
+    "CopyItemData",
+    "ObsidianFluidInteraction"
   ],
   "client": [],
   "injectors": {

@@ -59,6 +59,9 @@ public class CraftedItemADV {
         if (stack.is(SurvivalReimaginedModItems.HEART_OF_THE_BLOOD_MOON.get())) {
             awardAdvancement(player, "survival_reimagined:heart_bloodmoon");
         }
+        if (stack.is(SurvivalReimaginedModItems.HEART_OF_THE_NETHER.get())) {
+            awardAdvancement(player, "survival_reimagined:nether_heart");
+        }
         if (stack.is(Items.ENDER_EYE)) {
             awardAdvancement(player, "survival_reimagined:eye_of_ender");
         }

@@ -36,14 +36,14 @@ import java.util.function.Supplier;
 public class FertilitySoilTilling {
     private static final Map<Block, Supplier<Block>> GRASS_TO_DIRT = Map.of(
             Blocks.GRASS_BLOCK, () -> Blocks.DIRT,
-            SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS.get(), SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT,
-            SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS.get(), SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT
+            SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_GRASS, () -> SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT,
+            SurvivalReimaginedModBlocks.HIGH_FERTILITY_GRASS, () -> SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT
     );
 
     private static final Map<Block, TillTarget> DIRT_TO_SOIL = Map.of(
             Blocks.DIRT, new TillTarget(SurvivalReimaginedModBlocks.LOW_FERTILITY_FARMLAND, 20),
-            SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT.get(), new TillTarget(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_SOIL, 60),
-            SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT.get(), new TillTarget(SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL, 80)
+            SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_DIRT, new TillTarget(SurvivalReimaginedModBlocks.MEDIUM_FERTILITY_SOIL, 60),
+            SurvivalReimaginedModBlocks.HIGH_FERTILITY_DIRT, new TillTarget(SurvivalReimaginedModBlocks.HIGH_FERTILITY_SOIL, 80)
     );
 
     public static void register() {

@@ -13,6 +13,7 @@ import net.mcreator.survivalreimagined.world.worldgen.SurvivalReimaginedModTreeG
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -117,7 +118,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> POLISHED_SHALE_BRICKS = register("polished_shale_bricks", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f)));
 	public static final RegistryEntry<Block> POLISHED_CHISELED_SHALE = register("polished_chiseled_shale", () -> new Block(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SHALE_TITANIUM_ORE = register("shale_titanium_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> SHALE_URANINITE_ORE = register("shale_uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SHALE_URANINITE_ORE = register("shale_uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.METAL_STONE_ORE).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SHALE_STAIRS = register("shale_stairs", () -> new StairBlock(SHALE.get().defaultBlockState(), BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SHALE_SLAB = register("shale_slab", () -> new SlabBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> SHALE_WALL = register("shale_wall", () -> new WallBlock(BlockBehaviour.Properties.of().strength(1.5f, 6f).requiresCorrectToolForDrops()));
@@ -195,7 +196,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> PYROLUSITE_BLOCK = register("pyrolusite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> URANOPHANE_BLOCK = register("uranophane_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> ILMENITE_BLOCK = register("ilmenite_block", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> SHALE_URANOPHANE_ORE = register("shale_uranophane_ore", () -> new Block(BlockBehaviour.Properties.of().strength(3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> SHALE_URANOPHANE_ORE = register("shale_uranophane_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.METAL_STONE_ORE).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_HEMATITE_ORE = register("basalt_hematite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.METAL_BASALT_ORE).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_MAGNETITE_ORE = register("basalt_magnetite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.METAL_BASALT_ORE).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BASALT_CALAVERITE_ORE = register("basalt_calaverite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.METAL_BASALT_ORE).strength(3f).requiresCorrectToolForDrops()));
@@ -251,7 +252,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> SAPPHIRE_BLOCK = register("sapphire_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RUBY = register("block_of_ruby", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f)));
 	public static final RegistryEntry<Block> BLOCK_OF_AMBER = register("block_of_amber", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.METAL).strength(5f, 6f)));
-	public static final RegistryEntry<Block> DEEPSLATE_URANINITE_ORE = register("deepslate_uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_URANINITE_ORE = register("deepslate_uraninite_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.METAL_DEEPSLATE_ORE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_TITANIUM = register("block_of_raw_titanium", () -> new Block(BlockBehaviour.Properties.of().strength(5f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_TITANIUM = register("block_of_titanium", () -> new Block(BlockBehaviour.Properties.of().sound(SurvivalReimaginedModSoundTypes.STEEL).strength(3f, 6f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> BLOCK_OF_RAW_URANINITE = register("block_of_raw_uraninite", () -> new Block(BlockBehaviour.Properties.of().strength(3f, 6f)));
@@ -307,7 +308,7 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> SAND_SALT_DESPOSIT = register("sand_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.SAND).strength(0.7f, 0.7f)));
 	public static final RegistryEntry<Block> BLOCK_OF_CINNABAR = register("block_of_cinnabar", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3,4).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> CINNABAR_ORE = register("cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3, 3).requiresCorrectToolForDrops()));
-	public static final RegistryEntry<Block> DEEPSLATE_CINNABAR_ORE = register("deepslate_cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(3, 4.5f).requiresCorrectToolForDrops()));
+	public static final RegistryEntry<Block> DEEPSLATE_CINNABAR_ORE = register("deepslate_cinnabar_ore", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f, 3f).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> EMBEDDED_OBSIDIAN = register("embedded_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.DEEPSLATE).strength(4.5f,3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> APPLE_TREE_SAPLING = register("apple_tree_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.APPLE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).instabreak()));
 
@@ -421,10 +422,10 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> MANDARIN_LOG = register("mandarin_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD).strength(2,3).ignitedByLava()));
 	public static final RegistryEntry<Block> MANDARIN_LEAVES = register("mandarin_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of().sound(SoundType.CHERRY_LEAVES).strength(0.2f,0.2f).noOcclusion().ignitedByLava()));
 	public static final RegistryEntry<Block> MANDARIN_SAPLING = register("mandarin_sapling", () -> new SaplingBlock(SurvivalReimaginedModTreeGrowers.MANDARIN, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_SAPLING).instabreak().noOcclusion()));
-	public static final RegistryEntry<Block> MEDIUM_FERTILITY_DIRT = register("medium_fertility_dirt", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
-	public static final RegistryEntry<Block> MEDIUM_FERTILITY_GRASS = register("medium_fertility_grass", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.5f)));
-	public static final RegistryEntry<Block> HIGH_FERTILITY_DIRT = register("high_fertility_dirt", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f)));
-	public static final RegistryEntry<Block> HIGH_FERTILITY_GRASS = register("high_fertility_grass", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.GRASS).strength(0.5f)));
+	public static final Block MEDIUM_FERTILITY_DIRT = registerDirt("medium_fertility_dirt", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
+	public static final Block MEDIUM_FERTILITY_GRASS = registerDirt("medium_fertility_grass", new SoilGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK), MEDIUM_FERTILITY_DIRT));
+	public static final Block HIGH_FERTILITY_DIRT = registerDirt("high_fertility_dirt", new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT)));
+	public static final Block HIGH_FERTILITY_GRASS = registerDirt("high_fertility_grass", new SoilGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK), HIGH_FERTILITY_DIRT));
 	public static final RegistryEntry<Block> BRITTLE_OBSIDIAN = register("brittle_obsidian", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(2,4).lightLevel(blockstate -> 5).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> STONE_SALT_DEPOSIT = register("stone_salt_deposit", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).strength(3).requiresCorrectToolForDrops()));
 	public static final RegistryEntry<Block> TEOSINTE = register("teosinte", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.CROP).instabreak().noCollission().noOcclusion()));
@@ -454,9 +455,9 @@ public final class SurvivalReimaginedModBlocks {
 	public static final RegistryEntry<Block> WISTERIA_HANGING_SIGN = register("wisteria_hanging_sign", () -> new WallHangingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission()));
 	public static final RegistryEntry<Block> WISTERIA_CEILING_HANGING_SIGN = register("wisteria_ceiling_hanging_sign", () -> new CeilingHangingSignBlock(SurvivalReimaginedModWoodTypes.WISTERIA_HANGING_SIGN_WOOD_TYPE, BlockBehaviour.Properties.of().sound(SoundType.CHERRY_WOOD_HANGING_SIGN).strength(2,3).noCollission().dropsLike(SurvivalReimaginedModBlocks.WISTERIA_HANGING_SIGN.get())));
 
-	public static final RegistryEntry<Block> LOW_FERTILITY_FARMLAND = register("low_fertility_farmland", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.LOW_FERTILITY_FARMLAND.get()));
-	public static final RegistryEntry<Block> MEDIUM_FERTILITY_SOIL = register("medium_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.MEDIUM_FERTILITY_SOIL.get()));
-	public static final RegistryEntry<Block> HIGH_FERTILITY_SOIL = register("high_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.HIGH_FERTILITY_SOIL.get()));
+	public static final RegistryEntry<Block> LOW_FERTILITY_FARMLAND = register("low_fertility_farmland", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.LOW_FERTILITY_FARMLAND.get(), Blocks.DIRT));
+	public static final RegistryEntry<Block> MEDIUM_FERTILITY_SOIL = register("medium_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.MEDIUM_FERTILITY_SOIL.get(), MEDIUM_FERTILITY_DIRT));
+	public static final RegistryEntry<Block> HIGH_FERTILITY_SOIL = register("high_fertility_soil", () -> new FertilitySoilBlock(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(0.5f).noOcclusion(), () -> SurvivalReimaginedModBlockEntities.HIGH_FERTILITY_SOIL.get(), HIGH_FERTILITY_DIRT));
 	public static final RegistryEntry<Block> DRYING_RACK = register("drying_rack", DryingRack::new);
 	public static final RegistryEntry<Block> TANNING_BARREL = register("tanning_barrel", TanningBarrel::new);
 	public static final RegistryEntry<Block> SKINNED_HORSE = register("skinned_horse", SkinnedHorse::new);
@@ -477,6 +478,10 @@ public final class SurvivalReimaginedModBlocks {
 		var id = SurvivalReimaginedMod.asResource(path);
 		Block block = Registry.register(BuiltInRegistries.BLOCK, id, factory.get());
 		return new RegistryEntry<>(id, block);
+	}
+
+	private static Block registerDirt(String name, Block block) {
+		return Registry.register(BuiltInRegistries.BLOCK, ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, name), block);
 	}
 
 
