@@ -62,9 +62,6 @@ This table tracks broad feature parity against the original.
 
 
 ## Current Roadmap
-
-1. Carcass / Butchering, Structures
-2. Decorative / utility block parity
 3. Release-ready testing and balancing
 4. Compat content
 
