@@ -33,7 +33,7 @@ public final class SurvivalReimaginedModTabs {
 					BuiltInRegistries.ITEM.forEach(item -> {
 						var key = BuiltInRegistries.ITEM.getKey(item);
 						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace())
-								|| isHiddenCreativeBlockItem(key.getPath(), item)
+								|| isHiddenCreativeBlockItem(key.getPath())
 								|| isInternalGeologySegment(item)) {
 							return;
 						}
@@ -369,7 +369,7 @@ public final class SurvivalReimaginedModTabs {
 				|| item == SurvivalReimaginedModItems.KIMBERLITE_STALAGTITE_MIDDLE.get();
 	}
 
-	private static boolean isHiddenCreativeBlockItem(String path, Item item) {
+	private static boolean isHiddenCreativeBlockItem(String path) {
 		// Surface-rock items are the collectible entries; their placed BlockItems are internal.
 		// Most use the *_rock_block suffix, while the original stone rock block has a legacy ID.
 		return path.endsWith("_rock_block")
