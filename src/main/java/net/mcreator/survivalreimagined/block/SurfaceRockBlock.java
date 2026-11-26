@@ -18,10 +18,15 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import java.util.function.Supplier;
 
 public class SurfaceRockBlock extends Block {
-	private static final VoxelShape SHAPE = box(6, 0, 5, 10, 2, 11);
+	private static final VoxelShape DEFAULT_SHAPE = box(6, 0, 5, 10, 2, 11);
 	private final Supplier<? extends Item> droppedItem;
+	private final VoxelShape shape;
 
 	public SurfaceRockBlock(Supplier<? extends Item> droppedItem) {
+		this(droppedItem, DEFAULT_SHAPE);
+	}
+
+	public SurfaceRockBlock(Supplier<? extends Item> droppedItem, VoxelShape shape) {
 		super(BlockBehaviour.Properties.of()
 				.instabreak()
 				.noOcclusion()
@@ -29,12 +34,13 @@ public class SurfaceRockBlock extends Block {
 				.dynamicShape()
 				.offsetType(Block.OffsetType.XZ));
 		this.droppedItem = droppedItem;
+		this.shape = shape;
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		Vec3 offset = state.getOffset(world, pos);
-		return SHAPE.move(offset.x, offset.y, offset.z);
+		return shape.move(offset.x, offset.y, offset.z);
 	}
 
 	@Override
