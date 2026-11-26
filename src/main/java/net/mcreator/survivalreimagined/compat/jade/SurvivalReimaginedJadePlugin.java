@@ -66,6 +66,8 @@ public final class SurvivalReimaginedJadePlugin implements IWailaPlugin {
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, MillstoneBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, DryingRackBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, MetalRefiningTableBlockEntity.class);
+		// The custom Rune Magic Infuser component displays its three inputs itself.
+		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, RuneMagicInfuserBlockEntity.class);
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, TanningBarrelBlockEntity.class);
 		// The campfire component displays its fuel and cooking slots itself.
 		registration.registerItemStorage(ForgeInventoryJadeProvider.INSTANCE, CampfireBlockEntity.class);
