@@ -32,9 +32,9 @@ public final class SurvivalReimaginedModTabs {
 					List<Item> items = new ArrayList<>();
 					BuiltInRegistries.ITEM.forEach(item -> {
 						var key = BuiltInRegistries.ITEM.getKey(item);
-						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace()) || isPairedRockBlock(item) || isInternalGeologySegment(item)
-								|| item == SurvivalReimaginedModItems.FLINTBLOCK.get()
-								|| item == SurvivalReimaginedModItems.COPPER_ROCK_BLOCK.get()) {
+						if (key == null || !SurvivalReimaginedMod.MODID.equals(key.getNamespace())
+								|| isHiddenCreativeBlockItem(key.getPath(), item)
+								|| isInternalGeologySegment(item)) {
 							return;
 						}
 						items.add(item);
@@ -369,20 +369,12 @@ public final class SurvivalReimaginedModTabs {
 				|| item == SurvivalReimaginedModItems.KIMBERLITE_STALAGTITE_MIDDLE.get();
 	}
 
-	private static boolean isPairedRockBlock(Item item) {
-		return item == SurvivalReimaginedModItems.STONE_ROCK_BLOC.get()
-				|| item == SurvivalReimaginedModItems.ANDESITE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.GRANITE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.DIORITE_ROCK_B_LOCK.get()
-				|| item == SurvivalReimaginedModItems.DRIPSTONE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.CALCITE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.TUFF_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.MOSSY_STONE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.NETHERRACK_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.END_STONE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.BLACKSTONE_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.BASALT_ROCK_BLOCK.get()
-				|| item == SurvivalReimaginedModItems.DEEPSLATE_ROCK_BLOCK.get();
+	private static boolean isHiddenCreativeBlockItem(String path, Item item) {
+		// Surface-rock items are the collectible entries; their placed BlockItems are internal.
+		// Most use the *_rock_block suffix, while the original stone rock block has a legacy ID.
+		return path.endsWith("_rock_block")
+				|| path.equals("stone_rock_bloc")
+				|| path.equals("flintblock");
 	}
 
 	public static void register() {
