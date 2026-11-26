@@ -19,6 +19,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -94,7 +96,13 @@ public class FertilitySoilTilling {
             TillTarget target = DIRT_TO_SOIL.get(block);
             CustomData customData = handItem.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
             CompoundTag nbt = customData.copyTag();
-            double currentTicks = nbt.getDouble("TillClock") + 1;
+            double progressPerUse = 1.0D;
+            MobEffectInstance haste = entity.getEffect(MobEffects.HASTE);
+            if (haste != null) {
+                // Match Minecraft's 20% mining-speed bonus per Haste level.
+                progressPerUse += 0.2D * (haste.getAmplifier() + 1);
+            }
+            double currentTicks = nbt.getDouble("TillClock") + progressPerUse;
 
             nbt.putDouble("TillClock", currentTicks);
             handItem.set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
