@@ -163,8 +163,13 @@ public class SurvivalReimaginedModClient implements ClientModInitializer {
 		HorseCarcasses.HORSE_CARCASSES_BLOCK.values().forEach(carcass -> BlockRenderLayerMap.INSTANCE.putBlock(carcass, RenderType.translucent()));
 
 		ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
-			if (stack.getItem() instanceof RuneItem rune && Screen.hasShiftDown()) {
-				rune.appendDetailedDescription(lines);
+			if (stack.getItem() instanceof RuneItem rune) {
+				if (Screen.hasShiftDown()) {
+					rune.appendDetailedDescription(lines);
+				} else {
+					lines.add(net.minecraft.network.chat.Component.literal("Hold [Shift] for Info")
+							.withStyle(net.minecraft.ChatFormatting.DARK_GRAY, net.minecraft.ChatFormatting.ITALIC));
+				}
 			}
 			RuneInfusionTooltip.append(stack, lines);
 			AAFUpgradeTooltip.append(stack, lines);
