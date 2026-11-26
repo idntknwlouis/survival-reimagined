@@ -64,7 +64,7 @@ public enum MetalRefiningTableJadeProvider implements IBlockComponentProvider,
 
         if (!hammer.isEmpty()) {
             tooltip.add(Component.translatable("tooltip.survival_reimagined.jade.metal_refining_table.hammer"));
-            tooltip.append(helper.item(hammer));
+            tooltip.add(helper.item(hammer));
             if (hammer.isDamageableItem()) {
                 int remainingDurability = hammer.getMaxDamage() - hammer.getDamageValue();
                 int maxDurability = hammer.getMaxDamage();
