@@ -8,6 +8,7 @@ import net.mcreator.survivalreimagined.init.SurvivalReimaginedModBlocks;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +21,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
@@ -97,7 +97,10 @@ public class FertilitySoilTilling {
             CustomData customData = handItem.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY);
             CompoundTag nbt = customData.copyTag();
             double tillingSpeed = 1.0;
-            MobEffectInstance haste = entity.getEffect(MobEffects.HASTE);
+            MobEffectInstance haste = BuiltInRegistries.MOB_EFFECT
+                    .getHolder(ResourceLocation.withDefaultNamespace("haste"))
+                    .map(entity::getEffect)
+                    .orElse(null);
             if (haste != null) {
                 // Match vanilla Haste: each level increases mining speed by 20%.
                 tillingSpeed += 0.2 * (haste.getAmplifier() + 1);
