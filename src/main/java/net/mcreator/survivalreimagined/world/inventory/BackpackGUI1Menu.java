@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 public class BackpackGUI1Menu extends AbstractContainerMenu {
@@ -48,6 +49,7 @@ public class BackpackGUI1Menu extends AbstractContainerMenu {
 
     private ContainerLevelAccess access = ContainerLevelAccess.NULL;
     private Container internal;
+    private final UUID backpackUUID;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     private boolean bound;
     private Supplier<Boolean> boundItemMatcher;
@@ -59,6 +61,7 @@ public class BackpackGUI1Menu extends AbstractContainerMenu {
 
         BlockPos pos = data.pos();
         ItemStack backpackStack = data.stack();
+        this.backpackUUID = BackpackIdentity.getOrCreate(backpackStack);
 
         this.entity = inv.player;
         this.world = inv.player.level();
@@ -98,6 +101,9 @@ public class BackpackGUI1Menu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
+        boolean backpackHeld = BackpackIdentity.hasUUID(player.getMainHandItem(), backpackUUID) || BackpackIdentity.hasUUID(player.getOffhandItem(), backpackUUID);
+        if (!backpackHeld) return false;
+
         if (!bound) return true;
         if (boundItemMatcher != null) return boundItemMatcher.get();
         if (boundBlockEntity != null) return !boundBlockEntity.isRemoved() && AbstractContainerMenu.stillValid(access, player, boundBlockEntity.getBlockState().getBlock());

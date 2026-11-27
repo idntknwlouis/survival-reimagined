@@ -182,6 +182,14 @@ public final class FoodSpoilage {
                 ItemStack rottenStack = getRottenStack(stack);
                 player.getInventory().setItem(inventorySlot, rottenStack);
                 syncPlayerInventoryStack(player, rottenStack);
+                if (player instanceof ServerPlayer serverPlayer) {
+                    var advancement = serverPlayer.server.getAdvancements().get(ResourceLocation.parse("survival_reimagined:bad_meat"));
+
+                    if (advancement == null) return;
+
+                    var progress= serverPlayer.getAdvancements().getOrStartProgress(advancement);
+                    if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "bad_meat_0");
+                }
             } else {
                 CustomData.update(DataComponents.CUSTOM_DATA, stack,
                         data -> {

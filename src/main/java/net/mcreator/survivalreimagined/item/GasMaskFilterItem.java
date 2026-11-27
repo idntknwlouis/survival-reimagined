@@ -2,6 +2,8 @@ package net.mcreator.survivalreimagined.item;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -41,8 +43,15 @@ public class GasMaskFilterItem extends Item {
 		if (!level.isClientSide()) {
 			CustomData.update(DataComponents.CUSTOM_DATA, helmet,
 					tag -> tag.putDouble("FilterPercentage", 100.0D));
-			level.playSound(null, player.blockPosition(), SurvivalReimaginedModSounds.GASMASK_FILTER.get(),
-					SoundSource.PLAYERS, 1.0F, 1.0F);
+			level.playSound(null, player.blockPosition(), SurvivalReimaginedModSounds.GASMASK_FILTER.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+			if (player instanceof ServerPlayer serverPlayer) {
+				var advancement = serverPlayer.server.getAdvancements().get(ResourceLocation.parse("survival_reimagined:filter_recharge"));
+
+				if (advancement != null) {
+					var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+					if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "filter_recharge_0");
+				}
+			}
 			if (!player.getAbilities().instabuild) {
 				filter.shrink(1);
 			}

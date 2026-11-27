@@ -32,32 +32,17 @@ public class NetherHeartRightClickedOnBlock {
                     if (world instanceof Level level) {
                         if (!level.isClientSide()) {
                             level.playSound(null, BlockPos.containing(x,y,z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("survival_reimagined:portal_open")), SoundSource.AMBIENT, 1, 1);
-                        } else {
-                            level.playLocalSound(x,y,z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("survival_reimagined:portal_open")), SoundSource.AMBIENT, 1, 1, false);
                         }
                     }
                     if (world instanceof Level level) {
                         if (!level.isClientSide()) {
                             level.playSound(null, BlockPos.containing(x,y,z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.portal.ambient")), SoundSource.AMBIENT, 1, 1);
-                        } else {
-                            level.playLocalSound(x,y,z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("block.portal.ambient")), SoundSource.AMBIENT, 1, 1, false);
-                        }
-                    }
-                    if (entity instanceof ServerPlayer serverPlayer) {
-                        AdvancementHolder advancement = serverPlayer.server.getAdvancements().get(ResourceLocation.parse("survival_reimagined:nether_heart"));
-                        if (advancement != null) {
-                            AdvancementProgress progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
-                            if (!progress.isDone()) {
-                                for (String criteria : progress.getRemainingCriteria()) serverPlayer.getAdvancements().award(advancement,criteria);
-                            }
                         }
                     }
                 }
                 if (world instanceof Level level) {
                     if (!level.isClientSide()) {
                         level.playSound(null, BlockPos.containing(x,y,z), BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.flintandsteel.use")), SoundSource.AMBIENT, 1, 1);
-                    } else {
-                        level.playLocalSound(x,y,z, BuiltInRegistries.SOUND_EVENT.get(ResourceLocation.parse("item.flintandsteel.use")), SoundSource.AMBIENT, 1, 1, false);
                     }
                 }
 

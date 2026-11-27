@@ -74,6 +74,7 @@ public class SurvivalReimaginedModProcedures {
         ItemInInventory.register();
         PlanksADV.register();
         CropsPlanted.register();
+        CarcassPartBroken.register();
 
 
         //Blood Moon

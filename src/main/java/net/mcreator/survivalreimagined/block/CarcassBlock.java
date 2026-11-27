@@ -2,7 +2,6 @@ package net.mcreator.survivalreimagined.block;
 
 import net.mcreator.survivalreimagined.SurvivalReimaginedMod;
 import net.mcreator.survivalreimagined.item.HorseHides;
-import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -53,6 +52,8 @@ public class CarcassBlock extends Block implements EntityBlock {
 	private static final TagKey<Item> KNIVES = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
 	private static final TagKey<Item> SAWS = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/saw"));
 	private static final ResourceLocation CARCASS_ADVANCEMENT = ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "animal_hide");
+	private static final ResourceLocation AMPUTATION_ADVANCEMENT = ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "animal_amputation");
+	private static final ResourceLocation GUTS_ADVANCEMENT = ResourceLocation.fromNamespaceAndPath(SurvivalReimaginedMod.MODID, "animal_guts");
 
 	private final Species species;
 	private final String horseHideID;
@@ -356,6 +357,22 @@ public class CarcassBlock extends Block implements EntityBlock {
 					Block.popResource(level, pos, leg());
 				}
 				level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+				if (player instanceof ServerPlayer serverPlayer) {
+					var advancement = serverPlayer.server.getAdvancements().get(CARCASS_ADVANCEMENT);
+
+					if (advancement != null) {
+						var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+						if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "animal_hide_0");
+					}
+				}
+				if (player instanceof ServerPlayer serverPlayer) {
+					var advancement = serverPlayer.server.getAdvancements().get(AMPUTATION_ADVANCEMENT);
+
+					if (advancement != null) {
+						var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+						if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "animal_amputation_0");
+					}
+				}
 			} else if (stage == 1) {
 				level.setBlock(pos, state.setValue(CARCASS_STATE_HORSE, 2), 3);
 
@@ -373,19 +390,16 @@ public class CarcassBlock extends Block implements EntityBlock {
 				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.INTESTINES.get()));
 
 				level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 1.0f,1.0f);
-			}
-		} else {
-			if (player instanceof ServerPlayer serverPlayer) {
-				var advancement = serverPlayer.server.getAdvancements().get(CARCASS_ADVANCEMENT);
+				if (player instanceof ServerPlayer serverPlayer) {
+					var advancement = serverPlayer.server.getAdvancements().get(GUTS_ADVANCEMENT);
 
-				if (advancement != null) {
-					var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
-					if (!progress.isDone()) {
-						serverPlayer.getAdvancements().award(advancement, "animal_hide_0");
+					if (advancement != null) {
+						var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+						if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "animal_guts_0");
 					}
 				}
 			}
-
+		} else {
 			if (stage == 0) {
 				if (species == Species.HORSE) {
 					level.setBlock(pos, SurvivalReimaginedModBlocks.SKINNED_HORSE.get().defaultBlockState().setValue(CARCASS_STATE_HORSE,0), 3);
@@ -394,13 +408,28 @@ public class CarcassBlock extends Block implements EntityBlock {
 				}
 				Block.popResource(level, pos.above(), hide());
 				level.playSound(null, pos, SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+				if (player instanceof ServerPlayer serverPlayer) {
+					var advancement = serverPlayer.server.getAdvancements().get(CARCASS_ADVANCEMENT);
 
+					if (advancement != null) {
+						var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+						if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "animal_hide_0");
+					}
+				}
 			} else if (stage == 1) {
 				level.setBlock(pos, state.setValue(isSkinnedHorse() ? CARCASS_STATE_HORSE : CARCASS_STATE, 2), 3);
 				for (int i = 0; i < 4; i++) {
 					Block.popResource(level, pos, leg());
 				}
 				level.playSound(null, pos, SurvivalReimaginedModSounds.LIMB_REMOVE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+				if (player instanceof ServerPlayer serverPlayer) {
+					var advancement = serverPlayer.server.getAdvancements().get(AMPUTATION_ADVANCEMENT);
+
+					if (advancement != null) {
+						var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+						if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "animal_amputation_0");
+					}
+				}
 			} else if (stage == 2) {
 				level.setBlock(pos, state.setValue(isSkinnedHorse() ? CARCASS_STATE_HORSE : CARCASS_STATE, 3), 3);
 				Block.popResource(level, pos, head());
@@ -418,6 +447,14 @@ public class CarcassBlock extends Block implements EntityBlock {
 				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.STOMACH.get()));
 				Block.popResource(level, pos, new ItemStack(SurvivalReimaginedModItems.INTESTINES.get()));
 				level.playSound(null, pos, SoundEvents.MUD_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+				if (player instanceof ServerPlayer serverPlayer) {
+					var advancement = serverPlayer.server.getAdvancements().get(GUTS_ADVANCEMENT);
+
+					if (advancement != null) {
+						var progress = serverPlayer.getAdvancements().getOrStartProgress(advancement);
+						if (!progress.isDone()) serverPlayer.getAdvancements().award(advancement, "animal_guts_0");
+					}
+				}
 			}
 		}
 		return ItemInteractionResult.SUCCESS;
